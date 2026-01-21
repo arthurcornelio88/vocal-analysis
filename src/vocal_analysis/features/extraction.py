@@ -80,7 +80,21 @@ def extract_bioacoustic_features(
         power_cepstrogram = parselmouth.praat.call(
             sound, "To PowerCepstrogram", fmin, time_step, 5000.0, 50.0
         )
-        cpps = parselmouth.praat.call(power_cepstrogram, "Get CPPS", False, 0.02, 0.0005, 60, 330, 0.05, "Parabolic", 0.001, 0, "Exponential decay", "Robust slow")
+        cpps = parselmouth.praat.call(
+            power_cepstrogram,
+            "Get CPPS",
+            False,
+            0.02,
+            0.0005,
+            60,
+            330,
+            0.05,
+            "Parabolic",
+            0.001,
+            0,
+            "Exponential decay",
+            "Robust slow",
+        )
     except Exception:
         # Fallback: usar HNR médio como proxy
         cpps = float(np.nanmean(hnr_values))

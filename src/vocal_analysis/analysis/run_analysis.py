@@ -52,7 +52,7 @@ def main() -> None:
 
     # Clustering
     print("\nExecutando clustering GMM...")
-    df_clustered = cluster_mechanisms(df, n_clusters=2, method="gmm", output_dir=output_dir / "plots")
+    cluster_mechanisms(df, n_clusters=2, method="gmm", output_dir=output_dir / "plots")
 
     # Gerar relatório básico
     artist_name = metadata.get("artist", "Desconhecido") if metadata else "Desconhecido"

@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 
 from vocal_analysis.features.extraction import extract_bioacoustic_features
-from vocal_analysis.utils.pitch import hz_to_note, hz_range_to_notes
+from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
 from vocal_analysis.visualization.plots import plot_f0_contour
 
 
@@ -34,12 +34,14 @@ def process_audio_files(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame,
             features = extract_bioacoustic_features(audio_path)
 
             # Criar DataFrame para esta música
-            df = pd.DataFrame({
-                "time": features["time"],
-                "f0": features["f0"],
-                "confidence": features["confidence"],
-                "hnr": features["hnr"],
-            })
+            df = pd.DataFrame(
+                {
+                    "time": features["time"],
+                    "f0": features["f0"],
+                    "confidence": features["confidence"],
+                    "hnr": features["hnr"],
+                }
+            )
             df["song"] = audio_path.stem
             df["cpps_global"] = features["cpps_global"]
 
@@ -83,11 +85,13 @@ def process_audio_files(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame,
 
         except Exception as e:
             print(f"  ERRO: {e}")
-            songs_metadata.append({
-                "song": audio_path.stem,
-                "file": audio_path.name,
-                "error": str(e),
-            })
+            songs_metadata.append(
+                {
+                    "song": audio_path.stem,
+                    "file": audio_path.name,
+                    "error": str(e),
+                }
+            )
             continue
 
     metadata = {
@@ -163,43 +167,49 @@ def _write_log_markdown(metadata: dict, path: Path) -> None:
 
     if "global" in metadata:
         g = metadata["global"]
-        lines.extend([
-            "## Resumo Global",
-            "",
-            "| Métrica | Valor | Nota |",
-            "|---------|-------|------|",
-            f"| f0 médio | {g['f0_mean_hz']} Hz | {g['f0_mean_note']} |",
-            f"| f0 mínimo | {g['f0_min_hz']} Hz | – |",
-            f"| f0 máximo | {g['f0_max_hz']} Hz | – |",
-            f"| Extensão | – | {g['f0_range_notes']} |",
-            f"| f0 desvio | {g['f0_std_hz']} Hz | – |",
-            f"| HNR médio | {g['hnr_mean_db']} dB | – |",
-            f"| Total frames | {g['total_voiced_frames']} | – |",
-            "",
-        ])
+        lines.extend(
+            [
+                "## Resumo Global",
+                "",
+                "| Métrica | Valor | Nota |",
+                "|---------|-------|------|",
+                f"| f0 médio | {g['f0_mean_hz']} Hz | {g['f0_mean_note']} |",
+                f"| f0 mínimo | {g['f0_min_hz']} Hz | – |",
+                f"| f0 máximo | {g['f0_max_hz']} Hz | – |",
+                f"| Extensão | – | {g['f0_range_notes']} |",
+                f"| f0 desvio | {g['f0_std_hz']} Hz | – |",
+                f"| HNR médio | {g['hnr_mean_db']} dB | – |",
+                f"| Total frames | {g['total_voiced_frames']} | – |",
+                "",
+            ]
+        )
 
-    lines.extend([
-        "## Por Música",
-        "",
-    ])
+    lines.extend(
+        [
+            "## Por Música",
+            "",
+        ]
+    )
 
     for song in metadata["songs"]:
         if "error" in song:
             lines.append(f"### {song['song']} ❌")
             lines.append(f"Erro: {song['error']}")
         else:
-            lines.extend([
-                f"### {song['song']}",
-                "",
-                "| Métrica | Valor |",
-                "|---------|-------|",
-                f"| f0 médio | {song['f0_mean_hz']} Hz ({song['f0_mean_note']}) |",
-                f"| Extensão | {song['f0_range_notes']} |",
-                f"| HNR | {song['hnr_mean_db']} dB |",
-                f"| CPPS | {song['cpps_global']} |",
-                f"| Frames | {song['voiced_frames']}/{song['total_frames']} |",
-                "",
-            ])
+            lines.extend(
+                [
+                    f"### {song['song']}",
+                    "",
+                    "| Métrica | Valor |",
+                    "|---------|-------|",
+                    f"| f0 médio | {song['f0_mean_hz']} Hz ({song['f0_mean_note']}) |",
+                    f"| Extensão | {song['f0_range_notes']} |",
+                    f"| HNR | {song['hnr_mean_db']} dB |",
+                    f"| CPPS | {song['cpps_global']} |",
+                    f"| Frames | {song['voiced_frames']}/{song['total_frames']} |",
+                    "",
+                ]
+            )
 
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))

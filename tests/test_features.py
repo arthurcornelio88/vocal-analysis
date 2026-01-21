@@ -1,7 +1,6 @@
 """Testes para o módulo de features."""
 
 import numpy as np
-import pytest
 
 from vocal_analysis.features.extraction import BioacousticFeatures
 

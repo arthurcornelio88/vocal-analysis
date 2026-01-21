@@ -10,7 +10,7 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
 
-from vocal_analysis.utils.pitch import hz_to_note, hz_range_to_notes
+from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
 
 
 class MechanismStats(TypedDict):
@@ -103,7 +103,7 @@ def cluster_mechanisms(
     cluster_means = df_voiced.groupby("cluster")["f0"].mean()
     cluster_order = cluster_means.sort_values().index.tolist()
     df_voiced["mechanism"] = df_voiced["cluster"].map(
-        {cluster_order[i]: f"M{i+1}" for i in range(len(cluster_order))}
+        {cluster_order[i]: f"M{i + 1}" for i in range(len(cluster_order))}
     )
 
     if output_dir:
@@ -112,9 +112,7 @@ def cluster_mechanisms(
     return df_voiced
 
 
-def _plot_mechanism_analysis(
-    df: pd.DataFrame, threshold_hz: float, output_dir: Path
-) -> None:
+def _plot_mechanism_analysis(df: pd.DataFrame, threshold_hz: float, output_dir: Path) -> None:
     """Gera plots de análise por mecanismo."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -211,7 +209,7 @@ def generate_report(
 | **f0 médio** | {f0_global_mean:.1f} Hz | {hz_to_note(f0_global_mean)} |
 | **f0 mínimo** | {f0_global_min:.1f} Hz | {hz_to_note(f0_global_min)} |
 | **f0 máximo** | {f0_global_max:.1f} Hz | {hz_to_note(f0_global_max)} |
-| **Extensão** | {hz_range_to_notes(f0_global_min, f0_global_max)} | ~{np.log2(f0_global_max/f0_global_min):.1f} oitavas |
+| **Extensão** | {hz_range_to_notes(f0_global_min, f0_global_max)} | ~{np.log2(f0_global_max / f0_global_min):.1f} oitavas |
 | **HNR médio** | {hnr_global_mean:.1f} dB | – |
 | **Total frames** | {len(df_voiced)} | – |
 
@@ -221,15 +219,15 @@ def generate_report(
 
     for mech, s in stats.items():
         pct = (s["count"] / len(df_voiced)) * 100
-        report += f"""### {mech} ({'Peito/Chest' if mech == 'M1' else 'Cabeça/Head'})
+        report += f"""### {mech} ({"Peito/Chest" if mech == "M1" else "Cabeça/Head"})
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | {s['count']} ({pct:.1f}%) | – |
-| **f0 médio** | {s['f0_mean']:.1f} Hz | {s['note_mean']} |
-| **f0 desvio** | {s['f0_std']:.1f} Hz | – |
-| **Extensão** | {s['note_range']} | – |
-| **HNR médio** | {s['hnr_mean']:.1f} dB | – |
+| **Frames** | {s["count"]} ({pct:.1f}%) | – |
+| **f0 médio** | {s["f0_mean"]:.1f} Hz | {s["note_mean"]} |
+| **f0 desvio** | {s["f0_std"]:.1f} Hz | – |
+| **Extensão** | {s["note_range"]} | – |
+| **HNR médio** | {s["hnr_mean"]:.1f} dB | – |
 
 """
 
@@ -240,9 +238,9 @@ def generate_report(
             song_df = df_voiced[df_voiced["song"] == song]
             report += f"""### {song}
 
-- f0 médio: {song_df['f0'].mean():.1f} Hz ({hz_to_note(song_df['f0'].mean())})
-- Extensão: {hz_range_to_notes(song_df['f0'].min(), song_df['f0'].max())}
-- HNR médio: {song_df['hnr'].mean():.1f} dB
+- f0 médio: {song_df["f0"].mean():.1f} Hz ({hz_to_note(song_df["f0"].mean())})
+- Extensão: {hz_range_to_notes(song_df["f0"].min(), song_df["f0"].max())}
+- HNR médio: {song_df["hnr"].mean():.1f} dB
 
 """
 

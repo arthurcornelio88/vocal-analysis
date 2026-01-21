@@ -51,13 +51,14 @@ select = [
     "B",   # flake8-bugbear
 ]
 ignore = [
-    "ANN101", # Missing type annotation for self
-    "ANN102", # Missing type annotation for cls
+    "N806",  # Variable in function should be lowercase (ML convention: X, X_train, etc)
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["ANN"]
+"src/vocal_analysis/analysis/llm_report.py" = ["E501"]  # Prompts LLM longos
+"src/vocal_analysis/analysis/exploratory.py" = ["E501"]  # Strings f com tabelas
 
 [tool.ruff.format]
 quote-style = "double"
