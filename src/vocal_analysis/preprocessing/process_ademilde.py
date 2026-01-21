@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from vocal_analysis.features.extraction import extract_bioacoustic_features
@@ -40,13 +41,20 @@ def process_audio_files(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame,
                     "f0": features["f0"],
                     "confidence": features["confidence"],
                     "hnr": features["hnr"],
+                    "energy": features["energy"],
+                    "f1": features["f1"],
+                    "f2": features["f2"],
+                    "f3": features["f3"],
+                    "f4": features["f4"],
                 }
             )
             df["song"] = audio_path.stem
             df["cpps_global"] = features["cpps_global"]
+            df["jitter"] = features["jitter"]
+            df["shimmer"] = features["shimmer"]
 
-            # Filtrar frames com baixa confiança (ruído/silêncio)
-            df_voiced = df[df["confidence"] > 0.5].copy()
+            # Filtrar frames com baixa confiança (ruído/silêncio, threshold conforme metodologia)
+            df_voiced = df[df["confidence"] > 0.8].copy()
 
             all_features.append(df_voiced)
 
@@ -74,6 +82,13 @@ def process_audio_files(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame,
                 "f0_std_hz": round(df_voiced["f0"].std(), 1),
                 "hnr_mean_db": round(df_voiced["hnr"].mean(), 1),
                 "cpps_global": round(features["cpps_global"], 2),
+                "jitter_ppq5": (
+                    round(features["jitter"], 4) if not np.isnan(features["jitter"]) else None
+                ),
+                "shimmer_apq11": (
+                    round(features["shimmer"], 4) if not np.isnan(features["shimmer"]) else None
+                ),
+                "energy_mean": round(df_voiced["energy"].mean(), 4),
                 "plot_path": str(plot_path.relative_to(output_dir.parent)),
             }
             songs_metadata.append(song_meta)
@@ -82,6 +97,9 @@ def process_audio_files(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame,
             print(f"  f0: {song_meta['f0_mean_hz']} Hz ({song_meta['f0_mean_note']})")
             print(f"  Range: {song_meta['f0_range_notes']}")
             print(f"  HNR: {song_meta['hnr_mean_db']} dB | CPPS: {song_meta['cpps_global']}")
+            jitter_str = f"{song_meta['jitter_ppq5']}" if song_meta['jitter_ppq5'] else "N/A"
+            shimmer_str = f"{song_meta['shimmer_apq11']}" if song_meta['shimmer_apq11'] else "N/A"
+            print(f"  Jitter: {jitter_str} | Shimmer: {shimmer_str}")
 
         except Exception as e:
             print(f"  ERRO: {e}")
@@ -106,7 +124,7 @@ def process_audio_files(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame,
         df_all = pd.concat(all_features, ignore_index=True)
 
         # Adicionar stats globais ao metadata
-        df_voiced = df_all[df_all["confidence"] > 0.5]
+        df_voiced = df_all[df_all["confidence"] > 0.8]
         metadata["global"] = {
             "total_voiced_frames": len(df_voiced),
             "f0_mean_hz": round(df_voiced["f0"].mean(), 1),

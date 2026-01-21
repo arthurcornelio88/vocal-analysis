@@ -3,6 +3,7 @@
 from pathlib import Path
 from typing import TypedDict
 
+import librosa
 import numpy as np
 import parselmouth
 import torch
@@ -18,12 +19,19 @@ class BioacousticFeatures(TypedDict):
     confidence: np.ndarray
     hnr: np.ndarray
     cpps_global: float
+    jitter: float
+    shimmer: float
+    energy: np.ndarray
+    f1: np.ndarray
+    f2: np.ndarray
+    f3: np.ndarray
+    f4: np.ndarray
     time: np.ndarray
 
 
 def extract_bioacoustic_features(
     audio_path: str | Path,
-    hop_length: int = 882,
+    hop_length: int = 441,
     fmin: float = 50.0,
     fmax: float = 800.0,
     device: str = "cpu",
@@ -36,7 +44,7 @@ def extract_bioacoustic_features(
 
     Args:
         audio_path: Caminho para o arquivo de áudio.
-        hop_length: Hop length em samples (default 441 = 10ms @ 44.1kHz).
+        hop_length: Hop length em samples (default 441 = 10ms @ 44.1kHz, conforme metodologia).
         fmin: Frequência mínima para detecção de pitch.
         fmax: Frequência máxima para detecção de pitch.
         device: Dispositivo para inferência ('cpu' ou 'cuda').
@@ -48,7 +56,20 @@ def extract_bioacoustic_features(
     audio_path = Path(audio_path)
     audio, sr = load_audio(audio_path)
 
-    # 1. Extração de f0 com CREPE (melhor que autocorrelação para canto)
+    # 1. Extração de f0 com CREPE
+    # CREPE (Kim et al., 2018) é escolhido sobre métodos tradicionais de autocorrelação
+    # (como Praat's "To Pitch (cc)") por sua robustez superior em sinais com:
+    #   - Vibrato intenso (comum no Choro)
+    #   - Ruído de fundo (gravações históricas)
+    #   - Ornamentações rápidas (glissandi, portamenti)
+    #
+    # O CREPE utiliza internamente janelamento próprio otimizado (aproximadamente 25ms)
+    # que não é configurável pelo usuário. Essa escolha arquitetural da CNN foi validada
+    # em benchmarks do MIR (Music Information Retrieval) e supera métodos baseados em
+    # autocorrelação na detecção de pitch em sinais musicais complexos.
+    #
+    # Referência: Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).
+    # "Crepe: A convolutional representation for pitch estimation." ICASSP 2018.
     audio_tensor = torch.from_numpy(audio).unsqueeze(0).to(device)
 
     f0, confidence = torchcrepe.predict(
@@ -99,8 +120,58 @@ def extract_bioacoustic_features(
         # Fallback: usar HNR médio como proxy
         cpps = float(np.nanmean(hnr_values))
 
-    # Ajustar tamanhos dos arrays
-    min_len = min(len(f0), len(hnr_values))
+    # 3. Extração de Jitter e Shimmer (instabilidade glótica)
+    # Jitter (ppq5): Period Perturbation Quotient - instabilidade de período
+    # Shimmer (apq11): Amplitude Perturbation Quotient - instabilidade de amplitude
+    try:
+        point_process = parselmouth.praat.call(
+            sound, "To PointProcess (periodic, cc)", fmin, fmax
+        )
+        jitter_ppq5 = parselmouth.praat.call(
+            point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3
+        )
+        shimmer_apq11 = parselmouth.praat.call(
+            point_process, "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6
+        )
+    except Exception:
+        # Fallback: valores padrão para sinais com pitch instável
+        jitter_ppq5 = np.nan
+        shimmer_apq11 = np.nan
+
+    # 4. Extração de Energia Espectral (RMS)
+    # Frame length de 25ms conforme janelamento típico (1102 samples @ 44.1kHz)
+    energy = librosa.feature.rms(
+        y=audio, frame_length=int(0.025 * sr), hop_length=hop_length
+    )[0]
+
+    # 5. Extração de Formantes F1-F4 via LPC (método de Burg)
+    # Formantes indicam ressonâncias do trato vocal
+    try:
+        formants = sound.to_formant_burg(
+            time_step=time_step, max_number_of_formants=5, maximum_formant=5500
+        )
+        # Extrair arrays temporais dos formantes
+        f1_values = np.array(
+            [formants.get_value_at_time(1, t) for t in np.arange(0, sound.duration, time_step)]
+        )
+        f2_values = np.array(
+            [formants.get_value_at_time(2, t) for t in np.arange(0, sound.duration, time_step)]
+        )
+        f3_values = np.array(
+            [formants.get_value_at_time(3, t) for t in np.arange(0, sound.duration, time_step)]
+        )
+        f4_values = np.array(
+            [formants.get_value_at_time(4, t) for t in np.arange(0, sound.duration, time_step)]
+        )
+    except Exception:
+        # Fallback: arrays vazios se extração falhar
+        f1_values = np.full_like(hnr_values, np.nan)
+        f2_values = np.full_like(hnr_values, np.nan)
+        f3_values = np.full_like(hnr_values, np.nan)
+        f4_values = np.full_like(hnr_values, np.nan)
+
+    # Ajustar tamanhos dos arrays para sincronização temporal
+    min_len = min(len(f0), len(hnr_values), len(energy), len(f1_values))
     time = np.arange(min_len) * time_step
 
     return BioacousticFeatures(
@@ -108,5 +179,12 @@ def extract_bioacoustic_features(
         confidence=confidence[:min_len],
         hnr=hnr_values[:min_len],
         cpps_global=cpps,
+        jitter=jitter_ppq5,
+        shimmer=shimmer_apq11,
+        energy=energy[:min_len],
+        f1=f1_values[:min_len],
+        f2=f2_values[:min_len],
+        f3=f3_values[:min_len],
+        f4=f4_values[:min_len],
         time=time,
     )

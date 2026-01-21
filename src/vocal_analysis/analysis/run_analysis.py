@@ -12,6 +12,11 @@ from vocal_analysis.analysis.exploratory import (
     generate_report,
 )
 from vocal_analysis.analysis.llm_report import generate_narrative_report
+from vocal_analysis.features.articulation import (
+    compute_articulation_features,
+    get_articulation_stats,
+)
+from vocal_analysis.modeling.classifier import train_mechanism_classifier
 
 
 def main() -> None:
@@ -39,6 +44,13 @@ def main() -> None:
 
     print(f"  Frames: {len(df)}")
 
+    # Computar features de agilidade articulatória
+    print("\nComputando features de agilidade articulatória...")
+    df = compute_articulation_features(df)
+    articulation_stats = get_articulation_stats(df)
+    print(f"  f0 velocity médio: {articulation_stats['f0_velocity_mean']:.1f} Hz/s")
+    print(f"  Taxa silábica: {articulation_stats['syllable_rate']:.2f} sílabas/s")
+
     # Análise por threshold
     print("\nAnalisando por threshold (400 Hz / G4)...")
     stats = analyze_mechanism_regions(df, threshold_hz=400.0, output_dir=output_dir / "plots")
@@ -52,7 +64,19 @@ def main() -> None:
 
     # Clustering
     print("\nExecutando clustering GMM...")
-    cluster_mechanisms(df, n_clusters=2, method="gmm", output_dir=output_dir / "plots")
+    plots_dir = output_dir / "plots"
+    df_clustered = cluster_mechanisms(df, n_clusters=2, method="gmm", output_dir=plots_dir)
+
+    # XGBoost: treinar com labels do GMM como pseudo-labels
+    print("\nTreinando XGBoost com pseudo-labels do GMM...")
+    df_train = df_clustered[["f0", "hnr", "energy"]].copy()
+    df_train["mechanism_label"] = df_clustered["mechanism"].map({"M1": 0, "M2": 1})
+
+    try:
+        train_mechanism_classifier(df_train, target_col="mechanism_label")
+        print("  Modelo XGBoost treinado com sucesso!")
+    except Exception as e:
+        print(f"  Erro ao treinar XGBoost: {e}")
 
     # Gerar relatório básico
     artist_name = metadata.get("artist", "Desconhecido") if metadata else "Desconhecido"

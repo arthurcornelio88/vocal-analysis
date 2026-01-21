@@ -41,8 +41,8 @@ def analyze_mechanism_regions(
     Returns:
         Dicionário com estatísticas por mecanismo.
     """
-    # Filtrar apenas voiced frames
-    df_voiced = df[df["confidence"] > 0.5].copy()
+    # Filtrar apenas voiced frames (threshold conforme metodologia)
+    df_voiced = df[df["confidence"] > 0.8].copy()
 
     # Classificar por threshold
     df_voiced["mechanism"] = np.where(df_voiced["f0"] < threshold_hz, "M1", "M2")
@@ -85,7 +85,7 @@ def cluster_mechanisms(
     Returns:
         DataFrame com coluna 'cluster' adicionada.
     """
-    df_voiced = df[df["confidence"] > 0.5].copy()
+    df_voiced = df[df["confidence"] > 0.8].copy()
 
     # Normalizar features
     features = df_voiced[["f0", "hnr"]].copy()

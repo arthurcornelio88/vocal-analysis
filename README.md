@@ -176,6 +176,21 @@ uv run ruff format src/
 uv run pytest -v
 ```
 
+## Metodologia Detalhada
+
+Para entender em profundidade as escolhas metodológicas, parâmetros técnicos e justificativas acadêmicas de cada componente do pipeline, consulte:
+
+**📖 [METODOLOGIA.md](METODOLOGIA.md)**
+
+Este documento descreve:
+- Escolha do CREPE vs métodos tradicionais de autocorrelação
+- Parâmetros de pré-processamento (normalização, hop length, thresholds)
+- Detalhamento de cada feature bioacústica (f0, HNR, CPPS, Jitter, Shimmer, Formantes)
+- Features de agilidade articulatória (f0 velocity, taxa silábica)
+- Métodos de classificação M1/M2 (Threshold, GMM, XGBoost)
+- Estrutura de dados e workflow de execução
+- Limitações reconhecidas e conformidade acadêmica
+
 ## Referências
 
 - **CREPE**: [Kim et al., 2018 - CREPE: A Convolutional Representation for Pitch Estimation](https://arxiv.org/abs/1802.06182)

@@ -46,7 +46,7 @@
 
 ---
 
-## ❌ FEATURES NÃO IMPLEMENTADAS (Citadas na metodologia)
+## ❌ FEATURES NÃO IMPLEMENTADAS (Citadas na metodologia)0
 
 ### 1. Jitter (ppq5)
 - **Descrição**: Period Perturbation Quotient (5 períodos) - mede instabilidade da vibração das pregas
@@ -181,16 +181,16 @@ model_xgb.fit(features, labels_gmm)
 ## 🎯 PRIORIDADES DE IMPLEMENTAÇÃO
 
 ### ALTA PRIORIDADE (Divergências críticas)
-1. [ ] Corrigir hop_length para 441 samples (10ms)
-2. [ ] Integrar normalização -3dBFS no pipeline
-3. [ ] Mudar threshold confiança para 0.8
+1. [x] Corrigir hop_length para 441 samples (10ms)
+2. [x] Integrar normalização -3dBFS no pipeline
+3. [x] Mudar threshold confiança para 0.8
 4. [ ] **Implementar extração de Energia** (classifier espera!)
 
 ### MÉDIA PRIORIDADE (Features citadas na metodologia)
-5. [ ] Implementar Jitter (ppq5)
-6. [ ] Implementar Shimmer (apq11)
-7. [ ] Implementar Formantes F1-F4
-8. [ ] Integrar XGBoost no pipeline de classificação
+5. [x] Implementar Jitter (ppq5)
+6. [x] Implementar Shimmer (apq11)
+7. [x] Implementar Formantes F1-F4
+8. [x] Integrar XGBoost no pipeline de classificação
 
 ### BAIXA PRIORIDADE (Melhorias/Opcional)
 9. [ ] Implementar webrtcvad (confidence CREPE já funciona)

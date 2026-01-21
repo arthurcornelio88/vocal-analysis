@@ -10,6 +10,8 @@ def load_audio(
     audio_path: str | Path,
     sr: int = 44100,
     mono: bool = True,
+    normalize: bool = True,
+    target_db: float = -3.0,
 ) -> tuple[np.ndarray, int]:
     """Carrega áudio com configurações padrão para análise vocal.
 
@@ -17,11 +19,18 @@ def load_audio(
         audio_path: Caminho para o arquivo de áudio.
         sr: Sample rate alvo (default 44.1kHz).
         mono: Converter para mono.
+        normalize: Aplicar normalização (default True, conforme metodologia).
+        target_db: Nível alvo em dB para normalização (default -3dBFS).
 
     Returns:
         Tuple com array de áudio e sample rate.
     """
     audio, sr_out = librosa.load(str(audio_path), sr=sr, mono=mono)
+
+    # Normalização conforme metodologia (-3 dBFS de pico)
+    if normalize:
+        audio = normalize_audio(audio, target_db=target_db)
+
     return audio, sr_out
 
 
