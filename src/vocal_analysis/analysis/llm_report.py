@@ -167,6 +167,11 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
     # Global stats
     if "global" in metadata:
         g = metadata["global"]
+
+        # Calcular CPPS médio global a partir das músicas
+        cpps_values = [s.get("cpps_global") for s in metadata.get("songs", []) if "cpps_global" in s and "error" not in s]
+        cpps_mean = sum(cpps_values) / len(cpps_values) if cpps_values else None
+
         lines.extend([
             "### Estatísticas Globais",
             f"- Artista: {metadata.get('artist', 'Desconhecida')}",
@@ -174,6 +179,12 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
             f"- Extensão vocal: {g['f0_range_notes']} ({g['f0_min_hz']} - {g['f0_max_hz']} Hz)",
             f"- Desvio padrão f0: {g['f0_std_hz']} Hz",
             f"- HNR médio: {g['hnr_mean_db']} dB",
+        ])
+
+        if cpps_mean is not None:
+            lines.append(f"- CPPS médio: {cpps_mean:.2f}")
+
+        lines.extend([
             f"- Total de frames analisados: {g['total_voiced_frames']}",
             "",
         ])
@@ -198,7 +209,8 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
         lines.extend(["", "### Por Música"])
         for song in metadata["songs"]:
             if "error" not in song:
-                lines.append(f"- **{song['song']}**: f0={song['f0_mean_hz']} Hz ({song['f0_mean_note']}), range={song['f0_range_notes']}")
+                cpps_str = f", CPPS={song['cpps_global']:.2f}" if "cpps_global" in song else ""
+                lines.append(f"- **{song['song']}**: f0={song['f0_mean_hz']} Hz ({song['f0_mean_note']}), range={song['f0_range_notes']}, HNR={song.get('hnr_mean_db', '?')} dB{cpps_str}")
 
     return "\n".join(lines)
 

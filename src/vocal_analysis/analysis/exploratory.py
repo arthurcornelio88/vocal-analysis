@@ -167,6 +167,7 @@ def _plot_mechanism_analysis(
 def _plot_clusters(df: pd.DataFrame, output_dir: Path) -> None:
     """Plota resultado do clustering."""
     output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.set_theme(style="whitegrid")
