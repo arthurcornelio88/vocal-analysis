@@ -40,7 +40,7 @@ data/processed/*
 !data/processed/.gitkeep
 
 # Outputs
-outputs/plots/*
+# outputs/plots/*
 !outputs/plots/.gitkeep
 outputs/models/*
 !outputs/models/.gitkeep
