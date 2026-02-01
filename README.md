@@ -182,11 +182,19 @@ uv run ruff format src/
 uv run pytest -v
 ```
 
-## Metodologia Detalhada
+## Documentação
+
+### Guia Introdutório
+
+Para entender os conceitos bioacústicos usados na análise (f0, HNR, formantes, jitter, shimmer) e por que cada um importa, sem precisar de background técnico prévio:
+
+**[docs/glossario_bioacustico.md](docs/glossario_bioacustico.md)**
+
+### Metodologia Detalhada
 
 Para entender em profundidade as escolhas metodológicas, parâmetros técnicos e justificativas acadêmicas de cada componente do pipeline, consulte:
 
-**📖 [METODOLOGIA.md](METODOLOGIA.md)**
+**[METODOLOGIA.md](METODOLOGIA.md)**
 
 Este documento descreve:
 - Escolha do CREPE vs métodos tradicionais de autocorrelação
