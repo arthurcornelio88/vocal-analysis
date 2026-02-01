@@ -149,7 +149,7 @@ Mede variação de amplitude entre 11 períodos consecutivos.
 ```python
 point_process = parselmouth.praat.call(sound, "To PointProcess (periodic, cc)", fmin, fmax)
 jitter_ppq5 = parselmouth.praat.call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
-shimmer_apq11 = parselmouth.praat.call(point_process, "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+shimmer_apq11 = parselmouth.praat.call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
 ```
 
 ### 4.4 Energia Espectral (RMS)
@@ -248,6 +248,8 @@ labels = gmm.fit_predict(features)
 **Vantagem:** Não-supervisionado, descobre clusters naturais.
 **Limitação:** Sensível a outliers.
 
+![Clusters de Mecanismo (GMM)](../outputs/plots/mechanism_clusters.png)
+
 #### Método 3: XGBoost (Supervisionado com Pseudo-Labels)
 ```python
 import xgboost as xgb
@@ -263,6 +265,8 @@ predictions = model.predict(X)
 
 **Vantagem:** Aprende interações não-lineares entre features.
 **Aplicação:** Classificação robusta para novos dados. Classification report salvo no relatório `outputs/analise_ademilde.md`.
+
+![Predição XGBoost: M1 vs M2 ao longo do tempo](../outputs/plots/xgb_mechanism_timeline.png)
 
 ### 6.2 Features Utilizadas no XGBoost
 
@@ -289,8 +293,17 @@ predictions = model.predict(X)
 - **Scatter f0 vs HNR:** Separação de clusters por mecanismo
 - **Histogramas de distribuição:** Evidência de bimodalidade
 - **Timeline colorido:** Mapeamento temporal de mecanismos
+- **Excerpts por música:** Trechos de 5s na janela mais densa, com eixo de notas musicais — para inspeção manual (eval humano)
 
 **Estética:** Seaborn (`whitegrid`), paleta `viridis`, DPI 150 para publicação.
+
+Excerpts gerados automaticamente pela janela de maior densidade de frames por música:
+
+![Apanhei-te Cavaquinho — excerpt](../outputs/plots/excerpt_Apanhei-te Cavaquinho.png)
+
+![delicado — excerpt](../outputs/plots/excerpt_delicado.png)
+
+![brasileirinho — excerpt](../outputs/plots/excerpt_brasileirinho.png)
 
 ### 7.2 Relatório Narrativo com IA
 
@@ -405,6 +418,7 @@ uv run python -m vocal_analysis.analysis.run_analysis
 - `outputs/plots/mechanism_analysis.png` (threshold)
 - `outputs/plots/mechanism_clusters.png` (GMM)
 - `outputs/plots/xgb_mechanism_timeline.png` (contorno temporal pela predição XGBoost)
+- `outputs/plots/excerpt_{song}.png` (trechos de 5s por música, nota a nota, para eval humano)
 - `outputs/xgb_predictions.csv` (predições por frame: GMM + XGBoost)
 - `outputs/analise_ademilde.md` (relatório básico, inclui classification report do XGBoost)
 - `outputs/relatorio_llm.md` (relatório narrativo, requer `GEMINI_API_KEY`)

@@ -18,9 +18,10 @@ def compute_f0_velocity(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
     if len(f0) < 2:
         return np.array([])
 
-    # Velocidade: Δf0 / Δt
-    f0_velocity = np.diff(f0) / np.diff(time)
-    # Adicionar zero no início para manter tamanho
+    dt = np.diff(time)
+    f0_velocity = np.diff(f0) / dt
+    # Zerar onde há gap grande entre frames (trecho não-voiced no meio)
+    f0_velocity[dt > 0.05] = 0.0
     f0_velocity = np.concatenate([[0], f0_velocity])
 
     return f0_velocity
@@ -40,11 +41,12 @@ def compute_f0_acceleration(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
         return np.array([])
 
     f0_velocity = compute_f0_velocity(f0, time)
-    # Aceleração: Δvelocidade / Δt
-    # f0_velocity já tem o mesmo tamanho que f0 (foi padded com 0)
-    # Precisamos usar os mesmos índices para time
-    f0_accel = np.diff(f0_velocity) / np.diff(time)
-    # Adicionar zeros no início para manter tamanho
+    dt = np.diff(time)
+    f0_accel = np.diff(f0_velocity) / dt
+    # Zerar onde há gap grande entre frames
+    f0_accel[dt > 0.05] = 0.0
+    # Limitar valores extremos (segunda derivada amplifica ruído de pitch)
+    f0_accel = np.clip(f0_accel, -10000.0, 10000.0)
     f0_accel = np.concatenate([[0], f0_accel])
 
     return f0_accel
@@ -91,9 +93,15 @@ def compute_articulation_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
-    # F0 velocity e acceleration
-    df["f0_velocity"] = compute_f0_velocity(df["f0"].values, df["time"].values)
-    df["f0_acceleration"] = compute_f0_acceleration(df["f0"].values, df["time"].values)
+    # Computar velocity e acceleration por música para evitar
+    # artefatos nas fronteiras entre músicas (Δt negativo/zero)
+    vel_parts = []
+    accel_parts = []
+    for _, group in df.groupby("song", sort=False):
+        vel_parts.append(compute_f0_velocity(group["f0"].values, group["time"].values))
+        accel_parts.append(compute_f0_acceleration(group["f0"].values, group["time"].values))
+    df["f0_velocity"] = np.concatenate(vel_parts)
+    df["f0_acceleration"] = np.concatenate(accel_parts)
 
     # Taxa silábica global
     syllable_rate = compute_syllable_rate(df["energy"].values, df["time"].values)

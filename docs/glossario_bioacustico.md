@@ -26,6 +26,12 @@ Os dois mecanismos são:
 A transição entre M1 e M2 é o que chamamos de **passaggio**. Medir
 quando e como essa transição acontece é o coração da análise.
 
+Abaixo, o contorno temporal de f0 colorido pela predição do classificador:
+azul = M1 (peito), coral = M2 (cabeça). Cada música mostra essa
+alternância fluida dentro do mesmo trecho:
+
+![Predição XGBoost: M1 vs M2 ao longo do tempo](../outputs/plots/xgb_mechanism_timeline.png)
+
 ---
 
 ## Os conceitos-chave
@@ -87,7 +93,7 @@ Isso dá uma segunda confirmação além do f0.
 
 **O que são:** Frequências de ressonância do trato vocal (garganta,
 boca, cavidade nasal). Não são determinadas pelas pregas vocais —
-são determinadas pela forma como você posiciona a boca e a língua.
+são determinadas pela forma como você posiciona a boca, língua e palato mole principalmente.
 
 **Como pensar:** Imagine que as pregas vocais são como um buzzer que
 gera um som "base". O trato vocal é como um cano que amplifica
@@ -112,7 +118,7 @@ Como um metrônomo que varia na força de cada toque.
 
 **Por que importam aqui:** São valores globais por música (não por
 frame), então não entram diretamente no classificador frame a frame.
-Mas são úteis para descrever a qualidade vocal geral da cantora nasgravaçoes — especialmente relevante porque são gravações históricas com condições de ruído variáveis.
+Mas são úteis para descrever a qualidade vocal geral da cantora nas gravações — especialmente relevante porque são gravações históricas com condições de ruído variáveis.
 
 ---
 
@@ -146,6 +152,11 @@ O classificador XGBoost combina todas essas features para decidir,
 frame por frame (a cada 10ms), se a cantora está em M1 ou M2.
 Features mais fiáveis (f0, HNR, energia) formam a base. Features
 complementares (formantes, velocity) resolvem os casos ambíguos.
+
+O scatter abaixo mostra essa separação no espaço f0 × HNR — os dois
+clusters que o GMM encontra correspondem aos dois mecanismos:
+
+![Clusters de Mecanismo (GMM)](../outputs/plots/mechanism_clusters.png)
 
 ---
 
