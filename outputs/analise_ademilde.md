@@ -4,12 +4,12 @@
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **f0 médio** | 435.0 Hz | A4 |
-| **f0 mínimo** | 101.4 Hz | G#2 |
-| **f0 máximo** | 796.4 Hz | G5 |
-| **Extensão** | G#2 – G5 | ~3.0 oitavas |
-| **HNR médio** | 2.4 dB | – |
-| **Total frames** | 65 | – |
+| **f0 médio** | 219.3 Hz | A3 |
+| **f0 mínimo** | 50.0 Hz | G1 |
+| **f0 máximo** | 780.9 Hz | G5 |
+| **Extensão** | G1 – G5 | ~4.0 oitavas |
+| **HNR médio** | -1.9 dB | – |
+| **Total frames** | 10896 | – |
 
 ## Análise por Mecanismo
 
@@ -17,41 +17,29 @@
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | 32 (49.2%) | – |
-| **f0 médio** | 280.8 Hz | C#4 |
-| **f0 desvio** | 82.4 Hz | – |
-| **Extensão** | G#2 – G4 | – |
-| **HNR médio** | 2.8 dB | – |
+| **Frames** | 9195 (84.4%) | – |
+| **f0 médio** | 171.2 Hz | F3 |
+| **f0 desvio** | 111.3 Hz | – |
+| **Extensão** | G1 – G4 | – |
+| **HNR médio** | -2.6 dB | – |
 
 ### M2 (Cabeça/Head)
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | 33 (50.8%) | – |
-| **f0 médio** | 584.5 Hz | D5 |
-| **f0 desvio** | 113.2 Hz | – |
-| **Extensão** | G#4 – G5 | – |
-| **HNR médio** | 2.0 dB | – |
+| **Frames** | 1701 (15.6%) | – |
+| **f0 médio** | 479.1 Hz | A#4 |
+| **f0 desvio** | 52.2 Hz | – |
+| **Extensão** | G4 – G5 | – |
+| **HNR médio** | 1.9 dB | – |
 
 ## Por Música
 
 ### Apanhei-te Cavaquinho
 
-- f0 médio: 459.0 Hz (A#4)
-- Extensão: G3 – G5
-- HNR médio: 3.8 dB
-
-### delicado
-
-- f0 médio: 412.1 Hz (G#4)
-- Extensão: D3 – F5
-- HNR médio: 2.4 dB
-
-### brasileirinho
-
-- f0 médio: 432.4 Hz (A4)
-- Extensão: G#2 – F#5
-- HNR médio: 0.8 dB
+- f0 médio: 219.3 Hz (A3)
+- Extensão: G1 – G5
+- HNR médio: -1.9 dB
 
 ## Interpretação
 

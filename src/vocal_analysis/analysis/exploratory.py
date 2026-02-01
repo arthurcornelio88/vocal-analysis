@@ -41,8 +41,8 @@ def analyze_mechanism_regions(
     Returns:
         Dicionário com estatísticas por mecanismo.
     """
-    # Filtrar apenas voiced frames (threshold conforme metodologia)
-    df_voiced = df[df["confidence"] > 0.8].copy()
+    # Filtrar voiced frames: confidence > 0.8 + HNR > -10 (remove silêncio)
+    df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)].copy()
 
     # Classificar por threshold
     df_voiced["mechanism"] = np.where(df_voiced["f0"] < threshold_hz, "M1", "M2")
@@ -85,7 +85,7 @@ def cluster_mechanisms(
     Returns:
         DataFrame com coluna 'cluster' adicionada.
     """
-    df_voiced = df[df["confidence"] > 0.8].copy()
+    df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)].copy()
 
     # Normalizar features
     features = df_voiced[["f0", "hnr"]].copy()
@@ -184,6 +184,8 @@ def generate_report(
     stats: dict[str, MechanismStats],
     output_path: Path,
     artist_name: str = "Ademilde Fonseca",
+    xgb_report: str | None = None,
+    xgb_feature_cols: list[str] | None = None,
 ) -> None:
     """Gera relatório markdown com análise completa.
 
@@ -192,8 +194,10 @@ def generate_report(
         stats: Estatísticas por mecanismo.
         output_path: Caminho do arquivo .md.
         artist_name: Nome do artista.
+        xgb_report: Classification report do XGBoost (string), se disponível.
+        xgb_feature_cols: Lista de features usadas no XGBoost.
     """
-    df_voiced = df[df["confidence"] > 0.5]
+    df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)]
 
     f0_global_mean = df_voiced["f0"].mean()
     f0_global_min = df_voiced["f0"].min()
@@ -241,6 +245,19 @@ def generate_report(
 - f0 médio: {song_df["f0"].mean():.1f} Hz ({hz_to_note(song_df["f0"].mean())})
 - Extensão: {hz_range_to_notes(song_df["f0"].min(), song_df["f0"].max())}
 - HNR médio: {song_df["hnr"].mean():.1f} dB
+
+"""
+
+    if xgb_report:
+        features_str = ", ".join(f"`{c}`" for c in (xgb_feature_cols or []))
+        report += f"""## Classificação XGBoost (Pseudo-Labels GMM)
+
+Features utilizadas: {features_str}
+Labels de treinamento: clusters do GMM (não-supervisionado)
+Split: 80% treino / 20% teste
+
+```
+{xgb_report}```
 
 """
 

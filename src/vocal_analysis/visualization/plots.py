@@ -44,6 +44,39 @@ def plot_mechanism_clusters(
     return fig
 
 
+def plot_xgb_mechanism_timeline(
+    df: pd.DataFrame,
+    save_path: str | Path | None = None,
+) -> plt.Figure:
+    """Contorno temporal de f0 colorido pela predição do XGBoost.
+
+    Args:
+        df: DataFrame com colunas 'time', 'f0', 'xgb_mechanism'.
+        save_path: Caminho para salvar o plot (opcional).
+
+    Returns:
+        Figura matplotlib.
+    """
+    fig, ax = plt.subplots(figsize=(14, 5))
+    sns.set_theme(style="whitegrid")
+
+    colors = {"M1": "steelblue", "M2": "coral"}
+    for mech in ["M1", "M2"]:
+        subset = df[df["xgb_mechanism"] == mech]
+        ax.scatter(subset["time"], subset["f0"], c=colors[mech], s=1.5, alpha=0.7, label=mech)
+
+    ax.set_title("Predição XGBoost: M1 vs M2 ao longo do tempo")
+    ax.set_xlabel("Tempo (s)")
+    ax.set_ylabel("f0 (Hz)")
+    ax.legend(loc="upper right")
+
+    if save_path:
+        fig.savefig(save_path, dpi=150, bbox_inches="tight")
+        plt.close(fig)
+
+    return fig
+
+
 def plot_f0_contour(
     time: np.ndarray,
     f0: np.ndarray,

@@ -12,7 +12,7 @@ def train_mechanism_classifier(
     target_col: str = "mechanism_label",
     test_size: float = 0.2,
     random_state: int = 42,
-) -> xgb.XGBClassifier:
+) -> tuple[xgb.XGBClassifier, str]:
     """Treina classificador XGBoost para diferenciar M1/M2.
 
     Args:
@@ -23,7 +23,7 @@ def train_mechanism_classifier(
         random_state: Seed para reprodutibilidade.
 
     Returns:
-        Modelo XGBoost treinado.
+        Tupla com modelo XGBoost treinado e classification report como string.
     """
     if feature_cols is None:
         feature_cols = ["f0", "hnr", "energy"]
@@ -45,7 +45,8 @@ def train_mechanism_classifier(
 
     model.fit(X_train, y_train)
 
+    report = classification_report(y_test, model.predict(X_test))
     print("Relatório de Classificação M1/M2:")
-    print(classification_report(y_test, model.predict(X_test)))
+    print(report)
 
-    return model
+    return model, report

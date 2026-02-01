@@ -36,6 +36,9 @@ def extract_bioacoustic_features(
     fmax: float = 800.0,
     device: str = "cpu",
     model: str = "tiny",
+    skip_formants: bool = False,
+    skip_jitter_shimmer: bool = False,
+    use_praat_f0: bool = False,
 ) -> BioacousticFeatures:
     """Pipeline Híbrido de extração de features.
 
@@ -49,6 +52,9 @@ def extract_bioacoustic_features(
         fmax: Frequência máxima para detecção de pitch.
         device: Dispositivo para inferência ('cpu' ou 'cuda').
         model: Modelo CREPE ('tiny', 'small', 'medium', 'large', 'full').
+        skip_formants: Se True, pula extração de formantes F1-F4 (economiza ~30% do tempo).
+        skip_jitter_shimmer: Se True, pula Jitter/Shimmer (economiza ~20% do tempo).
+        use_praat_f0: Se True, usa Praat ao invés de CREPE (muito mais rápido, menos preciso).
 
     Returns:
         Dicionário com features extraídas.
@@ -56,42 +62,60 @@ def extract_bioacoustic_features(
     audio_path = Path(audio_path)
     audio, sr = load_audio(audio_path)
 
-    # 1. Extração de f0 com CREPE
-    # CREPE (Kim et al., 2018) é escolhido sobre métodos tradicionais de autocorrelação
-    # (como Praat's "To Pitch (cc)") por sua robustez superior em sinais com:
-    #   - Vibrato intenso (comum no Choro)
-    #   - Ruído de fundo (gravações históricas)
-    #   - Ornamentações rápidas (glissandi, portamenti)
-    #
-    # O CREPE utiliza internamente janelamento próprio otimizado (aproximadamente 25ms)
-    # que não é configurável pelo usuário. Essa escolha arquitetural da CNN foi validada
-    # em benchmarks do MIR (Music Information Retrieval) e supera métodos baseados em
-    # autocorrelação na detecção de pitch em sinais musicais complexos.
-    #
-    # Referência: Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).
-    # "Crepe: A convolutional representation for pitch estimation." ICASSP 2018.
-    audio_tensor = torch.from_numpy(audio).unsqueeze(0).to(device)
+    # Carregar Parselmouth Sound (usado por vários métodos)
+    sound = parselmouth.Sound(str(audio_path))
+    time_step = hop_length / sr
 
-    f0, confidence = torchcrepe.predict(
-        audio_tensor,
-        sr,
-        hop_length=hop_length,
-        fmin=fmin,
-        fmax=fmax,
-        model=model,
-        decoder=torchcrepe.decode.viterbi,
-        batch_size=2048,
-        device=device,
-        return_periodicity=True,
-    )
-    f0 = f0.squeeze().cpu().numpy()
-    confidence = confidence.squeeze().cpu().numpy()
+    # 1. Extração de f0
+    if use_praat_f0:
+        # Usar Praat autocorrelation (muito mais rápido que CREPE, mas menos robusto)
+        pitch = sound.to_pitch(time_step=time_step, pitch_floor=fmin, pitch_ceiling=fmax)
+
+        # Extrair arrays de f0 diretamente dos valores do Pitch object
+        # Praat retorna matrizes 2D com tempo e valores
+        f0_values = pitch.selected_array["frequency"]
+
+        # Criar confidence baseada em voiced/unvoiced
+        # Se f0 > 0, consideramos voiced com confidence alta
+        confidence_values = np.where(f0_values > 0, 0.9, 0.0)
+
+        f0 = f0_values
+        confidence = confidence_values
+
+    else:
+        # Usar CREPE (SOTA em robustez, mas lento)
+        # CREPE (Kim et al., 2018) é escolhido sobre métodos tradicionais de autocorrelação
+        # (como Praat's "To Pitch (cc)") por sua robustez superior em sinais com:
+        #   - Vibrato intenso (comum no Choro)
+        #   - Ruído de fundo (gravações históricas)
+        #   - Ornamentações rápidas (glissandi, portamenti)
+        #
+        # O CREPE utiliza internamente janelamento próprio otimizado (aproximadamente 25ms)
+        # que não é configurável pelo usuário. Essa escolha arquitetural da CNN foi validada
+        # em benchmarks do MIR (Music Information Retrieval) e supera métodos baseados em
+        # autocorrelação na detecção de pitch em sinais musicais complexos.
+        #
+        # Referência: Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).
+        # "Crepe: A convolutional representation for pitch estimation." ICASSP 2018.
+        audio_tensor = torch.from_numpy(audio).unsqueeze(0).to(device)
+
+        f0, confidence = torchcrepe.predict(
+            audio_tensor,
+            sr,
+            hop_length=hop_length,
+            fmin=fmin,
+            fmax=fmax,
+            model=model,
+            decoder=torchcrepe.decode.viterbi,
+            batch_size=2048,
+            device=device,
+            return_periodicity=True,
+        )
+        f0 = f0.squeeze().cpu().numpy()
+        confidence = confidence.squeeze().cpu().numpy()
 
     # 2. Extração de Timbre com Parselmouth (Praat)
-    sound = parselmouth.Sound(str(audio_path))
-
     # Harmonicity (HNR) - Proxy para "limpeza" da voz
-    time_step = hop_length / sr
     harmonicity = sound.to_harmonicity(time_step=time_step)
     hnr_values = harmonicity.values[0]
 
@@ -123,20 +147,24 @@ def extract_bioacoustic_features(
     # 3. Extração de Jitter e Shimmer (instabilidade glótica)
     # Jitter (ppq5): Period Perturbation Quotient - instabilidade de período
     # Shimmer (apq11): Amplitude Perturbation Quotient - instabilidade de amplitude
-    try:
-        point_process = parselmouth.praat.call(
-            sound, "To PointProcess (periodic, cc)", fmin, fmax
-        )
-        jitter_ppq5 = parselmouth.praat.call(
-            point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3
-        )
-        shimmer_apq11 = parselmouth.praat.call(
-            point_process, "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6
-        )
-    except Exception:
-        # Fallback: valores padrão para sinais com pitch instável
+    if skip_jitter_shimmer:
         jitter_ppq5 = np.nan
         shimmer_apq11 = np.nan
+    else:
+        try:
+            point_process = parselmouth.praat.call(
+                sound, "To PointProcess (periodic, cc)", fmin, fmax
+            )
+            jitter_ppq5 = parselmouth.praat.call(
+                point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3
+            )
+            shimmer_apq11 = parselmouth.praat.call(
+                point_process, "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6
+            )
+        except Exception:
+            # Fallback: valores padrão para sinais com pitch instável
+            jitter_ppq5 = np.nan
+            shimmer_apq11 = np.nan
 
     # 4. Extração de Energia Espectral (RMS)
     # Frame length de 25ms conforme janelamento típico (1102 samples @ 44.1kHz)
@@ -146,29 +174,36 @@ def extract_bioacoustic_features(
 
     # 5. Extração de Formantes F1-F4 via LPC (método de Burg)
     # Formantes indicam ressonâncias do trato vocal
-    try:
-        formants = sound.to_formant_burg(
-            time_step=time_step, max_number_of_formants=5, maximum_formant=5500
-        )
-        # Extrair arrays temporais dos formantes
-        f1_values = np.array(
-            [formants.get_value_at_time(1, t) for t in np.arange(0, sound.duration, time_step)]
-        )
-        f2_values = np.array(
-            [formants.get_value_at_time(2, t) for t in np.arange(0, sound.duration, time_step)]
-        )
-        f3_values = np.array(
-            [formants.get_value_at_time(3, t) for t in np.arange(0, sound.duration, time_step)]
-        )
-        f4_values = np.array(
-            [formants.get_value_at_time(4, t) for t in np.arange(0, sound.duration, time_step)]
-        )
-    except Exception:
-        # Fallback: arrays vazios se extração falhar
+    if skip_formants:
+        # Se desativado, retorna arrays vazios
         f1_values = np.full_like(hnr_values, np.nan)
         f2_values = np.full_like(hnr_values, np.nan)
         f3_values = np.full_like(hnr_values, np.nan)
         f4_values = np.full_like(hnr_values, np.nan)
+    else:
+        try:
+            formants = sound.to_formant_burg(
+                time_step=time_step, max_number_of_formants=5, maximum_formant=5500
+            )
+            # Extrair arrays temporais dos formantes
+            f1_values = np.array(
+                [formants.get_value_at_time(1, t) for t in np.arange(0, sound.duration, time_step)]
+            )
+            f2_values = np.array(
+                [formants.get_value_at_time(2, t) for t in np.arange(0, sound.duration, time_step)]
+            )
+            f3_values = np.array(
+                [formants.get_value_at_time(3, t) for t in np.arange(0, sound.duration, time_step)]
+            )
+            f4_values = np.array(
+                [formants.get_value_at_time(4, t) for t in np.arange(0, sound.duration, time_step)]
+            )
+        except Exception:
+            # Fallback: arrays vazios se extração falhar
+            f1_values = np.full_like(hnr_values, np.nan)
+            f2_values = np.full_like(hnr_values, np.nan)
+            f3_values = np.full_like(hnr_values, np.nan)
+            f4_values = np.full_like(hnr_values, np.nan)
 
     # Ajustar tamanhos dos arrays para sincronização temporal
     min_len = min(len(f0), len(hnr_values), len(energy), len(f1_values))

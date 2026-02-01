@@ -17,6 +17,7 @@ from vocal_analysis.features.articulation import (
     get_articulation_stats,
 )
 from vocal_analysis.modeling.classifier import train_mechanism_classifier
+from vocal_analysis.visualization.plots import plot_xgb_mechanism_timeline
 
 
 def main() -> None:
@@ -67,14 +68,31 @@ def main() -> None:
     plots_dir = output_dir / "plots"
     df_clustered = cluster_mechanisms(df, n_clusters=2, method="gmm", output_dir=plots_dir)
 
-    # XGBoost: treinar com labels do GMM como pseudo-labels
+    # XGBoost: treinar com labels do GMM como pseudo-labels e predizer todos os dados
     print("\nTreinando XGBoost com pseudo-labels do GMM...")
-    df_train = df_clustered[["f0", "hnr", "energy"]].copy()
+    base_cols = ["f0", "hnr", "energy", "f0_velocity", "f0_acceleration"]
+    optional_cols = ["f1", "f2", "f3", "f4"]
+    feature_cols = base_cols + [c for c in optional_cols if c in df_clustered.columns]
+    print(f"  Features do modelo: {feature_cols}")
+    df_train = df_clustered[feature_cols].copy()
     df_train["mechanism_label"] = df_clustered["mechanism"].map({"M1": 0, "M2": 1})
 
+    xgb_report = None
     try:
-        train_mechanism_classifier(df_train, target_col="mechanism_label")
-        print("  Modelo XGBoost treinado com sucesso!")
+        model, xgb_report = train_mechanism_classifier(df_train, target_col="mechanism_label")
+        # Predizer sobre todos os dados voiced (não apenas o split de teste)
+        df_clustered["xgb_mechanism"] = model.predict(df_clustered[feature_cols]).tolist()
+        df_clustered["xgb_mechanism"] = df_clustered["xgb_mechanism"].map({0: "M1", 1: "M2"})
+
+        # Salvar predições
+        pred_path = output_dir / "xgb_predictions.csv"
+        df_clustered.to_csv(pred_path, index=False)
+        print(f"  Predições salvas: {pred_path}")
+
+        # Plot temporal da predição
+        timeline_path = plots_dir / "xgb_mechanism_timeline.png"
+        plot_xgb_mechanism_timeline(df_clustered, save_path=timeline_path)
+        print("  Plot temporal gerado: xgb_mechanism_timeline.png")
     except Exception as e:
         print(f"  Erro ao treinar XGBoost: {e}")
 
@@ -82,7 +100,10 @@ def main() -> None:
     artist_name = metadata.get("artist", "Desconhecido") if metadata else "Desconhecido"
     report_path = output_dir / "analise_ademilde.md"
     print(f"\nGerando relatório básico: {report_path}")
-    generate_report(df, stats, report_path, artist_name=artist_name)
+    generate_report(
+        df, stats, report_path, artist_name=artist_name,
+        xgb_report=xgb_report, xgb_feature_cols=feature_cols,
+    )
 
     # Gerar relatório com LLM se API key disponível
     if os.environ.get("GEMINI_API_KEY"):

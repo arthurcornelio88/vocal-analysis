@@ -111,9 +111,11 @@ uv run python -m vocal_analysis.analysis.run_analysis
 ```
 
 **Outputs gerados:**
-- `outputs/plots/mechanism_analysis.png` - 4 plots de análise M1/M2
+- `outputs/plots/mechanism_analysis.png` - 4 plots de análise M1/M2 (threshold)
 - `outputs/plots/mechanism_clusters.png` - Clustering GMM
-- `outputs/analise_ademilde.md` - Relatório estruturado
+- `outputs/plots/xgb_mechanism_timeline.png` - Contorno temporal pela predição XGBoost
+- `outputs/xgb_predictions.csv` - Predições por frame (GMM + XGBoost)
+- `outputs/analise_ademilde.md` - Relatório estruturado (inclui classification report do XGBoost)
 - `outputs/relatorio_llm.md` - Relatório narrativo com Gemini (se API configurada)
 
 #### Relatório LLM Multimodal
@@ -132,8 +134,12 @@ Se `GEMINI_API_KEY` estiver configurada, o script gera um relatório narrativo u
 | `f0` | Frequência fundamental (Hz) |
 | `confidence` | Confiança da estimativa de pitch (0-1) |
 | `hnr` | Harmonic-to-Noise Ratio (dB) |
+| `energy` | Energia RMS |
+| `f1, f2, f3, f4` | Formantes 1-4 (Hz) |
 | `song` | Nome da música |
-| `cpps_global` | Cepstral Peak Prominence |
+| `cpps_global` | Cepstral Peak Prominence (valor global por música) |
+| `jitter` | Jitter ppq5 - instabilidade de período (%) |
+| `shimmer` | Shimmer apq11 - instabilidade de amplitude (%) |
 
 ### 5. Classificação M1/M2
 

@@ -41,9 +41,11 @@ def compute_f0_acceleration(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
 
     f0_velocity = compute_f0_velocity(f0, time)
     # Aceleração: Δvelocidade / Δt
-    f0_accel = np.diff(f0_velocity) / np.diff(time[:-1])
+    # f0_velocity já tem o mesmo tamanho que f0 (foi padded com 0)
+    # Precisamos usar os mesmos índices para time
+    f0_accel = np.diff(f0_velocity) / np.diff(time)
     # Adicionar zeros no início para manter tamanho
-    f0_accel = np.concatenate([[0, 0], f0_accel])
+    f0_accel = np.concatenate([[0], f0_accel])
 
     return f0_accel
 

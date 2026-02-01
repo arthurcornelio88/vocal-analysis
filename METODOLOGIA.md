@@ -250,22 +250,30 @@ labels = gmm.fit_predict(features)
 ```python
 import xgboost as xgb
 # Usar labels do GMM como pseudo-labels
-X = (f0, HNR, energy)
+# Features base + formantes se disponíveis no CSV
+X = (f0, HNR, energy, f0_velocity, f0_acceleration, f1, f2, f3, f4)
 y = gmm_labels  # 0=M1, 1=M2
 model = xgb.XGBClassifier(n_estimators=100, max_depth=5, learning_rate=0.1)
 model.fit(X, y)
+# Predição aplicada sobre todos os frames voiced
+predictions = model.predict(X)
 ```
 
 **Vantagem:** Aprende interações não-lineares entre features.
-**Aplicação:** Classificação robusta para novos dados.
+**Aplicação:** Classificação robusta para novos dados. Classification report salvo no relatório `outputs/analise_ademilde.md`.
 
 ### 6.2 Features Utilizadas no XGBoost
 
-| Feature | Importância Esperada | Justificativa |
-|---------|---------------------|---------------|
-| **f0** | Alta | Separação primária (M1 grave, M2 agudo) |
-| **HNR** | Média | M1 > M2 em fonação modal |
-| **energy** | Média-Alta | M1 mais energético que M2 |
+| Feature | Tipo | Importância Esperada | Justificativa |
+|---------|------|---------------------|---------------|
+| **f0** | Base | Alta | Separação primária (M1 grave, M2 agudo) |
+| **HNR** | Base | Média | M1 > M2 em fonação modal |
+| **energy** | Base | Média-Alta | M1 mais energético que M2 |
+| **f0_velocity** | Derivada | Média-Alta | Transições M1→M2 são ornamentos rápidos (glissandi) |
+| **f0_acceleration** | Derivada | Média | Quebras abruptas de registro indicam mudança de mecanismo |
+| **f1, f2, f3, f4** | Opcional | Alta | Ressonâncias do trato vocal diferenciam diretamente M1 vs M2 |
+
+**Nota:** F1-F4 são incluídas automaticamente se disponíveis no CSV (processamento sem `--skip-formants`). `cpps_global`, `jitter` e `shimmer` são valores escalares por música (não por frame) e portanto não geram variação útil para classificação por frame.
 
 ---
 
@@ -325,7 +333,7 @@ Utiliza **Gemini Multimodal** (Google) para:
 
 ### 9.1 DataFrame de Features
 
-**Arquivo:** `data/processed/ademilde_features.csv`
+**Arquivo:** `data/processed/ademilde_features.csv` (gerado pelo `process_ademilde`)
 
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
@@ -336,12 +344,21 @@ Utiliza **Gemini Multimodal** (Google) para:
 | `energy` | float | Energia RMS |
 | `f1, f2, f3, f4` | float | Formantes 1-4 (Hz) |
 | `cpps_global` | float | CPPS (valor global por música) |
-| `jitter` | float | Jitter ppq5 (%) |
-| `shimmer` | float | Shimmer apq11 (%) |
+| `jitter` | float | Jitter ppq5 (%) - valor global por música |
+| `shimmer` | float | Shimmer apq11 (%) - valor global por música |
+| `song` | string | Nome da música |
+
+**Features derivadas** (calculadas pelo `run_analysis`, não presentes no CSV acima):
+
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
 | `f0_velocity` | float | Velocidade de mudança de pitch (Hz/s) |
 | `f0_acceleration` | float | Aceleração de pitch (Hz/s²) |
 | `syllable_rate` | float | Taxa silábica (sílabas/s) |
-| `song` | string | Nome da música |
+| `mechanism` | string | Cluster do GMM (M1/M2) |
+| `xgb_mechanism` | string | Predição do XGBoost (M1/M2) |
+
+**Arquivo de predições:** `outputs/xgb_predictions.csv` (gerado pelo `run_analysis`, contém todas as colunas acima)
 
 ### 9.2 Metadata JSON
 
@@ -385,9 +402,10 @@ uv run python -m vocal_analysis.analysis.run_analysis
 **Output:**
 - `outputs/plots/mechanism_analysis.png` (threshold)
 - `outputs/plots/mechanism_clusters.png` (GMM)
-- `outputs/analise_ademilde.md` (relatório básico)
+- `outputs/plots/xgb_mechanism_timeline.png` (contorno temporal pela predição XGBoost)
+- `outputs/xgb_predictions.csv` (predições por frame: GMM + XGBoost)
+- `outputs/analise_ademilde.md` (relatório básico, inclui classification report do XGBoost)
 - `outputs/relatorio_llm.md` (relatório narrativo, requer `GEMINI_API_KEY`)
-- **Console:** Classification report do XGBoost
 
 ---
 
