@@ -11,8 +11,6 @@
 | **HNR médio** | 8.0 dB | – |
 | **Total frames** | 5143 | – |
 
-![Análise por Mecanismo — distribuição, scatter, HNR e contorno temporal](plots/mechanism_analysis.png)
-
 ## Análise por Mecanismo
 
 ### M1 (Peito/Chest)
@@ -43,31 +41,17 @@
 - Extensão: G3 – G5
 - HNR médio: 7.6 dB
 
-![Apanhei-te Cavaquinho — contorno f0](plots/apanhei-te_Cavaquinho_f0.png)
-
-![Apanhei-te Cavaquinho — excerpt M1/M2](plots/excerpt_Apanhei-te_Cavaquinho.png)
-
 ### delicado
 
 - f0 médio: 341.9 Hz (F4)
 - Extensão: D3 – F5
 - HNR médio: 7.8 dB
 
-![delicado — contorno f0](plots/delicado_f0.png)
-
-![delicado — excerpt M1/M2](plots/excerpt_delicado.png)
-
 ### brasileirinho
 
 - f0 médio: 415.9 Hz (G#4)
 - Extensão: D2 – F#5
 - HNR médio: 9.1 dB
-
-![brasileirinho — contorno f0](plots/brasileirinho_f0.png)
-
-![brasileirinho — excerpt M1/M2](plots/excerpt_brasileirinho.png)
-
-![Clusters de Mecanismo (GMM)](plots/mechanism_clusters.png)
 
 ## Classificação XGBoost (Pseudo-Labels GMM)
 
@@ -85,8 +69,6 @@ Split: 80% treino / 20% teste
    macro avg       0.99      0.99      0.99      1029
 weighted avg       0.99      0.99      0.99      1029
 ```
-
-![Predição XGBoost: M1 vs M2 ao longo do tempo](plots/xgb_mechanism_timeline.png)
 
 ## Interpretação
 

@@ -2,40 +2,38 @@
 
 *Relatório gerado com auxílio de IA (Gemini 2.0 Flash)*
 
-*Análise multimodal com 5 visualizações*
+*Análise multimodal com 9 visualizações*
 
 ---
 
-### Análise Bioacústica da Voz de Ademilde Fonseca: Uma Crítica ao Sistema Fach
+## Análise Vocal de Ademilde Fonseca: Uma Crítica ao Sistema Fach
 
-Este estudo se propõe a analisar a voz da cantora brasileira Ademilde Fonseca, ícone do choro, com o objetivo de desafiar as limitações do sistema de classificação vocal tradicional, conhecido como "Fach". A abordagem empregada é a da bioacústica, com foco na análise fisiológica dos mecanismos laríngeos (M1 e M2) e na extração de *features* acústicas relevantes, como a frequência fundamental (f0), a razão harmônico-ruído (HNR) e o CPPS.
+### 1. Caracterização Vocal
 
-#### 1. Caracterização Vocal
+A voz de Ademilde Fonseca demonstra uma extensão vocal notável, abrangendo de D2 (74.0 Hz) a G5 (796.5 Hz), com uma frequência fundamental (f0) média de 364.7 Hz (F#4). Essa amplitude, aliada ao desvio padrão de 99.6 Hz na f0, sugere uma cantora com domínio considerável sobre sua emissão e capacidade de executar passagens melódicas complexas. No entanto, a análise da qualidade vocal, através do HNR médio de 8.0 dB e CPPS de 0.33, indica uma voz com relativa presença de ruído e menor definição comparada a cantores líricos. Os valores de instabilidade, com Jitter (ppq5) em 2.117% e Shimmer (apq11) em 15.613%, revelam uma vibração vocal perceptível, o que, no contexto do choro, pode ser interpretado como expressividade e não necessariamente como uma deficiência técnica. A análise dos formantes (F1: 658.6 Hz, F2: 1610.7 Hz, F3: 2770.0 Hz, F4: 3873.5 Hz) oferece indícios sobre o timbre, com F1 relativamente alto, sugerindo uma produção aberta e com ênfase na região central do trato vocal.
 
-Os dados revelam um perfil vocal caracterizado por uma média de f0 de 354.9 Hz (F4), com uma extensão notável de G#2 (101.4 Hz) a G5 (796.4 Hz). O desvio padrão de f0, de 130.0 Hz, sugere uma voz com flexibilidade e capacidade de ornamentação, traço marcante do choro. No entanto, o HNR médio de apenas 2.6 dB indica uma qualidade vocal que, embora expressiva, pode apresentar maior ruído em relação ao conteúdo harmônico. A análise do contorno de f0 em [delicado_f0](plots/delicado_f0.png) exemplifica a complexidade das melodias e a presença de ornamentos característicos do estilo.
+### 2. Análise de Mecanismos
 
-#### 2. Análise de Mecanismos
+A distribuição dos mecanismos laríngeos revela uma predominância do mecanismo M1 (voz de peito), responsável por 69.3% dos frames analisados, com uma f0 média de 311.2 Hz (D#4) e alcance de D2 a G4. O mecanismo M2 (voz de cabeça), por sua vez, corresponde a 30.7% dos frames, com uma f0 média significativamente mais alta, de 485.2 Hz (B4), e extensão vocal de G4 a G5. Essa distribuição, visualizada no gráfico [mechanism_clusters](plots/mechanism_clusters.png), demonstra uma clara separação entre os mecanismos em termos de f0 e HNR, com o M2 exibindo, em geral, um HNR mais elevado (média de 9.6 dB) em comparação ao M1 (média de 7.3 dB). O gráfico [mechanism_analysis](plots/mechanism_analysis.png) detalha essa relação, mostrando que o mecanismo M2 tende a ocupar frequências mais altas e exibir maior "limpeza" vocal. A análise do timeline em [xgb_mechanism_timeline](plots/xgb_mechanism_timeline.png) mostra o uso dinâmico dos mecanismos ao longo das peças, o que enfatiza a agilidade e o controle vocal da cantora.
 
-A divisão da análise por mecanismo laríngeo revela nuances importantes. Embora a proporção entre M1 (49.2%) e M2 (50.8%) seja relativamente equilibrada, as características acústicas diferem significativamente. A média de f0 em M1 é de 280.8 Hz (C#4), com uma extensão vocal restrita a G#2-G4. Em contrapartida, M2 apresenta uma média de f0 substancialmente mais alta, 584.5 Hz (D5), com uma extensão de G#4-G5. Curiosamente, o HNR médio é ligeiramente superior em M1 (2.8 dB) em comparação com M2 (2.0 dB), o que, em princípio, indicaria uma maior "limpeza" na produção do registro de peito. No entanto, a análise de clusters em [mechanism_clusters](plots/mechanism_clusters.png) demonstra uma clara separação entre os mecanismos, com M1 apresentando valores de HNR geralmente mais altos para uma dada f0. A análise visual da distribuição de f0 por mecanismo em [mechanism_analysis](plots/mechanism_analysis.png) também reforça a distinção entre os registros, com uma sobreposição limitada.
+### 3. Implicações para o Sistema Fach
 
-#### 3. Implicações para o Sistema Fach
+O sistema Fach, tradicionalmente utilizado para classificar vozes em categorias rígidas baseadas em extensão, tessitura e timbre, enfrenta desafios ao ser aplicado a cantores como Ademilde Fonseca. A análise demonstra uma cantora que transita com fluidez entre os mecanismos M1 e M2, explorando uma extensão vocal ampla e utilizando uma variedade de recursos expressivos que não se encaixam facilmente em uma única categoria. Por exemplo, observamos em [apanhei-te_Cavaquinho_f0](plots/apanhei-te_Cavaquinho_f0.png), [delicado_f0](plots/delicado_f0.png) e [brasileirinho_f0](plots/brasileirinho_f0.png) a rápida alternância entre regiões tonais, que dificilmente se encaixam em uma categoria Fach. A ênfase na expressividade e na interpretação musical, características do choro, muitas vezes se sobrepõe à busca por uma perfeição técnica estéril, o que torna a categorização Fach inadequada para capturar a riqueza e a complexidade da voz de Ademilde Fonseca. As estatísticas globais e por música revelam uma extensão vocal impressionante, porém, a análise detalhada dos mecanismos laríngeos e da instabilidade vocal sugere uma voz que prioriza a expressividade e a agilidade em detrimento da potência e da estabilidade encontradas em vozes líricas.
 
-O sistema Fach, tradicional na classificação vocal, enfrenta desafios ao tentar categorizar vozes como a de Ademilde Fonseca. A classificação frequentemente se baseia na extensão vocal geral e nas transições percebidas entre os registros. No entanto, a análise bioacústica revela uma complexidade que escapa a essa simplificação. A extensão vocal abrangente (quase três oitavas), o uso equilibrado dos mecanismos M1 e M2 e a flexibilidade vocal característica do choro desafiam a alocação a uma única categoria Fach. Por exemplo, a capacidade de Ademilde de transitar entre os registros, como observado nos contornos de f0 das músicas [apanhei-te_cavaquinho_f0](plots/apanhei-te_cavaquinho_f0.png) e [brasileirinho_f0](plots/brasileirinho_f0.png), sugere uma agilidade vocal que não é adequadamente capturada pelas categorias rígidas do Fach.
+### 4. Limitações
 
-#### 4. Limitações
-
-É fundamental reconhecer as limitações inerentes à análise. As gravações de Ademilde Fonseca, sendo históricas, podem apresentar desafios em termos de qualidade de áudio, impactando a precisão da extração de *features* acústicas. O número de frames analisados pode ser considerado limitado, restringindo a generalização dos resultados. A análise temporal dos mecanismos laríngeos em [mechanism_analysis](plots/mechanism_analysis.png) é pontual e não representa a dinâmica vocal completa. Além disso, a análise se concentra em apenas três músicas, o que limita a representatividade da performance vocal da cantora em sua totalidade.
+É importante reconhecer as limitações inerentes à análise de gravações históricas. A qualidade do áudio pode influenciar a precisão das medidas de f0, HNR, Jitter e Shimmer. A ausência de gravações com equipamentos modernos e controle de variáveis (acústica, microfones, etc.) pode introduzir vieses na análise. Adicionalmente, a segmentação automática dos mecanismos laríngeos, embora baseada em algoritmos robustos, pode apresentar erros, especialmente em passagens com transições rápidas entre M1 e M2. Portanto, as conclusões aqui apresentadas devem ser interpretadas com cautela, considerando as limitações dos dados e dos métodos de análise.
 
 
 ---
 
 ## Figuras
 
-### apanhei-te_cavaquinho_f0
+### apanhei-te_Cavaquinho_f0
 
-![Contorno de f0 - apanhei-te_cavaquinho](plots/apanhei-te_cavaquinho_f0.png)
+![Contorno de f0 - apanhei-te_Cavaquinho](plots/apanhei-te_Cavaquinho_f0.png)
 
-*Contorno de f0 - apanhei-te_cavaquinho*
+*Contorno de f0 - apanhei-te_Cavaquinho*
 
 ### brasileirinho_f0
 
@@ -49,6 +47,24 @@ O sistema Fach, tradicional na classificação vocal, enfrenta desafios ao tenta
 
 *Contorno de f0 - delicado*
 
+### excerpt_Apanhei-te Cavaquinho
+
+![excerpt_Apanhei-te Cavaquinho](plots/excerpt_Apanhei-te Cavaquinho.png)
+
+*excerpt_Apanhei-te Cavaquinho*
+
+### excerpt_brasileirinho
+
+![excerpt_brasileirinho](plots/excerpt_brasileirinho.png)
+
+*excerpt_brasileirinho*
+
+### excerpt_delicado
+
+![excerpt_delicado](plots/excerpt_delicado.png)
+
+*excerpt_delicado*
+
 ### mechanism_analysis
 
 ![Análise de mecanismos M1/M2 (histograma, scatter, boxplot, temporal)](plots/mechanism_analysis.png)
@@ -61,6 +77,12 @@ O sistema Fach, tradicional na classificação vocal, enfrenta desafios ao tenta
 
 *Clustering GMM dos mecanismos laríngeos*
 
+### xgb_mechanism_timeline
+
+![xgb_mechanism_timeline](plots/xgb_mechanism_timeline.png)
+
+*xgb_mechanism_timeline*
+
 
 
 ---
@@ -71,35 +93,35 @@ O sistema Fach, tradicional na classificação vocal, enfrenta desafios ao tenta
 {
   "stats": {
     "M1": {
-      "count": 32,
-      "f0_mean": 280.78125,
-      "f0_std": 82.36988737866645,
-      "f0_min": 101.4,
-      "f0_max": 390.5,
-      "hnr_mean": 2.803125,
-      "note_mean": "C#4",
-      "note_range": "G#2 – G4"
+      "count": 3562,
+      "f0_mean": 311.2354673464346,
+      "f0_std": 49.077085524591595,
+      "f0_min": 74.03129,
+      "f0_max": 399.9976,
+      "hnr_mean": 7.251753429490397,
+      "note_mean": "D#4",
+      "note_range": "D2 – G4"
     },
     "M2": {
-      "count": 33,
-      "f0_mean": 584.509090909091,
-      "f0_std": 113.24653792621092,
-      "f0_min": 410.2,
-      "f0_max": 796.4,
-      "hnr_mean": 2.003030303030303,
-      "note_mean": "D5",
-      "note_range": "G#4 – G5"
+      "count": 1581,
+      "f0_mean": 485.1935146932321,
+      "f0_std": 76.52496986233103,
+      "f0_min": 400.0083,
+      "f0_max": 796.48145,
+      "hnr_mean": 9.612680907662764,
+      "note_mean": "B4",
+      "note_range": "G4 – G5"
     }
   },
   "global": {
-    "total_voiced_frames": 15000,
-    "f0_mean_hz": 354.9,
-    "f0_mean_note": "F4",
-    "f0_min_hz": 101.4,
-    "f0_max_hz": 796.4,
-    "f0_range_notes": "G#2 – G5",
-    "f0_std_hz": 130.0,
-    "hnr_mean_db": 2.6
+    "total_voiced_frames": 5143,
+    "f0_mean_hz": 364.70001220703125,
+    "f0_mean_note": "F#4",
+    "f0_min_hz": 74.0,
+    "f0_max_hz": 796.5,
+    "f0_range_notes": "D2 – G5",
+    "f0_std_hz": 99.5999984741211,
+    "hnr_mean_db": 8.0
   }
 }
 ```
