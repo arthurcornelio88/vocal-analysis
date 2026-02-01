@@ -299,7 +299,7 @@ predictions = model.predict(X)
 
 Excerpts gerados automaticamente pela janela de maior densidade de frames por música:
 
-![Apanhei-te Cavaquinho — excerpt](../outputs/plots/excerpt_Apanhei-te Cavaquinho.png)
+![Apanhei-te Cavaquinho — excerpt](../outputs/plots/excerpt_Apanhei-te_Cavaquinho.png)
 
 ![delicado — excerpt](../outputs/plots/excerpt_delicado.png)
 

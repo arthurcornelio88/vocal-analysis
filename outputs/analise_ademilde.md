@@ -43,9 +43,9 @@
 - Extensão: G3 – G5
 - HNR médio: 7.6 dB
 
-![Apanhei-te Cavaquinho — contorno f0](plots/apanhei-te Cavaquinho_f0.png)
+![Apanhei-te Cavaquinho — contorno f0](plots/apanhei-te_Cavaquinho_f0.png)
 
-![Apanhei-te Cavaquinho — excerpt M1/M2](plots/excerpt_Apanhei-te Cavaquinho.png)
+![Apanhei-te Cavaquinho — excerpt M1/M2](plots/excerpt_Apanhei-te_Cavaquinho.png)
 
 ### delicado
 
