@@ -143,7 +143,9 @@ def process_audio_files(
             # Adicionar jitter/shimmer se não foram desativados
             if not config.skip_jitter_shimmer:
                 song_meta["jitter_ppq5"] = (
-                    float(round(features["jitter"], 4)) if not np.isnan(features["jitter"]) else None
+                    float(round(features["jitter"], 4))
+                    if not np.isnan(features["jitter"])
+                    else None
                 )
                 song_meta["shimmer_apq11"] = (
                     float(round(features["shimmer"], 4))
@@ -162,7 +164,9 @@ def process_audio_files(
             print(f"  HNR: {song_meta['hnr_mean_db']} dB | CPPS: {song_meta['cpps_global']}")
 
             if not config.skip_jitter_shimmer:
-                jitter_str = f"{song_meta['jitter_ppq5']}" if song_meta.get("jitter_ppq5") else "N/A"
+                jitter_str = (
+                    f"{song_meta['jitter_ppq5']}" if song_meta.get("jitter_ppq5") else "N/A"
+                )
                 shimmer_str = (
                     f"{song_meta['shimmer_apq11']}" if song_meta.get("shimmer_apq11") else "N/A"
                 )

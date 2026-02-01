@@ -168,9 +168,7 @@ def extract_bioacoustic_features(
 
     # 4. Extração de Energia Espectral (RMS)
     # Frame length de 25ms conforme janelamento típico (1102 samples @ 44.1kHz)
-    energy = librosa.feature.rms(
-        y=audio, frame_length=int(0.025 * sr), hop_length=hop_length
-    )[0]
+    energy = librosa.feature.rms(y=audio, frame_length=int(0.025 * sr), hop_length=hop_length)[0]
 
     # 5. Extração de Formantes F1-F4 via LPC (método de Burg)
     # Formantes indicam ressonâncias do trato vocal

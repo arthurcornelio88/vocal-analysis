@@ -96,7 +96,7 @@ def plot_xgb_mechanism_excerpt(
     Returns:
         Figura matplotlib.
     """
-    from vocal_analysis.utils.pitch import hz_to_note, midi_to_hz, hz_to_midi
+    from vocal_analysis.utils.pitch import hz_to_midi, hz_to_note, midi_to_hz
 
     subset = df[(df["song"] == song) & (df["time"] >= start_time) & (df["time"] <= end_time)]
 
@@ -106,7 +106,9 @@ def plot_xgb_mechanism_excerpt(
     colors = {"M1": "steelblue", "M2": "coral"}
     for mech in ["M1", "M2"]:
         mech_data = subset[subset["xgb_mechanism"] == mech]
-        ax.scatter(mech_data["time"], mech_data["f0"], c=colors[mech], s=8, alpha=0.8, label=mech, zorder=2)
+        ax.scatter(
+            mech_data["time"], mech_data["f0"], c=colors[mech], s=8, alpha=0.8, label=mech, zorder=2
+        )
 
     # Eixo Y secundário com notas musicais
     f0_min = subset["f0"].min() if len(subset) > 0 else 100

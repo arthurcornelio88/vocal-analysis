@@ -12,7 +12,7 @@ Criticar o sistema de classificação vocal "Fach" através de uma análise fisi
 - **parselmouth** (Praat): HNR, CPPS, Jitter, Shimmer
 - **xgboost**: Classificação tabular M1/M2
 - **seaborn/matplotlib**: Visualizações acadêmicas
-- **google-generativeai**: Geração de relatórios narrativos multimodais com Gemini 2.0 Flash
+- **google-generativeai**: Geração de relatórios narrativos multimodais com Gemini 2.0 Flash (⚠️ deprecated mas funcional)
 
 ## Setup
 
@@ -49,6 +49,20 @@ export GEMINI_API_KEY=sua_chave_aqui
 ```
 
 Ou adicione ao seu `.bashrc`/`.zshrc` para persistir.
+
+**Usando arquivo `.env`:**
+O projeto inclui um arquivo `.env` na raiz. Para usar:
+1. Edite o arquivo `.env` e adicione sua API Key:
+   ```
+   GEMINI_API_KEY=sua_chave_aqui
+   ```
+2. Certifique-se de que a variável está carregada no ambiente atual:
+   ```bash
+   source .env
+   ```
+
+**Nota sobre o pacote:**
+O projeto usa `google-generativeai` que está deprecated mas ainda funcional. Você verá um warning ao executar, mas o código funciona normalmente. Para migrar para o novo pacote `google-genai` no futuro, será necessário atualizar o código em `src/vocal_analysis/analysis/llm_report.py`.
 
 ## Estrutura do Projeto
 
@@ -126,7 +140,57 @@ Se `GEMINI_API_KEY` estiver configurada, o script gera um relatório narrativo u
 - **Links clicáveis**: Referências a gráficos incluem links markdown (ex: `[brasileirinho_f0](plots/brasileirinho_f0.png)`)
 - **Índice de figuras**: Lista completa de visualizações no final do relatório
 
-### 4. Features extraídas
+### 4. Rodar geração de relatório LLM (opcional)
+
+Para gerar apenas o relatório narrativo com Gemini (sem rodar toda a análise novamente):
+
+```bash
+uv run python -m vocal_analysis.analysis.llm_report
+```
+
+**Parâmetros opcionais:**
+- `--metadata`: Caminho para o arquivo de metadados (padrão: `data/processed/ademilde_metadata.json`)
+- `--stats`: Caminho para JSON com estatísticas M1/M2 (opcional)
+- `--output`: Caminho de saída para o relatório (padrão: `outputs/relatorio_llm.md`)
+- `--plots-dir`: Diretório com plots PNG para análise multimodal (padrão: `outputs/plots/`)
+
+**Exemplo com parâmetros customizados:**
+```bash
+uv run python -m vocal_analysis.analysis.llm_report \
+  --metadata data/processed/ademilde_metadata.json \
+  --output outputs/relatorio_customizado.md \
+  --plots-dir outputs/plots/
+```
+
+**Pré-requisitos:**
+1. API Key do Gemini configurada: `export GEMINI_API_KEY=sua_chave_aqui`
+2. Arquivos de dados processados disponíveis (após executar os passos 1-3)
+3. Plots gerados (opcional, para análise multimodal)
+
+**Verificação da API Key:**
+Para verificar se a API Key está configurada corretamente:
+```bash
+echo $GEMINI_API_KEY
+```
+Se não mostrar nada, configure a variável de ambiente:
+```bash
+export GEMINI_API_KEY=sua_chave_aqui
+```
+
+**Nota importante:** O script `run_analysis.py` só invocará automaticamente a geração do relatório LLM se a variável `GEMINI_API_KEY` estiver configurada no ambiente. Caso contrário, ele mostrará apenas uma mensagem informativa e não gerará o relatório.
+
+**Erros comuns:**
+1. **"API key not valid"**: Verifique se a API key está correta e ativa no [Google AI Studio](https://aistudio.google.com/apikey)
+2. **"quota exceeded" / "You exceeded your current quota"**: A conta gratuita do Gemini tem limites de uso. Espere o reset da quota ou atualize para um plano pago.
+3. **Warning sobre pacote deprecated**: O pacote `google-generativeai` está deprecated mas ainda funciona. Ignore o warning.
+
+**Nota:** Este comando é útil quando você já executou a análise completa e deseja:
+- Regenerar o relatório LLM com diferentes parâmetros
+- Testar diferentes prompts ou configurações
+- Gerar relatórios específicos para apresentações
+- Executar a geração do relatório quando a API Key não estava configurada durante a execução do `run_analysis.py`
+
+### 5. Features extraídas
 
 | Coluna | Descrição |
 |--------|-----------|
@@ -141,7 +205,7 @@ Se `GEMINI_API_KEY` estiver configurada, o script gera um relatório narrativo u
 | `jitter` | Jitter ppq5 - instabilidade de período (%) |
 | `shimmer` | Shimmer apq11 - instabilidade de amplitude (%) |
 
-### 5. Classificação M1/M2
+### 6. Classificação M1/M2
 
 Com dados rotulados:
 

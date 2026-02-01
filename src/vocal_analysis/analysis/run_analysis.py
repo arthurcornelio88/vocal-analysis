@@ -17,7 +17,10 @@ from vocal_analysis.features.articulation import (
     get_articulation_stats,
 )
 from vocal_analysis.modeling.classifier import train_mechanism_classifier
-from vocal_analysis.visualization.plots import plot_xgb_mechanism_excerpt, plot_xgb_mechanism_timeline
+from vocal_analysis.visualization.plots import (
+    plot_xgb_mechanism_excerpt,
+    plot_xgb_mechanism_timeline,
+)
 
 
 def main() -> None:
@@ -79,7 +82,9 @@ def main() -> None:
 
     xgb_report = None
     try:
-        model, xgb_report = train_mechanism_classifier(df_train, feature_cols=feature_cols, target_col="mechanism_label")
+        model, xgb_report = train_mechanism_classifier(
+            df_train, feature_cols=feature_cols, target_col="mechanism_label"
+        )
         # Predizer sobre todos os dados voiced (não apenas o split de teste)
         df_clustered["xgb_mechanism"] = model.predict(df_clustered[feature_cols]).tolist()
         df_clustered["xgb_mechanism"] = df_clustered["xgb_mechanism"].map({0: "M1", 1: "M2"})
@@ -111,8 +116,16 @@ def main() -> None:
                     best_count = count
                     best_start = t
             excerpt_path = plots_dir / f"excerpt_{song_name}.png"
-            plot_xgb_mechanism_excerpt(df_clustered, song=song_name, start_time=best_start, end_time=best_start + 5.0, save_path=excerpt_path)
-            print(f"    {song_name}: {best_start:.1f}s – {best_start + 5:.1f}s ({best_count} frames)")
+            plot_xgb_mechanism_excerpt(
+                df_clustered,
+                song=song_name,
+                start_time=best_start,
+                end_time=best_start + 5.0,
+                save_path=excerpt_path,
+            )
+            print(
+                f"    {song_name}: {best_start:.1f}s – {best_start + 5:.1f}s ({best_count} frames)"
+            )
     except Exception as e:
         print(f"  Erro ao treinar XGBoost: {e}")
 
@@ -121,8 +134,12 @@ def main() -> None:
     report_path = output_dir / "analise_ademilde.md"
     print(f"\nGerando relatório básico: {report_path}")
     generate_report(
-        df, stats, report_path, artist_name=artist_name,
-        xgb_report=xgb_report, xgb_feature_cols=feature_cols,
+        df,
+        stats,
+        report_path,
+        artist_name=artist_name,
+        xgb_report=xgb_report,
+        xgb_feature_cols=feature_cols,
     )
 
     # Gerar relatório com LLM se API key disponível

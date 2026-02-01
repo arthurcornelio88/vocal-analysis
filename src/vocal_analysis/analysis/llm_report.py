@@ -13,15 +13,18 @@ Contexto do projeto:
 - Análise da voz de Ademilde Fonseca, cantora brasileira de Choro
 - Objetivo: criticar o sistema de classificação vocal "Fach" usando análise fisiológica
 - Mecanismos laríngeos: M1 (voz de peito) e M2 (voz de cabeça)
-- Features extraídas: f0 (pitch), HNR (harmonic-to-noise ratio), CPPS
+- Features extraídas: f0 (pitch), HNR (harmonic-to-noise ratio), CPPS, Jitter, Shimmer, Formantes (F1-F4)
 
 Termos técnicos importantes:
 - f0: frequência fundamental, correlaciona com percepção de altura (pitch)
 - HNR: razão harmônico-ruído, indica "limpeza" da voz (valores altos = voz mais limpa)
 - CPPS: Cepstral Peak Prominence Smoothed, proxy para qualidade vocal
+- Jitter (ppq5): instabilidade de período, variação ciclo-a-ciclo na frequência (%)
+- Shimmer (apq11): instabilidade de amplitude, variação ciclo-a-ciclo na amplitude (%)
+- Formantes (F1-F4): ressonâncias do trato vocal, relacionadas à qualidade timbral e vogal
 - M1/M2: mecanismos laríngeos (registro de peito vs cabeça)
 
-Escreva em português brasileiro acadêmico, mas acessível. Use notação musical (C4, G5) ao lado de Hz quando relevante."""
+Escreva em português brasileiro acadêmico, mas acessível. Use notação musical (C4, G5) ao lado de Hz quando relevante. Incorpore análise das features de instabilidade (jitter/shimmer) e formantes quando disponíveis."""
 
 
 def generate_narrative_report(
@@ -169,13 +172,31 @@ Integre observações visuais com os dados numéricos na sua análise."""
 
 def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
     """Formata dados para o prompt do LLM."""
+    from pathlib import Path
+
+    import pandas as pd
+
     lines = []
 
     # Global stats
     if "global" in metadata:
         g = metadata["global"]
 
-        # Calcular CPPS médio global a partir das músicas
+        # Calcular médias globais para jitter, shimmer e outras features
+        jitter_values = [
+            s.get("jitter_ppq5")
+            for s in metadata.get("songs", [])
+            if "jitter_ppq5" in s and "error" not in s
+        ]
+        jitter_mean = sum(jitter_values) / len(jitter_values) if jitter_values else None
+
+        shimmer_values = [
+            s.get("shimmer_apq11")
+            for s in metadata.get("songs", [])
+            if "shimmer_apq11" in s and "error" not in s
+        ]
+        shimmer_mean = sum(shimmer_values) / len(shimmer_values) if shimmer_values else None
+
         cpps_values = [
             s.get("cpps_global")
             for s in metadata.get("songs", [])
@@ -196,6 +217,30 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
 
         if cpps_mean is not None:
             lines.append(f"- CPPS médio: {cpps_mean:.2f}")
+        if jitter_mean is not None:
+            lines.append(f"- Jitter médio (ppq5): {jitter_mean:.3%}")
+        if shimmer_mean is not None:
+            lines.append(f"- Shimmer médio (apq11): {shimmer_mean:.3%}")
+
+        # Tentar carregar CSV para obter estatísticas das formantes
+        csv_path = Path("data/processed/ademilde_features.csv")
+        if csv_path.exists():
+            try:
+                df = pd.read_csv(csv_path)
+                # Filtrar frames voiced (mesmo critério usado no processamento)
+                df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)]
+
+                # Verificar se formantes estão disponíveis
+                formant_cols = ["f1", "f2", "f3", "f4"]
+                available_formants = [col for col in formant_cols if col in df_voiced.columns]
+
+                if available_formants:
+                    lines.append("\n### Formantes (F1-F4) - Médias Globais")
+                    for col in available_formants:
+                        mean_val = df_voiced[col].mean()
+                        lines.append(f"- {col.upper()}: {mean_val:.1f} Hz")
+            except Exception as e:
+                lines.append(f"\n*Nota: Erro ao carregar formantes do CSV: {e}*")
 
         lines.extend(
             [
@@ -226,10 +271,40 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
         lines.extend(["", "### Por Música"])
         for song in metadata["songs"]:
             if "error" not in song:
-                cpps_str = f", CPPS={song['cpps_global']:.2f}" if "cpps_global" in song else ""
-                lines.append(
-                    f"- **{song['song']}**: f0={song['f0_mean_hz']} Hz ({song['f0_mean_note']}), range={song['f0_range_notes']}, HNR={song.get('hnr_mean_db', '?')} dB{cpps_str}"
-                )
+                # Features básicas
+                features = [
+                    f"f0={song['f0_mean_hz']} Hz ({song['f0_mean_note']})",
+                    f"range={song['f0_range_notes']}",
+                    f"HNR={song.get('hnr_mean_db', '?')} dB",
+                ]
+
+                # Features adicionais se disponíveis
+                if "cpps_global" in song:
+                    features.append(f"CPPS={song['cpps_global']:.2f}")
+                if "jitter_ppq5" in song:
+                    features.append(f"Jitter={song['jitter_ppq5']:.3%}")
+                if "shimmer_apq11" in song:
+                    features.append(f"Shimmer={song['shimmer_apq11']:.3%}")
+
+                # Tentar adicionar formantes se disponíveis no CSV
+                try:
+                    csv_path = Path("data/processed/ademilde_features.csv")
+                    if csv_path.exists():
+                        df = pd.read_csv(csv_path)
+                        song_df = df[df["song"] == song["song"]]
+                        song_df_voiced = song_df[
+                            (song_df["confidence"] > 0.8) & (song_df["hnr"] > -10)
+                        ]
+
+                        formant_cols = ["f1", "f2", "f3", "f4"]
+                        for col in formant_cols:
+                            if col in song_df_voiced.columns:
+                                mean_val = song_df_voiced[col].mean()
+                                features.append(f"{col.upper()}={mean_val:.1f} Hz")
+                except Exception:
+                    pass  # Ignora erros ao carregar formantes
+
+                lines.append(f"- **{song['song']}**: {', '.join(features)}")
 
     return "\n".join(lines)
 
