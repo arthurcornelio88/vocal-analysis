@@ -1,7 +1,7 @@
 # Glossário Bioacústico — Guia de Leitura
 
 Documento de apoio para compreender os conceitos e a lógica da análise
-descrita em `METODOLOGIA.md`. Assume conhecimento básico de sons e voz,
+descrita em [METODOLOGIA.md](METODOLOGIA.md). Assume conhecimento básico de sons e voz,
 mas não de processamento digital de sinal.
 
 ---

@@ -4,7 +4,7 @@
 **Data:** 2025-01-21
 **Contexto:** Análise computacional para artigo acadêmico sobre classificação vocal "Fach" no Choro
 
-> **Novo ao tema?** Leia primeiro o [glossário bioacústico](docs/glossario_bioacustico.md) — explica os conceitos e a lógica da análise de forma acessível, sem jargão técnico.
+> **Novo ao tema?** Leia primeiro o [glossário bioacústico](glossario_bioacustico.md) — explica os conceitos e a lógica da análise de forma acessível, sem jargão técnico.
 
 ---
 

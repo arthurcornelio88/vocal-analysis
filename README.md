@@ -194,7 +194,7 @@ Para entender os conceitos bioacústicos usados na análise (f0, HNR, formantes,
 
 Para entender em profundidade as escolhas metodológicas, parâmetros técnicos e justificativas acadêmicas de cada componente do pipeline, consulte:
 
-**[METODOLOGIA.md](METODOLOGIA.md)**
+**[docs/METODOLOGIA.md](docs/METODOLOGIA.md)**
 
 Este documento descreve:
 - Escolha do CREPE vs métodos tradicionais de autocorrelação

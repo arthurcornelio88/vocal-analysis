@@ -63,5 +63,9 @@ Thumbs.db
 *.ckpt
 wandb/
 
+# Project-local notes (not for version control)
+CLAUDE.md
+TODO_METODOLOGIA.md
+
 # Ruff
 .ruff_cache/
