@@ -159,7 +159,7 @@ def extract_bioacoustic_features(
                 point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3
             )
             shimmer_apq11 = parselmouth.praat.call(
-                point_process, "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6
+                [sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6
             )
         except Exception:
             # Fallback: valores padrão para sinais com pitch instável
