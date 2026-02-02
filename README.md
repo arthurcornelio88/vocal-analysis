@@ -93,6 +93,50 @@ vocal-analysis/
 └── tests/
 ```
 
+## 🖥️ Uso por Plataforma
+
+### macOS
+- ✅ **Validação rápida**: Use `--use-praat-f0` para testar o pipeline
+- ⚠️ **Limitação**: CREPE full trava por falta de memória (32GB+ recomendado)
+- 💡 **Recomendação**: Use macOS apenas para validação, processe com CREPE no Colab/Windows
+
+```bash
+# Validação rápida no macOS (Praat F0)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
+```
+
+### Windows/Linux (32GB+ RAM)
+- ✅ **Processamento completo**: CREPE full com todas features
+- 🚀 **GPU (NVIDIA)**: Use `--device cuda` para aceleração (~10x mais rápido)
+
+```bash
+# Windows/Linux com CPU
+uv run python -m vocal_analysis.preprocessing.process_ademilde
+
+# Windows/Linux com GPU NVIDIA
+uv run python -m vocal_analysis.preprocessing.process_ademilde --device cuda
+```
+
+### Google Colab (Recomendado! 🌟)
+- ✅ **GPU T4 gratuita**: ~12-15h/dia de uso
+- ✅ **Processamento rápido**: 3 músicas (~7min cada) em ~10 minutos
+- ✅ **Zero configuração**: Ambiente já pronto
+
+**📖 Guia completo**: [COLAB_SETUP.md](COLAB_SETUP.md)
+
+**Quick start**:
+```python
+# No Colab com GPU T4 habilitada
+!git clone https://github.com/SEU_USUARIO/vocal-analysis.git
+%cd vocal-analysis
+!pip install -q uv && uv sync
+
+# Processar com CREPE + GPU
+!python src/vocal_analysis/preprocessing/process_ademilde.py --device cuda
+```
+
+---
+
 ## Uso
 
 ### 1. Adicionar áudios
@@ -109,8 +153,26 @@ data/raw/
 ### 2. Processar áudios (extrair features)
 
 ```bash
+# Processamento completo com CREPE (requer GPU ou 32GB+ RAM)
 uv run python -m vocal_analysis.preprocessing.process_ademilde
+
+# Com GPU (Google Colab, Windows/Linux com NVIDIA)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --device cuda
+
+# Modo rápido com Praat (macOS, validação)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
 ```
+
+**Opções disponíveis:**
+- `--device cuda`: Usar GPU (requer CUDA)
+- `--use-praat-f0`: Usar Praat em vez de CREPE (mais rápido, menos preciso)
+- `--crepe-model {tiny,small,full}`: Escolher modelo CREPE (default: full)
+- `--skip-formants`: Pular extração de formantes (~30% mais rápido)
+- `--skip-jitter-shimmer`: Pular jitter/shimmer (~20% mais rápido)
+- `--skip-cpps`: Pular CPPS (evita travamento no macOS)
+- `--skip-plots`: Não gerar plots de F0
+- `--limit N`: Processar apenas N arquivos (útil para testes)
+- `--fast`: Ativa todas otimizações (Praat + sem formants/jitter/shimmer/cpps/plots)
 
 **Outputs gerados:**
 - `data/processed/ademilde_features.csv` - Features por frame
