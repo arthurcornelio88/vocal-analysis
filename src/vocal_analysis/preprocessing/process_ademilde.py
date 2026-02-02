@@ -24,6 +24,7 @@ class ProcessingConfig:
         use_praat_f0: bool = False,
         skip_cpps: bool = False,
         crepe_model: str = "full",
+        device: str = "cpu",
     ):
         self.skip_formants = skip_formants
         self.skip_plots = skip_plots
@@ -32,6 +33,7 @@ class ProcessingConfig:
         self.use_praat_f0 = use_praat_f0
         self.skip_cpps = skip_cpps
         self.crepe_model = crepe_model
+        self.device = device
 
 
 def process_audio_files(
@@ -66,6 +68,10 @@ def process_audio_files(
         print("⚡ DEBUG: Usando Praat f0 (rápido) ao invés de CREPE")
     else:
         print(f"🎵 Usando CREPE modelo '{config.crepe_model}' para extração de f0")
+        if config.device == "cuda":
+            print(f"🚀 GPU HABILITADA (cuda) - processamento acelerado!")
+        else:
+            print(f"💻 CPU (processamento lento - use GPU se disponível)")
     if config.skip_cpps:
         print("⚡ DEBUG: CPPS DESATIVADO (evita travamento em macOS)")
 
@@ -83,6 +89,7 @@ def process_audio_files(
                 use_praat_f0=config.use_praat_f0,
                 skip_cpps=config.skip_cpps,
                 model=config.crepe_model,
+                device=config.device,
             )
 
             # Criar DataFrame para esta música
@@ -371,6 +378,13 @@ Exemplos de uso:
         help="Modelo CREPE para extração de f0 (default: full). Use 'small' para economizar memória no macOS",
     )
     parser.add_argument(
+        "--device",
+        type=str,
+        default="cpu",
+        choices=["cpu", "cuda"],
+        help="Dispositivo para CREPE (default: cpu). Use 'cuda' para GPU (Google Colab, Windows com NVIDIA)",
+    )
+    parser.add_argument(
         "--fast",
         action="store_true",
         help="Modo rápido: ativa --skip-formants, --skip-plots, --skip-jitter-shimmer, --skip-cpps, --use-praat-f0",
@@ -394,6 +408,7 @@ Exemplos de uso:
         use_praat_f0=args.use_praat_f0,
         skip_cpps=args.skip_cpps,
         crepe_model=args.crepe_model,
+        device=args.device,
     )
 
     project_root = Path(__file__).parent.parent.parent.parent
