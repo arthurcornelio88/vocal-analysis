@@ -12,19 +12,29 @@ Este guia mostra como processar os áudios com CREPE usando GPU gratuita do Goog
 ### 2. Clonar o repositório e instalar dependências
 
 ```python
-# Clone o repositório
-!git clone https://github.com/SEU_USUARIO/vocal-analysis.git
+# 🚨 IMPORTANTE: Execute TODA esta célula ANTES de continuar!
+# Clone + Instalação (necessário para imports funcionarem)
+
+!git clone https://github.com/arthurcornelio88/vocal-analysis.git
 %cd vocal-analysis
 
-# Instalar dependências
-!pip install -q uv
-!uv sync
+# Instalar uv e pacote em modo system (não venv)
+!pip install uv
+!uv pip install --system -e .
+
+# ✅ VERIFICAÇÃO: Se instalado corretamente, deve mostrar versão
+!python -c "import vocal_analysis; print(f'✅ vocal_analysis instalado! Versão: {vocal_analysis.__version__}')"
 
 # Verificar GPU disponível
 import torch
-print(f"GPU disponível: {torch.cuda.is_available()}")
+print(f"\nGPU disponível: {torch.cuda.is_available()}")
 print(f"GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU only'}")
 ```
+
+**💡 Por que `--system`?**
+- `uv sync` cria ambiente virtual que o Colab não usa automaticamente
+- `uv pip install --system` instala direto no Python do sistema
+- Mais rápido que `pip` mas compatível com Colab
 
 ### 3. Upload dos arquivos de áudio
 
@@ -135,6 +145,11 @@ files.download('excerpts.zip')
 4. **Batch size**: No Colab com GPU, o batch_size de 2048 deve funcionar bem
 
 ## 🐛 Troubleshooting
+
+**"ModuleNotFoundError: No module named 'vocal_analysis'"**:
+- Execute na seção 2: `!uv pip install --system -e .`
+- NUNCA use `!uv sync` sozinho (cria venv que o Colab não usa)
+- Verifique com: `!python -c "import vocal_analysis; print('✅ OK!')"`
 
 **"GPU not available"**:
 - Verifique: Runtime → Change runtime type → GPU (T4)

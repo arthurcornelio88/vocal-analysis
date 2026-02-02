@@ -127,9 +127,12 @@ uv run python -m vocal_analysis.preprocessing.process_ademilde --device cuda
 **Quick start**:
 ```python
 # No Colab com GPU T4 habilitada
-!git clone https://github.com/SEU_USUARIO/vocal-analysis.git
+!git clone https://github.com/arthurcornelio88/vocal-analysis.git
 %cd vocal-analysis
-!pip install -q uv && uv sync
+!pip install uv && uv pip install --system -e .
+
+# Verificar instalação
+!python -c "import vocal_analysis; print('✅ Instalado!')"
 
 # Processar com CREPE + GPU
 !python src/vocal_analysis/preprocessing/process_ademilde.py --device cuda
