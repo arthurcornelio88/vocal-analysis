@@ -12,15 +12,7 @@ def plot_mechanism_clusters(
     df: pd.DataFrame,
     save_path: str | Path | None = None,
 ) -> plt.Figure:
-    """Scatter plot de Pitch vs HNR para visualizar clusters M1/M2.
-
-    Args:
-        df: DataFrame com colunas 'f0', 'hnr' e 'mechanism'.
-        save_path: Caminho para salvar o plot (opcional).
-
-    Returns:
-        Figura matplotlib.
-    """
+    """Scatter plot de Pitch vs HNR para visualizar clusters M1/M2."""
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.set_theme(style="whitegrid")
 
@@ -47,34 +39,32 @@ def plot_mechanism_clusters(
 def plot_xgb_mechanism_timeline(
     df: pd.DataFrame,
     save_path: str | Path | None = None,
-) -> plt.Figure:
-    """Contorno temporal de f0 colorido pela predição do XGBoost.
-
-    Args:
-        df: DataFrame com colunas 'time', 'f0', 'xgb_mechanism'.
-        save_path: Caminho para salvar o plot (opcional).
-
-    Returns:
-        Figura matplotlib.
+) -> sns.FacetGrid:
+    """Contorno temporal de f0 colorido pela predição, separado por música.
+    
+    CORREÇÃO: Usa FacetGrid para não sobrepor músicas diferentes no mesmo eixo.
     """
-    fig, ax = plt.subplots(figsize=(14, 5))
     sns.set_theme(style="whitegrid")
-
-    colors = {"M1": "steelblue", "M2": "coral"}
-    for mech in ["M1", "M2"]:
-        subset = df[df["xgb_mechanism"] == mech]
-        ax.scatter(subset["time"], subset["f0"], c=colors[mech], s=1.5, alpha=0.7, label=mech)
-
-    ax.set_title("Predição XGBoost: M1 vs M2 ao longo do tempo")
-    ax.set_xlabel("Tempo (s)")
-    ax.set_ylabel("f0 (Hz)")
-    ax.legend(loc="upper right")
-
+    
+    # Define cores fixas para garantir consistência
+    palette = {"M1": "steelblue", "M2": "coral"}
+    
+    # Cria um grid com uma linha por música
+    g = sns.FacetGrid(df, row="song", hue="xgb_mechanism", palette=palette, 
+                      aspect=4, height=2.5, sharex=False)
+    
+    g.map(plt.scatter, "time", "f0", s=1.5, alpha=0.7)
+    g.add_legend(title="Mecanismo")
+    
+    # Ajustes de títulos e eixos
+    g.set_axis_labels("Tempo (s)", "f0 (Hz)")
+    g.set_titles(row_template="{row_name}")
+    
     if save_path:
-        fig.savefig(save_path, dpi=150, bbox_inches="tight")
-        plt.close(fig)
+        g.savefig(save_path, dpi=150, bbox_inches="tight")
+        plt.close(g.figure)
 
-    return fig
+    return g
 
 
 def plot_xgb_mechanism_excerpt(
@@ -84,18 +74,7 @@ def plot_xgb_mechanism_excerpt(
     end_time: float,
     save_path: str | Path | None = None,
 ) -> plt.Figure:
-    """Trecho de um música com f0 colorido por predição XGBoost e notas no eixo Y.
-
-    Args:
-        df: DataFrame com colunas 'time', 'f0', 'xgb_mechanism', 'song'.
-        song: Nome da música a plotar.
-        start_time: Tempo de início do trecho (s).
-        end_time: Tempo de fim do trecho (s).
-        save_path: Caminho para salvar o plot (opcional).
-
-    Returns:
-        Figura matplotlib.
-    """
+    """Trecho de um música com f0 colorido por predição XGBoost e notas no eixo Y."""
     from vocal_analysis.utils.pitch import hz_to_midi, hz_to_note, midi_to_hz
 
     subset = df[(df["song"] == song) & (df["time"] >= start_time) & (df["time"] <= end_time)]
@@ -104,21 +83,30 @@ def plot_xgb_mechanism_excerpt(
     sns.set_theme(style="whitegrid")
 
     colors = {"M1": "steelblue", "M2": "coral"}
-    for mech in ["M1", "M2"]:
-        mech_data = subset[subset["xgb_mechanism"] == mech]
-        ax.scatter(
-            mech_data["time"], mech_data["f0"], c=colors[mech], s=8, alpha=0.8, label=mech, zorder=2
-        )
-
-    # Eixo Y secundário com notas musicais
-    f0_min = subset["f0"].min() if len(subset) > 0 else 100
-    f0_max = subset["f0"].max() if len(subset) > 0 else 800
-    # Expandir range para margem visual
-    f0_min = max(f0_min * 0.85, 50)
-    f0_max = f0_max * 1.15
+    
+    # Plotar dados (se vazio, cria plot vazio para não quebrar)
+    if not subset.empty:
+        for mech in ["M1", "M2"]:
+            mech_data = subset[subset["xgb_mechanism"] == mech]
+            if not mech_data.empty:
+                ax.scatter(
+                    mech_data["time"], mech_data["f0"], 
+                    c=colors[mech], s=15, alpha=0.8, label=mech, zorder=2
+                )
+    
+    # Configuração do Eixo Y (Notas)
+    f0_min = subset["f0"].min() if not subset.empty else 100
+    f0_max = subset["f0"].max() if not subset.empty else 800
+    
+    # Margem de segurança
+    f0_min = max(f0_min * 0.9, 50)
+    f0_max = f0_max * 1.1
     ax.set_ylim(f0_min, f0_max)
+    
+    # Eixo X fixo na janela pedida (importante para conferência visual)
+    ax.set_xlim(start_time, end_time)
 
-    # Gerar ticks de notas dentro do range visível
+    # Gerar ticks de notas
     midi_min = int(np.floor(hz_to_midi(f0_min)))
     midi_max = int(np.ceil(hz_to_midi(f0_max)))
     note_ticks_hz = []
@@ -135,14 +123,16 @@ def plot_xgb_mechanism_excerpt(
     ax2.set_yticklabels(note_ticks_labels, fontsize=9)
     ax2.set_ylabel("Nota")
 
-    # Linhas horizontais sutis nas notas
     for hz in note_ticks_hz:
         ax.axhline(hz, color="gray", linewidth=0.3, alpha=0.5, zorder=1)
 
     ax.set_title(f"{song} — {start_time:.1f}s a {end_time:.1f}s")
     ax.set_xlabel("Tempo (s)")
     ax.set_ylabel("f0 (Hz)")
-    ax.legend(loc="upper left")
+    
+    # Só adiciona legenda se houve dados plotados
+    if not subset.empty:
+        ax.legend(loc="upper left")
 
     fig.tight_layout()
 
@@ -160,18 +150,7 @@ def plot_f0_contour(
     title: str = "Contorno de f0",
     save_path: str | Path | None = None,
 ) -> plt.Figure:
-    """Plot do contorno de f0 ao longo do tempo.
-
-    Args:
-        time: Array de tempo em segundos.
-        f0: Array de frequência fundamental.
-        confidence: Array de confiança da estimativa (opcional).
-        title: Título do gráfico.
-        save_path: Caminho para salvar o plot (opcional).
-
-    Returns:
-        Figura matplotlib.
-    """
+    """Plot do contorno de f0 ao longo do tempo."""
     fig, ax = plt.subplots(figsize=(12, 4))
     sns.set_theme(style="whitegrid")
 

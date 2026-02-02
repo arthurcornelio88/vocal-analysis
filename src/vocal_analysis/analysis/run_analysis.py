@@ -2,9 +2,13 @@
 
 import json
 import os
+import re
 from pathlib import Path
 
+import librosa
+import numpy as np
 import pandas as pd
+import soundfile as sf
 
 from vocal_analysis.analysis.exploratory import (
     analyze_mechanism_regions,
@@ -21,6 +25,79 @@ from vocal_analysis.visualization.plots import (
     plot_xgb_mechanism_excerpt,
     plot_xgb_mechanism_timeline,
 )
+
+
+def parse_time_string(time_str: str) -> float:
+    """Converte string 'MMSS' ou segundos puros para float segundos.
+    
+    Exemplos:
+        "0112" -> 1 min 12 seg -> 72.0
+        "0035" -> 0 min 35 seg -> 35.0
+        "72"   -> 72.0
+    """
+    # Se for formato MMSS (4 dígitos)
+    if len(time_str) == 4 and time_str.isdigit():
+        minutes = int(time_str[:2])
+        seconds = int(time_str[2:])
+        return minutes * 60 + seconds
+    
+    # Caso contrário assume segundos
+    return float(time_str)
+
+
+def get_manual_excerpt_from_env(song_name: str) -> tuple[float, float] | None:
+    """Busca intervalo manual em variáveis de ambiente.
+    
+    Procura por variáveis no formato: EXCERPT_NOME_DA_MUSICA
+    Exemplo: EXCERPT_BRASILEIRINHO="0112-0117"
+             (Do minuto 1:12 ao 1:17)
+    """
+    # Sanitiza o nome da música para criar a chave da ENV
+    # Ex: "Apanhei-te Cavaquinho" -> "APANHEITE_CAVAQUINHO"
+    safe_name = re.sub(r"[^a-zA-Z0-9]", "_", song_name).upper()
+    env_key = f"EXCERPT_{safe_name}"
+    
+    env_value = os.environ.get(env_key)
+    
+    if env_value:
+        try:
+            start_str, end_str = env_value.split("-")
+            start_time = parse_time_string(start_str.strip())
+            end_time = parse_time_string(end_str.strip())
+            return start_time, end_time
+        except ValueError:
+            print(f"  ⚠️ Aviso: Formato inválido na ENV {env_key}='{env_value}'. Use 'MMSS-MMSS'.")
+            
+    return None
+
+
+def save_audio_excerpt(
+    song_name: str,
+    start_time: float,
+    end_time: float,
+    project_root: Path,
+    output_dir: Path
+) -> None:
+    """Recorta e salva o áudio correspondente ao excerpt."""
+    raw_dir = project_root / "data" / "raw"
+    # Tenta achar mp3 ou wav
+    audio_files = list(raw_dir.glob(f"*{song_name}*.mp3")) + list(raw_dir.glob(f"*{song_name}*.wav"))
+    
+    if not audio_files:
+        print(f"    ⚠️ Áudio original não encontrado para cortar: {song_name}")
+        return
+
+    audio_path = audio_files[0]
+    
+    try:
+        # Carrega apenas o trecho desejado (rápido e eficiente)
+        y, sr = librosa.load(audio_path, sr=None, offset=start_time, duration=end_time - start_time)
+        
+        out_path = output_dir / f"excerpt_{song_name}.wav"
+        sf.write(out_path, y, sr)
+        print(f"    🎵 Áudio salvo: {out_path}")
+    except Exception as e:
+        print(f"    ⚠️ Erro ao salvar áudio: {e}")
 
 
 def main() -> None:
@@ -99,35 +176,73 @@ def main() -> None:
         plot_xgb_mechanism_timeline(df_clustered, save_path=timeline_path)
         print("  Plot temporal gerado: xgb_mechanism_timeline.png")
 
-        # Plots de excerpt por música — janela mais densa (5s, nota a nota, para eval humano)
+        # Plots de excerpt por música — janela mais densa OU definida por ENV
         print("  Gerando excerpts por música...")
-        import numpy as np
-
+        
         for song_name in df_clustered["song"].unique():
             song_df = df_clustered[df_clustered["song"] == song_name].sort_values("time")
+            
+            if song_df.empty:
+                continue
+                
             t_min_song = song_df["time"].min()
             t_max_song = song_df["time"].max()
-            # Encontrar janela de 5s com maior densidade de frames
-            best_start = t_min_song
-            best_count = 0
-            for t in np.arange(t_min_song, t_max_song - 5, 0.5):
-                count = len(song_df[(song_df["time"] >= t) & (song_df["time"] < t + 5)])
-                if count > best_count:
-                    best_count = count
-                    best_start = t
+            
+            # 1. Tentar pegar intervalo da Variável de Ambiente
+            manual_excerpt = get_manual_excerpt_from_env(song_name)
+            
+            if manual_excerpt:
+                best_start, best_end = manual_excerpt
+                print(f"  > {song_name}: Usando ENV ({best_start:.1f}s - {best_end:.1f}s)")
+                
+                # Validação simples
+                if best_start > t_max_song:
+                    print(f"    ⚠️ AVISO: Início {best_start}s é maior que a música ({t_max_song:.1f}s). Ignorando.")
+                    continue
+                    
+                # Conta frames apenas para log
+                best_count = len(song_df[(song_df["time"] >= best_start) & (song_df["time"] < best_end)])
+            
+            else:
+                # 2. Automático: Encontrar janela de 5s com maior densidade
+                print(f"  > {song_name}: Buscando trecho mais denso automaticamente...")
+                best_start = t_min_song
+                best_count = 0
+                
+                # Define intervalo de busca
+                if t_max_song - 5 <= t_min_song:
+                    search_range = [t_min_song]
+                else:
+                    search_range = np.arange(t_min_song, t_max_song - 5, 0.5)
+
+                for t in search_range:
+                    count = len(song_df[(song_df["time"] >= t) & (song_df["time"] < t + 5)])
+                    if count > best_count:
+                        best_count = count
+                        best_start = t
+                
+                best_end = best_start + 5.0
+            
+            # Gerar Plot
             excerpt_path = plots_dir / f"excerpt_{song_name}.png"
             plot_xgb_mechanism_excerpt(
                 df_clustered,
                 song=song_name,
                 start_time=best_start,
-                end_time=best_start + 5.0,
+                end_time=best_end,
                 save_path=excerpt_path,
             )
             print(
-                f"    {song_name}: {best_start:.1f}s – {best_start + 5:.1f}s ({best_count} frames)"
+                f"    {song_name}: {best_start:.1f}s – {best_end:.1f}s ({best_count} frames)"
             )
+            
+            # Salvar Áudio para conferência
+            save_audio_excerpt(song_name, best_start, best_end, project_root, output_dir)
+            
     except Exception as e:
         print(f"  Erro ao treinar XGBoost: {e}")
+        import traceback
+        traceback.print_exc()
 
     # Gerar relatório básico
     artist_name = metadata.get("artist", "Desconhecido") if metadata else "Desconhecido"

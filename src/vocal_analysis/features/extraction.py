@@ -31,11 +31,11 @@ class BioacousticFeatures(TypedDict):
 
 def extract_bioacoustic_features(
     audio_path: str | Path,
-    hop_length: int = 441,
+    hop_length: int = 220, # <--- MUDANÇA 1: Reduzir de 441 para 220 (5ms) para captar notas rápidas
     fmin: float = 50.0,
     fmax: float = 800.0,
     device: str = "cpu",
-    model: str = "tiny",
+    model: str = "full", # <--- MUDANÇA 2: Garantir modelo 'full' para precisão máxima
     skip_formants: bool = False,
     skip_jitter_shimmer: bool = False,
     use_praat_f0: bool = False,
@@ -106,11 +106,18 @@ def extract_bioacoustic_features(
             fmin=fmin,
             fmax=fmax,
             model=model,
-            decoder=torchcrepe.decode.viterbi,
+            decoder=torchcrepe.decode.weighted_argmax, # <--- CRUCIAL: Mude de .viterbi para .weighted_argmax
             batch_size=2048,
             device=device,
             return_periodicity=True,
         )
+
+        # Nota: weighted_argmax pode gerar mais "ruído" ou saltos falsos,
+        # mas não vai "comer" a nota aguda real.
+        
+        # Filtragem pós-processamento manual (Opcional, mas recomendada se usar argmax)
+        torchcrepe.filter.median(f0, 3)  # Filtro mediano leve para tirar ruído pontual
+
         f0 = f0.squeeze().cpu().numpy()
         confidence = confidence.squeeze().cpu().numpy()
 
