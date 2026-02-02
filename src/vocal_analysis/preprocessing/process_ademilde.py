@@ -23,6 +23,7 @@ class ProcessingConfig:
         limit_files: int | None = None,
         use_praat_f0: bool = False,
         skip_cpps: bool = False,
+        cpps_timeout: int | None = None,
         crepe_model: str = "full",
         device: str = "cpu",
     ):
@@ -32,6 +33,7 @@ class ProcessingConfig:
         self.limit_files = limit_files
         self.use_praat_f0 = use_praat_f0
         self.skip_cpps = skip_cpps
+        self.cpps_timeout = cpps_timeout
         self.crepe_model = crepe_model
         self.device = device
 
@@ -88,6 +90,7 @@ def process_audio_files(
                 skip_jitter_shimmer=config.skip_jitter_shimmer,
                 use_praat_f0=config.use_praat_f0,
                 skip_cpps=config.skip_cpps,
+                cpps_timeout=config.cpps_timeout,
                 model=config.crepe_model,
                 device=config.device,
             )
@@ -368,7 +371,14 @@ Exemplos de uso:
     parser.add_argument(
         "--skip-cpps",
         action="store_true",
-        help="Pular CPPS (recomendado para macOS com arquivos longos que podem travar)",
+        help="Pular CPPS completamente (retorna None)",
+    )
+    parser.add_argument(
+        "--cpps-timeout",
+        type=int,
+        default=None,
+        metavar="SECONDS",
+        help="Timeout em segundos para CPPS (None = sem timeout). Use apenas se CPPS travar no seu sistema",
     )
     parser.add_argument(
         "--crepe-model",
@@ -407,6 +417,7 @@ Exemplos de uso:
         limit_files=args.limit,
         use_praat_f0=args.use_praat_f0,
         skip_cpps=args.skip_cpps,
+        cpps_timeout=args.cpps_timeout,
         crepe_model=args.crepe_model,
         device=args.device,
     )
