@@ -21,6 +21,7 @@ dependencies = [
     "soundfile>=0.12.0",
     "google-generativeai>=0.8.0",
     "pillow>=10.0.0",
+    "dotenv>=0.9.9",
 ]
 
 [project.optional-dependencies]
