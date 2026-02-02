@@ -1,5 +1,6 @@
 """Pipeline híbrido de extração de features (Crepe + Praat)."""
 
+import threading
 from pathlib import Path
 from typing import TypedDict
 
@@ -10,6 +11,54 @@ import torch
 import torchcrepe
 
 from vocal_analysis.preprocessing.audio import load_audio
+
+
+class TimeoutException(Exception):
+    """Exception raised when operation times out."""
+    pass
+
+
+def _extract_cpps_with_timeout(sound, fmin, time_step, timeout_seconds=30):
+    """Extract CPPS with timeout to prevent indefinite hanging on macOS."""
+    result = {"cpps": None, "error": None}
+
+    def target():
+        try:
+            power_cepstrogram = parselmouth.praat.call(
+                sound, "To PowerCepstrogram", fmin, time_step, 5000.0, 50.0
+            )
+            cpps = parselmouth.praat.call(
+                power_cepstrogram,
+                "Get CPPS",
+                False,
+                0.02,
+                0.0005,
+                60,
+                330,
+                0.05,
+                "Parabolic",
+                0.001,
+                0,
+                "Exponential decay",
+                "Robust slow",
+            )
+            result["cpps"] = cpps
+        except Exception as e:
+            result["error"] = str(e)
+
+    thread = threading.Thread(target=target)
+    thread.daemon = True
+    thread.start()
+    thread.join(timeout=timeout_seconds)
+
+    if thread.is_alive():
+        # Thread still running - timed out
+        raise TimeoutException(f"CPPS extraction timed out after {timeout_seconds}s")
+
+    if result["error"]:
+        raise Exception(result["error"])
+
+    return result["cpps"]
 
 
 class BioacousticFeatures(TypedDict):
@@ -39,6 +88,7 @@ def extract_bioacoustic_features(
     skip_formants: bool = False,
     skip_jitter_shimmer: bool = False,
     use_praat_f0: bool = False,
+    skip_cpps: bool = False,
 ) -> BioacousticFeatures:
     """Pipeline Híbrido de extração de features.
 
@@ -55,6 +105,7 @@ def extract_bioacoustic_features(
         skip_formants: Se True, pula extração de formantes F1-F4 (economiza ~30% do tempo).
         skip_jitter_shimmer: Se True, pula Jitter/Shimmer (economiza ~20% do tempo).
         use_praat_f0: Se True, usa Praat ao invés de CREPE (muito mais rápido, menos preciso).
+        skip_cpps: Se True, pula CPPS e usa HNR como fallback (recomendado para macOS com arquivos longos).
 
     Returns:
         Dicionário com features extraídas.
@@ -107,7 +158,7 @@ def extract_bioacoustic_features(
             fmax=fmax,
             model=model,
             decoder=torchcrepe.decode.weighted_argmax, # <--- CRUCIAL: Mude de .viterbi para .weighted_argmax
-            batch_size=2048,
+            batch_size=512,  # Reduzido de 2048 para 512 para economizar memória no macOS
             device=device,
             return_periodicity=True,
         )
@@ -128,28 +179,20 @@ def extract_bioacoustic_features(
 
     # Cepstral Peak Prominence (CPP) via Praat call
     # Usa a interface de scripting do Praat
-    try:
-        power_cepstrogram = parselmouth.praat.call(
-            sound, "To PowerCepstrogram", fmin, time_step, 5000.0, 50.0
-        )
-        cpps = parselmouth.praat.call(
-            power_cepstrogram,
-            "Get CPPS",
-            False,
-            0.02,
-            0.0005,
-            60,
-            330,
-            0.05,
-            "Parabolic",
-            0.001,
-            0,
-            "Exponential decay",
-            "Robust slow",
-        )
-    except Exception:
-        # Fallback: usar HNR médio como proxy
+    # NOTA: CPPS pode travar em macOS com arquivos longos - timeout de 30s aplicado
+    if skip_cpps:
         cpps = float(np.nanmean(hnr_values))
+    else:
+        try:
+            # Tentar extrair CPPS com timeout de 30 segundos
+            cpps = _extract_cpps_with_timeout(sound, fmin, time_step, timeout_seconds=30)
+        except TimeoutException:
+            # Timeout: usar HNR médio como proxy
+            print("  ⚠ CPPS timeout (30s) - usando HNR fallback", flush=True)
+            cpps = float(np.nanmean(hnr_values))
+        except Exception:
+            # Outro erro: usar HNR médio como proxy
+            cpps = float(np.nanmean(hnr_values))
 
     # 3. Extração de Jitter e Shimmer (instabilidade glótica)
     # Jitter (ppq5): Period Perturbation Quotient - instabilidade de período

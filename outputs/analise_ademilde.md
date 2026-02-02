@@ -4,12 +4,12 @@
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **f0 médio** | 364.7 Hz | F#4 |
-| **f0 mínimo** | 74.0 Hz | D2 |
-| **f0 máximo** | 796.5 Hz | G5 |
-| **Extensão** | D2 – G5 | ~3.4 oitavas |
-| **HNR médio** | 8.0 dB | – |
-| **Total frames** | 5143 | – |
+| **f0 médio** | 182.3 Hz | F#3 |
+| **f0 mínimo** | 50.0 Hz | G1 |
+| **f0 máximo** | 797.6 Hz | G5 |
+| **Extensão** | G1 – G5 | ~4.0 oitavas |
+| **HNR médio** | 5.3 dB | – |
+| **Total frames** | 83636 | – |
 
 ## Análise por Mecanismo
 
@@ -17,41 +17,41 @@
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | 3562 (69.3%) | – |
-| **f0 médio** | 311.2 Hz | D#4 |
-| **f0 desvio** | 49.1 Hz | – |
-| **Extensão** | D2 – G4 | – |
-| **HNR médio** | 7.3 dB | – |
+| **Frames** | 73471 (87.8%) | – |
+| **f0 médio** | 137.4 Hz | C#3 |
+| **f0 desvio** | 98.5 Hz | – |
+| **Extensão** | G1 – G4 | – |
+| **HNR médio** | 4.9 dB | – |
 
 ### M2 (Cabeça/Head)
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | 1581 (30.7%) | – |
-| **f0 médio** | 485.2 Hz | B4 |
-| **f0 desvio** | 76.5 Hz | – |
+| **Frames** | 10165 (12.2%) | – |
+| **f0 médio** | 506.9 Hz | B4 |
+| **f0 desvio** | 82.9 Hz | – |
 | **Extensão** | G4 – G5 | – |
-| **HNR médio** | 9.6 dB | – |
+| **HNR médio** | 8.0 dB | – |
 
 ## Por Música
 
-### Apanhei-te Cavaquinho
+### apanheite_cavaquinho
 
-- f0 médio: 362.5 Hz (F#4)
-- Extensão: G3 – G5
-- HNR médio: 7.6 dB
-
-### delicado
-
-- f0 médio: 341.9 Hz (F4)
-- Extensão: D3 – F5
-- HNR médio: 7.8 dB
+- f0 médio: 220.4 Hz (A3)
+- Extensão: G1 – G5
+- HNR médio: 6.2 dB
 
 ### brasileirinho
 
-- f0 médio: 415.9 Hz (G#4)
-- Extensão: D2 – F#5
-- HNR médio: 9.1 dB
+- f0 médio: 183.5 Hz (F#3)
+- Extensão: G1 – G5
+- HNR médio: 5.3 dB
+
+### delicado
+
+- f0 médio: 159.6 Hz (D#3)
+- Extensão: G1 – F5
+- HNR médio: 4.7 dB
 
 ## Classificação XGBoost (Pseudo-Labels GMM)
 
@@ -62,12 +62,12 @@ Split: 80% treino / 20% teste
 ```
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00       776
-           1       0.99      0.99      0.99       253
+           0       1.00      1.00      1.00     11019
+           1       1.00      1.00      1.00      5709
 
-    accuracy                           0.99      1029
-   macro avg       0.99      0.99      0.99      1029
-weighted avg       0.99      0.99      0.99      1029
+    accuracy                           1.00     16728
+   macro avg       1.00      1.00      1.00     16728
+weighted avg       1.00      1.00      1.00     16728
 ```
 
 ## Interpretação

@@ -10,7 +10,6 @@ import pandas as pd
 
 from vocal_analysis.features.extraction import extract_bioacoustic_features
 from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
-from vocal_analysis.visualization.plots import plot_f0_contour
 
 
 class ProcessingConfig:
@@ -23,12 +22,16 @@ class ProcessingConfig:
         skip_jitter_shimmer: bool = False,
         limit_files: int | None = None,
         use_praat_f0: bool = False,
+        skip_cpps: bool = False,
+        crepe_model: str = "full",
     ):
         self.skip_formants = skip_formants
         self.skip_plots = skip_plots
         self.skip_jitter_shimmer = skip_jitter_shimmer
         self.limit_files = limit_files
         self.use_praat_f0 = use_praat_f0
+        self.skip_cpps = skip_cpps
+        self.crepe_model = crepe_model
 
 
 def process_audio_files(
@@ -61,6 +64,10 @@ def process_audio_files(
         print("⚡ DEBUG: Jitter/Shimmer DESATIVADOS")
     if config.use_praat_f0:
         print("⚡ DEBUG: Usando Praat f0 (rápido) ao invés de CREPE")
+    else:
+        print(f"🎵 Usando CREPE modelo '{config.crepe_model}' para extração de f0")
+    if config.skip_cpps:
+        print("⚡ DEBUG: CPPS DESATIVADO (evita travamento em macOS)")
 
     all_features = []
     songs_metadata = []
@@ -74,6 +81,8 @@ def process_audio_files(
                 skip_formants=config.skip_formants,
                 skip_jitter_shimmer=config.skip_jitter_shimmer,
                 use_praat_f0=config.use_praat_f0,
+                skip_cpps=config.skip_cpps,
+                model=config.crepe_model,
             )
 
             # Criar DataFrame para esta música
@@ -114,6 +123,9 @@ def process_audio_files(
             # Gerar plot de f0 (apenas se não desativado)
             plot_path = None
             if not config.skip_plots:
+                # Import only when needed to avoid matplotlib initialization overhead
+                from vocal_analysis.visualization.plots import plot_f0_contour
+
                 plot_path = output_dir / "plots" / f"{audio_path.stem}_f0.png"
                 plot_f0_contour(
                     features["time"],
@@ -347,9 +359,21 @@ Exemplos de uso:
         help="Usar Praat (autocorrelation) para f0 ao invés de CREPE - MUITO mais rápido mas menos preciso",
     )
     parser.add_argument(
+        "--skip-cpps",
+        action="store_true",
+        help="Pular CPPS (recomendado para macOS com arquivos longos que podem travar)",
+    )
+    parser.add_argument(
+        "--crepe-model",
+        type=str,
+        default="full",
+        choices=["tiny", "small", "full"],
+        help="Modelo CREPE para extração de f0 (default: full). Use 'small' para economizar memória no macOS",
+    )
+    parser.add_argument(
         "--fast",
         action="store_true",
-        help="Modo rápido: ativa --skip-formants, --skip-plots, --skip-jitter-shimmer, --use-praat-f0",
+        help="Modo rápido: ativa --skip-formants, --skip-plots, --skip-jitter-shimmer, --skip-cpps, --use-praat-f0",
     )
 
     args = parser.parse_args()
@@ -360,6 +384,7 @@ Exemplos de uso:
         args.skip_plots = True
         args.skip_jitter_shimmer = True
         args.use_praat_f0 = True
+        args.skip_cpps = True
 
     config = ProcessingConfig(
         skip_formants=args.skip_formants,
@@ -367,6 +392,8 @@ Exemplos de uso:
         skip_jitter_shimmer=args.skip_jitter_shimmer,
         limit_files=args.limit,
         use_praat_f0=args.use_praat_f0,
+        skip_cpps=args.skip_cpps,
+        crepe_model=args.crepe_model,
     )
 
     project_root = Path(__file__).parent.parent.parent.parent
