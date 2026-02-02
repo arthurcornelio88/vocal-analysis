@@ -137,12 +137,20 @@ files.download('excerpts.zip')
     --crepe-model tiny
 ```
 
+### Ajustar batch size (se tiver OOM)
+```python
+# Se T4 der "Out of Memory", reduza batch size
+!python src/vocal_analysis/preprocessing/process_ademilde.py \
+    --device cuda \
+    --batch-size 512
+```
+
 ## 💡 Dicas
 
 1. **GPU T4 gratuita**: ~12-15 horas/dia de uso
 2. **Salvar progresso**: Download dos arquivos antes da sessão expirar
 3. **Reprocessar**: Se precisar, os arquivos ficam salvos por ~12h no Colab
-4. **Batch size**: No Colab com GPU, o batch_size de 2048 deve funcionar bem
+4. **Batch size**: Padrão agora é 2048 (ideal para GPU T4). Se tiver OOM, use `--batch-size 512`
 
 ## 🐛 Troubleshooting
 

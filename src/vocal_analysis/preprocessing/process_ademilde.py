@@ -24,6 +24,7 @@ class ProcessingConfig:
         use_praat_f0: bool = False,
         skip_cpps: bool = False,
         cpps_timeout: int | None = None,
+        batch_size: int = 2048,
         crepe_model: str = "full",
         device: str = "cpu",
     ):
@@ -34,6 +35,7 @@ class ProcessingConfig:
         self.use_praat_f0 = use_praat_f0
         self.skip_cpps = skip_cpps
         self.cpps_timeout = cpps_timeout
+        self.batch_size = batch_size
         self.crepe_model = crepe_model
         self.device = device
 
@@ -91,6 +93,7 @@ def process_audio_files(
                 use_praat_f0=config.use_praat_f0,
                 skip_cpps=config.skip_cpps,
                 cpps_timeout=config.cpps_timeout,
+                batch_size=config.batch_size,
                 model=config.crepe_model,
                 device=config.device,
             )
@@ -381,6 +384,13 @@ Exemplos de uso:
         help="Timeout em segundos para CPPS (None = sem timeout). Use apenas se CPPS travar no seu sistema",
     )
     parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=2048,
+        metavar="SIZE",
+        help="Batch size para CREPE (default: 2048 para GPU, use 512 para macOS CPU limitado)",
+    )
+    parser.add_argument(
         "--crepe-model",
         type=str,
         default="full",
@@ -418,6 +428,7 @@ Exemplos de uso:
         use_praat_f0=args.use_praat_f0,
         skip_cpps=args.skip_cpps,
         cpps_timeout=args.cpps_timeout,
+        batch_size=args.batch_size,
         crepe_model=args.crepe_model,
         device=args.device,
     )

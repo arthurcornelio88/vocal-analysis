@@ -41,6 +41,7 @@ def extract_bioacoustic_features(
     use_praat_f0: bool = False,
     skip_cpps: bool = False,
     cpps_timeout: int | None = None,
+    batch_size: int = 2048,
 ) -> BioacousticFeatures:
     """Pipeline Híbrido de extração de features.
 
@@ -59,6 +60,7 @@ def extract_bioacoustic_features(
         use_praat_f0: Se True, usa Praat ao invés de CREPE (muito mais rápido, menos preciso).
         skip_cpps: Se True, pula CPPS completamente (retorna None).
         cpps_timeout: Timeout em segundos para CPPS (None = sem timeout). Use apenas se CPPS travar.
+        batch_size: Batch size para CREPE (default 2048 para GPU, use 512 para macOS CPU).
 
     Returns:
         Dicionário com features extraídas.
@@ -111,7 +113,7 @@ def extract_bioacoustic_features(
             fmax=fmax,
             model=model,
             decoder=torchcrepe.decode.weighted_argmax, # <--- CRUCIAL: Mude de .viterbi para .weighted_argmax
-            batch_size=512,  # Reduzido de 2048 para 512 para economizar memória no macOS
+            batch_size=batch_size,
             device=device,
             return_periodicity=True,
         )
