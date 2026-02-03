@@ -179,6 +179,8 @@ def plot_separation_validation(
     confidence_separated: np.ndarray,
     title: str = "Validacao: Original vs Voz Separada",
     save_path: str | Path | None = None,
+    start_time: float | None = None,
+    end_time: float | None = None,
 ) -> plt.Figure:
     """Plot comparativo mostrando f0 antes/depois da separacao.
 
@@ -194,11 +196,26 @@ def plot_separation_validation(
         confidence_separated: Array de confianca CREPE da voz separada.
         title: Titulo do grafico.
         save_path: Caminho para salvar o plot (opcional).
+        start_time: Tempo inicial do excerpt (segundos). Se None, usa todo o audio.
+        end_time: Tempo final do excerpt (segundos). Se None, usa todo o audio.
 
     Returns:
         Figura matplotlib.
     """
     from vocal_analysis.utils.pitch import hz_to_midi, hz_to_note, midi_to_hz
+
+    # Filtrar por intervalo de tempo se especificado
+    if start_time is not None and end_time is not None:
+        mask_time_orig = (time_original >= start_time) & (time_original <= end_time)
+        mask_time_sep = (time_separated >= start_time) & (time_separated <= end_time)
+
+        time_original = time_original[mask_time_orig]
+        f0_original = f0_original[mask_time_orig]
+        confidence_original = confidence_original[mask_time_orig]
+
+        time_separated = time_separated[mask_time_sep]
+        f0_separated = f0_separated[mask_time_sep]
+        confidence_separated = confidence_separated[mask_time_sep]
 
     fig, axes = plt.subplots(2, 1, figsize=(14, 8), sharex=True)
     sns.set_theme(style="whitegrid")

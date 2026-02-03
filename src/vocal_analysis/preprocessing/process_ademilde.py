@@ -2,6 +2,8 @@
 
 import argparse
 import json
+import os
+import re
 import tempfile
 from datetime import datetime
 from pathlib import Path
@@ -12,6 +14,62 @@ import soundfile as sf
 
 from vocal_analysis.features.extraction import extract_bioacoustic_features
 from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
+
+
+def _parse_excerpt_interval(interval_str: str) -> tuple[float, float] | None:
+    """Parseia intervalo no formato 'MMSS-MMSS' para segundos.
+
+    Args:
+        interval_str: String no formato "0022-0103" (do segundo 22 ao 1:03).
+
+    Returns:
+        Tuple (start_seconds, end_seconds) ou None se inválido.
+    """
+    match = re.match(r"(\d{4})-(\d{4})", interval_str.strip('"\''))
+    if not match:
+        return None
+
+    def mmss_to_seconds(mmss: str) -> float:
+        minutes = int(mmss[:2])
+        seconds = int(mmss[2:])
+        return minutes * 60 + seconds
+
+    start = mmss_to_seconds(match.group(1))
+    end = mmss_to_seconds(match.group(2))
+    return start, end
+
+
+def _get_excerpt_from_env(song_stem: str) -> tuple[float, float] | None:
+    """Busca intervalo de excerpt do .env para uma música.
+
+    Args:
+        song_stem: Nome da música (stem do arquivo, ex: "delicado", "apanheite_cavaquinho").
+
+    Returns:
+        Tuple (start, end) em segundos ou None se não encontrado.
+    """
+    # Normalizar nome para busca (ex: "delicado" -> "DELICADO", "apanheite_cavaquinho" -> "APANHEITE_CAVAQUINHO")
+    song_key = song_stem.upper().replace("-", "_")
+
+    # Tentar carregar do .env (project root = 4 levels up from this file)
+    env_path = Path(__file__).parent.parent.parent.parent / ".env"
+    if not env_path.exists():
+        return None
+
+    with open(env_path) as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            # Verificar se é uma variável EXCERPT_* que corresponde à música
+            if key.upper().startswith("EXCERPT_"):
+                env_song = key.upper().replace("EXCERPT_", "")
+                # Match exato ou parcial (ex: "DELICADO" matches "DELICADO")
+                if song_key == env_song or song_key.startswith(env_song) or env_song.startswith(song_key):
+                    return _parse_excerpt_interval(value)
+
+    return None
 
 
 class ProcessingConfig:
@@ -58,6 +116,9 @@ def _generate_validation_plot(
 ) -> None:
     """Gera plot comparativo para validar separação de voz.
 
+    Lê intervalo de excerpt do .env (se disponível) para plotar apenas
+    o trecho relevante ao invés do áudio completo.
+
     Args:
         original_audio_path: Caminho do áudio original.
         separated_features: Features extraídas da voz separada.
@@ -67,7 +128,14 @@ def _generate_validation_plot(
     from vocal_analysis.features.extraction import extract_bioacoustic_features
     from vocal_analysis.visualization.plots import plot_separation_validation
 
-    print("  Gerando plot de validação...")
+    # Buscar intervalo de excerpt do .env
+    excerpt_interval = _get_excerpt_from_env(original_audio_path.stem)
+    start_time, end_time = excerpt_interval if excerpt_interval else (None, None)
+
+    if excerpt_interval:
+        print(f"  Gerando plot de validação (excerpt: {start_time:.0f}s-{end_time:.0f}s)...")
+    else:
+        print("  Gerando plot de validação (áudio completo)...")
 
     # Extrair features do áudio original (para comparação)
     original_features = extract_bioacoustic_features(
@@ -92,6 +160,8 @@ def _generate_validation_plot(
         confidence_separated=separated_features["confidence"],
         title=f"Validação Separação - {original_audio_path.stem}",
         save_path=plot_path,
+        start_time=start_time,
+        end_time=end_time,
     )
     print(f"  ✓ Plot de validação salvo: {plot_path.name}")
 
@@ -257,7 +327,11 @@ def process_audio_files(
                 "f0_range_notes": hz_range_to_notes(df_voiced["f0"].min(), df_voiced["f0"].max()),
                 "f0_std_hz": float(round(df_voiced["f0"].std(), 1)),
                 "hnr_mean_db": float(round(df_voiced["hnr"].mean(), 1)),
-                "cpps_global": float(round(features["cpps_global"], 2)),
+                "cpps_global": (
+                    float(round(features["cpps_global"], 2))
+                    if features["cpps_global"] is not None
+                    else None
+                ),
                 "energy_mean": float(round(df_voiced["energy"].mean(), 4)),
             }
 
