@@ -2,11 +2,13 @@
 
 import argparse
 import json
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import soundfile as sf
 
 from vocal_analysis.features.extraction import extract_bioacoustic_features
 from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
@@ -27,6 +29,10 @@ class ProcessingConfig:
         batch_size: int = 2048,
         crepe_model: str = "full",
         device: str = "cpu",
+        separate_vocals: bool = False,
+        separation_device: str | None = None,
+        use_separation_cache: bool = True,
+        validate_separation: bool = False,
     ):
         self.skip_formants = skip_formants
         self.skip_plots = skip_plots
@@ -38,6 +44,56 @@ class ProcessingConfig:
         self.batch_size = batch_size
         self.crepe_model = crepe_model
         self.device = device
+        self.separate_vocals = separate_vocals
+        self.separation_device = separation_device or device
+        self.use_separation_cache = use_separation_cache
+        self.validate_separation = validate_separation
+
+
+def _generate_validation_plot(
+    original_audio_path: Path,
+    separated_features: dict,
+    config: ProcessingConfig,
+    output_dir: Path,
+) -> None:
+    """Gera plot comparativo para validar separação de voz.
+
+    Args:
+        original_audio_path: Caminho do áudio original.
+        separated_features: Features extraídas da voz separada.
+        config: Configuração de processamento.
+        output_dir: Diretório de saída.
+    """
+    from vocal_analysis.features.extraction import extract_bioacoustic_features
+    from vocal_analysis.visualization.plots import plot_separation_validation
+
+    print("  Gerando plot de validação...")
+
+    # Extrair features do áudio original (para comparação)
+    original_features = extract_bioacoustic_features(
+        original_audio_path,
+        skip_formants=True,  # Só precisamos de f0 para validação
+        skip_jitter_shimmer=True,
+        use_praat_f0=config.use_praat_f0,
+        skip_cpps=True,
+        batch_size=config.batch_size,
+        model=config.crepe_model,
+        device=config.device,
+    )
+
+    # Gerar plot
+    plot_path = output_dir / "plots" / f"{original_audio_path.stem}_separation_validation.png"
+    plot_separation_validation(
+        time_original=original_features["time"],
+        f0_original=original_features["f0"],
+        confidence_original=original_features["confidence"],
+        time_separated=separated_features["time"],
+        f0_separated=separated_features["f0"],
+        confidence_separated=separated_features["confidence"],
+        title=f"Validação Separação - {original_audio_path.stem}",
+        save_path=plot_path,
+    )
+    print(f"  ✓ Plot de validação salvo: {plot_path.name}")
 
 
 def process_audio_files(
@@ -78,16 +134,50 @@ def process_audio_files(
             print(f"💻 CPU (processamento lento - use GPU se disponível)")
     if config.skip_cpps:
         print("⚡ DEBUG: CPPS DESATIVADO (evita travamento em macOS)")
+    if config.separate_vocals:
+        print(f"🎤 SOURCE SEPARATION HABILITADA (HTDemucs no {config.separation_device})")
+        if config.validate_separation:
+            print("📊 Validação visual habilitada (plots comparativos)")
 
     all_features = []
     songs_metadata = []
 
+    # Diretório de cache para separação
+    cache_dir = None
+    if config.separate_vocals and config.use_separation_cache:
+        cache_dir = output_dir.parent / "data" / "cache" / "separated"
+
     for audio_path in audio_files:
         print(f"\nProcessando: {audio_path.name}")
 
+        # Source separation se habilitado
+        audio_path_for_features = audio_path
+        temp_wav_path = None
+        vocals_array = None
+
+        if config.separate_vocals:
+            from vocal_analysis.preprocessing.separation import separate_vocals_safe
+
+            print("  Aplicando source separation (HTDemucs)...")
+            vocals, sr, success = separate_vocals_safe(
+                audio_path,
+                device=config.separation_device,
+                cache_dir=cache_dir,
+            )
+
+            if success and vocals is not None:
+                # Criar arquivo WAV temporário (Praat precisa de arquivo)
+                fd, temp_wav_path = tempfile.mkstemp(suffix=".wav")
+                sf.write(temp_wav_path, vocals, sr)
+                audio_path_for_features = Path(temp_wav_path)
+                vocals_array = vocals
+                print("  ✓ Voz separada com sucesso")
+            else:
+                print("  ⚠ Source separation falhou, usando audio original")
+
         try:
             features = extract_bioacoustic_features(
-                audio_path,
+                audio_path_for_features,
                 skip_formants=config.skip_formants,
                 skip_jitter_shimmer=config.skip_jitter_shimmer,
                 use_praat_f0=config.use_praat_f0,
@@ -97,6 +187,12 @@ def process_audio_files(
                 model=config.crepe_model,
                 device=config.device,
             )
+
+            # Gerar plot de validação se habilitado
+            if config.validate_separation and config.separate_vocals and vocals_array is not None:
+                _generate_validation_plot(
+                    audio_path, features, config, output_dir
+                )
 
             # Criar DataFrame para esta música
             df_data = {
@@ -206,7 +302,10 @@ def process_audio_files(
                     "error": str(e),
                 }
             )
-            continue
+        finally:
+            # Limpar arquivo temporário se criado
+            if temp_wav_path and Path(temp_wav_path).exists():
+                Path(temp_wav_path).unlink()
 
     metadata = {
         "processed_at": datetime.now().isoformat(),
@@ -410,6 +509,31 @@ Exemplos de uso:
         help="Modo rápido: ativa --skip-formants, --skip-plots, --skip-jitter-shimmer, --skip-cpps, --use-praat-f0",
     )
 
+    # Source separation arguments
+    parser.add_argument(
+        "--separate-vocals",
+        action="store_true",
+        help="Aplicar source separation (HTDemucs) antes de extrair features. "
+        "Melhora detecção de pitch em arranjos complexos.",
+    )
+    parser.add_argument(
+        "--separation-device",
+        type=str,
+        default=None,
+        choices=["cpu", "cuda"],
+        help="Dispositivo para source separation (default: mesmo que --device)",
+    )
+    parser.add_argument(
+        "--no-separation-cache",
+        action="store_true",
+        help="Desabilitar cache de áudio separado (força reprocessamento)",
+    )
+    parser.add_argument(
+        "--validate-separation",
+        action="store_true",
+        help="Gerar plot comparativo original vs voz separada (Hz + notas) para validação visual",
+    )
+
     args = parser.parse_args()
 
     # Modo fast ativa todas as otimizações
@@ -431,6 +555,10 @@ Exemplos de uso:
         batch_size=args.batch_size,
         crepe_model=args.crepe_model,
         device=args.device,
+        separate_vocals=args.separate_vocals,
+        separation_device=args.separation_device,
+        use_separation_cache=not args.no_separation_cache,
+        validate_separation=args.validate_separation,
     )
 
     project_root = Path(__file__).parent.parent.parent.parent

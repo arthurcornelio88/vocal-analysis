@@ -168,3 +168,132 @@ def plot_f0_contour(
         fig.savefig(save_path, dpi=300, bbox_inches="tight")
 
     return fig
+
+
+def plot_separation_validation(
+    time_original: np.ndarray,
+    f0_original: np.ndarray,
+    confidence_original: np.ndarray,
+    time_separated: np.ndarray,
+    f0_separated: np.ndarray,
+    confidence_separated: np.ndarray,
+    title: str = "Validacao: Original vs Voz Separada",
+    save_path: str | Path | None = None,
+) -> plt.Figure:
+    """Plot comparativo mostrando f0 antes/depois da separacao.
+
+    Permite validar visualmente se a separacao esta captando a voz
+    e nao outros instrumentos (cavaquinho, flauta, etc).
+
+    Args:
+        time_original: Array de tempo do audio original.
+        f0_original: Array de f0 do audio original.
+        confidence_original: Array de confianca CREPE do original.
+        time_separated: Array de tempo da voz separada.
+        f0_separated: Array de f0 da voz separada.
+        confidence_separated: Array de confianca CREPE da voz separada.
+        title: Titulo do grafico.
+        save_path: Caminho para salvar o plot (opcional).
+
+    Returns:
+        Figura matplotlib.
+    """
+    from vocal_analysis.utils.pitch import hz_to_midi, hz_to_note, midi_to_hz
+
+    fig, axes = plt.subplots(2, 1, figsize=(14, 8), sharex=True)
+    sns.set_theme(style="whitegrid")
+
+    # Filtrar frames com confianca razoavel para visualizacao
+    conf_threshold = 0.5
+
+    # Calcular range de f0 para ambos os plots
+    f0_all = np.concatenate([
+        f0_original[confidence_original > conf_threshold],
+        f0_separated[confidence_separated > conf_threshold],
+    ])
+    if len(f0_all) > 0:
+        f0_min = max(f0_all.min() * 0.9, 50)
+        f0_max = f0_all.max() * 1.1
+    else:
+        f0_min, f0_max = 100, 800
+
+    # Gerar ticks de notas
+    midi_min = int(np.floor(hz_to_midi(f0_min)))
+    midi_max = int(np.ceil(hz_to_midi(f0_max)))
+    note_ticks_hz = []
+    note_ticks_labels = []
+    for midi in range(midi_min, midi_max + 1):
+        hz = float(midi_to_hz(midi))
+        if f0_min <= hz <= f0_max:
+            note_ticks_hz.append(hz)
+            note_ticks_labels.append(hz_to_note(hz))
+
+    # Plot 1: Audio Original (mix)
+    ax1 = axes[0]
+    mask1 = confidence_original > conf_threshold
+    scatter1 = ax1.scatter(
+        time_original[mask1],
+        f0_original[mask1],
+        c=confidence_original[mask1],
+        cmap="viridis",
+        s=3,
+        alpha=0.7,
+        vmin=0,
+        vmax=1,
+    )
+    ax1.set_ylim(f0_min, f0_max)
+    ax1.set_ylabel("f0 (Hz)")
+    ax1.set_title("Original (mix completo)")
+
+    # Eixo Y direito com notas (original)
+    ax1_notes = ax1.twinx()
+    ax1_notes.set_ylim(f0_min, f0_max)
+    ax1_notes.set_yticks(note_ticks_hz)
+    ax1_notes.set_yticklabels(note_ticks_labels, fontsize=8)
+    ax1_notes.set_ylabel("Nota")
+
+    # Grid nas notas
+    for hz in note_ticks_hz:
+        ax1.axhline(hz, color="gray", linewidth=0.3, alpha=0.4)
+
+    # Plot 2: Voz Separada
+    ax2 = axes[1]
+    mask2 = confidence_separated > conf_threshold
+    scatter2 = ax2.scatter(
+        time_separated[mask2],
+        f0_separated[mask2],
+        c=confidence_separated[mask2],
+        cmap="viridis",
+        s=3,
+        alpha=0.7,
+        vmin=0,
+        vmax=1,
+    )
+    ax2.set_ylim(f0_min, f0_max)
+    ax2.set_ylabel("f0 (Hz)")
+    ax2.set_xlabel("Tempo (s)")
+    ax2.set_title("Voz Separada (HTDemucs)")
+
+    # Eixo Y direito com notas (separado)
+    ax2_notes = ax2.twinx()
+    ax2_notes.set_ylim(f0_min, f0_max)
+    ax2_notes.set_yticks(note_ticks_hz)
+    ax2_notes.set_yticklabels(note_ticks_labels, fontsize=8)
+    ax2_notes.set_ylabel("Nota")
+
+    # Grid nas notas
+    for hz in note_ticks_hz:
+        ax2.axhline(hz, color="gray", linewidth=0.3, alpha=0.4)
+
+    # Colorbar compartilhada
+    cbar = fig.colorbar(scatter2, ax=axes, label="Confianca CREPE", pad=0.12)
+
+    # Titulo geral
+    fig.suptitle(title, fontsize=12, fontweight="bold")
+    fig.tight_layout()
+
+    if save_path:
+        fig.savefig(save_path, dpi=200, bbox_inches="tight")
+        plt.close(fig)
+
+    return fig

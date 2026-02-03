@@ -53,7 +53,65 @@ target_amplitude = 10 ** (target_db / 20)  # -3dB = 0.708 em amplitude linear
 audio_normalized = audio * (target_amplitude / max(abs(audio)))
 ```
 
-### 2.2 Extração de Features Híbrida (Crepe + Praat)
+### 2.2 Source Separation (HTDemucs) — Opcional
+
+**Módulo:** `src/vocal_analysis/preprocessing/separation.py`
+
+Em arranjos complexos de Choro (violão 7 cordas, cavaquinho, pandeiro, flauta), a detecção de pitch pode captar instrumentos ao invés da voz. Para isolar a voz antes da análise, o pipeline oferece **source separation** via HTDemucs.
+
+#### Por que HTDemucs?
+
+| Aspecto | HTDemucs | Spleeter |
+|---------|----------|----------|
+| **Arquitetura** | Híbrida (tempo + frequência) com Transformer | U-Net simples |
+| **SDR em vocals** | 7-9 dB | 5-6 dB |
+| **Qualidade em arranjos densos** | ✅ Excelente | ⚠️ Artefatos em instrumentos sobrepostos |
+| **Integração PyTorch** | ✅ Via torchaudio.pipelines | ❌ Requer pacote separado |
+
+**Referência:** Défossez, A., et al. (2021). Hybrid Spectrogram and Waveform Source Separation. *ISMIR*.
+
+#### Implementação
+
+```python
+from vocal_analysis.preprocessing.separation import separate_vocals
+
+# Separar voz (com cache automático)
+vocals, sr = separate_vocals(
+    audio_path,
+    device="cuda",           # ou "cpu"
+    cache_dir=Path("data/cache/separated")
+)
+# vocals: np.ndarray mono, sr: 44100 Hz
+```
+
+#### Fluxo com Separação
+
+```
+Áudio MP3 → HTDemucs (separar voz) → WAV temporário → CREPE + Praat → Features
+                ↓
+         Cache .npy (evita reprocessamento)
+```
+
+#### Validação Visual
+
+Para confirmar que a separação está captando a voz (e não o cavaquinho), o pipeline gera plots comparativos com `--validate-separation`:
+
+- Eixo Y esquerdo: Frequência (Hz)
+- Eixo Y direito: Notas musicais (A#4, C5, etc.)
+- Coloração: Confiança CREPE (0-1)
+
+Se a melodia após separação for mais contínua e nas notas esperadas para voz feminina (~200-600 Hz), a separação está funcionando.
+
+#### Flags CLI
+
+```bash
+--separate-vocals          # Habilitar source separation
+--separation-device        # cpu ou cuda (default: mesmo que --device)
+--no-separation-cache      # Forçar reprocessamento
+--validate-separation      # Gerar plot comparativo Hz + notas
+```
+
+### 2.3 Extração de Features Híbrida (Crepe + Praat)
 
 **Módulo:** `src/vocal_analysis/features/extraction.py`
 
@@ -400,13 +458,22 @@ Utiliza **Gemini Multimodal** (Google) para:
 ### Passo 1: Processamento de Áudio
 
 ```bash
+# Processamento padrão (sem separação)
 uv run python -m vocal_analysis.preprocessing.process_ademilde
+
+# COM source separation (recomendado para arranjos complexos)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --device cuda
+
+# COM validação visual (gera plots Hz + notas para conferir separação)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --validate-separation --limit 1
 ```
 
 **Output:**
 - `data/processed/ademilde_features.csv`
 - `data/processed/ademilde_metadata.json`
 - `outputs/plots/{song}_f0.png` (um por música)
+- `data/cache/separated/{song}_vocals.npy` (se `--separate-vocals`)
+- `outputs/plots/{song}_separation_validation.png` (se `--validate-separation`)
 
 ### Passo 2: Análise Exploratória + Classificação
 
@@ -437,6 +504,8 @@ uv run python -m vocal_analysis.analysis.run_analysis
 
 5. **Chen, T., & Guestrin, C. (2016).** XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
 
+6. **Défossez, A., Usunier, N., Bottou, L., & Bach, F. (2021).** Hybrid Spectrogram and Waveform Source Separation. *Proceedings of the ISMIR 2021 Conference*.
+
 ---
 
 ## 12. Contato e Contribuições
@@ -449,5 +518,5 @@ Para dúvidas metodológicas ou sugestões de melhorias, abra uma issue no repos
 
 ---
 
-**Última Atualização:** 2025-01-21
-**Status:** Pipeline validado e conforme com metodologia descrita no artigo.
+**Última Atualização:** 2026-02-03
+**Status:** Pipeline validado. Inclui source separation opcional (HTDemucs) para arranjos complexos.
