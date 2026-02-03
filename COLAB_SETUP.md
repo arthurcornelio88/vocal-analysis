@@ -59,12 +59,11 @@ for filename in uploaded.keys():
 ### 4. Configurar excerpts (opcional)
 
 ```python
-# Criar arquivo .env com os trechos desejados
-with open('.env', 'w') as f:
-    f.write('''EXCERPT_DELICADO="0022-0103"
-EXCERPT_BRASILEIRINHO="0033-0104"
-EXCERPT_APANHEITE_CAVAQUINHO="0007-0023"
-''')
+# 1. Defina as variáveis de ambiente no sistema do Colab
+%env EXCERPT_DELICADO="0022-0103"
+%env EXCERPT_BRASILEIRINHO="0033-0104"
+%env EXCERPT_APANHEITE_CAVAQUINHO="0007-0023"
+%env GEMINI_API_KEY="<YOUR-API-KEY>"
 ```
 
 ### 5. Processar com CREPE (GPU)
@@ -72,7 +71,9 @@ EXCERPT_APANHEITE_CAVAQUINHO="0007-0023"
 ```python
 # Processamento completo com CREPE full + GPU
 !python src/vocal_analysis/preprocessing/process_ademilde.py \
-    --device cuda
+    --device cuda \
+    --separate-vocals \
+    --validate-separation
 
 # Verificar outputs
 !ls -lh data/processed/
