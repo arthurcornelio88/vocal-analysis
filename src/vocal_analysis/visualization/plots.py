@@ -217,7 +217,7 @@ def plot_separation_validation(
         f0_separated = f0_separated[mask_time_sep]
         confidence_separated = confidence_separated[mask_time_sep]
 
-    fig, axes = plt.subplots(2, 1, figsize=(14, 8), sharex=True)
+    fig, axes = plt.subplots(2, 1, figsize=(14, 8), sharex=True, constrained_layout=True)
     sns.set_theme(style="whitegrid")
 
     # Filtrar frames com confianca razoavel para visualizacao
@@ -234,16 +234,18 @@ def plot_separation_validation(
     else:
         f0_min, f0_max = 100, 800
 
-    # Gerar ticks de notas
+    # Gerar ticks de notas (apenas notas naturais para legibilidade)
     midi_min = int(np.floor(hz_to_midi(f0_min)))
     midi_max = int(np.ceil(hz_to_midi(f0_max)))
     note_ticks_hz = []
     note_ticks_labels = []
     for midi in range(midi_min, midi_max + 1):
         hz = float(midi_to_hz(midi))
-        if f0_min <= hz <= f0_max:
+        note = hz_to_note(hz)
+        # Mostrar apenas notas naturais (sem # ou b) para não poluir o eixo
+        if f0_min <= hz <= f0_max and '#' not in note and 'b' not in note:
             note_ticks_hz.append(hz)
-            note_ticks_labels.append(hz_to_note(hz))
+            note_ticks_labels.append(note)
 
     # Plot 1: Audio Original (mix)
     ax1 = axes[0]
@@ -302,12 +304,13 @@ def plot_separation_validation(
     for hz in note_ticks_hz:
         ax2.axhline(hz, color="gray", linewidth=0.3, alpha=0.4)
 
-    # Colorbar compartilhada
-    cbar = fig.colorbar(scatter2, ax=axes, label="Confianca CREPE", pad=0.12)
+    # Colorbar compartilhada (location='right' evita sobreposição com eixo de notas)
+    cbar = fig.colorbar(scatter2, ax=axes, location='right', label="Confiança CREPE",
+                        shrink=0.8, pad=0.02)
 
     # Titulo geral
     fig.suptitle(title, fontsize=12, fontweight="bold")
-    fig.tight_layout()
+    # Nota: tight_layout() removido pois constrained_layout=True já cuida do layout
 
     if save_path:
         fig.savefig(save_path, dpi=200, bbox_inches="tight")

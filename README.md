@@ -102,6 +102,8 @@ vocal-analysis/
 │   │   └── llm_report.py         # Geração de relatório com Gemini
 │   ├── modeling/
 │   │   └── classifier.py         # XGBoost para classificação M1/M2
+│   ├── scripts/
+│   │   └── regenerate_validation_plot.py  # Regenerar plots sem reprocessar
 │   ├── visualization/
 │   │   └── plots.py              # Plots acadêmicos
 │   └── utils/
@@ -204,6 +206,26 @@ uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
 - `data/processed/ademilde_metadata.json` - Metadados estruturados
 - `data/processed/processing_log.md` - Log legível
 - `outputs/plots/*_f0.png` - Contornos de pitch
+
+### 2.1. Regenerar plots de validação (sem reprocessar)
+
+Se você já processou os áudios com `--separate-vocals` e quer apenas regenerar os plots de validação (ex: após ajustar o código de visualização):
+
+```bash
+# Listar músicas com cache disponível
+uv run python -m vocal_analysis.scripts.regenerate_validation_plot
+
+# Regenerar plot de uma música específica
+uv run python -m vocal_analysis.scripts.regenerate_validation_plot --song "Apanhei-te Cavaquinho"
+
+# Regenerar todos os plots
+uv run python -m vocal_analysis.scripts.regenerate_validation_plot --all
+
+# Usar CREPE ao invés de Praat (mais lento, mais preciso)
+uv run python -m vocal_analysis.scripts.regenerate_validation_plot --all --use-crepe
+```
+
+O script usa os dados de voz separada cacheados em `data/cache/separated/` e os intervalos de excerpt definidos no `.env`.
 
 ### 3. Rodar análise exploratória
 
