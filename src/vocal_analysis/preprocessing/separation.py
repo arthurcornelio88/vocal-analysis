@@ -235,6 +235,8 @@ def separate_vocals(
     Returns:
         Tuple (vocals_array, sample_rate).
     """
+    import librosa
+
     audio_path = Path(audio_path)
 
     # Verificar cache
@@ -245,12 +247,18 @@ def separate_vocals(
             vocals = np.load(cache_file)
             return vocals, HTDEMUCS_SAMPLE_RATE
 
-    # Carregar áudio
-    waveform, sr = torchaudio.load(str(audio_path))
+    # Carregar áudio usando librosa (mais robusto que torchaudio.load)
+    # Mantém stereo se disponível, resamplea para 44.1kHz
+    waveform, sr = librosa.load(str(audio_path), sr=HTDEMUCS_SAMPLE_RATE, mono=False)
+
+    # librosa retorna (samples,) para mono ou (channels, samples) para stereo
+    # Garantir formato consistente
+    if waveform.ndim == 1:
+        waveform = waveform[np.newaxis, :]  # (1, samples)
 
     # Separar
     separator = VocalSeparator(device=device)
-    vocals = separator.extract_vocals(waveform.numpy(), sr)
+    vocals = separator.extract_vocals(waveform, sr)
 
     # Salvar cache
     if cache_dir:

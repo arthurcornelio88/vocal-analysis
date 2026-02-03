@@ -71,6 +71,7 @@ vocal-analysis/
 ├── src/vocal_analysis/
 │   ├── preprocessing/
 │   │   ├── audio.py              # load_audio(), normalize_audio()
+│   │   ├── separation.py         # Source separation (HTDemucs)
 │   │   └── process_ademilde.py   # Script de extração de features
 │   ├── features/
 │   │   └── extraction.py         # Pipeline híbrido Crepe + Praat
