@@ -51,18 +51,39 @@ export GEMINI_API_KEY=sua_chave_aqui
 Ou adicione ao seu `.bashrc`/`.zshrc` para persistir.
 
 **Usando arquivo `.env`:**
-O projeto inclui um arquivo `.env` na raiz. Para usar:
-1. Edite o arquivo `.env` e adicione sua API Key:
+
+1. Copie o template:
+   ```bash
+   cp .env.example .env
    ```
-   GEMINI_API_KEY=sua_chave_aqui
-   ```
-2. Certifique-se de que a variável está carregada no ambiente atual:
+2. Edite `.env` com suas configurações
+3. Carregue no ambiente:
    ```bash
    source .env
    ```
 
-**Nota sobre o pacote:**
-O projeto usa `google-generativeai` que está deprecated mas ainda funcional. Você verá um warning ao executar, mas o código funciona normalmente. Para migrar para o novo pacote `google-genai` no futuro, será necessário atualizar o código em `src/vocal_analysis/analysis/llm_report.py`.
+### Configurar Excerpts (opcional)
+
+Você pode definir trechos específicos de cada música para análise e plots de validação.
+Útil para focar em passagens vocais sem introduções instrumentais.
+
+No `.env`, use o formato `EXCERPT_<NOME>=MMSS-MMSS`:
+
+```bash
+# Do segundo 22 ao 1:03
+EXCERPT_DELICADO="0022-0103"
+
+# Do segundo 33 ao 1:04
+EXCERPT_BRASILEIRINHO="0033-0104"
+
+# Do segundo 7 ao 23
+EXCERPT_APANHEITE_CAVAQUINHO="0007-0023"
+```
+
+Os excerpts são usados automaticamente nos plots de validação (`--validate-separation`).
+
+**Nota sobre o pacote google-generativeai:**
+O projeto usa `google-generativeai` que está deprecated mas ainda funcional. Você verá um warning ao executar, mas o código funciona normalmente.
 
 ## Estrutura do Projeto
 
