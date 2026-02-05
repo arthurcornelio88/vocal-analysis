@@ -621,12 +621,12 @@ Exemplos de uso:
         help="Modo rápido: ativa --skip-formants, --skip-plots, --skip-jitter-shimmer, --skip-cpps, --use-praat-f0",
     )
 
-    # Source separation arguments
+    # Source separation arguments (habilitado por padrão)
     parser.add_argument(
-        "--separate-vocals",
+        "--no-separate-vocals",
         action="store_true",
-        help="Aplicar source separation (HTDemucs) antes de extrair features. "
-        "Melhora detecção de pitch em arranjos complexos.",
+        help="Desabilitar source separation (HTDemucs). Por padrão, a separação de voz "
+        "é habilitada para melhorar detecção de pitch em arranjos complexos.",
     )
     parser.add_argument(
         "--separation-device",
@@ -680,7 +680,7 @@ Exemplos de uso:
         batch_size=args.batch_size,
         crepe_model=args.crepe_model,
         device=args.device,
-        separate_vocals=args.separate_vocals,
+        separate_vocals=not args.no_separate_vocals,
         separation_device=args.separation_device,
         use_separation_cache=not args.no_separation_cache,
         validate_separation=args.validate_separation,

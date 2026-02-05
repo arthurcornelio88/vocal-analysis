@@ -200,6 +200,7 @@ uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
 - `--skip-plots`: Não gerar plots de F0
 - `--limit N`: Processar apenas N arquivos (útil para testes)
 - `--fast`: Ativa todas otimizações (Praat + sem formants/jitter/shimmer/cpps/plots)
+- `--no-separate-vocals`: Desabilitar source separation (HTDemucs). **Por padrão**, a separação de voz é habilitada para melhorar a detecção de pitch em arranjos complexos
 
 **Outputs gerados:**
 - `data/processed/ademilde_features.csv` - Features por frame
@@ -209,7 +210,7 @@ uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
 
 ### 2.1. Regenerar plots de validação (sem reprocessar)
 
-Se você já processou os áudios com `--separate-vocals` e quer apenas regenerar os plots de validação (ex: após ajustar o código de visualização):
+Se você já processou os áudios (source separation é habilitada por padrão) e quer apenas regenerar os plots de validação (ex: após ajustar o código de visualização):
 
 ```bash
 # Listar músicas com cache disponível

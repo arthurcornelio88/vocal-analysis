@@ -367,12 +367,17 @@ mechanism = "M1" if f0 < 400 Hz else "M2"
 #### Método 2: Gaussian Mixture Model (GMM)
 ```python
 from sklearn.mixture import GaussianMixture
-features = (f0, HNR)  # Normalizadas
-gmm = GaussianMixture(n_components=2)
-labels = gmm.fit_predict(features)
+from sklearn.preprocessing import RobustScaler
+
+features = df_voiced[["f0", "hnr"]].values
+scaler = RobustScaler()  # Usa mediana/IQR, robusto a outliers
+features_norm = scaler.fit_transform(features)
+
+gmm = GaussianMixture(n_components=2, random_state=42)
+labels = gmm.fit_predict(features_norm)
 ```
 **Vantagem:** Não-supervisionado, descobre clusters naturais.
-**Limitação:** Sensível a outliers.
+**Normalização:** RobustScaler (mediana/IQR) em vez de StandardScaler (mean/std), mais robusto a outliers em gravações históricas.
 
 ![Clusters de Mecanismo (GMM)](../outputs/plots/mechanism_clusters.png)
 
@@ -629,5 +634,5 @@ Para dúvidas metodológicas ou sugestões de melhorias, abra uma issue no repos
 
 ---
 
-**Última Atualização:** 2026-02-03
+**Última Atualização:** 2026-02-05
 **Status:** Pipeline validado. Inclui source separation opcional (HTDemucs) para arranjos complexos.
