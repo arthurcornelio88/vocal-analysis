@@ -4,7 +4,8 @@ Uso:
     uv run python -m vocal_analysis.scripts.regenerate_validation_plot
 
     # Música específica
-    uv run python -m vocal_analysis.scripts.regenerate_validation_plot --song "Apanhei-te Cavaquinho"
+    uv run python -m vocal_analysis.scripts.regenerate_validation_plot \
+        --song "Apanhei-te Cavaquinho"
 
     # Todas as músicas com cache
     uv run python -m vocal_analysis.scripts.regenerate_validation_plot --all
@@ -30,7 +31,7 @@ def _normalize_song_name(name: str) -> str:
 
 def _parse_excerpt_interval(interval_str: str) -> tuple[float, float] | None:
     """Parseia intervalo no formato 'MMSS-MMSS' para segundos."""
-    match = re.match(r"(\d{4})-(\d{4})", interval_str.strip('"\''))
+    match = re.match(r"(\d{4})-(\d{4})", interval_str.strip("\"'"))
     if not match:
         return None
 
@@ -60,7 +61,11 @@ def _get_excerpt_from_env(song_stem: str, project_root: Path) -> tuple[float, fl
             key, value = line.split("=", 1)
             if key.upper().startswith("EXCERPT_"):
                 env_song = key.upper().replace("EXCERPT_", "")
-                if song_key == env_song or song_key.startswith(env_song) or env_song.startswith(song_key):
+                if (
+                    song_key == env_song
+                    or song_key.startswith(env_song)
+                    or env_song.startswith(song_key)
+                ):
                     return _parse_excerpt_interval(value.split("#")[0].strip())
 
     return None
@@ -169,7 +174,7 @@ def main() -> None:
     parser.add_argument(
         "--song",
         type=str,
-        help="Nome da música (ex: 'Apanhei-te Cavaquinho'). Se não especificado, lista músicas disponíveis.",
+        help="Nome da música (ex: 'Apanhei-te Cavaquinho'). Lista músicas se omitido.",
     )
     parser.add_argument(
         "--all",
