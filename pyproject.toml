@@ -53,7 +53,8 @@ select = [
     "B",   # flake8-bugbear
 ]
 ignore = [
-    "N806",  # Variable in function should be lowercase (ML convention: X, X_train, etc)
+    "N806",   # Variable in function should be lowercase (ML convention: X, X_train, etc)
+    "ANN204", # Missing return type annotation for special method __init__
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -61,7 +62,18 @@ ignore = [
 "tests/*" = ["ANN"]
 "src/vocal_analysis/analysis/llm_report.py" = ["E501"]  # Prompts LLM longos
 "src/vocal_analysis/analysis/exploratory.py" = ["E501"]  # Strings f com tabelas
+"src/vocal_analysis/analysis/run_analysis.py" = ["E501", "ANN201"]  # CLI script
+"src/vocal_analysis/features/extraction.py" = ["E501", "ANN202"]  # Nested functions
+"src/vocal_analysis/preprocessing/process_ademilde.py" = ["E501"]  # CLI script
+"src/vocal_analysis/visualization/plots.py" = ["F841", "ANN001", "ANN003", "ANN202"]  # Matplotlib returns
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.13",
+]

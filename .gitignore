@@ -70,3 +70,4 @@ TODO_METODOLOGIA.md
 
 # Ruff
 .ruff_cache/
+.coverage

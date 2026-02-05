@@ -137,6 +137,104 @@ vibrato normal. O classificador usa isso.
 
 ---
 
+## Features espectrais (para VMI)
+
+As features abaixo alimentam o **VMI** (Vocal Mechanism Index), uma
+métrica contínua que não depende de frequências fixas como G4.
+
+### Alpha Ratio
+
+**O que é:** Razão entre a energia nos graves (0-1 kHz) e nos agudos
+(1-5 kHz), medida em dB.
+
+**Como pensar:** Quanto maior o Alpha Ratio, mais "brilho" e
+harmônicos altos a voz tem. M1 tipicamente tem Alpha Ratio mais alta
+(mais energia distribuída em harmônicos superiores), enquanto M2
+concentra energia na fundamental.
+
+---
+
+### H1-H2 (Diferença de Harmônicos)
+
+**O que é:** Diferença de amplitude entre o 1º harmônico (a
+frequência fundamental) e o 2º harmônico (o dobro da fundamental).
+
+**Como pensar:** Pregas vocais que fecham com força produzem uma
+onda "quadrada" com muitos harmônicos (H1-H2 baixo). Pregas que
+fecham suavemente produzem onda mais "senoidal" com menos
+harmônicos (H1-H2 alto).
+
+**Por que importa aqui:** M1 tende a ter H1-H2 baixo (adução firme),
+M2 tende a ter H1-H2 alto (adução leve).
+
+**Limitação:** Quando a voz fica muito aguda (f0 > 350 Hz), o 1º
+harmônico pode coincidir com o primeiro formante (F1), o que
+distorce a medida. Por isso usamos Spectral Tilt junto.
+
+---
+
+### Spectral Tilt (Inclinação Espectral)
+
+**O que é:** A "inclinação" do espectro de frequências. Imagina um
+gráfico com frequência no eixo X e intensidade no eixo Y. Spectral
+Tilt mede se essa linha cai rápido (negativo) ou fica mais plana
+(próximo de zero).
+
+**Como pensar:** Espectro que cai rápido = voz mais "escura" e
+"cheia" (M1). Espectro mais plano = voz mais "clara" e "fina" (M2).
+
+**Vantagem:** É mais robusto que H1-H2 em notas agudas porque não
+depende de harmônicos específicos.
+
+---
+
+### CPPS (Cepstral Peak Prominence Smoothed)
+
+**O que é:** Uma medida de quão "periódica" e "limpa" é a vibração
+das pregas vocais. Tecnicamente, mede a proeminência do pico no
+cepstro (uma transformação do espectro).
+
+**Como pensar:** CPPS alto = voz bem definida, pregas vibrando de
+forma regular. CPPS baixo = voz soprosa, rouca ou com ruído.
+
+**Importante:** CPPS alto não significa M1 ou M2 especificamente.
+Tanto M1 bem produzido quanto M2 bem produzido (voix mixte, por
+exemplo) têm CPPS alto. CPPS baixo indica soprosidade ou quebra de
+voz, independente do mecanismo.
+
+**Variante per-frame:** O pipeline pode calcular CPPS a cada frame
+(10ms) em vez de um valor global por música, permitindo análise
+temporal fina.
+
+---
+
+## VMI — Vocal Mechanism Index
+
+**O que é:** Uma métrica contínua de 0 a 1 que indica o "peso" do
+mecanismo vocal, sem depender de frequências fixas como G4 (400 Hz).
+
+**Como funciona:** Combina Alpha Ratio, H1-H2, Spectral Tilt e CPPS
+em um único número. Quanto mais próximo de 0, mais "M1 denso"
+(voz de peito cheia). Quanto mais próximo de 1, mais "M2 ligeiro"
+(falsete).
+
+**Escala:**
+
+| VMI | Label | Descrição |
+|-----|-------|-----------|
+| 0.0-0.2 | M1_DENSO | Voz de peito plena, adução firme |
+| 0.2-0.4 | M1_LIGEIRO | M1 mais leve, borda fina |
+| 0.4-0.6 | MIX_PASSAGGIO | Zona de passagem, voz mista |
+| 0.6-0.8 | M2_REFORCADO | M2 com adução glótica, belting leve |
+| 0.8-1.0 | M2_LIGEIRO | Falsete, mecanismo leve |
+
+**Vantagem principal:** Um tenor agudo em M1 e uma soprano grave em
+M2 podem cantar a mesma nota (ex: A4 = 440 Hz). O threshold fixo de
+G4 classificaria ambos como M2 por estar acima de 400 Hz. O VMI
+consegue distingui-los pelas características espectrais.
+
+---
+
 ## Como os conceitos se conectam
 
 ```
@@ -146,12 +244,22 @@ Eficiência do fechamento      →  determina HNR (limpeza do som)
 Intensidade da vibração       →  determina Energia (RMS)
 Estabilidade entre ciclos     →  determina Jitter e Shimmer
 Mudança rápida de f0          →  determina velocity e acceleration
+
+Fechamento glótico (firme/leve)  →  determina H1-H2 e Alpha Ratio
+Distribuição espectral           →  determina Spectral Tilt
+Periodicidade da vibração        →  determina CPPS
+Combinação das features acima    →  gera VMI (0 = M1 denso, 1 = M2 leve)
 ```
 
-O classificador XGBoost combina todas essas features para decidir,
-frame por frame (a cada 10ms), se a cantora está em M1 ou M2.
-Features mais fiáveis (f0, HNR, energia) formam a base. Features
-complementares (formantes, velocity) resolvem os casos ambíguos.
+O pipeline oferece **duas abordagens** de classificação:
+
+1. **XGBoost + threshold:** Combina f0, HNR, energia, formantes e
+   velocity/acceleration. Funciona bem, mas usa f0 como feature
+   dominante — sensível à tessitura do cantor.
+
+2. **VMI (Vocal Mechanism Index):** Combina Alpha Ratio, H1-H2,
+   Spectral Tilt e CPPS. Não depende de f0 diretamente — funciona
+   para qualquer tessitura.
 
 O scatter abaixo mostra essa separação no espaço f0 × HNR — os dois
 clusters que o GMM encontra correspondem aos dois mecanismos:

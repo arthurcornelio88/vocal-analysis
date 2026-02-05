@@ -238,6 +238,74 @@ f2 = formants.get_value_at_time(2, time)
 # ... F3, F4
 ```
 
+### 4.6 Features Espectrais para VMI
+
+**Módulo:** `src/vocal_analysis/features/spectral.py`
+
+Estas features são usadas para calcular o VMI (Vocal Mechanism Index), permitindo classificação de mecanismo independente da tessitura.
+
+#### Alpha Ratio
+
+**Definição:** Razão de energia espectral entre banda baixa (0-1kHz) e banda alta (1-5kHz), em dB.
+
+**Interpretação:**
+- Alpha Ratio alta → mais energia em harmônicos superiores → típico de M1
+- Alpha Ratio baixa → energia concentrada em graves → típico de M2/falsete
+
+**Extração:**
+```python
+from vocal_analysis.features.spectral import compute_alpha_ratio
+alpha_ratio = compute_alpha_ratio(audio, sr, hop_length=220)
+```
+
+#### H1-H2 (Diferença de Harmônicos)
+
+**Definição:** Diferença de amplitude (dB) entre o 1º harmônico (H1 = f0) e o 2º harmônico (H2 = 2×f0).
+
+**Interpretação:**
+- H1-H2 baixo → adução firme, inclinação glotal íngreme → M1
+- H1-H2 alto → adução leve, inclinação glotal suave → M2
+
+**Limitação:** Quando f0 > 350Hz, H1 pode coincidir com F1, tornando a medida instável. Por isso, usamos Spectral Tilt como complemento.
+
+**Extração:**
+```python
+from vocal_analysis.features.spectral import compute_h1_h2
+h1_h2 = compute_h1_h2(audio, sr, f0, hop_length=220)
+```
+
+#### Spectral Tilt (Inclinação Espectral)
+
+**Definição:** Inclinação da regressão linear no espectro de potência (log-frequência vs amplitude em dB).
+
+**Interpretação:**
+- Tilt negativo (steep) → espectro decai rapidamente → M1
+- Tilt próximo de zero (flat) → espectro mais plano → M2
+
+**Vantagem:** Mais robusto que H1-H2 em registros agudos.
+
+**Extração:**
+```python
+from vocal_analysis.features.spectral import compute_spectral_tilt
+spectral_tilt = compute_spectral_tilt(audio, sr, hop_length=220)
+```
+
+#### CPPS per-frame
+
+**Definição:** Proeminência do pico cepstral suavizada, calculada por frame (não global).
+
+**Interpretação:**
+- CPPS alto → voz periódica, limpa
+- CPPS baixo → ruído, aperiodicidade
+
+**Nota:** CPPS alto ocorre tanto em M1 denso quanto em M2 reforçado (voix mixte). CPPS baixo indica soprosidade ou quebra de voz.
+
+**Extração:**
+```python
+from vocal_analysis.features.spectral import compute_cpps_per_frame
+cpps = compute_cpps_per_frame(audio_path, hop_length=220)
+```
+
 ---
 
 ## 5. Features de Agilidade Articulatória
@@ -287,7 +355,7 @@ syllable_rate = len(peaks) / duration
 
 ### 6.1 Abordagem Híbrida
 
-O pipeline implementa **3 métodos complementares**:
+O pipeline implementa **4 métodos complementares**:
 
 #### Método 1: Threshold Heurístico
 ```python
@@ -325,6 +393,37 @@ predictions = model.predict(X)
 **Aplicação:** Classificação robusta para novos dados. Classification report salvo no relatório `outputs/analise_ademilde.md`.
 
 ![Predição XGBoost: M1 vs M2 ao longo do tempo](../outputs/plots/xgb_mechanism_timeline.png)
+
+#### Método 4: VMI (Vocal Mechanism Index) — Agnóstico à Tessitura
+
+**Módulo:** `src/vocal_analysis/features/vmi.py`
+
+O VMI é uma métrica contínua (0-1) que substitui o threshold arbitrário de G4 por análise baseada em **features espectrais**:
+
+```python
+from vocal_analysis.features.vmi import compute_vmi_fixed, vmi_to_label
+
+vmi = compute_vmi_fixed(
+    alpha_ratio=df["alpha_ratio"].values,
+    cpps=df["cpps_per_frame"].values,
+    h1_h2=df["h1_h2"].values,
+    spectral_tilt=df["spectral_tilt"].values,
+)
+labels = vmi_to_label(vmi)  # M1_DENSO, M1_LIGEIRO, MIX_PASSAGGIO, M2_REFORCADO, M2_LIGEIRO
+```
+
+**Escala VMI:**
+
+| VMI | Label | Descrição |
+|-----|-------|-----------|
+| 0.0-0.2 | `M1_DENSO` | Mecanismo pesado, adução firme, voz de peito plena |
+| 0.2-0.4 | `M1_LIGEIRO` | M1 de borda fina, comum em tenores/registro médio |
+| 0.4-0.6 | `MIX_PASSAGGIO` | Zona de passagem, instabilidade acústica, voz mista |
+| 0.6-0.8 | `M2_REFORCADO` | M2 com adução glótica, ressonância frontal |
+| 0.8-1.0 | `M2_LIGEIRO` | Mecanismo leve, falsete, piano M2 |
+
+**Vantagem:** Não depende de frequências fixas como G4 — funciona para qualquer tessitura.
+**Aplicação:** Identificação gradual do mecanismo vocal e do passaggio.
 
 ### 6.2 Features Utilizadas no XGBoost
 
@@ -420,6 +519,10 @@ Utiliza **Gemini Multimodal** (Google) para:
 | `jitter` | float | Jitter ppq5 (%) - valor global por música |
 | `shimmer` | float | Shimmer apq11 (%) - valor global por música |
 | `song` | string | Nome da música |
+| `alpha_ratio` | float | Razão de energia 0-1kHz vs 1-5kHz (dB) — se `--extract-spectral` |
+| `h1_h2` | float | Diferença H1-H2 (dB) — se `--extract-spectral` |
+| `spectral_tilt` | float | Inclinação espectral — se `--extract-spectral` |
+| `cpps_per_frame` | float | CPPS por frame — se `--cpps-per-frame` |
 
 **Features derivadas** (calculadas pelo `run_analysis`, não presentes no CSV acima):
 
@@ -430,6 +533,8 @@ Utiliza **Gemini Multimodal** (Google) para:
 | `syllable_rate` | float | Taxa silábica (sílabas/s) |
 | `mechanism` | string | Cluster do GMM (M1/M2) |
 | `xgb_mechanism` | string | Predição do XGBoost (M1/M2) |
+| `vmi` | float | Vocal Mechanism Index (0-1) — se VMI habilitado |
+| `vmi_label` | string | Label VMI (M1_DENSO, M1_LIGEIRO, MIX_PASSAGGIO, M2_REFORCADO, M2_LIGEIRO) |
 
 **Arquivo de predições:** `outputs/xgb_predictions.csv` (gerado pelo `run_analysis`, contém todas as colunas acima)
 
@@ -466,6 +571,12 @@ uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals
 
 # COM validação visual (gera plots Hz + notas para conferir separação)
 uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --validate-separation --limit 1
+
+# COM features espectrais para VMI (recomendado)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --extract-spectral --device cuda
+
+# COM CPPS per-frame (mais lento, melhor precisão VMI)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --extract-spectral --cpps-per-frame --device cuda
 ```
 
 **Output:**
