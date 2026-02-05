@@ -29,13 +29,37 @@ class BioacousticFeatures(TypedDict):
     time: np.ndarray
 
 
+class ExtendedFeatures(TypedDict):
+    """Features estendidas incluindo features espectrais para VMI."""
+
+    # Features básicas
+    f0: np.ndarray
+    confidence: np.ndarray
+    hnr: np.ndarray
+    cpps_global: float
+    jitter: float
+    shimmer: float
+    energy: np.ndarray
+    f1: np.ndarray
+    f2: np.ndarray
+    f3: np.ndarray
+    f4: np.ndarray
+    time: np.ndarray
+    # Features espectrais (VMI)
+    alpha_ratio: np.ndarray
+    h1_h2: np.ndarray
+    spectral_tilt: np.ndarray
+    cpps_per_frame: np.ndarray | None
+    f0_f1_distance: np.ndarray | None
+
+
 def extract_bioacoustic_features(
     audio_path: str | Path,
-    hop_length: int = 220, # <--- MUDANÇA 1: Reduzir de 441 para 220 (5ms) para captar notas rápidas
+    hop_length: int = 220,  # <--- MUDANÇA 1: Reduzir de 441 para 220 (5ms) para captar notas rápidas
     fmin: float = 50.0,
     fmax: float = 800.0,
     device: str = "cpu",
-    model: str = "full", # <--- MUDANÇA 2: Garantir modelo 'full' para precisão máxima
+    model: str = "full",  # <--- MUDANÇA 2: Garantir modelo 'full' para precisão máxima
     skip_formants: bool = False,
     skip_jitter_shimmer: bool = False,
     use_praat_f0: bool = False,
@@ -112,7 +136,7 @@ def extract_bioacoustic_features(
             fmin=fmin,
             fmax=fmax,
             model=model,
-            decoder=torchcrepe.decode.weighted_argmax, # <--- CRUCIAL: Mude de .viterbi para .weighted_argmax
+            decoder=torchcrepe.decode.weighted_argmax,  # <--- CRUCIAL: Mude de .viterbi para .weighted_argmax
             batch_size=batch_size,
             device=device,
             return_periodicity=True,
@@ -120,7 +144,7 @@ def extract_bioacoustic_features(
 
         # Nota: weighted_argmax pode gerar mais "ruído" ou saltos falsos,
         # mas não vai "comer" a nota aguda real.
-        
+
         # Filtragem pós-processamento manual (Opcional, mas recomendada se usar argmax)
         torchcrepe.filter.median(f0, 3)  # Filtro mediano leve para tirar ruído pontual
 
@@ -141,6 +165,7 @@ def extract_bioacoustic_features(
             if cpps_timeout:
                 # Extração com timeout (para macOS/casos que travam)
                 import threading
+
                 result = {"cpps": None, "error": None, "timeout": False}
 
                 def extract_cpps_target():
@@ -149,9 +174,19 @@ def extract_bioacoustic_features(
                             sound, "To PowerCepstrogram", fmin, time_step, 5000.0, 50.0
                         )
                         result["cpps"] = parselmouth.praat.call(
-                            power_cepstrogram, "Get CPPS", False, 0.02, 0.0005,
-                            60, 330, 0.05, "Parabolic", 0.001, 0,
-                            "Exponential decay", "Robust slow"
+                            power_cepstrogram,
+                            "Get CPPS",
+                            False,
+                            0.02,
+                            0.0005,
+                            60,
+                            330,
+                            0.05,
+                            "Parabolic",
+                            0.001,
+                            0,
+                            "Exponential decay",
+                            "Robust slow",
                         )
                     except Exception as e:
                         result["error"] = str(e)
@@ -176,9 +211,19 @@ def extract_bioacoustic_features(
                     sound, "To PowerCepstrogram", fmin, time_step, 5000.0, 50.0
                 )
                 cpps = parselmouth.praat.call(
-                    power_cepstrogram, "Get CPPS", False, 0.02, 0.0005,
-                    60, 330, 0.05, "Parabolic", 0.001, 0,
-                    "Exponential decay", "Robust slow"
+                    power_cepstrogram,
+                    "Get CPPS",
+                    False,
+                    0.02,
+                    0.0005,
+                    60,
+                    330,
+                    0.05,
+                    "Parabolic",
+                    0.001,
+                    0,
+                    "Exponential decay",
+                    "Robust slow",
                 )
         except Exception as e:
             # Erro na extração: retornar None explícito
@@ -261,4 +306,113 @@ def extract_bioacoustic_features(
         f3=f3_values[:min_len],
         f4=f4_values[:min_len],
         time=time,
+    )
+
+
+def extract_extended_features(
+    audio_path: str | Path,
+    hop_length: int = 220,
+    fmin: float = 50.0,
+    fmax: float = 800.0,
+    device: str = "cpu",
+    model: str = "full",
+    skip_formants: bool = False,
+    skip_jitter_shimmer: bool = False,
+    use_praat_f0: bool = False,
+    skip_cpps: bool = False,
+    cpps_timeout: int | None = None,
+    batch_size: int = 2048,
+    skip_cpps_per_frame: bool = False,
+) -> ExtendedFeatures:
+    """Extrai features básicas + espectrais para VMI.
+
+    Combina a extração de features bioacústicas padrão com as novas
+    features espectrais necessárias para o cálculo do VMI.
+
+    Args:
+        audio_path: Caminho para o arquivo de áudio.
+        hop_length: Hop length em samples.
+        fmin: Frequência mínima para detecção de pitch.
+        fmax: Frequência máxima para detecção de pitch.
+        device: Dispositivo para inferência ('cpu' ou 'cuda').
+        model: Modelo CREPE.
+        skip_formants: Se True, pula extração de formantes.
+        skip_jitter_shimmer: Se True, pula Jitter/Shimmer.
+        use_praat_f0: Se True, usa Praat ao invés de CREPE.
+        skip_cpps: Se True, pula CPPS global.
+        cpps_timeout: Timeout em segundos para CPPS global.
+        batch_size: Batch size para CREPE.
+        skip_cpps_per_frame: Se True, pula CPPS per-frame (economiza tempo).
+
+    Returns:
+        Dicionário com todas as features (básicas + espectrais).
+    """
+    from vocal_analysis.features.spectral import extract_spectral_features
+
+    audio_path = Path(audio_path)
+
+    # 1. Extrair features básicas
+    basic_features = extract_bioacoustic_features(
+        audio_path=audio_path,
+        hop_length=hop_length,
+        fmin=fmin,
+        fmax=fmax,
+        device=device,
+        model=model,
+        skip_formants=skip_formants,
+        skip_jitter_shimmer=skip_jitter_shimmer,
+        use_praat_f0=use_praat_f0,
+        skip_cpps=skip_cpps,
+        cpps_timeout=cpps_timeout,
+        batch_size=batch_size,
+    )
+
+    # 2. Extrair features espectrais
+    audio, sr = load_audio(audio_path)
+    spectral_features = extract_spectral_features(
+        audio_path=audio_path,
+        f0=basic_features["f0"],
+        f1=basic_features["f1"] if not skip_formants else None,
+        hop_length=hop_length,
+        sr=sr,
+        skip_cpps_per_frame=skip_cpps_per_frame,
+    )
+
+    # 3. Sincronizar tamanhos
+    min_len = min(
+        len(basic_features["f0"]),
+        len(spectral_features["alpha_ratio"]),
+        len(spectral_features["h1_h2"]),
+        len(spectral_features["spectral_tilt"]),
+    )
+
+    # CPPS per-frame pode ter tamanho diferente
+    cpps_per_frame = spectral_features["cpps_per_frame"]
+    if cpps_per_frame is not None:
+        cpps_per_frame = cpps_per_frame[:min_len] if len(cpps_per_frame) >= min_len else None
+
+    f0_f1_distance = spectral_features["f0_f1_distance"]
+    if f0_f1_distance is not None:
+        f0_f1_distance = f0_f1_distance[:min_len]
+
+    return ExtendedFeatures(
+        # Features básicas
+        f0=basic_features["f0"][:min_len],
+        confidence=basic_features["confidence"][:min_len],
+        hnr=basic_features["hnr"][:min_len],
+        cpps_global=basic_features["cpps_global"],
+        jitter=basic_features["jitter"],
+        shimmer=basic_features["shimmer"],
+        energy=basic_features["energy"][:min_len],
+        f1=basic_features["f1"][:min_len],
+        f2=basic_features["f2"][:min_len],
+        f3=basic_features["f3"][:min_len],
+        f4=basic_features["f4"][:min_len],
+        time=basic_features["time"][:min_len],
+        # Features espectrais
+        alpha_ratio=spectral_features["alpha_ratio"][:min_len],
+        h1_h2=spectral_features["h1_h2"][:min_len],
+        spectral_tilt=spectral_features["spectral_tilt"][:min_len],
+        cpps_per_frame=cpps_per_frame,
+        f0_f1_distance=f0_f1_distance,
     )

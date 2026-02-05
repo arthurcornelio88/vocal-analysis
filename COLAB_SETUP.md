@@ -70,15 +70,28 @@ EXCERPT_APANHEITE_CAVAQUINHO="0007-0023"
 ### 5. Processar com CREPE (GPU)
 
 ```python
-# Processamento completo com CREPE full + GPU
+# Processamento básico com CREPE + GPU
 !python src/vocal_analysis/preprocessing/process_ademilde.py \
     --device cuda
+
+# COM features espectrais para VMI (recomendado)
+!python src/vocal_analysis/preprocessing/process_ademilde.py \
+    --device cuda \
+    --extract-spectral
+
+# COM CPPS per-frame (mais lento, melhor precisão VMI)
+!python src/vocal_analysis/preprocessing/process_ademilde.py \
+    --device cuda \
+    --extract-spectral \
+    --cpps-per-frame
 
 # Verificar outputs
 !ls -lh data/processed/
 ```
 
 **Tempo esperado**: ~5-10 minutos para 3 músicas (~7min cada) com GPU T4
+- `--extract-spectral`: adiciona ~1-2 min
+- `--cpps-per-frame`: adiciona ~5-10 min (Praat é mais lento)
 
 ### 6. Gerar análises
 
@@ -145,6 +158,20 @@ files.download('excerpts.zip')
     --batch-size 512
 ```
 
+### Extrair features espectrais para VMI
+```python
+# Alpha Ratio, H1-H2, Spectral Tilt (rápido)
+!python src/vocal_analysis/preprocessing/process_ademilde.py \
+    --device cuda \
+    --extract-spectral
+
+# Com CPPS per-frame (lento, melhor para VMI)
+!python src/vocal_analysis/preprocessing/process_ademilde.py \
+    --device cuda \
+    --extract-spectral \
+    --cpps-per-frame
+```
+
 ## 💡 Dicas
 
 1. **GPU T4 gratuita**: ~12-15 horas/dia de uso
@@ -174,9 +201,21 @@ Após processar, você terá:
 - ✅ `ademilde_features.csv` - Todas as features (f0, formants, jitter, shimmer, etc.)
 - ✅ `ademilde_metadata.json` - Metadados e estatísticas
 - ✅ `analise_ademilde.md` - Relatório técnico
-- ✅ `xgb_predictions.csv` - Predições de mecanismo (M1/M2)
+- ✅ `xgb_predictions.csv` - Predições de mecanismo (M1/M2 + VMI)
 - ✅ Plots de F0, excerpts, mecanismos, etc.
 - ✅ Áudios dos excerpts (`.wav`)
+
+**Com `--extract-spectral`**, o CSV terá também:
+- `alpha_ratio` - Razão de energia 0-1kHz vs 1-5kHz
+- `h1_h2` - Diferença entre 1º e 2º harmônico
+- `spectral_tilt` - Inclinação espectral
+
+**Com `--cpps-per-frame`**, adiciona:
+- `cpps_per_frame` - CPPS calculado por frame
+
+**Após `run_analysis.py`**, adiciona:
+- `vmi` - Vocal Mechanism Index (0-1)
+- `vmi_label` - Label categórico (M1_DENSO, M1_LIGEIRO, MIX_PASSAGGIO, M2_REFORCADO, M2_LIGEIRO)
 
 ## 🚀 Ready para o artigo!
 

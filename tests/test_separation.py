@@ -1,16 +1,16 @@
 """Testes para o módulo de source separation."""
 
-import numpy as np
-import pytest
-import torch
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import numpy as np
+import torch
+
 from vocal_analysis.preprocessing.separation import (
+    HTDEMUCS_SAMPLE_RATE,
     VocalSeparator,
     separate_vocals,
     separate_vocals_safe,
-    HTDEMUCS_SAMPLE_RATE,
 )
 
 
@@ -113,9 +113,7 @@ class TestSeparateVocalsSafe:
         assert sr == HTDEMUCS_SAMPLE_RATE
 
     @patch("vocal_analysis.preprocessing.separation.separate_vocals")
-    def test_returns_none_on_failure(
-        self, mock_separate: MagicMock, tmp_path: Path
-    ) -> None:
+    def test_returns_none_on_failure(self, mock_separate: MagicMock, tmp_path: Path) -> None:
         """Deve retornar None e False se separação falhar."""
         mock_separate.side_effect = Exception("Test error")
 
@@ -128,9 +126,7 @@ class TestSeparateVocalsSafe:
         assert result is None
 
     @patch("vocal_analysis.preprocessing.separation.separate_vocals")
-    def test_fallback_to_cpu_on_oom(
-        self, mock_separate: MagicMock, tmp_path: Path
-    ) -> None:
+    def test_fallback_to_cpu_on_oom(self, mock_separate: MagicMock, tmp_path: Path) -> None:
         """Deve tentar CPU se GPU ficar sem memória."""
         # Primeira chamada (GPU) falha com OOM, segunda (CPU) funciona
         vocals = np.random.randn(44100).astype(np.float32)

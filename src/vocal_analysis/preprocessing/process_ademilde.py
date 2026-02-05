@@ -2,7 +2,6 @@
 
 import argparse
 import json
-import os
 import re
 import tempfile
 from datetime import datetime
@@ -12,7 +11,10 @@ import numpy as np
 import pandas as pd
 import soundfile as sf
 
-from vocal_analysis.features.extraction import extract_bioacoustic_features
+from vocal_analysis.features.extraction import (
+    extract_bioacoustic_features,
+    extract_extended_features,
+)
 from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
 
 
@@ -25,7 +27,7 @@ def _parse_excerpt_interval(interval_str: str) -> tuple[float, float] | None:
     Returns:
         Tuple (start_seconds, end_seconds) ou None se inválido.
     """
-    match = re.match(r"(\d{4})-(\d{4})", interval_str.strip('"\''))
+    match = re.match(r"(\d{4})-(\d{4})", interval_str.strip("\"'"))
     if not match:
         return None
 
@@ -66,7 +68,11 @@ def _get_excerpt_from_env(song_stem: str) -> tuple[float, float] | None:
             if key.upper().startswith("EXCERPT_"):
                 env_song = key.upper().replace("EXCERPT_", "")
                 # Match exato ou parcial (ex: "DELICADO" matches "DELICADO")
-                if song_key == env_song or song_key.startswith(env_song) or env_song.startswith(song_key):
+                if (
+                    song_key == env_song
+                    or song_key.startswith(env_song)
+                    or env_song.startswith(song_key)
+                ):
                     return _parse_excerpt_interval(value)
 
     return None
@@ -91,6 +97,8 @@ class ProcessingConfig:
         separation_device: str | None = None,
         use_separation_cache: bool = True,
         validate_separation: bool = False,
+        extract_spectral: bool = False,
+        skip_cpps_per_frame: bool = True,
     ):
         self.skip_formants = skip_formants
         self.skip_plots = skip_plots
@@ -106,6 +114,8 @@ class ProcessingConfig:
         self.separation_device = separation_device or device
         self.use_separation_cache = use_separation_cache
         self.validate_separation = validate_separation
+        self.extract_spectral = extract_spectral
+        self.skip_cpps_per_frame = skip_cpps_per_frame
 
 
 def _generate_validation_plot(
@@ -199,15 +209,17 @@ def process_audio_files(
     else:
         print(f"🎵 Usando CREPE modelo '{config.crepe_model}' para extração de f0")
         if config.device == "cuda":
-            print(f"🚀 GPU HABILITADA (cuda) - processamento acelerado!")
+            print("🚀 GPU HABILITADA (cuda) - processamento acelerado!")
         else:
-            print(f"💻 CPU (processamento lento - use GPU se disponível)")
+            print("💻 CPU (processamento lento - use GPU se disponível)")
     if config.skip_cpps:
         print("⚡ DEBUG: CPPS DESATIVADO (evita travamento em macOS)")
     if config.separate_vocals:
         print(f"🎤 SOURCE SEPARATION HABILITADA (HTDemucs no {config.separation_device})")
         if config.validate_separation:
             print("📊 Validação visual habilitada (plots comparativos)")
+    if config.extract_spectral:
+        print("📈 FEATURES ESPECTRAIS HABILITADAS (Alpha Ratio, H1-H2, Spectral Tilt)")
 
     all_features = []
     songs_metadata = []
@@ -246,23 +258,36 @@ def process_audio_files(
                 print("  ⚠ Source separation falhou, usando audio original")
 
         try:
-            features = extract_bioacoustic_features(
-                audio_path_for_features,
-                skip_formants=config.skip_formants,
-                skip_jitter_shimmer=config.skip_jitter_shimmer,
-                use_praat_f0=config.use_praat_f0,
-                skip_cpps=config.skip_cpps,
-                cpps_timeout=config.cpps_timeout,
-                batch_size=config.batch_size,
-                model=config.crepe_model,
-                device=config.device,
-            )
+            if config.extract_spectral:
+                # Usar extração estendida com features espectrais (VMI)
+                features = extract_extended_features(
+                    audio_path_for_features,
+                    skip_formants=config.skip_formants,
+                    skip_jitter_shimmer=config.skip_jitter_shimmer,
+                    use_praat_f0=config.use_praat_f0,
+                    skip_cpps=config.skip_cpps,
+                    cpps_timeout=config.cpps_timeout,
+                    batch_size=config.batch_size,
+                    model=config.crepe_model,
+                    device=config.device,
+                    skip_cpps_per_frame=config.skip_cpps_per_frame,
+                )
+            else:
+                features = extract_bioacoustic_features(
+                    audio_path_for_features,
+                    skip_formants=config.skip_formants,
+                    skip_jitter_shimmer=config.skip_jitter_shimmer,
+                    use_praat_f0=config.use_praat_f0,
+                    skip_cpps=config.skip_cpps,
+                    cpps_timeout=config.cpps_timeout,
+                    batch_size=config.batch_size,
+                    model=config.crepe_model,
+                    device=config.device,
+                )
 
             # Gerar plot de validação se habilitado
             if config.validate_separation and config.separate_vocals and vocals_array is not None:
-                _generate_validation_plot(
-                    audio_path, features, config, output_dir
-                )
+                _generate_validation_plot(audio_path, features, config, output_dir)
 
             # Criar DataFrame para esta música
             df_data = {
@@ -283,6 +308,19 @@ def process_audio_files(
                         "f4": features["f4"],
                     }
                 )
+
+            # Adicionar features espectrais se habilitado
+            if config.extract_spectral:
+                df_data.update(
+                    {
+                        "alpha_ratio": features["alpha_ratio"],
+                        "h1_h2": features["h1_h2"],
+                        "spectral_tilt": features["spectral_tilt"],
+                    }
+                )
+                # CPPS per-frame é opcional (lento)
+                if not config.skip_cpps_per_frame and features.get("cpps_per_frame") is not None:
+                    df_data["cpps_per_frame"] = features["cpps_per_frame"]
 
             df = pd.DataFrame(df_data)
             df["song"] = audio_path.stem
@@ -608,6 +646,19 @@ Exemplos de uso:
         help="Gerar plot comparativo original vs voz separada (Hz + notas) para validação visual",
     )
 
+    # VMI / Spectral features arguments
+    parser.add_argument(
+        "--extract-spectral",
+        action="store_true",
+        help="Extrair features espectrais (Alpha Ratio, H1-H2, Spectral Tilt) para análise VMI. "
+        "Necessário para usar o pipeline VMI em run_analysis.py.",
+    )
+    parser.add_argument(
+        "--cpps-per-frame",
+        action="store_true",
+        help="Extrair CPPS per-frame (lento). Requer --extract-spectral.",
+    )
+
     args = parser.parse_args()
 
     # Modo fast ativa todas as otimizações
@@ -633,6 +684,8 @@ Exemplos de uso:
         separation_device=args.separation_device,
         use_separation_cache=not args.no_separation_cache,
         validate_separation=args.validate_separation,
+        extract_spectral=args.extract_spectral,
+        skip_cpps_per_frame=not args.cpps_per_frame,
     )
 
     project_root = Path(__file__).parent.parent.parent.parent
