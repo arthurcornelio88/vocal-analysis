@@ -69,10 +69,9 @@ for filename in uploaded.keys():
 ### 5. Processar com CREPE (GPU)
 
 ```python
-# Processamento básico com CREPE + GPU
+# Processamento básico com CREPE + GPU (source separation habilitada por padrão)
 !python src/vocal_analysis/preprocessing/process_ademilde.py \
     --device cuda \
-    --separate-vocals \
     --validate-separation
 
 # COM features espectrais para VMI (recomendado)
@@ -80,19 +79,19 @@ for filename in uploaded.keys():
     --device cuda \
     --extract-spectral
 
-# COM CPPS per-frame (mais lento, melhor precisão VMI)
+# SEM source separation (arranjos simples ou voz a capella)
 !python src/vocal_analysis/preprocessing/process_ademilde.py \
     --device cuda \
-    --extract-spectral \
-    --cpps-per-frame
+    --no-separate-vocals
 
 # Verificar outputs
 !ls -lh data/processed/
 ```
 
 **Tempo esperado**: ~5-10 minutos para 3 músicas (~7min cada) com GPU T4
+- Source separation (padrão): já incluído no tempo acima
 - `--extract-spectral`: adiciona ~1-2 min
-- `--cpps-per-frame`: adiciona ~5-10 min (Praat é mais lento)
+- `--no-separate-vocals`: ~30% mais rápido (mas menos preciso em arranjos complexos)
 
 ### 6. Gerar análises
 
@@ -161,17 +160,13 @@ files.download('excerpts.zip')
 
 ### Extrair features espectrais para VMI
 ```python
-# Alpha Ratio, H1-H2, Spectral Tilt (rápido)
+# Alpha Ratio, H1-H2, Spectral Tilt (rápido, recomendado)
 !python src/vocal_analysis/preprocessing/process_ademilde.py \
     --device cuda \
     --extract-spectral
-
-# Com CPPS per-frame (lento, melhor para VMI)
-!python src/vocal_analysis/preprocessing/process_ademilde.py \
-    --device cuda \
-    --extract-spectral \
-    --cpps-per-frame
 ```
+
+⚠️ **Nota**: O flag `--cpps-per-frame` existe mas é **extremamente lento** (~40+ min por música). O CPPS global é suficiente para a maioria das análises.
 
 ## 💡 Dicas
 
@@ -211,8 +206,8 @@ Após processar, você terá:
 - `h1_h2` - Diferença entre 1º e 2º harmônico
 - `spectral_tilt` - Inclinação espectral
 
-**Com `--cpps-per-frame`**, adiciona:
-- `cpps_per_frame` - CPPS calculado por frame
+**Com `--cpps-per-frame`** (⚠️ muito lento, não recomendado):
+- `cpps_per_frame` - CPPS calculado por frame (~40+ min/música)
 
 **Após `run_analysis.py`**, adiciona:
 - `vmi` - Vocal Mechanism Index (0-1)
