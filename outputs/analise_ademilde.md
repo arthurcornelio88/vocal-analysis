@@ -4,12 +4,12 @@
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **f0 médio** | 396.4 Hz | G4 |
-| **f0 mínimo** | 136.0 Hz | C#3 |
-| **f0 máximo** | 784.0 Hz | G5 |
-| **Extensão** | C#3 – G5 | ~2.5 oitavas |
-| **HNR médio** | 16.7 dB | – |
-| **Total frames** | 24124 | – |
+| **f0 médio** | 220.4 Hz | A3 |
+| **f0 mínimo** | 50.0 Hz | G1 |
+| **f0 máximo** | 797.6 Hz | G5 |
+| **Extensão** | G1 – G5 | ~4.0 oitavas |
+| **HNR médio** | 6.2 dB | – |
+| **Total frames** | 21203 | – |
 
 ## Análise por Mecanismo
 
@@ -17,57 +17,45 @@
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | 13593 (56.3%) | – |
-| **f0 médio** | 314.6 Hz | D#4 |
-| **f0 desvio** | 49.5 Hz | – |
-| **Extensão** | C#3 – G4 | – |
-| **HNR médio** | 16.7 dB | – |
+| **Frames** | 17852 (84.2%) | – |
+| **f0 médio** | 171.7 Hz | F3 |
+| **f0 desvio** | 111.5 Hz | – |
+| **Extensão** | G1 – G4 | – |
+| **HNR médio** | 5.9 dB | – |
 
 ### M2 (Cabeça/Head)
 
 | Métrica | Valor | Nota |
 |---------|-------|------|
-| **Frames** | 10531 (43.7%) | – |
-| **f0 médio** | 502.0 Hz | B4 |
-| **f0 desvio** | 75.6 Hz | – |
+| **Frames** | 3351 (15.8%) | – |
+| **f0 médio** | 480.1 Hz | B4 |
+| **f0 desvio** | 53.4 Hz | – |
 | **Extensão** | G4 – G5 | – |
-| **HNR médio** | 16.7 dB | – |
+| **HNR médio** | 7.9 dB | – |
 
 ## Por Música
 
 ### apanheite_cavaquinho
 
-- f0 médio: 370.1 Hz (F#4)
-- Extensão: F#3 – F#5
-- HNR médio: 15.8 dB
-
-### brasileirinho
-
-- f0 médio: 444.5 Hz (A4)
-- Extensão: C#3 – G5
-- HNR médio: 17.4 dB
-
-### delicado
-
-- f0 médio: 384.5 Hz (G4)
-- Extensão: F3 – F5
-- HNR médio: 17.0 dB
+- f0 médio: 220.4 Hz (A3)
+- Extensão: G1 – G5
+- HNR médio: 6.2 dB
 
 ## Classificação XGBoost (Pseudo-Labels GMM)
 
-Features utilizadas: `f0`, `hnr`, `energy`, `f0_velocity`, `f0_acceleration`, `f1`, `f2`, `f3`, `f4`
+Features utilizadas: `f0`, `hnr`, `energy`, `f0_velocity`, `f0_acceleration`
 Labels de treinamento: clusters do GMM (não-supervisionado)
 Split: 80% treino / 20% teste
 
 ```
               precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00      3094
-           1       0.99      0.99      0.99      1731
+           0       1.00      1.00      1.00      2103
+           1       1.00      1.00      1.00      2138
 
-    accuracy                           1.00      4825
-   macro avg       1.00      0.99      1.00      4825
-weighted avg       1.00      1.00      1.00      4825
+    accuracy                           1.00      4241
+   macro avg       1.00      1.00      1.00      4241
+weighted avg       1.00      1.00      1.00      4241
 ```
 
 ## Interpretação
