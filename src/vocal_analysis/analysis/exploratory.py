@@ -9,6 +9,7 @@ import pandas as pd
 import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
+from sklearn.preprocessing import RobustScaler
 
 from vocal_analysis.features.vmi import (
     VMILabel,
@@ -94,9 +95,10 @@ def cluster_mechanisms(
     """
     df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)].copy()
 
-    # Normalizar features
-    features = df_voiced[["f0", "hnr"]].copy()
-    features_norm = (features - features.mean()) / features.std()
+    # Normalizar features (RobustScaler usa mediana/IQR, mais robusto a outliers)
+    features = df_voiced[["f0", "hnr"]].values
+    scaler = RobustScaler()
+    features_norm = scaler.fit_transform(features)
 
     # Clustering
     if method == "gmm":
