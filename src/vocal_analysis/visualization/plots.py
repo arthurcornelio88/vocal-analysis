@@ -251,7 +251,7 @@ def plot_separation_validation(
         hz = float(midi_to_hz(midi))
         note = hz_to_note(hz)
         # Mostrar apenas notas naturais (sem # ou b) para não poluir o eixo
-        if f0_min <= hz <= f0_max and '#' not in note and 'b' not in note:
+        if f0_min <= hz <= f0_max and "#" not in note and "b" not in note:
             note_ticks_hz.append(hz)
             note_ticks_labels.append(note)
 
@@ -313,8 +313,9 @@ def plot_separation_validation(
         ax2.axhline(hz, color="gray", linewidth=0.3, alpha=0.4)
 
     # Colorbar compartilhada (location='right' evita sobreposição com eixo de notas)
-    cbar = fig.colorbar(scatter2, ax=axes, location='right', label="Confiança CREPE",
-                        shrink=0.8, pad=0.02)
+    cbar = fig.colorbar(
+        scatter2, ax=axes, location="right", label="Confiança CREPE", shrink=0.8, pad=0.02
+    )
 
     # Titulo geral
     fig.suptitle(title, fontsize=12, fontweight="bold")
