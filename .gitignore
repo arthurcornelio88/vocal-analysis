@@ -37,8 +37,7 @@ env/
 # Data
 data/raw/*
 !data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
+# data/processed/* - Mantido para prova científica
 data/cache/*
 !data/cache/.gitkeep
 

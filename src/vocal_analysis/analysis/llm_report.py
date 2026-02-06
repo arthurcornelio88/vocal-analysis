@@ -23,6 +23,15 @@ Termos técnicos importantes:
 - Shimmer (apq11): instabilidade de amplitude, variação ciclo-a-ciclo na amplitude (%)
 - Formantes (F1-F4): ressonâncias do trato vocal, relacionadas à qualidade timbral e vogal
 - M1/M2: mecanismos laríngeos (registro de peito vs cabeça)
+- VMI (Vocal Mechanism Index): métrica contínua 0-1 que substitui threshold fixo de frequência
+  - 0.0-0.2 = M1 Denso (voz de peito plena)
+  - 0.2-0.4 = M1 Ligeiro (voz de peito leve)
+  - 0.4-0.6 = Mix/Passaggio (zona de transição)
+  - 0.6-0.8 = M2 Reforçado (voz de cabeça com corpo)
+  - 0.8-1.0 = M2 Ligeiro (voz de cabeça leve)
+- Alpha Ratio: razão de energia 0-1kHz vs 1-5kHz (valores mais negativos = mais grave/M1)
+- H1-H2: diferença entre 1º e 2º harmônico (indica inclinação glotal)
+- Spectral Tilt: inclinação do espectro de potência
 
 Escreva em português brasileiro acadêmico, mas acessível. Use notação musical (C4, G5) ao lado de Hz quando relevante. Incorpore análise das features de instabilidade (jitter/shimmer) e formantes quando disponíveis."""
 
@@ -68,8 +77,9 @@ Escreva uma análise acadêmica (~500 palavras) com as seguintes seções:
 
 1. **Caracterização Vocal**: Descreva o perfil vocal da cantora baseado nos dados
 2. **Análise de Mecanismos**: Interprete a distribuição M1/M2 e o que isso revela
-3. **Implicações para o Sistema Fach**: Como esses dados desafiam a classificação tradicional
-4. **Limitações**: Mencione brevemente as limitações (gravações históricas, etc)
+3. **Análise VMI**: Se disponível, interprete a distribuição do Vocal Mechanism Index e como ele captura nuances que a classificação binária M1/M2 não captura (zonas de transição, mix voice, etc)
+4. **Implicações para o Sistema Fach**: Como esses dados desafiam a classificação tradicional
+5. **Limitações**: Mencione brevemente as limitações (gravações históricas, etc)
 
 Use os dados concretos (notas musicais, percentuais) para embasar cada ponto.
 Mantenha tom acadêmico mas acessível. Evite jargão desnecessário."""
@@ -102,6 +112,8 @@ Tipos de gráficos:
 - *_f0.png: Contornos de f0 por música - observe padrões de ornamentação, vibrato, saltos intervalares
 - mechanism_analysis.png: 4 subplots com análise M1/M2 (histograma, scatter, boxplot, temporal)
 - mechanism_clusters.png: Clustering GMM dos mecanismos
+- vmi_analysis.png: 4 subplots com análise VMI (F0 vs Alpha Ratio, distribuição VMI, contorno temporal, boxplot por categoria)
+- vmi_scatter.png: Scatter plot F0 vs Alpha Ratio colorido por VMI
 
 Integre observações visuais com os dados numéricos na sua análise."""
 
@@ -150,6 +162,10 @@ Integre observações visuais com os dados numéricos na sua análise."""
                         )
                     elif "mechanism_clusters" in name:
                         desc = "Clustering GMM dos mecanismos laríngeos"
+                    elif "vmi_analysis" in name:
+                        desc = "Análise VMI (F0 vs Alpha Ratio, distribuição, contorno temporal)"
+                    elif "vmi_scatter" in name:
+                        desc = "Scatter F0 vs Alpha Ratio colorido por VMI"
                     else:
                         desc = name
                     # Embed da imagem + legenda
@@ -239,8 +255,37 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
                     for col in available_formants:
                         mean_val = df_voiced[col].mean()
                         lines.append(f"- {col.upper()}: {mean_val:.1f} Hz")
+
+                # Verificar se VMI está disponível
+                if "vmi" in df_voiced.columns and "vmi_label" in df_voiced.columns:
+                    lines.append("\n### VMI (Vocal Mechanism Index)")
+                    lines.append(f"- VMI médio: {df_voiced['vmi'].mean():.3f}")
+
+                    # Distribuição por categoria
+                    vmi_counts = df_voiced["vmi_label"].value_counts()
+                    total = len(df_voiced)
+                    for label in [
+                        "M1_DENSO",
+                        "M1_LIGEIRO",
+                        "MIX_PASSAGGIO",
+                        "M2_REFORCADO",
+                        "M2_LIGEIRO",
+                    ]:
+                        if label in vmi_counts.index:
+                            count = vmi_counts[label]
+                            pct = count / total * 100
+                            lines.append(f"- {label}: {count} frames ({pct:.1f}%)")
+
+                # Verificar features espectrais
+                spectral_cols = ["alpha_ratio", "h1_h2", "spectral_tilt"]
+                available_spectral = [col for col in spectral_cols if col in df_voiced.columns]
+                if available_spectral:
+                    lines.append("\n### Features Espectrais - Médias Globais")
+                    for col in available_spectral:
+                        mean_val = df_voiced[col].mean()
+                        lines.append(f"- {col}: {mean_val:.2f} dB")
             except Exception as e:
-                lines.append(f"\n*Nota: Erro ao carregar formantes do CSV: {e}*")
+                lines.append(f"\n*Nota: Erro ao carregar dados do CSV: {e}*")
 
         lines.extend(
             [

@@ -306,6 +306,24 @@ from vocal_analysis.features.spectral import compute_cpps_per_frame
 cpps = compute_cpps_per_frame(audio_path, hop_length=220)
 ```
 
+#### Mapeamento Features → VMI
+
+| Configuração | Alpha Ratio | CPPS | H1-H2 | Spectral Tilt | VMI |
+|--------------|-------------|------|-------|---------------|-----|
+| **M1 Denso** | Alta | Alto | Baixo | Íngreme (negativo) | 0.0-0.2 |
+| **M1 Ligeiro** | Moderada | Alto | Moderado | Moderado | 0.2-0.4 |
+| **Passaggio/Mix** | Variável | Variável | Instável | Transição | 0.4-0.6 |
+| **M2 Reforçado** | Moderada | Alto | Alto | Suave | 0.6-0.8 |
+| **M2 Ligeiro** | Baixa | Moderado | Muito alto | Muito suave | 0.8-1.0 |
+
+**Notas Teóricas:**
+
+1. **CPPS Alto em M2 Reforçado:** Um M2 bem produzido (voix mixte) tem CPPS **alto** porque é periódico e limpo. CPPS baixo indica ruído/aperiodicidade, não ressonância reforçada.
+
+2. **H1-H2 instável no passaggio:** Quando F0 > 350Hz, H1 pode coincidir com F1, tornando H1-H2 menos confiável. Por isso incluímos Spectral Tilt como feature complementar.
+
+3. **F0-F1 não indica mecanismo:** A proximidade F0↔F1 é estratégia de ressonância (vowel tuning). Sopranos em M2 e tenores em M1 podem usar a mesma estratégia. Não usar diretamente no VMI.
+
 ---
 
 ## 5. Features de Agilidade Articulatória

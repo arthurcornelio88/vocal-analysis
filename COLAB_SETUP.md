@@ -97,7 +97,7 @@ for filename in uploaded.keys():
 
 ```python
 # Rodar análise exploratória
-!python src/vocal_analysis/analysis/run_analysis.py
+!!GEMINI_API_KEY=<YOUR-API-KEY> python src/vocal_analysis/analysis/run_analysis.py
 
 # Listar outputs
 !ls -lh outputs/plots/
@@ -117,6 +117,10 @@ files.download('data/processed/ademilde_metadata.json')
 
 # Download relatórios
 files.download('outputs/analise_ademilde.md')
+files.download('outputs/analise_vmi.md')
+
+# Download predições XGBoost
+files.download('outputs/xgb_predictions.csv')
 
 # Download plots (zip primeiro)
 !zip -r outputs_plots.zip outputs/plots/

@@ -1,6 +1,6 @@
 [project]
 name = "vocal-analysis"
-version = "2.0.2"
+version = "2.0.3"
 description = "Análise Bioacústica para Classificação de Mecanismos Laríngeos M1/M2 no Choro"
 readme = "README.md"
 authors = [

@@ -1,0 +1,72 @@
+{
+  "processed_at": "2026-02-06T15:44:31.642001",
+  "artist": "Ademilde Fonseca",
+  "n_songs": 3,
+  "n_success": 3,
+  "songs": [
+    {
+      "song": "apanheite_cavaquinho",
+      "file": "apanheite_cavaquinho.mp3",
+      "total_frames": 25660,
+      "voiced_frames": 6301,
+      "f0_mean_hz": 370.1000061035156,
+      "f0_mean_note": "F#4",
+      "f0_min_hz": 185.8,
+      "f0_max_hz": 751.8,
+      "f0_range_notes": "F#3 – F#5",
+      "f0_std_hz": 102.2,
+      "hnr_mean_db": 16.1,
+      "cpps_global": 2.11,
+      "energy_mean": 0.12520000338554382,
+      "jitter_ppq5": 0.011,
+      "shimmer_apq11": 0.0942,
+      "plot_path": "outputs/plots/apanheite_cavaquinho_f0.png"
+    },
+    {
+      "song": "delicado",
+      "file": "delicado.mp3",
+      "total_frames": 44781,
+      "voiced_frames": 8573,
+      "f0_mean_hz": 382.8999938964844,
+      "f0_mean_note": "G4",
+      "f0_min_hz": 179.3,
+      "f0_max_hz": 717.7,
+      "f0_range_notes": "F3 – F5",
+      "f0_std_hz": 93.8,
+      "hnr_mean_db": 17.0,
+      "cpps_global": 1.62,
+      "energy_mean": 0.10719999670982361,
+      "jitter_ppq5": 0.0079,
+      "shimmer_apq11": 0.0935,
+      "plot_path": "outputs/plots/delicado_f0.png"
+    },
+    {
+      "song": "brasileirinho",
+      "file": "brasileirinho.mp3",
+      "total_frames": 29356,
+      "voiced_frames": 5392,
+      "f0_mean_hz": 444.6000061035156,
+      "f0_mean_note": "A4",
+      "f0_min_hz": 203.7,
+      "f0_max_hz": 781.2,
+      "f0_range_notes": "G#3 – G5",
+      "f0_std_hz": 128.0,
+      "hnr_mean_db": 17.5,
+      "cpps_global": 1.9,
+      "energy_mean": 0.12280000001192093,
+      "jitter_ppq5": 0.0117,
+      "shimmer_apq11": 0.0889,
+      "plot_path": "outputs/plots/brasileirinho_f0.png"
+    }
+  ],
+  "global": {
+    "total_voiced_frames": 20266,
+    "f0_mean_hz": 395.29998779296875,
+    "f0_mean_note": "G4",
+    "f0_min_hz": 179.3,
+    "f0_max_hz": 781.2,
+    "f0_range_notes": "F3 – G5",
+    "f0_std_hz": 110.6,
+    "hnr_mean_db": 16.9
+  }
+}

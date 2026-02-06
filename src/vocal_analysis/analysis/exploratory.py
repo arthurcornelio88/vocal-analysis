@@ -465,14 +465,14 @@ os mecanismos de forma fluida, contradizendo categorizações rígidas.
 ### Limitações
 
 - Gravações históricas com baixa qualidade (HNR reduzido)
-- Threshold M1/M2 baseado em heurística (400 Hz)
+- Classificação M1/M2 via GMM (sensível a dados de treino)
 - CPPS comprometido pelo ruído de fundo
 
 ## Próximos Passos
 
-1. Validar threshold com clustering não supervisionado
-2. Analisar transições entre mecanismos (quebras de registro)
-3. Comparar com cantoras contemporâneas (gravações de alta qualidade)
+1. Analisar transições entre mecanismos (quebras de registro)
+2. Comparar com cantoras contemporâneas (gravações de alta qualidade)
+3. Validar VMI com anotações manuais de fonoaudiólogo
 """
 
     with open(output_path, "w", encoding="utf-8") as f:
