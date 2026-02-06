@@ -151,6 +151,11 @@ def extract_bioacoustic_features(
         f0 = f0.squeeze().cpu().numpy()
         confidence = confidence.squeeze().cpu().numpy()
 
+        # Clip F0 to valid range - remove spurious detections outside fmin/fmax
+        invalid_mask = (f0 < fmin) | (f0 > fmax)
+        f0[invalid_mask] = 0
+        confidence[invalid_mask] = 0
+
     # 2. Extração de Timbre com Parselmouth (Praat)
     # Harmonicity (HNR) - Proxy para "limpeza" da voz
     harmonicity = sound.to_harmonicity(time_step=time_step)

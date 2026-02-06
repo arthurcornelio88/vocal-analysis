@@ -333,7 +333,7 @@ def process_audio_files(
             # Filtrar frames com baixa confiança ou silêncio
             # confidence > 0.8: conforme metodologia (CREPE periodicity)
             # hnr > -10: remove silêncio/ruído (Praat retorna -200 dB em frames não-voiced)
-            df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)].copy()
+            df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)].copy()
 
             all_features.append(df_voiced)
 
@@ -431,7 +431,7 @@ def process_audio_files(
         df_all = pd.concat(all_features, ignore_index=True)
 
         # Adicionar stats globais ao metadata (convert numpy types to Python native types)
-        df_voiced = df_all[(df_all["confidence"] > 0.8) & (df_all["hnr"] > -10)]
+        df_voiced = df_all[(df_all["confidence"] > 0.85) & (df_all["hnr"] > 0)]
         metadata["global"] = {
             "total_voiced_frames": int(len(df_voiced)),
             "f0_mean_hz": float(round(df_voiced["f0"].mean(), 1)),

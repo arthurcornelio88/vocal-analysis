@@ -49,8 +49,8 @@ def analyze_mechanism_regions(
     Returns:
         Dicionário com estatísticas por mecanismo.
     """
-    # Filtrar voiced frames: confidence > 0.8 + HNR > -10 (remove silêncio)
-    df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)].copy()
+    # Filtrar voiced frames: confidence > 0.85 + HNR > 0 (remove silêncio e faux positifs)
+    df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)].copy()
 
     # Classificar por threshold
     df_voiced["mechanism"] = np.where(df_voiced["f0"] < threshold_hz, "M1", "M2")
@@ -93,7 +93,7 @@ def cluster_mechanisms(
     Returns:
         DataFrame com coluna 'cluster' adicionada.
     """
-    df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)].copy()
+    df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)].copy()
 
     # Normalizar features (RobustScaler usa mediana/IQR, mais robusto a outliers)
     features = df_voiced[["f0", "hnr"]].values
@@ -158,7 +158,7 @@ def analyze_mechanism_vmi(
         Tupla (DataFrame com VMI, estatísticas por categoria VMI).
     """
     # Filtrar voiced frames
-    df_voiced = df[(df["confidence"] > 0.8)].copy()
+    df_voiced = df[(df["confidence"] > 0.85)].copy()
 
     # Verificar se temos as features necessárias
     required_cols = ["alpha_ratio", "h1_h2", "spectral_tilt"]
@@ -384,7 +384,7 @@ def generate_report(
         xgb_report: Classification report do XGBoost (string), se disponível.
         xgb_feature_cols: Lista de features usadas no XGBoost.
     """
-    df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)]
+    df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)]
 
     f0_global_mean = df_voiced["f0"].mean()
     f0_global_min = df_voiced["f0"].min()
@@ -493,7 +493,7 @@ def generate_vmi_report(
         output_path: Caminho do arquivo .md.
         artist_name: Nome do artista.
     """
-    df_voiced = df[df["confidence"] > 0.8]
+    df_voiced = df[df["confidence"] > 0.85]
 
     f0_global_mean = df_voiced["f0"].mean()
     f0_global_min = df_voiced["f0"].min()
