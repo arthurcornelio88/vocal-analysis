@@ -732,47 +732,83 @@ A variável de ambiente `USE_VMI=true` (default) habilita a análise VMI quando 
 
 ## 11. Referências Metodológicas
 
+### Mecanismos Laríngeos M1/M2
+
+1. **Roubeau, B., Henrich, N., & Castellengo, M. (2009).** Laryngeal Vibratory Mechanisms: the notion of vocal register revisited. *Journal of Voice*, 23(4), 425-438.
+
+2. **Henrich, N., d'Alessandro, C., Doval, B., & Castellengo, M. (2004).** Glottal open quotient in singing: measurements and correlation with laryngeal mechanisms, vocal intensity, and fundamental frequency. *J. Acoust. Soc. Am.*, 117(3), 1417-1430.
+
+3. **Henrich, N. (2006).** Mirroring the voice from Garcia to the present day: some insights into singing voice registers. *Logopedics Phoniatrics Vocology*, 31(1), 3-14.
+
+4. **Henrich, N., et al. (2014).** Vocal tract resonances in singing: variation with laryngeal mechanism for male operatic singers. *J. Acoust. Soc. Am.*, 135(1), 491-501.
+
 ### Pitch e Análise Vocal
 
-1. **Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).** CREPE: A Convolutional Representation for Pitch Estimation. *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*.
+5. **Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).** CREPE: A Convolutional Representation for Pitch Estimation. *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*. arXiv:1802.06182.
 
-2. **Boersma, P., & Weenink, D. (2023).** Praat: doing phonetics by computer [Computer program]. Version 6.3.
+6. **Boersma, P., & Weenink, D. (2023).** Praat: doing phonetics by computer [Computer program]. Version 6.3.
 
-3. **Henrich, N., et al. (2014).** On the use of electroglottography for characterization of the laryngeal mechanisms. *Proceedings of Stockholm Music Acoustics Conference*.
+7. **Maryn, Y., & Weenink, D. (2015).** Objective dysphonia measures in the program Praat: Smoothed cepstral peak prominence and acoustic voice quality index. *Journal of Voice*.
 
-4. **Maryn, Y., & Weenink, D. (2015).** Objective dysphonia measures in the program Praat: Smoothed cepstral peak prominence and acoustic voice quality index. *Journal of Voice*.
+8. **Teixeira, J. P., Oliveira, C., & Lopes, C. (2013).** Vocal Acoustic Analysis – Jitter, Shimmer and HNR Parameters. *Procedia Technology*, 9, 1112-1122.
 
 ### Features Espectrais
 
-5. **Sundberg, J., & Nordenberg, M. (2006).** Effects of vocal loudness variation on spectrum balance as reflected by the alpha measure of long-term-average spectra of speech. *J. Acoust. Soc. Am.*, 120(1), 453-457.
+9. **Sundberg, J., & Nordenberg, M. (2006).** Effects of vocal loudness variation on spectrum balance as reflected by the alpha measure of long-term-average spectra of speech. *J. Acoust. Soc. Am.*, 120(1), 453-457.
 
-6. **Hanson, H. M. (1997).** Glottal characteristics of female speakers: Acoustic correlates. *J. Acoust. Soc. Am.*, 101(1), 466-481.
+10. **Hanson, H. M. (1997).** Glottal characteristics of female speakers: Acoustic correlates. *J. Acoust. Soc. Am.*, 101(1), 466-481.
 
-7. **Kreiman, J., Gerratt, B. R., Garellek, M., Samlan, R., & Zhang, Z. (2014).** Toward a unified theory of voice production and perception. *Loquens*, 1(1), e009.
+11. **Kreiman, J., Gerratt, B. R., Garellek, M., Samlan, R., & Zhang, Z. (2014).** Toward a unified theory of voice production and perception. *Loquens*, 1(1), e009.
 
-8. **Fant, G. (1995).** The LF-model revisited: Transformations and frequency domain analysis. *STL-QPSR*, 2-3/1995, 119-156.
+12. **Fant, G. (1995).** The LF-model revisited: Transformations and frequency domain analysis. *STL-QPSR*, 2-3/1995, 119-156.
 
-9. **Gauffin, J., & Sundberg, J. (1989).** Spectral correlates of glottal voice source waveform characteristics. *J. Speech Hear. Res.*, 32(3), 556-565.
+13. **Gauffin, J., & Sundberg, J. (1989).** Spectral correlates of glottal voice source waveform characteristics. *J. Speech Hear. Res.*, 32(3), 556-565.
+
+### Qualidade Vocal e Fisiologia
+
+14. **Bourne, T., & Garnier, M. (2012).** Physiological and acoustic characteristics of four qualities in the female music theatre voice. *J. Acoust. Soc. Am.*, 131(2), 1586-1594.
+
+15. **Behlau, M., & Ziemer, R. (1988).** *Voz: o livro do especialista.* Rio de Janeiro: Revinter.
 
 ### Pedagogia Vocal e Formantes
 
-10. **Bozeman, K. W. (2013).** *Practical Vocal Acoustics: Pedagogic Applications for Teachers and Singers.* Pendragon Press.
+16. **Bozeman, K. W. (2013).** *Practical Vocal Acoustics: Pedagogic Applications for Teachers and Singers.* Pendragon Press.
 
-11. **Bozeman, K. W. (2017).** *Kinesthetic Voice Pedagogy: Motivating Acoustic Efficiency.* Inside View Press.
+17. **Bozeman, K. W. (2017).** *Kinesthetic Voice Pedagogy: Motivating Acoustic Efficiency.* Inside View Press.
 
-12. **Sundberg, J. (1987).** *The Science of the Singing Voice.* Northern Illinois University Press.
+18. **Sundberg, J. (1987).** *The Science of the Singing Voice.* Northern Illinois University Press.
 
-### Machine Learning e Classificação
+19. **Sundberg, J. (1974).** Articulatory interpretation of the "singing formant". *J. Acoust. Soc. Am.*, 55(4), 838-844.
 
-13. **Chen, T., & Guestrin, C. (2016).** XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
+20. **Miller, R. (2000).** *Training Soprano Voices.* New York: Oxford University Press.
 
-14. **Lee, D.-H. (2013).** Pseudo-Label: The simple and efficient semi-supervised learning method for deep neural networks. *ICML 2013 Workshop: Challenges in Representation Learning (WREPL)*.
+21. **Raitio, T., et al. (2024).** Formant Tracking by Combining Deep Neural Network and Linear Prediction. *IEEE/ACM Transactions on Audio, Speech, and Language Processing*, 32.
 
-15. **Nigam, K., McCallum, A. K., Thrun, S., & Mitchell, T. (2000).** Text classification from labeled and unlabeled documents using EM. *Machine Learning*, 39, 103-134.
+### Machine Learning e Classificação de Registros
+
+22. **Almeida, J., et al. (2025).** Machine Learning Approaches to Vocal Register Classification in Contemporary Male Pop Music. arXiv:2505.11378v1.
+
+23. **Almeida, J., et al. (2025).** Machine Learning with Evolutionary Parameter Tuning for Singing Registers Classification. *Signals*, 6(1), 9.
+
+24. **Schulze, T., et al. (2023).** Towards Automated Vocal Mode Classification in Healthy Singing Voice — An XGBoost Decision Tree-Based Machine Learning Classifier. *ResearchGate*.
+
+25. **Chen, T., & Guestrin, C. (2016).** XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
+
+26. **Lee, D.-H. (2013).** Pseudo-Label: The simple and efficient semi-supervised learning method for deep neural networks. *ICML 2013 Workshop: Challenges in Representation Learning (WREPL)*.
+
+27. **Nigam, K., McCallum, A. K., Thrun, S., & Mitchell, T. (2000).** Text classification from labeled and unlabeled documents using EM. *Machine Learning*, 39, 103-134.
 
 ### Source Separation
 
-16. **Défossez, A., Usunier, N., Bottou, L., & Bach, F. (2021).** Hybrid Spectrogram and Waveform Source Separation. *Proceedings of the ISMIR 2021 Conference*.
+28. **Défossez, A., Usunier, N., Bottou, L., & Bach, F. (2021).** Hybrid Spectrogram and Waveform Source Separation. *Proceedings of the ISMIR 2021 Conference*.
+
+29. **Moreira, L., et al. (2024).** Music Source Separation in Noisy Brazilian Choro Recordings. *Proceedings of the Conference on Music Technology (Colibri/TRB24)*.
+
+### Contexto: Choro e Classificação Fach
+
+30. **Ferraz, D. S. R. (2010).** *A Voz e o Choro: aspectos técnicos vocais e o repertório de Choro cantado.* Dissertação (Mestrado em Música) — UNIRIO, Rio de Janeiro.
+
+31. **Cotton, S. (2007).** *Voice Classification and Fach: usage and inconsistencies.* Tese (Doctor of Musical Arts) — University of North Carolina, Greensboro.
 
 ---
 
