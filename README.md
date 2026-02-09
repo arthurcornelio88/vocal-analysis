@@ -6,15 +6,17 @@ Computational analysis of laryngeal mechanisms (M1/M2) in Brazilian Choro record
 
 ## Goal
 
-Challenge the traditional "Fach" vocal classification system through a physiological analysis of laryngeal mechanisms, extracting explainable features (f0, HNR, CPPS) from singing audio.
+Challenge the traditional "Fach" vocal classification system through a physiological analysis of laryngeal mechanisms. The pipeline extracts explainable bioacoustic features (f0, HNR, CPPS, spectral energy ratios) and classifies vocal mechanisms using four complementary methods: frequency threshold, GMM clustering, XGBoost with pseudo-labels, and the **VMI (Vocal Mechanism Index)** — a tessitura-agnostic continuous metric based on spectral features.
 
 ## Stack
 
-- **torchcrepe**: SOTA f0 (pitch) extraction
-- **parselmouth** (Praat): HNR, CPPS, Jitter, Shimmer
-- **xgboost**: Tabular M1/M2 classification
+- **torchcrepe**: SOTA f0 (pitch) extraction via CNN
+- **parselmouth** (Praat): HNR, CPPS, Jitter, Shimmer, Formants
+- **numpy/scipy**: Spectral features (Alpha Ratio, H1-H2, Spectral Tilt)
+- **xgboost**: Tabular M1/M2 classification with pseudo-labels
+- **scikit-learn**: GMM clustering for unsupervised mechanism detection
 - **seaborn/matplotlib**: Academic visualizations
-- **google-generativeai**: Multimodal narrative report generation with Gemini 2.0 Flash
+- **google-generativeai**: Multimodal narrative report generation (Gemini 2.0 Flash)
 
 ## Setup
 
@@ -251,13 +253,21 @@ The script uses separated vocal data cached in `data/cache/separated/` and excer
 uv run python -m vocal_analysis.analysis.run_analysis
 ```
 
+The analysis script runs four classification methods in sequence:
+
+1. **Frequency threshold** (400 Hz / G4) — simple binary split
+2. **GMM clustering** — unsupervised discovery of M1/M2 clusters in f0 x HNR space
+3. **XGBoost** — supervised classifier trained on GMM pseudo-labels with additional features
+4. **VMI (Vocal Mechanism Index)** — continuous 0-1 metric based on spectral features (Alpha Ratio, H1-H2, CPPS, Spectral Tilt), independent of fixed frequency thresholds
+
 **Generated outputs:**
-- `outputs/plots/mechanism_analysis.png` - 4 M1/M2 analysis plots (threshold)
-- `outputs/plots/mechanism_clusters.png` - GMM clustering
+- `outputs/plots/mechanism_analysis.png` - Threshold-based M1/M2 analysis
+- `outputs/plots/mechanism_clusters.png` - GMM clustering visualization
+- `outputs/plots/vmi_scatter.png` - VMI distribution by spectral features
 - `outputs/plots/xgb_mechanism_timeline.png` - Temporal contour colored by XGBoost prediction
-- `outputs/xgb_predictions.csv` - Per-frame predictions (GMM + XGBoost)
-- `outputs/analysis_report.md` - Structured report (includes XGBoost classification report)
-- `outputs/vmi_analysis.md` - VMI report (if spectral features available)
+- `outputs/xgb_predictions.csv` - Per-frame predictions (all methods)
+- `outputs/analysis_report.md` - Structured report with classification metrics
+- `outputs/vmi_analysis.md` - VMI report with per-song breakdown
 - `outputs/llm_report.md` - Narrative report with Gemini (if API configured)
 
 #### Multimodal LLM Report
@@ -295,6 +305,8 @@ uv run python -m vocal_analysis.analysis.llm_report
 
 ### 5. Extracted features
 
+**Core features** (per-frame, from `process_ademilde`):
+
 | Column | Description |
 |--------|-------------|
 | `time` | Timestamp in seconds |
@@ -304,9 +316,30 @@ uv run python -m vocal_analysis.analysis.llm_report
 | `energy` | RMS energy |
 | `f1, f2, f3, f4` | Formants 1-4 (Hz) |
 | `song` | Song name |
-| `cpps_global` | Cepstral Peak Prominence (global value per song) |
+| `cpps_global` | Cepstral Peak Prominence (global per song) |
 | `jitter` | Jitter ppq5 - period instability (%) |
 | `shimmer` | Shimmer apq11 - amplitude instability (%) |
+
+**Spectral features** (added by `run_analysis` if spectral data available):
+
+| Column | Description |
+|--------|-------------|
+| `alpha_ratio` | Energy ratio 0-1 kHz vs 1-5 kHz (dB) |
+| `h1_h2` | Difference between 1st and 2nd harmonic (glottal slope, dB) |
+| `spectral_tilt` | Power spectrum slope (dB/octave) |
+| `cpps_per_frame` | Cepstral Peak Prominence per frame |
+
+**Classification and VMI** (added by `run_analysis`):
+
+| Column | Description |
+|--------|-------------|
+| `mechanism` | GMM label (M1/M2) |
+| `xgb_mechanism` | XGBoost prediction (M1/M2) |
+| `vmi` | Vocal Mechanism Index (0.0 - 1.0) |
+| `vmi_label` | VMI category (M1_HEAVY, M1_LIGHT, MIX_PASSAGGIO, M2_REINFORCED, M2_LIGHT) |
+| `f0_velocity` | Pitch change rate (Hz/s) |
+| `f0_acceleration` | Pitch acceleration (Hz/s^2) |
+| `syllable_rate` | Syllabic rate (syllables/s) |
 
 ## Utilities
 
@@ -337,29 +370,6 @@ uv run pytest -v
 
 ## Documentation
 
-### Introductory Guide
-
-To understand the bioacoustic concepts used in the analysis (f0, HNR, formants, jitter, shimmer) and why each matters, without prior technical background:
-
-**[docs/en/BIOACOUSTIC_GLOSSARY.md](docs/en/BIOACOUSTIC_GLOSSARY.md)**
-
-### Detailed Methodology
-
-For an in-depth understanding of methodological choices, technical parameters, and academic justifications for each pipeline component:
-
-**[docs/en/METHODOLOGY.md](docs/en/METHODOLOGY.md)**
-
-This document covers:
-- CREPE vs traditional autocorrelation methods
-- Preprocessing parameters (normalization, hop length, thresholds)
-- Bioacoustic feature details (f0, HNR, CPPS, Jitter, Shimmer, Formants)
-- Articulatory agility features (f0 velocity, syllabic rate)
-- M1/M2 classification methods (Threshold, GMM, XGBoost, VMI)
-- Data structure and execution workflow
-- Recognized limitations and academic compliance
-
-## References
-
-- **CREPE**: [Kim et al., 2018 - CREPE: A Convolutional Representation for Pitch Estimation](https://arxiv.org/abs/1802.06182)
-- **Praat**: [Boersma & Weenink - Praat: doing phonetics by computer](https://www.praat.org)
-- **Laryngeal Mechanisms**: Roubeau, B., Henrich, N., & Castellengo, M. (2009). Laryngeal vibratory mechanisms
+- **[Bioacoustic Glossary](docs/en/BIOACOUSTIC_GLOSSARY.md)** — Accessible introduction to f0, HNR, formants, jitter, shimmer, VMI and why each matters
+- **[Methodology](docs/en/METHODOLOGY.md)** — Full technical reference: preprocessing, feature extraction, 4 classification methods, spectral features, VMI computation, data structure, limitations, and academic references
+- **[Colab Setup](docs/en/COLAB_SETUP.md)** — Step-by-step guide for running on Google Colab with free GPU

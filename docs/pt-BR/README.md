@@ -6,15 +6,17 @@ Analise computacional de mecanismos laringeos (M1/M2) em gravacoes de Choro bras
 
 ## Objetivo
 
-Criticar o sistema de classificacao vocal "Fach" atraves de uma analise fisiologica dos mecanismos laringeos, extraindo features explicaveis (f0, HNR, CPPS) de audios de canto.
+Criticar o sistema de classificacao vocal "Fach" atraves de uma analise fisiologica dos mecanismos laringeos. O pipeline extrai features bioacusticas explicaveis (f0, HNR, CPPS, razoes de energia espectral) e classifica mecanismos vocais com quatro metodos complementares: limiar de frequencia, clustering GMM, XGBoost com pseudo-labels e o **VMI (Vocal Mechanism Index)** — uma metrica continua agnostica de tessitura baseada em features espectrais.
 
 ## Stack
 
-- **torchcrepe**: Extracao SOTA de f0 (pitch)
-- **parselmouth** (Praat): HNR, CPPS, Jitter, Shimmer
-- **xgboost**: Classificacao tabular M1/M2
+- **torchcrepe**: Extracao SOTA de f0 (pitch) via CNN
+- **parselmouth** (Praat): HNR, CPPS, Jitter, Shimmer, Formantes
+- **numpy/scipy**: Features espectrais (Alpha Ratio, H1-H2, Spectral Tilt)
+- **xgboost**: Classificacao tabular M1/M2 com pseudo-labels
+- **scikit-learn**: Clustering GMM para deteccao nao-supervisionada de mecanismos
 - **seaborn/matplotlib**: Visualizacoes academicas
-- **google-generativeai**: Geracao de relatorios narrativos multimodais com Gemini 2.0 Flash
+- **google-generativeai**: Geracao de relatorios narrativos multimodais (Gemini 2.0 Flash)
 
 ## Setup
 
@@ -106,7 +108,10 @@ vocal-analysis/
 │   │   ├── separation.py         # Source separation (HTDemucs)
 │   │   └── process_ademilde.py   # Script de extracao de features
 │   ├── features/
-│   │   └── extraction.py         # Pipeline hibrido Crepe + Praat
+│   │   ├── extraction.py         # Pipeline hibrido Crepe + Praat
+│   │   ├── spectral.py           # Features espectrais (Alpha Ratio, H1-H2, etc.)
+│   │   ├── vmi.py                # Calculo do Vocal Mechanism Index
+│   │   └── articulation.py       # Features de agilidade articulatoria
 │   ├── analysis/
 │   │   ├── exploratory.py        # Analise M1/M2, clustering
 │   │   ├── run_analysis.py       # Script de analise completa
@@ -243,13 +248,21 @@ uv run python -m vocal_analysis.scripts.regenerate_validation_plot --all
 uv run python -m vocal_analysis.analysis.run_analysis
 ```
 
+O script executa quatro metodos de classificacao em sequencia:
+
+1. **Limiar de frequencia** (400 Hz / G4) — divisao binaria simples
+2. **Clustering GMM** — descoberta nao-supervisionada de clusters M1/M2 no espaco f0 x HNR
+3. **XGBoost** — classificador supervisionado treinado com pseudo-labels do GMM
+4. **VMI (Vocal Mechanism Index)** — metrica continua 0-1 baseada em features espectrais (Alpha Ratio, H1-H2, CPPS, Spectral Tilt), independente de limiares fixos de frequencia
+
 **Outputs gerados:**
-- `outputs/plots/mechanism_analysis.png` - 4 plots de analise M1/M2 (threshold)
+- `outputs/plots/mechanism_analysis.png` - Analise M1/M2 por limiar
 - `outputs/plots/mechanism_clusters.png` - Clustering GMM
+- `outputs/plots/vmi_scatter.png` - Distribuicao VMI por features espectrais
 - `outputs/plots/xgb_mechanism_timeline.png` - Contorno temporal pela predicao XGBoost
-- `outputs/xgb_predictions.csv` - Predicoes por frame (GMM + XGBoost)
-- `outputs/analysis_report.md` - Relatorio estruturado (inclui classification report do XGBoost)
-- `outputs/vmi_analysis.md` - Relatorio VMI (se features espectrais disponiveis)
+- `outputs/xgb_predictions.csv` - Predicoes por frame (todos os metodos)
+- `outputs/analysis_report.md` - Relatorio estruturado com metricas de classificacao
+- `outputs/vmi_analysis.md` - Relatorio VMI com detalhamento por musica
 - `outputs/llm_report.md` - Relatorio narrativo com Gemini (se API configurada)
 
 ### 4. Rodar geracao de relatorio LLM (opcional)
@@ -267,6 +280,8 @@ uv run python -m vocal_analysis.analysis.llm_report
 
 ### 5. Features extraidas
 
+**Features base** (por frame, de `process_ademilde`):
+
 | Coluna | Descricao |
 |--------|-----------|
 | `time` | Timestamp em segundos |
@@ -276,9 +291,30 @@ uv run python -m vocal_analysis.analysis.llm_report
 | `energy` | Energia RMS |
 | `f1, f2, f3, f4` | Formantes 1-4 (Hz) |
 | `song` | Nome da musica |
-| `cpps_global` | Cepstral Peak Prominence (valor global por musica) |
+| `cpps_global` | Cepstral Peak Prominence (global por musica) |
 | `jitter` | Jitter ppq5 - instabilidade de periodo (%) |
 | `shimmer` | Shimmer apq11 - instabilidade de amplitude (%) |
+
+**Features espectrais** (adicionadas por `run_analysis`):
+
+| Coluna | Descricao |
+|--------|-----------|
+| `alpha_ratio` | Razao de energia 0-1 kHz vs 1-5 kHz (dB) |
+| `h1_h2` | Diferenca entre 1o e 2o harmonico (inclinacao glotal, dB) |
+| `spectral_tilt` | Inclinacao do espectro de potencia (dB/oitava) |
+| `cpps_per_frame` | Cepstral Peak Prominence por frame |
+
+**Classificacao e VMI** (adicionadas por `run_analysis`):
+
+| Coluna | Descricao |
+|--------|-----------|
+| `mechanism` | Label do GMM (M1/M2) |
+| `xgb_mechanism` | Predicao XGBoost (M1/M2) |
+| `vmi` | Vocal Mechanism Index (0.0 - 1.0) |
+| `vmi_label` | Categoria VMI (M1_HEAVY, M1_LIGHT, MIX_PASSAGGIO, M2_REINFORCED, M2_LIGHT) |
+| `f0_velocity` | Taxa de mudanca de pitch (Hz/s) |
+| `f0_acceleration` | Aceleracao de pitch (Hz/s^2) |
+| `syllable_rate` | Taxa silabica (silabas/s) |
 
 ## Utilitarios
 
@@ -309,20 +345,6 @@ uv run pytest -v
 
 ## Documentacao
 
-### Guia Introdutorio
-
-Para entender os conceitos bioacusticos usados na analise (f0, HNR, formantes, jitter, shimmer) e por que cada um importa:
-
-**[GLOSSARIO_BIOACUSTICO.md](GLOSSARIO_BIOACUSTICO.md)**
-
-### Metodologia Detalhada
-
-Para entender em profundidade as escolhas metodologicas, parametros tecnicos e justificativas academicas:
-
-**[METODOLOGIA.md](METODOLOGIA.md)**
-
-## Referencias
-
-- **CREPE**: [Kim et al., 2018 - CREPE: A Convolutional Representation for Pitch Estimation](https://arxiv.org/abs/1802.06182)
-- **Praat**: [Boersma & Weenink - Praat: doing phonetics by computer](https://www.praat.org)
-- **Laryngeal Mechanisms**: Roubeau, B., Henrich, N., & Castellengo, M. (2009). Laryngeal vibratory mechanisms
+- **[Glossario Bioacustico](GLOSSARIO_BIOACUSTICO.md)** — Introducao acessivel a f0, HNR, formantes, jitter, shimmer, VMI e por que cada um importa
+- **[Metodologia](METODOLOGIA.md)** — Referencia tecnica completa: preprocessamento, extracao de features, 4 metodos de classificacao, features espectrais, calculo do VMI, estrutura de dados, limitacoes e referencias academicas
+- **[Setup Colab](COLAB_SETUP.md)** — Guia passo a passo para rodar no Google Colab com GPU gratuita
