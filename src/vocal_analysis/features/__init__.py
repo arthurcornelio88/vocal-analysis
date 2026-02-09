@@ -1,4 +1,4 @@
-"""Módulo de extração de features bioacústicas."""
+"""Bioacoustic feature extraction module."""
 
 from vocal_analysis.features.extraction import extract_bioacoustic_features
 

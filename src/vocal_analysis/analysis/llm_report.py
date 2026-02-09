@@ -1,4 +1,4 @@
-"""Geração de relatório narrativo usando Gemini."""
+"""Narrative report generation using Gemini."""
 
 import json
 import os
@@ -7,7 +7,43 @@ from pathlib import Path
 import google.generativeai as genai
 from PIL import Image
 
-SYSTEM_PROMPT = """Você é um especialista em bioacústica e fisiologia vocal, escrevendo para um artigo acadêmico.
+# ---------------------------------------------------------------------------
+# Dual-language system prompts
+# ---------------------------------------------------------------------------
+
+_TECHNICAL_TERMS = """
+Technical terms:
+- f0: fundamental frequency, correlates with pitch perception
+- HNR: harmonic-to-noise ratio, indicates voice "clarity" (higher = cleaner voice)
+- CPPS: Cepstral Peak Prominence Smoothed, proxy for vocal quality
+- Jitter (ppq5): period perturbation, cycle-to-cycle frequency variation (%)
+- Shimmer (apq11): amplitude perturbation, cycle-to-cycle amplitude variation (%)
+- Formants (F1-F4): vocal tract resonances, related to timbral quality and vowel
+- M1/M2: laryngeal mechanisms (chest register vs head register)
+- VMI (Vocal Mechanism Index): continuous 0-1 metric replacing fixed frequency threshold
+  - 0.0-0.2 = Dense M1 (full chest voice)
+  - 0.2-0.4 = Light M1 (thin-edge chest voice)
+  - 0.4-0.6 = Mix/Passaggio (transition zone)
+  - 0.6-0.8 = Reinforced M2 (supported head voice)
+  - 0.8-1.0 = Light M2 (light head voice)
+- Alpha Ratio: energy ratio 0-1kHz vs 1-5kHz (more negative = darker/M1)
+- H1-H2: difference between 1st and 2nd harmonic (glottal slope)
+- Spectral Tilt: power spectrum slope
+"""
+
+SYSTEM_PROMPT_EN = f"""You are an expert in bioacoustics and vocal physiology, writing for an academic paper.
+
+Project context:
+- Analysis of the voice of Ademilde Fonseca, a Brazilian Choro singer
+- Objective: critique the "Fach" vocal classification system using physiological analysis
+- Laryngeal mechanisms: M1 (chest voice) and M2 (head voice)
+- Extracted features: f0 (pitch), HNR (harmonic-to-noise ratio), CPPS, Jitter, Shimmer, Formants (F1-F4)
+
+{_TECHNICAL_TERMS}
+
+Write in academic but accessible English. Use musical notation (C4, G5) alongside Hz when relevant. Incorporate analysis of instability features (jitter/shimmer) and formants when available."""
+
+SYSTEM_PROMPT_PT = """Você é um especialista em bioacústica e fisiologia vocal, escrevendo para um artigo acadêmico.
 
 Contexto do projeto:
 - Análise da voz de Ademilde Fonseca, cantora brasileira de Choro
@@ -35,42 +71,25 @@ Termos técnicos importantes:
 
 Escreva em português brasileiro acadêmico, mas acessível. Use notação musical (C4, G5) ao lado de Hz quando relevante. Incorpore análise das features de instabilidade (jitter/shimmer) e formantes quando disponíveis."""
 
+# ---------------------------------------------------------------------------
+# Dual-language task prompts
+# ---------------------------------------------------------------------------
 
-def generate_narrative_report(
-    stats: dict,
-    metadata: dict,
-    output_path: Path,
-    plot_paths: list[Path] | None = None,
-    api_key: str | None = None,
-) -> str:
-    """Gera relatório narrativo usando Gemini com suporte a imagens.
+_TASK_PROMPT_EN = """
+## Task
 
-    Args:
-        stats: Estatísticas por mecanismo (M1/M2).
-        metadata: Metadados do processamento.
-        output_path: Caminho para salvar o relatório.
-        plot_paths: Lista de caminhos para plots PNG (opcional).
-        api_key: Chave da API Gemini (ou usa GEMINI_API_KEY env var).
+Write an academic analysis (~500 words) with the following sections:
 
-    Returns:
-        Texto do relatório gerado.
-    """
-    api_key = api_key or os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY não configurada. Use: export GEMINI_API_KEY=sua_chave")
+1. **Vocal Characterization**: Describe the singer's vocal profile based on the data
+2. **Mechanism Analysis**: Interpret the M1/M2 distribution and what it reveals
+3. **VMI Analysis**: If available, interpret the Vocal Mechanism Index distribution and how it captures nuances that binary M1/M2 classification misses (transition zones, mixed voice, etc.)
+4. **Implications for the Fach System**: How this data challenges traditional classification
+5. **Limitations**: Briefly mention limitations (historical recordings, etc.)
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-2.0-flash")
+Use concrete data (musical notes, percentages) to support each point.
+Maintain an academic but accessible tone. Avoid unnecessary jargon."""
 
-    # Montar prompt com dados
-    data_summary = _format_data_for_prompt(stats, metadata)
-
-    prompt = f"""{SYSTEM_PROMPT}
-
-## Dados da Análise
-
-{data_summary}
-
+_TASK_PROMPT_PT = """
 ## Tarefa
 
 Escreva uma análise acadêmica (~500 palavras) com as seguintes seções:
@@ -84,16 +103,32 @@ Escreva uma análise acadêmica (~500 palavras) com as seguintes seções:
 Use os dados concretos (notas musicais, percentuais) para embasar cada ponto.
 Mantenha tom acadêmico mas acessível. Evite jargão desnecessário."""
 
-    # Preparar conteúdo multimodal se houver plots
-    content = []
+# ---------------------------------------------------------------------------
+# Dual-language plot instructions
+# ---------------------------------------------------------------------------
 
-    if plot_paths:
-        # Listar os plots com seus nomes
-        plot_list = "\n".join([f"- {p.stem}" for p in plot_paths if p.exists()])
+_PLOT_INSTRUCTIONS_EN = """
+## Visualizations
 
-        # Adicionar instruções sobre os plots
-        prompt += f"""
+Also analyze the attached plots.
 
+**IMPORTANT RULES for referencing plots:**
+1. When mentioning a plot, ALWAYS include a markdown link: [plot_name](plots/plot_name.png)
+2. Correct example: "The pitch contour in [brasileirinho_f0](plots/brasileirinho_f0.png) shows..."
+3. Correct example: "The cluster analysis in [mechanism_clusters](plots/mechanism_clusters.png) reveals..."
+4. NEVER use "Figure 1", "Figure 2", etc.
+5. NEVER mention a plot without including the markdown link
+
+Plot types:
+- *_f0.png: f0 contours per song - observe ornamentation patterns, vibrato, intervallic leaps
+- mechanism_analysis.png: 4 subplots with M1/M2 analysis (histogram, scatter, boxplot, temporal)
+- mechanism_clusters.png: GMM clustering of mechanisms
+- vmi_analysis.png: 4 subplots with VMI analysis (F0 vs Alpha Ratio, VMI distribution, temporal contour, boxplot by category)
+- vmi_scatter.png: Scatter plot F0 vs Alpha Ratio colored by VMI
+
+Integrate visual observations with numerical data in your analysis."""
+
+_PLOT_INSTRUCTIONS_PT = """
 ## Visualizações
 
 Analise também os gráficos anexados.
@@ -105,9 +140,6 @@ Analise também os gráficos anexados.
 4. NUNCA use "Figura 1", "Figura 2", etc.
 5. NUNCA mencione um gráfico sem incluir o link markdown
 
-Gráficos disponíveis:
-{plot_list}
-
 Tipos de gráficos:
 - *_f0.png: Contornos de f0 por música - observe padrões de ornamentação, vibrato, saltos intervalares
 - mechanism_analysis.png: 4 subplots com análise M1/M2 (histograma, scatter, boxplot, temporal)
@@ -117,64 +149,163 @@ Tipos de gráficos:
 
 Integre observações visuais com os dados numéricos na sua análise."""
 
+# ---------------------------------------------------------------------------
+# Dual-language figure descriptions
+# ---------------------------------------------------------------------------
+
+_FIGURE_DESCS_EN = {
+    "_f0": "f0 Contour - {}",
+    "mechanism_analysis": "M1/M2 mechanism analysis (histogram, scatter, boxplot, temporal)",
+    "mechanism_clusters": "GMM clustering of laryngeal mechanisms",
+    "vmi_analysis": "VMI analysis (F0 vs Alpha Ratio, distribution, temporal contour)",
+    "vmi_scatter": "Scatter F0 vs Alpha Ratio colored by VMI",
+}
+
+_FIGURE_DESCS_PT = {
+    "_f0": "Contorno de f0 - {}",
+    "mechanism_analysis": "Análise de mecanismos M1/M2 (histograma, scatter, boxplot, temporal)",
+    "mechanism_clusters": "Clustering GMM dos mecanismos laríngeos",
+    "vmi_analysis": "Análise VMI (F0 vs Alpha Ratio, distribuição, contorno temporal)",
+    "vmi_scatter": "Scatter F0 vs Alpha Ratio colorido por VMI",
+}
+
+
+# ---------------------------------------------------------------------------
+# Report generation
+# ---------------------------------------------------------------------------
+
+
+def generate_narrative_report(
+    stats: dict,
+    metadata: dict,
+    output_path: Path,
+    plot_paths: list[Path] | None = None,
+    api_key: str | None = None,
+    lang: str = "en",
+) -> str:
+    """Generate narrative report using Gemini with image support.
+
+    Args:
+        stats: Statistics per mechanism (M1/M2).
+        metadata: Processing metadata.
+        output_path: Path to save the report.
+        plot_paths: List of paths to PNG plots (optional).
+        api_key: Gemini API key (or uses GEMINI_API_KEY env var).
+        lang: Report language ('en' or 'pt-BR').
+
+    Returns:
+        Generated report text.
+    """
+    api_key = api_key or os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY not configured. Use: export GEMINI_API_KEY=your_key")
+
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel("gemini-2.0-flash")
+
+    # Select language-specific prompts
+    system_prompt = SYSTEM_PROMPT_PT if lang == "pt-BR" else SYSTEM_PROMPT_EN
+    task_prompt = _TASK_PROMPT_PT if lang == "pt-BR" else _TASK_PROMPT_EN
+    plot_instructions = _PLOT_INSTRUCTIONS_PT if lang == "pt-BR" else _PLOT_INSTRUCTIONS_EN
+    figure_descs = _FIGURE_DESCS_PT if lang == "pt-BR" else _FIGURE_DESCS_EN
+
+    # Build prompt with data
+    data_summary = _format_data_for_prompt(stats, metadata, lang=lang)
+
+    data_header = "## Dados da Análise" if lang == "pt-BR" else "## Analysis Data"
+    prompt = f"""{system_prompt}
+
+{data_header}
+
+{data_summary}
+
+{task_prompt}"""
+
+    # Prepare multimodal content if plots exist
+    content = []
+
+    if plot_paths:
+        plot_list = "\n".join([f"- {p.stem}" for p in plot_paths if p.exists()])
+
+        available_label = "Gráficos disponíveis:" if lang == "pt-BR" else "Available plots:"
+        prompt += f"""
+{plot_instructions}
+
+{available_label}
+{plot_list}"""
+
         content.append(prompt)
 
-        # Carregar e adicionar imagens com legenda
+        # Load and attach images with caption
+        chart_label = "Gráfico" if lang == "pt-BR" else "Chart"
         for plot_path in plot_paths:
             if plot_path.exists():
-                # Adicionar nome do arquivo antes da imagem
-                content.append(f"[Gráfico: {plot_path.stem}]")
+                content.append(f"[{chart_label}: {plot_path.stem}]")
                 img = Image.open(plot_path)
                 content.append(img)
-                print(f"  Anexando plot: {plot_path.name}")
+                print(f"  Attaching plot: {plot_path.name}")
     else:
         content = prompt
 
     response = model.generate_content(content)
     report_text = response.text
 
-    # Salvar relatório
+    # Save report
+    _write_report_file(output_path, report_text, stats, metadata, plot_paths, figure_descs, lang)
+
+    return report_text
+
+
+def _write_report_file(
+    output_path: Path,
+    report_text: str,
+    stats: dict,
+    metadata: dict,
+    plot_paths: list[Path] | None,
+    figure_descs: dict,
+    lang: str,
+) -> None:
+    """Write the final report file with header, text, figures, and raw data."""
+    # Language-specific labels
+    if lang == "pt-BR":
+        title_prefix = "Análise Bioacústica"
+        default_artist = "Cantora"
+        ai_note = "*Relatório gerado com auxílio de IA (Gemini 2.0 Flash)*"
+        multimodal_note = "*Análise multimodal com {} visualizações*"
+        figures_header = "## Figuras"
+        raw_data_header = "## Dados Brutos"
+    else:
+        title_prefix = "Bioacoustic Analysis"
+        default_artist = "Singer"
+        ai_note = "*Report generated with AI assistance (Gemini 2.0 Flash)*"
+        multimodal_note = "*Multimodal analysis with {} visualizations*"
+        figures_header = "## Figures"
+        raw_data_header = "## Raw Data"
+
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write(f"# Análise Bioacústica - {metadata.get('artist', 'Cantora')}\n\n")
-        f.write("*Relatório gerado com auxílio de IA (Gemini 2.0 Flash)*\n\n")
+        f.write(f"# {title_prefix} - {metadata.get('artist', default_artist)}\n\n")
+        f.write(f"{ai_note}\n\n")
 
         if plot_paths:
-            f.write(
-                f"*Análise multimodal com {len([p for p in plot_paths if p.exists()])} visualizações*\n\n"
-            )
+            f.write(multimodal_note.format(len([p for p in plot_paths if p.exists()])) + "\n\n")
 
         f.write("---\n\n")
         f.write(report_text)
 
-        # Galeria de figuras no final
+        # Figure gallery at the end
         if plot_paths:
             f.write("\n\n---\n\n")
-            f.write("## Figuras\n\n")
+            f.write(f"{figures_header}\n\n")
             for plot_path in sorted(plot_paths):
                 if plot_path.exists():
-                    # Descrição baseada no nome
                     name = plot_path.stem
-                    if "_f0" in name:
-                        desc = f"Contorno de f0 - {name.replace('_f0', '')}"
-                    elif "mechanism_analysis" in name:
-                        desc = (
-                            "Análise de mecanismos M1/M2 (histograma, scatter, boxplot, temporal)"
-                        )
-                    elif "mechanism_clusters" in name:
-                        desc = "Clustering GMM dos mecanismos laríngeos"
-                    elif "vmi_analysis" in name:
-                        desc = "Análise VMI (F0 vs Alpha Ratio, distribuição, contorno temporal)"
-                    elif "vmi_scatter" in name:
-                        desc = "Scatter F0 vs Alpha Ratio colorido por VMI"
-                    else:
-                        desc = name
-                    # Embed da imagem + legenda
+                    desc = _get_figure_description(name, figure_descs)
                     f.write(f"### {name}\n\n")
                     f.write(f"![{desc}](plots/{name}.png)\n\n")
                     f.write(f"*{desc}*\n\n")
 
         f.write("\n\n---\n\n")
-        f.write("## Dados Brutos\n\n")
+        f.write(f"{raw_data_header}\n\n")
         f.write("```json\n")
         f.write(
             json.dumps(
@@ -183,22 +314,82 @@ Integre observações visuais com os dados numéricos na sua análise."""
         )
         f.write("\n```\n")
 
-    return report_text
+
+def _get_figure_description(name: str, figure_descs: dict) -> str:
+    """Get localized figure description based on filename."""
+    if "_f0" in name:
+        return figure_descs["_f0"].format(name.replace("_f0", ""))
+    for key, desc in figure_descs.items():
+        if key in name and key != "_f0":
+            return desc
+    return name
 
 
-def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
-    """Formata dados para o prompt do LLM."""
+def _format_data_for_prompt(stats: dict, metadata: dict, lang: str = "en") -> str:
+    """Format data for the LLM prompt."""
     from pathlib import Path
 
     import pandas as pd
 
     lines = []
 
+    # Language-specific labels
+    if lang == "pt-BR":
+        lbl = {
+            "global_stats": "### Estatísticas Globais",
+            "artist": "Artista",
+            "unknown": "Desconhecida",
+            "mean_f0": "f0 médio",
+            "vocal_range": "Extensão vocal",
+            "f0_std": "Desvio padrão f0",
+            "mean_hnr": "HNR médio",
+            "mean_cpps": "CPPS médio",
+            "mean_jitter": "Jitter médio (ppq5)",
+            "mean_shimmer": "Shimmer médio (apq11)",
+            "formants_header": "\n### Formantes (F1-F4) - Médias Globais",
+            "vmi_header": "\n### VMI (Vocal Mechanism Index)",
+            "mean_vmi": "VMI médio",
+            "spectral_header": "\n### Features Espectrais - Médias Globais",
+            "total_frames": "Total de frames analisados",
+            "by_mechanism": "### Por Mecanismo Laríngeo",
+            "chest": "Peito/Chest (M1)",
+            "head": "Cabeça/Head (M2)",
+            "proportion": "Proporção",
+            "range": "Extensão",
+            "by_song": "### Por Música",
+            "csv_error": "Nota: Erro ao carregar dados do CSV",
+        }
+    else:
+        lbl = {
+            "global_stats": "### Global Statistics",
+            "artist": "Artist",
+            "unknown": "Unknown",
+            "mean_f0": "Mean f0",
+            "vocal_range": "Vocal range",
+            "f0_std": "f0 standard deviation",
+            "mean_hnr": "Mean HNR",
+            "mean_cpps": "Mean CPPS",
+            "mean_jitter": "Mean Jitter (ppq5)",
+            "mean_shimmer": "Mean Shimmer (apq11)",
+            "formants_header": "\n### Formants (F1-F4) - Global Means",
+            "vmi_header": "\n### VMI (Vocal Mechanism Index)",
+            "mean_vmi": "Mean VMI",
+            "spectral_header": "\n### Spectral Features - Global Means",
+            "total_frames": "Total analyzed frames",
+            "by_mechanism": "### By Laryngeal Mechanism",
+            "chest": "Chest (M1)",
+            "head": "Head (M2)",
+            "proportion": "Proportion",
+            "range": "Range",
+            "by_song": "### Per Song",
+            "csv_error": "Note: Error loading CSV data",
+        }
+
     # Global stats
     if "global" in metadata:
         g = metadata["global"]
 
-        # Calcular médias globais para jitter, shimmer e outras features
+        # Compute global means for jitter, shimmer
         jitter_values = [
             s.get("jitter_ppq5")
             for s in metadata.get("songs", [])
@@ -222,108 +413,101 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
 
         lines.extend(
             [
-                "### Estatísticas Globais",
-                f"- Artista: {metadata.get('artist', 'Desconhecida')}",
-                f"- f0 médio: {g['f0_mean_hz']} Hz ({g['f0_mean_note']})",
-                f"- Extensão vocal: {g['f0_range_notes']} ({g['f0_min_hz']} - {g['f0_max_hz']} Hz)",
-                f"- Desvio padrão f0: {g['f0_std_hz']} Hz",
-                f"- HNR médio: {g['hnr_mean_db']} dB",
+                lbl["global_stats"],
+                f"- {lbl['artist']}: {metadata.get('artist', lbl['unknown'])}",
+                f"- {lbl['mean_f0']}: {g['f0_mean_hz']} Hz ({g['f0_mean_note']})",
+                f"- {lbl['vocal_range']}: {g['f0_range_notes']} ({g['f0_min_hz']} - {g['f0_max_hz']} Hz)",
+                f"- {lbl['f0_std']}: {g['f0_std_hz']} Hz",
+                f"- {lbl['mean_hnr']}: {g['hnr_mean_db']} dB",
             ]
         )
 
         if cpps_mean is not None:
-            lines.append(f"- CPPS médio: {cpps_mean:.2f}")
+            lines.append(f"- {lbl['mean_cpps']}: {cpps_mean:.2f}")
         if jitter_mean is not None:
-            lines.append(f"- Jitter médio (ppq5): {jitter_mean:.3%}")
+            lines.append(f"- {lbl['mean_jitter']}: {jitter_mean:.3%}")
         if shimmer_mean is not None:
-            lines.append(f"- Shimmer médio (apq11): {shimmer_mean:.3%}")
+            lines.append(f"- {lbl['mean_shimmer']}: {shimmer_mean:.3%}")
 
-        # Tentar carregar CSV para obter estatísticas das formantes
+        # Try loading CSV for formant and VMI statistics
         csv_path = Path("data/processed/ademilde_features.csv")
         if csv_path.exists():
             try:
                 df = pd.read_csv(csv_path)
-                # Filtrar frames voiced (mesmo critério usado no processamento)
                 df_voiced = df[(df["confidence"] > 0.8) & (df["hnr"] > -10)]
 
-                # Verificar se formantes estão disponíveis
                 formant_cols = ["f1", "f2", "f3", "f4"]
                 available_formants = [col for col in formant_cols if col in df_voiced.columns]
 
                 if available_formants:
-                    lines.append("\n### Formantes (F1-F4) - Médias Globais")
+                    lines.append(lbl["formants_header"])
                     for col in available_formants:
                         mean_val = df_voiced[col].mean()
                         lines.append(f"- {col.upper()}: {mean_val:.1f} Hz")
 
-                # Verificar se VMI está disponível
                 if "vmi" in df_voiced.columns and "vmi_label" in df_voiced.columns:
-                    lines.append("\n### VMI (Vocal Mechanism Index)")
-                    lines.append(f"- VMI médio: {df_voiced['vmi'].mean():.3f}")
+                    lines.append(lbl["vmi_header"])
+                    lines.append(f"- {lbl['mean_vmi']}: {df_voiced['vmi'].mean():.3f}")
 
-                    # Distribuição por categoria
                     vmi_counts = df_voiced["vmi_label"].value_counts()
                     total = len(df_voiced)
                     for label in [
-                        "M1_DENSO",
-                        "M1_LIGEIRO",
+                        "M1_HEAVY",
+                        "M1_LIGHT",
                         "MIX_PASSAGGIO",
-                        "M2_REFORCADO",
-                        "M2_LIGEIRO",
+                        "M2_REINFORCED",
+                        "M2_LIGHT",
                     ]:
                         if label in vmi_counts.index:
                             count = vmi_counts[label]
                             pct = count / total * 100
                             lines.append(f"- {label}: {count} frames ({pct:.1f}%)")
 
-                # Verificar features espectrais
                 spectral_cols = ["alpha_ratio", "h1_h2", "spectral_tilt"]
                 available_spectral = [col for col in spectral_cols if col in df_voiced.columns]
                 if available_spectral:
-                    lines.append("\n### Features Espectrais - Médias Globais")
+                    lines.append(lbl["spectral_header"])
                     for col in available_spectral:
                         mean_val = df_voiced[col].mean()
                         lines.append(f"- {col}: {mean_val:.2f} dB")
             except Exception as e:
-                lines.append(f"\n*Nota: Erro ao carregar dados do CSV: {e}*")
+                lines.append(f"\n*{lbl['csv_error']}: {e}*")
 
         lines.extend(
             [
-                f"- Total de frames analisados: {g['total_voiced_frames']}",
+                f"- {lbl['total_frames']}: {g['total_voiced_frames']}",
                 "",
             ]
         )
 
-    # Por mecanismo
-    lines.append("### Por Mecanismo Laríngeo")
+    # Per mechanism
+    lines.append(lbl["by_mechanism"])
     total_frames = sum(s.get("count", 0) for s in stats.values())
 
     for mech, s in stats.items():
         pct = (s["count"] / total_frames * 100) if total_frames > 0 else 0
-        mech_name = "Peito/Chest (M1)" if mech == "M1" else "Cabeça/Head (M2)"
+        mech_name = lbl["chest"] if mech == "M1" else lbl["head"]
         lines.extend(
             [
                 f"\n**{mech_name}:**",
-                f"- Proporção: {s['count']} frames ({pct:.1f}%)",
-                f"- f0 médio: {s['f0_mean']:.1f} Hz ({s['note_mean']})",
-                f"- Extensão: {s['note_range']}",
-                f"- HNR médio: {s['hnr_mean']:.1f} dB",
+                f"- {lbl['proportion']}: {s['count']} frames ({pct:.1f}%)",
+                f"- {lbl['mean_f0']}: {s['f0_mean']:.1f} Hz ({s['note_mean']})",
+                f"- {lbl['range']}: {s['note_range']}",
+                f"- {lbl['mean_hnr']}: {s['hnr_mean']:.1f} dB",
             ]
         )
 
-    # Por música
+    # Per song
     if "songs" in metadata:
-        lines.extend(["", "### Por Música"])
+        lines.extend(["", lbl["by_song"]])
         for song in metadata["songs"]:
             if "error" not in song:
-                # Features básicas
                 features = [
                     f"f0={song['f0_mean_hz']} Hz ({song['f0_mean_note']})",
                     f"range={song['f0_range_notes']}",
                     f"HNR={song.get('hnr_mean_db', '?')} dB",
                 ]
 
-                # Features adicionais se disponíveis
                 if "cpps_global" in song:
                     features.append(f"CPPS={song['cpps_global']:.2f}")
                 if "jitter_ppq5" in song:
@@ -331,7 +515,6 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
                 if "shimmer_apq11" in song:
                     features.append(f"Shimmer={song['shimmer_apq11']:.3%}")
 
-                # Tentar adicionar formantes se disponíveis no CSV
                 try:
                     csv_path = Path("data/processed/ademilde_features.csv")
                     if csv_path.exists():
@@ -347,7 +530,7 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
                                 mean_val = song_df_voiced[col].mean()
                                 features.append(f"{col.upper()}={mean_val:.1f} Hz")
                 except Exception:
-                    pass  # Ignora erros ao carregar formantes
+                    pass
 
                 lines.append(f"- **{song['song']}**: {', '.join(features)}")
 
@@ -355,29 +538,38 @@ def _format_data_for_prompt(stats: dict, metadata: dict) -> str:
 
 
 def main() -> None:
-    """CLI para gerar relatório."""
+    """CLI to generate narrative report."""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Gera relatório narrativo com Gemini")
+    parser = argparse.ArgumentParser(description="Generate narrative report with Gemini")
     parser.add_argument(
         "--metadata", type=Path, default=Path("data/processed/ademilde_metadata.json")
     )
-    parser.add_argument("--stats", type=Path, default=None, help="JSON com stats M1/M2 (opcional)")
-    parser.add_argument("--output", type=Path, default=Path("outputs/relatorio_llm.md"))
-    parser.add_argument("--plots-dir", type=Path, default=None, help="Diretório com plots PNG")
+    parser.add_argument("--stats", type=Path, default=None, help="JSON with M1/M2 stats (optional)")
+    parser.add_argument("--output", type=Path, default=Path("outputs/llm_report.md"))
+    parser.add_argument("--plots-dir", type=Path, default=None, help="Directory with PNG plots")
+    parser.add_argument(
+        "--lang",
+        type=str,
+        default=None,
+        choices=["en", "pt-BR"],
+        help="Report language (default: REPORT_LANG env var or 'en')",
+    )
     args = parser.parse_args()
 
-    # Carregar metadata
+    lang = args.lang or os.environ.get("REPORT_LANG", "en")
+
+    # Load metadata
     with open(args.metadata, encoding="utf-8") as f:
         metadata = json.load(f)
 
-    # Stats placeholder se não fornecido
+    # Stats placeholder if not provided
     stats = {}
     if args.stats and args.stats.exists():
         with open(args.stats, encoding="utf-8") as f:
             stats = json.load(f)
     else:
-        # Usar dados globais como proxy
+        # Use global data as proxy
         g = metadata.get("global", {})
         stats = {
             "M1": {
@@ -396,15 +588,17 @@ def main() -> None:
             },
         }
 
-    # Coletar plots se diretório fornecido
+    # Collect plots if directory provided
     plot_paths = None
     if args.plots_dir and args.plots_dir.exists():
         plot_paths = list(args.plots_dir.glob("*.png"))
-        print(f"Encontrados {len(plot_paths)} plots")
+        print(f"Found {len(plot_paths)} plots")
 
-    print("Gerando relatório com Gemini...")
-    report = generate_narrative_report(stats, metadata, args.output, plot_paths=plot_paths)
-    print(f"Relatório salvo em: {args.output}")
+    print("Generating report with Gemini...")
+    report = generate_narrative_report(
+        stats, metadata, args.output, plot_paths=plot_paths, lang=lang
+    )
+    print(f"Report saved to: {args.output}")
     print("\n--- Preview ---\n")
     print(report[:500] + "...")
 

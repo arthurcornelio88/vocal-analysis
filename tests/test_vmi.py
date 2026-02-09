@@ -49,11 +49,11 @@ class TestVMILabel:
 
     def test_all_labels_exist(self):
         """Todos os 5 labels devem existir."""
-        assert VMILabel.M1_DENSO.value == "M1_DENSO"
-        assert VMILabel.M1_LIGEIRO.value == "M1_LIGEIRO"
+        assert VMILabel.M1_HEAVY.value == "M1_HEAVY"
+        assert VMILabel.M1_LIGHT.value == "M1_LIGHT"
         assert VMILabel.MIX_PASSAGGIO.value == "MIX_PASSAGGIO"
-        assert VMILabel.M2_REFORCADO.value == "M2_REFORCADO"
-        assert VMILabel.M2_LIGEIRO.value == "M2_LIGEIRO"
+        assert VMILabel.M2_REINFORCED.value == "M2_REINFORCED"
+        assert VMILabel.M2_LIGHT.value == "M2_LIGHT"
 
     def test_label_count(self):
         """Devem existir exatamente 5 labels."""
@@ -158,44 +158,44 @@ class TestComputeVMIFixed:
 class TestVMIToLabel:
     """Testes para vmi_to_label."""
 
-    def test_label_m1_denso(self):
-        """VMI 0.0-0.2 deve ser M1_DENSO."""
-        assert vmi_to_label(0.0) == VMILabel.M1_DENSO
-        assert vmi_to_label(0.1) == VMILabel.M1_DENSO
-        assert vmi_to_label(0.19) == VMILabel.M1_DENSO
+    def test_label_m1_heavy(self):
+        """VMI 0.0-0.2 should be M1_HEAVY."""
+        assert vmi_to_label(0.0) == VMILabel.M1_HEAVY
+        assert vmi_to_label(0.1) == VMILabel.M1_HEAVY
+        assert vmi_to_label(0.19) == VMILabel.M1_HEAVY
 
-    def test_label_m1_ligeiro(self):
-        """VMI 0.2-0.4 deve ser M1_LIGEIRO."""
-        assert vmi_to_label(0.2) == VMILabel.M1_LIGEIRO
-        assert vmi_to_label(0.3) == VMILabel.M1_LIGEIRO
-        assert vmi_to_label(0.39) == VMILabel.M1_LIGEIRO
+    def test_label_m1_light(self):
+        """VMI 0.2-0.4 should be M1_LIGHT."""
+        assert vmi_to_label(0.2) == VMILabel.M1_LIGHT
+        assert vmi_to_label(0.3) == VMILabel.M1_LIGHT
+        assert vmi_to_label(0.39) == VMILabel.M1_LIGHT
 
     def test_label_mix_passaggio(self):
-        """VMI 0.4-0.6 deve ser MIX_PASSAGGIO."""
+        """VMI 0.4-0.6 should be MIX_PASSAGGIO."""
         assert vmi_to_label(0.4) == VMILabel.MIX_PASSAGGIO
         assert vmi_to_label(0.5) == VMILabel.MIX_PASSAGGIO
         assert vmi_to_label(0.59) == VMILabel.MIX_PASSAGGIO
 
-    def test_label_m2_reforcado(self):
-        """VMI 0.6-0.8 deve ser M2_REFORCADO."""
-        assert vmi_to_label(0.6) == VMILabel.M2_REFORCADO
-        assert vmi_to_label(0.7) == VMILabel.M2_REFORCADO
-        assert vmi_to_label(0.79) == VMILabel.M2_REFORCADO
+    def test_label_m2_reinforced(self):
+        """VMI 0.6-0.8 should be M2_REINFORCED."""
+        assert vmi_to_label(0.6) == VMILabel.M2_REINFORCED
+        assert vmi_to_label(0.7) == VMILabel.M2_REINFORCED
+        assert vmi_to_label(0.79) == VMILabel.M2_REINFORCED
 
-    def test_label_m2_ligeiro(self):
-        """VMI 0.8-1.0 deve ser M2_LIGEIRO."""
-        assert vmi_to_label(0.8) == VMILabel.M2_LIGEIRO
-        assert vmi_to_label(0.9) == VMILabel.M2_LIGEIRO
-        assert vmi_to_label(1.0) == VMILabel.M2_LIGEIRO
+    def test_label_m2_light(self):
+        """VMI 0.8-1.0 should be M2_LIGHT."""
+        assert vmi_to_label(0.8) == VMILabel.M2_LIGHT
+        assert vmi_to_label(0.9) == VMILabel.M2_LIGHT
+        assert vmi_to_label(1.0) == VMILabel.M2_LIGHT
 
     def test_label_array(self):
-        """Deve funcionar com array de valores."""
+        """Should work with array of values."""
         vmi_values = np.array([0.1, 0.3, 0.5, 0.7, 0.9])
         labels = vmi_to_label(vmi_values)
         assert len(labels) == 5
-        assert labels[0] == VMILabel.M1_DENSO.value
+        assert labels[0] == VMILabel.M1_HEAVY.value
         assert labels[2] == VMILabel.MIX_PASSAGGIO.value
-        assert labels[4] == VMILabel.M2_LIGEIRO.value
+        assert labels[4] == VMILabel.M2_LIGHT.value
 
 
 class TestApplyTemporalSmoothing:

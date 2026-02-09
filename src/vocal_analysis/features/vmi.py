@@ -1,4 +1,4 @@
-"""Vocal Mechanism Index (VMI) - Índice contínuo de mecanismo vocal."""
+"""Vocal Mechanism Index (VMI) - Continuous vocal mechanism index."""
 
 from dataclasses import dataclass
 from enum import Enum
@@ -12,28 +12,28 @@ from sklearn.preprocessing import StandardScaler
 
 
 class VMILabel(str, Enum):
-    """Labels categóricas para VMI."""
+    """Categorical labels for VMI."""
 
-    M1_DENSO = "M1_DENSO"
-    M1_LIGEIRO = "M1_LIGEIRO"
+    M1_HEAVY = "M1_HEAVY"
+    M1_LIGHT = "M1_LIGHT"
     MIX_PASSAGGIO = "MIX_PASSAGGIO"
-    M2_REFORCADO = "M2_REFORCADO"
-    M2_LIGEIRO = "M2_LIGEIRO"
+    M2_REINFORCED = "M2_REINFORCED"
+    M2_LIGHT = "M2_LIGHT"
 
 
-# Mapeamento VMI -> Label
+# VMI -> Label mapping
 VMI_THRESHOLDS = {
-    (0.0, 0.2): VMILabel.M1_DENSO,
-    (0.2, 0.4): VMILabel.M1_LIGEIRO,
+    (0.0, 0.2): VMILabel.M1_HEAVY,
+    (0.2, 0.4): VMILabel.M1_LIGHT,
     (0.4, 0.6): VMILabel.MIX_PASSAGGIO,
-    (0.6, 0.8): VMILabel.M2_REFORCADO,
-    (0.8, 1.0): VMILabel.M2_LIGEIRO,
+    (0.6, 0.8): VMILabel.M2_REINFORCED,
+    (0.8, 1.0): VMILabel.M2_LIGHT,
 }
 
 
 @dataclass
 class VMIWeights:
-    """Pesos para cálculo do VMI."""
+    """Weights for VMI computation."""
 
     alpha_ratio: float = 0.30
     cpps: float = 0.25
@@ -54,15 +54,15 @@ def normalize_features_global(
     feature_cols: list[str],
     scaler: StandardScaler | None = None,
 ) -> tuple[pd.DataFrame, StandardScaler]:
-    """Normaliza features com Z-score global.
+    """Normalize features with global Z-score.
 
     Args:
-        df: DataFrame com features.
-        feature_cols: Colunas a normalizar.
-        scaler: Scaler pré-treinado (opcional). Se None, treina novo.
+        df: DataFrame with features.
+        feature_cols: Columns to normalize.
+        scaler: Pre-trained scaler (optional). If None, trains a new one.
 
     Returns:
-        Tupla (DataFrame normalizado, scaler usado).
+        Tuple (normalized DataFrame, scaler used).
     """
     df_normalized = df.copy()
 
@@ -82,45 +82,45 @@ def compute_vmi_fixed(
     spectral_tilt: np.ndarray,
     weights: VMIWeights | None = None,
 ) -> np.ndarray:
-    """Calcula VMI com pesos fixos (baseline).
+    """Compute VMI with fixed weights (baseline).
 
-    Lógica:
-    - Alpha Ratio alta → M1 (baixo VMI)
-    - CPPS alto → voz limpa (não distingue M1/M2 diretamente)
-    - H1-H2 baixo → M1 (baixo VMI)
-    - Spectral Tilt negativo (steep) → M1 (baixo VMI)
+    Logic:
+    - High Alpha Ratio -> M1 (low VMI)
+    - High CPPS -> clean voice (does not directly distinguish M1/M2)
+    - Low H1-H2 -> M1 (low VMI)
+    - Negative Spectral Tilt (steep) -> M1 (low VMI)
 
-    O VMI é normalizado para [0, 1] onde:
-    - 0.0 = M1 Denso
-    - 1.0 = M2 Ligeiro
+    VMI is normalized to [0, 1] where:
+    - 0.0 = Dense M1
+    - 1.0 = Light M2
 
     Args:
-        alpha_ratio: Alpha Ratio por frame (dB).
-        cpps: CPPS por frame.
-        h1_h2: H1-H2 por frame (dB).
-        spectral_tilt: Spectral Tilt por frame.
-        weights: Pesos para cada feature. Default: VMIWeights().
+        alpha_ratio: Alpha Ratio per frame (dB).
+        cpps: CPPS per frame.
+        h1_h2: H1-H2 per frame (dB).
+        spectral_tilt: Spectral Tilt per frame.
+        weights: Weights for each feature. Default: VMIWeights().
 
     Returns:
-        Array com VMI por frame [0, 1].
+        Array with VMI per frame [0, 1].
     """
     if weights is None:
         weights = VMIWeights()
 
-    # Garantir mesmo tamanho
+    # Ensure same size
     min_len = min(len(alpha_ratio), len(cpps), len(h1_h2), len(spectral_tilt))
     alpha_ratio = alpha_ratio[:min_len]
     cpps = cpps[:min_len]
     h1_h2 = h1_h2[:min_len]
     spectral_tilt = spectral_tilt[:min_len]
 
-    # Substituir NaN por mediana (robusto a outliers)
+    # Replace NaN with median (robust to outliers)
     alpha_ratio = np.where(np.isnan(alpha_ratio), np.nanmedian(alpha_ratio), alpha_ratio)
     cpps = np.where(np.isnan(cpps), np.nanmedian(cpps), cpps)
     h1_h2 = np.where(np.isnan(h1_h2), np.nanmedian(h1_h2), h1_h2)
     spectral_tilt = np.where(np.isnan(spectral_tilt), np.nanmedian(spectral_tilt), spectral_tilt)
 
-    # Normalizar cada feature para [0, 1] usando min-max
+    # Normalize each feature to [0, 1] using min-max
     def minmax_norm(arr: np.ndarray) -> np.ndarray:
         arr_min, arr_max = np.nanmin(arr), np.nanmax(arr)
         if arr_max - arr_min < 1e-10:
@@ -132,29 +132,29 @@ def compute_vmi_fixed(
     h1_h2_norm = minmax_norm(h1_h2)
     tilt_norm = minmax_norm(spectral_tilt)
 
-    # Inverter features que correlacionam negativamente com VMI
-    # Alpha Ratio alta → M1 → baixo VMI, então invertemos
+    # Invert features that correlate negatively with VMI
+    # High Alpha Ratio -> M1 -> low VMI, so we invert
     alpha_contrib = (1 - alpha_norm) * weights.alpha_ratio
 
-    # CPPS não tem direção clara para VMI, usar como está
-    # (CPPS alto = voz limpa, presente em M1 denso E M2 reforçado)
-    # Por isso, CPPS contribui menos para discriminação M1/M2
-    cpps_contrib = cpps_norm * weights.cpps * 0.5 + 0.25 * weights.cpps  # Contribuição neutra
+    # CPPS has no clear direction for VMI, use as is
+    # (High CPPS = clean voice, present in both dense M1 AND reinforced M2)
+    # Therefore, CPPS contributes less to M1/M2 discrimination
+    cpps_contrib = cpps_norm * weights.cpps * 0.5 + 0.25 * weights.cpps  # Neutral contribution
 
-    # H1-H2 alto → M2 → alto VMI
+    # High H1-H2 -> M2 -> high VMI
     h1_h2_contrib = h1_h2_norm * weights.h1_h2
 
-    # Spectral Tilt negativo (steep) → M1 → baixo VMI
-    # Tilt mais positivo/plano → M2 → alto VMI
+    # Negative Spectral Tilt (steep) -> M1 -> low VMI
+    # More positive/flat Tilt -> M2 -> high VMI
     tilt_contrib = tilt_norm * weights.spectral_tilt
 
-    # Combinar
+    # Combine
     vmi = alpha_contrib + cpps_contrib + h1_h2_contrib + tilt_contrib
 
-    # Renormalizar para [0, 1]
+    # Renormalize to [0, 1]
     vmi = np.clip(vmi, 0, 1)
 
-    # Normalização final para garantir range completo
+    # Final normalization to ensure full range
     vmi_min, vmi_max = np.nanmin(vmi), np.nanmax(vmi)
     if vmi_max - vmi_min > 1e-10:
         vmi = (vmi - vmi_min) / (vmi_max - vmi_min)
@@ -170,26 +170,26 @@ def train_vmi_regressor(
     random_state: int = 42,
     use_temporal_smoothing: bool = True,
 ) -> tuple[xgb.XGBRegressor, StandardScaler, dict]:
-    """Treina regressor XGBoost para aprender pesos ótimos do VMI.
+    """Train XGBoost regressor to learn optimal VMI weights.
 
     Args:
-        df: DataFrame com features e target (vmi_target: pseudo-labels ou anotações).
-        feature_cols: Colunas de features espectrais.
-        target_col: Coluna com VMI target (0-1).
-        test_size: Proporção do conjunto de teste.
-        random_state: Seed para reprodutibilidade.
-        use_temporal_smoothing: Se True, adiciona regularização temporal.
+        df: DataFrame with features and target (vmi_target: pseudo-labels or annotations).
+        feature_cols: Spectral feature columns.
+        target_col: Column with VMI target (0-1).
+        test_size: Test set proportion.
+        random_state: Seed for reproducibility.
+        use_temporal_smoothing: If True, adds temporal regularization.
 
     Returns:
-        Tupla (modelo XGBoost, scaler, métricas).
+        Tuple (XGBoost model, scaler, metrics).
     """
     if feature_cols is None:
         feature_cols = ["alpha_ratio", "cpps_per_frame", "h1_h2", "spectral_tilt"]
 
-    # Remover linhas com NaN no target
+    # Remove rows with NaN in target
     df_clean = df.dropna(subset=[target_col])
 
-    # Normalização global
+    # Global normalization
     df_normalized, scaler = normalize_features_global(df_clean, feature_cols)
 
     X = df_normalized[feature_cols]
@@ -211,7 +211,7 @@ def train_vmi_regressor(
 
     model.fit(X_train, y_train)
 
-    # Métricas
+    # Metrics
     y_pred_train = model.predict(X_train)
     y_pred_test = model.predict(X_test)
 
@@ -238,16 +238,16 @@ def predict_vmi(
     scaler: StandardScaler,
     feature_cols: list[str] | None = None,
 ) -> np.ndarray:
-    """Prediz VMI usando modelo treinado.
+    """Predict VMI using trained model.
 
     Args:
-        df: DataFrame com features.
-        model: Modelo XGBoost treinado.
-        scaler: Scaler usado no treinamento.
-        feature_cols: Colunas de features.
+        df: DataFrame with features.
+        model: Trained XGBoost model.
+        scaler: Scaler used during training.
+        feature_cols: Feature columns.
 
     Returns:
-        Array com VMI predito [0, 1].
+        Array with predicted VMI [0, 1].
     """
     if feature_cols is None:
         feature_cols = ["alpha_ratio", "cpps_per_frame", "h1_h2", "spectral_tilt"]
@@ -257,26 +257,26 @@ def predict_vmi(
 
     vmi = model.predict(X)
 
-    # Garantir range [0, 1]
+    # Ensure range [0, 1]
     vmi = np.clip(vmi, 0, 1)
 
     return vmi
 
 
 def vmi_to_label(vmi: np.ndarray | float) -> np.ndarray | VMILabel:
-    """Converte VMI numérico para label categórica.
+    """Convert numeric VMI to categorical label.
 
     Args:
-        vmi: Valor(es) VMI entre 0 e 1.
+        vmi: VMI value(s) between 0 and 1.
 
     Returns:
-        Label(s) categórica(s).
+        Categorical label(s).
     """
     if isinstance(vmi, int | float):
         for (low, high), label in VMI_THRESHOLDS.items():
             if low <= vmi < high:
                 return label
-        return VMILabel.M2_LIGEIRO  # Edge case: vmi == 1.0
+        return VMILabel.M2_LIGHT  # Edge case: vmi == 1.0
 
     # Array
     labels = np.empty(len(vmi), dtype=object)
@@ -286,7 +286,7 @@ def vmi_to_label(vmi: np.ndarray | float) -> np.ndarray | VMILabel:
                 labels[i] = label.value
                 break
         else:
-            labels[i] = VMILabel.M2_LIGEIRO.value
+            labels[i] = VMILabel.M2_LIGHT.value
 
     return labels
 
@@ -296,33 +296,33 @@ def create_pseudo_labels_from_gmm(
     cluster_col: str = "cluster",
     f0_col: str = "f0",
 ) -> np.ndarray:
-    """Cria pseudo-labels VMI a partir de clusters GMM existentes.
+    """Create VMI pseudo-labels from existing GMM clusters.
 
-    Estratégia: assume que o cluster com F0 médio mais alto é M2,
-    e converte para escala contínua baseada na distância ao centróide.
+    Strategy: assumes that the cluster with the highest mean F0 is M2,
+    and converts to a continuous scale based on distance to the centroid.
 
     Args:
-        df: DataFrame com clusters e f0.
-        cluster_col: Coluna com labels de cluster.
-        f0_col: Coluna com valores de F0.
+        df: DataFrame with clusters and f0.
+        cluster_col: Column with cluster labels.
+        f0_col: Column with F0 values.
 
     Returns:
-        Array com pseudo-labels VMI [0, 1].
+        Array with VMI pseudo-labels [0, 1].
     """
     df = df.copy()
 
-    # Identificar qual cluster é M1/M2 baseado em F0 médio
+    # Identify which cluster is M1/M2 based on mean F0
     cluster_f0_mean = df.groupby(cluster_col)[f0_col].mean()
     m2_cluster = cluster_f0_mean.idxmax()
     m1_cluster = cluster_f0_mean.idxmin()
 
-    # Calcular distância normalizada ao centróide de cada cluster
+    # Compute normalized distance to each cluster centroid
     m1_centroid = df[df[cluster_col] == m1_cluster][f0_col].mean()
     m2_centroid = df[df[cluster_col] == m2_cluster][f0_col].mean()
 
-    # VMI = distância relativa entre centroides
-    # f0 próximo de m1_centroid → VMI baixo
-    # f0 próximo de m2_centroid → VMI alto
+    # VMI = relative distance between centroids
+    # f0 close to m1_centroid -> low VMI
+    # f0 close to m2_centroid -> high VMI
     f0_values = df[f0_col].values
 
     if m2_centroid - m1_centroid > 1e-10:
@@ -341,19 +341,19 @@ def apply_temporal_smoothing(
     method: Literal["median", "mean", "exponential"] = "median",
     alpha: float = 0.3,
 ) -> np.ndarray:
-    """Aplica suavização temporal ao VMI para evitar oscilações rápidas.
+    """Apply temporal smoothing to VMI to avoid rapid oscillations.
 
     Args:
-        vmi: Array de VMI por frame.
-        window_size: Tamanho da janela para média/mediana.
-        method: Método de suavização.
-        alpha: Parâmetro para exponential smoothing.
+        vmi: VMI array per frame.
+        window_size: Window size for mean/median.
+        method: Smoothing method.
+        alpha: Parameter for exponential smoothing.
 
     Returns:
-        VMI suavizado.
+        Smoothed VMI.
     """
     if method == "median":
-        # Mediana móvel (robusto a outliers)
+        # Moving median (robust to outliers)
         vmi_smooth = np.zeros_like(vmi)
         half_window = window_size // 2
         for i in range(len(vmi)):
@@ -363,7 +363,7 @@ def apply_temporal_smoothing(
         return vmi_smooth
 
     elif method == "mean":
-        # Média móvel
+        # Moving average
         kernel = np.ones(window_size) / window_size
         return np.convolve(vmi, kernel, mode="same")
 

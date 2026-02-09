@@ -1,4 +1,4 @@
-"""Features de agilidade articulatória para análise do Choro."""
+"""Articulatory agility features for Choro analysis."""
 
 import numpy as np
 import pandas as pd
@@ -6,21 +6,21 @@ from scipy.signal import find_peaks
 
 
 def compute_f0_velocity(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
-    """Calcula taxa de mudança de pitch (Hz/s).
+    """Compute pitch change rate (Hz/s).
 
     Args:
-        f0: Array de frequências fundamentais.
-        time: Array de tempo correspondente.
+        f0: Array of fundamental frequencies.
+        time: Corresponding time array.
 
     Returns:
-        Array com velocidade de mudança de f0.
+        Array with f0 change velocity.
     """
     if len(f0) < 2:
         return np.array([])
 
     dt = np.diff(time)
     f0_velocity = np.diff(f0) / dt
-    # Zerar onde há gap grande entre frames (trecho não-voiced no meio)
+    # Zero out where there is a large gap between frames (unvoiced segment in between)
     f0_velocity[dt > 0.05] = 0.0
     f0_velocity = np.concatenate([[0], f0_velocity])
 
@@ -28,14 +28,14 @@ def compute_f0_velocity(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
 
 
 def compute_f0_acceleration(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
-    """Calcula aceleração de pitch (Hz/s²).
+    """Compute pitch acceleration (Hz/s^2).
 
     Args:
-        f0: Array de frequências fundamentais.
-        time: Array de tempo correspondente.
+        f0: Array of fundamental frequencies.
+        time: Corresponding time array.
 
     Returns:
-        Array com aceleração de f0.
+        Array with f0 acceleration.
     """
     if len(f0) < 3:
         return np.array([])
@@ -43,9 +43,9 @@ def compute_f0_acceleration(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
     f0_velocity = compute_f0_velocity(f0, time)
     dt = np.diff(time)
     f0_accel = np.diff(f0_velocity) / dt
-    # Zerar onde há gap grande entre frames
+    # Zero out where there is a large gap between frames
     f0_accel[dt > 0.05] = 0.0
-    # Limitar valores extremos (segunda derivada amplifica ruído de pitch)
+    # Limit extreme values (second derivative amplifies pitch noise)
     f0_accel = np.clip(f0_accel, -10000.0, 10000.0)
     f0_accel = np.concatenate([[0], f0_accel])
 
@@ -55,27 +55,27 @@ def compute_f0_acceleration(f0: np.ndarray, time: np.ndarray) -> np.ndarray:
 def compute_syllable_rate(
     energy: np.ndarray, time: np.ndarray, min_distance_s: float = 0.1
 ) -> float:
-    """Estima taxa silábica (sílabas/segundo) via picos de energia.
+    """Estimate syllabic rate (syllables/second) via energy peaks.
 
     Args:
-        energy: Array de energia RMS.
-        time: Array de tempo correspondente.
-        min_distance_s: Distância mínima entre picos em segundos (default 0.1s = 100ms).
+        energy: RMS energy array.
+        time: Corresponding time array.
+        min_distance_s: Minimum distance between peaks in seconds (default 0.1s = 100ms).
 
     Returns:
-        Taxa silábica estimada em sílabas/segundo.
+        Estimated syllabic rate in syllables/second.
     """
     if len(energy) < 2 or len(time) < 2:
         return 0.0
 
-    # Converter distância mínima para índices
+    # Convert minimum distance to indices
     time_step = np.mean(np.diff(time))
     min_distance_frames = int(min_distance_s / time_step)
 
-    # Encontrar picos de energia
+    # Find energy peaks
     peaks, _ = find_peaks(energy, distance=min_distance_frames)
 
-    # Taxa = número de picos / duração total
+    # Rate = number of peaks / total duration
     duration = time[-1] - time[0]
     if duration > 0:
         return len(peaks) / duration
@@ -83,18 +83,18 @@ def compute_syllable_rate(
 
 
 def compute_articulation_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Computa todas as features de agilidade articulatória.
+    """Compute all articulatory agility features.
 
     Args:
-        df: DataFrame com colunas 'f0', 'time', 'energy'.
+        df: DataFrame with columns 'f0', 'time', 'energy'.
 
     Returns:
-        DataFrame com features adicionadas: 'f0_velocity', 'f0_acceleration', 'syllable_rate'.
+        DataFrame with added features: 'f0_velocity', 'f0_acceleration', 'syllable_rate'.
     """
     df = df.copy()
 
-    # Computar velocity e acceleration por música para evitar
-    # artefatos nas fronteiras entre músicas (Δt negativo/zero)
+    # Compute velocity and acceleration per song to avoid
+    # artifacts at song boundaries (negative/zero delta-t)
     vel_parts = []
     accel_parts = []
     for _, group in df.groupby("song", sort=False):
@@ -103,7 +103,7 @@ def compute_articulation_features(df: pd.DataFrame) -> pd.DataFrame:
     df["f0_velocity"] = np.concatenate(vel_parts)
     df["f0_acceleration"] = np.concatenate(accel_parts)
 
-    # Taxa silábica global
+    # Global syllabic rate
     syllable_rate = compute_syllable_rate(df["energy"].values, df["time"].values)
     df["syllable_rate"] = syllable_rate
 
@@ -111,13 +111,13 @@ def compute_articulation_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_articulation_stats(df: pd.DataFrame) -> dict:
-    """Extrai estatísticas de agilidade articulatória.
+    """Extract articulatory agility statistics.
 
     Args:
-        df: DataFrame com features de articulação.
+        df: DataFrame with articulation features.
 
     Returns:
-        Dicionário com estatísticas.
+        Dictionary with statistics.
     """
     df_voiced = df[df["confidence"] > 0.8].copy()
 

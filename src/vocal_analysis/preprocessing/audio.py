@@ -1,4 +1,4 @@
-"""Funções de pré-processamento de áudio."""
+"""Audio preprocessing functions."""
 
 from pathlib import Path
 
@@ -13,21 +13,21 @@ def load_audio(
     normalize: bool = True,
     target_db: float = -3.0,
 ) -> tuple[np.ndarray, int]:
-    """Carrega áudio com configurações padrão para análise vocal.
+    """Load audio with default settings for vocal analysis.
 
     Args:
-        audio_path: Caminho para o arquivo de áudio.
-        sr: Sample rate alvo (default 44.1kHz).
-        mono: Converter para mono.
-        normalize: Aplicar normalização (default True, conforme metodologia).
-        target_db: Nível alvo em dB para normalização (default -3dBFS).
+        audio_path: Path to the audio file.
+        sr: Target sample rate (default 44.1kHz).
+        mono: Convert to mono.
+        normalize: Apply normalization (default True, per methodology).
+        target_db: Target level in dB for normalization (default -3dBFS).
 
     Returns:
-        Tuple com array de áudio e sample rate.
+        Tuple with audio array and sample rate.
     """
     audio, sr_out = librosa.load(str(audio_path), sr=sr, mono=mono)
 
-    # Normalização conforme metodologia (-3 dBFS de pico)
+    # Normalization per methodology (-3 dBFS peak)
     if normalize:
         audio = normalize_audio(audio, target_db=target_db)
 
@@ -35,20 +35,20 @@ def load_audio(
 
 
 def normalize_audio(audio: np.ndarray, target_db: float = -3.0) -> np.ndarray:
-    """Normaliza áudio para um nível de dB alvo.
+    """Normalize audio to a target dB level.
 
     Args:
-        audio: Array de áudio.
-        target_db: Nível alvo em dB (default -3dB).
+        audio: Audio array.
+        target_db: Target level in dB (default -3dB).
 
     Returns:
-        Array de áudio normalizado.
+        Normalized audio array.
     """
-    # Calcula o fator de normalização
+    # Compute the normalization factor
     current_max = np.max(np.abs(audio))
     if current_max > 0:
-        # Converte dB para amplitude linear
+        # Convert dB to linear amplitude
         target_amplitude = 10 ** (target_db / 20)
-        # Aplica a normalização
+        # Apply normalization
         audio = audio * (target_amplitude / current_max)
     return audio

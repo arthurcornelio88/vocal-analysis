@@ -1,4 +1,4 @@
-"""Módulo de visualização com estilo acadêmico."""
+"""Academic-style visualization module."""
 
 from vocal_analysis.visualization.plots import plot_f0_contour, plot_mechanism_clusters
 

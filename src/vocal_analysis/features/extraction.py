@@ -1,4 +1,4 @@
-"""Pipeline híbrido de extração de features (Crepe + Praat)."""
+"""Hybrid feature extraction pipeline (Crepe + Praat)."""
 
 from pathlib import Path
 from typing import TypedDict
@@ -13,7 +13,7 @@ from vocal_analysis.preprocessing.audio import load_audio
 
 
 class BioacousticFeatures(TypedDict):
-    """Features bioacústicas extraídas."""
+    """Extracted bioacoustic features."""
 
     f0: np.ndarray
     confidence: np.ndarray
@@ -30,9 +30,9 @@ class BioacousticFeatures(TypedDict):
 
 
 class ExtendedFeatures(TypedDict):
-    """Features estendidas incluindo features espectrais para VMI."""
+    """Extended features including spectral features for VMI."""
 
-    # Features básicas
+    # Basic features
     f0: np.ndarray
     confidence: np.ndarray
     hnr: np.ndarray
@@ -45,7 +45,7 @@ class ExtendedFeatures(TypedDict):
     f3: np.ndarray
     f4: np.ndarray
     time: np.ndarray
-    # Features espectrais (VMI)
+    # Spectral features (VMI)
     alpha_ratio: np.ndarray
     h1_h2: np.ndarray
     spectral_tilt: np.ndarray
@@ -55,11 +55,11 @@ class ExtendedFeatures(TypedDict):
 
 def extract_bioacoustic_features(
     audio_path: str | Path,
-    hop_length: int = 220,  # <--- MUDANÇA 1: Reduzir de 441 para 220 (5ms) para captar notas rápidas
+    hop_length: int = 220,  # <--- CHANGE 1: Reduce from 441 to 220 (5ms) to capture fast notes
     fmin: float = 50.0,
     fmax: float = 800.0,
     device: str = "cpu",
-    model: str = "full",  # <--- MUDANÇA 2: Garantir modelo 'full' para precisão máxima
+    model: str = "full",  # <--- CHANGE 2: Ensure 'full' model for maximum accuracy
     skip_formants: bool = False,
     skip_jitter_shimmer: bool = False,
     use_praat_f0: bool = False,
@@ -67,65 +67,65 @@ def extract_bioacoustic_features(
     cpps_timeout: int | None = None,
     batch_size: int = 2048,
 ) -> BioacousticFeatures:
-    """Pipeline Híbrido de extração de features.
+    """Hybrid feature extraction pipeline.
 
-    1. Crepe para f0 (SOTA em robustez de pitch).
-    2. Parselmouth para métricas espectrais (Rigor acadêmico).
+    1. Crepe for f0 (SOTA in pitch robustness).
+    2. Parselmouth for spectral metrics (academic rigor).
 
     Args:
-        audio_path: Caminho para o arquivo de áudio.
-        hop_length: Hop length em samples (default 441 = 10ms @ 44.1kHz, conforme metodologia).
-        fmin: Frequência mínima para detecção de pitch.
-        fmax: Frequência máxima para detecção de pitch.
-        device: Dispositivo para inferência ('cpu' ou 'cuda').
-        model: Modelo CREPE ('tiny', 'small', 'medium', 'large', 'full').
-        skip_formants: Se True, pula extração de formantes F1-F4 (economiza ~30% do tempo).
-        skip_jitter_shimmer: Se True, pula Jitter/Shimmer (economiza ~20% do tempo).
-        use_praat_f0: Se True, usa Praat ao invés de CREPE (muito mais rápido, menos preciso).
-        skip_cpps: Se True, pula CPPS completamente (retorna None).
-        cpps_timeout: Timeout em segundos para CPPS (None = sem timeout). Use apenas se CPPS travar.
-        batch_size: Batch size para CREPE (default 2048 para GPU, use 512 para macOS CPU).
+        audio_path: Path to the audio file.
+        hop_length: Hop length in samples (default 441 = 10ms @ 44.1kHz, per methodology).
+        fmin: Minimum frequency for pitch detection.
+        fmax: Maximum frequency for pitch detection.
+        device: Device for inference ('cpu' or 'cuda').
+        model: CREPE model ('tiny', 'small', 'medium', 'large', 'full').
+        skip_formants: If True, skip F1-F4 formant extraction (saves ~30% of time).
+        skip_jitter_shimmer: If True, skip Jitter/Shimmer (saves ~20% of time).
+        use_praat_f0: If True, use Praat instead of CREPE (much faster, less accurate).
+        skip_cpps: If True, skip CPPS entirely (returns None).
+        cpps_timeout: Timeout in seconds for CPPS (None = no timeout). Use only if CPPS hangs.
+        batch_size: Batch size for CREPE (default 2048 for GPU, use 512 for macOS CPU).
 
     Returns:
-        Dicionário com features extraídas.
+        Dictionary with extracted features.
     """
     audio_path = Path(audio_path)
     audio, sr = load_audio(audio_path)
 
-    # Carregar Parselmouth Sound (usado por vários métodos)
+    # Load Parselmouth Sound (used by several methods)
     sound = parselmouth.Sound(str(audio_path))
     time_step = hop_length / sr
 
-    # 1. Extração de f0
+    # 1. f0 extraction
     if use_praat_f0:
-        # Usar Praat autocorrelation (muito mais rápido que CREPE, mas menos robusto)
+        # Use Praat autocorrelation (much faster than CREPE, but less robust)
         pitch = sound.to_pitch(time_step=time_step, pitch_floor=fmin, pitch_ceiling=fmax)
 
-        # Extrair arrays de f0 diretamente dos valores do Pitch object
-        # Praat retorna matrizes 2D com tempo e valores
+        # Extract f0 arrays directly from the Pitch object values
+        # Praat returns 2D matrices with time and values
         f0_values = pitch.selected_array["frequency"]
 
-        # Criar confidence baseada em voiced/unvoiced
-        # Se f0 > 0, consideramos voiced com confidence alta
+        # Create confidence based on voiced/unvoiced
+        # If f0 > 0, we consider it voiced with high confidence
         confidence_values = np.where(f0_values > 0, 0.9, 0.0)
 
         f0 = f0_values
         confidence = confidence_values
 
     else:
-        # Usar CREPE (SOTA em robustez, mas lento)
-        # CREPE (Kim et al., 2018) é escolhido sobre métodos tradicionais de autocorrelação
-        # (como Praat's "To Pitch (cc)") por sua robustez superior em sinais com:
-        #   - Vibrato intenso (comum no Choro)
-        #   - Ruído de fundo (gravações históricas)
-        #   - Ornamentações rápidas (glissandi, portamenti)
+        # Use CREPE (SOTA in robustness, but slow)
+        # CREPE (Kim et al., 2018) is chosen over traditional autocorrelation methods
+        # (such as Praat's "To Pitch (cc)") due to its superior robustness with signals containing:
+        #   - Intense vibrato (common in Choro)
+        #   - Background noise (historical recordings)
+        #   - Fast ornamentations (glissandi, portamenti)
         #
-        # O CREPE utiliza internamente janelamento próprio otimizado (aproximadamente 25ms)
-        # que não é configurável pelo usuário. Essa escolha arquitetural da CNN foi validada
-        # em benchmarks do MIR (Music Information Retrieval) e supera métodos baseados em
-        # autocorrelação na detecção de pitch em sinais musicais complexos.
+        # CREPE internally uses its own optimized windowing (approximately 25ms)
+        # which is not user-configurable. This CNN architectural choice was validated
+        # in MIR (Music Information Retrieval) benchmarks and outperforms autocorrelation-based
+        # methods for pitch detection in complex musical signals.
         #
-        # Referência: Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).
+        # Reference: Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).
         # "Crepe: A convolutional representation for pitch estimation." ICASSP 2018.
         audio_tensor = torch.from_numpy(audio).unsqueeze(0).to(device)
 
@@ -136,17 +136,17 @@ def extract_bioacoustic_features(
             fmin=fmin,
             fmax=fmax,
             model=model,
-            decoder=torchcrepe.decode.weighted_argmax,  # <--- CRUCIAL: Mude de .viterbi para .weighted_argmax
+            decoder=torchcrepe.decode.weighted_argmax,  # <--- CRUCIAL: Change from .viterbi to .weighted_argmax
             batch_size=batch_size,
             device=device,
             return_periodicity=True,
         )
 
-        # Nota: weighted_argmax pode gerar mais "ruído" ou saltos falsos,
-        # mas não vai "comer" a nota aguda real.
+        # Note: weighted_argmax may generate more "noise" or false jumps,
+        # but it won't "swallow" the real high-pitched note.
 
-        # Filtragem pós-processamento manual (Opcional, mas recomendada se usar argmax)
-        torchcrepe.filter.median(f0, 3)  # Filtro mediano leve para tirar ruído pontual
+        # Manual post-processing filtering (Optional, but recommended when using argmax)
+        torchcrepe.filter.median(f0, 3)  # Light median filter to remove point noise
 
         f0 = f0.squeeze().cpu().numpy()
         confidence = confidence.squeeze().cpu().numpy()
@@ -156,19 +156,19 @@ def extract_bioacoustic_features(
         f0[invalid_mask] = 0
         confidence[invalid_mask] = 0
 
-    # 2. Extração de Timbre com Parselmouth (Praat)
-    # Harmonicity (HNR) - Proxy para "limpeza" da voz
+    # 2. Timbre extraction with Parselmouth (Praat)
+    # Harmonicity (HNR) - Proxy for voice "clarity"
     harmonicity = sound.to_harmonicity(time_step=time_step)
     hnr_values = harmonicity.values[0]
 
     # Cepstral Peak Prominence (CPP) via Praat call
-    # Usa a interface de scripting do Praat
+    # Uses the Praat scripting interface
     if skip_cpps:
         cpps = None
     else:
         try:
             if cpps_timeout:
-                # Extração com timeout (para macOS/casos que travam)
+                # Extraction with timeout (for macOS/cases that hang)
                 import threading
 
                 result = {"cpps": None, "error": None, "timeout": False}
@@ -204,14 +204,14 @@ def extract_bioacoustic_features(
                 if thread.is_alive():
                     result["timeout"] = True
                     cpps = None
-                    print(f"  ⚠ CPPS timeout ({cpps_timeout}s) - retornando None", flush=True)
+                    print(f"  ⚠ CPPS timeout ({cpps_timeout}s) - returning None", flush=True)
                 elif result["error"]:
                     cpps = None
-                    print(f"  ⚠ CPPS erro: {result['error']} - retornando None", flush=True)
+                    print(f"  ⚠ CPPS error: {result['error']} - returning None", flush=True)
                 else:
                     cpps = result["cpps"]
             else:
-                # Extração direta sem timeout
+                # Direct extraction without timeout
                 power_cepstrogram = parselmouth.praat.call(
                     sound, "To PowerCepstrogram", fmin, time_step, 5000.0, 50.0
                 )
@@ -231,13 +231,13 @@ def extract_bioacoustic_features(
                     "Robust slow",
                 )
         except Exception as e:
-            # Erro na extração: retornar None explícito
-            print(f"  ⚠ CPPS falhou: {e} - retornando None", flush=True)
+            # Extraction error: return explicit None
+            print(f"  ⚠ CPPS failed: {e} - returning None", flush=True)
             cpps = None
 
-    # 3. Extração de Jitter e Shimmer (instabilidade glótica)
-    # Jitter (ppq5): Period Perturbation Quotient - instabilidade de período
-    # Shimmer (apq11): Amplitude Perturbation Quotient - instabilidade de amplitude
+    # 3. Jitter and Shimmer extraction (glottal instability)
+    # Jitter (ppq5): Period Perturbation Quotient - period instability
+    # Shimmer (apq11): Amplitude Perturbation Quotient - amplitude instability
     if skip_jitter_shimmer:
         jitter_ppq5 = np.nan
         shimmer_apq11 = np.nan
@@ -253,18 +253,18 @@ def extract_bioacoustic_features(
                 [sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6
             )
         except Exception:
-            # Fallback: valores padrão para sinais com pitch instável
+            # Fallback: default values for signals with unstable pitch
             jitter_ppq5 = np.nan
             shimmer_apq11 = np.nan
 
-    # 4. Extração de Energia Espectral (RMS)
-    # Frame length de 25ms conforme janelamento típico (1102 samples @ 44.1kHz)
+    # 4. Spectral Energy extraction (RMS)
+    # Frame length of 25ms per typical windowing (1102 samples @ 44.1kHz)
     energy = librosa.feature.rms(y=audio, frame_length=int(0.025 * sr), hop_length=hop_length)[0]
 
-    # 5. Extração de Formantes F1-F4 via LPC (método de Burg)
-    # Formantes indicam ressonâncias do trato vocal
+    # 5. Formant F1-F4 extraction via LPC (Burg method)
+    # Formants indicate vocal tract resonances
     if skip_formants:
-        # Se desativado, retorna arrays vazios
+        # If disabled, return empty arrays
         f1_values = np.full_like(hnr_values, np.nan)
         f2_values = np.full_like(hnr_values, np.nan)
         f3_values = np.full_like(hnr_values, np.nan)
@@ -274,7 +274,7 @@ def extract_bioacoustic_features(
             formants = sound.to_formant_burg(
                 time_step=time_step, max_number_of_formants=5, maximum_formant=5500
             )
-            # Extrair arrays temporais dos formantes
+            # Extract temporal arrays from formants
             f1_values = np.array(
                 [formants.get_value_at_time(1, t) for t in np.arange(0, sound.duration, time_step)]
             )
@@ -288,13 +288,13 @@ def extract_bioacoustic_features(
                 [formants.get_value_at_time(4, t) for t in np.arange(0, sound.duration, time_step)]
             )
         except Exception:
-            # Fallback: arrays vazios se extração falhar
+            # Fallback: empty arrays if extraction fails
             f1_values = np.full_like(hnr_values, np.nan)
             f2_values = np.full_like(hnr_values, np.nan)
             f3_values = np.full_like(hnr_values, np.nan)
             f4_values = np.full_like(hnr_values, np.nan)
 
-    # Ajustar tamanhos dos arrays para sincronização temporal
+    # Adjust array sizes for temporal synchronization
     min_len = min(len(f0), len(hnr_values), len(energy), len(f1_values))
     time = np.arange(min_len) * time_step
 
@@ -329,34 +329,34 @@ def extract_extended_features(
     batch_size: int = 2048,
     skip_cpps_per_frame: bool = False,
 ) -> ExtendedFeatures:
-    """Extrai features básicas + espectrais para VMI.
+    """Extract basic + spectral features for VMI.
 
-    Combina a extração de features bioacústicas padrão com as novas
-    features espectrais necessárias para o cálculo do VMI.
+    Combines standard bioacoustic feature extraction with the new
+    spectral features required for VMI computation.
 
     Args:
-        audio_path: Caminho para o arquivo de áudio.
-        hop_length: Hop length em samples.
-        fmin: Frequência mínima para detecção de pitch.
-        fmax: Frequência máxima para detecção de pitch.
-        device: Dispositivo para inferência ('cpu' ou 'cuda').
-        model: Modelo CREPE.
-        skip_formants: Se True, pula extração de formantes.
-        skip_jitter_shimmer: Se True, pula Jitter/Shimmer.
-        use_praat_f0: Se True, usa Praat ao invés de CREPE.
-        skip_cpps: Se True, pula CPPS global.
-        cpps_timeout: Timeout em segundos para CPPS global.
-        batch_size: Batch size para CREPE.
-        skip_cpps_per_frame: Se True, pula CPPS per-frame (economiza tempo).
+        audio_path: Path to the audio file.
+        hop_length: Hop length in samples.
+        fmin: Minimum frequency for pitch detection.
+        fmax: Maximum frequency for pitch detection.
+        device: Device for inference ('cpu' or 'cuda').
+        model: CREPE model.
+        skip_formants: If True, skip formant extraction.
+        skip_jitter_shimmer: If True, skip Jitter/Shimmer.
+        use_praat_f0: If True, use Praat instead of CREPE.
+        skip_cpps: If True, skip global CPPS.
+        cpps_timeout: Timeout in seconds for global CPPS.
+        batch_size: Batch size for CREPE.
+        skip_cpps_per_frame: If True, skip per-frame CPPS (saves time).
 
     Returns:
-        Dicionário com todas as features (básicas + espectrais).
+        Dictionary with all features (basic + spectral).
     """
     from vocal_analysis.features.spectral import extract_spectral_features
 
     audio_path = Path(audio_path)
 
-    # 1. Extrair features básicas
+    # 1. Extract basic features
     basic_features = extract_bioacoustic_features(
         audio_path=audio_path,
         hop_length=hop_length,
@@ -372,7 +372,7 @@ def extract_extended_features(
         batch_size=batch_size,
     )
 
-    # 2. Extrair features espectrais
+    # 2. Extract spectral features
     audio, sr = load_audio(audio_path)
     spectral_features = extract_spectral_features(
         audio_path=audio_path,
@@ -383,7 +383,7 @@ def extract_extended_features(
         skip_cpps_per_frame=skip_cpps_per_frame,
     )
 
-    # 3. Sincronizar tamanhos
+    # 3. Synchronize sizes
     min_len = min(
         len(basic_features["f0"]),
         len(spectral_features["alpha_ratio"]),
@@ -391,7 +391,7 @@ def extract_extended_features(
         len(spectral_features["spectral_tilt"]),
     )
 
-    # CPPS per-frame pode ter tamanho diferente
+    # CPPS per-frame may have a different size
     cpps_per_frame = spectral_features["cpps_per_frame"]
     if cpps_per_frame is not None:
         cpps_per_frame = cpps_per_frame[:min_len] if len(cpps_per_frame) >= min_len else None
@@ -401,7 +401,7 @@ def extract_extended_features(
         f0_f1_distance = f0_f1_distance[:min_len]
 
     return ExtendedFeatures(
-        # Features básicas
+        # Basic features
         f0=basic_features["f0"][:min_len],
         confidence=basic_features["confidence"][:min_len],
         hnr=basic_features["hnr"][:min_len],
@@ -414,7 +414,7 @@ def extract_extended_features(
         f3=basic_features["f3"][:min_len],
         f4=basic_features["f4"][:min_len],
         time=basic_features["time"][:min_len],
-        # Features espectrais
+        # Spectral features
         alpha_ratio=spectral_features["alpha_ratio"][:min_len],
         h1_h2=spectral_features["h1_h2"][:min_len],
         spectral_tilt=spectral_features["spectral_tilt"][:min_len],

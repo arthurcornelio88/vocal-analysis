@@ -1,91 +1,102 @@
-# Vocal Analysis - Análise Bioacústica M1/M2
+[Portugues](docs/pt-BR/README.md) | **English**
 
-Análise computacional de mecanismos laríngeos (M1/M2) em gravações de Choro brasileiro, com foco na voz de Ademilde Fonseca.
+# Vocal Analysis - Bioacoustic M1/M2 Analysis
 
-## Objetivo
+Computational analysis of laryngeal mechanisms (M1/M2) in Brazilian Choro recordings, focusing on the voice of Ademilde Fonseca.
 
-Criticar o sistema de classificação vocal "Fach" através de uma análise fisiológica dos mecanismos laríngeos, extraindo features explicáveis (f0, HNR, CPPS) de áudios de canto.
+## Goal
+
+Challenge the traditional "Fach" vocal classification system through a physiological analysis of laryngeal mechanisms, extracting explainable features (f0, HNR, CPPS) from singing audio.
 
 ## Stack
 
-- **torchcrepe**: Extração SOTA de f0 (pitch)
+- **torchcrepe**: SOTA f0 (pitch) extraction
 - **parselmouth** (Praat): HNR, CPPS, Jitter, Shimmer
-- **xgboost**: Classificação tabular M1/M2
-- **seaborn/matplotlib**: Visualizações acadêmicas
-- **google-generativeai**: Geração de relatórios narrativos multimodais com Gemini 2.0 Flash (⚠️ deprecated mas funcional)
+- **xgboost**: Tabular M1/M2 classification
+- **seaborn/matplotlib**: Academic visualizations
+- **google-generativeai**: Multimodal narrative report generation with Gemini 2.0 Flash
 
 ## Setup
 
-### Requisitos
+### Requirements
 
 - Python 3.10+
-- [UV](https://github.com/astral-sh/uv) (gerenciador de pacotes)
-- (Opcional) API Key do Google Gemini para relatórios com IA
+- [UV](https://github.com/astral-sh/uv) (package manager)
+- (Optional) Google Gemini API Key for AI-powered reports
 
-### Instalação
+### Installation
 
 ```bash
-# Clonar o repositório
+# Clone the repository
 git clone <repo-url>
 cd vocal-analysis
 
-# Instalar dependências
+# Install dependencies
 uv sync
 
-# Instalar dependências de desenvolvimento (ruff, pytest, jupyter)
+# Install development dependencies (ruff, pytest, jupyter)
 uv sync --extra dev
 ```
 
-### Configurar Gemini (opcional)
+### Configure Gemini (optional)
 
-Para gerar relatórios narrativos com IA:
+To generate AI-powered narrative reports:
 
-1. Acesse [Google AI Studio](https://aistudio.google.com/apikey)
-2. Clique em "Create API Key"
-3. Configure a variável de ambiente:
+1. Go to [Google AI Studio](https://aistudio.google.com/apikey)
+2. Click "Create API Key"
+3. Set the environment variable:
 
 ```bash
-export GEMINI_API_KEY=sua_chave_aqui
+export GEMINI_API_KEY=your_key_here
 ```
 
-Ou adicione ao seu `.bashrc`/`.zshrc` para persistir.
+Or add it to your `.bashrc`/`.zshrc` to persist.
 
-**Usando arquivo `.env`:**
+**Using a `.env` file:**
 
-1. Copie o template:
+1. Copy the template:
    ```bash
    cp .env.example .env
    ```
-2. Edite `.env` com suas configurações
-3. Carregue no ambiente:
+2. Edit `.env` with your settings
+3. Load into environment:
    ```bash
    source .env
    ```
 
-### Configurar Excerpts (opcional)
+### Configure Report Language
 
-Você pode definir trechos específicos de cada música para análise e plots de validação.
-Útil para focar em passagens vocais sem introduções instrumentais.
-
-No `.env`, use o formato `EXCERPT_<NOME>=MMSS-MMSS`:
+The language of generated reports (analysis_report.md, vmi_analysis.md, llm_report.md) is controlled by the `REPORT_LANG` variable:
 
 ```bash
-# Do segundo 22 ao 1:03
+# English reports (default)
+REPORT_LANG=en
+
+# Portuguese reports
+REPORT_LANG=pt-BR
+```
+
+### Configure Excerpts (optional)
+
+You can define specific time intervals for each song for analysis and validation plots.
+Useful for focusing on vocal passages without instrumental introductions.
+
+In `.env`, use the format `EXCERPT_<NAME>=MMSS-MMSS`:
+
+```bash
+# From second 22 to 1:03
 EXCERPT_DELICADO="0022-0103"
 
-# Do segundo 33 ao 1:04
+# From second 33 to 1:04
 EXCERPT_BRASILEIRINHO="0033-0104"
 
-# Do segundo 7 ao 23
+# From second 7 to 23
 EXCERPT_APANHEITE_CAVAQUINHO="0007-0023"
 ```
 
-Os excerpts são usados automaticamente nos plots de validação (`--validate-separation`).
+Excerpts are automatically used in validation plots (`--validate-separation`).
 
-**Nota sobre o pacote google-generativeai:**
-O projeto usa `google-generativeai` que está deprecated mas ainda funcional. Você verá um warning ao executar, mas o código funciona normalmente.
-
-## Estrutura do Projeto
+## Project Structure
 
 ```
 vocal-analysis/
@@ -93,82 +104,88 @@ vocal-analysis/
 │   ├── preprocessing/
 │   │   ├── audio.py              # load_audio(), normalize_audio()
 │   │   ├── separation.py         # Source separation (HTDemucs)
-│   │   └── process_ademilde.py   # Script de extração de features
+│   │   └── process_ademilde.py   # Feature extraction script
 │   ├── features/
-│   │   └── extraction.py         # Pipeline híbrido Crepe + Praat
+│   │   ├── extraction.py         # Hybrid Crepe + Praat pipeline
+│   │   ├── spectral.py           # Spectral features (Alpha Ratio, H1-H2, etc.)
+│   │   ├── vmi.py                # Vocal Mechanism Index computation
+│   │   └── articulation.py       # Articulatory agility features
 │   ├── analysis/
-│   │   ├── exploratory.py        # Análise M1/M2, clustering
-│   │   ├── run_analysis.py       # Script de análise completa
-│   │   └── llm_report.py         # Geração de relatório com Gemini
+│   │   ├── exploratory.py        # M1/M2 analysis, clustering
+│   │   ├── run_analysis.py       # Full analysis script
+│   │   └── llm_report.py         # Gemini-powered report generation
 │   ├── modeling/
-│   │   └── classifier.py         # XGBoost para classificação M1/M2
+│   │   └── classifier.py         # XGBoost for M1/M2 classification
 │   ├── scripts/
-│   │   └── regenerate_validation_plot.py  # Regenerar plots sem reprocessar
+│   │   └── regenerate_validation_plot.py  # Regenerate plots without reprocessing
 │   ├── visualization/
-│   │   └── plots.py              # Plots acadêmicos
+│   │   └── plots.py              # Academic plots
 │   └── utils/
-│       └── pitch.py              # Conversão Hz ↔ Notas (A4, C5, etc)
+│       └── pitch.py              # Hz <-> Note conversion (A4, C5, etc.)
 ├── data/
-│   ├── raw/                      # Áudios originais (.mp3)
+│   ├── raw/                      # Original audio files (.mp3)
 │   └── processed/                # CSVs, JSONs, logs
+├── docs/
+│   ├── en/                       # English documentation
+│   └── pt-BR/                    # Portuguese documentation
 ├── outputs/
-│   ├── plots/                    # Gráficos gerados
-│   └── models/                   # Modelos treinados
+│   ├── plots/                    # Generated charts
+│   └── models/                   # Trained models
 └── tests/
 ```
 
-## 🖥️ Uso por Plataforma
+## Platform Usage
 
 ### macOS
-- ✅ **Validação rápida**: Use `--use-praat-f0` para testar o pipeline
-- ⚠️ **Limitação**: CREPE full trava por falta de memória (32GB+ recomendado)
-- 💡 **Recomendação**: Use macOS apenas para validação, processe com CREPE no Colab/Windows
+- **Quick validation**: Use `--use-praat-f0` to test the pipeline
+- **Limitation**: CREPE full may crash due to memory (32GB+ recommended)
+- **Recommendation**: Use macOS for validation only, process with CREPE on Colab/Windows
 
 ```bash
-# Validação rápida no macOS (Praat F0)
+# Quick validation on macOS (Praat F0)
 uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
 ```
 
 ### Windows/Linux (32GB+ RAM)
-- ✅ **Processamento completo**: CREPE full com todas features
-- 🚀 **GPU (NVIDIA)**: Use `--device cuda` para aceleração (~10x mais rápido)
+- **Full processing**: CREPE full with all features
+- **GPU (NVIDIA)**: Use `--device cuda` for acceleration (~10x faster)
 
 ```bash
-# Windows/Linux com CPU
+# Windows/Linux with CPU
 uv run python -m vocal_analysis.preprocessing.process_ademilde
 
-# Windows/Linux com GPU NVIDIA
+# Windows/Linux with NVIDIA GPU
 uv run python -m vocal_analysis.preprocessing.process_ademilde --device cuda
 ```
 
-### Google Colab (Recomendado! 🌟)
-- ✅ **GPU T4 gratuita**: ~12-15h/dia de uso
-- ✅ **Processamento rápido**: 3 músicas (~7min cada) em ~10 minutos
-- ✅ **Zero configuração**: Ambiente já pronto
+### Google Colab (Recommended!)
+- **Free T4 GPU**: ~12-15h/day of usage
+- **Fast processing**: 3 songs (~7min each) in ~10 minutes
+- **Zero configuration**: Environment ready to go
 
-**📖 Guia completo**: [COLAB_SETUP.md](COLAB_SETUP.md)
+**Full guide**: [docs/en/COLAB_SETUP.md](docs/en/COLAB_SETUP.md)
 
 **Quick start**:
 ```python
-# No Colab com GPU T4 habilitada
+# In Colab with T4 GPU enabled
 !git clone https://github.com/arthurcornelio88/vocal-analysis.git
 %cd vocal-analysis
 !pip install uv && uv pip install --system -e .
 
-# Verificar instalação
-!python -c "import vocal_analysis; print('✅ Instalado!')"
+# Verify installation
+!python -c "import vocal_analysis; print('Installed!')"
 
-# Processar com CREPE + GPU
+# Process with CREPE + GPU
 !python src/vocal_analysis/preprocessing/process_ademilde.py --device cuda
 ```
 
 ---
 
-## Uso
+## Usage
 
-### 1. Adicionar áudios
+### 1. Add audio files
 
-Coloque os arquivos MP3 em `data/raw/`:
+Place MP3 files in `data/raw/`:
 
 ```
 data/raw/
@@ -177,161 +194,123 @@ data/raw/
 └── delicado.mp3
 ```
 
-### 2. Processar áudios (extrair features)
+### 2. Process audio (extract features)
 
 ```bash
-# Processamento completo com CREPE (requer GPU ou 32GB+ RAM)
+# Full processing with CREPE (requires GPU or 32GB+ RAM)
 uv run python -m vocal_analysis.preprocessing.process_ademilde
 
-# Com GPU (Google Colab, Windows/Linux com NVIDIA)
+# With GPU (Google Colab, Windows/Linux with NVIDIA)
 uv run python -m vocal_analysis.preprocessing.process_ademilde --device cuda
 
-# Modo rápido com Praat (macOS, validação)
+# Fast mode with Praat (macOS, validation)
 uv run python -m vocal_analysis.preprocessing.process_ademilde --use-praat-f0
 ```
 
-**Opções disponíveis:**
-- `--device cuda`: Usar GPU (requer CUDA)
-- `--use-praat-f0`: Usar Praat em vez de CREPE (mais rápido, menos preciso)
-- `--crepe-model {tiny,small,full}`: Escolher modelo CREPE (default: full)
-- `--skip-formants`: Pular extração de formantes (~30% mais rápido)
-- `--skip-jitter-shimmer`: Pular jitter/shimmer (~20% mais rápido)
-- `--skip-cpps`: Pular CPPS (evita travamento no macOS)
-- `--skip-plots`: Não gerar plots de F0
-- `--limit N`: Processar apenas N arquivos (útil para testes)
-- `--fast`: Ativa todas otimizações (Praat + sem formants/jitter/shimmer/cpps/plots)
-- `--no-separate-vocals`: Desabilitar source separation (HTDemucs). **Por padrão**, a separação de voz é habilitada para melhorar a detecção de pitch em arranjos complexos
+**Available options:**
+- `--device cuda`: Use GPU (requires CUDA)
+- `--use-praat-f0`: Use Praat instead of CREPE (faster, less accurate)
+- `--crepe-model {tiny,small,full}`: Choose CREPE model (default: full)
+- `--skip-formants`: Skip formant extraction (~30% faster)
+- `--skip-jitter-shimmer`: Skip jitter/shimmer (~20% faster)
+- `--skip-cpps`: Skip CPPS (avoids macOS hang)
+- `--skip-plots`: Don't generate F0 plots
+- `--limit N`: Process only N files (useful for testing)
+- `--fast`: Enable all optimizations (Praat + no formants/jitter/shimmer/cpps/plots)
+- `--no-separate-vocals`: Disable source separation (HTDemucs). **By default**, vocal separation is enabled to improve pitch detection in complex arrangements
 
-**Outputs gerados:**
-- `data/processed/ademilde_features.csv` - Features por frame
-- `data/processed/ademilde_metadata.json` - Metadados estruturados
-- `data/processed/processing_log.md` - Log legível
-- `outputs/plots/*_f0.png` - Contornos de pitch
+**Generated outputs:**
+- `data/processed/ademilde_features.csv` - Per-frame features
+- `data/processed/ademilde_metadata.json` - Structured metadata
+- `data/processed/processing_log.md` - Human-readable log
+- `outputs/plots/*_f0.png` - Pitch contours
 
-### 2.1. Regenerar plots de validação (sem reprocessar)
+### 2.1. Regenerate validation plots (without reprocessing)
 
-Se você já processou os áudios (source separation é habilitada por padrão) e quer apenas regenerar os plots de validação (ex: após ajustar o código de visualização):
+If you've already processed the audio and just want to regenerate validation plots:
 
 ```bash
-# Listar músicas com cache disponível
+# List songs with available cache
 uv run python -m vocal_analysis.scripts.regenerate_validation_plot
 
-# Regenerar plot de uma música específica
+# Regenerate plot for a specific song
 uv run python -m vocal_analysis.scripts.regenerate_validation_plot --song "Apanhei-te Cavaquinho"
 
-# Regenerar todos os plots
+# Regenerate all plots
 uv run python -m vocal_analysis.scripts.regenerate_validation_plot --all
 
-# Usar CREPE ao invés de Praat (mais lento, mais preciso)
+# Use CREPE instead of Praat (slower, more accurate)
 uv run python -m vocal_analysis.scripts.regenerate_validation_plot --all --use-crepe
 ```
 
-O script usa os dados de voz separada cacheados em `data/cache/separated/` e os intervalos de excerpt definidos no `.env`.
+The script uses separated vocal data cached in `data/cache/separated/` and excerpt intervals defined in `.env`.
 
-### 3. Rodar análise exploratória
+### 3. Run exploratory analysis
 
 ```bash
 uv run python -m vocal_analysis.analysis.run_analysis
 ```
 
-**Outputs gerados:**
-- `outputs/plots/mechanism_analysis.png` - 4 plots de análise M1/M2 (threshold)
-- `outputs/plots/mechanism_clusters.png` - Clustering GMM
-- `outputs/plots/xgb_mechanism_timeline.png` - Contorno temporal pela predição XGBoost
-- `outputs/xgb_predictions.csv` - Predições por frame (GMM + XGBoost)
-- `outputs/analise_ademilde.md` - Relatório estruturado (inclui classification report do XGBoost)
-- `outputs/relatorio_llm.md` - Relatório narrativo com Gemini (se API configurada)
+**Generated outputs:**
+- `outputs/plots/mechanism_analysis.png` - 4 M1/M2 analysis plots (threshold)
+- `outputs/plots/mechanism_clusters.png` - GMM clustering
+- `outputs/plots/xgb_mechanism_timeline.png` - Temporal contour colored by XGBoost prediction
+- `outputs/xgb_predictions.csv` - Per-frame predictions (GMM + XGBoost)
+- `outputs/analysis_report.md` - Structured report (includes XGBoost classification report)
+- `outputs/vmi_analysis.md` - VMI report (if spectral features available)
+- `outputs/llm_report.md` - Narrative report with Gemini (if API configured)
 
-#### Relatório LLM Multimodal
+#### Multimodal LLM Report
 
-Se `GEMINI_API_KEY` estiver configurada, o script gera um relatório narrativo usando Gemini 2.0 Flash com:
+If `GEMINI_API_KEY` is configured, the script generates a narrative report using Gemini 2.0 Flash with:
 
-- **Análise multimodal**: O LLM recebe os plots junto com os dados numéricos
-- **Links clicáveis**: Referências a gráficos incluem links markdown (ex: `[brasileirinho_f0](plots/brasileirinho_f0.png)`)
-- **Índice de figuras**: Lista completa de visualizações no final do relatório
+- **Multimodal analysis**: The LLM receives plots alongside numerical data
+- **Clickable links**: Graph references include markdown links (e.g., `[brasileirinho_f0](plots/brasileirinho_f0.png)`)
+- **Figure index**: Complete list of visualizations at the end of the report
 
-### 4. Rodar geração de relatório LLM (opcional)
+### 4. Generate LLM report only (optional)
 
-Para gerar apenas o relatório narrativo com Gemini (sem rodar toda a análise novamente):
+To generate just the narrative report with Gemini (without re-running the full analysis):
 
 ```bash
 uv run python -m vocal_analysis.analysis.llm_report
 ```
 
-**Parâmetros opcionais:**
-- `--metadata`: Caminho para o arquivo de metadados (padrão: `data/processed/ademilde_metadata.json`)
-- `--stats`: Caminho para JSON com estatísticas M1/M2 (opcional)
-- `--output`: Caminho de saída para o relatório (padrão: `outputs/relatorio_llm.md`)
-- `--plots-dir`: Diretório com plots PNG para análise multimodal (padrão: `outputs/plots/`)
+**Optional parameters:**
+- `--metadata`: Path to metadata file (default: `data/processed/ademilde_metadata.json`)
+- `--stats`: Path to M1/M2 statistics JSON (optional)
+- `--output`: Output path for the report (default: `outputs/llm_report.md`)
+- `--plots-dir`: Directory with PNG plots for multimodal analysis (default: `outputs/plots/`)
+- `--lang`: Report language (`en` or `pt-BR`, default: `en`)
 
-**Exemplo com parâmetros customizados:**
-```bash
-uv run python -m vocal_analysis.analysis.llm_report \
-  --metadata data/processed/ademilde_metadata.json \
-  --output outputs/relatorio_customizado.md \
-  --plots-dir outputs/plots/
-```
+**Prerequisites:**
+1. Gemini API key configured: `export GEMINI_API_KEY=your_key_here`
+2. Processed data files available (after running steps 1-3)
+3. Generated plots (optional, for multimodal analysis)
 
-**Pré-requisitos:**
-1. API Key do Gemini configurada: `export GEMINI_API_KEY=sua_chave_aqui`
-2. Arquivos de dados processados disponíveis (após executar os passos 1-3)
-3. Plots gerados (opcional, para análise multimodal)
+**Common errors:**
+1. **"API key not valid"**: Check that the API key is correct and active at [Google AI Studio](https://aistudio.google.com/apikey)
+2. **"quota exceeded"**: The free Gemini tier has usage limits. Wait for quota reset or upgrade.
+3. **Deprecation warning**: The `google-generativeai` package is deprecated but still functional. Ignore the warning.
 
-**Verificação da API Key:**
-Para verificar se a API Key está configurada corretamente:
-```bash
-echo $GEMINI_API_KEY
-```
-Se não mostrar nada, configure a variável de ambiente:
-```bash
-export GEMINI_API_KEY=sua_chave_aqui
-```
+### 5. Extracted features
 
-**Nota importante:** O script `run_analysis.py` só invocará automaticamente a geração do relatório LLM se a variável `GEMINI_API_KEY` estiver configurada no ambiente. Caso contrário, ele mostrará apenas uma mensagem informativa e não gerará o relatório.
-
-**Erros comuns:**
-1. **"API key not valid"**: Verifique se a API key está correta e ativa no [Google AI Studio](https://aistudio.google.com/apikey)
-2. **"quota exceeded" / "You exceeded your current quota"**: A conta gratuita do Gemini tem limites de uso. Espere o reset da quota ou atualize para um plano pago.
-3. **Warning sobre pacote deprecated**: O pacote `google-generativeai` está deprecated mas ainda funciona. Ignore o warning.
-
-**Nota:** Este comando é útil quando você já executou a análise completa e deseja:
-- Regenerar o relatório LLM com diferentes parâmetros
-- Testar diferentes prompts ou configurações
-- Gerar relatórios específicos para apresentações
-- Executar a geração do relatório quando a API Key não estava configurada durante a execução do `run_analysis.py`
-
-### 5. Features extraídas
-
-| Coluna | Descrição |
-|--------|-----------|
-| `time` | Timestamp em segundos |
-| `f0` | Frequência fundamental (Hz) |
-| `confidence` | Confiança da estimativa de pitch (0-1) |
+| Column | Description |
+|--------|-------------|
+| `time` | Timestamp in seconds |
+| `f0` | Fundamental frequency (Hz) |
+| `confidence` | Pitch estimation confidence (0-1) |
 | `hnr` | Harmonic-to-Noise Ratio (dB) |
-| `energy` | Energia RMS |
-| `f1, f2, f3, f4` | Formantes 1-4 (Hz) |
-| `song` | Nome da música |
-| `cpps_global` | Cepstral Peak Prominence (valor global por música) |
-| `jitter` | Jitter ppq5 - instabilidade de período (%) |
-| `shimmer` | Shimmer apq11 - instabilidade de amplitude (%) |
+| `energy` | RMS energy |
+| `f1, f2, f3, f4` | Formants 1-4 (Hz) |
+| `song` | Song name |
+| `cpps_global` | Cepstral Peak Prominence (global value per song) |
+| `jitter` | Jitter ppq5 - period instability (%) |
+| `shimmer` | Shimmer apq11 - amplitude instability (%) |
 
-### 6. Classificação M1/M2
+## Utilities
 
-Com dados rotulados:
-
-```python
-from vocal_analysis.modeling import train_mechanism_classifier
-import pandas as pd
-
-df = pd.read_csv("data/processed/ademilde_features.csv")
-df["mechanism_label"] = ...  # 0=M1 (peito), 1=M2 (cabeça)
-
-model = train_mechanism_classifier(df)
-```
-
-## Utilitários
-
-### Conversão Hz ↔ Notas
+### Hz <-> Note Conversion
 
 ```python
 from vocal_analysis.utils.pitch import hz_to_note, note_to_hz
@@ -341,7 +320,7 @@ hz_to_note(261.63)       # "C4"
 note_to_hz("G5")         # 783.99
 ```
 
-## Desenvolvimento
+## Development
 
 ### Linting
 
@@ -350,37 +329,37 @@ uv run ruff check src/
 uv run ruff format src/
 ```
 
-### Testes
+### Tests
 
 ```bash
 uv run pytest -v
 ```
 
-## Documentação
+## Documentation
 
-### Guia Introdutório
+### Introductory Guide
 
-Para entender os conceitos bioacústicos usados na análise (f0, HNR, formantes, jitter, shimmer) e por que cada um importa, sem precisar de background técnico prévio:
+To understand the bioacoustic concepts used in the analysis (f0, HNR, formants, jitter, shimmer) and why each matters, without prior technical background:
 
-**[docs/glossario_bioacustico.md](docs/glossario_bioacustico.md)**
+**[docs/en/BIOACOUSTIC_GLOSSARY.md](docs/en/BIOACOUSTIC_GLOSSARY.md)**
 
-### Metodologia Detalhada
+### Detailed Methodology
 
-Para entender em profundidade as escolhas metodológicas, parâmetros técnicos e justificativas acadêmicas de cada componente do pipeline, consulte:
+For an in-depth understanding of methodological choices, technical parameters, and academic justifications for each pipeline component:
 
-**[docs/METODOLOGIA.md](docs/METODOLOGIA.md)**
+**[docs/en/METHODOLOGY.md](docs/en/METHODOLOGY.md)**
 
-Este documento descreve:
-- Escolha do CREPE vs métodos tradicionais de autocorrelação
-- Parâmetros de pré-processamento (normalização, hop length, thresholds)
-- Detalhamento de cada feature bioacústica (f0, HNR, CPPS, Jitter, Shimmer, Formantes)
-- Features de agilidade articulatória (f0 velocity, taxa silábica)
-- Métodos de classificação M1/M2 (Threshold, GMM, XGBoost)
-- Estrutura de dados e workflow de execução
-- Limitações reconhecidas e conformidade acadêmica
+This document covers:
+- CREPE vs traditional autocorrelation methods
+- Preprocessing parameters (normalization, hop length, thresholds)
+- Bioacoustic feature details (f0, HNR, CPPS, Jitter, Shimmer, Formants)
+- Articulatory agility features (f0 velocity, syllabic rate)
+- M1/M2 classification methods (Threshold, GMM, XGBoost, VMI)
+- Data structure and execution workflow
+- Recognized limitations and academic compliance
 
-## Referências
+## References
 
 - **CREPE**: [Kim et al., 2018 - CREPE: A Convolutional Representation for Pitch Estimation](https://arxiv.org/abs/1802.06182)
 - **Praat**: [Boersma & Weenink - Praat: doing phonetics by computer](https://www.praat.org)
-- **Mecanismos Laríngeos**: Roubeau, B., Henrich, N., & Castellengo, M. (2009). Laryngeal vibratory mechanisms
+- **Laryngeal Mechanisms**: Roubeau, B., Henrich, N., & Castellengo, M. (2009). Laryngeal vibratory mechanisms

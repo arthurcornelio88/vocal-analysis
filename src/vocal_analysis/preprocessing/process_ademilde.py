@@ -1,4 +1,4 @@
-"""Script para processar gravações de Ademilde Fonseca."""
+"""Script to process Ademilde Fonseca recordings."""
 
 import argparse
 import json
@@ -19,13 +19,13 @@ from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
 
 
 def _parse_excerpt_interval(interval_str: str) -> tuple[float, float] | None:
-    """Parseia intervalo no formato 'MMSS-MMSS' para segundos.
+    """Parse interval in 'MMSS-MMSS' format to seconds.
 
     Args:
-        interval_str: String no formato "0022-0103" (do segundo 22 ao 1:03).
+        interval_str: String in "0022-0103" format (from second 22 to 1:03).
 
     Returns:
-        Tuple (start_seconds, end_seconds) ou None se inválido.
+        Tuple (start_seconds, end_seconds) or None if invalid.
     """
     match = re.match(r"(\d{4})-(\d{4})", interval_str.strip("\"'"))
     if not match:
@@ -42,18 +42,18 @@ def _parse_excerpt_interval(interval_str: str) -> tuple[float, float] | None:
 
 
 def _get_excerpt_from_env(song_stem: str) -> tuple[float, float] | None:
-    """Busca intervalo de excerpt do .env para uma música.
+    """Look up excerpt interval from .env for a given song.
 
     Args:
-        song_stem: Nome da música (stem do arquivo, ex: "delicado", "apanheite_cavaquinho").
+        song_stem: Song name (file stem, e.g. "delicado", "apanheite_cavaquinho").
 
     Returns:
-        Tuple (start, end) em segundos ou None se não encontrado.
+        Tuple (start, end) in seconds, or None if not found.
     """
-    # Normalizar nome para busca (ex: "delicado" -> "DELICADO", "apanheite_cavaquinho" -> "APANHEITE_CAVAQUINHO")
+    # Normalize name for lookup (e.g. "delicado" -> "DELICADO")
     song_key = song_stem.upper().replace("-", "_")
 
-    # Tentar carregar do .env (project root = 4 levels up from this file)
+    # Try loading from .env (project root = 4 levels up from this file)
     env_path = Path(__file__).parent.parent.parent.parent / ".env"
     if not env_path.exists():
         return None
@@ -64,10 +64,10 @@ def _get_excerpt_from_env(song_stem: str) -> tuple[float, float] | None:
             if line.startswith("#") or "=" not in line:
                 continue
             key, value = line.split("=", 1)
-            # Verificar se é uma variável EXCERPT_* que corresponde à música
+            # Check if this is an EXCERPT_* variable matching the song
             if key.upper().startswith("EXCERPT_"):
                 env_song = key.upper().replace("EXCERPT_", "")
-                # Match exato ou parcial (ex: "DELICADO" matches "DELICADO")
+                # Exact or partial match (e.g. "DELICADO" matches "DELICADO")
                 if (
                     song_key == env_song
                     or song_key.startswith(env_song)
@@ -79,7 +79,7 @@ def _get_excerpt_from_env(song_stem: str) -> tuple[float, float] | None:
 
 
 class ProcessingConfig:
-    """Configuração para controlar quais features extrair (debug mode)."""
+    """Configuration to control which features to extract (debug mode)."""
 
     def __init__(
         self,
@@ -124,33 +124,33 @@ def _generate_validation_plot(
     config: ProcessingConfig,
     output_dir: Path,
 ) -> None:
-    """Gera plot comparativo para validar separação de voz.
+    """Generate comparison plot to validate vocal separation.
 
-    Lê intervalo de excerpt do .env (se disponível) para plotar apenas
-    o trecho relevante ao invés do áudio completo.
+    Reads excerpt interval from .env (if available) to plot only
+    the relevant segment instead of the full audio.
 
     Args:
-        original_audio_path: Caminho do áudio original.
-        separated_features: Features extraídas da voz separada.
-        config: Configuração de processamento.
-        output_dir: Diretório de saída.
+        original_audio_path: Path to the original audio file.
+        separated_features: Features extracted from separated vocals.
+        config: Processing configuration.
+        output_dir: Output directory.
     """
     from vocal_analysis.features.extraction import extract_bioacoustic_features
     from vocal_analysis.visualization.plots import plot_separation_validation
 
-    # Buscar intervalo de excerpt do .env
+    # Look up excerpt interval from .env
     excerpt_interval = _get_excerpt_from_env(original_audio_path.stem)
     start_time, end_time = excerpt_interval if excerpt_interval else (None, None)
 
     if excerpt_interval:
-        print(f"  Gerando plot de validação (excerpt: {start_time:.0f}s-{end_time:.0f}s)...")
+        print(f"  Generating validation plot (excerpt: {start_time:.0f}s-{end_time:.0f}s)...")
     else:
-        print("  Gerando plot de validação (áudio completo)...")
+        print("  Generating validation plot (full audio)...")
 
-    # Extrair features do áudio original (para comparação)
+    # Extract features from original audio (for comparison)
     original_features = extract_bioacoustic_features(
         original_audio_path,
-        skip_formants=True,  # Só precisamos de f0 para validação
+        skip_formants=True,  # Only need f0 for validation
         skip_jitter_shimmer=True,
         use_praat_f0=config.use_praat_f0,
         skip_cpps=True,
@@ -159,7 +159,7 @@ def _generate_validation_plot(
         device=config.device,
     )
 
-    # Gerar plot
+    # Generate plot
     plot_path = output_dir / "plots" / f"{original_audio_path.stem}_separation_validation.png"
     plot_separation_validation(
         time_original=original_features["time"],
@@ -168,71 +168,71 @@ def _generate_validation_plot(
         time_separated=separated_features["time"],
         f0_separated=separated_features["f0"],
         confidence_separated=separated_features["confidence"],
-        title=f"Validação Separação - {original_audio_path.stem}",
+        title=f"Separation Validation - {original_audio_path.stem}",
         save_path=plot_path,
         start_time=start_time,
         end_time=end_time,
     )
-    print(f"  ✓ Plot de validação salvo: {plot_path.name}")
+    print(f"  Validation plot saved: {plot_path.name}")
 
 
 def process_audio_files(
     data_dir: Path, output_dir: Path, config: ProcessingConfig | None = None
 ) -> tuple[pd.DataFrame, dict]:
-    """Processa todos os arquivos de áudio e extrai features.
+    """Process all audio files and extract features.
 
     Args:
-        data_dir: Diretório com arquivos de áudio.
-        output_dir: Diretório para salvar outputs.
+        data_dir: Directory containing audio files.
+        output_dir: Directory to save outputs.
 
     Returns:
-        Tuple com DataFrame de features e metadados do processamento.
+        Tuple with features DataFrame and processing metadata.
     """
     if config is None:
         config = ProcessingConfig()
 
     audio_files = list(data_dir.glob("*.mp3"))
 
-    # Limitar número de arquivos se especificado (útil para debug)
+    # Limit number of files if specified (useful for debug)
     if config.limit_files:
         audio_files = audio_files[: config.limit_files]
 
-    print(f"Encontrados {len(audio_files)} arquivos de áudio")
+    print(f"Found {len(audio_files)} audio files")
     if config.skip_formants:
-        print("⚡ DEBUG: Formants DESATIVADOS")
+        print("DEBUG: Formants DISABLED")
     if config.skip_plots:
-        print("⚡ DEBUG: Plots DESATIVADOS")
+        print("DEBUG: Plots DISABLED")
     if config.skip_jitter_shimmer:
-        print("⚡ DEBUG: Jitter/Shimmer DESATIVADOS")
+        print("DEBUG: Jitter/Shimmer DISABLED")
     if config.use_praat_f0:
-        print("⚡ DEBUG: Usando Praat f0 (rápido) ao invés de CREPE")
+        print("DEBUG: Using Praat f0 (fast) instead of CREPE")
     else:
-        print(f"🎵 Usando CREPE modelo '{config.crepe_model}' para extração de f0")
+        print(f"Using CREPE model '{config.crepe_model}' for f0 extraction")
         if config.device == "cuda":
-            print("🚀 GPU HABILITADA (cuda) - processamento acelerado!")
+            print("GPU ENABLED (cuda) - accelerated processing!")
         else:
-            print("💻 CPU (processamento lento - use GPU se disponível)")
+            print("CPU mode (slow processing - use GPU if available)")
     if config.skip_cpps:
-        print("⚡ DEBUG: CPPS DESATIVADO (evita travamento em macOS)")
+        print("DEBUG: CPPS DISABLED (avoids hang on macOS)")
     if config.separate_vocals:
-        print(f"🎤 SOURCE SEPARATION HABILITADA (HTDemucs no {config.separation_device})")
+        print(f"SOURCE SEPARATION ENABLED (HTDemucs on {config.separation_device})")
         if config.validate_separation:
-            print("📊 Validação visual habilitada (plots comparativos)")
+            print("Visual validation enabled (comparison plots)")
     if config.extract_spectral:
-        print("📈 FEATURES ESPECTRAIS HABILITADAS (Alpha Ratio, H1-H2, Spectral Tilt)")
+        print("SPECTRAL FEATURES ENABLED (Alpha Ratio, H1-H2, Spectral Tilt)")
 
     all_features = []
     songs_metadata = []
 
-    # Diretório de cache para separação
+    # Cache directory for separation
     cache_dir = None
     if config.separate_vocals and config.use_separation_cache:
         cache_dir = output_dir.parent / "data" / "cache" / "separated"
 
     for audio_path in audio_files:
-        print(f"\nProcessando: {audio_path.name}")
+        print(f"\nProcessing: {audio_path.name}")
 
-        # Source separation se habilitado
+        # Source separation if enabled
         audio_path_for_features = audio_path
         temp_wav_path = None
         vocals_array = None
@@ -240,7 +240,7 @@ def process_audio_files(
         if config.separate_vocals:
             from vocal_analysis.preprocessing.separation import separate_vocals_safe
 
-            print("  Aplicando source separation (HTDemucs)...")
+            print("  Applying source separation (HTDemucs)...")
             vocals, sr, success = separate_vocals_safe(
                 audio_path,
                 device=config.separation_device,
@@ -248,18 +248,18 @@ def process_audio_files(
             )
 
             if success and vocals is not None:
-                # Criar arquivo WAV temporário (Praat precisa de arquivo)
+                # Create temporary WAV file (Praat needs a file)
                 fd, temp_wav_path = tempfile.mkstemp(suffix=".wav")
                 sf.write(temp_wav_path, vocals, sr)
                 audio_path_for_features = Path(temp_wav_path)
                 vocals_array = vocals
-                print("  ✓ Voz separada com sucesso")
+                print("  Vocals separated successfully")
             else:
-                print("  ⚠ Source separation falhou, usando audio original")
+                print("  Source separation failed, using original audio")
 
         try:
             if config.extract_spectral:
-                # Usar extração estendida com features espectrais (VMI)
+                # Use extended extraction with spectral features (VMI)
                 features = extract_extended_features(
                     audio_path_for_features,
                     skip_formants=config.skip_formants,
@@ -285,11 +285,11 @@ def process_audio_files(
                     device=config.device,
                 )
 
-            # Gerar plot de validação se habilitado
+            # Generate validation plot if enabled
             if config.validate_separation and config.separate_vocals and vocals_array is not None:
                 _generate_validation_plot(audio_path, features, config, output_dir)
 
-            # Criar DataFrame para esta música
+            # Create DataFrame for this song
             df_data = {
                 "time": features["time"],
                 "f0": features["f0"],
@@ -298,7 +298,7 @@ def process_audio_files(
                 "energy": features["energy"],
             }
 
-            # Adicionar formants apenas se não foram desativados
+            # Add formants only if not disabled
             if not config.skip_formants:
                 df_data.update(
                     {
@@ -309,7 +309,7 @@ def process_audio_files(
                     }
                 )
 
-            # Adicionar features espectrais se habilitado
+            # Add spectral features if enabled
             if config.extract_spectral:
                 df_data.update(
                     {
@@ -318,7 +318,7 @@ def process_audio_files(
                         "spectral_tilt": features["spectral_tilt"],
                     }
                 )
-                # CPPS per-frame é opcional (lento)
+                # CPPS per-frame is optional (slow)
                 if not config.skip_cpps_per_frame and features.get("cpps_per_frame") is not None:
                     df_data["cpps_per_frame"] = features["cpps_per_frame"]
 
@@ -330,14 +330,14 @@ def process_audio_files(
                 df["jitter"] = features["jitter"]
                 df["shimmer"] = features["shimmer"]
 
-            # Filtrar frames com baixa confiança ou silêncio
-            # confidence > 0.8: conforme metodologia (CREPE periodicity)
-            # hnr > -10: remove silêncio/ruído (Praat retorna -200 dB em frames não-voiced)
+            # Filter frames with low confidence or silence
+            # confidence > 0.85: CREPE periodicity threshold
+            # hnr > 0: removes silence/noise (Praat returns -200 dB for unvoiced frames)
             df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)].copy()
 
             all_features.append(df_voiced)
 
-            # Gerar plot de f0 (apenas se não desativado)
+            # Generate f0 plot (unless disabled)
             plot_path = None
             if not config.skip_plots:
                 # Import only when needed to avoid matplotlib initialization overhead
@@ -348,11 +348,11 @@ def process_audio_files(
                     features["time"],
                     features["f0"],
                     features["confidence"],
-                    title=f"Contorno de f0 - {audio_path.stem}",
+                    title=f"f0 Contour - {audio_path.stem}",
                     save_path=plot_path,
                 )
 
-            # Metadata da música (convert numpy types to Python native types for JSON serialization)
+            # Song metadata (convert numpy types to Python native for JSON serialization)
             song_meta = {
                 "song": audio_path.stem,
                 "file": audio_path.name,
@@ -373,7 +373,7 @@ def process_audio_files(
                 "energy_mean": float(round(df_voiced["energy"].mean(), 4)),
             }
 
-            # Adicionar jitter/shimmer se não foram desativados
+            # Add jitter/shimmer if not disabled
             if not config.skip_jitter_shimmer:
                 song_meta["jitter_ppq5"] = (
                     float(round(features["jitter"], 4))
@@ -386,12 +386,12 @@ def process_audio_files(
                     else None
                 )
 
-            # Adicionar path do plot se foi gerado
+            # Add plot path if generated
             if plot_path:
                 song_meta["plot_path"] = str(plot_path.relative_to(output_dir.parent))
             songs_metadata.append(song_meta)
 
-            # Print resumo
+            # Print summary
             print(f"  f0: {song_meta['f0_mean_hz']} Hz ({song_meta['f0_mean_note']})")
             print(f"  Range: {song_meta['f0_range_notes']}")
             print(f"  HNR: {song_meta['hnr_mean_db']} dB | CPPS: {song_meta['cpps_global']}")
@@ -406,7 +406,7 @@ def process_audio_files(
                 print(f"  Jitter: {jitter_str} | Shimmer: {shimmer_str}")
 
         except Exception as e:
-            print(f"  ERRO: {e}")
+            print(f"  ERROR: {e}")
             songs_metadata.append(
                 {
                     "song": audio_path.stem,
@@ -415,7 +415,7 @@ def process_audio_files(
                 }
             )
         finally:
-            # Limpar arquivo temporário se criado
+            # Clean up temporary file if created
             if temp_wav_path and Path(temp_wav_path).exists():
                 Path(temp_wav_path).unlink()
 
@@ -430,7 +430,7 @@ def process_audio_files(
     if all_features:
         df_all = pd.concat(all_features, ignore_index=True)
 
-        # Adicionar stats globais ao metadata (convert numpy types to Python native types)
+        # Add global stats to metadata (convert numpy types to Python native)
         df_voiced = df_all[(df_all["confidence"] > 0.85) & (df_all["hnr"] > 0)]
         metadata["global"] = {
             "total_voiced_frames": int(len(df_voiced)),
@@ -453,40 +453,40 @@ def save_outputs(
     metadata: dict,
     project_root: Path,
 ) -> None:
-    """Salva CSV, JSON e log do processamento.
+    """Save CSV, JSON and processing log.
 
     Args:
-        df: DataFrame com features.
-        metadata: Dicionário de metadados.
-        project_root: Raiz do projeto.
+        df: Features DataFrame.
+        metadata: Metadata dictionary.
+        project_root: Project root directory.
     """
     processed_dir = project_root / "data" / "processed"
     processed_dir.mkdir(parents=True, exist_ok=True)
 
-    # CSV com features
+    # CSV with features
     csv_path = processed_dir / "ademilde_features.csv"
     df.to_csv(csv_path, index=False)
-    print(f"\nCSV salvo: {csv_path}")
+    print(f"\nCSV saved: {csv_path}")
 
-    # JSON com metadados
+    # JSON with metadata
     json_path = processed_dir / "ademilde_metadata.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2, ensure_ascii=False)
-    print(f"JSON salvo: {json_path}")
+    print(f"JSON saved: {json_path}")
 
-    # Log markdown
+    # Markdown log
     log_path = processed_dir / "processing_log.md"
     _write_log_markdown(metadata, log_path)
-    print(f"Log salvo: {log_path}")
+    print(f"Log saved: {log_path}")
 
 
 def _write_log_markdown(metadata: dict, path: Path) -> None:
-    """Gera log em markdown."""
+    """Generate markdown processing log."""
     lines = [
-        f"# Log de Processamento - {metadata['artist']}",
+        f"# Processing Log - {metadata['artist']}",
         "",
-        f"**Data:** {metadata['processed_at']}",
-        f"**Músicas processadas:** {metadata['n_success']}/{metadata['n_songs']}",
+        f"**Date:** {metadata['processed_at']}",
+        f"**Songs processed:** {metadata['n_success']}/{metadata['n_songs']}",
         "",
     ]
 
@@ -494,41 +494,41 @@ def _write_log_markdown(metadata: dict, path: Path) -> None:
         g = metadata["global"]
         lines.extend(
             [
-                "## Resumo Global",
+                "## Global Summary",
                 "",
-                "| Métrica | Valor | Nota |",
-                "|---------|-------|------|",
-                f"| f0 médio | {g['f0_mean_hz']} Hz | {g['f0_mean_note']} |",
-                f"| f0 mínimo | {g['f0_min_hz']} Hz | – |",
-                f"| f0 máximo | {g['f0_max_hz']} Hz | – |",
-                f"| Extensão | – | {g['f0_range_notes']} |",
-                f"| f0 desvio | {g['f0_std_hz']} Hz | – |",
-                f"| HNR médio | {g['hnr_mean_db']} dB | – |",
-                f"| Total frames | {g['total_voiced_frames']} | – |",
+                "| Metric | Value | Note |",
+                "|--------|-------|------|",
+                f"| Mean f0 | {g['f0_mean_hz']} Hz | {g['f0_mean_note']} |",
+                f"| Min f0 | {g['f0_min_hz']} Hz | – |",
+                f"| Max f0 | {g['f0_max_hz']} Hz | – |",
+                f"| Range | – | {g['f0_range_notes']} |",
+                f"| f0 Std Dev | {g['f0_std_hz']} Hz | – |",
+                f"| Mean HNR | {g['hnr_mean_db']} dB | – |",
+                f"| Total Frames | {g['total_voiced_frames']} | – |",
                 "",
             ]
         )
 
     lines.extend(
         [
-            "## Por Música",
+            "## Per Song",
             "",
         ]
     )
 
     for song in metadata["songs"]:
         if "error" in song:
-            lines.append(f"### {song['song']} ❌")
-            lines.append(f"Erro: {song['error']}")
+            lines.append(f"### {song['song']}")
+            lines.append(f"Error: {song['error']}")
         else:
             lines.extend(
                 [
                     f"### {song['song']}",
                     "",
-                    "| Métrica | Valor |",
-                    "|---------|-------|",
-                    f"| f0 médio | {song['f0_mean_hz']} Hz ({song['f0_mean_note']}) |",
-                    f"| Extensão | {song['f0_range_notes']} |",
+                    "| Metric | Value |",
+                    "|--------|-------|",
+                    f"| Mean f0 | {song['f0_mean_hz']} Hz ({song['f0_mean_note']}) |",
+                    f"| Range | {song['f0_range_notes']} |",
                     f"| HNR | {song['hnr_mean_db']} dB |",
                     f"| CPPS | {song['cpps_global']} |",
                     f"| Frames | {song['voiced_frames']}/{song['total_frames']} |",
@@ -541,22 +541,22 @@ def _write_log_markdown(metadata: dict, path: Path) -> None:
 
 
 def main() -> None:
-    """Ponto de entrada principal."""
+    """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="Processar arquivos de áudio de Ademilde Fonseca",
+        description="Process Ademilde Fonseca audio files",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Exemplos de uso:
-  # Processamento completo
+Usage examples:
+  # Full processing
   python -m vocal_analysis.preprocessing.process_ademilde
 
-  # Debug rápido (sem formants, plots, jitter/shimmer)
+  # Quick debug (no formants, plots, jitter/shimmer)
   python -m vocal_analysis.preprocessing.process_ademilde --skip-formants --skip-plots --skip-jitter-shimmer
 
-  # Processar apenas 1 arquivo
+  # Process only 1 file
   python -m vocal_analysis.preprocessing.process_ademilde --limit 1
 
-  # Modo ultra-rápido (apenas f0 + HNR)
+  # Ultra-fast mode (f0 + HNR only)
   python -m vocal_analysis.preprocessing.process_ademilde --fast
         """,
     )
@@ -564,104 +564,102 @@ Exemplos de uso:
     parser.add_argument(
         "--skip-formants",
         action="store_true",
-        help="Pular extração de formantes (F1-F4) - economiza ~30%% do tempo",
+        help="Skip formant extraction (F1-F4) - saves ~30%% of time",
     )
     parser.add_argument(
-        "--skip-plots", action="store_true", help="Não gerar plots de f0 - economiza I/O"
+        "--skip-plots", action="store_true", help="Skip f0 plot generation - saves I/O"
     )
     parser.add_argument(
         "--skip-jitter-shimmer",
         action="store_true",
-        help="Pular Jitter/Shimmer (Praat Point Process) - economiza ~20%% do tempo",
+        help="Skip Jitter/Shimmer (Praat Point Process) - saves ~20%% of time",
     )
-    parser.add_argument(
-        "--limit", type=int, metavar="N", help="Processar apenas os primeiros N arquivos"
-    )
+    parser.add_argument("--limit", type=int, metavar="N", help="Process only the first N files")
     parser.add_argument(
         "--use-praat-f0",
         action="store_true",
-        help="Usar Praat (autocorrelation) para f0 ao invés de CREPE - MUITO mais rápido mas menos preciso",
+        help="Use Praat (autocorrelation) for f0 instead of CREPE - MUCH faster but less accurate",
     )
     parser.add_argument(
         "--skip-cpps",
         action="store_true",
-        help="Pular CPPS completamente (retorna None)",
+        help="Skip CPPS entirely (returns None)",
     )
     parser.add_argument(
         "--cpps-timeout",
         type=int,
         default=None,
         metavar="SECONDS",
-        help="Timeout em segundos para CPPS (None = sem timeout). Use apenas se CPPS travar no seu sistema",
+        help="Timeout in seconds for CPPS (None = no timeout). Use only if CPPS hangs on your system",
     )
     parser.add_argument(
         "--batch-size",
         type=int,
         default=2048,
         metavar="SIZE",
-        help="Batch size para CREPE (default: 2048 para GPU, use 512 para macOS CPU limitado)",
+        help="Batch size for CREPE (default: 2048 for GPU, use 512 for memory-limited macOS CPU)",
     )
     parser.add_argument(
         "--crepe-model",
         type=str,
         default="full",
         choices=["tiny", "small", "full"],
-        help="Modelo CREPE para extração de f0 (default: full). Use 'small' para economizar memória no macOS",
+        help="CREPE model for f0 extraction (default: full). Use 'small' to save memory on macOS",
     )
     parser.add_argument(
         "--device",
         type=str,
         default="cpu",
         choices=["cpu", "cuda"],
-        help="Dispositivo para CREPE (default: cpu). Use 'cuda' para GPU (Google Colab, Windows com NVIDIA)",
+        help="Device for CREPE (default: cpu). Use 'cuda' for GPU (Google Colab, Windows with NVIDIA)",
     )
     parser.add_argument(
         "--fast",
         action="store_true",
-        help="Modo rápido: ativa --skip-formants, --skip-plots, --skip-jitter-shimmer, --skip-cpps, --use-praat-f0",
+        help="Fast mode: enables --skip-formants, --skip-plots, --skip-jitter-shimmer, --skip-cpps, --use-praat-f0",
     )
 
-    # Source separation arguments (habilitado por padrão)
+    # Source separation arguments (enabled by default)
     parser.add_argument(
         "--no-separate-vocals",
         action="store_true",
-        help="Desabilitar source separation (HTDemucs). Por padrão, a separação de voz "
-        "é habilitada para melhorar detecção de pitch em arranjos complexos.",
+        help="Disable source separation (HTDemucs). By default, vocal separation "
+        "is enabled to improve pitch detection in complex arrangements.",
     )
     parser.add_argument(
         "--separation-device",
         type=str,
         default=None,
         choices=["cpu", "cuda"],
-        help="Dispositivo para source separation (default: mesmo que --device)",
+        help="Device for source separation (default: same as --device)",
     )
     parser.add_argument(
         "--no-separation-cache",
         action="store_true",
-        help="Desabilitar cache de áudio separado (força reprocessamento)",
+        help="Disable separated audio cache (forces reprocessing)",
     )
     parser.add_argument(
         "--validate-separation",
         action="store_true",
-        help="Gerar plot comparativo original vs voz separada (Hz + notas) para validação visual",
+        help="Generate comparison plot original vs separated vocals (Hz + notes) for visual validation",
     )
 
     # VMI / Spectral features arguments
     parser.add_argument(
         "--extract-spectral",
         action="store_true",
-        help="Extrair features espectrais (Alpha Ratio, H1-H2, Spectral Tilt) para análise VMI. "
-        "Necessário para usar o pipeline VMI em run_analysis.py.",
+        help="Extract spectral features (Alpha Ratio, H1-H2, Spectral Tilt) for VMI analysis. "
+        "Required for the VMI pipeline in run_analysis.py.",
     )
     parser.add_argument(
         "--cpps-per-frame",
         action="store_true",
-        help="Extrair CPPS per-frame (lento). Requer --extract-spectral.",
+        help="Extract CPPS per-frame (slow). Requires --extract-spectral.",
     )
 
     args = parser.parse_args()
 
-    # Modo fast ativa todas as otimizações
+    # Fast mode enables all optimizations
     if args.fast:
         args.skip_formants = True
         args.skip_plots = True
@@ -692,7 +690,7 @@ Exemplos de uso:
     data_dir = project_root / "data" / "raw"
     output_dir = project_root / "outputs"
 
-    # Garantir que diretórios existem
+    # Ensure directories exist
     if not config.skip_plots:
         (output_dir / "plots").mkdir(parents=True, exist_ok=True)
 
@@ -701,13 +699,13 @@ Exemplos de uso:
     if not df.empty:
         save_outputs(df, metadata, project_root)
 
-        # Print resumo final
+        # Print final summary
         g = metadata["global"]
         print("\n" + "=" * 50)
-        print(f"RESUMO - {metadata['artist']}")
+        print(f"SUMMARY - {metadata['artist']}")
         print("=" * 50)
-        print(f"f0 médio: {g['f0_mean_hz']} Hz ({g['f0_mean_note']})")
-        print(f"Extensão: {g['f0_range_notes']}")
+        print(f"Mean f0: {g['f0_mean_hz']} Hz ({g['f0_mean_note']})")
+        print(f"Range: {g['f0_range_notes']}")
         print(f"HNR: {g['hnr_mean_db']} dB")
 
 

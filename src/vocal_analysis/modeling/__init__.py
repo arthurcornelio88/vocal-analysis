@@ -1,4 +1,4 @@
-"""Módulo de modelagem e classificação M1/M2."""
+"""M1/M2 modeling and classification module."""
 
 from vocal_analysis.modeling.classifier import train_mechanism_classifier
 
