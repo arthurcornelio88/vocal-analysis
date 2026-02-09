@@ -1,7 +1,7 @@
 # Metodologia Computacional - Análise Bioacústica de Mecanismos Laríngeos
 
-**Versão:** 1.0
-**Data:** 2025-01-21
+**Versão:** 2.0
+**Data:** 2026-02-09
 **Contexto:** Análise computacional para artigo acadêmico sobre classificação vocal "Fach" no Choro
 
 > **Novo ao tema?** Leia primeiro o [glossário bioacústico](glossario_bioacustico.md) — explica os conceitos e a lógica da análise de forma acessível, sem jargão técnico.
@@ -26,6 +26,21 @@ Gravações históricas do Choro (décadas de 1940-1960) apresentam:
 - Qualidade espectral degradada
 
 Essas características exigem métodos robustos de extração de pitch e features de qualidade vocal.
+
+### 1.3 Generalização para Outros Gêneros
+
+Embora desenvolvido para o Choro, este pipeline é **agnóstico ao gênero musical** e pode ser aplicado a qualquer repertório vocal solo: ópera, MPB, fado, jazz vocal, música sacra, etc. A arquitetura modular (separação de fonte → extração de features → classificação de mecanismo) é reutilizável sem alteração estrutural.
+
+**Adaptações necessárias por gênero:**
+
+| Parâmetro | Choro (atual) | Adaptação sugerida |
+|-----------|---------------|--------------------|
+| `fmin` / `fmax` | 50-800 Hz | Ajustar conforme tessitura (ex: baixo operático: 50-400 Hz; soprano: 200-1200 Hz) |
+| Source separation | HTDemucs (arranjo misto) | Desnecessário para voz *a cappella*; essencial para arranjos orquestrais |
+| Threshold M1/M2 | 400 Hz (~G4, vozes femininas) | Ajustar por tessitura (ex: ~300 Hz para vozes masculinas) |
+| VMI | Pesos fixos | Os pesos espectrais (alpha ratio, H1-H2, spectral tilt) são independentes de tessitura por construção |
+
+O VMI (seção 6.1, Método 4) é particularmente portátil, pois classifica mecanismos com base em features espectrais e não em thresholds de frequência absoluta.
 
 ---
 
@@ -53,11 +68,11 @@ target_amplitude = 10 ** (target_db / 20)  # -3dB = 0.708 em amplitude linear
 audio_normalized = audio * (target_amplitude / max(abs(audio)))
 ```
 
-### 2.2 Source Separation (HTDemucs) — Opcional
+### 2.2 Source Separation (HTDemucs)
 
 **Módulo:** `src/vocal_analysis/preprocessing/separation.py`
 
-Em arranjos complexos de Choro (violão 7 cordas, cavaquinho, pandeiro, flauta), a detecção de pitch pode captar instrumentos ao invés da voz. Para isolar a voz antes da análise, o pipeline oferece **source separation** via HTDemucs.
+Em arranjos complexos de Choro (violão 7 cordas, cavaquinho, pandeiro, flauta), a detecção de pitch pode captar instrumentos ao invés da voz. A separação de fonte vocal via HTDemucs é **habilitada por padrão** desde a v2.0, pois melhora significativamente a detecção de pitch em arranjos densos. Para desabilitá-la (ex: gravações *a cappella*), use `--no-separate-vocals`.
 
 #### Por que HTDemucs?
 
@@ -105,11 +120,13 @@ Se a melodia após separação for mais contínua e nas notas esperadas para voz
 #### Flags CLI
 
 ```bash
---separate-vocals          # Habilitar source separation
+--no-separate-vocals       # Desabilitar source separation (não recomendado para arranjos complexos)
 --separation-device        # cpu ou cuda (default: mesmo que --device)
 --no-separation-cache      # Forçar reprocessamento
 --validate-separation      # Gerar plot comparativo Hz + notas
 ```
+
+**Nota:** A separação é habilitada por padrão. Não é necessário passar `--separate-vocals`.
 
 ### 2.3 Extração de Features Híbrida (Crepe + Praat)
 
@@ -142,11 +159,11 @@ O pipeline combina:
 f0, confidence = torchcrepe.predict(
     audio_tensor,
     sample_rate=44100,
-    hop_length=441,        # 10ms @ 44.1kHz
+    hop_length=220,        # 5ms @ 44.1kHz — captar ornamentos rápidos
     fmin=50.0,             # ~G1 (limite inferior voz humana)
     fmax=800.0,            # ~G5 (cobre M1 e M2)
-    model='tiny',          # Balanceio velocidade/precisão
-    decoder=torchcrepe.decode.viterbi,  # Suaviza curva de pitch
+    model='full',          # Precisão máxima para contexto acadêmico
+    decoder=torchcrepe.decode.weighted_argmax,  # Preserva notas agudas reais
     return_periodicity=True
 )
 ```
@@ -155,9 +172,13 @@ f0, confidence = torchcrepe.predict(
 
 | Parâmetro | Valor | Justificativa |
 |-----------|-------|---------------|
-| **hop_length** | 441 samples (10ms) | Resolução suficiente para ornamentos rápidos, compromisso com custo computacional |
+| **hop_length** | 220 samples (5ms) | Resolução alta para captar ornamentos rápidos do Choro (glissandi, portamenti) |
+| **model** | `full` | Precisão máxima; modelo `tiny` apresentava erros em transições M1↔M2 |
+| **decoder** | `weighted_argmax` | Preserva notas agudas reais em M2; `viterbi` tende a suavizar excessivamente, "engolindo" picos |
 | **Janelamento CREPE** | ~25ms (interno) | Não configurável, otimizado pela arquitetura CNN |
-| **Threshold confiança** | 0.8 | Filtragem rigorosa, descarta detecções ambíguas (silêncios, ruído) |
+| **Filtragem** | fmin/fmax + periodicity | Frames com f0 fora de [50, 800] Hz são descartados; confiança baseada em periodicidade (não threshold fixo) |
+
+**Nota sobre decoder:** O `weighted_argmax` pode gerar mais variância instantânea que o `viterbi`, mas preserva melhor as transições rápidas de registro e as notas agudas em M2 — essenciais para análise de mecanismos laríngeos.
 
 **Nota sobre janelamento:** O CREPE utiliza internamente janelamento próprio (~25ms) que não é configurável pelo usuário. Essa escolha arquitetural foi validada em benchmarks MIR e supera métodos baseados em autocorrelação.
 
@@ -174,7 +195,7 @@ f0, confidence = torchcrepe.predict(
 
 **Extração:**
 ```python
-harmonicity = sound.to_harmonicity(time_step=0.01)  # 10ms
+harmonicity = sound.to_harmonicity(time_step=0.005)  # 5ms (= hop_length/sr)
 hnr_values = harmonicity.values[0]  # Array temporal
 ```
 
@@ -190,6 +211,8 @@ cpps = parselmouth.praat.call(power_cepstrogram, "Get CPPS", ...)
 ```
 
 **Limitação:** Gravações com ruído de fundo elevado comprometem a medida. Fallback para HNR médio quando extração falha.
+
+**Nota sobre soprosidade em M1:** É possível produzir sons com soprosidade em M1 (ex: fonação soprada intencional, *voix soufflée*). Nosso modelo trata HNR e CPPS baixos como **indicadores probabilísticos**, não determinísticos, de M2. O modelo é aproximativo e perfectível — a correlação CPPS baixo → M2 é uma tendência estatística, não uma regra absoluta.
 
 ### 4.3 Jitter (ppq5) e Shimmer (apq11)
 
@@ -218,7 +241,7 @@ shimmer_apq11 = parselmouth.praat.call([sound, point_process], "Get shimmer (apq
 
 **Extração:**
 ```python
-energy = librosa.feature.rms(y=audio, frame_length=int(0.025 * sr), hop_length=441)[0]
+energy = librosa.feature.rms(y=audio, frame_length=int(0.025 * sr), hop_length=220)[0]
 ```
 
 ### 4.5 Formantes F1-F4
@@ -228,11 +251,18 @@ energy = librosa.feature.rms(y=audio, frame_length=int(0.025 * sr), hop_length=4
 **Aplicação:**
 - Detectar aproximação de formantes ("zona de fala")
 - Diferenciar timbres de M1 vs M2
-- Identificar estratégias de ressonância
+- Identificar estratégias de ressonância (*vowel tuning*)
+
+**Exemplo prático:** Em M1, F1 tipicamente se situa acima de f0, permitindo ressonância livre do 1º harmônico. No passaggio, f0 se aproxima de F1, e cantores treinados ajustam o formato do trato vocal (*vowel tuning* / *formant tuning*) para manter eficiência acústica — por exemplo, abrindo mais a mandíbula para elevar F1 e mantê-lo acima de f0 (Bozeman, 2013). Essa estratégia é comum tanto em M1 agudo quanto na transição para M2.
+
+**Referências:**
+- Bozeman, K. W. (2013). *Practical Vocal Acoustics.* Pendragon Press.
+- Bozeman, K. W. (2017). *Kinesthetic Voice Pedagogy.* Inside View Press.
+- Sundberg, J. (1987). *The Science of the Singing Voice.* Northern Illinois University Press.
 
 **Extração:**
 ```python
-formants = sound.to_formant_burg(time_step=0.01, max_number_of_formants=5, maximum_formant=5500)
+formants = sound.to_formant_burg(time_step=0.005, max_number_of_formants=5, maximum_formant=5500)
 f1 = formants.get_value_at_time(1, time)
 f2 = formants.get_value_at_time(2, time)
 # ... F3, F4
@@ -242,11 +272,26 @@ f2 = formants.get_value_at_time(2, time)
 
 **Módulo:** `src/vocal_analysis/features/spectral.py`
 
-Estas features são usadas para calcular o VMI (Vocal Mechanism Index), permitindo classificação de mecanismo independente da tessitura.
+Estas features são usadas para calcular o **VMI (Vocal Mechanism Index)**, permitindo classificação de mecanismo independente da tessitura. Todas são extraídas com `hop_length=220` (5ms), alinhadas temporalmente com o f0 do CREPE.
 
-#### Alpha Ratio
+**Resumo das features espectrais:**
 
-**Definição:** Razão de energia espectral entre banda baixa (0-1kHz) e banda alta (1-5kHz), em dB.
+| Feature | O que mede | M1 (peito) | M2 (cabeça) | Referência principal |
+|---------|-----------|------------|-------------|---------------------|
+| **Alpha Ratio** | Distribuição de energia: graves vs agudos | Alta (mais energia em agudos) | Baixa (energia nos graves) | Sundberg & Nordenberg (2006) |
+| **H1-H2** | Padrão de adução glótica | Baixo (adução firme) | Alto (adução leve) | Hanson (1997) |
+| **Spectral Tilt** | Velocidade de decaimento espectral | Íngreme (negativo) | Raso (próx. de zero) | Fant (1995); Gauffin & Sundberg (1989) |
+| **CPPS per-frame** | Periodicidade da vibração | Alto (periódico) | Alto se bem produzido; baixo se soproso | Maryn & Weenink (2015) |
+
+---
+
+#### 4.6.1 Alpha Ratio
+
+**Definição:** Razão de energia espectral entre banda alta (1-5 kHz) e banda baixa (50 Hz-1 kHz), em dB.
+
+**Referência:** Sundberg, J., & Nordenberg, M. (2006). Effects of vocal loudness variation on spectrum balance as reflected by the alpha measure of long-term-average spectra of speech. *J. Acoust. Soc. Am.*, 120(1), 453-457.
+
+**Base física:** Em M1, o fechamento glótico é rápido e firme, gerando harmônicos superiores fortes (mais energia acima de 1 kHz). Em M2/falsete, o fechamento é suave, com energia concentrada no fundamental e primeiros harmônicos.
 
 **Interpretação:**
 - Alpha Ratio alta → mais energia em harmônicos superiores → típico de M1
@@ -255,58 +300,82 @@ Estas features são usadas para calcular o VMI (Vocal Mechanism Index), permitin
 **Extração:**
 ```python
 from vocal_analysis.features.spectral import compute_alpha_ratio
-alpha_ratio = compute_alpha_ratio(audio, sr, hop_length=220)
+alpha_ratio = compute_alpha_ratio(audio, sr, hop_length=220, low_band=(50, 1000), high_band=(1000, 5000))
 ```
 
-#### H1-H2 (Diferença de Harmônicos)
+---
+
+#### 4.6.2 H1-H2 (Diferença de Harmônicos)
 
 **Definição:** Diferença de amplitude (dB) entre o 1º harmônico (H1 = f0) e o 2º harmônico (H2 = 2×f0).
+
+**Referências:**
+- Hanson, H. M. (1997). Glottal characteristics of female speakers: Acoustic correlates. *J. Acoust. Soc. Am.*, 101(1), 466-481.
+- Kreiman, J., Gerratt, B. R., Garellek, M., Samlan, R., & Zhang, Z. (2014). Toward a unified theory of voice production and perception. *Loquens*, 1(1), e009.
+
+**Base física:** H1-H2 é o correlato acústico mais direto do padrão de adução glótica. Uma adução firme (M1) produz um fechamento abrupto do fluxo de ar, gerando harmônicos fortes — H2 se aproxima de H1 em amplitude (H1-H2 baixo). Uma adução leve (M2) produz um fundamental dominante com harmônicos fracos (H1-H2 alto).
 
 **Interpretação:**
 - H1-H2 baixo → adução firme, inclinação glotal íngreme → M1
 - H1-H2 alto → adução leve, inclinação glotal suave → M2
 
-**Limitação:** Quando f0 > 350Hz, H1 pode coincidir com F1, tornando a medida instável. Por isso, usamos Spectral Tilt como complemento.
+**Limitação:** Quando f0 > 350 Hz, H1 pode coincidir com F1 (primeira ressonância do trato vocal), contaminando a medida. Por isso, usamos Spectral Tilt como complemento.
 
 **Extração:**
 ```python
 from vocal_analysis.features.spectral import compute_h1_h2
-h1_h2 = compute_h1_h2(audio, sr, f0, hop_length=220)
+h1_h2 = compute_h1_h2(audio, sr, f0, hop_length=220, n_fft=4096, harmonic_tolerance_hz=50.0)
 ```
 
-#### Spectral Tilt (Inclinação Espectral)
+---
 
-**Definição:** Inclinação da regressão linear no espectro de potência (log-frequência vs amplitude em dB).
+#### 4.6.3 Spectral Tilt (Inclinação Espectral)
 
-**Interpretação:**
-- Tilt negativo (steep) → espectro decai rapidamente → M1
-- Tilt próximo de zero (flat) → espectro mais plano → M2
+**Definição:** Inclinação da regressão linear ajustada ao espectro de potência (log-frequência vs amplitude em dB), na faixa de 50-5000 Hz.
 
-**Vantagem:** Mais robusto que H1-H2 em registros agudos.
+**Referências:**
+- Fant, G. (1995). The LF-model revisited: Transformations and frequency domain analysis. *STL-QPSR*, 2-3/1995, 119-156.
+- Gauffin, J., & Sundberg, J. (1989). Spectral correlates of glottal voice source waveform characteristics. *J. Speech Hear. Res.*, 32(3), 556-565.
+
+**Base física — explicação intuitiva:** A inclinação espectral mede a velocidade com que a energia vocal decai nas frequências altas. Funciona como um "controle de brilho" da voz:
+
+- **Tilt íngreme (muito negativo):** A energia cai rapidamente com a frequência. Os graves dominam, os agudos são fracos. A voz soa "escura", "coberta". Fisicamente, isso ocorre quando as pregas vocais se fecham *lentamente e suavemente* (típico de M2/falsete): o pulso glotal é suave, sem descontinuidades bruscas, e portanto gera poucos harmônicos agudos.
+
+- **Tilt raso (próximo de zero):** A energia se distribui mais uniformemente. Harmônicos agudos são relativamente fortes. A voz soa "brilhante", "projetada". Fisicamente, isso ocorre quando as pregas vocais se fecham *rápida e firmemente* (típico de M1/peito): o fechamento abrupto cria descontinuidades no fluxo de ar, que por sua vez geram harmônicos fortes em alta frequência (assim como uma onda quadrada tem mais overtones que uma senoide).
+
+**Cadeia causal:** padrão de fechamento glótico → forma do pulso de ar → inclinação espectral.
+
+**Vantagem sobre H1-H2:** O spectral tilt captura o padrão *global* de distribuição de energia, sem depender da detecção precisa de harmônicos individuais. É mais robusto em registro agudo (f0 > 350 Hz), onde H1-H2 se torna instável.
 
 **Extração:**
 ```python
 from vocal_analysis.features.spectral import compute_spectral_tilt
-spectral_tilt = compute_spectral_tilt(audio, sr, hop_length=220)
+spectral_tilt = compute_spectral_tilt(audio, sr, hop_length=220, fmin=50.0, fmax=5000.0)
 ```
 
-#### CPPS per-frame
+---
+
+#### 4.6.4 CPPS per-frame
 
 **Definição:** Proeminência do pico cepstral suavizada, calculada por frame (não global).
+
+**Referência:** Maryn, Y., & Weenink, D. (2015). Objective dysphonia measures in the program Praat. *Journal of Voice*.
 
 **Interpretação:**
 - CPPS alto → voz periódica, limpa
 - CPPS baixo → ruído, aperiodicidade
 
-**Nota:** CPPS alto ocorre tanto em M1 denso quanto em M2 reforçado (voix mixte). CPPS baixo indica soprosidade ou quebra de voz.
+**Nota:** CPPS alto ocorre tanto em M1 denso quanto em M2 reforçado (*voix mixte*) — ambos são periódicos e limpos. CPPS baixo indica soprosidade ou quebra de voz, não um mecanismo específico. Por isso, no VMI, CPPS tem contribuição neutra (não discrimina fortemente M1/M2).
 
 **Extração:**
 ```python
 from vocal_analysis.features.spectral import compute_cpps_per_frame
-cpps = compute_cpps_per_frame(audio_path, hop_length=220)
+cpps = compute_cpps_per_frame(audio_path, hop_length=220, window_duration=0.04)
 ```
 
-#### Mapeamento Features → VMI
+---
+
+#### 4.6.5 Mapeamento Features → VMI
 
 | Configuração | Alpha Ratio | CPPS | H1-H2 | Spectral Tilt | VMI |
 |--------------|-------------|------|-------|---------------|-----|
@@ -318,11 +387,11 @@ cpps = compute_cpps_per_frame(audio_path, hop_length=220)
 
 **Notas Teóricas:**
 
-1. **CPPS Alto em M2 Reforçado:** Um M2 bem produzido (voix mixte) tem CPPS **alto** porque é periódico e limpo. CPPS baixo indica ruído/aperiodicidade, não ressonância reforçada.
+1. **CPPS Alto em M2 Reforçado:** Um M2 bem produzido (*voix mixte*) tem CPPS **alto** porque é periódico e limpo. CPPS baixo indica ruído/aperiodicidade, não ressonância reforçada.
 
-2. **H1-H2 instável no passaggio:** Quando F0 > 350Hz, H1 pode coincidir com F1, tornando H1-H2 menos confiável. Por isso incluímos Spectral Tilt como feature complementar.
+2. **H1-H2 instável no passaggio:** Quando f0 > 350 Hz, H1 pode coincidir com F1, tornando H1-H2 menos confiável (Hanson, 1997). Por isso incluímos Spectral Tilt como feature complementar.
 
-3. **F0-F1 não indica mecanismo:** A proximidade F0↔F1 é estratégia de ressonância (vowel tuning). Sopranos em M2 e tenores em M1 podem usar a mesma estratégia. Não usar diretamente no VMI.
+3. **F0-F1 não indica mecanismo:** A proximidade F0↔F1 é estratégia de ressonância (*vowel tuning*; Bozeman, 2013). Sopranos em M2 e tenores em M1 podem usar a mesma estratégia. Não usar diretamente no VMI.
 
 ---
 
@@ -415,6 +484,15 @@ predictions = model.predict(X)
 **Vantagem:** Aprende interações não-lineares entre features.
 **Aplicação:** Classificação robusta para novos dados. Classification report salvo no relatório `outputs/analise_ademilde.md`.
 
+**Justificativa teórica para pseudo-labeling:** O uso de labels gerados por um modelo não-supervisionado (GMM) para treinar um classificador supervisionado (XGBoost) é uma técnica estabelecida em aprendizado semi-supervisionado (Lee, 2013; Nigam et al., 2000). A ideia é que o GMM descobre a estrutura natural dos dados (clusters M1/M2 no espaço f0 × HNR), e o XGBoost aprende fronteiras de decisão mais complexas usando features adicionais (energia, formantes, velocidade de pitch).
+
+**Caveats:**
+1. **Viés de confirmação:** O XGBoost herda os erros do GMM — não pode ser *melhor* que seus pseudo-labels na média.
+2. **Premissa gaussiana:** O GMM assume clusters gaussianos, o que pode não refletir a distribuição real dos mecanismos.
+3. **Ausência de ground truth:** Sem validação laringoscópica ou por eletroglotografia (EGG), a acurácia real é desconhecida.
+
+O VMI (Método 4) oferece uma abordagem complementar: baseado em teoria acústica e features espectrais, não depende de pseudo-labels.
+
 ![Predição XGBoost: M1 vs M2 ao longo do tempo](../outputs/plots/xgb_mechanism_timeline.png)
 
 #### Método 4: VMI (Vocal Mechanism Index) — Agnóstico à Tessitura
@@ -457,9 +535,13 @@ labels = vmi_to_label(vmi)  # M1_DENSO, M1_LIGEIRO, MIX_PASSAGGIO, M2_REFORCADO,
 | **energy** | Base | Média-Alta | M1 mais energético que M2 |
 | **f0_velocity** | Derivada | Média-Alta | Transições M1→M2 são ornamentos rápidos (glissandi) |
 | **f0_acceleration** | Derivada | Média | Quebras abruptas de registro indicam mudança de mecanismo |
-| **f1, f2, f3, f4** | Opcional | Alta | Ressonâncias do trato vocal diferenciam diretamente M1 vs M2 |
+| **f1, f2, f3, f4** | Formantes | Alta | Ressonâncias do trato vocal diferenciam diretamente M1 vs M2 |
+| **alpha_ratio** | Espectral (VMI) | Alta | Razão de energia espectral: M1 mais brilhante que M2 |
+| **h1_h2** | Espectral (VMI) | Média-Alta | Correlato direto de padrão de adução glótica |
+| **spectral_tilt** | Espectral (VMI) | Média | Robusto em registro agudo (f0 > 350 Hz) |
+| **cpps_per_frame** | Espectral (VMI) | Média | Regularidade de vibração por frame |
 
-**Nota:** F1-F4 são incluídas automaticamente se disponíveis no CSV (processamento sem `--skip-formants`). `cpps_global`, `jitter` e `shimmer` são valores escalares por música (não por frame) e portanto não geram variação útil para classificação por frame.
+**Nota:** F1-F4 são incluídas automaticamente se disponíveis no CSV (processamento sem `--skip-formants`). Features espectrais (alpha_ratio, h1_h2, spectral_tilt, cpps_per_frame) requerem `--extract-spectral` no processamento ou são computadas on-the-fly pelo `run_analysis`. `cpps_global`, `jitter` e `shimmer` são valores escalares por música (não por frame) e portanto não geram variação útil para classificação por frame.
 
 ---
 
@@ -469,21 +551,28 @@ labels = vmi_to_label(vmi)  # M1_DENSO, M1_LIGEIRO, MIX_PASSAGGIO, M2_REFORCADO,
 
 **Módulo:** `src/vocal_analysis/visualization/plots.py`
 
-- **Contorno de f0 temporal:** Identificação visual de transições M1↔M2
-- **Scatter f0 vs HNR:** Separação de clusters por mecanismo
-- **Histogramas de distribuição:** Evidência de bimodalidade
-- **Timeline colorido:** Mapeamento temporal de mecanismos
-- **Excerpts por música:** Trechos de 5s na janela mais densa, com eixo de notas musicais — para inspeção manual (eval humano)
+- **Contorno de f0 temporal** (`{song}_f0.png`): Identificação visual de transições M1↔M2
+- **Análise de mecanismo** (`mechanism_analysis.png`): 4 subplots — histograma, scatter f0 vs HNR, boxplot, temporal
+- **Clusters GMM** (`mechanism_clusters.png`): Scatter f0 vs HNR colorido por cluster
+- **Timeline XGBoost** (`xgb_mechanism_timeline.png`): Contorno temporal f0 colorido pela predição XGBoost (M1=azul, M2=coral)
+- **VMI scatter** (`vmi_scatter.png`): f0 vs Alpha Ratio colorido por VMI [0-1] com escala RdBu_r
+- **VMI análise** (`vmi_analysis.png`): 4 subplots — scatter, distribuição, contorno, boxplot por categoria VMI
+- **Excerpts por música** (`excerpt_{song}.png`): Trechos de 5s na janela mais densa, com eixo de notas musicais — para inspeção manual (eval humano)
+- **Validação de separação** (`{song}_separation_validation.png`): Comparação antes/depois da source separation
 
-**Estética:** Seaborn (`whitegrid`), paleta `viridis`, DPI 150 para publicação.
+**Estética:** Seaborn (`whitegrid`), paleta `viridis` / `RdBu_r` (VMI), DPI 150 para publicação.
 
 Excerpts gerados automaticamente pela janela de maior densidade de frames por música:
 
-![Apanhei-te Cavaquinho — excerpt](../outputs/plots/excerpt_Apanhei-te_Cavaquinho.png)
+![Apanhei-te Cavaquinho — excerpt](../outputs/plots/excerpt_apanheite_cavaquinho.png)
 
 ![delicado — excerpt](../outputs/plots/excerpt_delicado.png)
 
 ![brasileirinho — excerpt](../outputs/plots/excerpt_brasileirinho.png)
+
+VMI scatter — f0 vs Alpha Ratio colorido por VMI:
+
+![VMI Scatter](../outputs/plots/vmi_scatter.png)
 
 ### 7.2 Relatório Narrativo com IA
 
@@ -547,16 +636,26 @@ Utiliza **Gemini Multimodal** (Google) para:
 | `spectral_tilt` | float | Inclinação espectral — se `--extract-spectral` |
 | `cpps_per_frame` | float | CPPS por frame — se `--cpps-per-frame` |
 
-**Features derivadas** (calculadas pelo `run_analysis`, não presentes no CSV acima):
+**Features espectrais** (computadas em `process_ademilde` com `--extract-spectral` OU on-the-fly em `run_analysis` se ausentes no CSV):
+
+| Coluna | Tipo | Descrição | Origem |
+|--------|------|-----------|--------|
+| `alpha_ratio` | float | Razão de energia 0-1kHz vs 1-5kHz (dB) | process_ademilde (`--extract-spectral`) ou run_analysis |
+| `h1_h2` | float | Diferença H1-H2 (dB) | process_ademilde (`--extract-spectral`) ou run_analysis |
+| `spectral_tilt` | float | Inclinação espectral | process_ademilde (`--extract-spectral`) ou run_analysis |
+| `cpps_per_frame` | float | CPPS por frame | process_ademilde (`--cpps-per-frame`) |
+
+**Features derivadas** (calculadas exclusivamente pelo `run_analysis`, presentes em `xgb_predictions.csv`):
 
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | `f0_velocity` | float | Velocidade de mudança de pitch (Hz/s) |
 | `f0_acceleration` | float | Aceleração de pitch (Hz/s²) |
 | `syllable_rate` | float | Taxa silábica (sílabas/s) |
-| `mechanism` | string | Cluster do GMM (M1/M2) |
+| `cluster` | int | Cluster GMM (0/1) |
+| `mechanism` | string | Label do GMM (M1/M2) |
 | `xgb_mechanism` | string | Predição do XGBoost (M1/M2) |
-| `vmi` | float | Vocal Mechanism Index (0-1) — se VMI habilitado |
+| `vmi` | float | Vocal Mechanism Index (0-1) — se features espectrais disponíveis |
 | `vmi_label` | string | Label VMI (M1_DENSO, M1_LIGEIRO, MIX_PASSAGGIO, M2_REFORCADO, M2_LIGEIRO) |
 
 **Arquivo de predições:** `outputs/xgb_predictions.csv` (gerado pelo `run_analysis`, contém todas as colunas acima)
@@ -585,72 +684,144 @@ Utiliza **Gemini Multimodal** (Google) para:
 
 ### Passo 1: Processamento de Áudio
 
+A source separation (HTDemucs) é habilitada por padrão.
+
 ```bash
-# Processamento padrão (sem separação)
-uv run python -m vocal_analysis.preprocessing.process_ademilde
+# Recomendado: processamento completo com features espectrais para VMI
+uv run python -m vocal_analysis.preprocessing.process_ademilde --extract-spectral --device cuda
 
-# COM source separation (recomendado para arranjos complexos)
-uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --device cuda
-
-# COM validação visual (gera plots Hz + notas para conferir separação)
-uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --validate-separation --limit 1
-
-# COM features espectrais para VMI (recomendado)
-uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --extract-spectral --device cuda
+# COM validação visual da separação (gera plots Hz + notas)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --extract-spectral --validate-separation --limit 1
 
 # COM CPPS per-frame (mais lento, melhor precisão VMI)
-uv run python -m vocal_analysis.preprocessing.process_ademilde --separate-vocals --extract-spectral --cpps-per-frame --device cuda
+uv run python -m vocal_analysis.preprocessing.process_ademilde --extract-spectral --cpps-per-frame --device cuda
+
+# SEM source separation (não recomendado para arranjos complexos)
+uv run python -m vocal_analysis.preprocessing.process_ademilde --no-separate-vocals --extract-spectral
 ```
 
 **Output:**
 - `data/processed/ademilde_features.csv`
 - `data/processed/ademilde_metadata.json`
 - `outputs/plots/{song}_f0.png` (um por música)
-- `data/cache/separated/{song}_vocals.npy` (se `--separate-vocals`)
+- `data/cache/separated/{song}_vocals.npy` (cache da separação)
 - `outputs/plots/{song}_separation_validation.png` (se `--validate-separation`)
 
-### Passo 2: Análise Exploratória + Classificação
+### Passo 2: Análise Exploratória + Classificação + VMI
 
 ```bash
+# Análise completa (VMI habilitado por padrão se features espectrais disponíveis)
 uv run python -m vocal_analysis.analysis.run_analysis
 ```
+
+A variável de ambiente `USE_VMI=true` (default) habilita a análise VMI quando features espectrais estão disponíveis no CSV ou nos áudios.
 
 **Output:**
 - `outputs/plots/mechanism_analysis.png` (threshold)
 - `outputs/plots/mechanism_clusters.png` (GMM)
 - `outputs/plots/xgb_mechanism_timeline.png` (contorno temporal pela predição XGBoost)
+- `outputs/plots/vmi_scatter.png` (f0 vs Alpha Ratio colorido por VMI)
+- `outputs/plots/vmi_analysis.png` (4 subplots VMI)
 - `outputs/plots/excerpt_{song}.png` (trechos de 5s por música, nota a nota, para eval humano)
-- `outputs/xgb_predictions.csv` (predições por frame: GMM + XGBoost)
+- `outputs/xgb_predictions.csv` (predições por frame: GMM + XGBoost + VMI)
 - `outputs/analise_ademilde.md` (relatório básico, inclui classification report do XGBoost)
+- `outputs/analise_vmi.md` (relatório VMI com distribuição por categoria)
 - `outputs/relatorio_llm.md` (relatório narrativo, requer `GEMINI_API_KEY`)
 
 ---
 
 ## 11. Referências Metodológicas
 
-1. **Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).** CREPE: A Convolutional Representation for Pitch Estimation. *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*.
+### Mecanismos Laríngeos M1/M2
 
-2. **Boersma, P., & Weenink, D. (2023).** Praat: doing phonetics by computer [Computer program]. Version 6.3.
+1. **Roubeau, B., Henrich, N., & Castellengo, M. (2009).** Laryngeal Vibratory Mechanisms: the notion of vocal register revisited. *Journal of Voice*, 23(4), 425-438.
 
-3. **Henrich, N., et al. (2014).** On the use of electroglottography for characterization of the laryngeal mechanisms. *Proceedings of Stockholm Music Acoustics Conference*.
+2. **Henrich, N., d'Alessandro, C., Doval, B., & Castellengo, M. (2004).** Glottal open quotient in singing: measurements and correlation with laryngeal mechanisms, vocal intensity, and fundamental frequency. *J. Acoust. Soc. Am.*, 117(3), 1417-1430.
 
-4. **Maryn, Y., & Weenink, D. (2015).** Objective dysphonia measures in the program Praat: Smoothed cepstral peak prominence and acoustic voice quality index. *Journal of Voice*.
+3. **Henrich, N. (2006).** Mirroring the voice from Garcia to the present day: some insights into singing voice registers. *Logopedics Phoniatrics Vocology*, 31(1), 3-14.
 
-5. **Chen, T., & Guestrin, C. (2016).** XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
+4. **Henrich, N., et al. (2014).** Vocal tract resonances in singing: variation with laryngeal mechanism for male operatic singers. *J. Acoust. Soc. Am.*, 135(1), 491-501.
 
-6. **Défossez, A., Usunier, N., Bottou, L., & Bach, F. (2021).** Hybrid Spectrogram and Waveform Source Separation. *Proceedings of the ISMIR 2021 Conference*.
+### Pitch e Análise Vocal
+
+5. **Kim, J. W., Salamon, J., Li, P., & Bello, J. P. (2018).** CREPE: A Convolutional Representation for Pitch Estimation. *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*. arXiv:1802.06182.
+
+6. **Boersma, P., & Weenink, D. (2023).** Praat: doing phonetics by computer [Computer program]. Version 6.3.
+
+7. **Maryn, Y., & Weenink, D. (2015).** Objective dysphonia measures in the program Praat: Smoothed cepstral peak prominence and acoustic voice quality index. *Journal of Voice*.
+
+8. **Teixeira, J. P., Oliveira, C., & Lopes, C. (2013).** Vocal Acoustic Analysis – Jitter, Shimmer and HNR Parameters. *Procedia Technology*, 9, 1112-1122.
+
+### Features Espectrais
+
+9. **Sundberg, J., & Nordenberg, M. (2006).** Effects of vocal loudness variation on spectrum balance as reflected by the alpha measure of long-term-average spectra of speech. *J. Acoust. Soc. Am.*, 120(1), 453-457.
+
+10. **Hanson, H. M. (1997).** Glottal characteristics of female speakers: Acoustic correlates. *J. Acoust. Soc. Am.*, 101(1), 466-481.
+
+11. **Kreiman, J., Gerratt, B. R., Garellek, M., Samlan, R., & Zhang, Z. (2014).** Toward a unified theory of voice production and perception. *Loquens*, 1(1), e009.
+
+12. **Fant, G. (1995).** The LF-model revisited: Transformations and frequency domain analysis. *STL-QPSR*, 2-3/1995, 119-156.
+
+13. **Gauffin, J., & Sundberg, J. (1989).** Spectral correlates of glottal voice source waveform characteristics. *J. Speech Hear. Res.*, 32(3), 556-565.
+
+### Qualidade Vocal e Fisiologia
+
+14. **Bourne, T., & Garnier, M. (2012).** Physiological and acoustic characteristics of four qualities in the female music theatre voice. *J. Acoust. Soc. Am.*, 131(2), 1586-1594.
+
+15. **Behlau, M., & Ziemer, R. (1988).** *Voz: o livro do especialista.* Rio de Janeiro: Revinter.
+
+### Pedagogia Vocal e Formantes
+
+16. **Bozeman, K. W. (2013).** *Practical Vocal Acoustics: Pedagogic Applications for Teachers and Singers.* Pendragon Press.
+
+17. **Bozeman, K. W. (2017).** *Kinesthetic Voice Pedagogy: Motivating Acoustic Efficiency.* Inside View Press.
+
+18. **Sundberg, J. (1987).** *The Science of the Singing Voice.* Northern Illinois University Press.
+
+19. **Sundberg, J. (1974).** Articulatory interpretation of the "singing formant". *J. Acoust. Soc. Am.*, 55(4), 838-844.
+
+20. **Miller, R. (2000).** *Training Soprano Voices.* New York: Oxford University Press.
+
+21. **Raitio, T., et al. (2024).** Formant Tracking by Combining Deep Neural Network and Linear Prediction. *IEEE/ACM Transactions on Audio, Speech, and Language Processing*, 32.
+
+### Machine Learning e Classificação de Registros
+
+22. **Almeida, J., et al. (2025).** Machine Learning Approaches to Vocal Register Classification in Contemporary Male Pop Music. arXiv:2505.11378v1.
+
+23. **Almeida, J., et al. (2025).** Machine Learning with Evolutionary Parameter Tuning for Singing Registers Classification. *Signals*, 6(1), 9.
+
+24. **Schulze, T., et al. (2023).** Towards Automated Vocal Mode Classification in Healthy Singing Voice — An XGBoost Decision Tree-Based Machine Learning Classifier. *ResearchGate*.
+
+25. **Chen, T., & Guestrin, C. (2016).** XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
+
+26. **Lee, D.-H. (2013).** Pseudo-Label: The simple and efficient semi-supervised learning method for deep neural networks. *ICML 2013 Workshop: Challenges in Representation Learning (WREPL)*.
+
+27. **Nigam, K., McCallum, A. K., Thrun, S., & Mitchell, T. (2000).** Text classification from labeled and unlabeled documents using EM. *Machine Learning*, 39, 103-134.
+
+### Source Separation
+
+28. **Défossez, A., Usunier, N., Bottou, L., & Bach, F. (2021).** Hybrid Spectrogram and Waveform Source Separation. *Proceedings of the ISMIR 2021 Conference*.
+
+29. **Moreira, L., et al. (2024).** Music Source Separation in Noisy Brazilian Choro Recordings. *Proceedings of the Conference on Music Technology (Colibri/TRB24)*.
+
+### Contexto: Choro e Classificação Fach
+
+30. **Ferraz, D. S. R. (2010).** *A Voz e o Choro: aspectos técnicos vocais e o repertório de Choro cantado.* Dissertação (Mestrado em Música) — UNIRIO, Rio de Janeiro.
+
+31. **Cotton, S. (2007).** *Voice Classification and Fach: usage and inconsistencies.* Tese (Doctor of Musical Arts) — University of North Carolina, Greensboro.
 
 ---
 
 ## 12. Contato e Contribuições
 
-**Autor:** ML Engineer & Músico Profissional
-**Projeto:** Análise Computacional - Voz no Choro
-**Stack:** Python 3.11+, torchcrepe, parselmouth, xgboost
+**Autor:** Arthur Cornélio (arthur.cornelio@gmail.com)
+**Projeto:** Análise Bioacústica — Mecanismos Laríngeos M1/M2 no Choro
+**Versão:** 2.0.3
+**Stack:** Python 3.10+, torchcrepe, parselmouth, xgboost, torchaudio (HTDemucs), google-generativeai (Gemini)
 
 Para dúvidas metodológicas ou sugestões de melhorias, abra uma issue no repositório.
 
 ---
 
-**Última Atualização:** 2026-02-05
-**Status:** Pipeline validado. Inclui source separation opcional (HTDemucs) para arranjos complexos.
+**Última Atualização:** 2026-02-09
+**Status:** Pipeline validado (v2.0.3). Source separation habilitada por padrão. VMI (Vocal Mechanism Index) integrado para classificação agnóstica à tessitura.
