@@ -1,15 +1,15 @@
-"""Script para rodar análise exploratória completa."""
+"""Script to run the full exploratory analysis."""
 
 import json
 import os
 import re
 from pathlib import Path
 
-# --- GARANTIR CARREGAMENTO DE ENV ---
+# --- Ensure .env is loaded ---
 try:
     from dotenv import load_dotenv
 except ImportError:
-    # Fallback caso não tenha dotenv instalado, define função dummy
+    # Fallback if dotenv is not installed
     def load_dotenv():
         pass
 
@@ -40,19 +40,19 @@ from vocal_analysis.visualization.plots import (
 
 
 def parse_time_string(time_str: str) -> float:
-    """Converte string 'MMSS' ou segundos puros para float segundos."""
+    """Convert 'MMSS' string or raw seconds to float seconds."""
     if not isinstance(time_str, str):
         return float(time_str)
 
     clean_str = time_str.replace('"', "").replace("'", "").strip()
 
-    # Se for formato MMSS (4 dígitos)
+    # MMSS format (4 digits)
     if len(clean_str) == 4 and clean_str.isdigit():
         minutes = int(clean_str[:2])
         seconds = int(clean_str[2:])
         return minutes * 60 + seconds
 
-    # Caso contrário assume segundos
+    # Otherwise assume raw seconds
     try:
         return float(clean_str)
     except ValueError:
@@ -60,17 +60,13 @@ def parse_time_string(time_str: str) -> float:
 
 
 def get_manual_excerpt_from_env(song_name: str) -> tuple[float, float] | None:
-    """Busca intervalo manual em variáveis de ambiente com normalização de nome."""
-    # Sanitiza: "Apanhei-te Cavaquinho" -> "APANHEITE_CAVAQUINHO" ou "APANHEI_TE_CAVAQUINHO"
-    # Remove caracteres especiais e joga para uppercase
+    """Look up manual excerpt interval from environment variables with name normalization."""
+    # Sanitize: "Apanhei-te Cavaquinho" -> "APANHEITE_CAVAQUINHO"
     safe_name = re.sub(r"[^a-zA-Z0-9]", "_", song_name).upper()
-    safe_name = re.sub(r"_+", "_", safe_name)  # Remove underscores duplicados
+    safe_name = re.sub(r"_+", "_", safe_name)  # Remove duplicate underscores
 
     env_key = f"EXCERPT_{safe_name}"
     env_value = os.environ.get(env_key)
-
-    # Debug: ajuda a entender o que o script está procurando
-    # print(f"  [DEBUG] Procurando ENV: {env_key} (Valor: {env_value})")
 
     if env_value:
         try:
@@ -79,7 +75,7 @@ def get_manual_excerpt_from_env(song_name: str) -> tuple[float, float] | None:
             end_time = parse_time_string(end_str.strip())
             return start_time, end_time
         except Exception as e:
-            print(f"  ⚠️ Aviso: Erro ao ler ENV {env_key}='{env_value}': {e}")
+            print(f"  Warning: Error reading ENV {env_key}='{env_value}': {e}")
 
     return None
 
@@ -87,7 +83,7 @@ def get_manual_excerpt_from_env(song_name: str) -> tuple[float, float] | None:
 def save_audio_excerpt(
     song_name: str, start_time: float, end_time: float, project_root: Path, output_dir: Path
 ) -> None:
-    """Recorta e salva o áudio correspondente ao excerpt."""
+    """Crop and save the audio excerpt corresponding to the selected interval."""
     raw_dir = project_root / "data" / "raw"
     audio_files = list(raw_dir.glob(f"*{song_name}*.mp3")) + list(
         raw_dir.glob(f"*{song_name}*.wav")
@@ -99,13 +95,13 @@ def save_audio_excerpt(
     audio_path = audio_files[0]
 
     try:
-        # Carrega apenas o trecho desejado
+        # Load only the desired segment
         y, sr = librosa.load(audio_path, sr=None, offset=start_time, duration=end_time - start_time)
         out_path = output_dir / f"excerpt_{song_name}.wav"
         sf.write(out_path, y, sr)
-        print(f"    🎵 Áudio salvo: {out_path.name}")
+        print(f"    Audio excerpt saved: {out_path.name}")
     except Exception as e:
-        print(f"    ⚠️ Erro ao salvar áudio: {e}")
+        print(f"    Warning: Error saving audio excerpt: {e}")
 
 
 def compute_spectral_features_for_df(
@@ -115,22 +111,22 @@ def compute_spectral_features_for_df(
     sr: int = 44100,
     skip_cpps_per_frame: bool = True,
 ) -> pd.DataFrame:
-    """Computa features espectrais para cada música no DataFrame.
+    """Compute spectral features for each song in the DataFrame.
 
     Args:
-        df: DataFrame com dados (deve ter coluna 'song').
-        project_root: Raiz do projeto para encontrar áudios.
-        hop_length: Hop length usado na extração original.
+        df: DataFrame with data (must have 'song' column).
+        project_root: Project root to locate audio files.
+        hop_length: Hop length used in the original extraction.
         sr: Sample rate.
-        skip_cpps_per_frame: Se True, pula CPPS per-frame (mais rápido).
+        skip_cpps_per_frame: If True, skip CPPS per-frame (faster).
 
     Returns:
-        DataFrame com features espectrais adicionadas.
+        DataFrame with spectral features added.
     """
     raw_dir = project_root / "data" / "raw"
     separated_dir = project_root / "data" / "separated"
 
-    # Inicializar colunas
+    # Initialize columns
     df["alpha_ratio"] = np.nan
     df["h1_h2"] = np.nan
     df["spectral_tilt"] = np.nan
@@ -138,9 +134,9 @@ def compute_spectral_features_for_df(
         df["cpps_per_frame"] = np.nan
 
     for song_name in df["song"].unique():
-        print(f"  Processando features espectrais: {song_name}...")
+        print(f"  Computing spectral features: {song_name}...")
 
-        # Encontrar arquivo de áudio (preferir separado se existir)
+        # Find audio file (prefer separated if available)
         audio_path = None
         for pattern in [f"*{song_name}*_vocals.wav", f"*{song_name}*.wav", f"*{song_name}*.mp3"]:
             candidates = list(separated_dir.glob(pattern)) + list(raw_dir.glob(pattern))
@@ -149,15 +145,15 @@ def compute_spectral_features_for_df(
                 break
 
         if audio_path is None:
-            print(f"    ⚠ Áudio não encontrado para {song_name}")
+            print(f"    Audio not found for {song_name}")
             continue
 
-        # Máscara para esta música
+        # Mask for this song
         song_mask = df["song"] == song_name
         song_df = df[song_mask]
 
         try:
-            # Extrair features espectrais
+            # Extract spectral features
             spectral = extract_spectral_features(
                 audio_path=audio_path,
                 f0=song_df["f0"].values,
@@ -167,14 +163,14 @@ def compute_spectral_features_for_df(
                 skip_cpps_per_frame=skip_cpps_per_frame,
             )
 
-            # Ajustar tamanhos
+            # Align sizes
             n_frames = len(song_df)
             for col in ["alpha_ratio", "h1_h2", "spectral_tilt"]:
                 values = spectral[col]
                 if len(values) >= n_frames:
                     df.loc[song_mask, col] = values[:n_frames]
                 else:
-                    # Padding com NaN se necessário
+                    # Pad with NaN if needed
                     padded = np.full(n_frames, np.nan)
                     padded[: len(values)] = values
                     df.loc[song_mask, col] = padded
@@ -185,14 +181,14 @@ def compute_spectral_features_for_df(
                     df.loc[song_mask, "cpps_per_frame"] = values[:n_frames]
 
         except Exception as e:
-            print(f"    ⚠ Erro ao extrair features espectrais: {e}")
+            print(f"    Error extracting spectral features: {e}")
 
     return df
 
 
 def main() -> None:
-    """Executa análise exploratória dos dados processados."""
-    # Carregar ENV do arquivo .env se existir
+    """Run exploratory analysis on processed data."""
+    # Load ENV from .env file if it exists
     load_dotenv()
 
     project_root = Path(__file__).parent.parent.parent.parent
@@ -200,63 +196,66 @@ def main() -> None:
     metadata_path = project_root / "data" / "processed" / "ademilde_metadata.json"
     output_dir = project_root / "outputs"
 
-    # Flag para usar VMI (pode ser ENV ou argumento)
+    # Flag to use VMI (can be ENV or argument)
     use_vmi = os.environ.get("USE_VMI", "true").lower() == "true"
 
+    # Report language (en or pt-BR)
+    report_lang = os.environ.get("REPORT_LANG", "en")
+
     if not data_path.exists():
-        print(f"Arquivo não encontrado: {data_path}")
+        print(f"File not found: {data_path}")
         return
 
-    # Carregar dados
-    print("Carregando dados...")
+    # Load data
+    print("Loading data...")
     df = pd.read_csv(data_path)
 
     metadata = None
     if metadata_path.exists():
         with open(metadata_path, encoding="utf-8") as f:
             metadata = json.load(f)
-        print(f"  Artista: {metadata.get('artist', 'Desconhecido')}")
+        print(f"  Artist: {metadata.get('artist', 'Unknown')}")
 
-    print(f"  Total de Frames: {len(df)}")
+    print(f"  Total Frames: {len(df)}")
 
-    # Computar features de agilidade articulatória
-    print("\nComputando features de agilidade articulatória...")
+    # Compute articulatory agility features
+    print("\nComputing articulatory agility features...")
     df = compute_articulation_features(df)
 
-    # Análise por threshold
-    print("\nAnalisando por threshold (400 Hz / G4)...")
+    # Threshold analysis
+    print("\nAnalyzing by threshold (400 Hz / G4)...")
     stats = analyze_mechanism_regions(df, threshold_hz=400.0, output_dir=output_dir / "plots")
 
     # Clustering
-    print("\nExecutando clustering GMM...")
+    print("\nRunning GMM clustering...")
     plots_dir = output_dir / "plots"
     df_clustered = cluster_mechanisms(df, n_clusters=2, method="gmm", output_dir=plots_dir)
 
-    # VMI Analysis (se habilitado)
+    # VMI Analysis (if enabled)
     vmi_stats = None
     if use_vmi:
         print("\n" + "=" * 50)
-        print("ANÁLISE VMI (Vocal Mechanism Index)")
+        print("VMI ANALYSIS (Vocal Mechanism Index)")
         print("=" * 50)
 
-        # Verificar se já temos features espectrais no CSV
+        # Check if spectral features are already in CSV
         spectral_cols = ["alpha_ratio", "h1_h2", "spectral_tilt"]
         has_spectral = all(col in df_clustered.columns for col in spectral_cols)
 
         if not has_spectral:
-            print("\nComputando features espectrais (Alpha Ratio, H1-H2, Spectral Tilt)...")
+            print("\nComputing spectral features (Alpha Ratio, H1-H2, Spectral Tilt)...")
             df_clustered = compute_spectral_features_for_df(
                 df_clustered,
                 project_root,
                 hop_length=220,
-                skip_cpps_per_frame=True,  # CPPS per-frame é lento
+                skip_cpps_per_frame=True,  # CPPS per-frame is slow
             )
 
-        # Verificar se temos features válidas
+        # Check if we have valid features
         valid_spectral = df_clustered[spectral_cols].notna().any().all()
 
         if valid_spectral:
-            print("\nCalculando VMI...")
+            print("\nComputing VMI...")
             try:
                 df_vmi, vmi_stats = analyze_mechanism_vmi(
                     df_clustered,
@@ -265,15 +264,15 @@ def main() -> None:
                     output_dir=plots_dir,
                 )
 
-                # Copiar VMI para df_clustered
+                # Copy VMI to df_clustered
                 df_clustered["vmi"] = df_vmi["vmi"]
                 df_clustered["vmi_label"] = df_vmi["vmi_label"]
 
-                print("\n  Distribuição VMI:")
+                print("\n  VMI Distribution:")
                 for label, s in vmi_stats.items():
                     print(f"    {label}: {s['count']} frames ({s['percentage']:.1f}%)")
 
-                # Plot VMI scatter
+                # VMI scatter plot
                 try:
                     vmi_scatter_path = plots_dir / "vmi_scatter.png"
                     plot_vmi_scatter(
@@ -283,34 +282,35 @@ def main() -> None:
                         color_col="vmi",
                         save_path=vmi_scatter_path,
                     )
-                    print(f"\n  Plot VMI salvo: {vmi_scatter_path.name}")
+                    print(f"\n  VMI plot saved: {vmi_scatter_path.name}")
                 except Exception as e:
-                    print(f"  ⚠ Erro ao gerar plot VMI: {e}")
+                    print(f"  Error generating VMI plot: {e}")
 
-                # Gerar relatório VMI
-                artist_name = metadata.get("artist", "Desconhecido") if metadata else "Desconhecido"
-                vmi_report_path = output_dir / "analise_vmi.md"
+                # Generate VMI report
+                artist_name = metadata.get("artist", "Unknown") if metadata else "Unknown"
+                vmi_report_path = output_dir / "vmi_analysis.md"
                 generate_vmi_report(
                     df_clustered,
                     vmi_stats,
                     vmi_report_path,
                     artist_name=artist_name,
+                    lang=report_lang,
                 )
-                print(f"  Relatório VMI salvo: {vmi_report_path.name}")
+                print(f"  VMI report saved: {vmi_report_path.name}")
 
             except Exception as e:
-                print(f"  ⚠ Erro na análise VMI: {e}")
+                print(f"  Error in VMI analysis: {e}")
                 import traceback
 
                 traceback.print_exc()
         else:
-            print("  ⚠ Features espectrais não disponíveis. Pulando análise VMI.")
-            print("  (Verifique se os arquivos de áudio estão em data/raw ou data/separated)")
+            print("  Spectral features not available. Skipping VMI analysis.")
+            print("  (Check that audio files are in data/raw or data/separated)")
 
         print("=" * 50 + "\n")
 
     # XGBoost
-    print("\nTreinando XGBoost com pseudo-labels do GMM...")
+    print("\nTraining XGBoost with GMM pseudo-labels...")
     base_cols = ["f0", "hnr", "energy", "f0_velocity", "f0_acceleration"]
     optional_cols = ["f1", "f2", "f3", "f4"]
     feature_cols = base_cols + [c for c in optional_cols if c in df_clustered.columns]
@@ -324,27 +324,23 @@ def main() -> None:
             df_train, feature_cols=feature_cols, target_col="mechanism_label"
         )
 
-        # --- CORREÇÃO DO ERRO ---
-        # 1. Predizer (retorna numpy array)
+        # Predict and assign to DataFrame
         predictions = model.predict(df_clustered[feature_cols])
-        # 2. Atribuir ao DataFrame (vira Series)
         df_clustered["xgb_mechanism"] = predictions
-        # 3. Mapear (agora funciona porque é Series)
         df_clustered["xgb_mechanism"] = df_clustered["xgb_mechanism"].map({0: "M1", 1: "M2"})
-        # ------------------------
 
-        # Salvar predições
+        # Save predictions
         pred_path = output_dir / "xgb_predictions.csv"
         df_clustered.to_csv(pred_path, index=False)
-        print(f"  Predições salvas: {pred_path}")
+        print(f"  Predictions saved: {pred_path}")
 
-        # Plot temporal
+        # Timeline plot
         timeline_path = plots_dir / "xgb_mechanism_timeline.png"
         plot_xgb_mechanism_timeline(df_clustered, save_path=timeline_path)
-        print("  Plot temporal gerado.")
+        print("  Timeline plot generated.")
 
         # Excerpts
-        print("\nGerando excerpts por música...")
+        print("\nGenerating excerpts per song...")
 
         for song_name in df_clustered["song"].unique():
             song_df = df_clustered[df_clustered["song"] == song_name].sort_values("time")
@@ -355,27 +351,27 @@ def main() -> None:
             t_min_song = song_df["time"].min()
             t_max_song = song_df["time"].max()
 
-            # 1. Tentar pegar intervalo da Variável de Ambiente
+            # 1. Try to get interval from environment variable
             manual_excerpt = get_manual_excerpt_from_env(song_name)
 
             if manual_excerpt:
                 best_start, best_end = manual_excerpt
-                print(f"  > {song_name}: ENV ENCONTRADO ({best_start:.1f}s - {best_end:.1f}s)")
+                print(f"  > {song_name}: ENV FOUND ({best_start:.1f}s - {best_end:.1f}s)")
 
                 if best_start > t_max_song:
                     print(
-                        f"    ⚠️ Aviso: Início {best_start}s > Duração da música ({t_max_song:.1f}s). Ignorando."
+                        f"    Warning: Start {best_start}s > Song duration ({t_max_song:.1f}s). Skipping."
                     )
                     continue
 
-                # Ajusta contagem apenas para log
+                # Count frames for logging
                 best_count = len(
                     song_df[(song_df["time"] >= best_start) & (song_df["time"] < best_end)]
                 )
 
             else:
-                # 2. Automático (densidade)
-                print(f"  > {song_name}: Automático (densidade)...")
+                # 2. Automatic (density-based)
+                print(f"  > {song_name}: Automatic (density)...")
                 best_start = t_min_song
                 best_count = 0
 
@@ -391,7 +387,7 @@ def main() -> None:
                         best_start = t
                 best_end = best_start + 5.0
 
-            # Gerar Plot
+            # Generate plot
             excerpt_path = plots_dir / f"excerpt_{song_name}.png"
             plot_xgb_mechanism_excerpt(
                 df_clustered,
@@ -400,20 +396,20 @@ def main() -> None:
                 end_time=best_end,
                 save_path=excerpt_path,
             )
-            print(f"    Plot salvo: {best_start:.1f}s – {best_end:.1f}s")
+            print(f"    Plot saved: {best_start:.1f}s - {best_end:.1f}s")
 
-            # Salvar Áudio
+            # Save audio excerpt
             save_audio_excerpt(song_name, best_start, best_end, project_root, output_dir)
 
     except Exception as e:
-        print(f"  Erro crítico no XGBoost/Plots: {e}")
+        print(f"  Critical error in XGBoost/Plots: {e}")
         import traceback
 
         traceback.print_exc()
 
-    # Gerar relatório básico
-    artist_name = metadata.get("artist", "Desconhecido") if metadata else "Desconhecido"
-    report_path = output_dir / "analise_ademilde.md"
+    # Generate basic report
+    artist_name = metadata.get("artist", "Unknown") if metadata else "Unknown"
+    report_path = output_dir / "analysis_report.md"
     generate_report(
         df,
         stats,
@@ -421,23 +417,26 @@ def main() -> None:
         artist_name=artist_name,
         xgb_report=xgb_report,
         xgb_feature_cols=feature_cols,
+        lang=report_lang,
     )
 
-    # Gerar relatório LLM
+    # Generate LLM report
     if os.environ.get("GEMINI_API_KEY"):
-        llm_report_path = output_dir / "relatorio_llm.md"
-        print("\nGerando relatório narrativo com Gemini...")
+        llm_report_path = output_dir / "llm_report.md"
+        print("\nGenerating narrative report with Gemini...")
         plot_paths = list((output_dir / "plots").glob("*.png"))
 
         try:
-            generate_narrative_report(stats, metadata, llm_report_path, plot_paths=plot_paths)
-            print("  Relatório LLM gerado com sucesso!")
+            generate_narrative_report(
+                stats, metadata, llm_report_path, plot_paths=plot_paths, lang=report_lang
+            )
+            print("  LLM report generated successfully!")
         except Exception as e:
-            print(f"  Erro ao gerar relatório LLM: {e}")
+            print(f"  Error generating LLM report: {e}")
     else:
-        print("\n(Dica: Defina GEMINI_API_KEY para gerar o relatório com IA)")
+        print("\n(Tip: Set GEMINI_API_KEY to generate an AI-powered report)")
 
-    print("\nConcluído!")
+    print("\nDone!")
 
 
 if __name__ == "__main__":

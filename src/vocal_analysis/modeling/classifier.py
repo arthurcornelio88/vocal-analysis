@@ -1,4 +1,4 @@
-"""Classificador XGBoost para mecanismos laríngeos M1/M2."""
+"""XGBoost classifier for laryngeal mechanisms M1/M2."""
 
 import pandas as pd
 import xgboost as xgb
@@ -13,17 +13,17 @@ def train_mechanism_classifier(
     test_size: float = 0.2,
     random_state: int = 42,
 ) -> tuple[xgb.XGBClassifier, str]:
-    """Treina classificador XGBoost para diferenciar M1/M2.
+    """Train XGBoost classifier to differentiate M1/M2.
 
     Args:
-        df_features: DataFrame com features e labels.
-        feature_cols: Lista de colunas de features. Default: ['f0', 'hnr', 'energy'].
-        target_col: Nome da coluna target. 0=M1/Peito, 1=M2/Cabeça.
-        test_size: Proporção do conjunto de teste.
-        random_state: Seed para reprodutibilidade.
+        df_features: DataFrame with features and labels.
+        feature_cols: List of feature columns. Default: ['f0', 'hnr', 'energy'].
+        target_col: Target column name. 0=M1/Chest, 1=M2/Head.
+        test_size: Test set proportion.
+        random_state: Seed for reproducibility.
 
     Returns:
-        Tupla com modelo XGBoost treinado e classification report como string.
+        Tuple with trained XGBoost model and classification report as string.
     """
     if feature_cols is None:
         feature_cols = ["f0", "hnr", "energy"]
@@ -46,7 +46,7 @@ def train_mechanism_classifier(
     model.fit(X_train, y_train)
 
     report = classification_report(y_test, model.predict(X_test))
-    print("Relatório de Classificação M1/M2:")
+    print("M1/M2 Classification Report:")
     print(report)
 
     return model, report

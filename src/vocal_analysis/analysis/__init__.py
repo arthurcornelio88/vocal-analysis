@@ -1,4 +1,4 @@
-"""Módulo de análise exploratória."""
+"""Exploratory analysis module."""
 
 from vocal_analysis.analysis.exploratory import analyze_mechanism_regions
 

@@ -1,7 +1,7 @@
 [project]
 name = "vocal-analysis"
-version = "2.0.3"
-description = "Análise Bioacústica para Classificação de Mecanismos Laríngeos M1/M2 no Choro"
+version = "2.0.4"
+description = "Bioacoustic Analysis for Laryngeal Mechanism Classification M1/M2 in Brazilian Choro"
 readme = "README.md"
 authors = [
     {name = "Arthur Cornélio", email = "arthur.cornelio@gmail.com"}
@@ -53,15 +53,15 @@ select = [
     "B",   # flake8-bugbear
 ]
 ignore = [
-    "N806",   # Variable in function should be lowercase (ML convention: X, X_train, etc)
-    "ANN204", # Missing return type annotation for special method __init__
+    "N806",   # Variable in function should be lowercase (ML convention: X, X_train, etc.)
+    "ANN204", # Missing return type for __init__
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["ANN"]
-"src/vocal_analysis/analysis/llm_report.py" = ["E501"]  # Prompts LLM longos
-"src/vocal_analysis/analysis/exploratory.py" = ["E501"]  # Strings f com tabelas
+"src/vocal_analysis/analysis/llm_report.py" = ["E501"]  # Long LLM prompts
+"src/vocal_analysis/analysis/exploratory.py" = ["E501"]  # f-strings with tables
 "src/vocal_analysis/analysis/run_analysis.py" = ["E501", "ANN201"]  # CLI script
 "src/vocal_analysis/features/extraction.py" = ["E501", "ANN202"]  # Nested functions
 "src/vocal_analysis/preprocessing/process_ademilde.py" = ["E501"]  # CLI script

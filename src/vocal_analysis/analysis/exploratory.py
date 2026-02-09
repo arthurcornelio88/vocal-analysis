@@ -1,4 +1,4 @@
-"""Análise exploratória de mecanismos laríngeos M1/M2."""
+"""Exploratory analysis of laryngeal mechanisms M1/M2."""
 
 from pathlib import Path
 from typing import Literal, TypedDict
@@ -22,7 +22,7 @@ from vocal_analysis.utils.pitch import hz_range_to_notes, hz_to_note
 
 
 class MechanismStats(TypedDict):
-    """Estatísticas por mecanismo."""
+    """Statistics per mechanism."""
 
     count: int
     f0_mean: float
@@ -39,20 +39,20 @@ def analyze_mechanism_regions(
     threshold_hz: float = 400.0,
     output_dir: Path | None = None,
 ) -> dict[str, MechanismStats]:
-    """Analisa regiões de pitch separando por limiar M1/M2.
+    """Analyze pitch regions by separating with M1/M2 threshold.
 
     Args:
-        df: DataFrame com colunas 'f0', 'hnr', 'confidence'.
-        threshold_hz: Limiar de separação M1/M2 em Hz (default 400 Hz ~ G4).
-        output_dir: Diretório para salvar plots.
+        df: DataFrame with columns 'f0', 'hnr', 'confidence'.
+        threshold_hz: M1/M2 separation threshold in Hz (default 400 Hz ~ G4).
+        output_dir: Directory to save plots.
 
     Returns:
-        Dicionário com estatísticas por mecanismo.
+        Dictionary with statistics per mechanism.
     """
-    # Filtrar voiced frames: confidence > 0.85 + HNR > 0 (remove silêncio e faux positifs)
+    # Filter voiced frames: confidence > 0.85 + HNR > 0 (removes silence and false positives)
     df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)].copy()
 
-    # Classificar por threshold
+    # Classify by threshold
     df_voiced["mechanism"] = np.where(df_voiced["f0"] < threshold_hz, "M1", "M2")
 
     stats = {}
@@ -82,20 +82,20 @@ def cluster_mechanisms(
     method: str = "gmm",
     output_dir: Path | None = None,
 ) -> pd.DataFrame:
-    """Clusteriza frames em mecanismos usando f0 e HNR.
+    """Cluster frames into mechanisms using f0 and HNR.
 
     Args:
-        df: DataFrame com colunas 'f0', 'hnr'.
-        n_clusters: Número de clusters.
-        method: Método de clustering ('kmeans' ou 'gmm').
-        output_dir: Diretório para salvar plots.
+        df: DataFrame with columns 'f0', 'hnr'.
+        n_clusters: Number of clusters.
+        method: Clustering method ('kmeans' or 'gmm').
+        output_dir: Directory to save plots.
 
     Returns:
-        DataFrame com coluna 'cluster' adicionada.
+        DataFrame with 'cluster' column added.
     """
     df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)].copy()
 
-    # Normalizar features (RobustScaler usa mediana/IQR, mais robusto a outliers)
+    # Normalize features (RobustScaler uses median/IQR, more robust to outliers)
     features = df_voiced[["f0", "hnr"]].values
     scaler = RobustScaler()
     features_norm = scaler.fit_transform(features)
@@ -108,7 +108,7 @@ def cluster_mechanisms(
         model = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
         df_voiced["cluster"] = model.fit_predict(features_norm)
 
-    # Ordenar clusters por f0 médio (cluster 0 = mais grave = M1)
+    # Sort clusters by mean f0 (cluster 0 = lowest = M1)
     cluster_means = df_voiced.groupby("cluster")["f0"].mean()
     cluster_order = cluster_means.sort_values().index.tolist()
     df_voiced["mechanism"] = df_voiced["cluster"].map(
@@ -122,7 +122,7 @@ def cluster_mechanisms(
 
 
 class VMIStats(TypedDict):
-    """Estatísticas por categoria VMI."""
+    """Statistics per VMI category."""
 
     label: str
     count: int
@@ -142,41 +142,40 @@ def analyze_mechanism_vmi(
     smoothing_window: int = 5,
     output_dir: Path | None = None,
 ) -> tuple[pd.DataFrame, dict[str, VMIStats]]:
-    """Analisa mecanismos usando VMI (Vocal Mechanism Index) agnóstico.
+    """Analyze mechanisms using tessitura-agnostic VMI (Vocal Mechanism Index).
 
-    Substitui o threshold fixo de G4 por análise baseada em features espectrais.
+    Replaces the fixed G4 threshold with spectral feature-based analysis.
 
     Args:
-        df: DataFrame com colunas espectrais: 'alpha_ratio', 'h1_h2', 'spectral_tilt',
-            e opcionalmente 'cpps_per_frame'. Deve ter também 'f0', 'confidence'.
-        weights: Pesos para cálculo do VMI. Default: pesos padrão.
-        smoothing_method: Método de suavização temporal ('median', 'mean', 'exponential', 'none').
-        smoothing_window: Tamanho da janela de suavização.
-        output_dir: Diretório para salvar plots.
+        df: DataFrame with spectral columns: 'alpha_ratio', 'h1_h2', 'spectral_tilt',
+            and optionally 'cpps_per_frame'. Must also have 'f0', 'confidence'.
+        weights: Weights for VMI computation. Default: standard weights.
+        smoothing_method: Temporal smoothing method ('median', 'mean', 'exponential', 'none').
+        smoothing_window: Smoothing window size.
+        output_dir: Directory to save plots.
 
     Returns:
-        Tupla (DataFrame com VMI, estatísticas por categoria VMI).
+        Tuple (DataFrame with VMI, statistics per VMI category).
     """
-    # Filtrar voiced frames
+    # Filter voiced frames
     df_voiced = df[(df["confidence"] > 0.85)].copy()
 
-    # Verificar se temos as features necessárias
+    # Check required features
     required_cols = ["alpha_ratio", "h1_h2", "spectral_tilt"]
     missing_cols = [c for c in required_cols if c not in df_voiced.columns]
     if missing_cols:
-        raise ValueError(f"Colunas faltando para VMI: {missing_cols}")
+        raise ValueError(f"Missing columns for VMI: {missing_cols}")
 
-    # Usar CPPS per-frame se disponível, senão usar CPPS global ou placeholder
+    # Use CPPS per-frame if available, otherwise use global CPPS or placeholder
     if "cpps_per_frame" in df_voiced.columns:
         cpps = df_voiced["cpps_per_frame"].values
     elif "cpps_global" in df_voiced.columns:
-        # Usar CPPS global para todos os frames
         cpps = np.full(len(df_voiced), df_voiced["cpps_global"].iloc[0])
     else:
-        # Placeholder neutro
+        # Neutral placeholder
         cpps = np.full(len(df_voiced), 0.5)
 
-    # Calcular VMI
+    # Compute VMI
     vmi_raw = compute_vmi_fixed(
         alpha_ratio=df_voiced["alpha_ratio"].values,
         cpps=cpps,
@@ -185,7 +184,7 @@ def analyze_mechanism_vmi(
         weights=weights,
     )
 
-    # Aplicar suavização temporal
+    # Apply temporal smoothing
     if smoothing_method != "none":
         vmi_smoothed = apply_temporal_smoothing(
             vmi_raw,
@@ -195,11 +194,11 @@ def analyze_mechanism_vmi(
     else:
         vmi_smoothed = vmi_raw
 
-    # Adicionar ao DataFrame
+    # Add to DataFrame
     df_voiced["vmi"] = vmi_smoothed
     df_voiced["vmi_label"] = vmi_to_label(vmi_smoothed)
 
-    # Calcular estatísticas por categoria
+    # Compute statistics per category
     stats = {}
     total_frames = len(df_voiced)
 
@@ -225,14 +224,14 @@ def analyze_mechanism_vmi(
 
 
 def _plot_vmi_analysis(df: pd.DataFrame, output_dir: Path) -> None:
-    """Gera plots de análise VMI."""
+    """Generate VMI analysis plots."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
     sns.set_theme(style="whitegrid")
 
-    # 1. Scatter F0 vs Alpha Ratio colorido por VMI
+    # 1. Scatter F0 vs Alpha Ratio colored by VMI
     ax = axes[0, 0]
     scatter = ax.scatter(
         df["f0"],
@@ -245,18 +244,18 @@ def _plot_vmi_analysis(df: pd.DataFrame, output_dir: Path) -> None:
     plt.colorbar(scatter, ax=ax, label="VMI")
     ax.set_xlabel("F0 (Hz)")
     ax.set_ylabel("Alpha Ratio (dB)")
-    ax.set_title("F0 vs Alpha Ratio (cor = VMI)")
+    ax.set_title("F0 vs Alpha Ratio (color = VMI)")
 
-    # 2. Histograma de VMI
+    # 2. VMI histogram
     ax = axes[0, 1]
     ax.hist(df["vmi"], bins=50, alpha=0.7, color="steelblue", edgecolor="white")
     for threshold in [0.2, 0.4, 0.6, 0.8]:
         ax.axvline(threshold, color="red", linestyle="--", alpha=0.5)
     ax.set_xlabel("VMI")
-    ax.set_ylabel("Frequência")
-    ax.set_title("Distribuição do VMI")
+    ax.set_ylabel("Frequency")
+    ax.set_title("VMI Distribution")
 
-    # 3. Timeline VMI
+    # 3. VMI timeline
     ax = axes[1, 0]
     if "time" in df.columns:
         scatter = ax.scatter(
@@ -268,7 +267,7 @@ def _plot_vmi_analysis(df: pd.DataFrame, output_dir: Path) -> None:
             alpha=0.6,
         )
         plt.colorbar(scatter, ax=ax, label="VMI")
-        ax.set_xlabel("Tempo (s)")
+        ax.set_xlabel("Time (s)")
     else:
         scatter = ax.scatter(
             range(len(df)),
@@ -281,9 +280,9 @@ def _plot_vmi_analysis(df: pd.DataFrame, output_dir: Path) -> None:
         plt.colorbar(scatter, ax=ax, label="VMI")
         ax.set_xlabel("Frame")
     ax.set_ylabel("F0 (Hz)")
-    ax.set_title("Contorno F0 (cor = VMI)")
+    ax.set_title("F0 Contour (color = VMI)")
 
-    # 4. Boxplot de VMI por categoria
+    # 4. Boxplot of VMI by category
     ax = axes[1, 1]
     order = [label.value for label in VMILabel]
     present_labels = [lbl for lbl in order if lbl in df["vmi_label"].values]
@@ -291,7 +290,7 @@ def _plot_vmi_analysis(df: pd.DataFrame, output_dir: Path) -> None:
         sns.boxplot(data=df, x="vmi_label", y="f0", order=present_labels, ax=ax)
         ax.set_xlabel("VMI Label")
         ax.set_ylabel("F0 (Hz)")
-        ax.set_title("F0 por Categoria VMI")
+        ax.set_title("F0 by VMI Category")
         ax.tick_params(axis="x", rotation=45)
 
     plt.tight_layout()
@@ -300,22 +299,22 @@ def _plot_vmi_analysis(df: pd.DataFrame, output_dir: Path) -> None:
 
 
 def _plot_mechanism_analysis(df: pd.DataFrame, threshold_hz: float, output_dir: Path) -> None:
-    """Gera plots de análise por mecanismo."""
+    """Generate mechanism analysis plots."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
     sns.set_theme(style="whitegrid")
 
-    # 1. Histograma de f0 com threshold
+    # 1. f0 histogram with threshold
     ax = axes[0, 0]
     for mech, color in [("M1", "steelblue"), ("M2", "coral")]:
         subset = df[df["mechanism"] == mech]
         ax.hist(subset["f0"], bins=50, alpha=0.6, label=mech, color=color)
     ax.axvline(threshold_hz, color="red", linestyle="--", label=f"Threshold ({threshold_hz} Hz)")
     ax.set_xlabel("f0 (Hz)")
-    ax.set_ylabel("Frequência")
-    ax.set_title("Distribuição de f0 por Mecanismo")
+    ax.set_ylabel("Count")
+    ax.set_title("f0 Distribution by Mechanism")
     ax.legend()
 
     # 2. Scatter f0 vs HNR
@@ -324,24 +323,24 @@ def _plot_mechanism_analysis(df: pd.DataFrame, threshold_hz: float, output_dir: 
     ax.axvline(threshold_hz, color="red", linestyle="--", alpha=0.5)
     ax.set_xlabel("f0 (Hz)")
     ax.set_ylabel("HNR (dB)")
-    ax.set_title("f0 vs HNR por Mecanismo")
+    ax.set_title("f0 vs HNR by Mechanism")
 
-    # 3. Boxplot de HNR por mecanismo
+    # 3. HNR boxplot by mechanism
     ax = axes[1, 0]
     sns.boxplot(data=df, x="mechanism", y="hnr", ax=ax)
-    ax.set_xlabel("Mecanismo")
+    ax.set_xlabel("Mechanism")
     ax.set_ylabel("HNR (dB)")
-    ax.set_title("HNR por Mecanismo")
+    ax.set_title("HNR by Mechanism")
 
-    # 4. Timeline colorido por mecanismo
+    # 4. Timeline colored by mechanism
     ax = axes[1, 1]
     colors = {"M1": "steelblue", "M2": "coral"}
     for mech in ["M1", "M2"]:
         subset = df[df["mechanism"] == mech]
         ax.scatter(subset["time"], subset["f0"], c=colors[mech], s=1, alpha=0.6, label=mech)
-    ax.set_xlabel("Tempo (s)")
+    ax.set_xlabel("Time (s)")
     ax.set_ylabel("f0 (Hz)")
-    ax.set_title("Contorno de f0 por Mecanismo")
+    ax.set_title("f0 Contour by Mechanism")
     ax.legend()
 
     plt.tight_layout()
@@ -350,7 +349,7 @@ def _plot_mechanism_analysis(df: pd.DataFrame, threshold_hz: float, output_dir: 
 
 
 def _plot_clusters(df: pd.DataFrame, output_dir: Path) -> None:
-    """Plota resultado do clustering."""
+    """Plot clustering results."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -360,10 +359,15 @@ def _plot_clusters(df: pd.DataFrame, output_dir: Path) -> None:
     sns.scatterplot(data=df, x="f0", y="hnr", hue="mechanism", alpha=0.6, ax=ax)
     ax.set_xlabel("f0 (Hz)")
     ax.set_ylabel("HNR (dB)")
-    ax.set_title("Clusters de Mecanismo (GMM)")
+    ax.set_title("Mechanism Clusters (GMM)")
 
     fig.savefig(output_dir / "mechanism_clusters.png", dpi=150)
     plt.close(fig)
+
+
+# ---------------------------------------------------------------------------
+# Report generation — dual-language templates (EN / PT-BR)
+# ---------------------------------------------------------------------------
 
 
 def generate_report(
@@ -373,17 +377,136 @@ def generate_report(
     artist_name: str = "Ademilde Fonseca",
     xgb_report: str | None = None,
     xgb_feature_cols: list[str] | None = None,
+    lang: str = "en",
 ) -> None:
-    """Gera relatório markdown com análise completa.
+    """Generate markdown report with full analysis.
 
     Args:
-        df: DataFrame com dados.
-        stats: Estatísticas por mecanismo.
-        output_path: Caminho do arquivo .md.
-        artist_name: Nome do artista.
-        xgb_report: Classification report do XGBoost (string), se disponível.
-        xgb_feature_cols: Lista de features usadas no XGBoost.
+        df: DataFrame with data.
+        stats: Statistics per mechanism.
+        output_path: Path for the .md file.
+        artist_name: Artist name.
+        xgb_report: XGBoost classification report (string), if available.
+        xgb_feature_cols: List of features used in XGBoost.
+        lang: Report language ('en' or 'pt-BR').
     """
+    if lang == "pt-BR":
+        report = _generate_report_pt(df, stats, artist_name, xgb_report, xgb_feature_cols)
+    else:
+        report = _generate_report_en(df, stats, artist_name, xgb_report, xgb_feature_cols)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(report)
+
+
+def _generate_report_en(
+    df: pd.DataFrame,
+    stats: dict[str, MechanismStats],
+    artist_name: str,
+    xgb_report: str | None,
+    xgb_feature_cols: list[str] | None,
+) -> str:
+    """Generate English analysis report."""
+    df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)]
+
+    f0_global_mean = df_voiced["f0"].mean()
+    f0_global_min = df_voiced["f0"].min()
+    f0_global_max = df_voiced["f0"].max()
+    hnr_global_mean = df_voiced["hnr"].mean()
+
+    report = f"""# Bioacoustic Analysis - {artist_name}
+
+## Global Summary
+
+| Metric | Value | Note |
+|--------|-------|------|
+| **Mean f0** | {f0_global_mean:.1f} Hz | {hz_to_note(f0_global_mean)} |
+| **Min f0** | {f0_global_min:.1f} Hz | {hz_to_note(f0_global_min)} |
+| **Max f0** | {f0_global_max:.1f} Hz | {hz_to_note(f0_global_max)} |
+| **Range** | {hz_range_to_notes(f0_global_min, f0_global_max)} | ~{np.log2(f0_global_max / f0_global_min):.1f} octaves |
+| **Mean HNR** | {hnr_global_mean:.1f} dB | – |
+| **Total frames** | {len(df_voiced)} | – |
+
+## Mechanism Analysis
+
+"""
+
+    for mech, s in stats.items():
+        pct = (s["count"] / len(df_voiced)) * 100
+        report += f"""### {mech} ({"Chest" if mech == "M1" else "Head"})
+
+| Metric | Value | Note |
+|--------|-------|------|
+| **Frames** | {s["count"]} ({pct:.1f}%) | – |
+| **Mean f0** | {s["f0_mean"]:.1f} Hz | {s["note_mean"]} |
+| **f0 Std Dev** | {s["f0_std"]:.1f} Hz | – |
+| **Range** | {s["note_range"]} | – |
+| **Mean HNR** | {s["hnr_mean"]:.1f} dB | – |
+
+"""
+
+    if "song" in df.columns:
+        report += "## Per Song\n\n"
+        for song in df["song"].unique():
+            song_df = df_voiced[df_voiced["song"] == song]
+            report += f"""### {song}
+
+- Mean f0: {song_df["f0"].mean():.1f} Hz ({hz_to_note(song_df["f0"].mean())})
+- Range: {hz_range_to_notes(song_df["f0"].min(), song_df["f0"].max())}
+- Mean HNR: {song_df["hnr"].mean():.1f} dB
+
+"""
+
+    if xgb_report:
+        features_str = ", ".join(f"`{c}`" for c in (xgb_feature_cols or []))
+        report += f"""## XGBoost Classification (GMM Pseudo-Labels)
+
+Features used: {features_str}
+Training labels: GMM clusters (unsupervised)
+Split: 80% train / 20% test
+
+```
+{xgb_report}```
+
+"""
+
+    report += """## Interpretation
+
+### Bimodal Pattern
+
+The f0 contour shows clear alternation between two regions:
+- **Low region (M1)**: Mechanism 1 / chest voice
+- **High region (M2)**: Mechanism 2 / head voice
+
+### Implications for "Fach" Classification
+
+The analysis suggests that traditional "voice type" classification does not capture
+the physiological reality of laryngeal mechanisms. The singer uses both mechanisms
+fluidly, contradicting rigid categorizations.
+
+### Limitations
+
+- Historical recordings with low quality (reduced HNR)
+- M1/M2 classification via GMM (sensitive to training data)
+- CPPS compromised by background noise
+
+## Next Steps
+
+1. Analyze transitions between mechanisms (register breaks)
+2. Compare with contemporary singers (high-quality recordings)
+3. Validate VMI with manual annotations from a speech-language pathologist
+"""
+    return report
+
+
+def _generate_report_pt(
+    df: pd.DataFrame,
+    stats: dict[str, MechanismStats],
+    artist_name: str,
+    xgb_report: str | None,
+    xgb_feature_cols: list[str] | None,
+) -> str:
+    """Generate Portuguese analysis report."""
     df_voiced = df[(df["confidence"] > 0.85) & (df["hnr"] > 0)]
 
     f0_global_mean = df_voiced["f0"].mean()
@@ -422,7 +545,6 @@ def generate_report(
 
 """
 
-    # Songs breakdown
     if "song" in df.columns:
         report += "## Por Música\n\n"
         for song in df["song"].unique():
@@ -474,25 +596,143 @@ os mecanismos de forma fluida, contradizendo categorizações rígidas.
 2. Comparar com cantoras contemporâneas (gravações de alta qualidade)
 3. Validar VMI com anotações manuais de fonoaudiólogo
 """
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(report)
+    return report
 
 
 def generate_vmi_report(
     df: pd.DataFrame,
     vmi_stats: dict[str, VMIStats],
     output_path: Path,
-    artist_name: str = "Artista",
+    artist_name: str = "Artist",
+    lang: str = "en",
 ) -> None:
-    """Gera relatório markdown com análise VMI.
+    """Generate markdown report with VMI analysis.
 
     Args:
-        df: DataFrame com dados e VMI calculado.
-        vmi_stats: Estatísticas por categoria VMI.
-        output_path: Caminho do arquivo .md.
-        artist_name: Nome do artista.
+        df: DataFrame with data and computed VMI.
+        vmi_stats: Statistics per VMI category.
+        output_path: Path for the .md file.
+        artist_name: Artist name.
+        lang: Report language ('en' or 'pt-BR').
     """
+    if lang == "pt-BR":
+        report = _generate_vmi_report_pt(df, vmi_stats, artist_name)
+    else:
+        report = _generate_vmi_report_en(df, vmi_stats, artist_name)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(report)
+
+
+def _generate_vmi_report_en(
+    df: pd.DataFrame,
+    vmi_stats: dict[str, VMIStats],
+    artist_name: str,
+) -> str:
+    """Generate English VMI report."""
+    df_voiced = df[df["confidence"] > 0.85]
+
+    f0_global_mean = df_voiced["f0"].mean()
+    f0_global_min = df_voiced["f0"].min()
+    f0_global_max = df_voiced["f0"].max()
+    vmi_global_mean = df_voiced["vmi"].mean()
+
+    report = f"""# VMI Analysis (Vocal Mechanism Index) - {artist_name}
+
+## Methodology
+
+This report uses the **VMI (Vocal Mechanism Index)**, a continuous metric that
+replaces the arbitrary G4 threshold (400 Hz) with spectral feature-based analysis:
+
+- **Alpha Ratio**: Energy ratio 0-1kHz vs 1-5kHz
+- **H1-H2**: Difference between 1st and 2nd harmonic (glottal slope)
+- **Spectral Tilt**: Power spectrum slope
+- **CPPS**: Cepstral peak prominence (periodicity)
+
+VMI ranges from **0.0 (Dense M1)** to **1.0 (Light M2)**, enabling gradual
+identification of vocal mechanism without relying on fixed frequencies.
+
+---
+
+## Global Summary
+
+| Metric | Value | Note |
+|--------|-------|------|
+| **Mean F0** | {f0_global_mean:.1f} Hz | {hz_to_note(f0_global_mean)} |
+| **Min F0** | {f0_global_min:.1f} Hz | {hz_to_note(f0_global_min)} |
+| **Max F0** | {f0_global_max:.1f} Hz | {hz_to_note(f0_global_max)} |
+| **Range** | {hz_range_to_notes(f0_global_min, f0_global_max)} | ~{np.log2(f0_global_max / f0_global_min):.1f} octaves |
+| **Mean VMI** | {vmi_global_mean:.3f} | – |
+| **Total frames** | {len(df_voiced)} | – |
+
+---
+
+## VMI Category Analysis
+
+| Category | Frames | % | Mean VMI | Mean F0 | Alpha Ratio | H1-H2 |
+|----------|--------|---|----------|---------|-------------|-------|
+"""
+
+    for label_name, s in vmi_stats.items():
+        report += f"| **{label_name}** | {s['count']} | {s['percentage']:.1f}% | {s['vmi_mean']:.3f} | {s['f0_mean']:.1f} Hz | {s['alpha_ratio_mean']:.1f} dB | {s['h1_h2_mean']:.1f} dB |\n"
+
+    report += """
+### Category Interpretation
+
+- **M1_HEAVY (VMI 0.0-0.2)**: Heavy mechanism, firm adduction, full chest voice
+- **M1_LIGHT (VMI 0.2-0.4)**: Thin-edge M1, common in tenors/middle register
+- **MIX_PASSAGGIO (VMI 0.4-0.6)**: Passaggio zone, acoustic instability, mixed voice
+- **M2_REINFORCED (VMI 0.6-0.8)**: M2 with glottic adduction, frontal resonance
+- **M2_LIGHT (VMI 0.8-1.0)**: Light mechanism, falsetto, piano M2
+
+---
+
+## Per Song Analysis
+
+"""
+
+    if "song" in df.columns:
+        for song in df["song"].unique():
+            song_df = df_voiced[df_voiced["song"] == song]
+            if len(song_df) > 0:
+                report += f"""### {song}
+
+- Mean F0: {song_df["f0"].mean():.1f} Hz ({hz_to_note(song_df["f0"].mean())})
+- Mean VMI: {song_df["vmi"].mean():.3f}
+- Distribution: {(song_df["vmi_label"].value_counts() / len(song_df) * 100).to_dict()}
+
+"""
+
+    report += """---
+
+## VMI Advantages
+
+1. **Tessitura-agnostic**: Does not depend on fixed frequencies like G4
+2. **Continuous**: Captures gradations between mechanisms (passaggio)
+3. **Multi-dimensional**: Combines multiple spectral features
+4. **Interpretable**: Each feature has clear physiological meaning
+
+## Limitations
+
+1. **Fixed weights**: Current version uses default weights, not trained
+2. **Global CPPS**: Ideally would use CPPS per-frame (slower)
+3. **Unstable H1-H2**: May be less accurate for F0 > 350Hz
+
+## Next Steps
+
+1. Train VMI weights via XGBoost with GMM pseudo-labels
+2. Validate with manual annotations on known passages
+3. Add temporal regularization for stability
+"""
+    return report
+
+
+def _generate_vmi_report_pt(
+    df: pd.DataFrame,
+    vmi_stats: dict[str, VMIStats],
+    artist_name: str,
+) -> str:
+    """Generate Portuguese VMI report."""
     df_voiced = df[df["confidence"] > 0.85]
 
     f0_global_mean = df_voiced["f0"].mean()
@@ -542,11 +782,11 @@ gradual do mecanismo vocal sem depender de frequências fixas.
     report += """
 ### Interpretação das Categorias
 
-- **M1_DENSO (VMI 0.0-0.2)**: Mecanismo pesado, adução firme, voz de peito plena
-- **M1_LIGEIRO (VMI 0.2-0.4)**: M1 de borda fina, comum em tenores/registro médio
+- **M1_HEAVY (VMI 0.0-0.2)**: Mecanismo pesado, adução firme, voz de peito plena
+- **M1_LIGHT (VMI 0.2-0.4)**: M1 de borda fina, comum em tenores/registro médio
 - **MIX_PASSAGGIO (VMI 0.4-0.6)**: Zona de passagem, instabilidade acústica, voz mista
-- **M2_REFORCADO (VMI 0.6-0.8)**: M2 com adução glótica, ressonância frontal
-- **M2_LIGEIRO (VMI 0.8-1.0)**: Mecanismo leve, falsete, piano M2
+- **M2_REINFORCED (VMI 0.6-0.8)**: M2 com adução glótica, ressonância frontal
+- **M2_LIGHT (VMI 0.8-1.0)**: Mecanismo leve, falsete, piano M2
 
 ---
 
@@ -587,6 +827,4 @@ gradual do mecanismo vocal sem depender de frequências fixas.
 2. Validar com anotações manuais em trechos conhecidos
 3. Adicionar regularização temporal para estabilidade
 """
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(report)
+    return report
