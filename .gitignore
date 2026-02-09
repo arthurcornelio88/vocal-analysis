@@ -72,3 +72,15 @@ TODO_METODOLOGIA.md
 # Ruff
 .ruff_cache/
 .coverage
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.pdf
+paper/*.spl
+
+# Portuguese draft (not for public repo)
+paper/Análise Vocal*

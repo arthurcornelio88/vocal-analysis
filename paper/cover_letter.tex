@@ -1,0 +1,59 @@
+\documentclass[12pt]{letter}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\signature{Arthur Cornelio}
+\address{Rio de Janeiro, Brazil \\
+  \href{mailto:arthur.cornelio@gmail.com}{arthur.cornelio@gmail.com}}
+
+\begin{document}
+
+\begin{letter}{Editor-in-Chief \\
+  Journal of Voice \\
+  The Voice Foundation}
+
+\opening{Dear Editor,}
+
+I am writing to submit our manuscript entitled \textbf{``Multidimensional
+Vocological Analysis: Laryngeal Mechanism Physiology, Digital Signal Processing,
+and a Critique of the Fach System in Brazilian Choro''} for consideration as an
+original research article in the \textit{Journal of Voice}.
+
+This study presents the first computational bioacoustic analysis of laryngeal
+mechanisms (M1/M2) in Brazilian Choro singing, using historical recordings of
+Ademilde Fonseca as a case study. Our work makes three contributions to the field:
+
+\begin{enumerate}
+  \item \textbf{An open-source, reproducible pipeline} combining neural source
+    separation (HTDemucs), CNN pitch tracking (CREPE), spectral feature extraction
+    (Praat/Parselmouth), and multi-method classification (GMM, XGBoost)---designed
+    specifically for degraded historical recordings and adaptable to other genres.
+
+  \item \textbf{The Vocal Mechanism Index (VMI)}, a continuous spectral metric
+    (0--1) for tessitura-agnostic laryngeal mechanism classification based on
+    Alpha Ratio, H1-H2, Spectral Tilt, and CPPS, offering a physiologically
+    grounded alternative to fixed frequency thresholds.
+
+  \item \textbf{Empirical evidence challenging the universal applicability of the
+    Fach system}, demonstrating that Choro vocal technique prioritizes colloquial
+    expressivity and articulatory agility over the acoustic projection criteria
+    central to operatic voice classification.
+\end{enumerate}
+
+We believe this manuscript aligns well with the \textit{Journal of Voice}'s scope
+in voice medicine and voice science, particularly in its intersection of laryngeal
+physiology, machine learning, and vocal classification. The findings are relevant
+to voice researchers, speech-language pathologists, and vocal pedagogues working
+with non-Western and popular music genres.
+
+This manuscript has not been previously published and is not under consideration
+elsewhere.
+
+\closing{Sincerely,}
+
+\end{letter}
+
+\end{document}
