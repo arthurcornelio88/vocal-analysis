@@ -816,7 +816,7 @@ The environment variable `USE_VMI=true` (default) enables VMI analysis when spec
 
 ## 12. Contact and Contributions
 
-**Author:** Arthur Cornelio (arthur.cornelio@gmail.com)
+**Author:** Arthur Cornélio (arthur.Cornélio@gmail.com)
 **Project:** Bioacoustic Analysis — Laryngeal Mechanisms M1/M2 in Choro
 **Version:** 2.0.4
 **Stack:** Python 3.10+, torchcrepe, parselmouth, xgboost, torchaudio (HTDemucs), google-generativeai (Gemini)

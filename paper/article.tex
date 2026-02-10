@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage{xurl}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{multirow}
@@ -22,13 +23,13 @@
 
 \title{Multidimensional Vocological Analysis: Laryngeal Mechanism Physiology, Digital Signal Processing, and a Critique of the Fach System in Brazilian Choro}
 
-\author[ufrj]{Arthur Cornelio\corref{cor1}}
+\author[ind]{Arthur Cornélio\corref{cor1}}
 \ead{arthur.cornelio@gmail.com}
 \cortext[cor1]{Corresponding author}
 
-\affiliation[ufrj]{organization={Independent Researcher},
-  city={Rio de Janeiro},
-  country={Brazil}}
+\affiliation[ind]{organization={Independent Researcher},
+  city={Paris},
+  country={France}}
 
 \begin{abstract}
 Modern vocology has evolved from a subjective discipline into a rigorous science
@@ -43,16 +44,16 @@ We developed an open-source hybrid pipeline combining source separation (HTDemuc
 neural pitch tracking (CREPE), spectral feature extraction (Praat/Parselmouth), and
 machine learning classification (Gaussian Mixture Model and XGBoost). We introduce
 the Vocal Mechanism Index (VMI), a continuous spectral metric (0--1) that classifies
-laryngeal mechanisms independently of tessitura, based on Alpha Ratio, H1-H2,
+laryngeal mechanisms independently of tessitura, based on Alpha Ratio, $H_1$-$H_2$,
 Spectral Tilt, and Cepstral Peak Prominence.
 
 Analysis of 20,266 voiced frames across three recordings revealed that 57.3\% of
-frames operated in M1 (mean f0 = 315.9~Hz, D\#4) and 42.7\% in M2 (mean f0 =
+frames operated in M1 (mean $f_0$ = 315.9~Hz, D\#4) and 42.7\% in M2 (mean $f_0$ =
 502.1~Hz, B4). The VMI distribution showed 44.3\% of frames in the passaggio zone
 (VMI 0.4--0.6), indicating fluid register transitions. XGBoost classification
 achieved 1.00 precision, recall, and F1-score on a held-out test set of 4,054
 frames, confirming clear cluster separability. Formant analysis revealed speech-like
-articulation (F1 $\approx$ 660~Hz, F2 $\approx$ 1,629~Hz), consistent with the
+articulation ($F_1 \approx$ 660~Hz, $F_2 \approx$ 1,629~Hz), consistent with the
 colloquial expressivity characteristic of Choro aesthetics.
 
 These findings demonstrate that Ademilde Fonseca's vocal technique integrates both
@@ -96,17 +97,18 @@ of the foundations of Brazilian popular music---presents a particularly compelli
 case for this critique. Choro singing demands specific vocal competencies that
 diverge substantially from operatic ideals: rapid ornamental passages (glissandi,
 portamenti), precise diction at high speed, rhythmic agility, and what Tatit
-describes as ``colloquial expressivity''---a vocal quality that privileges
-speech-like articulation over resonant projection.\cite{tatit2002,ferraz2010}
+terms \emph{figurativiza\c{c}\~{a}o}---the speech-like quality of Brazilian
+popular singing that privileges natural articulation over resonant
+projection.\cite{tatit2002,rezende2016}
 
 The central problem addressed in this study is the inadequacy of the \emph{Fach}
 system for describing the vocal biomechanics of Choro singers. When applied to this
 genre, the \emph{Fach} framework imposes rigid tessitura boundaries, fixed
 \emph{passaggio} zones, and acoustic projection requirements that are aesthetically
 irrelevant and pedagogically counterproductive in a microphone-dependent genre. The
-essential vocal competencies of Choro---respiratory control, diction clarity,
-sustenance, ornamental agility, precise intonation, and effective vocal
-emission\cite{ferraz2010}---cannot be captured by a system designed to categorize
+essential vocal competencies of Choro---vocal attack precision, articulatory
+diction at high speed, ornamental agility, register management, resonance
+adjustments, and controlled vibrato\cite{rezende2016}---cannot be captured by a system designed to categorize
 operatic voices by their capacity to fill a concert hall without amplification.
 
 Recent advances in machine learning have opened new possibilities for objective
@@ -115,7 +117,7 @@ vocal register classification accuracy exceeding 97\% in controlled
 settings.\cite{almeida2025b} Hybrid methods combining Deep Neural Networks and
 Linear Prediction (LPC) enable robust formant tracking even in high-pitched
 voices.\cite{raitio2024} These tools, combined with neural source separation
-models capable of isolating vocal lines from complex arrangements,\cite{defossez2021}
+models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
 now enable rigorous biomechanical analysis of singing in genres that were previously
 inaccessible to computational methods.
 
@@ -133,7 +135,7 @@ of laryngeal behavior than categorical \emph{Fach} labels.
 This study fills a gap in the literature by providing the first computational
 bioacoustic analysis of Brazilian Choro singing. While recent work has applied
 machine learning to vocal register classification in Western pop
-music\cite{almeida2025a,almeida2025b} and operatic singing,\cite{schulze2023} no
+music\cite{almeida2025a,almeida2025b} and singing voice classification,\cite{sol2023} no
 previous study has addressed the specific acoustic challenges of historical Choro
 recordings or the theoretical implications for \emph{Fach} critique in vernacular
 genres. The novelty of this research lies in the application of a hybrid pipeline
@@ -152,7 +154,7 @@ tessitura-agnostic classification metric.
 The \emph{Fach} system's central premise is vocal audibility over a non-amplified
 orchestra. This capacity depends on the ``singer's formant cluster''---a peak of
 acoustic energy between 2.5 and 3.5~kHz generated by the convergence of the third,
-fourth, and fifth vocal tract formants (F3, F4, F5).\cite{sundberg1974} This
+fourth, and fifth vocal tract formants ($F_3$, $F_4$, $F_5$).\cite{sundberg1974} This
 resonance strategy allows operatic singers to project above an orchestral
 accompaniment without electronic amplification.
 
@@ -176,7 +178,7 @@ boundaries within a single phrase.
 Forcing Choro singers into \emph{Fach} categories leads to reductive
 ``pigeonholing'' that ignores individual ``comfort tessitura''---the range within
 which a singer achieves optimal articulatory agility and textual
-intelligibility.\cite{ferraz2010} The concept of comfort tessitura is central to
+intelligibility.\cite{rezende2016} The concept of comfort tessitura is central to
 Choro vocal technique: rather than striving to extend the range in pursuit of a
 \emph{Fach}-appropriate tessitura, the Choro singer works within the region where
 articulatory precision is maximized and where the vocal mechanism can support the
@@ -215,15 +217,15 @@ Four mechanisms are defined:
   \item[M2 (head voice/falsetto):] Operates under cricothyroid muscle tension with
     reduced vibratory mass. M2 produces lower overall amplitude, energy concentrated
     in high harmonics, and characteristic phase transitions at register
-    boundaries.\cite{henrich2014}
+    boundaries.\cite{roubeau2009}
   \item[M3 (whistle):] At the extreme high end of tessitura, similar to M0 in
     expressivity value within popular genres.
 \end{description}
 
 Critically, the M1/M2 overlap zone---spanning approximately one octave in vocal
 extension---is where it is physiologically possible to phonate in either mechanism.
-The choice within this zone is determined not solely by fundamental frequency (f0)
-but by desired intensity and timbre.\cite{roubeau2009,henrich2014} Henrich et
+The choice within this zone is determined not solely by fundamental frequency ($f_0$)
+but by desired intensity and timbre.\cite{roubeau2009,henrich2004} Henrich et
 al.\cite{henrich2004} demonstrated through EGG measurements that the glottal open
 quotient (OQ) provides the most reliable differentiation between mechanisms: M1
 exhibits lower OQ (longer closed phase, more complete glottal contact), while M2
@@ -235,7 +237,7 @@ In Choro, technical mastery resides in the ability to transit or maintain mechan
 within the overlap zone to serve the musical narrative: M1 for intensity and rhythmic
 drive, M2 for ornamentation and phrase endings. Trained singers employ sophisticated
 vocal tract adjustments at the \emph{passaggio}---for instance, opening the jaw
-wider to raise F1 and maintain it above f0 (\emph{vowel tuning} or \emph{formant
+wider to raise $F_1$ and maintain it above $f_0$ (\emph{vowel tuning} or \emph{formant
 tuning})---to achieve seamless transitions between mechanisms without perceptible
 breaks.\cite{bozeman2013,sundberg1987} This biomechanical flexibility is precisely
 what the \emph{Fach} system's rigid categories fail to accommodate.
@@ -276,13 +278,13 @@ frames for analysis.
 \label{sec:separation}
 
 In complex Choro arrangements, pitch detection algorithms may capture instrumental
-frequencies instead of the voice. We applied HTDemucs\cite{defossez2021}---a hybrid
+frequencies instead of the voice. We applied HTDemucs\cite{rouard2023}---a hybrid
 source separation model combining temporal and spectral processing with Transformer
 layers---to isolate the vocal line prior to feature extraction. HTDemucs achieves
-7--9~dB Signal-to-Distortion Ratio (SDR) on vocal separation benchmarks,
+$\approx 9$~dB Signal-to-Distortion Ratio (SDR) on source separation benchmarks,
 substantially outperforming earlier methods such as Spleeter (5--6~dB SDR).
 
-Separation results were validated by comparing f0 contours extracted from the
+Separation results were validated by comparing $f_0$ contours extracted from the
 original mix and the isolated vocal track (Figure~\ref{fig:separation}). Successful
 separation was confirmed by: (1) elimination of spurious pitch detections in the
 instrumental range ($< 200$~Hz), which were caused by the 7-string guitar bass lines
@@ -300,7 +302,7 @@ verification.
 The pipeline combines two complementary extraction methods, all operating at 5~ms
 temporal resolution (hop length = 220 samples at 44.1~kHz):
 
-\paragraph{Fundamental frequency (f0).}
+\paragraph{Fundamental frequency ($f_0$).}
 We used CREPE,\cite{kim2018} a convolutional neural network trained on annotated
 pitch data, configured with the \texttt{full} model for maximum precision, frequency
 range 50--800~Hz, and \texttt{weighted\_argmax} decoding. CREPE was selected over
@@ -311,7 +313,7 @@ Choro recordings.
 \paragraph{Vocal quality features.}
 Using Praat via Parselmouth,\cite{boersma2023} we extracted: Harmonicity-to-Noise
 Ratio (HNR), Cepstral Peak Prominence Smoothed (CPPS),\cite{maryn2015} Jitter
-(ppq5), and Shimmer (apq11).\cite{teixeira2013} Formants F1--F4 were extracted via
+(ppq5), and Shimmer (apq11).\cite{teixeira2013} Formants $F_1$--$F_4$ were extracted via
 Burg Linear Predictive Coding (5 formants, maximum formant 5,500~Hz). RMS spectral
 energy was computed using librosa.
 
@@ -324,13 +326,13 @@ extracted for the Vocal Mechanism Index:
 generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
 gentle closure concentrates energy in the fundamental, yielding a low ratio.
 
-\emph{H1-H2}\cite{hanson1997,kreiman2014}: the amplitude difference (dB) between
-the first harmonic (H1 = f0) and the second harmonic (H2 = 2f0), the most direct
+\emph{$H_1$-$H_2$}\cite{hanson1997,kreiman2014}: the amplitude difference (dB) between
+the first harmonic ($H_1 = f_0$) and the second harmonic ($H_2 = 2f_0$), the most direct
 acoustic correlate of the glottal adduction pattern. Firm adduction (M1) produces
-abrupt airflow closure and strong harmonics, so H2 approaches H1 in amplitude (low
-H1-H2). Light adduction (M2) produces a dominant fundamental with weak harmonics
-(high H1-H2). A known limitation is that when f0 exceeds approximately 350~Hz, H1
-may coincide with the first vocal tract resonance (F1), contaminating the
+abrupt airflow closure and strong harmonics, so $H_2$ approaches $H_1$ in amplitude (low
+$H_1$-$H_2$). Light adduction (M2) produces a dominant fundamental with weak harmonics
+(high $H_1$-$H_2$). A known limitation is that in the upper register, $H_1$
+may coincide with the first vocal tract resonance ($F_1$), contaminating the
 measurement.\cite{hanson1997}
 
 \emph{Spectral Tilt}\cite{fant1995,gauffin1989}: the slope of the linear regression
@@ -340,7 +342,7 @@ frequencies. In M1, rapid glottal closure creates discontinuities in airflow tha
 generate strong high-frequency harmonics (shallow tilt, near zero). In M2, smooth
 closure produces fewer overtones (steep tilt, very negative). Spectral tilt captures
 the global spectral pattern without depending on individual harmonic detection,
-making it more robust than H1-H2 in the upper register.
+making it more robust than $H_1$-$H_2$ in the upper register.
 
 \emph{CPPS per frame}\cite{maryn2015}: smoothed cepstral peak prominence computed per
 frame, measuring vibration periodicity. High CPPS indicates clean, periodic phonation
@@ -348,8 +350,8 @@ frame, measuring vibration periodicity. High CPPS indicates clean, periodic phon
 aperiodicity.
 
 \paragraph{Articulatory agility features.}
-Pitch velocity ($\Delta$f0/$\Delta$t, Hz/s), pitch acceleration
-($\Delta^2$f0/$\Delta$t$^2$, Hz/s$^2$), and syllabic rate (energy peaks/s with
+Pitch velocity ($\Delta f_0/\Delta t$, Hz/s), pitch acceleration
+($\Delta^2 f_0/\Delta t^2$, Hz/s$^2$), and syllabic rate (energy peaks/s with
 100~ms minimum distance) were computed as indicators of ornamental complexity.
 
 \subsection{Classification Pipeline}
@@ -360,11 +362,11 @@ interpretability:
 
 \paragraph{Method 1: Heuristic threshold.}
 A baseline classification using 400~Hz ($\approx$ G4), the empirical
-\emph{passaggio} threshold for female voices: frames with f0 $< 400$~Hz are
-classified as M1; frames with f0 $\geq 400$~Hz as M2.
+\emph{passaggio} threshold for female voices: frames with $f_0 < 400$~Hz are
+classified as M1; frames with $f_0 \geq 400$~Hz as M2.
 
 \paragraph{Method 2: Gaussian Mixture Model (GMM).}
-An unsupervised approach using a two-component GMM fitted to the f0 $\times$ HNR
+An unsupervised approach using a two-component GMM fitted to the $f_0 \times$ HNR
 feature space. Features were normalized using RobustScaler (median/IQR), which is
 more resistant to outliers than StandardScaler in degraded recordings. The model was
 initialized with \texttt{random\_state=42}.
@@ -372,7 +374,7 @@ initialized with \texttt{random\_state=42}.
 \paragraph{Method 3: XGBoost with pseudo-labels.}
 A supervised classifier\cite{chen2016} trained on GMM-generated pseudo-labels, an
 established technique in semi-supervised learning.\cite{lee2013,nigam2000} The model
-used nine features (f0, HNR, RMS energy, pitch velocity, pitch acceleration, F1--F4)
+used nine features ($f_0$, HNR, RMS energy, pitch velocity, pitch acceleration, $F_1$--$F_4$)
 with hyperparameters: \texttt{n\_estimators=100}, \texttt{max\_depth=5},
 \texttt{learning\_rate=0.1}. Data were split 80\%/20\% for training and testing
 (\texttt{random\_state=42}).
@@ -387,7 +389,7 @@ cluster separability rather than physiological classification accuracy.
 \paragraph{Method 4: Vocal Mechanism Index (VMI).}
 A continuous spectral metric (0--1) that replaces the arbitrary frequency threshold
 with analysis based on physiologically grounded spectral features. The VMI combines
-four normalized components---Alpha Ratio (glottal closure pattern), H1-H2 (adduction
+four normalized components---Alpha Ratio (glottal closure pattern), $H_1$-$H_2$ (adduction
 pattern), Spectral Tilt (spectral energy decay rate), and CPPS (vibration
 periodicity)---into a single score mapped to five categories: M1\_HEAVY (0.0--0.2),
 M1\_LIGHT (0.2--0.4), MIX\_PASSAGGIO (0.4--0.6), M2\_REINFORCED (0.6--0.8), and
@@ -399,7 +401,7 @@ thresholds, making it applicable across voice types and genres.
 \label{sec:reproducibility}
 
 The complete analysis pipeline is implemented in Python 3.10+ and is publicly
-available as an open-source package. Several measures ensure reproducibility in
+available as an open-source repository.\footnote{\url{https://github.com/arthurcornelio88/vocal-analysis}} Several measures ensure reproducibility in
 accordance with current best practices for machine learning in voice
 research:\cite{ghasemzadeh2023,nudelman2025}
 
@@ -436,7 +438,7 @@ repository.
 \label{sec:global_profile}
 
 Table~\ref{tab:global} presents the global bioacoustic statistics for Ademilde
-Fonseca across all three recordings. The mean f0 of 395.3~Hz (G4) places the
+Fonseca across all three recordings. The mean $f_0$ of 395.3~Hz (G4) places the
 singer's central tendency precisely at the theoretical M1/M2 \emph{passaggio}
 boundary for female voices. The total range spans from F3 (179.3~Hz) to G5
 (781.2~Hz), approximately 2.1 octaves. A mean HNR of 16.9~dB indicates relatively
@@ -452,9 +454,9 @@ instrumental interference.
 \toprule
 \textbf{Metric} & \textbf{Value} & \textbf{SD} & \textbf{Musical note} \\
 \midrule
-Mean f0         & 395.3 Hz  & 110.6 Hz & G4  \\
-Min f0          & 179.3 Hz  & ---      & F3  \\
-Max f0          & 781.2 Hz  & ---      & G5  \\
+Mean $f_0$         & 395.3 Hz  & 110.6 Hz & G4  \\
+Min $f_0$          & 179.3 Hz  & ---      & F3  \\
+Max $f_0$          & 781.2 Hz  & ---      & G5  \\
 Mean HNR        & 16.9 dB   & ---      & --- \\
 \midrule
 \multicolumn{4}{@{}l}{\textit{Per song}} \\
@@ -467,7 +469,7 @@ Brasileirinho         & 444.6 Hz & --- & A4   \\
 \end{table}
 
 Per-song analysis reveals systematic variation: \emph{Brasileirinho}, the most
-virtuosic piece, has the highest mean f0 (444.6~Hz, A4), reflecting greater use of
+virtuosic piece, has the highest mean $f_0$ (444.6~Hz, A4), reflecting greater use of
 the upper register. \emph{Delicado}, a slower piece, concentrates closer to the
 comfort tessitura (382.9~Hz, G4). Source separation validation is shown in
 Figure~\ref{fig:separation}.
@@ -500,7 +502,7 @@ quality across registers (Figure~\ref{fig:mechanism}).
 \label{tab:mechanism}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-\textbf{Mechanism} & \textbf{Frames} & \textbf{\%} & \textbf{Mean f0 (Hz)}
+\textbf{Mechanism} & \textbf{Frames} & \textbf{\%} & \textbf{Mean $f_0$ (Hz)}
   & \textbf{SD (Hz)} & \textbf{Mean HNR (dB)} \\
 \midrule
 M1 (chest) & 11,617 & 57.3 & 315.9 & 48.0 & 16.9 \\
@@ -512,15 +514,15 @@ M2 (head)  & 8,649  & 42.7 & 502.1 & 75.4 & 16.8 \\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{../outputs/plots/mechanism_analysis.png}
-\caption{Laryngeal mechanism analysis: (a) f0 histogram by mechanism showing clear
-bimodal distribution; (b) f0 $\times$ HNR scatter plot; (c) HNR boxplot by
-mechanism; (d) temporal f0 contour colored by mechanism classification. The bimodal
+\caption{Laryngeal mechanism analysis: (a) $f_0$ histogram by mechanism showing clear
+bimodal distribution; (b) $f_0 \times$ HNR scatter plot; (c) HNR boxplot by
+mechanism; (d) temporal $f_0$ contour colored by mechanism classification. The bimodal
 distribution at 400~Hz confirms the M1/M2 boundary.}
 \label{fig:mechanism}
 \end{figure}
 
 The M1 distribution is centered at 265--365~Hz (approximately C\#4--F\#4), while M2
-occupies 425--580~Hz (approximately A4--D5). The f0 histogram reveals a clear
+occupies 425--580~Hz (approximately A4--D5). The $f_0$ histogram reveals a clear
 bimodal distribution with a natural separation at approximately 400~Hz, confirming
 the physiological basis of the G4 \emph{passaggio} boundary for female voices
 documented in the literature.\cite{roubeau2009} Notably, HNR values are nearly
@@ -535,7 +537,7 @@ relaxation coincides with M2 elevation and softer dynamics; (2) ascending orname
 passages, where rapid glissandi and appoggiaturas traverse the \emph{passaggio}
 within a few hundred milliseconds; and (3) sustained notes above G4, where stable M2
 maintenance is required for the melodic line. The temporal regularity of these
-transitions---visible as consistent blue-to-coral alternations in the f0
+transitions---visible as consistent blue-to-coral alternations in the $f_0$
 contour---suggests a highly controlled vocal technique rather than involuntary
 register breaks.
 
@@ -551,8 +553,8 @@ passages and M2 (coral) in ornamental peaks and phrase endings.
 \begin{table}[htbp]
 \centering
 \caption{XGBoost classification report on held-out test set (20\% of data,
-N = 4,054 frames). Features: f0, HNR, energy, f0 velocity, f0 acceleration,
-F1--F4. Training labels: GMM clusters.}
+N = 4,054 frames). Features: $f_0$, HNR, energy, $f_0$ velocity, $f_0$ acceleration,
+$F_1$--$F_4$. Training labels: GMM clusters.}
 \label{tab:xgboost}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -571,7 +573,7 @@ Macro avg  & 1.00 & 1.00 & 1.00 & 4,054 \\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{../outputs/plots/xgb_mechanism_timeline.png}
-\caption{Temporal f0 contour colored by XGBoost mechanism prediction for each
+\caption{Temporal $f_0$ contour colored by XGBoost mechanism prediction for each
 analyzed recording. Blue: M1 (chest voice); coral: M2 (head voice). Note the fluid
 alternation between mechanisms, particularly in ornamental passages.}
 \label{fig:xgboost}
@@ -603,7 +605,7 @@ extreme mechanism deployment.
 \begin{tabular}{@{}lrrccc@{}}
 \toprule
 \textbf{Category} & \textbf{Frames} & \textbf{\%} & \textbf{Mean VMI}
-  & \textbf{Alpha Ratio (dB)} & \textbf{H1-H2 (dB)} \\
+  & \textbf{Alpha Ratio (dB)} & \textbf{$H_1$-$H_2$ (dB)} \\
 \midrule
 M1\_HEAVY       & 995   & 4.9  & 0.154 & 1.8   & $-20.9$ \\
 M1\_LIGHT       & 7,828 & 38.6 & 0.313 & $-5.0$  & $-3.9$  \\
@@ -617,9 +619,9 @@ M2\_LIGHT       & 135   & 0.7  & 0.851 & $-33.3$ & 46.4    \\
 The spectral features show clear progression across categories: Alpha Ratio
 decreases from 1.8~dB (M1\_HEAVY) to $-33.3$~dB (M2\_LIGHT), reflecting the shift
 from strong upper harmonics (firm glottal closure in M1) to energy concentrated in
-the fundamental (gentle closure in M2). H1-H2 increases from $-20.9$~dB to
-46.4~dB, consistent with the transition from firm adduction (low H1-H2) to light
-adduction (high H1-H2).
+the fundamental (gentle closure in M2). $H_1$-$H_2$ increases from $-20.9$~dB to
+46.4~dB, consistent with the transition from firm adduction (low $H_1$-$H_2$) to light
+adduction (high $H_1$-$H_2$).
 
 The near-absence of M2\_LIGHT (0.7\% of frames) is notable: Fonseca rarely employs
 pure falsetto, preferring instead the reinforced M2 or \emph{voix mixte} quality
@@ -647,7 +649,7 @@ not a discrete boundary but a continuous zone of spectral transformation.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{../outputs/plots/vmi_scatter.png}
-\caption{VMI scatter plot: f0 versus Alpha Ratio colored by VMI value (0--1,
+\caption{VMI scatter plot: $f_0$ versus Alpha Ratio colored by VMI value (0--1,
 RdBu\_r scale). Low VMI (red) indicates M1; high VMI (blue) indicates M2. The
 continuous color gradient demonstrates fluid mechanism transitions, particularly
 in the 350--450~Hz range.}
@@ -657,7 +659,7 @@ in the 350--450~Hz range.}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{../outputs/plots/excerpt_brasileirinho.png}
-\caption{Five-second excerpt from \emph{Brasileirinho} at the densest f0 window.
+\caption{Five-second excerpt from \emph{Brasileirinho} at the densest $f_0$ window.
 Left axis: frequency (Hz); right axis: musical notes. Colored by mechanism
 prediction. Note the rapid M1/M2 alternations in ornamental passages, demonstrating
 the singer's articulatory agility.}
@@ -668,13 +670,13 @@ the singer's articulatory agility.}
 \label{sec:formants}
 
 Formant extraction revealed speech-like articulatory configurations across all
-recordings: mean F1 = 660.1~Hz, mean F2 = 1,629~Hz, mean F3 = 2,798~Hz, and mean
-F4 = 3,802~Hz. The F1 and F2 values approach those of colloquial Brazilian
+recordings: mean $F_1$ = 660.1~Hz, mean $F_2$ = 1,629~Hz, mean $F_3$ = 2,798~Hz, and mean
+$F_4$ = 3,802~Hz. The $F_1$ and $F_2$ values approach those of colloquial Brazilian
 Portuguese open vowels, suggesting that Fonseca prioritizes natural language
 articulation rather than the ``vowel darkening'' typical of classical singing, where
-F1 is systematically lowered to achieve a more ``covered'' timbre. This finding is
-consistent with Tatit's characterization of Brazilian popular singing as
-prioritizing the ``singability of speech.''\cite{tatit2002}
+$F_1$ is systematically lowered to achieve a more ``covered'' timbre. This finding is
+consistent with Tatit's concept of \emph{figurativiza\c{c}\~{a}o}---the
+primacy of speech-like intonation in Brazilian popular song.\cite{tatit2002}
 
 The preservation of speech-like formant patterns at high articulatory speeds is
 particularly noteworthy. Even in the rapid ornamental passages of
@@ -684,7 +686,7 @@ technique specifically optimized for textual intelligibility---a competency that
 Behlau and Ziemer\cite{behlau1988} identify as essential for Brazilian popular
 singing but that has no equivalent criterion in the \emph{Fach} system.
 
-The stable F3 and F4 ranges (2,798~Hz and 3,802~Hz) indicate some degree of
+The stable $F_3$ and $F_4$ ranges (2,798~Hz and 3,802~Hz) indicate some degree of
 singer's formant cluster presence, which contributes to vocal projection in the dense
 instrumental textures of Choro. However, unlike operatic singing where the singer's
 formant is a defining feature of \emph{Fach} category, in Fonseca's case it appears
@@ -711,20 +713,20 @@ assumed by \emph{Fach} classification. Attempting to assign a \emph{Fach} catego
 would require privileging one mechanism over the other, fundamentally
 mischaracterizing the biomechanical reality.
 
-Second, formant analysis reveals speech-like articulation patterns (F1 $\approx$
-660~Hz, F2 $\approx$ 1,629~Hz) consistent with open vowel configurations in
-Brazilian Portuguese. This finding supports Tatit's concept of ``colloquial
-expressivity''\cite{tatit2002}: the singer prioritizes natural language
-articulation, avoiding the vowel ``darkening'' typical of operatic singing, where F1
-is lowered to achieve a more ``covered'' timbre. The stable F3 and F4 values
+Second, formant analysis reveals speech-like articulation patterns ($F_1 \approx$
+660~Hz, $F_2 \approx$ 1,629~Hz) consistent with open vowel configurations in
+Brazilian Portuguese. This finding supports Tatit's concept of
+\emph{figurativiza\c{c}\~{a}o}\cite{tatit2002}: the singer prioritizes natural language
+articulation, avoiding the vowel ``darkening'' typical of operatic singing, where $F_1$
+is lowered to achieve a more ``covered'' timbre. The stable $F_3$ and $F_4$ values
 (2,798~Hz and 3,802~Hz) suggest some singer's formant presence, contributing to
 projection in dense arrangements, but the overall spectral profile is
 speech-dominated rather than operatically optimized.
 
 Third, the mechanism distribution varies systematically with musical demand.
-\emph{Delicado} (moderate tempo, mean f0 = 382.9~Hz) concentrates in the comfort
+\emph{Delicado} (moderate tempo, mean $f_0$ = 382.9~Hz) concentrates in the comfort
 tessitura with M1 predominance (M1\_LIGHT: 44.0\%), while \emph{Brasileirinho}
-(virtuosic, mean f0 = 444.6~Hz) shows greater M2 proportion and higher VMI (0.449),
+(virtuosic, mean $f_0$ = 444.6~Hz) shows greater M2 proportion and higher VMI (0.449),
 reflecting the adaptation of mechanism deployment to musical context. Notably,
 \emph{Brasileirinho} exhibits the highest MIX\_PASSAGGIO proportion (51.0\%),
 indicating that over half of the vocal production in this virtuosic piece operates in
@@ -748,11 +750,11 @@ developed over decades of professional performance.
 
 The Vocal Mechanism Index demonstrates several advantages over traditional
 classification approaches. Unlike the heuristic threshold (400~Hz), VMI operates on
-spectral features (Alpha Ratio, H1-H2, Spectral Tilt, CPPS) that reflect
+spectral features (Alpha Ratio, $H_1$-$H_2$, Spectral Tilt, CPPS) that reflect
 physiological properties of glottal behavior rather than absolute frequency values.
 This makes VMI inherently tessitura-agnostic: the same spectral signatures indicate
-M1 or M2 regardless of whether the singer is a bass (f0 $\approx$ 100~Hz) or a
-soprano (f0 $\approx$ 600~Hz).
+M1 or M2 regardless of whether the singer is a bass ($f_0 \approx 100$~Hz) or a
+soprano ($f_0 \approx 600$~Hz).
 
 The five-category VMI scale captures gradations lost in binary M1/M2 classification.
 The distinction between M1\_HEAVY (dense chest voice, 4.9\% of frames) and M1\_LIGHT
@@ -769,7 +771,7 @@ with parameter adjustments: \texttt{fmin}/\texttt{fmax} for tessitura range (e.g
 50--400~Hz for operatic bass, 200--1200~Hz for soprano), HTDemucs for accompanied
 vs.\ \emph{a cappella} recordings, and the VMI threshold boundaries for
 tessitura-specific \emph{passaggio} zones.\cite{bozeman2013,sundberg1987}
-The spectral weights used in VMI (Alpha Ratio, H1-H2, Spectral Tilt) are
+The spectral weights used in VMI (Alpha Ratio, $H_1$-$H_2$, Spectral Tilt) are
 tessitura-independent by construction, as they measure relative energy distribution
 and glottal behavior patterns rather than absolute frequency values. The same
 spectral tilt indicating firm M1 closure in a bass at 120~Hz applies equally to a
@@ -786,13 +788,13 @@ results.
 The analyzed recordings date from the 1940s--1960s and exhibit low SNR, elevated
 background noise, and spectral degradation. While HTDemucs source separation
 substantially improved the signal quality, spectral features (particularly CPPS and
-H1-H2) may be less reliable than in modern, studio-quality recordings. The
+$H_1$-$H_2$) may be less reliable than in modern, studio-quality recordings. The
 post-separation HNR of $\approx 17$~dB, while adequate, is lower than the
 $> 20$~dB typically expected for reliable acoustic voice analysis.
 
 \paragraph{Pseudo-label circularity.}
 The XGBoost classifier was trained on labels generated by the GMM, creating a
-circular dependency. The perfect classification accuracy (F1 = 1.00) reflects the
+circular dependency. The perfect classification accuracy ($F_1$ = 1.00) reflects the
 high separability of GMM clusters in the nine-dimensional feature space, not
 validated physiological accuracy. XGBoost cannot, on average, be more accurate than
 its pseudo-labels, and inherits any systematic errors from the GMM (confirmation
@@ -800,7 +802,7 @@ bias).\cite{lee2013}
 
 \paragraph{Gaussian assumption.}
 The GMM assumes that M1 and M2 clusters follow Gaussian distributions in the
-f0 $\times$ HNR space. Real mechanism distributions---particularly at the
+$f_0 \times$ HNR space. Real mechanism distributions---particularly at the
 \emph{passaggio}, where biomechanical instability produces non-linear
 behavior---may deviate substantially from this assumption.
 
@@ -829,9 +831,9 @@ The current VMI implementation uses heuristic weights for its four spectral
 components rather than empirically optimized values. Training these weights via
 supervised learning with EGG-validated labels is a priority for future development.
 
-\paragraph{H1-H2 at high f0.}
-When f0 exceeds approximately 350~Hz, the first harmonic (H1) may coincide with the
-first vocal tract resonance (F1), contaminating the H1-H2
+\paragraph{$H_1$-$H_2$ at high $f_0$.}
+In the upper register, the first harmonic ($H_1$) may coincide with the
+first vocal tract resonance ($F_1$), contaminating the $H_1$-$H_2$
 measurement.\cite{hanson1997} Spectral Tilt is included as a complementary feature
 to mitigate this limitation, as it captures the global spectral energy distribution
 without depending on individual harmonic detection.
@@ -915,9 +917,9 @@ public, commercial, or not-for-profit sectors.
 \section*{Data availability}
 %% ============================================================
 
-The analysis code and processed feature data are publicly available in the project
-repository. Raw audio recordings are subject to copyright and cannot be
-redistributed.
+The analysis code and processed feature data are publicly available at
+\url{https://github.com/arthurcornelio88/vocal-analysis}. Raw audio recordings are
+subject to copyright and cannot be redistributed.
 
 %% ============================================================
 \bibliographystyle{elsarticle-num}
