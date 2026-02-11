@@ -114,9 +114,9 @@ operatic voices by their capacity to fill a concert hall without amplification.
 Recent advances in machine learning have opened new possibilities for objective
 vocal analysis. XGBoost algorithms optimized by Differential Evolution have achieved
 vocal register classification accuracy exceeding 97\% in controlled
-settings.\cite{almeida2025b} Hybrid methods combining Deep Neural Networks and
+settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
 Linear Prediction (LPC) enable robust formant tracking even in high-pitched
-voices.\cite{raitio2024} These tools, combined with neural source separation
+voices.\cite{alku2023} These tools, combined with neural source separation
 models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
 now enable rigorous biomechanical analysis of singing in genres that were previously
 inaccessible to computational methods.
@@ -134,8 +134,9 @@ of laryngeal behavior than categorical \emph{Fach} labels.
 
 This study fills a gap in the literature by providing the first computational
 bioacoustic analysis of Brazilian Choro singing. While recent work has applied
-machine learning to vocal register classification in Western pop
-music\cite{almeida2025a,almeida2025b} and singing voice classification,\cite{sol2023} no
+machine learning to vocal register classification in contemporary pop
+music,\cite{kim2025} controlled singing experiments,\cite{boratto2025} and singing voice
+mode classification,\cite{sol2023} no
 previous study has addressed the specific acoustic challenges of historical Choro
 recordings or the theoretical implications for \emph{Fach} critique in vernacular
 genres. The novelty of this research lies in the application of a hybrid pipeline
@@ -185,10 +186,10 @@ articulatory precision is maximized and where the vocal mechanism can support th
 rapid ornamentations---mordents, turns, glissandi, and portamenti---that define the
 genre's aesthetic identity.
 
-Cotton's doctoral research\cite{cotton2007} documented systematic inconsistencies in
-\emph{Fach} assignment among professional voice teachers, demonstrating that even
-within its native operatic context, the system lacks reliability and inter-rater
-agreement. When extended to genres with fundamentally different acoustic goals, these
+Cotton's doctoral research\cite{cotton2007} examined the historical fluidity and
+conflicting criteria of the \emph{Fach} system, demonstrating that even within its
+native operatic context, voice classification criteria remain contested among
+pedagogues and lack standardized application. When extended to genres with fundamentally different acoustic goals, these
 inconsistencies are compounded by the system's irrelevant premises. The inadequacy of
 \emph{Fach} in describing popular vocal biomechanics demands a more objective
 paradigm: one based on quantifiable glottic behaviors rather than auditory metaphors.
@@ -326,14 +327,14 @@ extracted for the Vocal Mechanism Index:
 generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
 gentle closure concentrates energy in the fundamental, yielding a low ratio.
 
-\emph{$H_1$-$H_2$}\cite{hanson1997,kreiman2014}: the amplitude difference (dB) between
+\emph{$H_1$-$H_2$}\cite{kreiman2012,kreiman2014}: the amplitude difference (dB) between
 the first harmonic ($H_1 = f_0$) and the second harmonic ($H_2 = 2f_0$), the most direct
 acoustic correlate of the glottal adduction pattern. Firm adduction (M1) produces
 abrupt airflow closure and strong harmonics, so $H_2$ approaches $H_1$ in amplitude (low
 $H_1$-$H_2$). Light adduction (M2) produces a dominant fundamental with weak harmonics
 (high $H_1$-$H_2$). A known limitation is that in the upper register, $H_1$
 may coincide with the first vocal tract resonance ($F_1$), contaminating the
-measurement.\cite{hanson1997}
+measurement.\cite{kreiman2012}
 
 \emph{Spectral Tilt}\cite{fant1995,gauffin1989}: the slope of the linear regression
 fitted to the power spectrum (log-frequency vs.\ amplitude in dB) in the 50--5,000~Hz
@@ -381,7 +382,7 @@ with hyperparameters: \texttt{n\_estimators=100}, \texttt{max\_depth=5},
 
 We acknowledge that results are reported for a single random seed. Per the
 methodological recommendations of Ghasemzadeh et al.\cite{ghasemzadeh2023} and
-Nudelman et al.,\cite{nudelman2025} future work should evaluate performance across
+Gupta et al.,\cite{gupta2024} future work should evaluate performance across
 multiple seeds and report mean $\pm$ standard deviation. Additionally, as XGBoost is
 trained on GMM outputs rather than ground-truth labels, the reported metrics reflect
 cluster separability rather than physiological classification accuracy.
@@ -403,7 +404,7 @@ thresholds, making it applicable across voice types and genres.
 The complete analysis pipeline is implemented in Python 3.10+ and is publicly
 available as an open-source repository.\footnote{\url{https://github.com/arthurcornelio88/vocal-analysis}} Several measures ensure reproducibility in
 accordance with current best practices for machine learning in voice
-research:\cite{ghasemzadeh2023,nudelman2025}
+research:\cite{ghasemzadeh2023,gupta2024}
 
 \begin{enumerate}
   \item \textbf{Deterministic computation:} All stochastic processes use fixed random
@@ -523,9 +524,12 @@ distribution at 400~Hz confirms the M1/M2 boundary.}
 
 The M1 distribution is centered at 265--365~Hz (approximately C\#4--F\#4), while M2
 occupies 425--580~Hz (approximately A4--D5). The $f_0$ histogram reveals a clear
-bimodal distribution with a natural separation at approximately 400~Hz, confirming
-the physiological basis of the G4 \emph{passaggio} boundary for female voices
-documented in the literature.\cite{roubeau2009} Notably, HNR values are nearly
+bimodal distribution with a natural separation at approximately 400~Hz. This value
+falls within the M1/M2 overlap zone documented by Roubeau et al.,\cite{roubeau2009}
+who reported mean M1$\to$M2 transition frequencies of approximately 312~Hz (E$\flat$4)
+for female voices, with the overlap zone spanning roughly one octave---confirming
+that 400~Hz lies in the upper portion of the \emph{passaggio} region rather than
+at a discrete boundary. Notably, HNR values are nearly
 identical between mechanisms (M1: 16.9~dB, M2: 16.8~dB), indicating that the source
 separation effectively removed the instrumental noise that would otherwise reduce HNR
 in the original recordings.
@@ -822,7 +826,7 @@ recording eras.
 \paragraph{Single random seed.}
 Results for the GMM and XGBoost models are reported for a single random seed
 (\texttt{random\_state=42}). Per the recommendations of Ghasemzadeh et
-al.\cite{ghasemzadeh2023} and Nudelman et al.,\cite{nudelman2025} future work
+al.\cite{ghasemzadeh2023} and Gupta et al.,\cite{gupta2024} future work
 should evaluate model stability across multiple seeds and report mean $\pm$ standard
 deviation of evaluation metrics.
 
@@ -834,7 +838,7 @@ supervised learning with EGG-validated labels is a priority for future developme
 \paragraph{$H_1$-$H_2$ at high $f_0$.}
 In the upper register, the first harmonic ($H_1$) may coincide with the
 first vocal tract resonance ($F_1$), contaminating the $H_1$-$H_2$
-measurement.\cite{hanson1997} Spectral Tilt is included as a complementary feature
+measurement.\cite{kreiman2012} Spectral Tilt is included as a complementary feature
 to mitigate this limitation, as it captures the global spectral energy distribution
 without depending on individual harmonic detection.
 
@@ -878,9 +882,9 @@ measurements, which provide direct physiological ground truth for laryngeal mech
 classification.\cite{henrich2004} Third, the VMI weights---currently
 heuristic---should be optimized via supervised learning using EGG-validated labels,
 potentially through the evolutionary parameter tuning approach demonstrated by
-Almeida et al.\cite{almeida2025b} Fourth, model stability should be evaluated across
+Boratto et al.\cite{boratto2025} Fourth, model stability should be evaluated across
 multiple random seeds, with mean $\pm$ standard deviation of classification metrics
-reported per current best practices.\cite{ghasemzadeh2023,nudelman2025} Fifth, the
+reported per current best practices.\cite{ghasemzadeh2023,gupta2024} Fifth, the
 pipeline should be applied to other microphone-dependent genres---MPB, fado, vocal
 jazz, sacred music---to assess the VMI's cross-genre portability.
 

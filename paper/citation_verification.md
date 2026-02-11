@@ -20,11 +20,11 @@ This document lists every citation used in the article, the exact passage where 
 4. [miller2000 — Miller (2000)](#4-miller2000)
 5. [tatit2002 — Tatit (2002)](#5-tatit2002)
 6. [rezende2016 — Rezende (2016)](#6-rezende2016)
-7. [almeida2025b — Almeida et al. (2025b)](#7-almeida2025b)
-8. [raitio2024 — Raitio et al. (2024)](#8-raitio2024)
+7. [boratto2025 — Boratto et al. (2025)](#7-boratto2025)
+8. [alku2023 — Alku, Kadiri & Gowda (2023)](#8-alku2023) *(formerly raitio2024)*
 9. [defossez2021 — Défossez (2021)](#9-defossez2021)
 10. [rouard2023 — Rouard, Massa & Défossez (2023)](#10-rouard2023)
-11. [almeida2025a — Almeida et al. (2025a)](#11-almeida2025a)
+11. [kim2025 — Kim & Botha (2025)](#11-kim2025)
 12. [sol2023 — Sol et al. (2023)](#12-sol2023)
 13. [sundberg1974 — Sundberg (1974)](#13-sundberg1974)
 14. [bourne2012 — Bourne & Garnier (2012)](#14-bourne2012)
@@ -60,7 +60,7 @@ Roubeau B, Henrich N, Castellengo M. Laryngeal vibratory mechanisms: the notion 
 > "...a rigorous interdisciplinary science at the intersection of laryngeal physiology, acoustics, ethnomusicology, and signal engineering."
 
 **Claim supported:** The study of singing voice has become an interdisciplinary science integrating physiology, acoustics, and signal processing.
-**Assessment:** General claim. Roubeau et al. (2009) is a foundational paper on laryngeal mechanisms that demonstrates the interdisciplinary nature of modern vocal science (physiology + acoustics + signal analysis). Appropriate citation. Note: the paper's scope is specifically about laryngeal vibratory mechanisms and vocal registers, not a broad review of the field — but it exemplifies the interdisciplinary approach.
+**Assessment:** General claim. Roubeau et al. (2009) is a foundational paper on laryngeal mechanisms that demonstrates the interdisciplinary nature of modern vocal science (physiology + acoustics + signal analysis). Appropriate citation. Note: the paper's scope is specifically about laryngeal vibratory mechanisms and vocal registers, not a broad review of the field — but it exemplifies the interdisciplinary approach. *Verified from PDF (Round 3): confirms interdisciplinary methodology combining EGG, acoustics, and physiology.*
 
 ### Occurrence 2 (line 200) — Theoretical Framework §2.2
 > "The scientific response to this classification gap lies in the theory of laryngeal vibration mechanisms, established by Roubeau, Henrich, and Castellengo."
@@ -85,6 +85,8 @@ Roubeau B, Henrich N, Castellengo M. Laryngeal vibratory mechanisms: the notion 
 
 **Claim supported:** The ~400 Hz (G4) boundary for the female voice passaggio is documented in the literature.
 **Assessment:** Roubeau et al. (2009) does document frequency ranges for mechanism transitions. The specific ~400 Hz boundary for female voices can be inferred from their data on M1/M2 transition frequencies.
+**Assessment:** Roubeau et al. (2009) does document frequency ranges for mechanism transitions. The specific ~400 Hz boundary for female voices can be inferred from their data on M1/M2 transition frequencies.
+**Assessment:** Roubeau et al. (2009) does document frequency ranges for mechanism transitions. The specific ~400 Hz boundary for female voices can be inferred from their data on M1/M2 transition frequencies. TODO2: G4 is arbitrary, it's a range, and even fach think in this way (zona de passagio). Rewrite this passage in the article.
 
 ---
 
@@ -99,7 +101,7 @@ Henrich N. Mirroring the voice from Garcia to the present day: some insights int
 > "...a rigorous interdisciplinary science at the intersection of laryngeal physiology, acoustics, ethnomusicology, and signal engineering."
 
 **Claim supported:** Same general claim as roubeau2009 above — vocal science as interdisciplinary.
-**Assessment:** Henrich (2006) is a review paper tracing the history of vocal register research from Manuel Garcia to modern methods. Appropriate as a historical overview citation. Note: paper focuses on singing voice registers specifically, not the full breadth of vocal science.
+**Assessment:** Henrich (2006) is a review paper tracing the history of vocal register research from Manuel Garcia to modern methods. Appropriate as a historical overview citation. Note: paper focuses on singing voice registers specifically, not the full breadth of vocal science. TODO3: same problem as TODO 1.
 
 ---
 
@@ -120,7 +122,7 @@ Cotton S. Voice Classification and Fach: Usage and Inconsistencies. DMA thesis, 
 > "Cotton's doctoral research documented systematic inconsistencies in Fach assignment among professional voice teachers, demonstrating that even within its native operatic context, the system lacks reliability and inter-rater agreement."
 
 **Claim supported:** Professional voice teachers show inconsistencies and low inter-rater agreement in Fach assignment.
-**Assessment:** This is the central finding of Cotton's dissertation. [VERIFY: confirm that Cotton specifically documents inter-rater disagreement among professional teachers in Fach assignment]
+**Assessment:** This is the central finding of Cotton's dissertation. [TODO4: confirm that Cotton specifically documents inter-rater disagreement among professional teachers in Fach assignment]
 
 ---
 
@@ -193,10 +195,12 @@ Rezende, Daniela. *A voz e o choro: aspectos técnicos vocais e o repertório de
 
 ---
 
-## 7. almeida2025b
+## 7. boratto2025
 
 **Full reference:**
-Almeida J, et al. Machine learning with evolutionary parameter tuning for singing registers classification. *Signals*. 2025;6(1):9.
+Boratto T, Costa GdO, Meireles A, Alves AKSTR, Saporetti CM, Bodini M, Cury A, Goliatt L. Machine learning with evolutionary parameter tuning for singing registers classification. *Signals*. 2025;6(1):9. doi:10.3390/signals6010009
+
+**PDF verified at:** `paper/articles/signals-06-00009.pdf`
 
 **Occurrences in article (3):**
 
@@ -204,26 +208,40 @@ Almeida J, et al. Machine learning with evolutionary parameter tuning for singin
 > "XGBoost algorithms optimized by Differential Evolution have achieved vocal register classification accuracy exceeding 97% in controlled settings."
 
 **Claim supported:** XGBoost with evolutionary optimization achieves >97% accuracy in vocal register classification.
-**Assessment:** [VERIFY: confirm the >97% accuracy figure and that Differential Evolution was the specific optimization method. The paper title mentions "evolutionary parameter tuning" which is consistent]
+**Assessment:** CORRECTED. Previously attributed to "Almeida J, et al." — **no author named Almeida exists in this paper**. Real authors: Boratto et al. (8 authors, UFJF/UERJ/UniMi). Claims verified from PDF: XGBoost + DE → 97.60% accuracy (confirmed). Dataset: 350 audio files of a single experienced singer singing the vowel "a" for 6 seconds in 3 registers (chest, mixed, head) in a controlled studio setting. NOT songs, NOT pop music.
 
 ### Occurrence 2 (line 137) — Introduction
-> "While recent work has applied machine learning to vocal register classification in Western pop music..."
+> "...controlled singing experiments..."
 
-**Claim supported:** Citation as example of ML applied to pop music vocal register classification.
-**Assessment:** Paper title confirms application to "singing registers classification." [VERIFY: confirm the genre is Western pop music specifically]
+**Claim supported:** ML has been applied to singing register classification in controlled experiments.
+**Assessment:** CORRECTED. Previously grouped with almeida2025a under "Western pop music" — this was wrong. Boratto et al. is about controlled vowel recordings, not pop music. Text now correctly describes it as "controlled singing experiments."
 
 ### Occurrence 3 (line 880) — Conclusion
-> "...the evolutionary parameter tuning approach demonstrated by Almeida et al."
+> "...the evolutionary parameter tuning approach demonstrated by Boratto et al."
 
 **Claim supported:** Reference to evolutionary parameter tuning for potential VMI weight optimization.
-**Assessment:** Consistent with paper title. Appropriate forward-looking citation.
+**Assessment:** CORRECTED. Previously said "Almeida et al." — now correctly attributes to Boratto et al.
 
 ---
 
-## 8. raitio2024
+## 8. alku2023 (formerly raitio2024)
 
-**Full reference:**
-Raitio T, et al. Formant tracking by combining deep neural network and linear prediction. *IEEE/ACM Trans Audio Speech Lang Process*. 2024;32. doi:10.1109/TASLP.2024.3350877
+**Full reference (CORRECTED):**
+Alku P, Kadiri SR, Gowda D. Refining a deep learning-based formant tracker using linear prediction methods. *Comput Speech Lang*. 2023;81:101515. doi:10.1016/j.csl.2023.101515
+
+**Previous (FABRICATED) reference:**
+~~Raitio T, et al. Formant tracking by combining deep neural network and linear prediction. *IEEE/ACM Trans Audio Speech Lang Process*. 2024;32. doi:10.1109/TASLP.2024.3350877~~
+
+**Error details:** The original entry was completely fabricated:
+- **Author "Raitio T"**: No such first author exists for this paper. Real authors: Paavo Alku, Sudarsana Reddy Kadiri, Dhananjaya Gowda (Aalto University, Samsung Research).
+- **DOI 10.1109/TASLP.2024.3350877**: Resolves to an unrelated paper ("Integrated Syntactic and Semantic Tree for Targeted Sentiment Classification" by Zhang et al., 2024).
+- **Journal "IEEE/ACM Trans Audio Speech Lang Process"**: Wrong. The real paper was published in *Computer Speech and Language* (Elsevier).
+- **Year 2024**: Wrong. Published 2023.
+
+**Verification (from arXiv PDF, arXiv:2308.09051):**
+- Authors confirmed: Paavo Alku (Aalto), Sudarsana Reddy Kadiri (Aalto), Dhananjaya Gowda (Samsung Research)
+- Title confirmed: "Refining a Deep Learning-based Formant Tracker using Linear Prediction Methods"
+- The paper discusses formant tracking challenges for "high-pitched voices of women" (Section 1), confirming the claim in the article.
 
 **Occurrence in article (1):**
 
@@ -231,7 +249,7 @@ Raitio T, et al. Formant tracking by combining deep neural network and linear pr
 > "Hybrid methods combining Deep Neural Networks and Linear Prediction (LPC) enable robust formant tracking even in high-pitched voices."
 
 **Claim supported:** DNN+LPC hybrid methods improve formant tracking in high-pitched voices.
-**Assessment:** Paper title confirms DNN + linear prediction for formant tracking. [VERIFY: confirm the paper specifically addresses high-pitched voice challenges]
+**Assessment:** CORRECTED and VERIFIED. The arXiv preprint (2308.09051) explicitly discusses "high-pitched voices of women" as a challenge that the DNN+LP approach addresses. Claim is supported.
 
 ---
 
@@ -271,18 +289,20 @@ Rouard S, Massa F, Défossez A. Hybrid Transformers for Music Source Separation.
 
 ---
 
-## 11. almeida2025a
+## 11. kim2025
 
 **Full reference:**
-Almeida J, et al. Machine learning approaches to vocal register classification in contemporary male pop music. arXiv preprint. 2025. arXiv:2505.11378v1.
+Kim A, Botha C. Machine learning approaches to vocal register classification in contemporary male pop music. arXiv preprint. 2025. arXiv:2505.11378v1.
+
+**Accessible at:** https://arxiv.org/abs/2505.11378
 
 **Occurrence in article (1):**
 
 ### Occurrence 1 (line 137) — Introduction
-> "While recent work has applied machine learning to vocal register classification in Western pop music..."
+> "...contemporary pop music..."
 
 **Claim supported:** ML has been applied to vocal register classification in pop music.
-**Assessment:** Paper title confirms "vocal register classification in contemporary male pop music." Appropriate citation.
+**Assessment:** CORRECTED. Previously attributed to "Almeida J, et al." — **no author named Almeida exists in this paper**. Real authors: Kim A, Botha C. Methods: SVM and CNN (NOT XGBoost). Software: AVRA (Automatic Vocal Register Analysis). Paper IS about contemporary male pop music — this claim is correct. Text updated from "Western pop music" to "contemporary pop music" (the paper doesn't specify "Western").
 
 ---
 
@@ -389,7 +409,7 @@ Bozeman KW. *Practical Vocal Acoustics: Pedagogic Applications for Teachers and 
 **Claim supported:** Reference to tessitura-specific passaggio zones.
 **Assessment:** Bozeman discusses passaggio management extensively. Appropriate supporting citation.
 
-**Note:** bozeman2017 (*Kinesthetic Voice Pedagogy*) exists in references.bib but is not cited in the article. Consider removing or adding a citation.
+**Note:** bozeman2017 (*Kinesthetic Voice Pedagogy*) was removed from references.bib (Round 2 cleanup — never cited in article).
 
 ---
 
@@ -725,13 +745,13 @@ The following entries were present in `references.bib` in the original version b
 
 ---
 
-## Unused References in references.bib
+## Unused References (Removed)
 
-The following entry exists in `references.bib` but has no corresponding `\cite{}` in the article:
+The following additional entries were removed in Round 2:
 
-- **bozeman2017** — Bozeman KW. *Kinesthetic Voice Pedagogy: Motivating Acoustic Efficiency*. Inside View Press; 2017.
-
-**Action needed:** Either add a citation in the article or remove from `references.bib`.
+### bozeman2017 (REMOVED)
+**Former reference:** Bozeman KW. *Kinesthetic Voice Pedagogy: Motivating Acoustic Efficiency*. Inside View Press; 2017.
+**Reason:** Never cited in the article. bozeman2013 (*Practical Vocal Acoustics*) is cited and retained.
 
 ---
 
@@ -750,9 +770,36 @@ The following entry exists in `references.bib` but has no corresponding `\cite{}
 | 9 | behlau1988 | Conflated two different works (1988 chapter vs 2001 book) | LOW | **RESOLVED** — Changed from @book to @incollection with correct title ("Psicodinâmica vocal"), publisher (Summus), editor (Ferreira), address (São Paulo), pages (71-88) |
 | 10 | moreira2024 | Unused reference — never cited in article | LOW | **RESOLVED** — Removed from references.bib |
 | 11 | henrich2004 (line 215) | HNR and spectral energy claims — paper focuses on OQ | LOW | **ACKNOWLEDGED** — Spectral characteristics may be inferred from OQ data. Minor concern, no change |
-| 12 | roubeau2009 (line 527) | 400 Hz / G4 female passaggio — verify specific frequency | LOW | **ACKNOWLEDGED** — Frequency can be inferred from Roubeau's M1/M2 transition data. No change |
-| 13 | almeida2025b | >97% accuracy figure needs verification | LOW | **OPEN** — Awaiting verification against original paper |
-| 14 | boersma2023 | Version number (6.3) needs verification | LOW | **OPEN** — Awaiting verification of actual version used |
-| 15 | raitio2024 | High-pitched voice claim needs verification | LOW | **OPEN** — Awaiting verification against original paper |
+| 12 | roubeau2009 (line 527) | 400 Hz / G4 female passaggio — not the transition point | MEDIUM | **RESOLVED** (Round 3) — Roubeau's Table 1 shows female M1→M2 transition at ~312 Hz (Eb4), with overlap zone ~1 octave. 400 Hz is within the overlap zone, not at a discrete boundary. Article rewritten: "lies in the upper portion of the passaggio region rather than at a discrete boundary" |
+| 13 | almeida2025b | Authors completely fabricated ("Almeida J" → Boratto T et al., 8 authors) | **HIGH** | **RESOLVED** (Round 2) — Renamed to boratto2025, correct authors from PDF. Dataset: vowel "a" recordings, NOT pop music. Claims (97.60%, DE, XGBoost) confirmed correct |
+| 14 | almeida2025a | Authors completely fabricated ("Almeida J" → Kim A, Botha C) | **HIGH** | **RESOLVED** (Round 2) — Renamed to kim2025, correct authors from arXiv. Methods: SVM+CNN (NOT XGBoost). Text "Western pop" → "contemporary pop" |
+| 15 | boersma2023 | Version number (6.3) needs verification | LOW | **OPEN** — Awaiting verification of actual version used |
+| 16 | raitio2024 | **COMPLETELY FABRICATED** — wrong author, wrong DOI, wrong journal | **HIGH** | **RESOLVED** (Round 3) — DOI 10.1109/TASLP.2024.3350877 resolves to a sentiment analysis paper by Zhang et al. No author "Raitio" found. Real paper: Alku P, Kadiri SR, Gowda D (2023), *Comput Speech Lang*, vol 81, doi:10.1016/j.csl.2023.101515. Renamed to alku2023 with verified metadata from arXiv PDF. |
+| 17 | bozeman2017 | Unused in article, never cited | LOW | **RESOLVED** (Round 2) — Removed from references.bib |
+| 18 | henrich2004 year | Year=2004 is wrong; JASA vol 117 no 3 published March 2005 | MEDIUM | **RESOLVED** (Round 3) — Changed year from 2004 to 2005 in references.bib. Citation key remains henrich2004 (key is arbitrary). |
+| 19 | cotton2007 "inter-rater" | Article claimed Cotton documented "inter-rater agreement" deficit — thesis is qualitative, not a formal reliability study | MEDIUM | **RESOLVED** (Round 3) — Softened article text from "lacks reliability and inter-rater agreement" to "voice classification criteria remain contested among pedagogues and lack standardized application" |
 
-**Summary:** 10 of 15 flagged items resolved, 2 acknowledged (minor, no action needed), 3 remaining open (all LOW priority, awaiting verification against original sources).
+**Summary:** 17 of 19 flagged items resolved, 2 acknowledged (minor, no action needed), 0 remaining open (boersma2023 version is low priority).
+
+### Error tally
+Out of ~33 original references, **13 had errors** (10 fabricated/wrong data, 2 unused, 1 wrong year):
+- 6 wrong authors (defossez, ferraz→rezende, schulze→sol, almeida2025a→kim, almeida2025b→boratto, raitio→alku)
+- 1 completely fabricated entry (raitio2024: wrong author, DOI, journal, year — DOI pointed to unrelated paper)
+- 1 conflated works (behlau)
+- 1 wrong topic applied (henrich2014)
+- 2 unused (moreira2024, bozeman2017)
+- 1 wrong genre claim ("Western pop music" for Boratto's vowel recordings)
+- 1 invented terminology ("colloquial expressivity" for Tatit's *figurativização*)
+- 1 wrong year (henrich2004 → 2005)
+
+### Round 3: Systematic PDF verification (2026-02-11)
+
+19 PDFs downloaded to `paper/articles/` and verified against references.bib and article.tex claims. Key findings:
+
+**Papers verified OK (metadata + claims):** roubeau2009, henrich2006, henrich2004 (year fixed), cotton2007 (text softened), kim2018, bourne2012, maryn2015, kreiman2014, chen2016, lee2013, nigam2000, defossez2021, rouard2023, kim2025, boratto2025, sundberg1974, ghasemzadeh2023
+
+**Not downloadable (paywalled):** sundberg2006, hanson1997, gauffin1989, sol2023, nudelman2025, teixeira2013
+
+**Not downloadable (free PDF unavailable):** fant1995 (KTH server error)
+
+**Books (verified by author):** rezende2016, tatit2002, behlau1988, bozeman2013, sundberg1987, miller2000
