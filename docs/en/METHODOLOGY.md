@@ -825,5 +825,5 @@ For methodological questions or improvement suggestions, open an issue in the re
 
 ---
 
-**Last Updated:** 2026-02-09
+**Last Updated:** 2026-02-12
 **Status:** Validated pipeline (v2.0.4). Source separation enabled by default. VMI (Vocal Mechanism Index) integrated for tessitura-agnostic classification.
