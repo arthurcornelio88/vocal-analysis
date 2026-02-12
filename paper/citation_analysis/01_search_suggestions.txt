@@ -1,0 +1,333 @@
+=== Suggestions de recherche par citation ===
+
+=== alku2023 ===
+Ligne 119: vocal register classification accuracy exceeding 97\% in controlled
+settings.\cite{boratto2025} Hybr...
+Mots-clés suggérés: classification, register, exceeding, vocal, accuracy
+Commande grep: grep -i 'classification\|register\|vocal' articles_txt/alku2023.txt
+
+=== behlau1988 ===
+Ligne 690: \emph{Brasileirinho}, where syllabic rates exceed 5 syllables per second, the
+formant structure main...
+Mots-clés suggérés: exceed, brasileirinho, syllabic, emph, rates
+Commande grep: grep -i 'syllabic\|emph\|brasileirinho' articles_txt/behlau1988.txt
+
+=== boersma2023 ===
+Ligne 315: Choro recordings.
+
+\paragraph{Vocal quality features.}
+Using Praat via Parselmouth,\cite{boersma2023...
+Mots-clés suggérés: paragraph, quality, vocal, choro, recordings
+Commande grep: grep -i 'recordings\|paragraph\|choro' articles_txt/boersma2023.txt
+
+=== boratto2025 ===
+Ligne 117: Recent advances in machine learning have opened new possibilities for objective
+vocal analysis. XGBo...
+Mots-clés suggérés: opened, machine, recent, learning, advances
+Commande grep: grep -i 'recent\|advances\|machine' articles_txt/boratto2025.txt
+Ligne 138: This study fills a gap in the literature by providing the first computational
+bioacoustic analysis o...
+Mots-clés suggérés: providing, first, fills, literature, study
+Commande grep: grep -i 'literature\|study\|fills' articles_txt/boratto2025.txt
+Ligne 885: classification.\cite{henrich2004} Third, the VMI weights---currently
+heuristic---should be optimized...
+Mots-clés suggérés: third, cite, classification, weights, henrich2004
+Commande grep: grep -i 'classification\|henrich2004\|cite' articles_txt/boratto2025.txt
+
+=== bourne2012 ===
+Ligne 168: spectra, where energy naturally decays in high frequencies. The ``brightness'' and
+``projection'' th...
+Mots-clés suggérés: energy, naturally, decays, high, spectra
+Commande grep: grep -i 'naturally\|energy\|spectra' articles_txt/bourne2012.txt
+Ligne 175: singers operate in a flexible ``mixing zone,'' using vocal tract adjustments to
+produce chest voice ...
+Mots-clés suggérés: singers, zone, flexible, operate, mixing
+Commande grep: grep -i 'singers\|operate\|flexible' articles_txt/bourne2012.txt
+
+=== bozeman2013 ===
+Ligne 243: vocal tract adjustments at the \emph{passaggio}---for instance, opening the jaw
+wider to raise $F_1$...
+Mots-clés suggérés: adjustments, tract, emph, vocal, passaggio
+Commande grep: grep -i 'adjustments\|vocal\|tract' articles_txt/bozeman2013.txt
+Ligne 777: with parameter adjustments: \texttt{fmin}/\texttt{fmax} for tessitura range (e.g.,
+50--400~Hz for op...
+Mots-clés suggérés: parameter, adjustments, fmin, texttt
+Commande grep: grep -i 'parameter\|adjustments\|texttt' articles_txt/bozeman2013.txt
+
+=== chen2016 ===
+Ligne 376: initialized with \texttt{random\_state=42}.
+
+\paragraph{Method 3: XGBoost with pseudo-labels.}
+A sup...
+Mots-clés suggérés: paragraph, texttt, initialized, _state, random
+Commande grep: grep -i 'random\|initialized\|texttt' articles_txt/chen2016.txt
+
+=== cotton2007 ===
+Ligne 89:
+Despite these advances, the classification of singing voices in Western pedagogy
+remains dominated ...
+Mots-clés suggérés: despite, singing, classification, advances, these
+Commande grep: grep -i 'advances\|these\|despite' articles_txt/cotton2007.txt
+Ligne 189: rapid ornamentations---mordents, turns, glissandi, and portamenti---that define the
+genre's aestheti...
+Mots-clés suggérés: glissandi, ornamentations, turns, mordents, rapid
+Commande grep: grep -i 'ornamentations\|mordents\|rapid' articles_txt/cotton2007.txt
+
+=== defossez2021 ===
+Ligne 120: settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC...
+Mots-clés suggérés: hybrid, settings, methods, cite, boratto2025
+Commande grep: grep -i 'boratto2025\|settings\|cite' articles_txt/defossez2021.txt
+
+=== degottex2011 ===
+Ligne 339: may coincide with the first vocal tract resonance ($F_1$), contaminating the
+measurement.\cite{kreim...
+Mots-clés suggérés: coincide, tract, resonance, vocal, first
+Commande grep: grep -i 'first\|vocal\|coincide' articles_txt/degottex2011.txt
+Ligne 783: and glottal behavior patterns rather than absolute frequency values. The same
+spectral tilt indicati...
+Mots-clés suggérés: glottal, than, patterns, rather, behavior
+Commande grep: grep -i 'glottal\|patterns\|behavior' articles_txt/degottex2011.txt
+
+=== drugman2019 ===
+Ligne 339: may coincide with the first vocal tract resonance ($F_1$), contaminating the
+measurement.\cite{kreim...
+Mots-clés suggérés: coincide, tract, resonance, vocal, first
+Commande grep: grep -i 'first\|vocal\|coincide' articles_txt/drugman2019.txt
+Ligne 783: and glottal behavior patterns rather than absolute frequency values. The same
+spectral tilt indicati...
+Mots-clés suggérés: glottal, than, patterns, rather, behavior
+Commande grep: grep -i 'glottal\|patterns\|behavior' articles_txt/drugman2019.txt
+
+=== ghasemzadeh2023 ===
+Ligne 384: (\texttt{random\_state=42}).
+
+We acknowledge that results are reported for a single random seed. Per...
+Mots-clés suggérés: acknowledge, texttt, results, _state, random
+Commande grep: grep -i '_state\|random\|texttt' articles_txt/ghasemzadeh2023.txt
+Ligne 407: The complete analysis pipeline is implemented in Python 3.10+ and is publicly
+available as an open-s...
+Mots-clés suggérés: analysis, implemented, pipeline, python, complete
+Commande grep: grep -i 'pipeline\|analysis\|complete' articles_txt/ghasemzadeh2023.txt
+Ligne 829: \paragraph{Single random seed.}
+Results for the GMM and XGBoost models are reported for a single ran...
+Mots-clés suggérés: paragraph, single, results, seed, random
+Commande grep: grep -i 'random\|paragraph\|single' articles_txt/ghasemzadeh2023.txt
+Ligne 887: potentially through the evolutionary parameter tuning approach demonstrated by
+Boratto et al.\cite{b...
+Mots-clés suggérés: tuning, evolutionary, through, parameter, potentially
+Commande grep: grep -i 'potentially\|evolutionary\|through' articles_txt/ghasemzadeh2023.txt
+
+=== gowda2022 ===
+Ligne 119: vocal register classification accuracy exceeding 97\% in controlled
+settings.\cite{boratto2025} Hybr...
+Mots-clés suggérés: classification, register, exceeding, vocal, accuracy
+Commande grep: grep -i 'classification\|register\|vocal' articles_txt/gowda2022.txt
+
+=== gupta2024 ===
+Ligne 385:
+We acknowledge that results are reported for a single random seed. Per the
+methodological recommend...
+Mots-clés suggérés: acknowledge, reported, single, results, random
+Commande grep: grep -i 'acknowledge\|results\|reported' articles_txt/gupta2024.txt
+Ligne 407: The complete analysis pipeline is implemented in Python 3.10+ and is publicly
+available as an open-s...
+Mots-clés suggérés: analysis, implemented, pipeline, python, complete
+Commande grep: grep -i 'pipeline\|analysis\|complete' articles_txt/gupta2024.txt
+Ligne 829: \paragraph{Single random seed.}
+Results for the GMM and XGBoost models are reported for a single ran...
+Mots-clés suggérés: paragraph, single, results, seed, random
+Commande grep: grep -i 'random\|paragraph\|single' articles_txt/gupta2024.txt
+Ligne 887: potentially through the evolutionary parameter tuning approach demonstrated by
+Boratto et al.\cite{b...
+Mots-clés suggérés: tuning, evolutionary, through, parameter, potentially
+Commande grep: grep -i 'potentially\|evolutionary\|through' articles_txt/gupta2024.txt
+
+=== henrich2004 ===
+Ligne 217:     producing thick vocal fold vibration with high closed quotient. M1 generates
+    rich harmonic s...
+Mots-clés suggérés: thick, vibration, fold, vocal, producing
+Commande grep: grep -i 'thick\|vocal\|producing' articles_txt/henrich2004.txt
+Ligne 229: Critically, the M1/M2 overlap zone---spanning approximately one octave in vocal
+extension---is where...
+Mots-clés suggérés: zone, approximately, spanning, critically, overlap
+Commande grep: grep -i 'overlap\|critically\|zone' articles_txt/henrich2004.txt
+Ligne 230: extension---is where it is physiologically possible to phonate in either mechanism.
+The choice withi...
+Mots-clés suggérés: possible, extension, phonate, either, physiologically
+Commande grep: grep -i 'physiologically\|possible\|extension' articles_txt/henrich2004.txt
+Ligne 882: types, and recording conditions, enabling statistical generalization beyond a single
+artist. Second,...
+Mots-clés suggérés: statistical, enabling, conditions, types, recording
+Commande grep: grep -i 'conditions\|types\|recording' articles_txt/henrich2004.txt
+
+=== henrich2006 ===
+Ligne 82: over the past three decades. What was once an auxiliary discipline dependent on
+subjective auditory ...
+Mots-clés suggérés: decades, once, three, over, past
+Commande grep: grep -i 'over\|past\|three' articles_txt/henrich2006.txt
+
+=== kim2018 ===
+Ligne 307: temporal resolution (hop length = 220 samples at 44.1~kHz):
+
+\paragraph{Fundamental frequency ($f_0$...
+Mots-clés suggérés: paragraph, samples, resolution, length, temporal
+Commande grep: grep -i 'length\|resolution\|temporal' articles_txt/kim2018.txt
+
+=== kim2025 ===
+Ligne 138: This study fills a gap in the literature by providing the first computational
+bioacoustic analysis o...
+Mots-clés suggérés: providing, first, fills, literature, study
+Commande grep: grep -i 'literature\|study\|fills' articles_txt/kim2025.txt
+
+=== kreiman2012 ===
+Ligne 330: generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
+gentle closure conce...
+Mots-clés suggérés: strong, upper, harmonics, generates, producing
+Commande grep: grep -i 'strong\|generates\|upper' articles_txt/kreiman2012.txt
+Ligne 337: $H_1$-$H_2$). Light adduction (M2) produces a dominant fundamental with weak harmonics
+(high $H_1$-$...
+Mots-clés suggérés: adduction, dominant, produces, fundamental, light
+Commande grep: grep -i 'produces\|light\|adduction' articles_txt/kreiman2012.txt
+Ligne 841: \paragraph{$H_1$-$H_2$ at high $f_0$.}
+In the upper register, the first harmonic ($H_1$) may coincid...
+Mots-clés suggérés: paragraph, register, upper, high, first
+Commande grep: grep -i 'upper\|high\|paragraph' articles_txt/kreiman2012.txt
+
+=== kreiman2014 ===
+Ligne 330: generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
+gentle closure conce...
+Mots-clés suggérés: strong, upper, harmonics, generates, producing
+Commande grep: grep -i 'strong\|generates\|upper' articles_txt/kreiman2014.txt
+
+=== lee2013 ===
+Ligne 377:
+\paragraph{Method 3: XGBoost with pseudo-labels.}
+A supervised classifier\cite{chen2016} trained on...
+Mots-clés suggérés: pseudo, paragraph, xgboost, method, labels
+Commande grep: grep -i 'xgboost\|method\|paragraph' articles_txt/lee2013.txt
+Ligne 805: high separability of GMM clusters in the nine-dimensional feature space, not
+validated physiological...
+Mots-clés suggérés: nine, separability, dimensional, high, clusters
+Commande grep: grep -i 'high\|separability\|clusters' articles_txt/lee2013.txt
+
+=== maryn2015 ===
+Ligne 316:
+\paragraph{Vocal quality features.}
+Using Praat via Parselmouth,\cite{boersma2023} we extracted: Ha...
+Mots-clés suggérés: paragraph, quality, vocal, features, using
+Commande grep: grep -i 'quality\|vocal\|paragraph' articles_txt/maryn2015.txt
+Ligne 348: the global spectral pattern without depending on individual harmonic detection,
+making it more robus...
+Mots-clés suggérés: without, depending, global, spectral, pattern
+Commande grep: grep -i 'global\|spectral\|pattern' articles_txt/maryn2015.txt
+
+=== miller2000 ===
+Ligne 89:
+Despite these advances, the classification of singing voices in Western pedagogy
+remains dominated ...
+Mots-clés suggérés: despite, singing, classification, advances, these
+Commande grep: grep -i 'advances\|these\|despite' articles_txt/miller2000.txt
+
+=== nigam2000 ===
+Ligne 377:
+\paragraph{Method 3: XGBoost with pseudo-labels.}
+A supervised classifier\cite{chen2016} trained on...
+Mots-clés suggérés: pseudo, paragraph, xgboost, method, labels
+Commande grep: grep -i 'xgboost\|method\|paragraph' articles_txt/nigam2000.txt
+
+=== rezende2016 ===
+Ligne 102: portamenti), precise diction at high speed, rhythmic agility, and what Tatit
+terms \emph{figurativiz...
+Mots-clés suggérés: diction, high, speed, precise, portamenti
+Commande grep: grep -i 'diction\|precise\|portamenti' articles_txt/rezende2016.txt
+Ligne 111: irrelevant and pedagogically counterproductive in a microphone-dependent genre. The
+essential vocal ...
+Mots-clés suggérés: irrelevant, microphone, pedagogically, dependent, counterproductive
+Commande grep: grep -i 'pedagogically\|irrelevant\|counterproductive' articles_txt/rezende2016.txt
+Ligne 182: Forcing Choro singers into \emph{Fach} categories leads to reductive
+``pigeonholing'' that ignores i...
+Mots-clés suggérés: singers, forcing, into, emph, choro
+Commande grep: grep -i 'singers\|forcing\|choro' articles_txt/rezende2016.txt
+
+=== rouard2023 ===
+Ligne 120: settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC...
+Mots-clés suggérés: hybrid, settings, methods, cite, boratto2025
+Commande grep: grep -i 'boratto2025\|settings\|cite' articles_txt/rouard2023.txt
+Ligne 282: \label{sec:separation}
+
+In complex Choro arrangements, pitch detection algorithms may capture instru...
+Mots-clés suggérés: arrangements, label, complex, choro, separation
+Commande grep: grep -i 'label\|separation\|complex' articles_txt/rouard2023.txt
+
+=== roubeau2009 ===
+Ligne 82: over the past three decades. What was once an auxiliary discipline dependent on
+subjective auditory ...
+Mots-clés suggérés: decades, once, three, over, past
+Commande grep: grep -i 'over\|past\|three' articles_txt/roubeau2009.txt
+Ligne 202:
+The scientific response to this classification gap lies in the theory of laryngeal
+vibration mechan...
+Mots-clés suggérés: response, classification, lies, scientific, theory
+Commande grep: grep -i 'scientific\|response\|classification' articles_txt/roubeau2009.txt
+Ligne 221:   \item[M2 (head voice/falsetto):] Operates under cricothyroid muscle tension with
+    reduced vibra...
+Mots-clés suggérés: voice, operates, head, falsetto, item
+Commande grep: grep -i 'item\|head\|voice' articles_txt/roubeau2009.txt
+Ligne 229: Critically, the M1/M2 overlap zone---spanning approximately one octave in vocal
+extension---is where...
+Mots-clés suggérés: zone, approximately, spanning, critically, overlap
+Commande grep: grep -i 'overlap\|critically\|zone' articles_txt/roubeau2009.txt
+Ligne 528: The M1 distribution is centered at 265--365~Hz (approximately C\#4--F\#4), while M2
+occupies 425--58...
+Mots-clés suggérés: while, centered, approximately, occupies, distribution
+Commande grep: grep -i 'approximately\|centered\|distribution' articles_txt/roubeau2009.txt
+
+=== sol2023 ===
+Ligne 139: bioacoustic analysis of Brazilian Choro singing. While recent work has applied
+machine learning to v...
+Mots-clés suggérés: analysis, singing, choro, brazilian, bioacoustic
+Commande grep: grep -i 'analysis\|bioacoustic\|brazilian' articles_txt/sol2023.txt
+
+=== sundberg1974 ===
+Ligne 158: The \emph{Fach} system's central premise is vocal audibility over a non-amplified
+orchestra. This ca...
+Mots-clés suggérés: premise, system, emph, central, fach
+Commande grep: grep -i 'emph\|fach\|system' articles_txt/sundberg1974.txt
+
+=== sundberg1987 ===
+Ligne 243: vocal tract adjustments at the \emph{passaggio}---for instance, opening the jaw
+wider to raise $F_1$...
+Mots-clés suggérés: adjustments, tract, emph, vocal, passaggio
+Commande grep: grep -i 'adjustments\|vocal\|tract' articles_txt/sundberg1987.txt
+Ligne 777: with parameter adjustments: \texttt{fmin}/\texttt{fmax} for tessitura range (e.g.,
+50--400~Hz for op...
+Mots-clés suggérés: parameter, adjustments, fmin, texttt
+Commande grep: grep -i 'parameter\|adjustments\|texttt' articles_txt/sundberg1987.txt
+
+=== sundberg2006 ===
+Ligne 325: Four spectral features, each with established physiological correlates, were
+extracted for the Vocal...
+Mots-clés suggérés: four, each, spectral, features, established
+Commande grep: grep -i 'four\|spectral\|features' articles_txt/sundberg2006.txt
+
+=== tatit2002 ===
+Ligne 102: portamenti), precise diction at high speed, rhythmic agility, and what Tatit
+terms \emph{figurativiz...
+Mots-clés suggérés: diction, high, speed, precise, portamenti
+Commande grep: grep -i 'diction\|precise\|portamenti' articles_txt/tatit2002.txt
+Ligne 683: articulation rather than the ``vowel darkening'' typical of classical singing, where
+$F_1$ is system...
+Mots-clés suggérés: than, rather, darkening, articulation, vowel
+Commande grep: grep -i 'than\|articulation\|rather' articles_txt/tatit2002.txt
+Ligne 723: Second, formant analysis reveals speech-like articulation patterns ($F_1 \approx$
+660~Hz, $F_2 \appr...
+Mots-clés suggérés: second, analysis, reveals, formant, speech
+Commande grep: grep -i 'second\|analysis\|formant' articles_txt/tatit2002.txt
+
+=== teixeira2013 ===
+Ligne 317: \paragraph{Vocal quality features.}
+Using Praat via Parselmouth,\cite{boersma2023} we extracted: Har...
+Mots-clés suggérés: paragraph, quality, vocal, features, using
+Commande grep: grep -i 'quality\|vocal\|paragraph' articles_txt/teixeira2013.txt

@@ -1,0 +1,31 @@
+Conclusion
+We introduced Hybrid Transformer Demucs, a Transformer
+based variant of Hybrid Demucs that replaces the innermost convolutional layers by a Cross-domain Transformer
+Encoder, using self-attention and cross-attention to process
+spectral and temporal informations. This architecture benefits
+from our large training dataset and outperforms Hybrid Demucs by 0.45 dB. Thanks to sparse attention techniques, we
+scaled our model to an input length up to 12.2 seconds during
+training which led to a supplementary gain of 0.4 dB. Finally,
+we could explore splitting the spectrogram into subbands in
+order to process them differently as it is done in [14].
+
+6. REFERENCES
+[1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob
+Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz
+Kaiser, and Illia Polosukhin, “Attention is all you need,”
+CoRR, vol. abs/1706.03762, 2017.
+[2] Alexandre Défossez, “Hybrid spectrogram and waveform source separation,” in Proceedings of the ISMIR
+2021 Workshop on Music Source Separation, 2021.
+[3] Zafar Rafii, Antoine Liutkus, Fabian-Robert Stöter,
+Stylianos Ioannis Mimilakis, and Rachel Bittner, “The
+musdb18 corpus for music separation,” 2017.
+[4] Nobutaka Ono, Zafar Rafii, Daichi Kitamura, Nobutaka
+Ito, and Antoine Liutkus, “The 2015 Signal Separation Evaluation Campaign,” in International Conference on Latent Variable Analysis and Signal Separation
+(LVA/ICA), Aug. 2015.
+[5] Zafar Rafii, Antoine Liutkus, Fabian-Robert Stöter,
+Stylianos Ioannis Mimilakis, and Rachel Bittner,
+“Musdb18-hq - an uncompressed version of musdb18,”
+Aug. 2019.
+[6] Hugo Touvron, Matthieu Cord, Alexandre Sablayrolles,
+Gabriel Synnaeve, and Hervé Jégou, “Going deeper
+================================================================================

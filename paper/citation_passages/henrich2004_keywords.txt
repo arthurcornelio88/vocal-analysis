@@ -1,0 +1,72 @@
+=== Recherche de mots-clés pour henrich2004 ===
+--- abstract ---
+
+--- introduction ---
+PACS numbers: 43.75.Rs 关SM兴
+
+I. INTRODUCTION
+
+Voice quality is mainly due to the characteristics of
+--
+Isshiki, N. 共1964兲. ‘‘Regulatory mechanism of voice intensity variation,’’ J.
+Speech Hear. Res. 7, 17–29.
+Jolicoeur, P. 共1991兲. Introduction à la Biométrie (An Introduction to Biometry兲 共Decarie/Masson, Montréal/Paris兲.
+Karlsson, I. 共1986兲. ‘‘Glottal waveforms for normal female speakers,’’ STLQPSR 1, 31–36.
+Kitzing, P. 共1982兲. ‘‘Photo- and electroglottographical recording of the laryngeal vibratory pattern during different registers,’’ Folia Phoniatr. 34,
+
+--- conclusion ---
+This ‘‘smoothing’’ technique can be used by any skilled
+singer, e.g., tenor T2, who can also sing the glissandos without any voice breaks.
+V. CONCLUSION
+
+In this study, 18 trained male and female singers were
+
+--- method ---
+fundamental frequency, and open quotient. Fundamental frequency and open quotient are derived
+from the differentiated electroglottographic signal, using the DECOM 共DEgg Correlation-based
+Open quotient Measurement兲 method. As male and female phonation may differ in respect to
+vocal-fold vibratory properties, a distinction is made between two different glottal configurations,
+which are called laryngeal mechanisms: mechanism 1 共related to chest, modal, and male head
+--
+et al., 1982; Kitzing and Sonesson, 1974兲, electroglottographic 共EGG兲 signals 共Childers et al., 1990; Hanson
+et al., 1990; Lecluse, 1977; Lecluse and Brocaar, 1977;
+Miller et al., 2002; Orlikoff, 1991兲. Indirect methods have
+also been used, based on inverse filtering of volume velocity
+or acoustic signals 共Holmberg et al., 1988, 1989, 1995; Sundberg et al., 1999a兲. It has also been related to the amplitude
+--
+The variation of open quotient with fundamental frequency has also been explored. In the case of male speakers,
+previous research has not shown any relationship between
+open quotient and fundamental frequency whatever the measurement method 共Childers et al., 1990; Hanson et al., 1990;
+Lecluse and Brocaar, 1977; Timcke et al., 1958兲. In the case
+of female speakers, an increase of open quotient with an
+--
+
+ies. The voice database recorded for the purpose of this study
+
+--- result ---
+
+共Received 10 May 2004; revised 24 November 2004; accepted 29 November 2004兲
+This article presents the results of glottal open-quotient measurements in the case of singing voice
+production. It explores the relationship between open quotient and laryngeal mechanisms, vocal
+intensity, and fundamental frequency. The audio and electroglottographic signals of 18 classically
+--
+vocal-fold vibratory properties, a distinction is made between two different glottal configurations,
+which are called laryngeal mechanisms: mechanism 1 共related to chest, modal, and male head
+register兲 and mechanism 2 共related to falsetto for male and head register for female兲. The results
+show that open quotient depends on the laryngeal mechanisms. It ranges from 0.3 to 0.8 in
+mechanism 1 and from 0.5 to 0.95 in mechanism 2. The open quotient is strongly related to vocal
+--
+fundamental frequency for all the main tessituras in classical
+singing voice production, taking into account the laryngeal
+mechanisms involved. We hope that our results will help to
+make sense of the seemingly conflicting results of other stud1418
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+--
+avoid the problems and limitations inherent in inverse filtering 共Henrich, 2001; Henrich et al., 2001兲, electroglottography was chosen as a noninvasive technique to measure the
+
+--- discussion ---
+open quotient with an increase of fundamental frequency, but
+this effect is not strong.
+IV. DISCUSSION
+A. A strong dependency on laryngeal mechanisms

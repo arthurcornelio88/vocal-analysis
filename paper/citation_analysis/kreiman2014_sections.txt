@@ -1,0 +1,31 @@
+6. CONCLUSIONS, FUTURE WORK, AND
+IMPLICATIONS FOR CLINICAL PRACTICE
+The studies reviewed in this paper suggest that
+phonation is best viewed as part of a communicative
+process, the pieces of which are difficult to understand
+out of the context of the entire process. Thus, understanding and ultimately predicting how speakers produce the
+intended voice quality (and how disorders disturb this
+process) requires a unified model of voice that links
+production to perception.
+
+3
+
+Video examples can be found at http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3562273/figure/v1/ and at http://www.ncbi.nlm.nih.gov/
+pmc/articles/PMC3562273/figure/v2/.
+
+Loquens, 1(1), January 2014, e009. eISSN XXXXX doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+8 • J. Kreiman, B. R. Gerratt, M. Garellek, R. Samlan and Z. Zhang
+
+Many issues await resolution as we work towards
+this goal. Because phonation takes place in the time
+domain while perception depends largely on spectral
+information, understanding the relationship between
+perception and production requires mapping between
+time and spectral domain representations, which has
+proven difficult (e.g., Fant, 1995; Ni Chasaide & Gobl,
+1997). More than one physical configuration may produce the same voice quality; conversely, large changes
+in configuration may not result in changes in quality.
+Variables in the current voice source model certainly
+interact: for example, we know that the perceptual
+================================================================================

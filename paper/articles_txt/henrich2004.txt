@@ -1,0 +1,1664 @@
+Glottal open quotient in singing: Measurements and
+correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle
+Castellengo
+
+To cite this version:
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle Castellengo. Glottal
+open quotient in singing: Measurements and correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency. Journal of the Acoustical Society of America, 2005, 117 (3), pp.1417-1430.
+�10.1121/1.1850031�. �hal-00195256�
+
+HAL Id: hal-00195256
+https://hal.science/hal-00195256v1
+Submitted on 3 Dec 2008
+
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of scientific research documents, whether they are published or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+
+Glottal open quotient in singing: Measurements and correlation
+with laryngeal mechanisms, vocal intensity, and fundamental
+frequency
+Nathalie Henricha)
+LAM (UPMC, CNRS, Ministère de la culture), 11 rue de Lourmel, 75015 Paris, France
+and LIMSI-CNRS, BP 133, F91403 Orsay, France
+
+Christophe d’Alessandro and Boris Doval
+LIMSI-CNRS, BP 133, F91403 Orsay, France
+
+Michèle Castellengo
+LAM (UPMC, CNRS, Ministère de la culture), 11 rue de Lourmel, 75015 Paris, France
+
+共Received 10 May 2004; revised 24 November 2004; accepted 29 November 2004兲
+This article presents the results of glottal open-quotient measurements in the case of singing voice
+production. It explores the relationship between open quotient and laryngeal mechanisms, vocal
+intensity, and fundamental frequency. The audio and electroglottographic signals of 18 classically
+trained male and female singers were recorded and analyzed with regard to vocal intensity,
+fundamental frequency, and open quotient. Fundamental frequency and open quotient are derived
+from the differentiated electroglottographic signal, using the DECOM 共DEgg Correlation-based
+Open quotient Measurement兲 method. As male and female phonation may differ in respect to
+vocal-fold vibratory properties, a distinction is made between two different glottal configurations,
+which are called laryngeal mechanisms: mechanism 1 共related to chest, modal, and male head
+register兲 and mechanism 2 共related to falsetto for male and head register for female兲. The results
+show that open quotient depends on the laryngeal mechanisms. It ranges from 0.3 to 0.8 in
+mechanism 1 and from 0.5 to 0.95 in mechanism 2. The open quotient is strongly related to vocal
+intensity in mechanism 1 and to fundamental frequency in mechanism 2. © 2005 Acoustical
+Society of America. 关DOI: 10.1121/1.1850031兴
+PACS numbers: 43.75.Rs 关SM兴
+
+I. INTRODUCTION
+
+Voice quality is mainly due to the characteristics of
+vocal-fold vibratory movement. Thus, a better understanding
+of these properties would help to characterize voice quality.
+In this context, the open quotient O q is a glottal source parameter of considerable interest, as it has been reported to be
+related to voice qualities such as ‘‘breathy’’ and ‘‘pressed’’
+共e.g., Alku and Vilkman, 1996; Klatt and Klatt, 1990兲. It is
+defined as the ratio of the glottal open time over the fundamental period. It is a dimensionless parameter, ranging from
+0 共no opening兲 to 1 共no or incomplete closure兲. This glottal
+source parameter is the counterpart of the closed quotient
+C q , given that O q ⫽1⫺C q . It can be measured directly by
+the use of high-speed visualization 共Childers et al., 1990;
+Timcke et al., 1958兲, photoglottographic signals 共Dejonckere, 1981; Hanson et al., 1990; Kitzing, 1982, 1983; Kitzing
+et al., 1982; Kitzing and Sonesson, 1974兲, electroglottographic 共EGG兲 signals 共Childers et al., 1990; Hanson
+et al., 1990; Lecluse, 1977; Lecluse and Brocaar, 1977;
+Miller et al., 2002; Orlikoff, 1991兲. Indirect methods have
+also been used, based on inverse filtering of volume velocity
+or acoustic signals 共Holmberg et al., 1988, 1989, 1995; Sundberg et al., 1999a兲. It has also been related to the amplitude
+difference H *
+1 ⫺H *
+2 between the first two harmonics of the
+a兲
+
+Electronic mail: henrich@lam.jussieu.fr
+
+Pages: 1417–1430
+
+acoustic signal spectrum after a formant-based correction
+共Hanson, 1995, 1997; Sundberg et al., 1999a兲.
+Most of these studies showed a variation of open quotient with vocal intensity in speech and singing. A decrease
+of open quotient with increase of vocal intensity was found
+with high-speed visualization of one male speaker 共Timcke
+et al., 1958兲, photoglottographic analysis of 20 female
+speakers 共Kitzing and Sonesson, 1974兲, electroglottographic
+analysis of ten male speakers 共Orlikoff, 1991兲, and glottal
+flow analysis of 25 male and 20 female speakers 共Holmberg
+et al., 1988兲, and six country singers 共Sundberg et al.,
+1999b兲. Only a slight trend was found by Hanson et al.
+共1990兲 on photoglottographic analysis of 12 male speakers.
+No relation was found by Lecluse and Brocaar 共1977兲 on
+electroglottographic analysis of six untrained male singers,
+which could be explained by the use of a slightly different
+open-quotient definition, distinguishing opening time and
+open time.
+The variation of open quotient with fundamental frequency has also been explored. In the case of male speakers,
+previous research has not shown any relationship between
+open quotient and fundamental frequency whatever the measurement method 共Childers et al., 1990; Hanson et al., 1990;
+Lecluse and Brocaar, 1977; Timcke et al., 1958兲. In the case
+of female speakers, an increase of open quotient with an
+increase of fundamental frequency was found by Kitzing and
+Sonesson 共1974兲. Holmberg et al. 共1989兲 observed that open
+
+J. Acoust. Soc. Am. 117 (3), Pt. 1, March 2005 0001-4966/2005/117(3)/1417/14/$22.50
+
+© 2005 Acoustical Society of America
+
+1417
+
+quotient tended to increase with fundamental frequency for
+both male and female speakers, although the correlation was
+not strong. Studying trained and untrained male and female
+singers, Howard 共1995兲 reported a variation in open quotient
+with fundamental frequency in the case of female singers,
+depending on the singer’s experience, but no relation between these parameters was found in the case of male singers
+共Howard et al., 1990兲. No relation between open quotient
+and fundamental frequency was found in the case of six premier male country singers 共Sundberg et al., 1999b兲.
+The differences found between male and female subjects
+may be due to the use of different laryngeal mechanisms,
+which differ with respect to the length and thickness of the
+vocal folds, as well as to the muscular laryngeal tensions
+involved in the process of voice production 共Hirano, 1982;
+Roubeau, 1993兲. Indeed, voice production can be divided
+into four main laryngeal mechanisms, the evidence for such
+division being provided by the noticeable transitions in the
+electroglottographic signals during the production of a glissando 共Henrich et al., 2003; Roubeau, 1993; Roubeau et al.,
+1991兲. The laryngeal mechanisms can be related to the wellknown voice registers: vocal fry is produced in mechanism 0,
+the so-called chest or modal register and male head register
+are produced in mechanism 1, the falsetto register 共male兲 or
+head register 共female兲 are produced in mechanism 2 and the
+flageolet, or whistle, register is produced in mechanism 3.
+Mechanisms 1 and 2 are commonly used in speech and singing. In mechanism 1, the vocal folds are thick, leading to
+vertical phase differences in vibration, and longer closing
+and opening phases as compared to mechanism 2, where the
+vocal folds are thin and vibrate without any vertical phase
+difference 共Hollien, 1974兲. Therefore, it is reasonable to expect lower open-quotient values in mechanism 1 than in
+mechanism 2. All the studies found in the literature seem to
+confirm this assumption 共Kitzing, 1982; Lecluse, 1977;
+Lecluse and Brocaar, 1977兲. A study of the frequency jump
+at the transition between mechanisms in singing brought to
+light sudden changes in closed quotient that accompany or
+precede the transition 共Miller et al., 2002兲. In a study of male
+singers, Sundberg and Högset 共1999兲 showed that the openquotient differences between mechanisms were larger for
+baritones, as compared with tenors and counter tenors, who
+may even have equal open quotient in both mechanisms.
+The open quotient seems to be strongly dependent on the
+laryngeal mechanism used by the speaker or the singer during vocal production. A study of the open quotient’s relationship to parameters such as vocal intensity or fundamental
+frequency therefore needs to take laryngeal mechanism into
+account. Unfortunately, few studies have done so. This could
+partly explain the lack of convergence between studies on
+this issue.
+To date, no study has been specifically devoted to a detailed exploration of the variations of open quotient in western operatic singing. Our purpose is to provide an overview
+of the variations of open quotient with vocal intensity and
+fundamental frequency for all the main tessituras in classical
+singing voice production, taking into account the laryngeal
+mechanisms involved. We hope that our results will help to
+make sense of the seemingly conflicting results of other stud1418
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+ies. The voice database recorded for the purpose of this study
+and the analysis method are presented in Sec. II. In order to
+avoid the problems and limitations inherent in inverse filtering 共Henrich, 2001; Henrich et al., 2001兲, electroglottography was chosen as a noninvasive technique to measure the
+glottal vibratory movement, and the differentiated EGG signal 共DEGG兲 was used for open-quotient measurements. In
+Sec. III, the results of the database analysis will be presented,
+pointing out the relations of open quotient with laryngeal
+mechanisms, vocal intensity, and fundamental frequency.
+These relations will be discussed in Sec. IV, and the main
+results will be summarized in Sec. V.
+II. MATERIAL AND METHOD
+A. Recording procedure
+
+Recording sessions took place in a soundproof booth.
+The acoustic signal was recorded using a 1/2 in. condenser
+microphone 共Brüel & Kjær 4165兲 placed 50 cm from the
+singer’s mouth, a preamplifier 共Brüel & Kjær 2669兲, and a
+conditioning amplifier 共Brüel & Kjær NEXUS 2690兲. The
+electroglottographic signal was recorded by the use of a twochannel electroglottograph 共EG2, Rothenberg, 1992兲. Both
+signals were recorded simultaneously on the two channels of
+a DAT recorder 共PORTADAT PDR1000兲. A calibration for
+absolute sound-pressure level 共SPL兲 measurement was carried out in each recording session by using the NEXUS amplifier to generate a reference tone, which was sent through
+the acquisition chain and recorded on the DAT recorder. In
+addition, an analog sound-level meter was placed close to the
+microphone, while the singers were asked to produce a sustained sound at a relatively steady loudness of their choice.
+The SPL recorded by the sound-level meter was noted and
+used later for assessing the validity of the reference-tone
+calibration procedure.
+The singers were asked to stand still during the whole
+recording session, and their position was marked on the floor.
+As they were not physically constrained in terms of bodily
+movements, head movements could occur during the recording, which should have a second-order effect on the SPL
+measurements at 50 cm.
+B. Subjects
+
+Eighteen trained singers were recorded for this study:
+seven baritones 共subjects B1 to B7兲, two tenors 共T1,T2兲,
+three counter tenors 共CT1 to CT3兲, three mezzo-sopranos
+共MS1 to MS3兲, and three sopranos 共S1 to S3兲. Most of them
+were professional singers, earning their living from singing.
+Among other questions, the singers were asked to indicate in
+what range of pitch they used mechanisms 1 and 2. The
+answers are given in Fig. 1. Notice the presence of a frequency band where both mechanisms can be used. To produce these frequencies, the singer can thus choose to phonate
+either in mechanism 1 or in mechanism 2.
+C. Protocol
+
+For each singer, the recording session lasted about 20
+min. The singer was asked to go through a precise protocol
+Henrich et al.: Glottal open quotient in singing
+
+FIG. 1. Tessitura of the 18 singers recorded for this study, as given by the singer. For each singer, the pitch range is given in mechanism 1 共M1兲 and
+mechanism 2 共M2兲. In the case of baritone B5, no range is given in mechanism 2, as this singer did not use it at all and so had no idea about his range. Their
+age and the years of training are also given. Four of them are not professional singers 共B1, MS1, MS2, and MS3兲.
+
+共see below兲, and, if necessary, to describe his/her vocal production in terms of voice registers, or voice quality. Indeed,
+singers are apparently able to identify the laryngeal mechanism in which they phonate, information worth eliciting. We
+chose to use a noninvasive method for measuring glottal activity and only gathered information on vocal intensity 共I兲,
+fundamental frequency ( f 0 ), and open quotient (O q ). The
+protocol for this experiment is thus devised to study openquotient variations as a function of fundamental frequency
+and vocal intensity for singing exercises 共e.g., sustained
+vowels and crescendos兲 and for musical sentences 共sung sentences兲. The subjects were asked to reduce the amount of
+vibrato if possible. The tasks were as follows:
+共1兲 Speech/singing/shouting: A sentence in French, chosen
+by the subject, was first spoken, then sung, and finally
+shouted.
+共2兲 Sung sentence: The first bars of Gounod’s Ave Maria
+were performed with various degrees of loudness 共piano,
+mezzo-forte, forte兲.
+共3兲 Sustained vowels and crescendos/decrescendos: Three
+selected vowels 关a兴, 关e兴, and 关u兴 were performed at different pitches depending on the singer’s pitch range 共see
+Table I兲 and at three degrees of loudness: piano, mezzoforte, and forte. The subject was asked to maintain vowel
+color, pitch, and loudness during production. The sounds
+were 4 to 8 s long, and in cases when the laryngeal
+mechanism could not be straightforwardly identified, the
+subject indicated which laryngeal mechanism he or she
+was using. Following these tasks, the singers were asked
+to perform crescendos and decrescendos on the selected
+pitches and vowels.
+
+TABLE I. Pitches sung by the singers for the sustained-vowels and
+crescendo-decrescendo tasks. When only the lower and upper pitches are
+given, the ascending scale is diatonic.
+B1
+B2
+B3
+B4
+B5
+B6
+B7
+T1
+T2
+
+C3, G3, C4, E4
+C3, G3, C4, E4
+C3, G3, C4, E4
+C3, G3, C4, E4
+A2 to C4
+C3 to C4
+A2 to B3
+F3 to C5
+B2 to F4
+
+CT1
+CT2
+CT3
+MS1
+MS2
+MS3
+S1
+S2
+S3
+
+D3, A3, D4, A4, D5
+D3, A3, D4, A4, D5
+B3 to E5
+C4, E4, G4, C5, E5
+F3, G3, B3, C4, E4, G4, C5, E5
+G3 to A4
+G4, C5, E5, G5
+G4, A4, C5, E5
+G4, C5, E5, G5, C6
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+共4兲 Glissandos: Rising and falling glissandos, mezzo-forte,
+continuous, and 共if possible兲 without vibrato, were requested at the end of the session.
+Each task was only performed once, apart from the glissandos which could be repeated several times. The use of
+both mechanisms was not mandatory in this study, and so the
+singers were not asked to repeat a task while singing in another laryngeal mechanism. However, some singers sometimes volunteered to do so. Singer CT1 repeated the
+sustained-vowels task on pitch D4 共293 Hz兲, mezzo-forte, in
+both mechanisms. Singers B2, B3, B4, B7, T2, CT1, CT2,
+and CT3 repeated either the spoken, the shouted, or the sung
+French sentence in both mechanisms. Singers T1, T2, CT1,
+CT2, MS1, and S2 sang the Ave Maria air in both mechanisms.
+Another part of the protocol was dedicated to the exploration of various voice qualities. In the first task, the choice
+of voice quality was left to the singer. In the second task,
+voice qualities were specified, such as natural versus lyrical
+voice production. The exploration of these voice qualities
+from a perceptual and acoustical point of view is underway
+共Garnier et al., 2004兲.
+
+D. Analysis method
+
+The fundamental frequency and the open quotient are
+measured from the DEGG signal, by using the DECOM
+共DEgg Correlation-based Open quotient Measurement兲
+method as described in a previous paper 共Henrich et al.,
+2004兲. The method will be summarized here, and we refer
+the reader to that paper for more detail.
+An EGG signal gives information about the vocal-fold
+contact area. A sudden variation in the contact will lead to
+noticeable peaks in the derivative 共DEGG signal兲. These
+peaks can accurately be related to the glottal opening and
+closing instants, which are, respectively, defined as the instants at which the glottal flow starts to increase greatly from
+or decrease greatly toward the baseline 共Childers et al., 1990,
+1983兲. The fundamental period can thus be derived from a
+DEGG signal by measuring the duration between two consecutive glottal closing instants. The duration between a glottal opening instant and the consecutive glottal closing instant
+corresponds to the open time. The open quotient can be deHenrich et al.: Glottal open quotient in singing
+
+1419
+
+FIG. 2. Mean values and standard deviations of open quotient measured on
+the French sentences spoken, sung or shouted in mechanisms 1 共M1兲 and 2
+共M2兲.
+
+FIG. 3. Mean values and standard deviations of open quotient measured on
+the musical phrase Ave Maria of Gounod, sung in mechanisms 1 共M1兲 and
+2 共M2兲.
+
+rived from these two measures as the ratio between open
+time and fundamental period.
+The DECOM method is applied to a four-period windowed DEGG signal which is separated into two parts: its
+positive part, which shows strong peaks related to glottal
+closing instants, and its negative part, which shows weaker
+peaks related to glottal opening instants. The fundamental
+period duration is derived from the autocorrelation function
+calculated on the positive part of the DEGG signal. The open
+time is derived from the intercorrelation function calculated
+between the positive part and the negative part.
+These measures are accurate in the case where the glottal opening and/or closing peaks are single and precise. In
+some cases, however, the DEGG signal can present double or
+multiple peaks during the opening or the closing phase.
+Therefore, the DECOM method automatically detects double
+or undefined peaks, and only the measurements on glottal
+cycles for which the opening and closing peaks are unique
+are taken into account in this study.
+
+in mean value being at most 10 dB with a mean difference of
+4.2 dB. A great difference in the open-quotient mean values
+is observed in every case between mechanism 1 共M1兲 and
+mechanism 2 共M2兲. Whatever the vocal production is, the
+mean values of open quotient are between 0.4 and 0.65 in
+M1, and between 0.65 and 0.8 in M2. In the case of counter
+tenor CT1, who sang and shouted the sentence in both
+mechanisms, a difference between singing and shouting is
+found in M1. It goes along with a 10-dB increase in vocal
+intensity, which could be the effect of increased vocal effort
+in shouting. The relation between open quotient and vocal
+intensity will be developed in more detail in Sec. III B.
+During the Ave Maria task, a few singers also managed
+to sing in both mechanisms, as shown in Fig. 3. Vocal intensity does not vary much between both productions in most
+cases, the differences in mean value between M1 and M2
+being at most 8 dB with a mean difference of 3.8 dB. The
+pitch is quite different, allowing the singers to sing comfortably in one and the same mechanism over the whole sentence. Only counter tenor CT2 managed to sing the sentence
+in both mechanisms at the same pitch, with a mean vocal
+intensity of 77 dB in both cases. The differences in open
+quotient between the two laryngeal mechanisms are also obvious in these examples, except in the case of tenor T1. The
+greatest difference is found for soprano S2, with O q ⫽0.54 in
+M1 and 0.8 in M2. In this case, mean vocal intensity is 81
+dB in M1 and 88 dB in M2.
+
+III. RESULTS
+
+This part presents the results of the open-quotient measurements. We will first deal with its relation to the laryngeal
+mechanisms and then explore the correlation with vocal intensity and fundamental frequency.
+A. Open quotient and laryngeal mechanism
+
+Several performing situations have been studied with regard to the open-quotient variation from one mechanism to
+another: on spoken and sung sentences, within the same
+pitch on sustained vowels, and during a glissando, i.e., a
+variation of fundamental frequency. As performing a task in
+both mechanisms was not obligatory, only a few cases are
+presented here, and they relate mainly to male voices.
+1. Spoken and sung sentences
+
+The results concerning the mean variation of open quotient during the French sentence, either spoken, shouted, or
+sung, are illustrated in Fig. 2. It should be noted that a given
+singer did not necessarily produce the three tasks 共speech,
+singing, and shouting兲 using both mechanisms. For instance,
+it may be easier for a male singer to speak than to sing in
+mechanism 2 共M2兲. The three baritones and the tenor, whose
+results are plotted in Fig. 2, did not succeed in singing the
+sentences in both mechanisms. In most cases, vocal intensity
+is kept rather constant between M1 and M2, the differences
+1420
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+2. Sustained vowels
+
+The use of one mechanism or another often goes with a
+change of fundamental frequency. However, counter tenor
+CT1 sang three sustained vowels 关a兴, 关e兴, and 关u兴 in both
+mechanisms on the same pitch 共D4, 293 Hz兲. The results are
+given in Table II and illustrated in Fig. 4 in the case of vowel
+关a兴.
+A noticeable difference is found in open quotient between the two mechanisms. Laryngeal mechanism 1 is charTABLE II. Open quotient and vocal intensity 关mean 共standard deviation兲兴
+measured during sustained vowels sung by counter tenor CT1 in M1 or M2,
+at the same pitch 共D4, 293 Hz兲.
+关a兴
+
+M1
+M2
+
+关e兴
+
+关u兴
+
+Oq
+
+I
+
+Oq
+
+I
+
+Oq
+
+I
+
+0.64 共0.02兲
+0.77 共0.02兲
+
+88 共3兲
+79 共3兲
+
+0.64 共0.01兲
+0.77 共0.04兲
+
+83 共3兲
+77 共3兲
+
+0.65 共0.02兲
+0.77 共0.03兲
+
+82 共2兲
+79 共3兲
+
+Henrich et al.: Glottal open quotient in singing
+
+FIG. 4. Vowel 关a兴 sung by counter tenor CT1 on the same pitch 共D4兲 in
+mechanisms 1 and 2. From top to bottom panels: acoustic signal on a timefrequency space, vocal intensity, and open quotient.
+
+acterized by a mean value of open quotient of 0.64 and
+mechanism 2 by a mean value of 0.77. These results are very
+similar to those obtained by this subject during the sung
+sentence 共see Fig. 2兲. Mean vocal intensity is 88 dB in M1
+and 79 dB in M2. The spectral analysis shows a noticeable
+decrease of energy in the high-frequency part of the spectrum in M2. Nevertheless, both phonations were judged as
+perceptually similar by the authors.
+
+3. Glissandos
+
+Transitions between laryngeal mechanisms have also
+been explored with regard to the laryngeal mechanisms. In
+the case of male singers, a transition from M1 to M2 usually
+occurs in the higher part of their vocal range: cases where the
+vocalis muscle is tensed and subglottal pressure is high
+共Miller, 2000兲, hence the probability of a noticeable frequency jump 共Miller et al., 2002; Roubeau, 1993; Svec
+et al., 1999兲 and of a decrease of vocal intensity 共Roubeau,
+1993兲. The transition between laryngeal mechanisms can
+also be detected by an amplitude change in the envelope of
+the EGG and DEGG signal 共Henrich et al., 2003; Roubeau
+et al., 1987兲.
+A glissando sung by tenor T2 with noticeable frequency
+jumps is presented in Fig. 5. The transition M1→M2 goes
+with a frequency jump of 3 semitones 共F4#→A4兲, and the
+transition M2→M1 goes with a frequency jump of 5– 6
+semitones 共F4→C4兲. These results are in agreement with
+those obtained from three tenors by Miller et al. 共2002兲 in
+studying the characteristic leap interval from chest register
+共M1兲 to falsetto 共M2兲.
+These pitch jumps go together with noticeable jumps of
+open quotient. During the transition M1→M2, open quotient
+varies from 0.4 to 0.62 within approximately 300 ms, and
+this slow variation precedes the jump in frequency. Similar
+observations were made by Miller et al. 共2002兲, who found
+that the variation in open quotient lasted about 100 ms. The
+variation of open quotient for the transition M2→M1 is simiJ. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+FIG. 5. Glissando sung by tenor T2. From top to bottom panels: acoustic
+signal in a time-frequency space, vocal intensity, fundamental frequency,
+and open quotient. The open-quotient measures for which glottal opening
+and closing peaks are unique are plotted with thick dots. Information about
+the measures obtained while the peaks are imprecise or double is given by
+the broken line. The two vertical lines indicate the transition between laryngeal mechanisms M1 and M2. Their placement is based on the pitch jump
+detection and the amplitude change in the EGG and DEGG signal.
+
+lar in amplitude, O q decreasing from 0.75 to 0.53, but more
+sudden.
+In classical singing, singers who need to develop their
+vocal range over the two laryngeal mechanisms 共such as
+male and female altos兲 learn how to ‘‘smooth’’ the transition
+from one mechanism to another, so as to avoid any noticeable timbre discontinuity in the melodic line. This is best
+illustrated by counter tenor CT1, whose glissando is presented in Fig. 6: the frequency jump is unnoticeable. Both
+transitions are characterized by a noticeable decrease in vocal intensity and high-frequency spectral energy, and by a
+
+FIG. 6. Glissando sung by counter tenor CT1. From top to bottom panels:
+acoustic signal in a time-frequency space, vocal intensity, fundamental frequency, and open quotient. The open-quotient measures for which glottal
+opening and closing peaks are unique are plotted with thick dots. Information about the measures obtained while the peaks are imprecise or double is
+given by the broken line. The two vertical lines indicate the transition between laryngeal mechanisms M1 and M2. Their placement is based on the
+amplitude change in the EGG and DEGG signals.
+Henrich et al.: Glottal open quotient in singing
+
+1421
+
+FIG. 8. Crescendo sung by the soprano S1 in mechanism 2, vowel 关u兴, pitch
+C5.
+FIG. 7. Crescendo–decrescendo sung by the baritone B1 in mechanism 1,
+vowel 关a兴, pitch C4.
+
+change in the EGG and DEGG overall amplitude. Nevertheless, the transitions are barely audible at first listening. The
+open quotient varies from 0.62 to 0.78 at the transition
+M1→M2 and from 0.76 to 0.6 at the transition M2→M1.
+The open-quotient variations are reduced as compared to the
+case of the tenor T2, but they are still noticeable. A strong
+negative correlation can be observed between open quotient
+and fundamental frequency in M2. Such a tendency is found
+for all the glissandos sung by this singer, the other two
+counter tenors, the two tenors 共see for instance Fig. 5兲, and
+the three sopranos. This point will be addressed later in Sec.
+III C.
+The open-quotient variation close to a transition of laryngeal mechanisms is a common feature observed for all the
+singers, male and female. The amplitude of the jump ranges
+from 0.1 to 0.3. An extensive quantitative analysis of the
+open-quotient jump in glissandos is beyond the scope of this
+present study, and we will see in the following sections that
+many factors contribute to a variation of open quotient.
+B. Open quotient and vocal intensity
+
+The measures presented here result from the analysis of
+crescendos–decrescendos and sustained vowels sung at three
+degrees of loudness, performed at various pitches covering
+the singer’s vocal range, and the analysis of Ave Maria musical phrases.
+1. Crescendos – decrescendos and sustained vowels
+
+A crescendo–descrescendo sung by baritone B1 on the
+vowel 关a兴 at pitch C4 共260 Hz兲 is shown in Fig. 7. A strong
+correlation between open quotient and vocal intensity can be
+observed: the greater the vocal intensity, the lower the open
+quotient. A 20-dB increase of vocal intensity goes along with
+a decrease of open quotient from 0.7 to 0.5. It goes along
+with a spectral enhancement of the first formant region and
+an increase of the harmonic richness in the high-frequency
+part of the spectrum. This crescendo–decrescendo was produced in mechanism 1. A crescendo in mechanism 2 sung by
+soprano S1 is shown in Fig. 8. In this case, vocal intensity
+1422
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+increases by about 10 dB and open quotient remains stable at
+about 0.7.
+In both cases, pitch is kept constant, suppressing possible dependency between vocal intensity and fundamental
+frequency. As compared to ordinary speech, the singing technique comprises the ability to change from soft to loud while
+keeping the pitch constant, and to change pitch while maintaining loudness under control. But, this is only true within a
+given pitch range. On a voice range profile or phonetogram,
+a strong correlation exists between the variations of vocal
+intensity and fundamental frequency 共Gramming et al.,
+1988; Liénard and Di Benedetto, 1999; Titze and Sundberg,
+1992兲, though these two parameters can be modified locally
+in an independent way. This general tendency is observed
+here as well, as illustrated in Table III: the data resulting
+from the analysis of crescendos–decrescendos and sustained
+vowels have been pooled across vocal intensity and fundamental frequency, and Pearson’s correlation coefficient between these two variables has been calculated, with the laryngeal mechanism and the vowel as additional parameters.
+The correlation between vocal intensity and fundamental frequency seems even stronger in mechanism 2 than in mechanism 1. A few exceptions to this general trend can, however,
+TABLE III. Pearson’s correlation coefficient between vocal intensity and
+fundamental frequency, in the case of sustained vowels and crescendos sung
+in M1 and M2, for the three vowels 关a兴, 关e兴, and 关u兴. A strong correlation is
+indicated in bold (r⬎0.70). A nonsignificant correlation is indicated by n.s.
+(p⭓0.001). The corresponding degrees of freedom are given in Table VIII.
+M1
+
+M2
+
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+B1
+B2
+B3
+B4
+B5
+B6
+B7
+
+0.73
+0.68
+0.52
+0.81
+0.50
+0.11
+0.72
+
+0.47
+0.69
+0.55
+0.75
+0.62
+0.18
+0.22
+
+0.75
+0.84
+0.47
+0.69
+0.73
+n.s.
+0.23
+
+T1
+T2
+
+0.69
+0.45
+
+0.88
+0.60
+
+0.94
+0.59
+
+CT1
+CT2
+
+0.64
+0.28
+
+0.49
+0.18
+
+0.66
+0.47
+
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+CT1
+CT2
+CT3
+
+0.90
+0.60
+0.75
+
+0.83
+0.68
+0.86
+
+0.63
+0.64
+0.84
+
+MS1
+MS2
+MS3
+
+0.75
+0.70
+0.86
+
+0.79
+0.93
+0.80
+
+0.75
+0.92
+0.86
+
+S1
+S2
+S3
+
+0.65
+0.78
+0.83
+
+0.83
+0.85
+0.78
+
+0.74
+0.87
+0.78
+
+Henrich et al.: Glottal open quotient in singing
+
+FIG. 9. Vocal intensity as a function of open quotient in the case of mechanism 1 for the seven baritones, the two tenors, and two counter tenors. The vowels
+have been distinguished by using a gray scale. The lines correspond to the major axes for a given vowel.
+
+be noticed: baritone B6, baritone B7 for vowels 关e兴 and 关u兴,
+and counter tenor CT2 in mechanism 1.
+While comparing open quotient and vocal intensity at
+different pitches, we should thus always keep in mind that
+the variation of vocal intensity may be due to a variation of
+fundamental frequency. So as to take this possible underlying
+variation into account in the statistical analysis of our results,
+we shall introduce a partial correlation coefficient 共see the
+Appendix兲.
+a. Vocal production in mechanism 1. Vocal intensity has
+been plotted as a function of open quotient for each male
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+singer in mechanism 1, as shown in Fig. 9. The three vowels
+关a兴, 关e兴, and 关u兴 have been processed separately, but the resulting measurements are plotted on the same figure. For
+each vowel, a regression line 共or major axis兲 between open
+quotient and vocal intensity is plotted on the figure. Table IV
+gives the corresponding Pearson correlation coefficients and
+partial correlation coefficients.
+Vocal intensity ranges from 60–70 dB for piano sounds,
+to 95–105 dB for forte sounds. The open quotient ranges
+from 0.3 to 0.9. It seldom goes below 0.5 for the singers T1
+and CT1, and it seldom goes beyond 0.7 in the case of the
+Henrich et al.: Glottal open quotient in singing
+
+1423
+
+TABLE IV. Pearson’s correlation coefficient between open quotient and
+vocal intensity, in the case of sustained vowels and crescendos sung in
+mechanism 1 and for the 3 vowels 关a兴, 关e兴, and 关u兴. The partial correlation
+coefficient is given in parentheses. A strong correlation is indicated in bold
+(r⬎0.70). A nonsignificant correlation is indicated by n.s. (p⭓0.001). The
+corresponding degrees of freedom are given in Table VIII.
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+B1
+B2
+B3
+B4
+B5
+B6
+B7
+
+⫺0.78 共⫺0.72兲
+⫺0.76 共⫺0.79兲
+⫺0.60 共⫺0.78兲
+⫺0.44 共⫺0.30兲
+⫺0.84 共⫺0.90兲
+⫺0.87 共⫺0.86兲
+n.s. 共n.s.兲
+
+⫺0.43 共⫺0.48兲
+⫺0.83 共⫺0.76兲
+⫺0.62 共⫺0.83兲
+⫺0.49 共⫺0.41兲
+⫺0.76 共⫺0.65兲
+⫺0.84 共⫺0.83兲
+⫺0.21 共⫺0.43兲
+
+⫺0.25 共⫺0.20兲
+⫺0.68 共⫺0.46兲
+⫺0.57 共⫺0.76兲
+⫺0.43 共⫺0.24兲
+⫺0.66 共⫺0.45兲
+⫺0.85 共⫺0.85兲
+⫺0.09 共⫺0.34兲
+
+T1
+T2
+
+⫺0.30 共0.07兲
+⫺0.60 共⫺0.71兲
+
+⫺0.43 共n.s.兲
+⫺0.69 共⫺0.55兲
+
+⫺0.08 共⫺0.12兲
+⫺0.49 共⫺0.31兲
+
+CT1
+CT2
+
+⫺0.39 共⫺0.55兲
+⫺0.75 共⫺0.92兲
+
+⫺0.33 共⫺0.26兲
+⫺0.75 共⫺0.94兲
+
+⫺0.39 共⫺0.37兲
+⫺0.57 共⫺0.77兲
+
+baritone singers. The trend is similar for the six baritones
+共B1 to B6兲, the tenor T2, and the counter tenors CT1 and
+CT2: the open quotient decreases as vocal intensity increases. A strong partial correlation (r⬎0.70) is found for
+singers B1, B2, B3, B5, B6, T2, and CT2 in the case of
+vowel 关a兴, for singers B2, B3, B6, and CT2 in the case of
+vowel 关e兴, and for singers B3, B6, and CT2 in the case of
+vowel 关u兴. The nature of the vowel may have an effect on
+glottal open phase, but this effect is not further explored in
+the present study.
+The results of the two baritones B4 and B7 and of the
+tenor T1 differ from those of the other singers. In the case of
+B4, the variations in open quotient are limited, ranging from
+0.35 to 0.5 whatever the pitch and vocal intensity. In the case
+of B7, the open quotient ranges mainly from 0.4 to 0.55 and
+it seldom goes beyond 0.6. For a given vocal intensity, the
+results of these two baritones are similar. In the case of T1,
+the variations of open quotient are limited, with values ranging from 0.65 to 0.85. Such values are much more often
+found in the case of vocal production in mechanism 2.
+b. Vocal production in mechanism 2. The measurements
+
+FIG. 10. Vocal intensity as a function of open quotient in the case of mechanism 2 for the three counter tenors, the three mezzo-sopranos, and the three
+sopranos. The vowels have been distinguished by using a gray scale. The lines correspond to the major axes for a given vowel.
+1424
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+Henrich et al.: Glottal open quotient in singing
+
+TABLE V. Pearson’s correlation coefficient between open quotient and vocal intensity, in the case of sustained vowels and crescendos sung in mechanism 2 and for the three vowels 关a兴, 关e兴, and 关u兴. The partial correlation
+coefficient is given in parentheses. A strong correlation is indicated in bold
+(r⬎0.70). A nonsignificant correlation is indicated by n.s. (p⭓0.001). The
+corresponding degrees of freedom are given in Table VIII.
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+CT1
+CT2
+CT3
+
+⫺0.63共0.42兲
+⫺0.44共0.07兲
+⫺0.56共0.21兲
+
+⫺0.55共0.27兲
+⫺0.33共0.33兲
+⫺0.50共0.44兲
+
+⫺0.26共0.40兲
+⫺0.29共0.29兲
+⫺0.61共⫺0.09兲
+
+MS1
+MS2
+MS3
+
+n.s. 共⫺0.54兲
+0.44共0.22兲
+n.s. 共⫺0.41兲
+
+0.33共⫺0.31兲
+0.47共⫺0.09兲
+n.s. 共⫺0.30兲
+
+0.24共⫺0.46兲
+0.49共0.23兲
+n.s. 共⫺0.29兲
+
+S1
+S2
+S3
+
+0.06共0.68兲
+⫺0.42共0.07兲
+⫺0.54共⫺0.14兲
+
+⫺0.26共0.53兲
+⫺0.60共⫺0.15兲
+⫺0.39共⫺0.37兲
+
+⫺0.10共0.64兲
+⫺0.64共n.s.兲
+⫺0.53共⫺0.41兲
+
+of vocal intensity as a function of open quotient are shown in
+Fig. 10 for each singer in mechanism 2 共the three counter
+tenors, the three mezzo-sopranos, and the three sopranos兲.
+Table V gives the corresponding Pearson correlation coefficients and partial correlation coefficients.
+No strong correlation is observed. A change of sign is
+even observed between Pearson’s correlation coefficient and
+the partial correlation coefficient in the case of the three
+counter tenors, the mezzo-soprano MS1, and the soprano S1.
+In the case of the three counter tenors, for instance, the trend
+is a decrease of open quotient with an increase of vocal intensity, with regard to the Pearson correlation coefficient.
+The opposite trend is found if the underlying variation of
+fundamental frequency is taken into account with the partial
+correlation coefficient. It could be explained by the strong
+correlation between fundamental frequency and vocal intensity 共a summary of the data is found in Table III兲.
+
+FIG. 11. Vocal intensity as a function of open quotient measured from the
+phrase Ave Maria of Gounod, sung with three different degrees of vocal
+loudness 共piano, mezzo-forte, and forte兲 in the case of mechanism 1 for six
+baritones, the two tenors, and one counter tenor. The bars give the standard
+deviations for both parameters. No result can be given in the case of baritone B3, for whom the three corresponding DEGG signals present a doublepeak feature at glottal opening almost throughout the phrase.
+
+In mechanism 2, great differences of behavior are observed across singers, and, in each case, these behaviors
+agree with the trend pointed out by the partial correlation
+coefficient in the case of crescendos–decrescendos and sustained vowels. A decrease of open quotient with an increase
+of vocal intensity is found for singers MS1, MS3, and S3. On
+the contrary, an increase of open quotient with vocal intensity is found for singers CT3 and S1. No noticeable trend
+comes out for singers CT2 in mechanism 2, MS2, and S2.
+No statistical difference is found for open quotient between
+the three degrees of loudness 关 t(8)⫽0.53, p⬎0.5 for piano/
+
+2. Analysis of sung phrases
+
+The singers sang the first bars of Gounod’s Ave Maria,
+using various degrees of vocal loudness 共piano, mezzo-forte,
+and forte兲. The mean and standard values of open quotient
+measured over the whole length of the musical sentence are
+given in Fig. 11 for mechanism 1 and Fig. 12 for mechanism
+2. In mechanism 1, the trend is similar to the one previously
+observed in the case of crescendos–decrescendos and sustained vowels: the open quotient decreases when the vocal
+intensity increases. Similarly to what was observed in the
+previous section, this trend is strong in the case of singers
+B1, B2, B6, T2, and CT2, and it is not found in the case of
+singers B4, B7, and T1.
+A paired samples t-test 共Daudin et al., 1999兲 conducted
+on the means shows that the decrease of open quotient is
+very significant between the piano and mezzo-forte productions 关 t(7)⫽3.74, p⬍0.01兴 as well as between the mezzoforte and forte productions 关 t(7)⫽3.80, p⬍0.01兴 , if the results of singer T1 are not included in the test. If his results
+are included in the statistical analysis, the decrease of open
+quotient with an increase of vocal intensity remains significant 关 t(8)⫽3.41, p⬍0.01 for piano/mezzo-forte; t(8)
+⫽2.91, p⬍0.05 for mezzo-forte/forte兴.
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+FIG. 12. Vocal intensity as a function of open quotient measured on the
+sentence Ave Maria of Gounod, sung with three different degrees of vocal
+loudness 共piano, mezzo-forte, and forte兲 in the case of mechanism 2 for the
+three counter tenors, the three mezzo-sopranos, and the three sopranos. The
+bars give the standard deviations for both parameters.
+Henrich et al.: Glottal open quotient in singing
+
+1425
+
+TABLE VI. Pearson’s correlation coefficient between open quotient and
+fundamental frequency, in the case of sustained vowels and crescendos sung
+in mechanism 1 and for the three vowels 关a兴, 关e兴, and 关u兴. The partial correlation coefficient is given in parentheses. A strong correlation is indicated
+in bold (r⬎0.70). A nonsignificant correlation is indicated by n.s. (p
+⭓0.001). The corresponding degrees of freedom are given in Table VIII.
+
+TABLE VII. Pearson’s correlation coefficient between open quotient and
+fundamental frequency, in the case of sustained vowels and crescendos sung
+in mechanism 2 and for the three vowels 关a兴, 关e兴, and 关u兴. The partial correlation coefficient is given in parentheses. A strong correlation is indicated
+in bold (r⬎0.70). A nonsignificant correlation is indicated by n.s. (p
+⭓0.001). The corresponding degrees of freedom are given in Table VIII.
+
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+B1
+B2
+B3
+B4
+B5
+B6
+B7
+
+⫺0.47共0.22兲
+⫺0.29共0.45兲
+0.13共0.64兲
+⫺0.34共n.s.兲
+⫺0.12共0.62兲
+⫺0.11共n.s.兲
+n.s. 共n.s.兲
+
+n.s. 共0.24兲
+⫺0.51共0.15兲
+0.12共0.71兲
+⫺0.30共0.11兲
+⫺0.53共⫺0.11兲
+⫺0.15共n.s.兲
+0.60共0.68兲
+
+⫺0.15共n.s.兲
+⫺0.57共n.s.兲
+0.19共0.63兲
+⫺0.39共⫺0.15兲
+⫺0.56共⫺0.15兲
+⫺0.11共⫺0.13兲
+0.67共0.71兲
+
+CT1
+CT2
+CT3
+
+⫺0.82共⫺0.74兲
+⫺0.79共⫺0.73兲
+⫺0.85共⫺0.78兲
+
+⫺0.78共⫺0.69兲
+⫺0.73共⫺0.73兲
+⫺0.75共⫺0.73兲
+
+⫺0.74共⫺0.77兲
+⫺0.71共⫺0.71兲
+⫺0.69共⫺0.41兲
+
+MS1
+MS2
+MS3
+
+0.36共0.62兲
+0.42共0.18兲
+0.26共0.47兲
+
+0.61共0.61兲
+0.53共0.31兲
+0.37共0.45兲
+
+0.63共0.71兲
+0.44共n.s.兲
+0.22共0.35兲
+
+T1
+T2
+
+⫺0.50共⫺0.42兲
+n.s. 共0.49兲
+
+⫺0.49共⫺0.27兲
+⫺0.51共⫺0.17兲
+
+n.s. 共0.10兲
+⫺0.44共⫺0.22兲
+
+S1
+S2
+S3
+
+⫺0.22共n.s.兲
+0.46共0.90兲
+
+⫺0.18共n.s.兲
+0.20共0.65兲
+
+⫺0.60共⫺0.71兲
+⫺0.64共⫺0.30兲
+⫺0.20共0.17兲
+
+⫺0.60共⫺0.79兲
+⫺0.73共⫺0.46兲
+⫺0.37共0.08兲
+
+CT1
+CT2
+
+n.s. 共0.42兲
+0.32共0.83兲
+
+⫺0.57共⫺0.80兲
+⫺0.59共⫺0.46兲
+⫺0.57共⫺0.26兲
+
+mezzo-forte; t(8)⫽0.21, p⬎0.5 for mezzo-forte/forte兴,
+whereas vocal intensity varies significantly 关 t(8)⫽6.12, p
+⬍0.001 for piano/mezzo-forte; t(8)⫽4.60, p⬍0.01 for
+mezzo-forte/forte兴.
+C. Open quotient and fundamental frequency
+
+As shown in Fig. 6, a strong correlation between open
+quotient and fundamental frequency can be observed on the
+glissando sung by counter tenor CT1 in mechanism 2. Although less obvious, such a correlation can also be observed
+in the case of the glissando sung by tenor T2 in mechanism 2
+共see Fig. 5兲. This correlation seems to depend on the laryngeal mechanism, as it is not found in the parts of the glissandos sung in mechanism 1. We will now try to characterize
+this correlation between open quotient and fundamental frequency with regard to the laryngeal mechanisms, in analyzing the measurements made on the sustained vowels and the
+crescendos–decrescendos sung at different pitches. It should
+be mentioned that, in the present study, the glissandos were
+only used to illustrate the relation between open quotient and
+fundamental frequency, and that the corresponding data have
+not been used for statistical analysis. Indeed, the glissandos
+have not been recorded for the purpose of proper statistical
+analysis, and in particular, the frequency range and the vowel
+have been left to the singer’s choice, which implies that the
+glissandos do not cover the whole frequency range of a given
+singer in a given laryngeal mechanism. In addition, we were
+interested to see whether different loudness conditions would
+affect the relation, and this point could not be studied on
+glissandos, where the loudness is less easily controlled by
+the singer.
+1. Crescendos – decrescendos and sustained vowels
+
+a. Vocal production in mechanism 1. Table VI gives
+Pearson’s correlation coefficients and partial correlation coefficients between open quotient and fundamental frequency
+in the case of the male singers in mechanism 1. Generally
+speaking, no strong correlation is found between O q and f 0 .
+Nevertheless, ‘‘singer-dependent’’ behavior can be noticed. A
+high positive partial correlation is found between O q and f 0
+1426
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+in the case of baritones B3 and B7, and counter tenor CT2,
+for whom an increase of fundamental frequency goes together with an increase in open quotient. In the case of singers B3 and CT2, this effect of an increase in open quotient
+together with an increase of fundamental frequency is compensated for by the effect of an underlying increase of vocal
+intensity 共related to a decrease in open quotient in M1兲, as
+Pearson’s correlation is low whereas partial correlation is
+high.
+b. Vocal production in mechanism 2. Table VII gives the
+Pearson correlation coefficients and partial correlation coefficients between open quotient and fundamental frequency in
+the case of the counter tenors in mechanism 2, the mezzosopranos, and the sopranos. A strong correlation between O q
+and f 0 is observed in the case of the three counter tenors and
+the sopranos S1 and S2, which confirms the observations
+made on the glissandos. An increase of fundamental frequency goes along with a decrease of open quotient. No
+correlation is found in the case of soprano S3. The mezzosopranos present an inverse correlation, i.e., an increase of
+open quotient with an increase of fundamental frequency, but
+this effect is not strong.
+IV. DISCUSSION
+A. A strong dependency on laryngeal mechanisms
+
+The results converge to confirm that the open quotient is
+dependent on the laryngeal mechanism used during the vocal
+production: open quotient values are lower in mechanism 1
+than in mechanism 2. These differences may reflect the
+physiological differences between both laryngeal mechanisms, with regard to the thickness, the vibratory length, and
+the tension of the vocal folds. Thus, one can infer that, in
+those studies where the open quotient is a parameter of interest, it is of great importance to specify the laryngeal
+mechanism in which the voiced sound is produced.
+The results of tenor T1 are surprising, as no difference is
+found between M1 and M2 共see Fig. 3兲. His vocal production
+is often considered as ‘‘voix mixte’’ 共mixed voice兲 by his
+singing teachers. The analysis of his vocal production shows
+that this singer is always using high values of open quotient
+Henrich et al.: Glottal open quotient in singing
+
+(O q ⭓0.7), even during the glissandos with noticeable voice
+breaks. This result suggests that, in the case of this tenor, the
+so-called voix mixte could be characterized by the use of
+mechanism 1 but with unusually high values of open quotient so as to mimic the voice quality of mechanism 2. Further investigation is needed to characterize this vocal production, which is presently under study 共Castellengo et al.,
+2004; Chuberre, 2000; Expert, 2003兲.
+Can the open quotient be considered as an indicator of
+the laryngeal mechanism? In most cases, the laryngeal
+mechanism predicts the open-quotient range. Nevertheless,
+the results of tenor T1 show that the open-quotient measure
+alone does not suffice to determine which laryngeal mechanism is involved in a given vocal production. Indeed, there is
+a degree of overlap between the O q ranges corresponding to
+laryngeal mechanisms M1 and M2. For this purpose, openquotient measurement should be combined with other means
+of characterization, such as listening to and analysis of the
+acoustic signal, and visualization of EGG or DEGG signals.
+B. Correlation between open quotient and vocal
+intensity in M1
+
+The results show that vocal intensity tends to be negatively correlated with open quotient in mechanism 1, for
+singing exercises 共sustained vowels and crescendos–
+decrescendos兲, as well as for one musical sentence. This
+trend is not found in the case of mechanism 2, where the
+opposite trend can even be observed for some singers.
+These results are in agreement with the observations of
+Dromey et al. 共1992兲; Holmberg et al. 共1988兲; Kitzing and
+Sonesson 共1974兲; Orlikoff 共1991兲; Sundberg et al. 共1999b兲;
+and Timcke et al. 共1958兲. As these previous studies were
+conducted with different exploratory methods 共high-speed
+cinematography, photoglottography, electroglottography,
+inverse-filtered glottal flow兲, it underlines the agreement
+found between these methods and the measurement method
+based on the derivative of the EGG signal in the case of
+singing.
+An increase in vocal intensity results from many factors,
+and these results suggest that the strategies used for increasing vocal intensity in mechanism 1 differ in some aspects
+from the ones used in mechanism 2. Whichever laryngeal
+mechanism is considered, an increase in vocal intensity generally results from an increase of subglottal pressure 共Gauffin
+and Sundberg, 1989; Holmberg et al., 1988; Isshiki, 1964;
+Karlsson, 1986; Ladefoged and McKinney, 1963; Lecuit and
+Demolin, 1998a,b; Schutte, 1980; Sundberg et al., 1993;
+Tanaka and Gould, 1983; Titze and Sundberg, 1992兲. On the
+other hand, the activity of the vocalis muscle is strongly
+dependent on the laryngeal mechanism involved 共Hirano,
+1982; Roubeau, 1993兲. In mechanism 1, the vocalis contraction directly affects the glottal vibratory movement, and thus
+can have an impact on vocal intensity. In the highest part of
+mechanism 1, this muscle reaches its physiological limit of
+contraction. Thus, in mechanism 2, the tension of this muscle
+is reduced, whereas the crico-thyroid muscles are more activated 共Hirano, 1982兲. The decrease in open quotient observed in mechanism 1 may thus be induced by the contraction of the vocalis muscle when vocal intensity is increased.
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+This hypothesis accounts for the results obtained in mechanism 2, where the action of the vocalis muscle is limited and
+no correlation is found between open quotient and vocal intensity.
+C. Correlation between open quotient and
+fundamental frequency in M2
+
+In mechanism 2, a strong correlation between open quotient and fundamental frequency is found in the case of the
+counter tenors and the sopranos: an increase of fundamental
+frequency goes along with a decrease of open quotient. In
+mechanism 1, the open quotient seems not to be correlated to
+fundamental frequency. These results are in agreement with
+the observations made by Howard 共1995兲; Howard et al.
+共1990兲, who noticed a decrease of open quotient with an
+increase of fundamental frequency in the case of trained female singers, and no correlation between these two parameters in the case of male singers. A comparison between previous studies and the present findings suggests that the
+gender differences reported in those studies can in fact be
+ascribed to a difference in the laryngeal mechanism involved, as also suggested by Holmberg et al. 共1989兲: male
+subjects generally phonate in mechanism 1; female subjects
+more often phonate in mechanism 2.
+Howard 共1995兲 found that the correlation between open
+quotient and fundamental frequency observed on female
+singers is dependent on vocal training. The correlation is
+weak for the untrained female singers and it increases with
+the years of training. This could explain the results obtained
+in the case of the three mezzo-sopranos, who are not professional singers and had fewer years of training than the other
+singers recorded for this study.
+In a few cases for male singers in M1, an increase of
+open quotient goes with an increase of fundamental frequency. This trend has already been observed by Childers
+et al. 共1990兲; Cookman and Verdolini 共1999兲; Hanson et al.
+共1990兲; Holmberg et al. 共1989兲; and Kitzing and Sonesson
+共1974兲. However, the fundamental frequency is often highly
+correlated with the vocal intensity. As the open quotient decreases with an increase of vocal intensity in mechanism 1,
+this effect may compensate for an increase due to fundamental frequency and reduce in most cases the correlation between O q and f 0 .
+D. Smoothing the transition between laryngeal
+mechanisms
+
+As shown in Fig. 6, counter tenor CT1 managed to
+smooth the transition between laryngeal mechanisms,
+whereas the glissando sung by tenor T2 共see Fig. 5兲 is a good
+illustration of an abrupt transition. Prior to the transition
+(M 1→M 2), the major difference between the two cases is
+that the counter tenor sings at a lower vocal intensity (I
+⯝72 dB) and has higher open-quotient values 共between 0.6
+⭐O q ⭐0.7) than the tenor (I⯝95 dB and 0.4⭐O q ⭐0.5).
+The correlation between vocal intensity and open quotient in
+M1 implies that a decrease of vocal intensity in M1 close to
+the laryngeal mechanism transition goes along with an increase of open quotient. If the open-quotient values between
+Henrich et al.: Glottal open quotient in singing
+
+1427
+
+M1 and M2 are similar, the jump in open quotient at the
+transition is then reduced. This may help the singer to avoid
+the jump in fundamental frequency, and thus any perceptual
+voice break. Therefore, it seems that the smoothing of a transition between laryngeal mechanisms results from a lowering
+of vocal intensity prior to the transition and an increase of
+open quotient, so as to reach the value range which is common to both mechanisms.
+This ‘‘smoothing’’ technique can be used by any skilled
+singer, e.g., tenor T2, who can also sing the glissandos without any voice breaks.
+V. CONCLUSION
+
+In this study, 18 trained male and female singers were
+recorded and their vocal production was analyzed with regard to the open quotient and its correlation with vocal intensity and fundamental frequency. This study shows the importance of taking into account the laryngeal mechanism in
+which the vocal sound is produced. The open quotient can be
+seen as an indicator of the laryngeal mechanism within a
+given voice production. Lower values of open quotient are
+usually found in mechanism 1, as compared to mechanism 2:
+the open quotient ranges from 0.3 to 0.8 in mechanism 1 and
+from 0.5 to 0.95 in mechanism 2. Yet, one should not rely
+solely on the values of open quotient to determine which
+laryngeal mechanism is used as there is a degree of overlap
+between the O q ranges corresponding to laryngeal mechanisms M1 and M2. Listening to the corresponding sound
+samples can provide additional information and help to characterize a given vocal production. Nevertheless, the ear can
+sometimes be tricked by the vocal technique of the singer.
+For this reason, a combination of analysis, listening, and
+measuring of open quotient and other acoustical and EGG
+parameters is usually required to determine which laryngeal
+mechanism is being used.
+The link between open quotient and vocal intensity depends on the laryngeal mechanism. In mechanism 1, they
+tend to be correlated: the greater the vocal intensity, the
+lower the open quotient. No correlation is found in mechanism 2. This effect could result from the activity of the vocalis muscle, which is reduced in mechanism 2 as compared
+to mechanism 1.
+In the same way, the link between open quotient and
+fundamental frequency is also dependent on the laryngeal
+mechanisms. There tends to be a correlation in mechanism 2:
+the higher the fundamental frequency, the lower the open
+quotient. This correlation varies a bit from subject to subject.
+It is especially strong in the case of the counter tenors. No
+correlation was found in mechanism 1.
+Another repeated observation is the large amount of
+variation across subjects. The same observation had already
+been made by Schutte 共1980兲 when studying vocal efficiency. Differences in behavior are noticeable among singers
+within the same tessitura as well as between tessituras. In
+particular, only two tenors were recorded and their behaviors
+diverged markedly. It would be of great interest to record
+more singers within a given tessitura, in order to generalize
+the trends observed in the present study.
+1428
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+TABLE VIII. Degrees of freedom corresponding to the measures made on
+sustained vowels and crescendos sung in mechanisms 1 and 2 for the three
+vowels 关a兴, 关e兴, and 关u兴.
+M1
+
+M2
+
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+B1
+B2
+B3
+B4
+B5
+B6
+B7
+
+4 323
+5 314
+1 723
+4 864
+6 142
+3 698
+3 215
+
+2 548
+5 578
+1 957
+4 937
+3 995
+2 902
+2 435
+
+1 867
+4 672
+1 617
+4 089
+4 484
+3 709
+2 239
+
+T1
+T2
+
+15 020
+3 771
+
+11 808
+3 237
+
+12 729
+2 985
+
+CT1
+CT2
+
+3 236
+4 805
+
+3 131
+4 805
+
+1 635
+4 807
+
+Singer
+
+关a兴
+
+关e兴
+
+关u兴
+
+CT1
+CT2
+CT3
+
+3 790
+9 720
+9 173
+
+3 361
+11 110
+8 462
+
+4 155
+7 034
+5 893
+
+MS1
+MS2
+MS3
+
+4 185
+5 615
+392
+
+4 186
+6 838
+660
+
+6 171
+5 336
+382
+
+S1
+S2
+S3
+
+9 236
+13 022
+15 856
+
+9 364
+12 742
+9 306
+
+10 030
+14 421
+11 104
+
+APPENDIX: PARTIAL CORRELATION COEFFICIENT
+
+Given the variables x and y measured for n samples and
+their mean values x̄ and ȳ, Pearson’s correlation coefficient
+r xy is given by
+1
+r xy ⫽
+
+n
+
+兺 共 x i ⫺x̄ 兲共 y i ⫺ȳ 兲
+
+n i⫽1
+
+冑冉 兺
+1
+
+n
+
+n i⫽1
+
+共 x i ⫺x̄ 兲 2
+
+冊冉 兺
+1
+
+n
+
+n i⫽1
+
+共 y i ⫺ȳ 兲 2
+
+冊
+
+.
+
+It happens that the measured correlation between two
+variables x and y is due to the underlying variation of a third
+variable z 共Saporta, 1990兲. In this case, the calculation of a
+partial correlation coefficient should help to eliminate this
+underlying variation. The partial correlation coefficient between the variables x and y which takes into account the
+underlying variation of the variable z is given by Dagnelie
+共1975兲 and Jolicoeur 共1991兲
+r xy•z ⫽
+
+r xy ⫺r xz r yz
+
+冑共 1⫺r xz2 兲共 1⫺r 2yz 兲
+
+.
+
+In our study, fundamental frequency and vocal intensity
+are strongly correlated, which could bias the correlation calculated between open quotient and these two variables. Thus,
+the calculation of a partial correlation coefficient helps to
+factor out the effect of this strong correlation.
+The degrees of freedom corresponding to the correlation
+coefficients are given in Table VIII. In each case, the degree
+of freedom is very high, being greater than 200.
+ACKNOWLEDGMENTS
+
+The authors would like to thank the 18 singers who
+kindly participated in these experiments. This work is part of
+a Ph.D. thesis defended at the Université Pierre & Marie
+Curie 共Paris, France兲 in November 2001. All the figures related to this work and the corresponding sound samples can
+be found in the Ph.D. thesis manuscript 共Henrich, 2001兲. The
+authors are deeply grateful to Evelyn Abberton and Alexis
+Henrich et al.: Glottal open quotient in singing
+
+Michaud for their help with the English text, and to Daniel
+Ambroise for his help with statistical analyses. They also
+wish to acknowledge the contribution of the three anonymous reviewers and the Associate Editor Stephen McAdams,
+whose comments were very useful for improving the manuscript.
+Alku, P., and Vilkman, E. 共1996兲. ‘‘A comparison of glottal voice source
+quantification parameters in breathy, normal, and pressed phonation of
+female and male speakers,’’ Folia Phoniatr 共Basel兲 48, 240–254.
+Castellengo, M., Chuberre, B., and Henrich, N. 共2004兲. ‘‘Is ‘voix mixte,’ the
+vocal technique used to smoothe the transition across the two main laryngeal mechanisms, an independent mechanism?,’’ in International Symposium on Musical Acoustics, Nara, Japan.
+Childers, D. G., Hicks, D. M., Moore, G. P., Eskenazi, L., and Lalwani, A.
+L. 共1990兲. ‘‘Electroglottography and vocal fold physiology,’’ J. Speech
+Hear. Res. 33, 245–254.
+Childers, D. G., Naik, J. M., Larar, J. N., Krishnamurthy, A. K., and Moore,
+G. P. 共1983兲. ‘‘Electroglottography, speech and ultra-high speed cinematography,’’ in Vocal Fold Physiology and Biophysics of Voice, edited by I.
+Titze and R. Scherer 共Denver Center for the Performing Arts, Denver兲, pp.
+202–220.
+Chuberre, B. 共2000兲. ‘‘Les registres et passages dans la voix chantée 共Registers and transitions in singing兲,’’ Mémoire de phoniatrie, Université de
+Nantes.
+Cookman, S., and Verdolini, K. 共1999兲. ‘‘Interrelation of mandibular laryngeal functions,’’ J. Voice 13, 11–24.
+Dagnelie, P. 共1975兲. Théorie et Méthodes Statistiques (Theory and Methods
+in Statistics) 共Les Presses Agronomiques de Gembloux, Belgique兲, Vol. 2.
+Daudin, J. J., Robin, S., and Vuillet, C. 共1999兲. Statistique Inférentielle.
+Idées, Démarches, Exemples. (Inferential Statistics. Ideas, Methods, Examples) 共Pratique de la statistique—Société Franaise de Statistique et
+Presses Universitaires de Rennes, Rennes兲.
+Dejonckere, P. 共1981兲. ‘‘Comparison of two methods of photoglottography
+in relation to electroglottography,’’ Folia Phoniatr. 33, 338.
+Dromey, C., Stathopoulos, E. T., and Sapienza, C. M. 共1992兲. ‘‘Glottal airflow and electroglotto-graphic measures of vocal function at multiple intensities,’’ J. Voice 6, 44 –54.
+Expert, R. 共2003兲. ‘‘Les voix d’alto 共Alto voices兲,’’ Mémoire de la classe
+d’acoustique musicale, Conservatoire National Supérieur de Musique et de
+Danse de Paris.
+Garnier, M., Dubois, D., Poitevineau, J., Henrich, N., and Castellengo, M.
+共2004兲. ‘‘Perception et description verbale de la qualité vocale dans le
+chant lyrique: Une approche cognitive 共voice quality perception and description in western operatic singing兲,’’ in Journées d’Etude sur la Parole
+2004 & Traitement Automatique du Langage Naturel 2004 共Fez, Maroc兲,
+pp. 133–136.
+Gauffin, J., and Sundberg, J. 共1989兲. ‘‘Spectral correlates of glottal voice
+source waveform characteristics,’’ J. Speech Hear. Res. 32, 556 –565.
+Gramming, P., Sundberg, J., Ternstrom, S., Leanderson, R., and Perkins, W.
+共1988兲. ‘‘Relationship between changes in voice pitch and loudness,’’ J.
+Voice 2, 118 –126.
+Hanson, H. M. 共1995兲. ‘‘Glottal characteristics of female speakers,’’ Ph.D.
+thesis, Harvard University.
+Hanson, H. M. 共1997兲. ‘‘Glottal characteristics of female speakers: Acoustic
+correlates,’’ J. Acoust. Soc. Am. 101, 466 – 481.
+Hanson, D. G., Gerratt, B. R., and Berke, G. S. 共1990兲. ‘‘Frequency, intensity and target matching effects on photoglottographic measures of open
+quotient and speed quotient,’’ J. Speech Hear. Res. 33, 45–50.
+Henrich, N. 共2001兲. ‘‘Etude de la source glottique en voix parlée et chantée:
+Modélisation et estimation, mesures acoustiques et électroglottographiques, perception 共Study of the glottal source in speech and singing: Modeling and estimation, acoustic and electroglottographic measurements, perception兲,’’ Ph.D. thesis, Université Paris 6, France.
+Henrich, N., d’Alessandro, C., and Doval, B. 共2001兲. ‘‘Spectral correlates of
+voice open quotient and glottal flow asymmetry: Theory, limits and experimental data,’’ in Eurospeech 2001, Aalborg, Denmark.
+Henrich, N., Roubeau, B., and Castellengo, M. 共2003兲. ‘‘On the use of
+electroglottography for characterisation of the laryngeal mechanisms,’’ in
+Stockholm Music Acoustics Conference, Stockholm, Sweden.
+Henrich, N., d’Alessandro, C., Castellengo, M., and Doval, B. 共2004兲. ‘‘On
+the use of the derivative of electroglottographic signals for characterizaJ. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+tion of nonpathological phonation,’’ J. Acoust. Soc. Am. 115, 1321–1332.
+Hirano, M. 共1982兲. ‘‘The role of the layer structure of the vocal fold in
+register control,’’ Vox Humana, University of Jyvaskyla, pp. 50– 62.
+Hollien, H. 共1974兲. ‘‘On vocal registers,’’ J. Phonetics 2, 125–143.
+Holmberg, E. B., Hillman, R. E., and Perkell, J. S. 共1988兲. ‘‘Glottal air flow
+and transglottal air pressure measurements for male and female speakers
+in soft, normal, and loud voice,’’ J. Acoust. Soc. Am. 84, 511–529.
+Holmberg, E. B., Hillman, R. E., and Perkell, J. S. 共1989兲. ‘‘Glottal air flow
+and transglottal air pressure measurements for male and female speakers
+in low, normal, and high pitch,’’ J. Voice 3, 294 –305.
+Holmberg, E. B., Hillman, R. E., Perkell, J. S., Guiod, P. C., and Goldman,
+S. L. 共1995兲. ‘‘Comparisons among aerodynamic, electroglottographic,
+and acoustic spectral measures of female voice,’’ J. Speech Hear. Res. 38,
+1212–1223.
+Howard, D. M. 共1995兲. ‘‘Variation of electrolaryngographically derived
+closed quotient for trained and untrained adult female singers,’’ J. Voice 9,
+163–172.
+Howard, D. M., Lindsey, G. A., and Allen, B. 共1990兲. ‘‘Toward the quantification of vocal efficiency,’’ J. Voice 4, 205–212.
+Isshiki, N. 共1964兲. ‘‘Regulatory mechanism of voice intensity variation,’’ J.
+Speech Hear. Res. 7, 17–29.
+Jolicoeur, P. 共1991兲. Introduction à la Biométrie (An Introduction to Biometry兲 共Decarie/Masson, Montréal/Paris兲.
+Karlsson, I. 共1986兲. ‘‘Glottal waveforms for normal female speakers,’’ STLQPSR 1, 31–36.
+Kitzing, P. 共1982兲. ‘‘Photo- and electroglottographical recording of the laryngeal vibratory pattern during different registers,’’ Folia Phoniatr. 34,
+234 –241.
+Kitzing, P. 共1983兲. ‘‘Simultaneous photo- and electroglottographic measurements of voice strain,’’ in Vocal Fold Physiology, edited by I. R. Titze and
+R. C. Scherer 共The Denver Center for the Performing Arts, Denver兲, pp.
+221–229.
+Kitzing, P., and Sonesson, B. 共1974兲. ‘‘A photoglottographical study of the
+female vocal folds during phonation,’’ Folia Phoniatr 共Basel兲 26, 138 –
+149.
+Kitzing, P., Carlborg, B., and Löfqvist, A. 共1982兲. ‘‘Aerodynamic and glottographic studies of the laryngeal vibratory cycle,’’ Folia Phoniatr. 34,
+216 –224.
+Klatt, D., and Klatt, L. 共1990兲. ‘‘Analysis, synthesis, and perception of voice
+quality variations among female and male talkers,’’ J. Acoust. Soc. Am.
+87, 820– 857.
+Ladefoged, P., and McKinney, N. P. 共1963兲. ‘‘Loudness, sound pressure and
+subglottal pressure in speech,’’ J. Acoust. Soc. Am. 35, 454 – 460.
+Lecluse, F. 共1977兲. ‘‘Elektroglottografie 共Electroglottography兲,’’ Thesis Rotterdam, Drukkerig Elinkwijk, Utrecht.
+Lecluse, F., and Brocaar, M. 共1977兲. ‘‘Quantitative measurements in the
+electroglottogram,’’ 17th International Congress of Logopedics and Phoniatrics.
+Lecuit, V., and Demolin, D. 共1998a兲. ‘‘Relation entre pression sous-glottique
+et intensité: Étude des voyelles du français 共Relation between subglottal
+pressure and intensity: Study of the French vowels兲,’’ in XXIIèmes
+Journées d’Etude sur la Parole 共Martigny, Suisse兲, pp. 299–302.
+Lecuit, V., and Demolin, D. 共1998b兲. ‘‘The relationship between intensity
+and subglottal pressure with controlled pitch,’’ in ICSLP, Sydney, pp.
+3083–3086.
+Liénard, J. S., and Di Benedetto, M. G. 共1999兲. ‘‘Effect of vocal effort on
+spectral properties of vowels,’’ J. Acoust. Soc. Am. 106, 411– 422.
+Miller, D. G. 共2000兲. ‘‘Registers in singing,’’ Ph.D. thesis, Rijksuniversiteit
+Groningen, the Netherlands.
+Miller, D. G., Svec, J. G., and Schutte, H. K. 共2002兲. ‘‘Measurement of
+characteristic leap interval between chest and falsetto registers,’’ J. Voice
+16, 8 –19.
+Orlikoff, R. F. 共1991兲. ‘‘Assessment of the dynamics of vocal fold contact
+from the electroglottogram: Data from normal male subjects,’’ J. Speech
+Hear. Res. 34, 1066 –1072.
+Rothenberg, M. 共1992兲. ‘‘A multichannel electroglottograph,’’ J. Voice 6,
+36 – 43.
+Roubeau, B. 共1993兲. ‘‘Mécanismes vibratoires laryngés et contrôle neuromusculaire de la fréquence fondamentale 共Laryngeal vibratory mechanisms and neuro-muscular control of fundamental frequency兲,’’ thesis,
+Université Paris XI, Orsay, France.
+Roubeau, B., Chevrie-Muller, C., and Arabia-Guidet, C. 共1987兲. ‘‘Electroglottographic study of the changes of voice registers,’’ Folia Phoniatr. 39,
+280–289.
+Henrich et al.: Glottal open quotient in singing
+
+1429
+
+Roubeau, B., Chevrie-Muller, C., and Arabia, C. 共1991兲. ‘‘Control of laryngeal vibration in register change,’’ in Vocal Fold Physiology: Acoustic,
+Perceptual, and Physiological Aspects of Voice Mechanisms, edited by J.
+Gauffin and B. Hammarberg 共Singular, San Diego兲, pp. 279–286.
+Saporta, G. 共1990兲. Probabilités, Analyse des Données et Statistique (Probabilities, Data Analysis and Statistics兲 共Editions Technip, Paris兲.
+Schutte, H. K. 共1980兲. ‘‘The efficiency of voice production,’’ Ph.D. thesis,
+Rijksuniversiteit Groningen, the Netherlands.
+Sundberg, J., and Högset, C. 共1999兲. ‘‘Voice source differences between
+falsetto and modal registers in counter tenors, tenors and baritones,’’
+TMH-QPSR 3–4, 65–74.
+Sundberg, J., Titze, I. R., and Scherer, R. C. 共1993兲. ‘‘Phonatory control in
+male singing: A study of the effects of subglottal pressure, fundamental
+frequency, and mode of phonation on the voice source,’’ J. Voice 7, 15–29.
+Sundberg, J., Andersson, M., and Hultqvist, C. 共1999a兲. ‘‘Effects of subglot-
+
+1430
+
+J. Acoust. Soc. Am., Vol. 117, No. 3, Pt. 1, March 2005
+
+tal pressure variation on professional baritone singers’ voice sources,’’ J.
+Acoust. Soc. Am. 105, 1965–1971.
+Sundberg, J., Cleveland, T. F., Stone, R. E., and Iwarsson, J. 共1999b兲.
+‘‘Voice source characteristics in six premier country singers,’’ J. Voice 13,
+168 –183.
+Svec, J. G., Schutte, H. K., and Miller, D. G. 共1999兲. ‘‘On pitch jumps
+between chest and falsetto registers in voice: Data from living and excised
+human larynges,’’ J. Acoust. Soc. Am. 106, 1523–1531.
+Tanaka, S., and Gould, W. J. 共1983兲. ‘‘Relationships between vocal intensity
+and noninvasively obtained aerodynamic parameters in normal subjects,’’
+J. Acoust. Soc. Am. 73, 1316 –1321.
+Timcke, R., von Leden, H., and Moore, P. 共1958兲. ‘‘Laryngeal vibrations:
+Measurements of the glottic wave,’’ AMA Arch. Otolaryngol. 68, 1–19.
+Titze, I. R., and Sundberg, J. 共1992兲. ‘‘Vocal intensity in speakers and singers,’’ J. Acoust. Soc. Am. 91, 2936 –2946.
+
+Henrich et al.: Glottal open quotient in singing

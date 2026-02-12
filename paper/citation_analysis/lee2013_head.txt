@@ -1,0 +1,100 @@
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning
+Method for Deep Neural Networks
+
+Dong-Hyun Lee
+sayit78@gmail.com
+Nangman Computing, 117D Garden five Tools, Munjeong-dong Songpa-gu, Seoul, Korea
+
+Abstract
+We propose the simple and efficient method
+of semi-supervised learning for deep neural
+networks. Basically, the proposed network is
+trained in a supervised fashion with labeled
+and unlabeled data simultaneously. For unlabeled data, Pseudo-Label s, just picking up
+the class which has the maximum predicted
+probability, are used as if they were true labels. This is in effect equivalent to Entropy
+Regularization. It favors a low-density separation between classes, a commonly assumed
+prior for semi-supervised learning. With Denoising Auto-Encoder and Dropout, this simple method outperforms conventional methods for semi-supervised learning with very
+small labeled data on the MNIST handwritten digit dataset.
+
+1. Introduction
+Recently, deep neural networks have achieved great
+success in hard AI tasks (Hinton et al., 2006; Bengio
+et al., 2012). All of the successful methods for training deep neural networks have something in common :
+they rely on an unsupervised learning algorithm (Erhan et al., 2010). Most work in two main phases. In
+a first phase, unsupervised pre-training, the weights of
+all layers are initialized by this layer-wise unsupervised
+training. In a second phase, fine-tuning, the weights
+are trained globally with labels using backpropagation
+algorithm in a supervised fashion. All of these methods also work in a semi-supervised fashion. We have
+only to use extra unlabeled data for unsupervised pretraining.
+Several authors have recently proposed semisupervised learning methods of training supervised
+ICML 2013 Workshop : Challenges in Representation
+Learning (WREPL), Atlanta, Georgia, USA, 2013. Copyright 2013 by the author(s).
+
+and unsupervised tasks using same neural network
+simultaneously. In (Ranzato et al., 2008), the weights
+of each layer are trained by minimizing the combined
+loss function of an autoencoder and a classifier. In
+(Larochelle et al., 2008), Discriminative Restricted
+Boltzmann Machines model the joint distribution
+of an input vector and the target class. In (Weston
+et al., 2008), the weights of all layers are trained by
+minimizing the combined loss function of a global
+supervised task and a Semi-Supervised Embedding as
+a regularizer.
+In this article we propose the simpler way of training
+neural network in a semi-supervised fashion. Basically,
+the proposed network is trained in a supervised fashion with labeled and unlabeled data simultaneously.
+For unlabeled data, Pseudo-Label s, just picking up the
+class which has the maximum predicted probability
+every weights update, are used as if they were true labels. In principle, this method can combine almost all
+neural network models and training methods. In our
+experiments, Denoising Auto-Encoder (Vincent et al.,
+2008) and Dropout (Hinton et al., 2012) boost up the
+performance.
+This method is in effect equivalent to Entropy Regularization (Grandvalet et al., 2006). The conditional
+entropy of the class probabilities can be used for a
+measure of class overlap. By minimizing the entropy
+for unlabeled data, the overlap of class probability distribution can be reduced. It favors a low-density separation between classes, a commonly assumed prior for
+semi-supervised learning (Chapelle et al., 2005).
+Several experiments on the well-known MNIST
+dataset prove that the proposed method shows the
+state-of-the-art performance. This method (without unsupervised pre-training) earned second prize in
+ICML 2013 Workshop in Challenges in Representation
+Learning: The Black Box Learning Challenge.
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+
+2. Pseudo-Label Method for Deep
+Neural Networks
+
+2.2. Denoising Auto-Encoder
+
+2.1. Deep Neural Networks
+Pseudo-Label is the method for training deep neural
+networks in a semi-supervised fashion. In this article
+we will consider multi-layer neural networks with M
+layers of hidden units :
+ k
+
+d
+X
+hki = sk 
+Wijk hk−1
++ bki  , k = 1, ..., M + 1 (1)
+j
+
+Denoising Auto-Encoder is unsupervised learning algorithm based on the idea of making the learned representations robust to partial corruption of the input
+pattern (Vincent et al., 2008). This approach can be
+used to train autoencoders, and these DAE can be
+stacked to initialize deep neural networks.
+
+
+d
+v
+X
+hi = s 
+Wij x
+ej + bi 
+(6)

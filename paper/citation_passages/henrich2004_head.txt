@@ -1,0 +1,50 @@
+Glottal open quotient in singing: Measurements and
+correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle
+Castellengo
+
+To cite this version:
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle Castellengo. Glottal
+open quotient in singing: Measurements and correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency. Journal of the Acoustical Society of America, 2005, 117 (3), pp.1417-1430.
+�10.1121/1.1850031�. �hal-00195256�
+
+HAL Id: hal-00195256
+https://hal.science/hal-00195256v1
+Submitted on 3 Dec 2008
+
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of scientific research documents, whether they are published or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+
+Glottal open quotient in singing: Measurements and correlation
+with laryngeal mechanisms, vocal intensity, and fundamental
+frequency
+Nathalie Henricha)
+LAM (UPMC, CNRS, Ministère de la culture), 11 rue de Lourmel, 75015 Paris, France
+and LIMSI-CNRS, BP 133, F91403 Orsay, France
+
+Christophe d’Alessandro and Boris Doval
+LIMSI-CNRS, BP 133, F91403 Orsay, France
+
+Michèle Castellengo
+LAM (UPMC, CNRS, Ministère de la culture), 11 rue de Lourmel, 75015 Paris, France
+
+共Received 10 May 2004; revised 24 November 2004; accepted 29 November 2004兲
+This article presents the results of glottal open-quotient measurements in the case of singing voice
+production. It explores the relationship between open quotient and laryngeal mechanisms, vocal
+intensity, and fundamental frequency. The audio and electroglottographic signals of 18 classically
+trained male and female singers were recorded and analyzed with regard to vocal intensity,
+fundamental frequency, and open quotient. Fundamental frequency and open quotient are derived
+from the differentiated electroglottographic signal, using the DECOM 共DEgg Correlation-based
+Open quotient Measurement兲 method. As male and female phonation may differ in respect to
+vocal-fold vibratory properties, a distinction is made between two different glottal configurations,

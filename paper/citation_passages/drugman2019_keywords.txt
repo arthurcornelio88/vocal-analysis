@@ -1,0 +1,82 @@
+=== Recherche de mots-clés pour drugman2019 ===
+--- abstract ---
+Gulbahce Koyu 35430, Urla, Izmir, Turkey
+
+Abstract
+Source-tract decomposition (or glottal flow estimation) is one of the basic problems of speech processing. For this, several techniques have been
+proposed in the literature. However studies comparing different approaches
+
+--- introduction ---
+January 6, 2020
+
+1. Introduction
+Speech results from filtering the glottal flow by the vocal tract cavities,
+and converting the resulting velocity flow into pressure at the lips (Quatieri,
+
+--- conclusion ---
+various voice qualities, and shows that the glottal source estimated by the
+techniques considered in this work conveys relevant information about the
+phonation type. Finally Section 6 draws the conclusions of this study.
+2. Glottal Source Estimation
+Glottal flow estimation mainly refers to the estimation of the voiced excitation of the vocal tract. During the production of voiced sounds, the airflow
+--
+16
+
+4.4. Conclusions on Synthetic Speech
+Many factors may affect the quality of the source-tract separation. Intuitively, one can think about the time interference between minimum and
+maximum-phase contributions, respectively related to the vocal tract and to
+--
+17
+
+noisy conditions. Note that our results corroborate the conclusions drawn in
+(Sturmel et al., 2007) where the mixed-phase deconvolution (achieved in that
+study by the ZZT method) was shown to outperform other state-of-the-art
+--
+types, the three techniques of glottal source estimation are compared.
+
+
+--- method ---
+proposed in the literature. However studies comparing different approaches
+are almost nonexistent. Besides, experiments have been systematically performed either on synthetic speech or on sustained vowels. In this study we
+compare three of the main representative state-of-the-art methods of glottal
+flow estimation: closed-phase inverse filtering, iterative and adaptive inverse
+filtering, and mixed-phase decomposition. These techniques are first submitted to an objective assessment test on synthetic speech signals. Their
+--
+2009b), speaker recognition (Plumpe et al., 1999), emotion analysis/synthesis
+(Airas and Alku, 2006), etc.
+In this paper, we limit our scope to the methods which perform an estimation of the glottal source contribution directly from the speech waveform.
+Although some devices such as electroglottographs or laryngographs, which
+measure the impedance between the vocal folds (but not the glottal flow itself), are informative about the glottal behaviour (Henrich et al., 2004), in
+--
+techniques are available in the literature (Walker and Murphy, 2007). However the diversity of algorithms and the fact that the reference for the actual
+glottal flow is not available often leads to the questionability about relative
+effectiveness of the methods in real life applications. In most of studies,
+tests are performed either on synthetic speech or on a few recorded sustained
+vowels. In addition, very few comparative studies exist (such as (Sturmel
+--
+2
+
+
+--- result ---
+significant modifications in glottal feature distributions. Techniques based
+on the mixed-phase decomposition and on a closed-phase inverse filtering
+process turn out to give the best results on both clean synthetic and real
+speech signals. On the other hand, iterative and adaptive inverse filtering is
+recommended in noisy environments for its high robustness.
+--
+
+1. Introduction
+Speech results from filtering the glottal flow by the vocal tract cavities,
+and converting the resulting velocity flow into pressure at the lips (Quatieri,
+2002). In many speech processing applications, it is important to separate the
+contributions from the glottis and the vocal tract. Achieving such a sourcefilter deconvolution could lead to a distinct characterization and modeling of
+--
+The paper is structured as follows. In Section 2 the main state-of-the-art
+methods for glottal source estimation are reviewed, and the three techniques
+compared in this study are detailed. Section 3 discusses how the resulting
+glottal signal can be parametrized both in time and frequency domains. The
+three methods are evaluted in Section 4 through a wide systematic study
+on synthetic signals. Their robustness to noise, as well as the impact of
+the various factors that may affect source-tract separation, are investigated.
+
+--- discussion ---

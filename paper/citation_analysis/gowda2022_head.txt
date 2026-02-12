@@ -1,0 +1,100 @@
+Date of publication November 8, 2021, date of current version November 16, 2021.
+Digital Object Identifier 10.1109/ACCESS.2021.3126280
+
+arXiv:2201.01525v1 [eess.AS] 5 Jan 2022
+
+Formant Tracking using Quasi-Closed
+Phase Forward-Backward Linear
+Prediction Analysis and Deep Neural
+Networks
+DHANANJAYA GOWDA *+ 1 , (Member, IEEE), BAJIBABU BOLLEPALLI*+ 2 , (Member, IEEE),
+SUDARSANA REDDY KADIRI*3 , (Member, IEEE), PAAVO ALKU3 , (Fellow, IEEE)
+1
+2
+3
+
+Samsung Research South Korea, E-mail: njaygowda@gmail.com.
+Amazon UK, E-mail: bajibabu7@gmail.com.
+Dept. of Signal Processing and Acoustics, Aalto University, FI-00076 Espoo, Finland ({sudarsana.kadiri;paavo.alku}@aalto.fi)
+
+Corresponding author: Sudarsana Reddy Kadiri (e-mail: sudarsana.kadiri@aalto.fi).
+
+∗ Equal contribution.+The authors were with Aalto University when this work was carried out. This study was partly funded by the
+Academy of Finland (Project No. 313390).
+
+ABSTRACT Formant tracking is investigated in this study by using trackers based on dynamic programming (DP) and deep neural nets (DNNs). Using the DP approach, six formant estimation methods were
+first compared. The six methods include linear prediction (LP) algorithms, weighted LP algorithms and
+the recently developed quasi-closed phase forward-backward (QCP-FB) method. QCP-FB gave the best
+performance in the comparison. Therefore, a novel formant tracking approach, which combines benefits
+of deep learning and signal processing based on QCP-FB, was proposed. In this approach, the formants
+predicted by a DNN-based tracker from a speech frame are refined using the peaks of the all-pole spectrum
+computed by QCP-FB from the same frame. Results show that the proposed DNN-based tracker performed
+better both in detection rate and estimation error for the lowest three formants compared to reference formant
+trackers. Compared to the popular Wavesurfer, for example, the proposed tracker gave a reduction of 29%,
+48% and 35% in the estimation error for the lowest three formants, respectively.
+INDEX TERMS Speech analysis, formant tracking, linear prediction, dynamic programming, deep neural
+net.
+
+I. INTRODUCTION
+
+of VTRs is an important and necessary computational block.
+
+Estimation and tracking of formant frequencies is an important research topic in several areas of speech science
+and technology [1]–[6]. During the past few decades, many
+techniques have been proposed for formant tracking [7]–
+[10]. These algorithms typically consist of two parts, the
+estimation stage and the tracking stage. In the former, initial
+estimates of the vocal tract resonances (VTRs) are computed
+in short frames (e.g., 25 ms) using spectral estimation methods such as linear prediction (LP). In the latter, the formants estimated from individual frames are expressed using
+contours which cover a longer unit (e.g., word or sentence)
+[7], [8]. In addition, estimation and tracking can be done
+simultaneously using an initial representation of the vocal
+tract system [9], [10]. In both approaches, accurate estimation
+
+LP is the most widely used technique to estimate VTRs
+from speech [11] and therefore many variants of LP have
+been proposed (e.g. [12], [13]). In formant estimation and
+tracking, the most popular variants are the autocorrelation
+and covariance methods [7], [8]. The closed phase (CP)
+analysis is known to improve VTR estimates by avoiding
+the contribution of the speech samples in the open phase of
+the glottal cycle thereby decoupling the effect of the trachea
+more effectively [14]. CP analysis, however, works better for
+low-pitched voices which typically have a larger number of
+samples in the closed phase of the glottal cycle compared
+to high-pitched voices which might have just a few samples
+in the closed phase. To reduce problems caused by having a
+small number of closed phase samples, LP can be computed
+
+VOLUME 9, 2021
+
+1
+
+over multiple neighboring cycles [14].
+Weighted linear prediction (WLP) is an all-pole modeling method based on temporally weighting the prediction
+error [13], [15]–[20]. Temporal weighting of the prediction
+error has been shown to be beneficial in computing vocal
+tract models which are robust with respect to noise and the
+selection of analysis window as well as the biasing effect
+of high fundamental frequency. Formant estimation of highpitched vowels was studied using WLP in [18] by developing a simple weighting function, called the attenuated main
+excitation (AME) function, to downgrade the strong effect
+of the glottal source in the computation of the vocal tract
+model. Based on [18], the quasi-closed phase (QCP) method
+was proposed for glottal inverse filtering (GIF) in [19]. In
+QCP, a more generalized AME-type of weighting function
+is used. Recently, a new formant estimation method based
+on QCP, called quasi-closed phase forward-backward (QCPFB) LP analysis, was proposed in [21]. QCP-FB combines
+two approaches: (1) QCP analysis in which the residual is
+temporally weighted, and (2) forward-backward (FB) analysis in which the number of samples is increased in LP by
+using two prediction directions simultaneously. In addition,
+WLP methods have been proposed recently based on using
+stochastic approaches in the computation of the weighting
+function [22].
+In this article, formant tracking is studied by investigating
+different all-pole modeling methods in formant estimation.
+The all-pole formant estimation methods are used with two
+formant tracking approaches, a dynamic programming (DP)
+-based approach and a deep neural net (DNN) -based approach. As the first part of the study, six different LP-based
+and WLP-based formant estimation methods are compared
+in formant tracking using a DP-based tracker. The novelty of
+this part is in studying how the potential new method, QCPFB, which was investigated solely in formant estimation in

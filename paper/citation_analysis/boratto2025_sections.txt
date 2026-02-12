@@ -1,0 +1,31 @@
+El Bouchefry, K.; de Souza, R.S. Chapter 12—Learning in Big Data: Introduction to Machine Learning. In Knowledge Discovery in Big
+Data from Astronomy and Earth Observation; Škoda, P., Adam, F., Eds.; Elsevier: Amsterdam, The Netherlands, 2020; pp. 225–249.
+Gardner, M.; Dorling, S. Artificial neural networks (the multilayer perceptron)—A review of applications in the atmospheric
+sciences. Atmos. Environ. 1998, 32, 2627–2636. [CrossRef]
+Pedregosa, F.; Varoquaux, G.; Gramfort, A.; Michel, V.; Thirion, B.; Grisel, O.; Blondel, M.; Prettenhofer, P.; Weiss, R.;
+Dubourg, V.; et al. Scikit-learn: Machine Learning in Python. J. Mach. Learn. Res. 2011, 12, 2825–2830.
+Wythoff, B.J. Backpropagation neural networks: A tutorial. Chemom. Intell. Lab. Syst. 1993, 18, 115–155. [CrossRef]
+Haykin, S. Neural Networks: A Comprehensive Foundation, 3rd ed.; Prentice-Hall, Inc.: Wilmington, DE, USA, 2007.
+Ibrahem Ahmed Osman, A.; Najah Ahmed, A.; Chow, M.; Feng Huang, Y.; El-Shafie, A. Extreme gradient boosting (Xgboost)
+model to predict the groundwater levels in Selangor Malaysia. Ain Shams Eng. J. 2021, 12, 1545–1556. [CrossRef]
+Chen, T.; He, T. Higgs Boson Discovery with Boosted Trees. In Proceedings of the 2014 International Conference on High-Energy
+Physics and Machine Learning HEPML’14, Montreal, QC, Canada, 8–13 December 2014; Volume 42, pp. 69–80. Available online:
+https://proceedings.mlr.press/v42/chen14.pdf (accessed on 17 February 2025).
+Storn, R.; Price, K. Differential Evolution—A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces.
+J. Glob. Optim. 1997, 11, 341–359. [CrossRef]
+Lundberg, S.M.; Lee, S.I. A Unified Approach to Interpreting Model Predictions. In Proceedings of the 31st Conference on
+Neural Information Processing System, NIPS’17, Red Hook, NY, USA, 4–9 December 2017; pp. 4768–4777. Available online:
+https://dl.acm.org/doi/pdf/10.5555/3295222.3295230 (accessed on 17 February 2025).
+Radhakrishnan, P.; Nampoori, V. Speech Analysis Using Modern Techniques of Nonlinear Dynamics. Ph.D. Thesis, Cochin
+University of Science and Technology, Kochi, India, 2009.
+Härmä, A. Ambient human-to-human communication. In Handbook of Ambient Intelligence and Smart Environments; Springer:
+Cham, Switzerland, 2010; pp. 795–823.
+Kunchur, M.N. The human auditory system and audio. Appl. Acoust. 2023, 211, 109507. [CrossRef]
+Abdul, Z.K.; Al-Talabani, A.K. Mel Frequency Cepstral Coefficient and its Applications: A Review. IEEE Access 2022, 10,
+122136–122158. [CrossRef]
+
+Signals 2025, 6, 9
+
+43.
+44.
+================================================================================

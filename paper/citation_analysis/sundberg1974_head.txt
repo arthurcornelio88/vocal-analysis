@@ -1,0 +1,99 @@
+Articulatory interpretation of the "singing formant"
+Johan Sundberg
+Department of SpeechCommunication,Royal Institute of Technology(KTH). S-100 44 Stockholm 70, Sweden
+(Received 3 December 1973; revised10 January 1974)
+
+The "singingformant" is a high spectrumenvelopepeak near 2.8 kHz
+characteristicof vowel soundsproducedin male Westernopera and concert
+singing.An acousticalmodel of the vocal tract is capableof generatingsuch a
+peak provided that three conditionsare met: (i) The cross-sectional
+area in the
+pharynx must be at least six times wider than that of the larynx tube opening.If
+so, the larynx tube is acousticallymismatchedwith the rest of the vocal tract,
+and an extra formant is added to the vocal tract transfer function. (2) The sinus
+Morgagni must be wide in relation to the rest of the larynx tube. This may tune
+the frequencyof the extra formant to a value betweenthe frequenciesof the third
+and fourth formantsin normal speech.(3) The sinuspiriformesmust be wide.
+This reducesthe frequencyof the fifth formant to about 3 kHz. X-ray studiesof
+a raised and lowered larynx showedthat these three conditionsmay be fulfilled
+when the larynx is lowered.Thus, the larynx lowering,typical of male
+professionalsinging,seemsto explain the "singingformant" and other formant
+frequencydifferencesbetweennormal speechand male professionalsinging.
+
+Subject Classification: 70.20; 75.70.
+
+INTRODUCTION
+
+"singing formant" in terms of formants only we have to
+assume an extraordinary density of the higher formants.
+Spectrographic measurements on various vowels in four
+
+The "singing formant" or the "2.8 kHz" belongs to •he
+acoustical characteristics of professional male singing
+in Western opera and concert performances. Rather independent of vowel quality and pitch, it appears as a re-
+
+professional bass singers yielded the average formant
+
+frequencyvaluesgiven in Fig. 2. 4 For comparison,
+mean values observed by Fant et al. in normal male
+
+gionof highspectralenergynear 3 kHz. ' A typicalex-
+
+speechare givenin the samefigure.s Analysesof later-
+
+ample is given in Fig. 1, displaying a spectrum level
+difference of approximately 20 dB between a spoken and
+
+al x-ray pictures and photos of the lip opening taken during vowel phonation in speech and singing suggested ar-
+
+a sung[u]. The spectrumenvelopepeakis frequently
+
+ticulatory interpretations of the formant frequency differences as regards the three lowest formants: In singing as compared with speech the larynx was lowered, the
+jaw opening increased, the tongue tip was advanced in
+the back vowels, and the lips were excessively protruded
+
+accompanied by an envelope minimum slightly higher in
+frequency and often clearly discernible in the spectrogram.
+
+How can such a "singing formant" be generated acoustically ? If •vo or more formants approach each other in
+
+in front vowels. The purpose of the present paper is to
+suggest an articulatory explanation for the frequencies
+of the fourth and fifth formants in singing.
+
+frequencythe formantlevels will rise. 2 In our previous
+research, attempts were made to match spectra of vowels
+
+sungby male opera singerson a formant synthesizer.a
+These experiments showed that five formants below 4
+kHz or even 3 kHz have to be postulated in order to generate a "singing formant" with formants only. In normal
+
+I. ANATOMY
+It can be assumed
+
+male speech the frequency of the fifth formant lies
+•round 4.5 kHz. Therefore, when we interpret the
+
+that an acoustic
+
+feature
+
+such as the
+
+"singing formant," which is rather independent of vowel
+quality, stems from a region of the vocal tract that is
+
+VOWEL [u]
+
+SPEECH
+
+SING NG
+
+0
+
+FIG. 1. Spectra of the vowel [u]
+spoken (tell) and sung (right) by a
+professional bass singer.
+
+- 10
+-20

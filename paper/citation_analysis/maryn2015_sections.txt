@@ -1,0 +1,31 @@
+In conclusion, the AVQI is a multivariate, accessible,
+feasible, and reasonably valid method to clinically measure
+overall dysphonia severity in sustained vowel and continuous
+speech samples. Because the CPPS was only available in the
+program SpeechTool and not in the program Praat, the practical
+disadvantage of the AVQI was that it required a protocol
+combining both programs. This culminated in a relatively
+high number of steps in the AVQI procedure: (1) recording
+the continuous speech sample, (2) extracting and concatenating
+the voiced segments with a customized script in Praat (ie, part
+1), (3) recording the medial 3 seconds of [a:] (ie, part 2), (4)
+chaining part 2 after part 1 in Praat, (5) determining CPPS in
+SpeechTool, (6) determining harmonics-to-noise ratio (HNR),
+shimmer local (SL), SLdB, Slope, and Tilt with a customized
+script in Praat, (7) completing the CPPS in a form in Praat,
+and (8) calculating the AVQI with a customized script in Praat
+(eg, Maryn et al40). The AVQI protocol was relatively laborious
+on that account. However, because the recent implementation
+of the cepstral peak prominence measures in Praat (since
+version 5.3.53)–with various cepstral applications via the ‘‘To
+PowerCepstrogram . ’’ function and the possibility to obtain
+the cepstral metric via the ‘‘Get CPPS . ’’ command—it
+became also possible to calculate the smoothed cepstral peak
+prominence in this program. This new development in Praat
+no longer necessitated a combination with SpeechTool, facilitating a single-program (ie, only in the program Praat) and
+even a single-script (ie, instead of working with multiple scripts
+as before, it became possible to merge all signal processing
+steps into only one Praat-macro) solution for the AVQI, minimizing the manual labor for the voice clinician, and therefore
+maximizing the AVQI’s feasibility. A new script (ie, a second
+version or a beta version) for the AVQI was established to
+================================================================================

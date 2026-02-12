@@ -1,0 +1,31 @@
+screen the title and abstract of all the articles. The first
+author will screen all the articles and the rest of the
+screening work will be divided among the other authors.
+Screening conflicts will be resolved via group discussion
+among authors.
+The articles selected for full-­text review will similarly be
+assessed by two authors. Again, the first author will review
+all of the articles with the remaining work to be divided
+among the other authors. Conflicts will again be resolved
+via group discussion.
+The results of the search and inclusion process will be
+presented using a PRISMA-­ScR flow diagram.55
+Data extraction
+The agreed list of included articles will be uploaded onto
+the Zotero reference managing system. Data extraction
+will be conducted by all authors. The data will be stored
+and analysed using custom programs (online supplemental appendix IV) and Excel software package.
+The data to be extracted will include all of the following:
+► Vocal tasks
+► Recording equipment details
+– Microphone(s) and their specifications
+– Recording software
+– Sampling rate of recording
+– Bit rate of recording
+– Number of channels in the recording
+► Acoustic characteristics of the recording environment
+(eg, ambient noise levels)
+► Demographics of participants
+► Patient history
+► Participant self-­reported symptoms
+================================================================================

@@ -1,0 +1,1161 @@
+Laryngeal Vibratory Mechanisms: The Notion of Vocal
+Register Revisited
+*Bernard Roubeau, †Nathalie Henrich, and ‡Michèle Castellengo, *zParis, France and yGrenoble, France
+Summary: This study, focused on the laryngeal source level, introduces the concept of laryngeal vibratory mechanism.
+Human phonation is characterized by the use of four laryngeal mechanisms, labeled M0–M3, as evidenced by the electroglottographic (EGG) study of the transition phenomena between mechanisms with a population of men and women,
+trained and untrained singers. Macroscopic and local descriptions of the EGG signal are analyzed during the production
+of glissandos and held notes with different mechanisms. The transition from one mechanism to another of higher rank is
+characterized by a jump in frequency, a reduction of EGG amplitude, and a change in the shape of the derivative of the
+EGG (which may correspond to a reduction of the vibratory mass). These characteristics are used to identify a transition
+between two mechanisms, in complement with acoustic spectrographic analyses. The pitches of transitions between the
+two main mechanisms M1 and M2 and the range of the frequency-overlap region are described in detail. The notion of
+vocal register is revisited in the light of these concepts of laryngeal mechanism. The literature on vocal registers is reviewed, and it is shown that the confusion often cited with respect to this notion may be related to the heterogeneity of
+the approaches and methods used to describe the phenomena and to the multiplicity of descriptors. Therefore, the terminology of the registers is organized depending on their relation to the four laryngeal vibratory mechanisms.
+Key Words: Laryngeal mechanism–Electroglottography–Larynx–Singing voice–Voice range–Register.
+INTRODUCTION
+Human voice production over the whole frequency range involves different adjustments of the vocal apparatus, encompassing zones called registers.1 These registers are described by
+physiologists,2,3 physicians,4,5 phoneticians and voice scientists,6–11 voice teachers,12,13 and singers. Obviously such varied
+workers have developed widely different interests in the voice,
+and their approaches are heterogeneous. The descriptions
+which have been given of these ‘‘registers’’ can be derived
+from laryngoscopic,1 electrophysiological,3,5,14 acoustic,15 auditory,6,7 or proprioceptive observations. Acoustic and electrophysiological observations are very often combined.16–18 It is
+evident that some observations have more to do with the way
+the laryngeal source works, whereas others include the action
+of the resonating cavities or the sensations characteristic of
+the proprioceptive stimulations because of muscle contractions
+or laryngeal vibrations. In spite of the diversity of approaches,
+the terms used are similar, which brings great confusion to this
+domain, confusion that is often mentioned by the authors. There
+is need for a better understanding of the notion of vocal register.
+In this paper, we focus on the laryngeal source level. For this
+purpose, electroglottography (EGG) seems to us an appropriate
+experimental technique. This noninvasive observation technique of laryngeal activity is well known and has been used
+since its conception by Fabre in 195719 (see Childers and Krishnamurthy20 or Henrich et al21,22 for a detailed review of literature). The EGG signal is based on the monitored conductance
+between the vocal folds. There is likely to be a good correlation
+Accepted for publication October 17, 2007.
+From the *Service d’ORL et de Chirurgie Cervico-faciale, Hôpital Tenon, Paris, France;
+yDépartement Parole et Cognition, GIPSA-lab, CNRS-INPG-UJF-UnivStendhal, Grenoble, France; and the zL.A.M.-IJLRA, CNRS-University Paris 6, Ministère de la Culture,
+Paris, France.
+Address correspondence and reprint requests to Nathalie Henrich, Département Parole et
+Cognition, GIPSA-lab, 46, Avenue Félix Viallet, 38031 Grenoble Cedex 1, France. E-mail:
+nathalie.henrich@gipsa-lab.inpg.fr
+Journal of Voice, Vol. 23, No. 4, pp. 425-438
+0892-1997/$36.00
+Ó 2009 The Voice Foundation
+doi:10.1016/j.jvoice.2007.10.014
+
+between this signal and the glottal contact area in the case of
+nonpathological voice phonation. Therefore, for a normal voice
+it enables one to evaluate indirectly the amplitude of vocal fold
+contact during successive vibratory cycles, as well as the main
+phases of this contact. This exploratory technique allows a macroscopic and a microscopic study of the contact-area signal.14,21,23 The macroscopic analysis is concerned with the
+overall shape of the envelope of the EGG amplitude-time waveform and its variations in amplitude and frequency.5,24,25 The
+microscopic analysis pertains to the shape of the oscillation itself. Three databases (DBs) of simultaneous audio and EGG recordings of singers and nonsingers are used in Material and
+Methods section. In the following section, the concept of laryngeal vibratory mechanism is introduced to describe the different
+configurations that the laryngeal vibrator can take throughout
+the human voice frequency range. The borders between the
+mechanisms are defined by the rupture phenomena, or vibratory
+discontinuities, be they audible or not, which can be detected in
+a macroscopic analysis of the EGG signal. The relationship between a laryngeal mechanism and the EGG glottal-pulse shape
+is discussed in the third section. Finally, the notion of vocal registers is revisited in the light of the laryngeal mechanisms. The
+vocal-register literature is reviewed to point out the sources of
+confusion. Then, the register terminology is organized depending on the relation of the registers to the four principal laryngeal
+vibratory mechanisms.
+MATERIAL AND METHODS
+The three databases to which we refer and which were recorded
+for the purpose of previous studies are briefly presented.
+Database 1 (DB1)
+Nineteen subjects participated in this study: 10 male subjects
+(seven trained and three untrained singers) and nine female subjects (seven trained and two untrained singers). The purpose of
+this study was to analyze the shift between laryngeal mechanisms. The subjects were asked to produce ascending and
+
+426
+descending glissandos in a spontaneous way, and sustained
+vowels (/a/, /o/, and /i/) with a change of laryngeal mechanism
+at three different pitches (293 Hz—D4, 311 Hz—D#4, and
+329 Hz—E4, respectively). Audio and EGG signals were recorded simultaneously in a soundproof room (LEM microphone, Geneva, Switzerland and Frokjaer-Jensen EG 830
+electroglottograph, Copenhagen, Denmark). The fundamental
+frequency was automatically extracted by an FIES-CNET melograph (Paris, France).
+Database 2 (DB2)
+Forty-two subjects participated in this study: 21 male subjects
+(seven professional, 11 amateur, and three untrained singers)
+and 21 female subjects (five professional, 10 amateur, and six
+untrained subjects). The purpose of this study was to establish
+a voice range profile for each laryngeal mechanism. The subject’s pitch range was covered in semitones on the vowel [a].
+Sound-pressure level (SPL) was measured in dBA by a sound
+level meter (1560-P General Radio, West Concord, MA) placed
+at 1 m from the subject’s mouth. The recording took place in
+a large, quiet studio room.
+Database 3 (DB3)
+Eighteen trained singers participated in this study: 12 male
+singers (seven baritones, two tenors, and three counter-tenors)
+and six female singers (three mezzo-sopranos and three sopranos). The purpose of this study was to explore the variations of
+open quotient in western operatic singing. The database comprises several parts, in which the singers were asked to produce
+glissandos, crescendos, and sustained vowels ([a], [e], and [u])
+for different pitches covering their comfortable frequency
+range, and at three different loudness levels. When necessary,
+the singers were asked to indicate in which laryngeal mechanism they were singing. Audio and EGG signals were recorded
+simultaneously in a soundproof room (1/2 in. condenser microphone (Bruël & Kjær 4165 Naerum, Denmark) placed 50 cm
+from the singer’s mouth, preamplifier (Bruël & Kjær 2669),
+and conditioning amplifier (Bruël & Kjær NEXUS 2690);
+two-channel EG2 electroglottograph). The technical computing
+environment MATLAB, Version 6.1 was used for digital signal
+processing.
+Readers are referred to Roubeau et al23,24 for more technical
+details concerning DB1, Roubeau et al26 for DB2, and Henrich
+et al21,27 for DB3.
+MACROSCOPIC STUDY OF EGG SIGNAL CHANGES
+WITH LARYNGEAL VIBRATORY MECHANISM
+TRANSITIONS
+From transition phenomena to laryngeal
+mechanisms
+An ascending glissando is a vocal production during which the
+frequency progressively goes from the lowest pitch (sometimes
+around 20 Hz) to the highest (in some cases up to 1000, even
+1500 Hz) in the vocal range. A descending glissando is the inverse production.
+
+Journal of Voice, Vol. 23, No. 4, 2009
+
+In database DB1, male and female subjects produced glissandos, with no specific concern for esthetic quality. With most of
+the subjects, singers and nonsingers, one can observe several
+events disrupting the evolution of the frequency, as shown in
+the spectral analysis presented in Figure 1. These events are visible on the spectrographic analysis as disruptions of the harmonic curves related to an upward jump in fundamental
+frequency. There are at most three of these transitory phenomena, thus defining with precision four frequency areas that we
+call laryngeal mechanisms M0, M1, M2, and M3. We shall return to the justification for this terminology in the sequel to this
+article.
+It is at the critical points of equilibrium between two systems
+that one can collect valuable information on the systems themselves.9,10,28 However, although these different mechanisms
+have been quite extensively described as the result of a variety of
+observational techniques, the transitional phenomena have been
+much less investigated, as demonstrated in section Historical
+review of register and the sources of confusion. A few studies
+have stressed in an indirect way, changes of glottal configuration thanks to concomitant transformations of the EGG signal,
+the most remarkable elements being the modification of EGG
+signal amplitude and the modification of the shape of the waveform itself.5,23–25,28,29
+EGG analysis of the M1–M2 transition during
+glissandos
+In the zone covering the frequencies most used in speech and
+song by both genders, an ascending glissando presents one
+unique break separating the M1 and M2 mechanisms. This
+break appears in the acoustic signal and in the EGG signal (Figure 2). It is characterized by an upward frequency jump, a reduction of the amplitude of the EGG signal, and a modification of
+its shape. The reduction in amplitude of the EGG signal may
+come from a reduction of the contact surface area between
+the vocal folds, which could be related to a reduction in the
+thickness of the fold.30 This is a characteristic of the switch
+from mechanism M1 to mechanism M2.
+Hirano’s research has established links between the histological heterogeneities of the different layers constituting the vocal
+fold and their densities. These different densities have important consequences for the nature of vocal fold vibration.4
+When the frequency increases, tension and rigidity are not
+equally distributed in the different layers. We could infer that,
+
+FIGURE 1. Sonogram of an ascending vocal glissando with the successive use of four laryngeal vibratory mechanisms. Female subject.
+
+Bernard Roubeau, et al
+
+427
+
+Laryngeal Vibratory Mechanisms
+
+FIGURE 3. Descending glissando: acoustic signal, EGG, and variation of the fundamental frequency (F0). Male subject.
+
+FIGURE 2. Ascending glissando: acoustic signal, EGG, and variation of the fundamental frequency (F0). Male subject.
+
+when a critical point is reached, the heterogeneities of the structures may induce a decoupling between these layers in the midst
+of the vocal fold. During the transition from mechanism M1 to
+mechanism M2, the cover may decouple from the deep layer.
+The latter is no longer part of the vibration, and this leads to
+a thinning of the vocal fold and an abrupt reduction, from a biomechanical point of view, of the vibrating mass. It is this abrupt
+reduction that probably causes the jump in frequency. Finally,
+thanks to weak levels of energy, this reduction also leads to
+an increase in frequency.
+As suggested by Titze,10 one cannot rule out the possibility
+that a resonance phenomenon is added to this purely biomechanical phenomenon.
+A descending glissando causes a symmetrical phenomenon
+(Figure 3). In this case, the change of mechanism is characterized by an abrupt increase in the amplitude of the EGG signal
+and an abrupt fall in frequency. This time the vibrating mass
+of the vocal fold becomes more significant, which explains
+the fall in fundamental frequency.
+This phenomenon does not depend on the gender of the subjects nor on their level of vocal training. Its perception by a listener, however, may depend on the level of vocal training.
+These events characterize the transition from mechanism M2
+to mechanism M1.
+The pitch of the transition from one mechanism to another
+and the extent of the accompanying frequency jump have
+been measured on the EGG signals from database DB1, during
+the production of ascending glissandos and descending glissan-
+
+dos. The choice of productions as poorly controlled as glissandos was aimed at minimizing phenomena linked to vocal
+training.
+The pitch at which the transition is activated is significantly
+lower for men than for women, as much for the ascending glissandos and for the descending glissandos, in agreement with
+previous studies.9,11,29 This difference is much less than one octave (Table 1). The border between the mechanisms is mobile.
+Thus the transition from mechanism M1 to mechanism M2 during an ascending production occurs at a higher pitch than during
+a descending production. Similarly to a hysteresis phenomenon, the system thus seems to delay the rupture, and maintains
+its current state of equilibrium. This constancy phenomenon,
+which has also been noted by Svec et al,11 is probably more
+marked when producing glissandos than when producing scales
+which are more controllable. Finally, this gap between the
+pitches of the change of mechanism during an ascending production and during a descending production confirms the
+known notion of partial overlap of the range of the mechanisms.
+The magnitude of the frequency jump is presented in Table 2
+depending on the type of glissando (ascending or descending)
+TABLE 1.
+Pitches of Transition M1–M2 and M2–M1 During
+Glissandos
+
+Male subjects
+Female subjects
+
+Ascending
+Glissando
+
+Descending
+Glissando
+
+Transition from
+M1 to M2
+
+Transition from
+M2 to M1
+
+238 Hz—Bb3
+(3.8 semitones)
+312 Hz—Eb4
+(4.5 semitones)
+
+195 Hz—G3
+(6.6 semitones)
+279 Hz—C#4
+(4.9 semitones)
+
+The standard deviations are given in parenthesis.
+
+428
+
+Journal of Voice, Vol. 23, No. 4, 2009
+
+TABLE 2.
+Frequency Jump in Semitones During the Transition M1–
+M2 and M2–M1
+
+TABLE 3.
+Range of Mechanisms M1 and M2 and of Their Overlap
+Zone
+
+Ascending
+Descending
+Glissando (M1–M2) Glissando (M2–M1)
+
+Mechanism Mechanism
+M1
+M2
+Overlap
+
+Male subjects
+Female subjects
+
+5.5
+1.5
+
+4
+2
+
+and on the gender of the subjects. In the M1–M2 direction, as in
+the M2–M1 direction, the jump in frequency is greater with
+men than women, a point already made by several authors.25,29
+The range of each mechanism and the range of the overlap
+phenomenon have been studied on database DB2. As illustrated
+in Figure 4 and Table 3, the overlap zone of the mechanisms is
+considerable (one octave on average). It occurs at the same frequencies for both genders, which means that in this zone of the
+vocal range, female and male voices have the same possibilities
+of choice of production mechanism.
+The abrupt change of amplitude of the EGG signal is a criterion for identifying the change of mechanism. The ratio of amplitudes at the transition point has been carried out and analyzed
+depending on the direction of the transition, and it is illustrated
+in Figure 5.
+The amplitude ratio is greater during the transition M2–M1
+than in the other direction but this difference is more accentuated with men than with women. This phenomenon is probably
+
+M Mean limits
+Eb2–F#4
+Extent in semitones 29 (5.4)
+
+F3–F5
+26 (6.9)
+
+F3–F#5
+17 (6.5)
+
+W Mean limits
+D3–G#4
+Extent in semitones 19 (3)
+
+G#3–C5
+30 (5.8)
+
+G#3–G#5
+15 (5.5)
+
+Average values (standard deviation).
+Abbreviations: M, men; W, women.
+
+related to the morphological differences characterizing female
+and male larynges.
+EGG analysis of the M1–M2 transition during
+sustained sounds
+The frequency range overlap of mechanisms M1 and M2 allows
+the production of sounds of the same pitch in one or the other
+mode of production. Sustaining a sound at a constant pitch
+with a change of mechanism without interruption of the production, already mentioned by Garcia,1 has been used and described by Large,13 then by Van Deinse31 to analyze the
+modifications in timbre that occur during the switch of registers
+from chest to falsetto. The change of mechanism on a constant
+pitch but with varying intensity has allowed Vilkman et al28 to
+determine precisely the concept of critical mass in the ‘‘chest
+register’’.
+To examine this type of production, the common zone of both
+mechanisms M1 and M2 is explored for a given subject. A note
+within this zone is given to the subject. On this note, he/she
+must start the production in one mechanism, then change the
+mechanism without interrupting sound production. This singing task was required in database DB1.
+During the switch from mechanism M1 to mechanism M2,
+besides possible modifications in timbre,13,31 we can also observe important and abrupt modifications of the EGG signal
+(Figure 6).
+A change of the EGG wave shape can be observed, as well as
+a reduction in amplitude of the signal, witnesses the
+
+FIGURE 4. Average voice range profiles for men and women voices
+in each of both mechanisms. Representation of the range of the overlap.
+
+FIGURE 5. Amplitude variation of the EGG signal during transitions between laryngeal mechanisms M1 and M2.
+
+Bernard Roubeau, et al
+
+Laryngeal Vibratory Mechanisms
+
+FIGURE 6. Sustained sound with change of laryngeal mechanism.
+The transition from M1 to M2 can be detected by a modification of
+the amplitude of the EGG signal and an abrupt variation of the fundamental frequency. Male subject.
+modification of the vibrating structures typical of the switch
+from mechanism M1 to mechanism M2.
+The reduction in amplitude is related to a very abrupt frequency jump followed by a slower readjustment to the initial
+frequency, the whole of the phenomenon lasting no longer
+than 100 milliseconds.
+Both phases of the frequency perturbation can be explained
+by the mechanical phenomenon of decoupling of the tissue
+layers of the vocal fold during the switch in the direction
+M1–M2, which is almost instantaneous. This decoupling, although allowing reduction of the vibrating mass, first causes
+the upward frequency jump, then the recovery under neuromuscular control of the initial frequency.
+A pilot study23 shows that the amplitude of the frequency
+jump varies in relation to the intensity of the production at
+the time of change of mechanism.
+The switch from mechanism M2 to mechanism M1 involves
+inverse modifications. The amplitude of the EGG signal increases and the fundamental frequency undergoes an abrupt
+fall followed by a readjustment to the original frequency. The
+duration of this readjustment (60 milliseconds) is less than
+the one observed in the preceding situation.
+When the switch from mechanism M1 to mechanism M2 is
+not accompanied by a frequency jump (Figure 7), one can still
+
+429
+observe an abrupt modification in the amplitude of the EGG signal. In this case, the change of mechanism is preceded by a significant decrease in intensity. This observation would confirm
+the hypothesis, known in an empirical way by singers that the
+amplitude of the jump depends on the intensity of sound production. In the present case, the change of mechanism is not
+perceptible and only the EGG signal can indicate its presence.
+From this example, one can easily understand that perceptual or
+acoustic analyses alone are insufficient to identify and authenticate a change of mechanism.
+Both examples presented in Figures 6 and 7 show that a physiological phenomenon, such as the change of mechanism, can
+be ‘‘negotiated’’ in different ways depending on the esthetic objectives of the singer.32
+EGG analysis of M2–M3 and M0–M1 transitions
+Transition M2–M3. The production of an ascending glissando reaching the highest frequency zones allows one to observe another transition separating mechanisms M2 and M3
+(Figure 1). This transition in the high-pitch range of the voice
+presents the same characteristics as those separating mechanism M1 from mechanism M2, that is, an abrupt reduction of
+the amplitude of the EGG signal and an upward jump in frequency. In the opposite direction, there is a symmetrical switch
+from mechanism M3 to mechanism M2: one observes an abrupt
+increase in the amplitude of the EGG signal and an equally
+abrupt fall in the frequency (Figure 8). This phenomenon can
+be observed in men and women.
+The laryngeal mechanism M3 has been poorly explored in
+the literature, and its characteristics are still not well known.33
+It allows the production of the highest-pitched sounds of the human voice, but it is seldom used either in speech or in singing. It
+is characterized by very thin and stretched vocal folds, with
+a much-reduced vibrating part compared with mechanism
+
+FIGURE 7. Sustained sound with change of laryngeal mechanism
+from M1 to M2 but without abrupt variation of the fundamental frequency during the transition. See an important decrease of the acoustical amplitude. Male subject.
+
+FIGURE 8. Descending-ascending glissandos with mechanisms
+M1, M2, and M3. Spectrographic and EGG, macroscopic aspect. Female subject.
+
+430
+M2. This observation is confirmed by the weak amplitude of the
+EGG signal.33
+As for the transition M1–M2, the transition M2–M3 corresponds to a reduction in a component of the laryngeal vibrating
+system, this time by reduction of the vibrating length, which allows access to the highest frequencies. One should note that the
+acoustic spectrum does not particularly decrease during the
+switch to mechanism M3, contrary to what is commonly described (Figure 8).
+The origin of the discontinuity M2–M3 is not completely
+identified. It is not to be excluded that it is triggered by a resonance phenomenon,10 in addition to the mechanical phenomenon which is purely laryngeal. It is probable that the frontier
+between M2 and M3 is equally mobile and that an overlap between the range of mechanism M2 and that of mechanism M3
+exists. It is also probable that the everyday use of these mechanisms by trained subjects has an effect on this overlap. These
+hypotheses need to be investigated specifically, and the physiological muscular data specific to this mechanism must be completed.
+Transition M0–M1. The production of an ascending glissando starting with the lowest voice frequencies (around
+20 Hz) involves mechanism M0 (Figure 9). This mechanism,
+quite well described, is used much more in speech, and relatively little in singing. It corresponds to a specific type of laryngeal oscillation where the period consists of a long closed phase
+and a very short open phase.4,34
+As we can observe for the other transitions during ascending
+glissandos, the frequency cannot increase in a continuous way
+but shows an upward jump during the transition to mechanism
+M1. Therefore, we find again the characteristic event of the
+change of mechanism which is the upward frequency jump during the transition from a given mechanism to that of a higher
+rank, and the abrupt fall in frequency in the other direction.
+Unlike the other transitions, the amplitude of the EGG signal
+is not abruptly modified during the transition M0–M1, which
+
+FIGURE 9. Transition from M1 to M0 (top) and from M0 to M1
+(bottom) illustrated by EGG during a descending glissando (top) and
+an ascending glissando (bottom). Male subject.
+
+Journal of Voice, Vol. 23, No. 4, 2009
+
+may suggest that the contact surface (instantaneous maximum)
+between the vocal folds does not change. On the other hand, the
+waveform shape changes radically (long contact phase in M0
+with two maxima). One reason may be that the folds’ contact
+surface remains significant but distributed in time.
+Mechanism M0 differentiates itself clearly from the others
+through various physical parameters.18,35 A physiological hypothesis of participation of a lateral compression of the vocal
+folds would explain the importance of the vibrating mass and
+therefore, of the inertia of the vibrator which allows the production of such low frequencies.4
+Contrary to other mechanisms an overlap between M0 and
+M1 does not seem to exist, except in rare male voices which
+are particularly low.36
+It is important to note that, as described for all the other
+mechanisms, this mechanism can be found in both men and
+women, and in singers and nonsingers.
+
+LOCAL DESCRIPTION OF THE EGG SIGNAL IN
+RELATION TO LARYNGEAL VIBRATORY
+MECHANISMS
+The preceding discussion has shown that the characterization of
+the laryngeal mechanisms is based on transition phenomena
+highlighted in the envelope of the EGG signals. At the level
+of a glottal cycle, the EGG signal also provides qualitative
+and quantitative information which makes it possible to characterize the different laryngeal mechanisms. After a brief description of the general EGG shape of a glottal cycle, its
+characteristics are examined within a given laryngeal mechanism. The relationship between laryngeal mechanism and
+open quotient is also discussed. All the results presented here
+come from the analysis of database DB3.
+
+Qualitative description and quantitative measures
+of a glottal cycle by EGG
+The EGG signal is modulated depending on the contact between the vocal folds: the greater the contact, the higher the amplitude of the EGG signal. The glottal closing, which is
+characterized by an increase of the contact between vocal folds,
+is detected on the EGG signal by a fast increase of the amplitude
+of the signal. Conversely, the glottal opening is detected by
+a progressive decrease of amplitude. These rapid variations in
+contact between the vocal folds translate into marked peaks
+on the derivative of the EGG signal (DEGG signal22). In a cycle
+of the glottal signal, one can thus observe the different phases of
+vocal fold movement,20 presented schematically in Figure 10:
+ Closing phase (1–2): The vocal folds connect from their
+lower edges to their upper edges. The closing being usually faster than the opening, this phase is marked by a steep
+gradient in the EGG signal. The derivative of the EGG signal presents a very significant peak, the local maximum of
+which is associated with the moment of glottal closing.
+Physiologically, this corresponds to the moment when
+the vocal folds connect on the whole of the lower edge.
+
+Bernard Roubeau, et al
+
+Laryngeal Vibratory Mechanisms
+
+FIGURE 10. Description of a glottal cycle by EGG. 1–2: closing
+phase; 2–3: closed phase; 3–4: opening phase; 4–5: open phase. T0 represents the fundamental period and Oq the open quotient.
+
+431
+Cases of laryngeal mechanisms M1 and M2. As was
+mentioned in the previous section, the vibrating mass is greater
+in laryngeal mechanism M1 than in mechanism M2, because of
+the participation of the deep layers of the fold in glottal vibratory movement. This often leads to a greater amplitude of the
+EGG signals. Furthermore, there is a difference between the
+opening and closing phases of the vocal folds: in general, the
+closing phase is shorter and the closure more abrupt in mechanism M1 than in mechanism M2, which leads to a marked
+asymmetry of the EGG signals. Figure 11 illustrates the typical
+shape of an EGG signal in laryngeal mechanism M1: a large
+amplitude, a pronounced asymmetry, an abrupt closing phase
+shown by a strongly marked peak on the DEGG signal.
+In the case of laryngeal mechanism M2, the vibrating mass
+involved is very small, the vocal folds vibrating only on their
+superficial part. The vocalis muscle, even if it can remain contracted, does not take part in the vibration. As shown in Figure 11, the EGG signals are reduced in amplitude and are
+much more symmetrical. The opening and closing DEGG glottal peaks have comparable amplitudes.
+
+ Closed phase (2–3): The vocal folds then remain in contact over their whole length. However, a variation in the
+EGG signal can be observed corresponding to the degree
+of contact of the vocal folds.
+ Opening phase (3–4): The vocal folds separate from their
+lower edges to their upper edges. The EGG derivative
+presents a negative peak more or less well marked, the local minimum of which is associated with the moment of
+glottal opening. Physiologically, this corresponds to the
+moment when the vocal folds begin to separate at their upper edges.
+ Open phase (4–5): Once the vocal folds are separated, the
+contact varies very little and therefore, a relatively flat signal is observed. The electroglottograph cannot give any
+information relative to this phase as the degree of opening
+of the glottis has little influence on the electrical signal.
+
+Case of the laryngeal mechanism M0. As was seen in the
+previous section, the laryngeal mechanism M0, which allows
+the production of the lowest sounds of human phonation, is
+characterized by very short vocal folds, very thick and lax.6
+The contact phase is very long in relation to the duration of
+a glottal cycle. As illustrated in Figure 9, the shape of a glottal
+cycle is not necessarily reproducible from one period to the next
+period. Thus, one can observe a periodic glottal cycle, with
+a very low frequency, or nonperiodic-impulsions, or multiple
+cycles (doubles and triples).18,38 Figure 12 shows glottal cycles
+in pairs, the first cycle being more marked than the next. In this
+case, the T0 corresponds to the repetition of a pair of cycles.
+Physiologically, this means that the first glottal closing, very
+marked, is accompanied by a second that is much less pronounced.
+
+The detection of the glottal opening and closing moments allows quantification of the duration of a glottal cycle (fundamental period T0), and the calculation of various quotients relative
+to the open and contact phases. In this work we are particularly
+interested in the open quotient, defined as the ratio between the
+duration of the open phase and the duration of the glottal cycle.
+We prefer the open quotient to its equivalent, the closed quotient (Cq ¼ 1  Oq), as this parameter is often related to the glottal flow.
+
+Case of the laryngeal mechanism M3. As mentioned in
+the section on macroscopic study of EGG signal changes, in
+this mechanism the vocal folds are very thin and very tightly
+stretched. Therefore, the glottal opening is reduced, and it is
+possible that there is no contact between the folds during phonation. This laryngeal mechanism is sometimes difficult to detect by EGG. When contact is sufficient to be detected, the EGG
+signal shows a very symmetrical shape, near that of mechanism
+M2. An example of glottal cycle detected by the EGG in mechanism M3 is presented in Figure 13.
+
+Characterization of glottal cycles according to
+laryngeal mechanisms
+As there is a variation in the vibrating mass involved in phonation depending on the laryngeal mechanism with which the
+sound is produced, there is also a variation of the contact area
+between the vocal folds. Thus, the shape and amplitude of the
+EGG signals are related to the laryngeal mechanisms. If these
+parameters do not allow a formal identification of the laryngeal
+mechanism used, they still give an indication relating to the
+general shape observed in a glottal cycle.
+
+Laryngeal mechanisms and the open quotient
+As the vibrating masses in contact vary depending on the laryngeal mechanisms, important differences in the contact time
+within a glottal cycle can be observed. Two equivalent glottal
+parameters allow these differences to be quantified: the closed
+quotient, Cq, which corresponds to the ratio between the contact
+duration and the total duration of a glottal cycle, and the open
+quotient (Oq ¼ 1  Cq), which corresponds to the ratio between
+the open duration and the total duration of a glottal cycle. The
+open quotient is also measured on the glottal flow signal,21 and
+
+432
+
+Journal of Voice, Vol. 23, No. 4, 2009
+
+FIGURE 11. Characteristic examples of EGG signals and their DEGG derivatives on two periods of the glottal cycle, in M1 and in M2. Male and
+female subjects.37
+
+it is thus more commonly used in the literature. Therefore, we
+shall refer to this glottal parameter here.
+The open quotient can be very easily measured by EGG, by
+a threshold-based method on the EGG signal, or by detection of
+opening and closing peaks on the derivative.21,22 Measurements
+made on database DB3 have shown that the value of the open
+quotient varies depending on the laryngeal mechanism.21,27
+
+Thus, the open quotient has values varying between 0.3 and
+0.8 in mechanism M1, whereas they are always greater than
+0.5 in mechanism M2. At a same pitch, the open quotient will
+have lower values in mechanism M1 than in mechanism M2,
+as illustrated in Figure 14.
+There exists an overlap zone between mechanisms where the
+open quotient can take on similar values, depending on the
+
+FIGURE 12. Shape of EGG signals and their DEGG derivatives in mechanism M0, for two glottal cycle periods; baritone and mezzo-soprano.37
+
+Bernard Roubeau, et al
+
+433
+
+Laryngeal Vibratory Mechanisms
+
+masked by the singer (no frequency jump), the open quotient
+jump is, nevertheless, detected, provided that the values measured in M1 are well below the characteristic values of mechanism M2. For a given singer, the open quotient variations can,
+therefore, indicate a change of laryngeal mechanism, as shown
+in Figure 15.
+THE NOTION OF REGISTER REVISITED
+The concept of mechanism, established on homogeneous physiological observations (EGG) regardless of gender or the level
+of vocal technique, and without any cultural notions, makes it
+possible to largely revise the notion of vocal register (which
+is still characterized by considerable confusion).
+
+FIGURE 13. Visualization of the shape of an EGG signal and its derivative (DEGG) signal on two periods of glottal cycle, for a vocal production in M3.
+
+vocal intensity and the fundamental frequency of the sound produced.
+The transition between laryngeal mechanisms is often accompanied by a marked jump in the open quotient. This jump
+in the open quotient is detected on a glissando, and it accompanies the frequency jump that is characteristic of the transition
+between mechanisms.27 In the case of a transition skillfully
+
+Historical review of register and the sources of
+confusion
+Nowadays, Garcia’s definition of register is the one most cited.
+It has, nevertheless, imprecision from which some confusion
+could originate. When Manuel Garcia1 presented his work to
+the French Académie des Sciences in 1840,39 he gave the following definition of vocal registers which is still nowadays
+the most referred to: ‘‘By the word register we mean a series
+of consecutive and homogeneous tones going from low to
+high, produced by the same mechanical principle, and whose
+nature differs essentially from another series of tones equally
+consecutive and homogeneous produced by another mechanical
+principle. All the tones belonging to the same register are consequently of the same nature, whatever otherwise may be the
+modifications of timbre or of the force to which one subjects
+them’’ (translation of Garcia1 from Paschke40). This definition,
+
+FIGURE 14. Vowel [a] sung by a counter-tenor at the same pitch (D4) in mechanisms M1 and M2.27
+
+434
+
+Journal of Voice, Vol. 23, No. 4, 2009
+
+FIGURE 15. Musical phrase sung by a female soprano trying to use the laryngeal mechanism M1. First trial: after a few notes, the singer switches
+to mechanism M2. Second trial: the singer remains in mechanism M1 on the whole sentence.37
+
+however coherent for this author, has led to much confusion. Indeed, Garcia mentions a ‘‘series of consecutive and homogeneous tones [.] whatever may be the modifications of timbre
+or of the force to which one subjects them.’’ Thus the notion
+of homogeneity he evokes here seems only to refer to the principle of production, which must here be considered on the glottal level as the follow-up of his work shows. If this detail is not
+systematically and explicitly stipulated, the different authors
+who refer to the homogeneity of sound to identify the registers,
+will be able to attribute the most diverse meanings, and the ‘‘homogeneous’’ character then becomes very ambiguous. Several
+points of Garcia’s definition remain imprecise, mainly the level
+and the ‘‘nature’’ of the ‘‘mechanical principle.’’ This leads to
+different interpretations of this definition. As is known, an
+acoustical phenomenon can originate at the level of the larynx
+just as it can originate at the level of the resonance cavities, or
+even both.
+From the XIX century to till date, and based more or less explicitly on Garcia’s definition, research on registers has mainly
+consisted in naming, numbering, and classifying the different
+registers (for a review, see Roubeau,23 Miller,12 and Henrich 41).
+An overview of the main research carried out on registers is
+presented in Table 4. The exploratory methods differ depending on the authors, going from the mirror laryngoscope applied
+with success by Garcia to EGG. The populations studied are
+men and/or women, singers or nonsingers, but these populations are not systematically compared to each other. The number of registers is variable depending on the authors, ranging
+from two (most frequently) to four. Their designation is often
+specific to the author. Thus we can find a group of terms referring to different notions, the choice of which reflects sometimes
+the type of approach (singing teaching, physiology and vocal
+therapy, mechanical, and acoustic). Therefore, the terms fry,
+strohbass, and pulse refer to the impulses characterizing the
+perception of very low frequencies. The terms heavy, thick,
+thin, and light refer to the morphological aspect of the vocal
+cords. The terms normal and modal refer to the normality of
+
+the use of the register in question for the male spoken voice.
+The terms chest and head refer to the vibratory sensations felt
+at the level of the chest or the head. The term falsetto refers
+to the acoustic quality of the sound produced. Similarly the
+term loft refers both to the timbre produced and to the use of
+high frequencies. The terms flageolet, flute, whistle, and sifflet
+refer to the high pitch of the frequencies produced, assimilated
+to those that one can obtain with these musical instruments, and
+the tonality which characterizes each one.
+This proliferation of terms shows the great confusion, often
+evident in the literature, when it comes to the designation and
+identification of registers. This confusion first comes from the
+angle from which the author tackles the notion of register.
+Some authors define registers from a perceptual point of
+view, by the homogeneity of the timbre of the sound produced
+(Titze,49 pp. 253: ‘‘the term register has been used to describe
+perceptually distinct regions of vocal quality that can be maintained over some ranges of pitch and loudness’’). Others define
+them from laryngeal configurations,6,43 whereas another category of authors combines the vibratory and resonance aspects.48
+Frequently, these concepts are mixed up. Thus, Miller defines
+registers regarding discontinuity phenomena as ‘‘readily perceptible (.) that may occur along an (ideally smooth) continuum of pitch or loudness’’ (Miller,12 pp. 43). Detected
+perceptually, these phenomena of discontinuity can be of two
+kinds: transitions of primary registers (‘‘first-order register’’31
+and ‘‘natural register’’12) which are associated with the glottal
+source, and others which involve both the modifications of
+the source and adjustments at the level of resonance of the vocal
+tract (‘‘other discontinuities associated with changes in the
+source and a group characterized chiefly by changes in resonance,’’ Miller,12 pp. 44). According to this author, the primary
+registers are the chest and falsetto registers, the other registers
+depending on the gender of the singer, of the fundamental frequency and the perceptible discontinuities. In the female case,
+for example, the primary register chest is subdivided into two
+registers: chest and belting; the primary falsetto register is
+
+Bernard Roubeau, et al
+
+435
+
+Laryngeal Vibratory Mechanisms
+
+TABLE 4.
+Synthesis of the Main Studies Carried Out on Registers Since 1840
+Authors
+
+Year
+
+Subjects
+
+Müller42
+
+1840
+
+Garcia1,43,44
+
+1840
+
+Excised human
+larynx (male)
+Male and female
+
+Battaille45
+Benhke2
+
+1855
+1861
+1880
+
+Male and female
+Not precise
+Male and female
+
+Husson and Djian46 1952
+
+Production
+
+Analysis
+
+Male and female,
+singers
+Excised human
+larynx (male)
+Male and female: 2 Sustained tones EMG
+For both gender
+and scales
+
+Van den Berg8
+
+1960
+
+Hirano et al16
+
+1970
+
+Hollien6
+
+1974
+
+Colton15,7
+Large et al17,47,48
+
+1972, 1973 Male: singers and
+nonsingers
+1970, 1972 Male and female
+
+Gay et al3
+Lecluse14
+Van Deinse31
+
+1972
+1977
+1981
+
+Male and female
+Male
+Male and female
+
+Sustained tones EMG
+Sustained tones EGG
+Sustained tones EMG
+
+Kitzing5
+
+1982
+
+Male
+
+Sustained tones, EGG and
+glissandos,
+photoglottography
+and scales
+
+Roubeau23
+
+1993
+
+Henrich21
+
+2001
+
+Male
+
+1 Trained
+1 Untrained
+Male and female,
+(singers and
+nonsingers)
+Male and female,
+singers
+
+Registers
+
+Sustained tones Direct observation 2 (Chest and falsetto)
+glissandos
+with strain variation
+Sustained tones Breath support
+2 For male and female voice
+(poitrine and fausset-tête)
+Sustained tones Laryngoscope
+3 (Poitrine, fausset, and tête
+Sustained tones Laryngoscope
+2 (Poitrine and fausset)
+Sustained tones Laryngoscope
+2 For male voice (thick
+and thin)
+3 For female voice (thick,
+thin, and small)
+Sustained tones Tomography
+2 For male and female voice
+(first and second registers)
+Direct observation
+
+Sustained tones Perception,
+acoustics,
+X-rays, and airflow
+rate
+Sustained tones Acoustics and
+perception
+Isoparametric
+Airflow rate
+tones
+
+Glissandos and
+sustained tones
+
+EGG, acoustics,
+and EMG
+
+Glissandos and
+sustained tones
+
+EGG and acoustics
+
+3 For male and female:
+Chest, mid, head (male);
+Chest, head, and falsetto
+(female)
+3 (Pulse, modal, and loft)
+
+2 (Modal and falsetto)
+3 For male voice (chest, head,
+and falsetto)
+2 For female voice (chest
+and middle)
+2 Chest falsetto
+2 Chest and falsetto
+2 For male voice: chest,
+and falsetto
+4 For female voice: chest,
+head, little, and whistle
+2 Chest and head (trained
+singer)
+Chest and falsetto (untrained
+singer)
+4 Mechanisms for male and
+female (0, 1, 2, and 3)
+4 Mechanisms for male and
+female (0, 1, 2, and 3)
+
+Abbreviations: EMG, electromyography.
+
+subdivided into three registers middle, upper, and flageolet. The
+term ‘‘chest’’ is, therefore, used to denote at the same time a primary and a resonance-dependent register. The use of the same
+terms to describe these different phenomena is a source of confusion.
+The confusion of the designation and identification of the
+registers also results from the heterogeneity of the observation
+tools. In most cases, the same tool has only been used to observe one single phenomenon or one single population, to describe one or two mechanisms but never the entirety.
+
+Therefore, the results cannot be generalized. The description
+of registers is mainly based on western lyrical singing style
+singers, and the populations studied are mostly masculine. It
+seems that the concept of laryngeal mechanism may be used
+for a better understanding of the laryngeal level of production
+of a register, as it proposes a homogeneous mode of observation, applicable to all subjects and all styles of vocal expression. It is physiologically defined, and it is common to all
+subjects, male and female, singers and nonsingers, in singing
+and in speech.
+
+436
+As we will next demonstrate, it is possible to establish a correspondence between mechanisms and registers.
+Mechanisms and registers: a pilot investigation into
+the chest, falsetto, mixed voice, and voce finta
+registers
+To establish a connection between this terminology and the
+mechanisms involved, we performed an experiment which involved the production of sustained sounds with a change of register. We focus here on the middle of the frequency zone
+covered by the laryngeal mechanisms M1 and M2, where
+singers use different labels for registers. This experiment was
+made with the collaboration of a singer and a teacher of great
+renown, Richard Miller, whose terminology we have adopted.
+In this way we were able to explore three situations corresponding to the different combinations of change of ‘‘register’’ which
+are illustrated on Figure 16.
+During each production, the acoustic signals and EGG were
+recorded. We were able to show that the four registers involved
+only two different laryngeal mechanisms.
+Production a (chest voice to falsetto) shows characteristic elements of the switch from mechanism M1 to mechanism
+M2, that is, a modification of the acoustic signal, EGG signal
+(amplitude and wave shape), and a jump in frequency.
+Production b (chest voice to mixed voice) is accompanied by
+a modification of the acoustic signal with no modification of
+the EGG signal or frequency jump, and it does not correspond to a change of mechanism. It is in fact a change of register such as singers describe it, without any change of
+laryngeal mechanism.
+Production c (voce finta to falsetto) is achieved without any
+noticeable change of the acoustic signal, but on the other
+hand, the EGG envelope is characteristic of the switch
+from mechanism M1 to mechanism M2 (change of amplitude and jump in frequency).
+
+Journal of Voice, Vol. 23, No. 4, 2009
+
+These three productions present the different situations
+where the analysis of the EGG signal is indispensable to authenticate the change of mechanism, whether it is accompanied by
+a modification of sound quality. The registers chest voice, mixed
+voice, and voce finta are produced using the laryngeal mechanism M1, whereas the falsetto register is produced using the
+mechanism M2.
+
+Classification of registers depending on laryngeal
+vibratory mechanisms involved in their production
+On the basis of previously defined criteria, it is thus possible to
+redistribute different register labeling depending on the identified and authenticated mechanisms. This classification of registers is presented in Table 5.
+Registers heavy, thick, normal, modal, and chest are produced in mechanism M1.
+Registers falsetto, loft, and head for women, thin and light
+are produced in mechanism M2.
+The voix mixte (mid and middle voice) is most often produced in men in mechanism M1 and in women in mechanism
+M2. It is not the result of an intermediate laryngeal process, unlike what the acoustic characteristics would suggest. From these
+essential data more subtle distinctions can be made.50
+The register ensuring the lowest pitch productions, known as
+fry, strohbass, and pulse is identified as produced by a distinct
+mechanism, that we shall call here mechanism M0. Very few
+studies compare it to the other modes of production.51
+Finally, the register associated with the production of the
+highest-pitched sounds (whistle and flageolet) seems to correspond to mechanism M3. It is only very exceptionally described
+in men. The EGG study of transition phenomena should allow
+one to better assess the laryngeal characteristics of this mechanism.
+
+FIGURE 16. Examples sung by R. Miller on sustained tones (C4) with switch of registers. From top to bottom: envelope of acoustic signal, envelope of the EGG, and fundamental frequency curve. (a) Transition from chest voice to falsetto; (b) transition from chest voice to mixed voice; (c)
+transition from voce finta to falsetto.
+
+Bernard Roubeau, et al
+
+437
+
+Laryngeal Vibratory Mechanisms
+
+TABLE 5.
+Classification of Registers Depending on the Laryngeal
+Mechanisms Involved
+Mechanism
+M0
+
+Mechanism
+M1
+
+Mechanism
+M2
+
+Mechanism
+M3
+
+Fry
+Pulse
+Strohbass
+Voix de
+Contrebasse
+
+Modal
+Normal
+Chest
+Heavy
+Thick
+Voix mixte
+(M)
+Mixed (M)
+Voce finta
+(M)
+Head
+operatic (M)
+
+Falsetto
+Head (W)
+Loft
+Light
+Thin
+Voix mixte
+(W)
+Mixed (W)
+
+Whistle
+Flageolet
+Flute
+Sifflet
+
+Abbreviations: M, men; W, women.
+
+CONCLUSION
+It is possible to reduce the confusion that still exists in the domain of vocal registers, only if one defines with precision the
+mode and nature of observation of vocal productions. This is
+the approach we have adopted here at the laryngeal level,
+with populations of singers and nonsingers, men and women.
+Macroscopic and microscopic analyses of the EGG signal recorded at the laryngeal vibrator level were made. This approach
+has allowed us to demonstrate, in accordance with some of the
+literature, the existence of four distinct laryngeal vibratory
+mechanisms, identified by the analysis of transitions. These
+four laryngeal mechanisms, graded from low to high, from
+zero to three, ensure the production of the whole vocal range,
+for men’s and women’s voices, be they singers or nonsingers.
+On the macroscopic level, the abrupt modifications in amplitude of the EGG signal characterize the change of mechanism,
+whereas on the microscopic level, mechanisms are identified
+thanks to the study of the signal derivative and to the analysis
+of the open quotient. The changes in aspect of the EGG signal
+are directly linked to the changes in mechanical configuration
+of the laryngeal vibrator.
+The ranges produced by the different mechanisms are not
+contiguous but overlap each other, particularly in the case of
+mechanisms M1 and M2. Based on this physiological notion
+of laryngeal vibratory mechanism applicable to the whole of
+the human population, it is easy to understand that the parameters such as the production type (spoken or sung), the gender,
+and cultural context will guide the exclusive or privileged use
+of one mechanism rather than another.
+As for the sung voice, it is mainly the esthetic context that directs the choice of one or other mechanisms used, developing
+homogeneity or on the contrary contrasts of vocal timbre
+when several mechanisms are involved.
+In their vocal practice, singers are accustomed to distinguishing sound categories regrouped under the name of register,
+based on the acoustic qualities or the proprioceptive sensations
+linked to their production. This notion of register juxtaposes it-
+
+self to that of laryngeal vibratory mechanism, but the frontiers
+between the registers does not necessarily correspond to those
+observed between mechanisms; in other words, the classification of registers does not cover exactly that of mechanisms.
+In this way several registers can be described as different although being produced by the same laryngeal mechanism.
+The definition of Manuel Garcia, quoted in Historical review
+of register and the sources of confusion corresponds more to the
+definition of laryngeal vibratory mechanisms than that of the
+registers. To conclude, we offer the following definition:
+Laryngeal vibratory mechanisms are the different configurations of the glottal vibrator that allow the production of the
+entire frequency range of the human voice.
+These mechanisms, four in all, are classified from low to
+high and numbered from zero to three.
+The frequency ranges produced by two neighboring mechanisms can partially overlap each other.
+The sounds produced by one and the same mechanism can
+present great variations in timbre and intensity. The modification of timbre and the proprioceptive sensations with
+which they are associated contribute to the determination
+of the registers. On the basis of these definitions, the notions
+of registers and of mechanisms are different, even though
+sometimes they may be considered as synonymous. The
+same mechanism can contribute to the production of several
+registers.
+It is easy to establish a correspondence between the terminology of registers and the laryngeal mechanisms associated
+with their production, but only if one observes great rigor in
+the use of each of the two terms: ‘‘mechanisms’’ and ‘‘registers’’, because each one has its own specific definition.
+
+Acknowledgments
+We are very grateful to Evelyn Abberton and Adrian Fourcin for
+the kind help with the English text.
+REFERENCES
+1. Garcia M. Mémoire sur la voix humaine pre´sente´ à l’Acade´mie des Sciences
+en 1840. 2nd ed.). Paris: Imprimerie d’E. Duverger; 1847.
+2. Behnke E. The Mechanism of the Human Voice. 12th ed.). Warwick Lane,
+London: J. Curwen & Sons; 1880.
+3. Gay T, Strome M, Hirose H, Sawashima M. Electromyography of the intrinsic laryngeal muscles during phonation. Ann Otol Rhinol Laryngol.
+1972;81:401-409.
+4. Hirano M. The Role of the Layer Structure of the Vocal Fold in Register
+Control. Vox Humana: University of Jyvaskyla; 1982. 50–62.
+5. Kitzing P. Photo- and electroglottographical recording of the laryngeal vibratory pattern during different registers. Folia Phoniatr. 1982;34:234-241.
+6. Hollien H. On vocal registers. J Phon. 1974;2:125-143.
+7. Colton RH. Vocal intensity in the modal and falsetto registers. Folia Phoniatr. 1973;25:62-70.
+8. Van den Berg JW, Vennard W, Burger D, Shervanian CC. Voice production:
+the vibrating larynx, . Instructional Film. The Netherlands: University of
+Groningen; 1960.
+9. McGlone RE, Brown WS. Identification of the ‘‘shift’’ between vocal registers. J Acoust Soc Am. 1969;46:1033-1036.
+10. Titze IR. A framework for the study of vocal registers. J Voice. 1988;2:
+183-194.
+11. Svec JG, Schutte HK, Miller DG. On pitch jumps between chest and falsetto registers in voice: data from living and excised human larynges. J
+Acoust Soc Am. 1999;106:1523-1531.
+
+438
+12. Miller DG. Registers in singing: empirical and systematic studies in the theory of the singing voice [PhD thesis]. Groningen: University of Groningen;
+2000.
+13. Large JW. Acoustic study of register equalization in singing. Folia Phoniatr. 1973;25:39-61.
+14. Lecluse FLE. Elektroglottografie [thesis]. Utrecht, Rotterdam: Drukkerij
+Elinkwijk; 1977.
+15. Colton RH. Spectral characteristics of the modal and falsetto registers. Folia Phoniatr. 1972;24:337-344.
+16. Hirano M, Vennard W, Ohala J. Regulation of register, pitch and intensity of
+voice. An electromyographic investigation of laryngeal intrinsic muscles.
+Folia Phoniatr. 1970;22:1-20.
+17. Large J, Iwata S, Von Leden H. The primary female register transition in
+singing. Aerodynamic study. Folia Phoniatr. 1970;22:385-396.
+18. Blomgren M, Chen Y, Ng ML, Gilbert HR. Acoustic, aerodynamic, physiologic, and perceptual properties of modal and vocal fry registers. J Acoust
+Soc Am. 1998;103:2649-2658.
+19. Fabre P. Un procédé électrique percutané d’inscription de l’accolement
+glottique au cours de la phonation: glottographie de haute fréquence. Bull
+Acad Natl Med 1957;66-69.
+20. Childers DG, Krishnamurthy AK. A critical review of electroglottography.
+Crit Rev Biomed Eng. 1985;12:131-161.
+21. Henrich N. Etude de la source glottique en voix parle´e et chante´e: modélisation et estimation, mesures acoustiques et e´lectroglottographiques, perception [Thèse de Doctorat]. Paris: Université Paris, 6; 2001.
+22. Henrich N, d’Alessandro C, Castellengo M, Doval B. On the use of the derivative of electroglottographic signals for characterization of nonpathological phonation. J Acoust Soc Am. 2004;115:1321-1332.
+23. Roubeau B. Me´canismes vibratoires laryngés et contrôle neuro-musculaire
+de la fre´quence fondamentale [PhD thesis]. Orsay: Université Paris-Orsay;
+1993.
+24. Roubeau B, Chevrie-Muller C, Arabia-Guidet C. Electroglottographic
+study of the changes of voice registers. Folia Phoniatr. 1987;39:280-289.
+25. Roubeau B, Chevrie-Muller C, Arabia C. Control of laryngeal vibration in
+register change. In: Gauffin J, Hammarberg B, eds. Vocal Fold Physiology.
+Acoustic, Perceptual, and Physiological Aspects of Voice Mechanisms. San
+Diego, USA: Singular Publishing Group, Inc.; 1991.
+26. Roubeau B, Castellengo M, Bodin P, Ragot M. Phonétogramme par mécanisme laryngé. [Laryngeal registers as shown in the voice range profile]. Folia Phoniatr Logop. 2004;56:321-333.
+27. Henrich N, d’Alessandro C, Castellengo M, Doval B. Glottal open quotient
+in singing: measurements and correlation with laryngeal mechanisms, vocal intensity, and fundamental frequency. J Acoust Soc Am. 2005;117:
+1417-1430.
+28. Vilkman E, Alku P, Laukkanen AM. Vocal-fold collision mass as a differentiator between registers in the low-pitch range. J Voice. 1995;9:66-73.
+29. Miller DG, Svec JG, Schutte HK. Measurement of characteristic leap interval between chest and falsetto registers. J Voice. 2002;16:8-19.
+30. Hirano M. Vocal mechanisms in singing: laryngological and phoniatric aspects. J Voice. 1988;2:51-69.
+
+Journal of Voice, Vol. 23, No. 4, 2009
+31. Van Deinse JB. Registers. Folia Phoniatr. 1981;33:37-50.
+32. Castellengo M. Continuité, rupture, ornementation, ou les bons usages de la
+transition entre deux modes d’émission vocale. Cahiers de musiques traditionnelles. 1991;4:155-165.
+33. Miller DG, Schutte HK. Physical definition of the flageolet register. J Voice.
+1993;7:206-212.
+34. Hollien H, Girard GT, Coleman RF. Vocal fold vibratory patterns of pulse
+register phonation. Folia Phoniatr. 1977;29:200-205.
+35. Hollien H, Brown WS Jr, Hollien K. Vocal fold length associated with
+modal, falsetto and varying intensity phonations. Folia Phoniatr.
+1971;23:66-78.
+36. McGlone RE, Shipp T. Some physiologic correlates of vocal-fry phonation.
+J Speech Hear Res. 1971;14:769-775.
+37. Henrich N, Roubeau B, Castellengo M. On the use of electroglottography
+for characterisation of the laryngeal mechanisms. Presented at: Stockholm
+Music Acoustics Conference; 2003; Stockholm, Sweden; 2003.
+38. Whitehead RL, Metz DE, Whitehead BH. Vibratory patterns of the vocal
+folds during pulse register phonation. J Acoust Soc Am. 1984;75:
+1293-1297.
+39. Castellengo M. Manuel Garcia Jr, a clear-sighted observer of human voice
+production. Logoped Phoniatr Vocol. 2005;30:163-170.
+40. Paschke DVA. Complete Treatise on the Art of Singing: Part One (Translation of Garcia, 1847). New York: Da Capo Press; 1984. Translation complemented by Fourcin A, personal communication, 2007.
+41. Henrich N. Mirroring the voice from Garcia to the present day: some
+insights into singing voice registers. Logoped Phoniatr Vocol. 2006;31:
+3-14.
+42. Müller J. Physiologie du syste`me nerveux ou recherches et expe´riences sur
+les diverses classes d’appareils nerveux, les mouvements, la voix, la parole,
+les sens et les faculte´s intellectuelles. Paris: chez Baillère; 1840. Deux
+tomes; traduit de l’allemand sur la 3rd ed. par A. Jourdan.
+43. Garcia M. Observations on the human voice. In: Proceedings of the Royal
+Society of London. London: The Royal Society; 1855:399-410.
+44. Garcia M. Observations physiologiques sur la voix humaine. Paris: Asselin;
+1861.
+45. Battaille ChA. Nouvelles recherches sur la phonation. Paris: Académie des
+Sciences, V. Masson; 1861.
+46. Husson R, Djian A. Tomographie et phonation. J Radiol Electrol. 1855;33:
+127-135.
+47. Large J, Iwata S, Von Leden H. The male operatic head register versus falsetto. Folia Phoniatr. 1972;24:19-29.
+48. Large JW. Towards an integrated physiologic-acoustic theory of vocal registers. NATS Bull. 1972;29:18-40.
+49. Titze IR. Principles of Voice Production. Englewood Cliffs, New Jersey:
+Prentice Hall; 1994.
+50. Castellengo M, Chuberre B, Henrich N. Is voix mixte, the vocal technique
+used to smoothe the transition across the two main laryngeal mechanisms,
+an independent mechanism? In: ISMA, Nara, Japan, 2004.
+51. Murry T, Brown WS. Regulation of vocal intensity during vocal fry phonation. J Acoust Soc Am. 1971;49:1905-1907.

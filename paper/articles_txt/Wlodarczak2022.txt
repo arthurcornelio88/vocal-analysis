@@ -1,0 +1,1555 @@
+TagedH1Classification of Voice Quality Using Neck-Surface
+Acceleration: Comparison With Glottal Flow and
+Radiated SoundTagedEn
+TagedP Marcin Wl̷odarczak, †Bogdan Ludusan, ‡Johan Sundberg, and *Mattias Heldner, *zStockholm, Sweden, and yBielefeld,
+*
+
+GermanyTagedEn
+
+TagedPSummary: Objectives. The aim of the present study is to investigate the usefulness of features extracted from
+miniature accelerometers attached to speaker’s tracheal wall below the glottis for classiﬁcation of phonation
+type. The performance of the accelerometer features is evaluated relative to features obtained from inverse ﬁltered
+and radiated sound. While the former is a good proxy for the voice source, obtaining robust voice source features
+from the latter is considered difﬁcult since it also contains information about the vocal tract ﬁlter. By contrast,
+the accelerometer signal is largely unaffected by the vocal tract and although it is shaped by subglottal resonances
+and the transfer properties of the neck tissue, these properties remain constant within a speaker. For this reason,
+we expect it to provide a better approximation of the voice source than the raw audio. We also investigate which
+aspects of the voice source are derivable from the accelerometer and microphone signals.
+Methods. Five trained singers (two females and three males) were recorded producing the syllable [pæ:] in three
+voice qualities (neutral, breathy and pressed) and at three pitch levels as determined by the participants’ personal
+preference. Features extracted from the three signals were used for classiﬁcation of phonation type using a random forest classiﬁer. In addition, accelerometer and microphone features with highest correlation with the voice
+source features were identiﬁed.
+Results. The three signals showed comparable classiﬁcation error rates, with considerable differences across
+speakers both with respect to the overall performance and the importance of individual features. The speaker-speciﬁc differences notwithstanding, variation of phonation type had consistent effects on the voice source, accelerometer and audio signals. With regard to the voice source, AQ, NAQ, L1 L2 and CQ all showed a monotonic
+variation along the breathy − neutral − pressed continuum. Several features were also found to vary systematically in the accelerometer and audio signals: HRF, L1 L2 and CPPS (both the accelerometer and the audio), as
+well as the sound level (for the audio). The random forest analysis revealed that all of these features were also
+among the most important for the classiﬁcation of voice quality.
+Conclusion. Both the accelerometer and the audio signals were found to discriminate between phonation types
+with an accuracy approaching that of the voice source. Thus, the accelerometer signal, which is largely uncontaminated by vocal tract resonances, offered no advantage over the signal collected with a normal microphone.TagedEn
+TagedPKey Words: phonation type classiﬁcation−voice source−accelerometer−audio.TagedEn
+
+TAGEDH1INTRODUCTIONTAGEDN
+TagedPAs noted by Childers et al.,1 voice quality is a notoriously
+elusive term with deﬁnitions ranging from speaker-speciﬁc
+long-term timbre of voice to a wider range of periodic oscillation produced by the “laryngeal constrictor”.2 The present
+work is concerned with short-term variation in voice characteristics attributable to phonation type. Conceived of in this
+way, voice quality is traditionally represented along a continuum ranging from breathy to neutral to pressed, corresponding to increasing vocal fold adduction and,
+consequently, increasingly constricted glottis. This, in turn,
+TagedEnAccepted for publication June 30, 2022.
+TagedEnDeclarations of interests: none.
+TagedEnFrom the *Department of Linguistics, Stockholm University, Sweden; TagedEnyFaculty of
+Linguistics and Literary Studies, Bielefeld University, Germany; and the TagedEnzDepartment
+of Speech, Music and Hearing, KTH Royal Institute of Technology, Sweden.
+TagedEnAddress correspondence and reprint requests to Marcin Wl̷odarczak, Department
+of Linguistics, Stockholm University, 106 91 Stockholm, Sweden. E-mail:
+wlodarczak@ling.su.se
+TagedEnJournal of Voice, Vol. 39, No. 1, pp. 10−24
+TagedEn0892-1997
+TagedEn© 2022 The Authors. Published by Elsevier Inc. on behalf of The Voice Foundation. This is an open access article under the CC BY license
+(http://creativecommons.org/licenses/by/4.0/)
+TagedEnhttps://doi.org/10.1016/j.jvoice.2022.06.034
+
+affects the glottal airﬂow (i.e. the voice source) and requires
+adjustment of subglottal pressure, such that when glottal
+adduction is increased, a stronger force is needed to keep
+vocal folds vibrating.TagedEn
+TagedPHowever, while varying voice quality involves modiﬁcations to the voice source, obtaining a robust estimate of the
+associated glottal ﬂow waveform is by no means a solved
+problem, making studies of phonation type difﬁcult, especially in running speech. Manual inverse ﬁltering, which is a
+common method for analyzing the voice source,3 is very
+time consuming and thus of limited use for analysis of large
+data sets. For this reason, a wide range of methods for capturing phonation characteristics have been proposed in the
+literature (see below). A particularly promising technique
+involves a miniature accelerometer attached to the tracheal
+wall, which captures surface vibrations corresponding to
+subglottal pressure variation. In the present investigation
+we compare voice source features, derived by inverse ﬁltering the radiated sound, with the acoustic properties of the
+accelerometer signal from the tracheal wall as well as with
+those of the radiated audio signal captured with a normal
+
+TagedEnMarcin Wl̷odarczak, et al
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+microphone. Speciﬁcally, we examine voice quality in
+diminuendo sequences of syllable [pæ:] produced at three
+self-selected pitch levels (habitual, low and high) by trained
+singers. Features extracted from the three signals were used
+in supervised (Random Forest) classiﬁcation experiments.
+These were followed by a correlation analysis to establish
+which aspects of the voice source can be approximated with
+the microphone and accelerometer signals.TagedEn
+TagedH2Previous workTagedEn
+TagedPVoice quality plays an important role in human communication. In addition to marking phonemic contrasts 4,5, voice
+quality contains information related to the speaker’s vocal
+health6,7 and it adds to the affective content of what is being
+said.8−10 Voice quality dynamics is also involved in phenomena characteristic of spontaneous speech, such as disﬂuencies11 and speaker convergence.12 In addition, voice
+quality has been increasingly regarded as a prosodic feature,
+related to such suprasegmental phenomena as declination,13
+prosodic boundaries14 and prosodic prominence.15TagedEn
+TagedPGiven the relevance of voice quality in such diverse communicative and clinical contexts, much research has been
+done on automatic and instrumental discrimination between
+voice quality categories. Work on this topic has employed a
+wide range of measures across a multitude of domains,
+including temporal,16 spectral17−19 and cepstral features.20−22
+A phonation type which has attracted particular attention
+over the years is creaky voice (vocal fry), often studied in a
+clinical context.23,24 Given that phonatory characteristics are
+difﬁcult to infer from the acoustic signal, which includes resonances of the vocal tract, much work has been done on using
+techniques more closely related to the voice source, most particularly electroglottography (EGG),25 and inverse ﬁltering,26,27 often done automatically.28,29TagedEn
+TagedPIn an attempt to consolidate these diverse results, Borsky
+et al.30 used mel frequency cepstral coefﬁcients (MFCCs) to
+distinguish between neutral, breathy, strained (pressed) and
+rough (creaky) voice quality across the acoustic signal, the
+(inverse-ﬁltered) voice source and the EGG signal. They
+found that static MFCCs and their ﬁrst derivative performed best with the acoustic signal, followed by the voice
+source and EGG. The addition of the second derivative
+offered little to no improvement. Moreover, for the acoustic
+signal the study compared the accuracy obtained with
+MFCCs against three feature sets extracted with COVAREP,31 related to glottal source, spectral envelope and harmonic model phase distortion. Two of these (harmonic
+model phase distortion features and glottal source features)
+outperformed the MFCC-based models. Finally, while combination of different signals improved classiﬁcation accuracy considerably, especially for the acoustic signal,
+combining COVAREP features and MFCC offered no
+additional beneﬁt over using the former set alone.TagedEn
+TagedPA more direct, while still unobtrusive, method of gaining
+information on the voice source is using a miniature accelerometer placed on the neck surface below the glottis,32 which
+
+TagedEn11
+
+picks up skin vibrations caused by the air pressure oscillation in the trachea. Previous work has found a number of
+diverse applications of the accelerometer signal. Not surprisingly, given the absence of high frequency information,
+the accelerometer signal was found to be useful for measurement of fundamental frequency (fo).33,34 Even though SPL
+measurements based on the accelerometer signal were originally considered inaccurate,35 more recent work has found
+that, given speaker-speciﬁc calibration, mean sound pressure level (SPL) can be estimated with accuracy of at least
+2.8 dB.36 Perhaps more interestingly, an even stronger link
+was found between the level of the accelerometer signal and
+subglottal pressure.37 For some speakers, however, the relationship seems to vary with vocal intensity, with the accelerometer level being less sensitive to vocal effort in soft
+voice.38 In addition, the accelerometer was found to be useful for estimating other characteristics of speech, such as
+nasality32,39,40 or the relative strength of the fundamental.41TagedEn
+TagedPMore pertinent to the aims of the present study, the accelerometer signal was also found to be suitable for classiﬁcation of phonation type in sustained vowels.22 Speciﬁcally,
+MFCCs calculated from the accelerometer waveforms discriminated between neutral, breathy, pressed and rough
+voice qualities with the accuracy of 80.2% and 89.5% at the
+word and utterance levels, respectively. Interestingly, the 0th
+MFCC coefﬁcient, which carries information about the
+overall spectral energy, achieved the accuracy of 60.7% on
+the word level and 68.4% on the utterance level on its own.
+While this suggests that signal level is particularly informative about phonation type, similar accuracy was achieved
+by increasing the number of MFCCs used (18 instead of 16)
+and removing the 0th coefﬁcientsTagedEn
+TagedPThese properties of the accelerometers, coupled with their
+unobtrusiveness, insensitivity to environmental noise as well
+as their privacy-respecting characteristics make them a particularly promising tool for continuous monitoring of vocal
+production in speakers with laryngeal dysfunctions or
+patients recovering after phonosurgeries.42,43 For instance,
+Ghassemi et al.44 demonstrated that fo and SPL levels collected from the accelerometer signal can be used to automatically detect hypertension in patients with vocal fold
+nodules (but cf. Gelzinis et al.,45 who found that a wide class
+of laryngeal disorders such as mass lesions of the vocal folds
+and paralysis can be accurately identiﬁed using the acoustic
+signal with the accelerometers offering no further gain).TagedEn
+TagedH2Contribution of present workTagedEn
+TagedPThe present work sets out to evaluate the usefulness of the
+accelerometer signal for classiﬁcation of phonation type.
+Unlike other studies, we compare acoustic properties of the
+accelerometer signal with those of manually inverse ﬁltered
+speech as well as raw microphone (audio) signal. In addition, rather than relying on measures whose relationship
+with voice source characteristics is difﬁcult to establish
+(such as MFCCs), we use widely established acoustic features with known properties and well understood links to
+
+TagedEn12
+
+Journal of Voice, Vol. 39, No. 1, 2025
+
+the voice source. To establish which aspects of the voice
+source can be accounted for by the accelerometer and the
+audio signals, we combine automatic classiﬁcation with a
+correlation analysis of features extracted from the three signals. Last but not least, we use trained singers, which allows
+us to evaluate independent contribution of fo and SPL to
+voice quality variation, which is difﬁcult to ascertain with
+untrained speakers.TagedEn
+TAGEDH1MATERIAL AND METHODSTAGEDN
+TagedH2MaterialTagedEn
+TagedPFive speakers (two females and three males, mean age = 38,
+standard deviation = 6) participated in the recording. All
+participants were trained singers, experienced in the classical
+tradition. They were recorded using a head-mounted omnidirectional microphone (Sennheiser HSP2) positioned 6 cm
+from the mouth, and an accelerometer (Knowles BU27135) attached to the tracheal wall below the cricoid cartilage with an adhesive disk.TagedEn
+TagedPThe microphone levels were calibrated in dB SPL using a
+sound level meter. In addition, subglottal pressure (Psub)
+was estimated from the oral pressure during the occlusion
+for the consonant /p/ by means of a plastic tube held in the
+corner of the mouth. The tube was connected to the Subglottal Pressure Monitor PG-60 (Glottal Enterprises),
+routed to a separate channel of the recording unit. For calibration the tube end was immersed into a glass of water at a
+measured depth under the water level which was announced
+in the recording.1TagedEn
+TagedPAll signals were digitized using an Expert Sleepers ES-9
+audio interface (48 kHz, 24 bit) with AC coupling on the
+microphone and accelerometer channels and DC coupling
+on the subglottal pressure channel.TagedEn
+TagedPThe participants were instructed to produce diminuendo
+sequences of the syllable [pæ:] at three self-selected pitch levels (habitual, low and high) and with three phonation types
+(neutral, pressed and breathy). For each combination of
+pitch level and phonation type, three repetitions of a
+sequence were collected. A real-time display of intraoral
+pressure was monitored to ensure sufﬁcient signal quality,
+otherwise the participants were asked to repeat the whole
+sequence. An overview of each participant’s fo, SPL and
+Psub values is provided in Table 2 in the Appendix. In addition, averaged fo values for each speaker, pitch condition
+and voice quality are presented graphically in Figure 8 in
+the Appendix.TagedEn
+TagedPThe speakers were informed about the research aims and
+their written informed consent was obtained. For their participation they were rewarded with two cinema tickets. The
+recordings took place in a sound treated room in the Phonetics Laboratory at Stockholm University, Sweden.TagedEn
+TagedEn
+
+1
+TagedEn The accuracy of the pressure transducer was checked by immersing the end of the
+tube attached to the transducer at depths between 0 and 15 cm H20. All readings
+agreed with the actual depth determined by means of a ruler. It was concluded that
+zero pressure and one more pressure lying within the typical range of phonatory subglottal pressures were enough for calibrating the pressure transducer.
+
+TagedH2Inverse filteringTagedEn
+TagedPThe voice source was analyzed in terms of the waveform of
+the glottal airﬂow, or the ﬂow glottogram, obtained by
+inverse ﬁltering the audio signal, using the Sopran software.46
+A quasi-stationary portion of the vowel was selected and the
+Inverse ﬁlter option, which displays the waveform and the
+narrow-band spectrum in separate windows, was applied.
+The frequencies and bandwidths of the inverse ﬁlters were
+tuned manually by applying two criteria: (i) realistic formant
+frequencies, formant bandwidths and number of inverse ﬁlters
+(one per 1000 Hz) and (ii) minimization of ﬂow ripple during
+the closed phase. When the inverse ﬁlters have been tuned,
+the resulting ﬂow waveform, i.e., the ﬂow glottogram and its
+derivative were saved to a stereo wave ﬁle.TagedEn
+TagedH2Feature extractionTagedEn
+TagedPFor analyzing the properties of ﬂow glottogram the Glottal
+ﬂow parameter measurement option of Sopran was used. After
+selecting one period, the following measures were obtained:
+Fundamental frequency (fo)TagedEn
+AC ﬂow (ACF): the difference between the maximum and
+the minimum of the glottal ﬂow waveform.
+Maximum ﬂow declination rate (MFDR): the maximum negative slope of the glottal ﬂow airﬂow waveform.
+Amplitude quotient (AQ): the ratio between peak-to-peak
+ﬂow amplitude and maximum ﬂow declination rate (ACF/
+MFDR).
+Normalized amplitude quotient (NAQ): the ratio between
+amplitude quotient and period (AQ/T).
+L1L2: the level of the fundamental relative to the level of the
+second harmonic.
+Closed quotient (CQ): the ratio between the closed phase
+duration and period.
+Skewing quotient (SQ): the ratio between the opening and
+closing phase durations.
+TagedPIn addition, the corresponding level of the voice source
+spectrum fundamental (L1 ) was measured by means of the
+Spectrum option of the Sopran software, applying a 30 Hz
+analysis bandwidth.TagedEn
+TagedPFor the accelerometer and microphone signals, the following measures of voice quality were extracted using a custom Praat47 script:
+Smoothed cepstral peak prominence (CPPS): the amplitude
+of the ﬁrst rahmonic relative to the regression line across the
+real cepstrum of the signal.20TagedEn
+Alpha ratio: the ratio of acoustic energy in the high (1-5
+kHz) and the low (0-1 kHz) frequency bands: EH =EL , in dB.
+L1: The level of the fundamental.
+L1L2: The level of the fundamental relative to the level of
+the second harmonic: L1  L2 .
+Harmonic richness factor (HRF): The amplitude of the fundamental relative to the summed amplitudes of A2 to A10 :
+(A2 þ . . . þ A10 Þ=A1 , in dB48.
+
+TagedEnMarcin Wl̷odarczak, et al
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+TagedPIn addition, fo and the overall sound level (SL) were also
+extracted. The features were calculated over a 50-ms analysis window at the same time points as those used in the glottal ﬂow analysis.TagedEn
+TagedH2Data analysisTagedEn
+TagedPWe analyzed our data by means of a supervised machine
+learning approach, Random Forest. The goal of this analysis is two-fold: First, to determine how well the three investigated voice quality types may be distinguished on the basis
+of the extracted features and second, to establish which of
+the different acoustic features discriminate better the considered voice quality classes.TagedEn
+TagedPRandom Forest49 uses the features and the class labels
+given in input to build a number of decision trees. The decision trees making up the Random Forest are ﬁtted based on
+different randomly sampled subsets of the input data and
+individual data points are categorized as members of a particular class by means of majority voting. Unlike other popular analysis methods, such as regression, Random Forrest
+is largely unaffected by colinearity between independent
+variables and is thus particularly well suited to voice analysis, where correlated parameters are common. We ran three
+sets of experiments, each one using input features extracted
+from the different signals: the voice source signal, the accelerometer signal, and the microphone signal. In each experiment, a model was trained to discriminate between pairs of
+voice quality conditions: neutral-breathy and neutralpressed, respectively. We also considered the breathypressed case as a control. Since this condition involves more
+substantial adjustments of phonatory settings, it was
+expected to result in higher classiﬁcation accuracy compared to the contrasts including modal voice. All experiments were run on a per-speaker basis, by building a
+Random Forest consisting of 500 trees, using the R50 library
+randomForest.51TagedEn
+TagedPThe out-of-bag (OOB) error returned by the Random Forest classiﬁer was employed for measuring the discrimination
+quality. The OOB error is determined by predicting the values of the input samples using the decision trees which were
+not ﬁtted with that data. It is deﬁned in Equation 1, based on
+the correctness (percentage of correct predictions out of the
+total number of samples predicted) of the classiﬁcation, with
+a better discrimination being represented by a lower error
+value. For example, in a classiﬁcation task with a 10% OOB
+error, 1 in 10 data points is classiﬁed as belonging to the
+wrong class, while the rest are assigned to the correct class.
+Since the focus of this study is comparing the usefulness of
+several types of signals for the classiﬁcation of phonation
+type, we are interested in the relative performance (e.g., by
+comparing voice source and accelerometer characteristics)
+rather than the absolute performance of the classiﬁer.
+OOB_error ¼ 100  correctness
+ð1Þ
+TagedEn
+TagedPWe have chosen Random Forest for the analysis because
+the model can also return the importance of each feature
+
+TagedEn13
+
+used for learning, giving us insights into which features are
+the most useful in the discrimination of voice quality types.
+The importance of the features was deﬁned as the total
+decrease in node impurities (measured by the Gini index)
+when splitting on that particular feature, averaged over all
+trees. It describes how informative a feature is for discriminating between phonation types, with more discriminative
+feature being assigned a higher importance score. Below,
+we illustrate the results (OOB error and importance of each
+feature) obtained for each speaker, individually, as well as
+an overall measure, computed as the average across our ﬁve
+speakers. To allow for easier comparison of importance
+scores across conditions, the per-speaker importance of
+each feature was normalized by dividing it by the sum of
+importance values of all features considered in that condition. Thus, the sum of importance scores of all features in
+each condition is equal to 1.TagedEn
+TAGEDH1RESULTSTAGEDN
+TagedH2Classification experimentsTagedEn
+TagedPWe ﬁrst investigate the classiﬁcation performance obtained
+with the Random Forest model trained on the voice sourcebased features to discriminate the two considered conditions: neutral-breathy (NB) and neutral-pressed (NP). The
+results obtained are illustrated in Figure 1. One may note
+important individual variation, especially in the neutralpressed condition, where the performance varies between
+less than 2%, for speaker M1, to more than 17%, for speaker
+M3. When compared to the control case (breathy-pressed,
+BP, not shown in Figure 1), these former two conditions
+exhibit an overall higher error rate than the latter one, in
+which the two voice quality types are more distinct from
+each other (OOB error ranging between 0 and 9.3%, with an
+average value of 5.7%).TagedEn
+TagedPNext, we looked at the mean error rates obtained in the
+two conditions when using features extracted from the three
+different signals considered here (see Figure 2). In general,
+none of the signals showed a clear advantage over the
+others. Testing the differences with Wilcoxon signed rank
+tests revealed that none of them are signiﬁcant. The control
+case, the breathy-pressed discrimination, showed a lower
+error than the other two conditions, for all three signals
+(5.7%, 5.6% and 3.8% for the voice source, the accelerometer and the audio, respectively), but these differences were
+not found to be signiﬁcant either.TagedEn
+TagedPFigures 3 and 4 display the importance of the voice source
+extracted features for discriminating between neutral and
+non-neutral phonation types, on a per-speaker basis. For
+the neutral-breathy discrimination (Figure 3) the algorithm
+seems to give rather different weights to the features,
+depending on the speaker that uttered the respective vowels.
+Speaker F2 marks this distinction with changes that are
+mostly captured by three features (AQ, L1 L2 , CQ), while for
+the other speakers a more uniform distribution of the importance was observed. However, for each of them the algorithm ﬁnds one or two features which seem to be more
+
+TagedEn14
+TagedEn TagedFiur
+
+Journal of Voice, Vol. 39, No. 1, 2025
+
+FIGURE 1. The OOB error rate for each of the ﬁve speakers in our corpus (F1-F2, M1-M3), in the two considered conditions (neutral-
+
+TagedEn
+
+breathy and neutral-pressed), when using the features extracted from the voice source signal. The error bars represent the 95% conﬁdence
+intervals.TagedEn
+
+TagedFiur
+
+FIGURE 2. The mean OOB error rate across the ﬁve speakers in our corpus (F1-F2, M1-M3), for each of the two considered conditions
+(neutral-breathy and neutral-pressed) and three input signals (the voice source VS, accelerometer ACC, microphone MIC). The error bars
+represent the standard deviation across speakers.TagedEn
+
+helpful for the classiﬁcation (e.g., ACF and MFDR for F1,
+ACF and NAQ for M1). Fundamental frequency is a highly
+discriminating feature for three speakers (F1, M2 and M3).TagedEn
+TagedPSimilar to the neutral − breathy condition, the algorithm
+shows important differences in the ranking of the features
+for discriminating between neutral and pressed voice quality
+(Figure 4). For speakers F1 and M1, AQ and L1 , respectively, are assigned a much higher importance than the rest
+of the features. Again, three speakers (F2, M2 and M3)
+vary their fo level consistently between the two voice qualities. In terms of other features exhibiting a high importance,
+we observe L1 L2 for F1, M1 and M2, L1 for speaker F2, SQ
+for M2 and ACF for M3.TagedEn
+
+TagedPLastly, we investigated the importance of each feature
+extracted from the three types of signals, averaged across
+speakers. The left panel of Figure 5 shows the ranking of
+the voice source-based features. It appears that fo and L1 L2
+are highly ranked in both conditions, with other features
+being important for some conditions: ACF for NB, AQ and
+L1 for NP. Also in the case of features extracted from the
+accelerometer and audio signals (Figure 5 middle and right
+panel, respectively) fo plays an important role for discriminating neutral voice quality from the other two types. There
+are other similarities between the two signals, like the high
+ranking of CPPS in the NB case or of Alpha and L1 L2 for
+NP.TagedEn
+
+TagedEnMarcin Wl̷odarczak, et al
+
+TagedEn
+
+TagedFiur
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+TagedEn15
+
+FIGURE 3. The normalized importance, as given by the Random Forest analysis, of the features extracted from the voice source signal, for
+each of the ﬁve speakers in our corpus (F1-F2, M1-M3), when the model is trained to discriminate neutral from breathy voice quality.TagedEn
+
+TagedEn
+
+TagedFiur
+
+FIGURE 4. The normalized importance, as given by the Random Forest analysis, of the features extracted from the voice source signal, for
+each of the ﬁve speakers in our corpus (F1-F2, M1-M3), when the model is trained to discriminate neutral from pressed voice quality.TagedEn
+
+TagedEn
+
+TagedFiur
+
+FIGURE 5. The mean normalized importance, as given by the Random Forest analysis, of the features extracted from the three input signals (the voice source VS, accelerometer ACC, microphone MIC), across the ﬁve speakers in our corpus (F1-F2, M1-M3), and for each of
+the two considered conditions (neutral-breathy and neutral-pressed).TagedEn
+
+TagedEn16
+
+Journal of Voice, Vol. 39, No. 1, 2025
+
+TagedPCompared to the contrasts involving neutral phonation,
+the breathy − pressed condition shows on average much
+weaker reliance on fo (see Figure 9 in the Appendix, where
+the importance of features in the breathy − pressed condition
+is displayed alongside the mean importance scores in the
+other two conditions). Instead, the discrimination between
+breathy and pressed voice relies mainly on AQ, NAQ, L1 L2
+and CQ (for the voice source) and on CPPS, Alpha, L1 L2 and
+HRF (in the audio and accelerometer signals).TagedEn
+TagedPIn order to evaluate the contribution of the voice source
+features on their own, the experiments were repeated without using fo, sound level (for the accelerometer and audio
+signals) or Psub (for the voice source signal). As expected,
+the mean error rates increased overall but were nevertheless
+comparable across the three signals (NB: 18.3%, 17.6%,
+17.4%; NP: 12.9%, 12.4%, 11.7%, BP: 6.7%, 7.1%, 5.4%, for
+the voice source, the accelerometer and the audio respectively, none of the differences being signiﬁcant). The relative
+importance of features also remained largely unchanged.TagedEn
+TagedH2Relationships between the voice source,
+accelerometer, and audio signalsTagedEn
+TagedPIt is well-known that glottal adduction is the primary voice
+parameter controlling phonation type which, in turn,
+
+strongly affects ﬂow glottogram parameters.4,52 For example, the ﬁrmer the adduction, the longer the closed phase
+and the smaller the peak-to-peak ﬂow amplitude. Hence,
+the ﬂow glottogram can be assumed to reﬂect phonatory differences between phonation types. The question then
+becomes to what extent these differences are manifest in the
+accelerometer and microphone signals.TagedEn
+TagedPGiven that several the voice source parameters are strongly
+correlated,53 we computed the Spearman’s rank correlation
+coefﬁcient (r) between all the extracted features. In Table 1,
+pairwise correlations (positive or negative) of at least 0.7
+between the voice source features (top), the voice source and
+accelerometer (middle) and the voice source and audio (bottom) are marked with a cross (for a full correlation matrix, see
+Table 3 in the Appendix). As expected, Psub was strongly correlated with MFDR. Among the ﬂow glottogram features the
+strongest correlations were found between L1 and ACF, ACF
+and MFDR, MFDR and both AQ and NAQ, AQ and NAQ,
+NAQ and both L1 L2 and CQ, and between L1 L2 and CQ.
+Thus, all ﬂow glottogram features except SQ were strongly
+correlated with at least one other ﬂow glottogram feature.TagedEn
+TagedPSince, unlike analyzing accelerometer and audio signals,
+ﬂow glottogram analysis is cumbersome and time consuming, an important task of the present investigation was to
+analyze the relationship between the voice source features
+
+TagedEn TABLE 1.
+Pairwise correlations (Spearman’s r) between the voice source features (VS, top), the voice source and accelerometer features (ACC, middle), and the voice source and audio features (MIC, bottom). Correlations (positive or negative) of at least
+0.7 are marked with a cross.
+fo
+VS
+
+ACC
+
+MIC
+
+Psub
+L1
+ACF
+MFDR
+AQ
+NAQ
+L1 L2
+CQ
+SQ
+
+Psub
+
+
+
+fo
+SL
+L1
+CPPS
+Alpha
+L1 L2
+HRF
+
+
+
+fo
+SL
+L1
+CPPS
+Alpha
+L1 L2
+HRF
+
+
+
+L1
+
+
+
+ACF
+
+
+
+MFDR
+
+AQ
+
+
+
+
+
+
+
+
+
+
+
+
+NAQ
+
+L1 L2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CQ
+
+SQ
+
+TagedEnMarcin Wl̷odarczak, et al
+
+TagedEn
+
+TagedFiur
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+TagedEn17
+
+FIGURE 6. Averaged voice source features showing monotonic and consistent variation along the breathy (bre) − neutral (neu) − pressed
+(pre) continuum for the ﬁve participantsTagedEn
+and audio and accelerometer signal features. To further elucidate the results of the classiﬁcation experiments in the
+previous section and identify the glottal ﬂow information,
+which can be retrieved from these signals, we examined the
+relationships between those ﬂow glottogram features that
+showed a monotonic and similar variation along the breathy
+− neutral − pressed continuum for the ﬁve participants.TagedEn
+TagedPFour voice source features met these criteria: AQ,
+NAQ, L1 L2 and CQ (see Figure 6). Therefore, these features are assumed to be particularly relevant for separating
+the three phonation types concerned. This is indeed evidenced by the fact that these features also showed higher
+importance than the other features in the classiﬁcation task
+(Figure 5).TagedEn
+TagedPIn the accelerometer and audio signals, the following features exhibited monotonic change along the breathy − neutral − pressed continuum: CPPS, L1 L2 and HRF in the
+accelerometer signal, and with sound level, CPPS, L1 L2 and
+HRF in the audio signal. Figure 7 displays these accelerometer and audio features averaged over condition for each
+participant. Table 1 reveals that these features were also
+highly correlated with the four features exhibiting consistent
+pattern in the voice source (AQ, NAQ, L1 L2 and CQ). The
+other audio parameter highly correlation with these voice
+source features, Alpha (also included in Figure 7), showed a
+monotonic pattern for three out of ﬁve speakers.TagedEn
+TAGEDH1 ISCUSSIONTAGEDN
+TagedPThe error rates obtained in the Random Forrest classiﬁcation experiments revealed that features extracted from the
+accelerometer and the audio signals were approximately as
+good for discriminating phonation type as the voice source
+features. Phonation type is primarily controlled by laryngeal
+adjustments and subglottal pressure, which jointly determine voice source properties. Therefore, it was expected
+
+that the accelerometer signal would be more closely related
+to the voice source than the audio since the latter is strongly
+inﬂuenced by the vocal tract transfer function. Not only was
+this not the case but some of the correlations in Table 3
+were also lower than expected. This could be due to subglottal resonances as well as by the transfer function of the tracheal wall tissues, which complicate the relationship
+between the source and the tracheal wall vibration. Since
+the effects of these factors are relatively constant within
+speakers, it should be possible to compensate for them by
+ﬁltering (see Zanartu et al.54 for an inverse ﬁltering model
+designed for the accelerometer signal). However, since the
+the accelerometer signal was as good at discriminating
+between phonation types as the voice source, it is unlikely
+that further processing would lead to improved classiﬁcation accuracy.TagedEn
+TagedPThe audio signal’s good performance relative to the other
+two signals can be assumed to be due to effects of the vocal
+tract shape accompanying the laryngeal adjustments needed
+for changing phonation type. Indeed, we have observed consistent differences in frequencies of the ﬁrst formant across
+the three voice qualities. The ﬁrst formant frequency tended
+to be lower in breathy and higher in pressed phonation as
+compared with neutral phonation. It seems likely that this
+effect was caused by changes of larynx height, high-effort
+phonation typically being associated with a raised larynx. A
+rise of the ﬁrst formant frequency tends to raise the overall
+sound level of a vowel. This may have caused the consistent
+increase of the Alpha feature of the audio signal observed
+along the breathy − neutral − pressed continuum.TagedEn
+TagedPAll three analyzed signals showed a great inter-participant variation, both with respect to discrimination accuracy
+and feature importance. Gender differences (two of the participants were female and three were male) could be a contributing factor in that regard, with signiﬁcant gender
+variation in both vocal fold and vocal tract lengths. The
+
+TagedEn18
+TagedEn TagedFiur
+
+Journal of Voice, Vol. 39, No. 1, 2025
+
+FIGURE 7. Averaged accelerometer (ACC) and audio (MIC) features showing monotonic and consistent variation along the breathy (bre)
+− neutral (neu) − pressed (pre) continuum for the ﬁve participantsTagedEn
+
+former should affect the relation between glottal area and
+glottal ﬂow, and consequently the relation between the latter and Psub. Another explanation could be that all participants had substantial experience of choral or solo singing.
+Thus, their voice control was particularly well developed in
+neutral phonation as opposed to pressed or breathy phonation, which are generally discouraged in vocal practice. The
+observed interpersonal variability of voice properties also
+suggests a preference for speaker-dependent models, conﬁrmed by increase in OOB error when data from all speakers were pooled (not reported in the present paper).TagedEn
+TagedPIn spite of the individual differences, the voice source features AQ, NAQ, L1 L2 and CQ were found to vary systematically with voice quality along the breathy − neutral −
+pressed continuum. Of these, the three former were typically
+lower in neutral than in breathy and still lower in pressed
+phonation, while the opposite applied to CQ. This is in
+agreement with previous ﬁndings.4,52,55TagedEn
+TagedPAs shown in Table 1, these features were correlated with
+CPPS, L1 L2 and HRF calculated from both the accelerometer and the audio signals. Both L1 L2 and HRF are known to
+depend on the relative amplitude of the fundamental, which,
+in turn, has been found to be stronger in breathy than in
+neutral and stronger in neutral than in pressed.56 Moreover,
+the amplitude of the voice source fundamental has been
+found to correlate with the peak-to-peak amplitude of the
+glottal ﬂow pulse (ACF),57−59 with amplitude being dependent on glottal adduction: the ﬁrmer the adduction, the
+
+smaller the amplitude and the weaker the fundamental.
+Therefore, it is not surprising that accelerometer and audio
+L1 L2 and HRF were found to be important to voice quality
+distinction. Similarly, CPPS was originally designed to be
+used on non-inverse ﬁltered speech, which might explain its
+performance in this scenario.TagedEn
+TagedPGiven that the Random Forest classiﬁer can identify complex patterns in the data, the relationship between distribution of an individual feature and its importance score is not
+straightforward. However, features showing clear separation
+across the predicted categories can be expected to score high
+on importance unless their effect is overshadowed by another
+correlated feature. For this reason, the features varying systematically across phonation types were generally found to
+achieve high importance in the discrimination task.TagedEn
+TagedPAccording to the Random Forrest analysis pitch was
+identiﬁed as an important feature for voice quality classiﬁcation. This may seem somewhat surprising, as participants
+were asked to keep the same pitch for the three qualities in
+each voice quality condition. Yet, as can be seen in Figure 8,
+breathy and pressed phonation were often accompanied by
+substantial modiﬁcations of fo. Curiously, fo was found to
+play a much smaller role in the discrimination between
+breathy and pressed phonation than in the other two conditions. Again, this may be explained by the results shown in
+Figure 8, demonstrating that breathy and pressed phonation
+types often involved modiﬁcation of fo in the same direction
+relative to neutral. Consequently, the other features were
+
+TagedEnMarcin Wl̷odarczak, et al
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+allowed to come to the fore. Notably, the features that were
+assigned high importance were again among the features
+which were found to vary systematically between phonation
+types, conﬁrming their relevance to phonation type discrimination.TagedEn
+TAGEDH1CONCLUSIONSTAGEDN
+TagedPVariation of voice quality is an integral part of the expressive repertoire of vocal production which possesses clinically
+relevant implications. For this reason, there is a pressing
+need for robust methods for estimation and classiﬁcation of
+voice quality, preferably using a feature set with known
+properties and systematic relationship with the voice source.
+In this study, we attempted to make a small step towards
+this goal by comparing temporal, spectral and cepstral
+properties of the voice source, the audio and the neck-surface acceleration collected in a controlled experiment with
+trained singer participants.TagedEn
+TagedPOverall, we found that the classiﬁcation algorithm rendered comparable error rates for these three signals. This
+was contrary to the expectation that features extracted from
+the voice source should result in the highest accuracy, and
+that the skin acceleration signal should outperform the
+audio signal. In addition, several voice source features (AQ,
+
+TagedEn19
+
+NAQ, L1 L2 and CQ) were found to vary systematically with
+phonation type, a variation mirrored in certain accelerometer signal features (HRF, L1 L2 and CPPS) and audio signal
+features (HRF, L1 L2 , CPPS and sound level).TagedEn
+TagedPTo optimize the accuracy of the voice source data, we limited the analyses to the vowel [æ:], in which the ﬁrst and second formant frequencies are high and wide apart, thus
+facilitating the tuning of the inverse ﬁlters. This limitation
+raises the question whether a material consisting of connected speech would yield a similar classiﬁcation accuracy
+of voice quality across the different feature sets. Given that
+inverse ﬁltering of such material is difﬁcult, comparison
+against voice source features might be impossible. Similarly,
+the audio signal of running speech would present additional
+challenges for voice quality classiﬁcation due to the articulatory variation. For these reasons, neck-surface acceleration
+might offer an advantage in that scenario. We leave this
+question open for future research.TagedEn
+
+TagedH1AcknowledgementsTagedEn
+TagedPThis research is supported by the Swedish Research Council
+grant Prosodic functions of voice quality dynamics (VR
+2019-02932) to the ﬁrst author.TagedEn
+
+TagedEn20
+
+Journal of Voice, Vol. 39, No. 1, 2025
+
+TAGEDH1 PPENDIXTAGEDN
+TagedPEn
+
+TagedEn TABLE 2.
+Mean fo (Hz), minimum and maximum Psub values, and minimum and maximum SPL@30cm values for each speaker, phonation type and pitch condition.
+Psub (cm H2 0)
+
+SPL@30cm (dB)
+
+Speaker
+
+Phonation type
+
+Pitch
+
+Mean fo (Hz)
+
+Min
+
+Max
+
+Min
+
+Max
+
+F1
+F1
+F1
+F1
+F1
+F1
+F1
+F1
+F1
+F2
+F2
+F2
+F2
+F2
+F2
+F2
+F2
+F2
+M1
+M1
+M1
+M1
+M1
+M1
+M1
+M1
+M1
+M2
+M2
+M2
+M2
+M2
+M2
+M2
+M2
+M2
+M3
+M3
+M3
+M3
+M3
+M3
+M3
+M3
+M3
+
+Breathy
+Breathy
+Breathy
+Neutral
+Neutral
+Neutral
+Pressed
+Pressed
+Pressed
+Breathy
+Breathy
+Breathy
+Neutral
+Neutral
+Neutral
+Pressed
+Pressed
+Pressed
+Breathy
+Breathy
+Breathy
+Neutral
+Neutral
+Neutral
+Pressed
+Pressed
+Pressed
+Breathy
+Breathy
+Breathy
+Neutral
+Neutral
+Neutral
+Pressed
+Pressed
+Pressed
+Breathy
+Breathy
+Breathy
+Neutral
+Neutral
+Neutral
+Pressed
+Pressed
+Pressed
+
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+Low
+Mid
+High
+
+166.9
+261.9
+352.9
+182.5
+232.9
+312.4
+230.0
+307.4
+411.3
+181.6
+241.6
+357.1
+186.9
+283.5
+419.4
+222.8
+277.1
+369.5
+104.5
+154.1
+221.8
+106.5
+153.9
+215.3
+110.2
+131.5
+277.0
+124.6
+185.9
+258.5
+145.1
+200.0
+308.8
+167.6
+221.0
+286.8
+160.0
+198.0
+246.0
+155.0
+184.0
+235.0
+176.0
+213.0
+222.0
+
+3.7
+5.5
+4.6
+2.5
+3.2
+3.9
+14.8
+15.9
+19.5
+7.9
+5.5
+4.3
+3.6
+6.6
+8.4
+7.6
+10.3
+9.2
+3.7
+4.9
+6.5
+5.0
+5.0
+4.4
+5.5
+6.7
+9.2
+5.4
+10.2
+9.8
+4.1
+5.1
+14.3
+12.5
+11.9
+14.4
+5.4
+5.5
+7.4
+4.2
+6.0
+8.1
+7.0
+9.6
+7.3
+
+13.9
+12.5
+16.2
+17.8
+22.1
+22.8
+27.9
+26.8
+28.0
+18.6
+14.3
+15.6
+3.6
+9.9
+19.0
+20.6
+21.1
+26.9
+16.4
+21.4
+20.8
+12.2
+12.6
+16.8
+13.2
+16.5
+26.0
+13.6
+23.5
+32.0
+16.6
+27.2
+33.6
+21.4
+28.4
+35.5
+15.1
+16.9
+20.3
+10.9
+11.9
+15.4
+13.9
+19.2
+17.8
+
+65.9
+65.9
+65.1
+63.6
+69.1
+59.8
+85.6
+81.5
+81.3
+67.4
+68.8
+73.3
+69.4
+73.7
+85.7
+75.7
+75.9
+75.1
+62.2
+64.2
+60.2
+64.6
+67.6
+69.4
+67.5
+76.5
+78.7
+62.6
+68.7
+68.2
+63.2
+64.0
+75.8
+77.6
+77.9
+82.5
+69.2
+70.7
+82.4
+68.9
+68.5
+78.6
+74.8
+80.1
+76.2
+
+79.7
+82.3
+84.9
+89.7
+92.3
+91.6
+92.5
+93.7
+97.0
+73.1
+81.4
+88.0
+92.4
+93.0
+95.3
+91.9
+92.8
+94.8
+81.7
+88.0
+90.8
+80.5
+87.1
+92.4
+86.6
+93.8
+93.7
+75.1
+83.0
+85.0
+83.9
+89.3
+98.8
+85.1
+87.6
+98.1
+82.7
+86.7
+94.5
+85.4
+89.9
+96.4
+87.4
+89.9
+94.5
+
+Pairwise correlations (Spearman’s r) between the voice source (VS), accelerometer (ACC) and audio (MIC) features.
+VS
+Psub
+VS
+
+L1
+
+ACF MFDR
+
+ACC fo
+SL
+L1
+CPPS
+Alpha
+L1 L2
+HRF
+MIC fo
+SL
+L1
+CPPS
+Alpha
+L1 L2
+
+0.25
+0.8
+0.43
+0.71
+
+NAQ L1 L2
+
+CQ
+
+SQ
+
+fo
+
+SL
+
+L1
+
+-0.52 0.08 0.03 -0.05 0.06 0.98 0.46 0.47
+-0.69 -0.53 -0.46 0.48 0.39 0.4
+0.67 0.58
+0.08 -0.09 0.04 -0.04 0
+-0.27 0.05 0.07
+-0.18 -0.31 -0.17 0.14 0.21 -0.17 0.26 0.23
+-0.79 -0.73 -0.57 0.54 0.49 0.25 0.49 0.4
+0.78 0.69 -0.66 -0.47 -0.51 -0.48 -0.36
+0.85 -0.84 -0.54 0.07 -0.21 -0.07
+-0.88 -0.42 0.03 -0.15 -0.01
+0.36 -0.05 0.16 0.03
+0.06 0.29 0.2
+
+MIC
+
+CPPS Alpha L1 L2 HRF
+-0.05
+0.43
+0.15
+0.37
+0.7
+-0.69
+-0.84
+-0.72
+0.67
+0.5
+
+0.47 0.49 -0.05
+0.97 0.21
+0.08
+
+0.37
+0.66
+-0.1
+0.1
+0.62
+-0.8
+-0.68
+-0.69
+0.68
+0.4
+
+fo
+
+SL
+
+L1
+
+0.16 -0.23 0.98 0.37 0.47
+-0.46 0.45 0.4
+0.76 0.52
+-0.08 0.11 -0.27 0.23 0.52
+-0.27 0.3 -0.17 0.48 0.58
+-0.57 0.56 0.26 0.89 0.59
+0.58 -0.55 -0.52 -0.85 -0.34
+0.82 -0.83 0.07 -0.72 -0.04
+0.86 -0.84 0.02 -0.64 0.08
+-0.79 0.79 -0.04 0.6 -0.07
+-0.49 0.5
+0.06 0.38 0.05
+
+CPPS Alpha L1 L2 HRF
+-0.15
+0.38
+0.13
+0.34
+0.62
+-0.62
+-0.81
+-0.73
+0.68
+0.5
+
+0.22
+0.63
+0.02
+0.22
+0.67
+-0.77
+-0.75
+-0.72
+0.71
+0.41
+
+-0.4
+0.12
+-0.61 0.56
+0.12 0
+-0.12 0.24
+-0.66 0.72
+0.86 -0.83
+0.75 -0.9
+0.81 -0.89
+-0.72 0.82
+-0.47 0.48
+
+0.37 0.17 -0.24 1
+0.37 0.5 -0.15
+0.42 -0.14 0.15 0.47 0.45 0.45 0.18
+0.31 0.02 -0.02 0.49 0.35 0.5
+0.06
+0.58 -0.71 0.72 -0.05 0.71 0.16 0.93
+-0.63 0.61 0.37 0.72 0.19 0.57
+-0.99 0.16 -0.56 0.11 -0.72
+-0.23 0.54 -0.12 0.74
+
+0.23
+0.33
+0.22
+0.69
+0.82
+-0.66
+0.64
+
+-0.39 0.11
+-0.35 0.23
+-0.23 0.09
+-0.66 0.81
+-0.79 0.77
+0.68 -0.81
+-0.65 0.79
+
+0.37 0.49 -0.15
+0.59 0.63
+0.07
+
+0.23
+0.76
+0.21
+0.64
+
+-0.39
+-0.8
+-0.21
+-0.64
+-0.75
+
+0.11
+0.83
+0.11
+0.79
+0.81
+-0.89
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+fo
+0.4 -0.28 -0.19
+Psub
+0.26 0.49
+L1
+0.83
+ACF
+MFDR
+AQ
+NAQ
+L1 L2
+CQ
+SQ
+
+AQ
+
+ACC
+
+TagedEnMarcin Wl̷odarczak, et al
+
+TagedEn TABLE 3.
+
+TagedEn21
+
+TagedEn22
+TagedEn TagedFiur
+
+Journal of Voice, Vol. 39, No. 1, 2025
+
+0
+
+FIGURE 8. Averaged values of fo for each speaker, pitch condition (low, mid and high) and voice quality (bre: breathy, neu: neutral, pre:
+pressed).TagedEn
+
+TagedEn
+
+TagedFiur
+
+FIGURE 9. The mean normalized importance, as given by the Random Forest analysis, of the features extracted from the three input signals (the voice source VS, accelerometer ACC, microphone MIC), across the ﬁve speakers in our corpus (F1-F2, M1-M3). Displayed are the
+average of the importance in the neutral-breathy and neutral-pressed conditions, (NB+NP)/2, and the importance for the breathy-pressed
+condition.TagedEn
+
+TAGEDH1REFERENCESTAGEDN
+
+TagedP 1. Childers DG, Lee CK. Vocal quality factors: Analysis, synthesis, and
+perception. Journal of the Acoustical Society of America. 1991;90
+(5):2394–2410.TagedEn
+TagedP 2. Esling JH, Moisik SR, Benner A, Crevier-Buchman L. Voice Quality:
+The Laryngeal Articulator Model. Cambridge University Press; 2019.TagedEn
+TagedP 3. Sundberg J. Objective characterization of phonation type using amplitude of ﬂow glottogram pulse and of voice source fundamental. Journal of Voice. 2020;36(1):4–14.TagedEn
+TagedP 4. Gordon M, Ladefoged P. Phonation types: A cross-linguistic overview.
+Journal of Phonetics. 2001;29(4):383–406.TagedEn
+TagedP 5. Kuang J, Keating P. Vocal fold vibratory patterns in tense versus lax
+phonation contrasts. Journal of the Acoustical Society of America.
+2014;136(5):2784–2797.TagedEn
+TagedP 6. Maryn Y, Weenink D. Objective dysphonia measures in the program
+Praat: Smoothed cepstral peak prominence and acoustic voice quality
+index. Journal of Voice. 2015;29(1):35–43.TagedEn
+
+TagedP 7. Sauder C, Bretl M, Eadie T. Predicting voice disorder status from
+smoothed measures of cepstral peak prominence using Praat and analysis of dysphonia in speech and voice (ADSV). Journal of Voice.
+2017;31(5):557–566.TagedEn
+TagedP 8. Airas M, Alku P. Emotions in vowel segments of continuous speech:
+Analysis of the glottal ﬂow using the normalised amplitude quotient.
+Phonetica. 2006;63(1):26–46.TagedEn
+TagedP 9. Gobl C, Chasaide AN. The role of voice quality in communicating
+emotion, mood and attitude. Speech Communication. 2003;40(1
+−2):189–212.TagedEn
+TagedP10. Scherer KR, Sundberg J, Tamarit L, Salom~ao GL.
+Comparing the acoustic expression of emotion in the speaking
+and the singing voice. Computer Speech & Language. 2015;29
+(1):218–235.TagedEn
+TagedP11. Shriberg EE. Phonetic consequences of speech disﬂuency. In: Proceedings of the 14th International Congress of Phonetic Sciences (ICPhS
+1999). 1999:619−622. Florence, ItalyTagedEn
+
+TagedEnMarcin Wl̷odarczak, et al
+
+Classification of Voice Quality Using Neck-Surface Acceleration
+
+TagedP12. Levitan R, Hirschberg J. Measuring acoustic-prosodic entrainment
+with respect to multiple levels and dimensions. In: Proceedings of Interspeech 2011. 2011:3081−3084. Florence, ItalyTagedEn
+TagedP13. Chasaide AN, Yanushevskaya I, Gobl C. Prosody of voice: Declination, sentence mode and interaction with prominence. In: Proceedings
+of the XVIIIth International Congress of Phonetic Sciences (ICPhS
+2015). 2015. Glasgow, UKTagedEn
+TagedP14. Carlson R, Hirschberg J, Swerts M. Cues to upcoming Swedish prosodic boundaries: Subjective judgment studies and acoustic correlates.
+Speech Communication. 2005;46(3−4):326–333.TagedEn
+TagedP15. Ludusan B, Wagner P, Wl̷odarczak M. Cue interaction in the perception of prosodic prominence: The role of voice quality. In: Proceedings
+of Interspeech 2021. 2021 :1006−1010.TagedEn
+TagedP16. Vishnubhotla S, Espy-Wilson C. Automatic detection of irregular phonation in continuous speech. In: Proceedings of Interspeech
+2006. 2006:949−952. Pittsburgh, PATagedEn
+TagedP17. Kane J, Gobl C. Identifying regions of non-modal phonation using
+features of the wavelet transform. In: Proceedings of Interspeech
+2011. 2011:177−180. Florence, ItalyTagedEn
+TagedP18. Székely E, Kane J, Scherer S, Gobl C, Carson-Berndsen J. Detecting a
+targeted voice style in an audiobook using voice quality features. In
+Proceedings of IEEE International Conference on Acoustics, Speech
+and Signal Processing (ICASSP 2012) 2012 :4593−4596.TagedEn
+TagedP19. Kane J, Gobl C. Wavelet maxima dispersion for breathy to tense voice
+discrimination. IEEE Transactions on Audio, Speech, and Language
+Processing. 2013;21(6):1170–1179.TagedEn
+TagedP20. Hillenbrand J, Houde RA. Acoustic correlates of breathy vocal quality: Dysphonic voices and continuous speech. Journal of Speech Language and Hearing Research. 1996;39(2).TagedEn
+TagedP21. Heman-Ackah YD, Michael DD, Goding GS. The relationship
+between cepstral peak prominence and selected parameters of dysphonia. Journal of Voice. 2002;16(1):20–27.TagedEn
+TagedP22. Borsky M, Cocude M, Mehta DD, Za~
+nartu M, Gudnason J. Classiﬁcation of voice modes using neck-surface accelerometer data. In: Proceedings of the 2017 IEEE International Conference on Acoustics,
+Speech and Signal Processing (ICASSP). 2017:5060−5064. New
+Orleans, LA.TagedEn
+TagedP23. Drugman T, Kane J, Gobl C. Data-driven detection and analysis of
+the patterns of creaky voice. Computer Speech & Language. 2014;28
+(5):1233–1253.TagedEn
+TagedP24. Ishi CT, Sakakibara K-I, Ishiguro H, Hagita N. A method for automatic detection of vocal fry. IEEE Transactions on Audio, Speech, and
+Language Processing. 2008;16(1):47–56.TagedEn
+TagedP25. Borsky M, Mehta DD, Gudjohnsen JP, Gu+nason J. Classiﬁcation of
+voice modality using electroglottogram waveforms. In: Proceedings of
+Interspeech 2016. 2016:3166−3170. San Francisco CA, USATagedEn
+TagedP26. Childers DG, Ahn C. Modeling the glottal volume-velocity waveform
+for three voice types. The Journal of the Acoustical Society of America.
+1995;97(1):505–519.TagedEn
+TagedP27. Székely E, Cabral JP, Cahill P, Carson-Berndsen J. Clustering expressive speech styles in audiobooks using glottal source parameters. In:
+Proceedings of Interspeech 2011. 2011:2409–2412.Florence, ItalyTagedEn
+TagedP28. Alku P. Glottal wave analysis with Pitch Synchronous Iterative Adaptive Inverse Filtering. Speech Communication. 1992;11(2−3):109–118.TagedEn
+TagedP29. Cabral JP, Renals S, Richmond K, Yamagishi J. Towards an
+improved modeling of the glottal source in statistical parametric speech
+synthesis. In: Proceedings of the 6th ISCA Workshop on Speech Synthesis 2007. Bonn, GermanyTagedEn
+TagedP30. Borsky M, Mehta DD, Van Stan JH, Gudnason J. Modal and nonmodal voice quality classiﬁcation using acoustic and electroglottographic
+features. IEEE/ACM Transactions on Audio, Speech, and Language
+Processing. 2017;25(12):2281–2291.TagedEn
+TagedP31. Degottex G, Kane J, Drugman T, Raitio T, Scherer S. COVAREP
+— A collaborative voice analysis repository for speech technologies. In: Proceedings of the 2014 IEEE International Conference on
+Acoustics, Speech and Signal Processing (ICASSP 2014). IEEE;
+2014:960–964.TagedEn
+
+TagedEn23
+
+TagedP32. Stevens KN, Kalikow D, Willemain T. A miniature accelerometer for
+detecting glottal waveforms and nasalization. Journal of Speech, Language, and Hearing Research. 1975;18(3):594–599.TagedEn
+TagedP33. Askenfelt A, Gaufﬁn J, Kitzing P, Sundberg J. Electroglottograph and
+contact microphone for measuring vocal pitch. Speech Transmission
+Laboratory, Quarterly Progress and Status Report. 1977;4:13–21.TagedEn
+TagedP34. Sundberg J. Chest wall vibrations in singers. Journal of Speech and
+Hearing Research. 1983;26(3):329–340.TagedEn
+TagedP35. Coleman RF. Comparison of microphone and neck-mounted accelerometer monitoring of the performing voice. Journal of Voice. 1988;2
+(3):200–205.TagedEn
+
+TagedP36. Svec
+JG, Titze IR, Popolo PS. Estimation of sound pressure levels of
+voiced speech from skin vibration of the neck. The Journal of the
+Acoustical Society of America. 2005;117(3):1386–1394.TagedEn
+TagedP37. Fryd AS, Van Stan JH, Hillman RE, Mehta DD. Estimating subglottal pressure from neck-surface acceleration during normal voice production. Journal of Speech, Language, and Hearing Research. 2016;59
+(6):1335–1345.TagedEn
+TagedP38. McKenna VS, Llico AF, Mehta DD, Perkell JS, Stepp CE. Magnitude
+of neck-surface vibration as an estimate of subglottal pressure during
+modulations of vocal effort and intensity in healthy speakers. Journal
+of Speech, Language, and Hearing Research. 2017;60(12):3404–3416.TagedEn
+TagedP39. Horii Y. An accelerometric measure as a physical correlate of perceived hypernasality in speech. Journal of Speech, Language, and Hearing Research. 1983;26(3):476–480.TagedEn
+TagedP40. Lippman R. Detecting nasalization using a low-cost miniature accelerometer. Journal of Speech, Language, and Hearing Research. 1981;24
+(3):314–317.TagedEn
+TagedP41. Mehta DD, Espinoza VM, Van Stan JH, Za~
+nartu M, Hillman RE.
+The difference between ﬁrst and second harmonic amplitudes correlates between glottal airﬂow and neck-surface accelerometer signals
+during phonation. The Journal of the Acoustical Society of America.
+2019;145(5):EL386–EL392.TagedEn
+TagedP42. Mehta DD, Van Stan JH, Za~
+nartu M, Ghassemi M, Guttag JV, Espinoza VM, et al. Using ambulatory voice monitoring to investigate
+common voice disorders: Research update. Frontiers in Bioengineering
+and Biotechnology. 2015;3.TagedEn
+TagedP43. Llico AF, Za~
+nartu M, Gonzalez AJ, Wodicka GR, Mehta DD, Van
+Stan JH, et al. Real-time estimation of aerodynamic features for ambulatory voice biofeedback. Journal of the Acoustical Society of America.
+2015;138(1):EL14–9.TagedEn
+TagedP44. Ghassemi M, Van Stan JH, Mehta DD, Za~
+nartu M, Cheyne II HA,
+Hillman RE, et al. Learning to detect vocal hyperfunction from ambulatory neck-surface acceleration features: Initial results for vocal fold
+nodules. IEEE Transactions on Biomedical Engineering. 2014;61
+(6):1668–1675.TagedEn
+TagedP45. Gelzinis A, Verikas A, Vaiciukynas E, Bacauskiene M, Minelga J, Hållander M, et al. Exploring sustained phonation recorded with acoustic
+and contact microphones to screen for laryngeal disorders. In: Proceedings of the 2014 IEEE Symposium on Computational Intelligence in
+Healthcare and e-health (CICARE). IEEE; 2014:125–132.TagedEn
+TagedP46. Granqvist S. Sopran [Computer program]. 2022. https://tolvan.com/
+index.php?page=/sopran/sopran.php.TagedEn
+TagedP47. Boersma P., Weenink D.. Praat: doing phonetics by computer. 2021.
+Computer program, http://www.praat.org/.TagedEn
+TagedP48. Eskenazi L, Childers DG, Hicks DM. Acoustic correlates of vocal
+quality. Journal of Speech, Language, and Hearing Research. 1990;33
+(2):298–306.TagedEn
+TagedP49. Breiman L. Random Forests. Machine Learning. 2001;45(1):5–32.TagedEn
+TagedP50. R Core Team. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing; 2020.
+https://www.R-project.org/TagedEn
+TagedP51. Liaw A, Wiener M. Classiﬁcation and regression by randomForest. R
+News. 2002;2(3):18–22.https://CRAN.R-project.org/doc/Rnews/TagedEn
+TagedP52. Millgård M, Fors T, Sundberg J. Flow glottogram characteristics and
+perceived degree of phonatory pressedness. Journal of Voice. 2016;30
+(3):287–292. https://doi.org/10.1016/j.jvoice.2015.03.014.TagedEn
+
+TagedEn24
+TagedP53. Sundberg J. Flow glottogram and subglottal pressure relationship in
+singers and untrained voices. Journal of Voice. 2018;32(1):23–31.TagedEn
+TagedP54. Za~
+nartu M, Ho JC, Mehta DD, Hillman RE, Wodicka GR. Subglottal
+impedance-based inverse ﬁltering of voiced sounds using neck surface
+acceleration. IEEE Transactions on Audio, Speech and Language Processing. 2013;21(9):1929–1939.TagedEn
+TagedP55. Alku P, B€
+ackstr€
+om T, Vilkman E. Normalized amplitude quotient for
+parametrization of the glottal ﬂow. The Journal of the Acoustical Society of America. 2002;112(2):701–710. https://doi.org/10.1121/1.1490365.TagedEn
+TagedP56. Kreiman J, Shue Y-L, Chen G, Iseli M, Gerratt BR, Neubauer J, et al.
+Variability in the relationships among voice quality, harmonic amplitudes, open quotient, and glottal area waveform shape in sustained
+
+Journal of Voice, Vol. 39, No. 1, 2025
+phonation. Journal of the Acoustical Society of America. 2012;132
+(4):2625–2632.TagedEn
+TagedP57. Gaufﬁn J, Sundberg J. Spectral correlates of glottal voice source waveform characteristics. Journal of Speech, Language, and Hearing
+Research. 1989;32(3):556–565. https://doi.org/10.1044/jshr.3203.556.TagedEn
+TagedP58. Sundberg J. Objective characterization of phonation type using amplitude of ﬂow glottogram pulse and of voice source fundamental.
+Journal of Voice. 2022;36(1):4–14. https://doi.org/10.1016/j.jvoice.
+2020.03.018.TagedEn
+TagedP59. Sundberg J, Thalén M, Alku P, Vilkman E. Estimating perceived phonatory pressedness in singing from ﬂow glottograms. Journal of Voice.
+2004;18(1):56–62. https://doi.org/10.1016/j.jvoice.2003.05.006.TagedEn

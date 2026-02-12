@@ -1,0 +1,100 @@
+CREPE: A CONVOLUTIONAL REPRESENTATION FOR PITCH ESTIMATION
+Jong Wook Kim1 , Justin Salamon1,2 , Peter Li1 , Juan Pablo Bello1
+1
+
+arXiv:1802.06182v1 [eess.AS] 17 Feb 2018
+
+2
+
+Music and Audio Research Laboratory, New York University
+Center for Urban Science and Progress, New York University
+
+ABSTRACT
+The task of estimating the fundamental frequency of a monophonic
+sound recording, also known as pitch tracking, is fundamental to
+audio processing with multiple applications in speech processing and
+music information retrieval. To date, the best performing techniques,
+such as the pYIN algorithm, are based on a combination of DSP
+pipelines and heuristics. While such techniques perform very well
+on average, there remain many cases in which they fail to correctly
+estimate the pitch. In this paper, we propose a data-driven pitch
+tracking algorithm, CREPE, which is based on a deep convolutional
+neural network that operates directly on the time-domain waveform.
+We show that the proposed model produces state-of-the-art results,
+performing equally or better than pYIN. Furthermore, we evaluate
+the model’s generalizability in terms of noise robustness. A pretrained version of CREPE is made freely available as an open-source
+Python module for easy application.
+Index Terms— pitch estimation, convolutional neural network
+1. INTRODUCTION
+Estimating the fundamental frequency (f0) of a monophonic audio
+signal, also known as pitch tracking or pitch estimation, is a longstanding topic of research in audio signal processing. Pitch estimation plays an important role in music signal processing, where
+monophonic pitch tracking is used as a method to generate pitch
+annotations for multi-track datasets [1] or as a core component of
+melody extraction systems [2, 3]. Pitch estimation is also important
+for speech analysis, where prosodic aspects such as intonations may
+reflect various features of speech [4].
+Pitch is defined as a subjective quality of perceived sounds and
+does not precisely correspond to the physical property of the fundamental frequency [5]. However, apart from a few rare exceptions, pitch can be quantified using fundamental frequency, and thus
+they are often used interchangeably outside psychoacoustical studies. For convenience, we will also use the two terms interchangeably
+throughout this paper.
+Computational methods for monotonic pitch estimation have
+been studied for more than a half-century [6], and many reliable
+methods have been proposed since. Earlier methods commonly employ a certain candidate-generating function, accompanied by preand post-processing stages to produce the pitch curve. Those functions include the cepstrum [6], the autocorrelation function (ACF)
+[7], the average magnitude difference function (AMDF) [8], the normalized cross-correlation function (NCCF) as proposed by RAPT
+[9] and PRAAT [10], and the cumulative mean normalized difference function as proposed by YIN [11]. More recent approaches
+include SWIPE [12], which performs template matching with the
+spectrum of a sawtooth waveform, and pYIN [13], a probabilistic
+variant of YIN that uses a Hidden Markov Model (HMM) to decode
+
+the most probable sequence of pitch values. According to a few
+comparative studies, the state of the art is achieved by YIN-based
+methods [14, 15], with pYIN being the best performing method to
+date [13].
+A notable trend in the above methods is that the derivation
+of a better pitch detection system solely depends on cleverly devising a robust candidate-generating function and/or sophisticated
+post-processing steps, i.e. heuristics, and none of them are directly learned from data, except for manual hyperparameter tuning.
+This contrasts with many other problems in music information retrieval like chord ID [16] and beat detection [17], where data-driven
+methods have been shown to consistently outperform heuristic approaches. One possible explanation for this is that since fundamental
+frequency is a low-level physical attribute of an audio signal which
+is directly related to its periodicity, in many cases heuristics for
+estimating this periodicity perform extremely well with accuracies
+(measured in raw pitch accuracy, defined later on) close to 100%,
+leading some to consider the task a solved problem. This, however,
+is not always the case, and even top performing algorithms like
+pYIN can still produce noisy results for challenging audio recordings such as a sound of uncommon instruments or a pitch curve that
+fluctuates very fast. This is particularly problematic for tasks that
+require a flawless f0 estimation, such as using the output of a pitch
+tracker to generate reference annotations for melody and multi-f0
+estimation [18, 19].
+In this paper, we present a novel, data-driven method for monophonic pitch tracking based on a deep convolutional neural network
+operating on the time-domain signal. We show that our approach,
+CREPE (Convolutional Representation for Pitch Estimation), obtains state-of-the-art results, outperforming heuristic approaches
+such as pYIN and SWIPE while being more robust to noise too. We
+further show that CREPE is highly precise, maintaining over 90%
+raw pitch accuracy even for a strict evaluation threshold of just 10
+cents. The Python implementation of our proposed approach, along
+with a pre-trained model of CREPE are made available online1 for
+easy utilization and reproducibility.
+2. ARCHITECTURE
+CREPE consists of a deep convolutional neural network which operates directly on the time-domain audio signal to produce a pitch estimate. A block diagram of the proposed architecture is provided in
+Figure 1. The input is a 1024-sample excerpt from the time-domain
+audio signal, using a 16 kHz sampling rate. There are six convolutional layers that result in a 2048-dimensional latent representation,
+which is then connected densely to the output layer with sigmoid activations corresponding to a 360-dimensional output vector ŷ. From
+this, the resulting pitch estimate is calculated deterministically.
+1 https://github.com/marl/crepe
+
+Fig. 1: The architecture of the CREPE pitch tracker. The six convolutional layers operate directly on the time-domain audio signal, producing
+an output vector that approximates a Gaussian curve as in Equation 3, which is then used to derive the exact pitch estimate as in Equation 2.
+Each of the 360 nodes in the output layer corresponds to a specific pitch value, defined in cents. Cent is a unit representing musical
+intervals relative to a reference pitch fref in Hz, defined as a function
+of frequency f in Hz:
+f
+¢(f ) = 1200 · log2
+,
+fref
+
+(1)
+
+where we use fref = 10 Hz throughout our experiments. This unit
+provides a logarithmic pitch scale where 100 cents equal one semitone. The 360 pitch values are denoted as ¢1 , ¢2 , · · · , ¢360 and are
+selected so that they cover six octaves with 20-cent intervals between

@@ -1,0 +1,1790 @@
+C H A P T E R 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+39
+
+and from periodic glottal sources (Shadle, 1985; Stevens, 1993). The ratio of the amplitude
+of the harmonics a t 3 kHz t o the noise amplitude in a 50-Hz band a t the same frequency
+is 17 dB. Over the entire frequency range up to 5 kHz the noise spectrum is well below
+the spectrum of the periodic source, so that the combined spectrum is expected to show
+well-defined harmonics.
+When the glottal area does not decrease t o zero over a cycle of vibration, the spectra
+given by solid lines in Fig. 3.9 change in two ways. The spectrum amplitude of the periodic component becomes weaker at high frequencies, as noted above, and the amplitude of
+the turbulence noise increases because of the increased flow. For a given subglottal pressure, the amplitude of the turbulence noise source at the glottis is expected t o increase
+approximately in proportion to At.5, where A, is the average glottal area during a cycle
+of vibration (Stevens, 1971). For example, the average glottal area during modal glottal
+vibration in which the glottis is closed during a portion of the cycle is approximately
+0.03 cm2 for an adult female. If a fixed glottal chink of 0.05 cm2 is added to this area, the
+amplitude of the turbulence noise is expected to increase by about 4 dB. As noted earlier
+in Table 3.1, however, the spectral amplitude of the periodic glottal source decreases by
+about 13 dB a t 2750 Hz, giving a 17 dB decrease in harmonics-to-noise ratio in this frequency range. The two spectra now have the form given as dashed lines in Fig. 3.9, with
+the noise spectrum being comparable to the periodic spectrum at high frequencies.
+Numerous researchers have developed objective measures of the noise present in the
+speech waveform during glottal vibration (see, for example, Yumoto et al., 1982; Ladefoged
+and Antoiianzas-Barroso, 1985; Kasuya and Ogawa, 1986; Klingholz, 1987; de Krom, 1993;
+Hillenbrand et al., 1994; Mori et al., 1994). Usually these methods involve isolating the
+periodic component of the speech waveform from the noisy component. This can be done
+through spectral- or cepstral-based analysis, or through comparing the pitch periods in
+the time domain, measuring the differences between pitch periods that result from the
+statistical variability of noise. However, as pointed out by Ladefoged and AntofianzasBarroso (1985), these methods do not measure just the noise that is due to an aspiration
+source, but rather the noise that results from a combination of factors. These other factors
+include jitter (changes in pitch) and shimmer (changes in amplitude of excitation). Their
+
+C H A P T E R 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+40
+
+FREQUENCY (kHz)
+
+Figure 3.9: Calculated spectra and relative amplitudes of periodic volume-velocity source and
+turbulence-noise source for two different glottal configurations: a modal configuration in which the
+glottis is closed over one-half of the cycle (solid lines), and a configuration in which the minim u m glottal opening is 0.1 cm2 (dashed lines). The spectrum for the periodic component gives
+the amplitudes of the individual harmonics. The noise spectrum is the spectrum amplitude in
+50 Hz bands. The calculations are based on theoretical models of glottal vibration and of turbulence
+noise generation (Stevens, 1993; Shadle, 1985). (From Stevens and Hanson, 1995 and Stevens, in
+preparation)
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+41
+
+solution was to use only part of a vibratory cycle and compare it with the corresponding
+part of the next cycle.
+Klatt and Klatt (1990) suggest two problems with this waveform-based measure. First,
+the waveform is dominated by the lower formants because they have a greater amplitude,
+particularly F1, while aspiration noise occurs primarily a t high frequencies. This problem can be reduced by highpass or bandpass filtering. Second, unless the fundamental
+frequency is an exact multiple of the sampling period, even a perfectly periodic waveform
+will appear aperiodic, due t o frequency components near the Nyquist frequency that are
+represented by only a few samples. This can only be remedied by significant oversampling.
+To quantify the noise component in relation t o the periodic component, we have chosen
+t o define a harmonics-to-noise ratio as the ratio of the level of the harmonic with the
+greatest amplitude in the third-formant region (for a nonretroflexed vowel) to the level
+of the aspiration noise in the same region, both levels being measured from the spectrum
+calculated with a 22.3 ms hamming window (bandwidth of about 90 Hz (Rabiner and
+Schafer, 1978)). Of course, it is not possible t o separate the noise from the periodic
+component and to measure each separately. However, the harmonics-to-noise ratio can
+be determined for vowels synthesized with a formant synthesizer that contains a periodic
+glottal source and an aspiration noise source.
+Figure 3.10(b) shows the spectrum of a synthesized vowel /ze/ with formant frequencies
+and fundamental frequency at values appropriate for an adult female speaker, but with no
+aspiration noise. Above this spectrum, in Fig. 3.10(a), is the spectrum of the same vowel
+when the sound source is continuous aspiration noise with a suitably shaped spectrum.
+The level of this aspiration at 3 kHz, the frequency of the third formant, is 8 dB below the
+level of the highest harmonic in the F3 region in Fig. 3.10(b), also a t 3 kHz, in a 90-Hz
+band. When the two are mixed, the result is the spectrum in Fig. 3.10(d). The harmonicsto-noise ratio for this composite spectrum is defined to be 8 dB. (In the synthesizer, the
+noise amplitude is modulated by the glottal source, so that the harmonics-to-noise ratio
+as just defined refers to the peak level of the noise during the glottal cycle.) Fig. 3.10(c)
+displays the spectrum of the same vowel synthesized with an additional tilt (10 dB) in
+the periodic glottal spectrum. The level of aspiration (Fig. 3.10(a)) a t 3 kHz is now
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+42
+
+about 2 dB above the level of the highest harmonic in the F 3 region in Fig. 3.10(c). The
+spectrum of the vowel synthesized with both sources is shown in Fig. 3.10(e), and the
+harmonics-to-noise ratio for this combined spectrum is defined t o be -2 dB.
+Figure 3.8 shows the effect of turbulence noise at the glottis in the spectrum of a
+natural vowel. The harmonic structure of the spectrum in Fig. 3.8(b), which has a more
+extreme tilt, becomes less apparent a t high frequencies (2.5 kHz and above), presumably
+because of the effect of the aspiration noise.
+The influence of aspiration noise can also be seen by examining a vowel waveform
+when it is bandpass filtered a t F3, with a bandwidth of 600 Hz. The two F 3 waveforms
+corresponding t o Figs. 3.10(d) and 3.10(e) are shown in Figs. 3.10(f) and 3.10(g). The
+effect of a 10 dB difference in the harmonics-to-noise ratio is clear. The waveform in
+Fig. 3.10(f), while showing signs of noise excitation, still has a periodic nature. However,
+the waveform in Fig. 3.10(g) shows mainly noise, with much less evidence of periodic
+excitation.
+T h e technique of estimating the amount of noise in relation t o the periodic component
+by examining the bandpassed waveform in the F 3 region, such as those in Figs. 3.10(f)
+and 3.10(g), has been used by Klatt and Klatt (1990). It is also possible for an observer
+t o make estimates of the amount of noise in a spectral representation, such as those of
+Fig. 3.8. The observer makes estimates of the amount of noise on a scale from 1 t o 4,
+where 1means there is essentially no evidence of noise interference and 4 means that there
+is little evidence of periodicity. Separate estimates are made from the waveform and from
+the high-frequency part of the spectrum.
+To relate these scaling methods t o the physical characteristics of the stimuli, we have
+made a set of judgments for a series of synthesized vowel stimuli. These synthetic vowels
+were generated with known amplitudes of aspiration noise in relation to the periodic glottal
+source, so that the harmonics-to-noise ratio of the stimuli are known. Stimuli of the type
+shown in Figs. 3.10(d) and Fig. 3.10(e) were synthesized with several amplitudes of the
+aspiration noise source and with several amounts of spectral tilt. The spectrum for each
+vowel was generated, and two judges independently rated the noisiness of these spectra
+on a scale from 1 to 4, following the procedure described by Klatt and Klatt (1990).
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+43
+
+60
+
+-
+
+40
+
+m
+
+B
+
+20
+
+0
+FREO FHz)
+
+FREO (kHz)
+
+(c)
+
+(b)
+60
+
+-
+
+M
+
+-
+
+m
+
+J
+
+20
+
+0
+0
+
+I
+
+2
+
+3
+
+FREO Wr)
+
+4
+
+5
+
+Figure 3.10: Waveforms and spectra of the synthesized vowel /z/ illustrating how aspiration
+noise influences the waveforms and spectra. Panel (a) shows the specirum when the only source is
+aspiration noise. The spectra in (b) and (c) give the spectrum when the only source is the periodic
+glottal source, but with two different vahes of source spectral tilt ( T L ) . The spectra in (d) and (e)
+show the result of mixing the aspiration and periodic components of the source. The waveforms of
+the two vowels are displayed immediately below these spectra. The waveforms ( f ) and (g) at the
+bottom were generated by bandpass filtering the waveform with a filter having a center frequency of
+3 kHz and a bandwidth of 600 Hz. The harmonics-to-noise ratio (at 3 kHz) is 8 dB for the vowel
+in the left column and -2 dB for the vowel in the right column.
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTIC'S
+
+44
+
+Thus for each stimulus we have a measure of the harmonics-to-noise ratio and we have
+average judgments from the observers based on the spectrum. Figure 3.11 shows a plot
+of the harmonics-to-noise ratio vs. average noise judgments for these synthesized vowels,
+including a straight line that has been fit to the data. Using this plot, judgments for
+synthetic stimuli can be related to similar judgments for spoken vowels, as discussed in
+Section 3.3.3.
+
+3.2.3
+
+Summary of theoretical background
+
+We have discussed several ways in which the configuration of the vocal folds and glottis
+may vary during vowel production. Specifically, we have considered four types of configurations: (1) the arytenoids are approximated and the membranous part of the folds close
+abruptly; (2) the arytenoids are approximated, but the membranous folds close nonsimulta,neously along the length of the folds; (3) there is a fixed bypass airway, or "chink," a t
+the arytenoids, but the folds close abruptly; (4) both the vocal processes and arytenoids
+remain abducted throughout the glottal cycle, forcing the folds t o close nonsimultaneously. Through a combination of observation and modeling, we have suggested several
+ways in which these various configurations affect the glottal airflow and are manifested in
+the speech spectrum or waveform. Note that there may be other glottal configurations in
+addition to the four that we have considered.
+As a result of the theoretical discussion, we have suggested several measures that can
+be made directly on the spectra and waveforms of natural vowels and that may give some
+indication of the vocal fold and glottal configuration during vowel production. A summary
+of these measures follows:
+
+A change in open quotient affects the spectrum mainly at low frequencies, so the difference in amplitude of the first two harmonics, H1 - H2, should give some measure
+of OQ.
+There are several sources of change in the spectral tilt of the voicing source: increases
+in speed quotient, or skewness of the glottal pulse, presence and size of posterior
+glottal chinks, and nonsimultaneous closure of the membranous part of the vocal
+folds all lead to decreases in the abruptness with which the airflow through the
+
+C H A P T E R 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+Noise judgment
+
+Figure 3.11: Harmonics to noise ratio us. noise rating for spectra of synthesized vowels.
+
+45
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+46
+
+glottis is cut off. Decreases in this abruptness lead to increases in spectral tilt.
+These increases in the tilt of the glottal source spectrum are most evident at midto high frequencies, so we will use the difference between the amplitude of the first
+harmonic and the amplitude of the third formant peak, H I - A3, as a measure of
+spectral tilt.
+The presence and size of a posterior glottal opening affects the first-formant bandwidth. These increases may be observed in both the speech waveform and spectrum.
+In the waveform the oscillations due to the first formant damp out more rapidly, and
+in the spectrum the amplitude of the F1 peak is reduced. Thus, we will use two
+measures of F1 bandwidth: one an estimate of the decay rate of the F 1 waveform
+oscillation, and the other the difference between the amplitude of the first harmonic
+and the amplitude of the first formant peak, H1 - A l .
+Finally, the high-frequency noise content of the speech waveform and spectrum will
+increase as the size of a posterior glottal opening increases. This noise will be estimated using subjective ratings of noise in the F 3 waveforms (Klatt and Klatt, 1990)
+and in the spectrum. These ratings can be related to harmonics-to-noise ratios using
+Fig. 3.11.
+The theory predicts relationships between these measures in some cases, particularly
+under conditions where the glottis does not close completely during some part of the
+vibration cycle. For example, we see in Table 3.1 that as the area of the glottal chink
+increases, both the F 1 bandwidth and the spectral tilt are expected to increase, and we
+also expect the strength of the noise source to increase.
+In the remainder of this chapter we describe some data that were collected for 22 female
+speakers, and we attempt to interpret these data in terms of the theoretical models.
+
+3.3
+
+Experimental data
+
+3.3.1
+
+Speakers and speech material
+
+We collected recordings of a number of utterances from 22 adult female subjects in the age
+range 22 to 49 years. The speakers showed no evidence of voice or hearing problems, and
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+47
+
+all were native speakers of American English. The utterances consisted of three nonhigh
+vowels, /ze, E, A / , embedded in the carrier phrase "Say bVd again."
+
+Each utterance
+
+was repeated five times, with the 15 sentences presented in random order during a single
+session. All the utterances were low-pass filtered at 4.5 kHz, digitized with a sampling
+rate of 11.4 kHz, and stored for further analysis.
+
+3.3.2
+
+Measurements
+
+The acoustic measurements summarized in Section 3.2.3 were extracted from these utterances in the following manner:
+
+First-formant bandwidths. For all repetitions of the vowel /ze/ the first-formant bandwidth during the initial part of the glottal cycle was estimated from the rate of decay
+of the waveform. The rate of decay was determined from the change in the peak-topeak amplitude in the first two cycles of the F 1 oscillation, using Eqn. 3.3. Estimates
+were made for eight consecutive pitch periods in a relatively stable portion of the
+vowel, generally a t the middle. To reduce interference by the second formant, the
+waveforms were bandpass filtered with a filter having a bandwidth of 600 Hz centered
+a t the first formant frequency. These 40 estimates were then averaged to obtain a
+mean value for each speaker. This analysis was restricted to the vowel /a?/ because
+for this vowel, the first formant is usually high enough so that two oscillations of the
+formant waveform occur during the closed part of the glottal vibratory cycle, and
+the second formant is well separated from the first.
+
+HI* - H2*. The difference between the amplitudes of the first and second harmonics was
+measured for all repetitions of all three vowels. For /z/, H1 - H2 was measured from
+the spectrum obtained by centering a 22.3 ms Hamming window during the initial
+part of the glottal cycle, a t the eight points where the F 1 bandwidth was estimated.
+For / A / and /E/, the measurements were taken a t three points in midvowel, 20 ms
+apart, where the formants were relatively stable. Corrections were made for the
+amounts by which H 1 and H2 are "boosted" by the first formant,' yielding the
+measure H l * - H2*. This corrected measure can be compared across vowels and
+Correction given in Appendix A.l
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+48
+
+across speakers. The values for each repetition were averaged to obtain a mean
+value for each vowel for each speaker.
+
+H l * - A l . The difference between the (corrected) amplitude of the first harmonic and
+the amplitude of the first formant peak ( A l ) was measured. A1 was estimated by
+measuring the amplitude of the strongest harmonic of the E l peak. The measurements were taken a t the same points as those for HI* - H2*, and similarly, average
+values were computed for the three vowels for each speaker.
+
+HI* - A3*. The difference between the amplitudes of the first harmonic and the third
+formant peak (A3) was measured. As was done for A l , A3 was estimated using the
+strongest harmonic of the E3 peak. H1 was corrected as above, and A3 was corrected
+For
+for the effect of E l and F2 on the spectrum amplitude of the third f ~ r m a n t . ~
+this normalization F 1 and F2 were set to 555 and 1665 Hz, respectively, based on the
+average F 3 measured for all speakers. As mentioned earlier, A3 is also dependant on
+the bandwidth of E3. House and Stevens (1958) measured F 3 bandwidths of male
+speakers for /z, A, r/ t o be 103,64, and 88 Hz, respectively. In dB this means that
+
+/z/is expected to have an F 3 amplitude that is 4 dB less than that of / A / , while
+that for /E/ is 3 dB less. For females speakers, the bandwidth values will be higher,
+but because data are not available for these vowels for female speakers, we made
+corrections based on the male data. This use of male data should result in minimal
+error because the ratio between the bandwidths is used to compute the difference
+in dB and this ratio is not expected to be very different across gender. Thus the
+value of A3 measured for each token of /z/ and /E/ was increased by 4 and 3 dB,
+respectively. The combination of these two corrections, for the location of F 1 and
+F2, and for the F3 bandwidth, yields a normalized HI* - A3*.
+Noise ratings. All repetitions of the three vowels were bandpass filtered around F3 us-
+
+ing a filter having a bandwidth of 600 Hz. The bandpass filtered waveforms and the
+speech spectra corresponding t o the speech segments used in the previously described
+measures were given ratings for noise, as described in Section 3.2.2.3. These judgCorrection given in Appendix A.2
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+49
+
+ments were made independently by two judges, who did not know which waveforms
+or spectra corresponded t o which speaker. Their average ratings were highly correlated ( T > 0.92) and were averaged to obtain two noise judgments for each speaker,
+one based on the waveforms and the other on the spectra. The waveform-based
+ratings were found to be well correlated with the spectrum-based ratings. Analysis of variance showed a significant difference between the two methods ( F = 64,
+p = 8.1 x
+
+for the vowel /&/. For / A / the results for the two measures were
+
+almost the same (F = 4.9, p = 0.04). For /z/ there was no significant difference
+( F = 0.08, p = 0.39).
+
+3.3.3
+
+Results
+
+3.3.3.1
+
+Mean values
+
+The mean values of the acoustic measurements for each speaker are summarized in Tables 3.2-3.4. Minimum and maximum values for each measure across speakers are given in
+boldface in these tables. HI* - H2* has a range of about 10 dB, corresponding roughly to
+a 40 percent range in open quotient (see Fig. 3.1). H I * - A3* has a range of about 26 dB,
+indicating a wide variation in spectral tilt among the subjects. This large range of spectral
+tilt is assumed t o be a consequence of the presence of a glottal chink or a nonsimultaneous
+closure along the length of the glottis, or both, for some speakers. The minimum value of
+tilt is 8.6 dB, about what might be expected for the case where there is complete, abrupt
+glottal closure during some part of the glottal cycle (see Section 3.2.1). The range of
+
+H l * - A 1 is 16 dB, as predicted earlier, and the minimum and maximum values are very
+close t o those predicted in Section 3.2.2.1, -11 and 5 dB. The range of values obtained
+suggests that first formant peaks vary from being very prominent for some speakers t o
+being highly damped for others, although part of this range can be due t o variation in the
+amplitude of H 1 and how well F1 is centered on a harmonic across speakers. This range of
+first-formant amplitudes presumably arises in part due t o a range of F1 bandwidths and
+in part due t o differences in the degree to which spectral tilt extends to the low frequency
+harmonics.
+The first-formant bandwidth estimates for /ze/ vary from 53 Hz t o 280 Hz. For the
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+Table 3.2: Average acoustic measures for the vowel / E / , 22 female speakers, where HI *- HZ*, H1 * - A l , and HI * - A3* are given in dB, N , and
+N, are the waveform- and spectra-based noise judgements, and B1 is the
+bandwidth of the first formant, given in Hz. Numbers in boldface represent
+maxima or minima for each measure across speakers.
+
+Subject
+
+HI*-H2*
+
+HI*-A1
+
+HI*-A3*
+
+N,
+
+N,
+
+B1
+
+F1
+
+3.5
+
+-0.2
+
+30.7
+
+3.0
+
+2.8
+
+194
+
+F2
+
+1.7
+
+0.4
+
+32.2
+
+2.8
+
+2.9
+
+244
+
+F3
+
+4.4
+
+-8.0
+
+32.1
+
+2.7
+
+2.8
+
+94
+
+F4
+
+1.6
+
+-5.7
+
+13.0
+
+1.6
+
+1.6
+
+209
+
+F5
+
+5.4
+
+2.2
+
+35.0
+
+3.8
+
+2.7
+
+245
+
+F6
+
+2.4
+
+-5.5
+
+23.0
+
+1.1
+
+1.1
+
+153
+
+F7
+
+3.8
+
+-1.3
+
+31.3
+
+3.1
+
+3.1
+
+150
+
+F8
+
+2.1
+
+-3.7
+
+32.6
+
+2.9
+
+2.7
+
+97
+
+F9
+
+2.8
+
+-7.2
+
+16.8
+
+1.2
+
+1.2
+
+104
+
+F10
+
+5.0
+
+3.9
+
+26.4
+
+2.2
+
+2.6
+
+184
+
+F11
+
+4.5
+
+-4.4
+
+19.5
+
+1.8
+
+2.1
+
+158
+
+F12
+
+0.7
+
+-5.6
+
+31.3
+
+2.4
+
+2.2
+
+217
+
+F13
+
+3.8
+
+-8.9
+
+19.4
+
+1.7
+
+1.2
+
+53
+
+F14
+
+5.2
+
+-11.3
+
+16.3
+
+1.1
+
+1.2
+
+78
+
+F15
+
+6.2
+
+0.3
+
+33.7
+
+3.1
+
+2.4
+
+256
+
+F16
+
+6.8
+
+1.2
+
+30.4
+
+2.3
+
+2.5
+
+132
+
+F17
+
+1.6
+
+-2.6
+
+22.0
+
+2.0
+
+1.8
+
+280
+
+F18
+
+4.5
+
+-2.2
+
+21.8
+
+2.0
+
+2.5
+
+163
+
+F19
+
+5.4
+
+-0.5
+
+24.3
+
+2.0
+
+2.0
+
+166
+
+F20
+
+0.9
+
+-6.2
+
+14.7
+
+1.7
+
+1.6
+
+178
+
+F21
+
+0.8
+
+-8.5
+
+17.9
+
+1.5
+
+1.4
+
+124
+
+F22
+
+0.6
+
+-9.2
+
+20.8
+
+1.4
+
+1.2
+
+149
+
+Mean
+
+3.4
+
+-4.2
+
+24.1
+
+2.1
+
+2.1
+
+165
+
+50
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+Table 3.3: Average acoustic measures for the vowel /A/, 22 female speakers, where H l * - Hz*, H I * - Al, and H1 * - AS* are
+given in dB, and N , and N, are the waveform- and spectra-based
+noise judgements. Numbers in boldface represent maxima or minima for each measure across speakers.
+
+Subject
+
+HI*- H2*
+
+HI*- A1
+
+HI*- A3*
+
+N,
+
+N,
+
+F1
+
+4.8
+
+2.8
+
+26.4
+
+3.0
+
+2.8
+
+F2
+
+1.2
+
+-0.3
+
+25.2
+
+2.7
+
+2.9
+
+F3
+
+3.6
+
+-1.7
+
+26.0
+
+2.7
+
+2.7
+
+F4
+
+-0.7
+
+-9.0
+
+10.9
+
+1.8
+
+1.3
+
+F5
+
+3.7
+
+1.5
+
+29.1
+
+2.3
+
+2.4
+
+F6
+
+3.0
+
+-6.6
+
+18.9
+
+1.4
+
+1.2
+
+F7
+
+1.8
+
+-1.0
+
+28.3
+
+3.2
+
+3.5
+
+F8
+
+3.0
+
+-2.7
+
+29.2
+
+2.5
+
+2.3
+
+F9
+
+1.5
+
+-6.4
+
+20.6
+
+1.7
+
+1.8
+
+F10
+
+3.1
+
+2.8
+
+24.7
+
+2.4
+
+2.3
+
+F11
+
+3.9
+
+-2.9
+
+22.0
+
+1.7
+
+2.1
+
+F12
+
+2.2
+
+-5.8
+
+22.9
+
+2.2
+
+1.9
+
+F13
+
+2.7
+
+-4.4
+
+15.5
+
+1.4
+
+1.1
+
+5'14
+
+5.1
+
+-11.9
+
+15.1
+
+1.4
+
+1.3
+
+F15
+
+3.6
+
+-4.0
+
+27.2
+
+2.9
+
+2.3
+
+F16
+
+5.8
+
+3.5
+
+24.6
+
+2.0
+
+2.3
+
+F17
+
+1.5
+
+-4.0
+
+22.7
+
+2.4
+
+1.7
+
+F18
+
+3.5
+
+-2.8
+
+18.5
+
+1.7
+
+2.0
+
+F19
+
+5.0
+
+1.3
+
+34.1
+
+3.5
+
+3.2
+
+F20
+
+-0.2
+
+-9.9
+
+14.9
+
+1.6
+
+1.7
+
+F2 1
+
+0.1
+
+-6.8
+
+20.5
+
+2.5
+
+1.6
+
+F22
+
+0.3
+
+-12.1
+
+14.8
+
+2.1
+
+1.2
+
+Mean
+
+2.6
+
+-4.1
+
+22.0
+
+2.2
+
+2.0
+
+51
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+Table 3.4: Average acoustic measures for the vowel /E/, 2d female speakers, where HI * - Hd*, H I *- A l , and HI * - AS* are
+given in dB, and N, and N, are the waveform- and spectra-based
+noise judgements. Numbers in boldface represent maxima or minima for each measure across speakers.
+1
+
+Subject
+
+HI*-H2*
+
+HI*-A1
+
+HI*-A3*
+
+N,
+
+N,
+
+F1
+
+6.3
+
+1.7
+
+28.8
+
+3.2
+
+2.9
+
+F2
+
+1.3
+
+-2.0
+
+27.4
+
+2.8
+
+2.1
+
+F3
+
+3.5
+
+-3.1
+
+31.9
+
+3.2
+
+3.1
+
+F4
+
+0.9
+
+-11.0
+
+8.6
+
+1.7
+
+1.1
+
+F5
+
+5.4
+
+3.7
+
+30.6
+
+3.2
+
+3.0
+
+F6
+
+3.3
+
+-9.0
+
+17.3
+
+1.4
+
+1.0
+
+F7
+
+3.1
+
+-2.5
+
+27.3
+
+3.6
+
+3.3
+
+F8
+
+2.6
+
+-3.8
+
+29.8
+
+2.4
+
+2.2
+
+F9
+
+3.0
+
+-4.3
+
+19.9
+
+2.2
+
+1.5
+
+F10
+
+6.5
+
+2.5
+
+22.6
+
+2.7
+
+2.5
+
+F11
+
+4.6
+
+-5.8
+
+18.0
+
+1.8
+
+1.7
+
+F12
+
+1.9
+
+-5.7
+
+26.0
+
+2.1
+
+1.6
+
+F13
+
+3.0
+
+-5.3
+
+16.0
+
+1.6
+
+1.1
+
+F14
+
+4.0
+
+-12.4
+
+16.6
+
+1.9
+
+1.2
+
+F15
+
+4.0
+
+-1.1
+
+30.2
+
+2.5
+
+1.9
+
+F16
+
+6.9
+
+- 1.6
+
+29.4
+
+2.9
+
+1.9
+
+F17
+
+2.4
+
+-5.3
+
+27.1
+
+2.7
+
+2.3
+
+F18
+
+4.2
+
+-3.7
+
+16.5
+
+1.6
+
+1.6
+
+F19
+
+5.1
+
+-3.9
+
+32.8
+
+2.8
+
+2.5
+
+F20
+
+-0.8
+
+-10.3
+
+13.7
+
+1.9
+
+1.4
+
+F21
+
+1.5
+
+-5.5
+
+20.4
+
+1.9
+
+1.2
+
+F22
+
+-2.6
+
+-6.7
+
+15.5
+
+1.7
+
+1.2
+
+Mean
+
+3.1
+
+-4.7
+
+22.5
+
+2.3
+
+1.9
+
+52
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+53
+
+Table 3.5:
+
+ResuNs of analyses of variance ( A N O V A s ) performed t o examine differences i n acoustic measures across vowels.
+
+Measure
+
+F
+
+P
+
+HI* - A3*
+
+5.255
+
+t0.009
+
+Waveform-based noise
+
+1.970
+
+0.152
+
+Spectra-based noise
+
+2.237
+
+0.119
+
+tin pairwise analysis, only / z / and /A/ are
+significantly different.
+
+speaker with the lowest value of bandwidth (53 Hz), this estimate is about what is expected
+for the closed-glottis condition (Fant, 1972). For speakers with higher values of bandwidth,
+losses must exist a t the glottis. Theoretical analysis of glottal losses indicates that a firstformant bandwidth of 280 Hz corresponds t o a minimum glottal opening of about 0.09 cm2
+(see Table 3.1), while 75 Hz corresponds t o about 0.01 cm2, so we have a range of glottal
+chink cross-sectional areas of about 0.08 cm2. The noise judgments range from 1.0 t o 3.8;
+that is, some of our speakers show little to no noise in the high frequency range, while
+other speakers have substantial noise.
+3.3.3.2
+
+Statistical analysis
+
+Analysis of variance was performed for all measures (except B1) to examine differences in
+parameter values among the different vowels. The results are summarized in Table 3.5. As
+seen in the table, across all vowels HI* - H2* and H l * - A3* were found t o be significantly
+different (p < 0.05). However, post-hoc analysis of variance for each vowel pair showed
+that the differences were significant only when comparing /a/and /A/. Thus, it would
+seem that the corrections made t o HI, H2,and A3 for vowel quality (see Section 3.3.2)
+were largely successful in minimizing differences across vowels. However there may be some
+effects of vocal-tract configuration on the glottal waveform that would lead to differences
+across vowels (Bickley and Stevens, 1986, 1987).
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+54
+
+Table 3.6 shows Pearson product moment correlation coefficients for the various measures for each vowel, while Table 3.7 shows the correlation coefficients for the three vowels combined. In the following discussion we consider a correlation with r greater than
+or equal to 0.70 t o be strong. The strongest correlation was found between the highfrequency noise ratings and the tilt measure, H l * - A3*. As mentioned earlier, this is not
+unexpected given that both tilt and noise are expected to increase with the area of a fixed
+glottal opening (see Table 3.1 and the discussion in Section 3.2.2). H l * - A1 also has
+a strong correlation with the spectra-based noise ratings. Again, this is predicted from
+earlier discussion (see Table 3.1 where B1 increases with Ach). For the vowels /A/ and
+/E/,
+
+HI* - A3* is well correlated with H l * - A l , but the correlation is only moderate for
+
+/=I. Finally, the correlation between Hl* - A1 and estimated F1 bandwidth for /z/ is
+moderate.
+It is striking that H l * - H2* is not well correlated with any other measure ( r < 0.59).
+One might expect a larger open quotient t o lead to greater losses and noise due to an
+increase in average glottal area. Although one might interpret this t o mean that H l * - H2*
+is not a good measure of open quotient, Holmberg et al. (in press) have found HI* - H2* t o
+be well correlated with open quotient in simultaneous observations of airflow and acoustic
+spectra for female speakers. Therefore it may be that open quotient is nearly independent
+of other glottal parameters. For example, a speaker may adjust her glottal configuration
+in such a way that a larger open quotient results while rate of decrease of flow a t glottal
+closure remains nearly the same. Thus HI* - H2* increases, but the tilt may stay nearly
+the same, changing only a small amount due t o a change in the skewness of the glottal
+pulse (speed quotient).
+For the combined vowels, the noise measures are strongly correlated ( r > 0.70) with
+the tilt measure, and the spectra-based noise measure is strongly correlated with the
+H l * - A1 (BW) measure. In addition, HI* - A1 has a fairly good correlation ( r = 0.68)
+with the tilt measure H l * - A3*.
+
+C H A P T E R 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+Table 3.6: Pearson product moment correlation coeficients ( r ) for
+the various acoustic measures for each of the three vowels / E , A, E/.
+Numbers in boldface represent strong correlations (r > 0.70). The
+notation n.s. indicates that a correlation was not significant.
+
+55
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+56
+
+Table 3.7: Pearson product moment correlation coefficients ( r )
+for the various acoustic measures for the three vowels /ae, A, E/
+combined. Numbers i n boldface represent strong correlations (r >
+0.70).
+
+3.3.3.3
+
+Interpretation of acoustic measurements
+
+In order to gain a better understanding of the correlations reported in Table 3.7, and t o
+perhaps be able t o interpret the acoustic measurements in terms of glottal configurations,
+we examined scatterplots of measures that were well correlated with each other.
+Figure 3.12(a) plots H l * - A3* against H l * - A l . Almost all of the data points with
+HI* - A1 less than about -6 dB have an HI* - A3* measure less than about 23 dB,
+while all of the data points with HI* - A1 greater than about -2 dB have an H l * - A3*
+measure greater than about 23 dB. Note that the highest H l * - A3* measure expected
+for speakers with a posterior glottal opening and simultaneous closure of the membranous
+part of the folds is about 25 dB (see Section 3.2.2.2). Based on this observation, we divided
+the d a t a points into two groups, depending on whether HI* - A3* was less than or equal
+t o 23 dB (Group 1) or greater than 23 dB (Group 2). Analysis of the two groups revealed
+that for 19 speakers, all three data points fell into either one group or the other, but not
+both. Data points for the other three speakers (F10, F 1 2 , F 1 7 ) fell into both groups.
+Because subjects F 1 0 and F 1 2 had only one point each in Group 1, they were assigned
+t o Group 2. Speaker F17 had two points in Group 1, so she was assigned t o that group.
+Figure 3.12(b) shows a second version of Fig. 3.12(a) where d a t a points for Group 1
+speakers are represented by closed circles and those for Group 2 are represented by open
+circles. From Fig. 3.12(b), we see that the 11 speakers in Group 1 have relatively low
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+-1s
+
+-10
+
+-6
+
+Hl'.Al'
+
+0
+
+s
+
+0
+
+s
+
+57
+
+(dB)
+
+..
+-1s
+
+-10
+
+-5
+
+HI'-Ale (dB)
+
+Figure 3.12: (a) Relation between HI*- A3* and HI*- A1. (b) Same as (a), but data points for
+Group 1 are displayed as closed circles and data points for Group 2 are displayed as open circles
+(see text). (c) A line of slope one has been drawn through the data points for Group 1, showing
+the theoretically predicted relationship between spectral tilt and the amplitude of the first formant.
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+58
+
+values of HI* - A3* and HI* - A l . That is, speakers in this group have shallow spectral
+tilts and prominent first-formant peaks. Therefore, this group can be hypothesized t o
+have abrupt glottal closures. Some speakers may also have posterior glottal chinks, which
+would account for the range of HI* - A3* (about 15 dB) and H l * - A1 (about 11 dB)
+that is present.
+Speakers in Group 2, indicated by open circles, have much higher values of HI* - A3*,
+that is, steeper spectral tilts. From these values, we surmise that the glottal closure
+is not simultaneous along the length of the membranous part of the vocal folds. This
+nonsimultaneous closure is probably due to the glottis being spread at the vocal processes,
+although the folds could also close nonabruptly when the vocal processes are approximated.
+The higher values of H l * - A1 for Group 2 speakers are due t o two influences on A l :
+(1) the first formant has an increased bandwidth because there are greater losses associated
+with the glottal configuration in which the vocal processes are spread, and (2) the spectral
+tilt is so steep that its influence extends down into the first-formant range. There is no
+upward trend between H l * - A1 and H l * - A3* for Group 2. This may be because for
+these speakers, the source spectral tilt and the prominence of the first-formant peak are
+influenced by both posterior glottal opening and nonsimultaneous closure, but the effect of
+the nonsimultaneous closure is independant of the effect of the posterior glottal opening.
+From Table 3.1 we see that if the bandwidth of the first formant ( B l ) is expressed
+on a log (dB) scale, then B1 and H l * - A3* should increase together with a slope of 1
+for speakers who have abrupt glottal closure. In Fig. 3.12(c) a line with slope 1 has been
+drawn through the data and is seen t o fit nicely with the Group 1 points. This result is
+evidence that Group 1 speakers have abrupt glottal closure and posterior glottal openings
+that range in size across speakers.
+Figure 3.13 shows the relation between the two types of noise judgments and the tilt
+parameter HI* - A3*. Recall that there was a high correlation between these quantities.
+This figure is also divided into the two groups of speakers of the previous figures. Speakers
+with greater degrees of tilt show greater amounts of noise in their speech signals, as
+predicted from the theoretical discussion earlier in this chapter. From Fig. 3.11, we see
+that noise ratings of 2 and 3 correspond to harmonics-to-noise ratios of about 2 and
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+59
+
+-10 dB, respectively. For about half of our female speakers, then, the harmonics-to-noise
+ratio in the third-formant range was greater than 2 dB. A regression line ( r 2 = 0.62) has
+been drawn through the points in Fig. 3.13.
+In Fig. 3.14 the parameter H l * - A1 is plotted against F 1 bandwidth (on a log scale)
+as measured in the first part of the glottal cycle for the 22 speakers producing the vowel
+/z/.The d a t a are presented t o indicate which points belong t o Group 1 and Group 2
+
+speakers. A line of slope 1is drawn through the d a t a t o represent the relationship expected
+based on the theoretical development. There seems t o be a trend toward a decrease in F 1
+prominence (that is, a decrease in A l ) as the F 1 bandwidth increases, but the correlation
+is only moderate ( T = 0.61, p < 0.01). The relatively weak correlation may be due to the
+fact that the prominence of A1 depends on the entire glottal cycle, whereas the bandwidth
+measure is based only on the closed (or minimum glottal area) part of the glottal cycle.
+Thus, A1 is influenced by the open quotient and the glottal aperture during the open
+phase, but the F 1 bandwidth measure is not. In addition, other factors, such as spectral
+tilt, may reduce A l . In fact, given these influences, it is not surprising that the Group 1
+d a t a in Fig. 3.14 appears t o be better correlated than the Group 2 data.
+For one speaker (F13) the bandwidth is sufficiently small (53 Hz) that complete glottal
+closure can be assumed during a portion of the glottal cycle. This speaker is from Group 1.
+For speakers with higher bandwidth and Hl* - A1 measures, it is reasonable t o assume
+that the source of loss is an incomplete glottal closure. Two speakers from Group 2
+( F 3 and F 8 ) have fairly narrow bandwidths (94 and 97 Hz), although this would not
+be expected given our hypothesis that Group 2 members have abduction a t the vocal
+processes. The HI* - A1 measure for these speakers indicates that A1 is indeed quite
+prominent, consistent with the narrow bandwidth. The findings for these speakers may
+indicate that their glottal closure is characterized by adducted vocal processes with no
+posterior glottal chink, but nonsimultaneous closure within t h e membranous portion. This
+interpretation might explain the narrow first-formant bandwidths, and consequently, high
+first-formant amplitudes, and steep spectral tilts that these two speakers exhibit.
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+I
+
+Group 1 waveform
+
+.
+I
+
+Group 1 spectra
+
+I
+
+!
+
+17
+
+!
+
+0.5
+
+-I
+5
+
+j
+
+Group 2 spectra
+
+-
+
+Predict!
+
+noise
+
+I
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40
+
+HIg-A3* (dB)
+
+Figure 3.13: Relation between noise judgments and H I * - A3*, together with a regression line
+(r2 = 0.62). Points represented as circles are judgments based on waveforms and the squares are
+based on spectra. Closed points represent Group I daia, while open points represent Group 2 data.
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+32 !
+-1 3
+
+-8
+
+-3
+
+I
+
+I
+
+2
+
+7
+
+Ir/
+
+Group 1
+
+I
+
+Group 2
+
+0
+
+61
+
+Theoretical
+
+I1
+
+HI*-A1 (dB)
+
+Figure 3.14: Relation between H I * - A1 and F l bandwidth (on a log scale) as measured from the
+waveform. The data are from speakers producing the vowel /z/.Data points for Group 1 members
+are represented by closed circles, while those for Group 2 members are represented by open circles.
+A straight lone representing the theoretical relationship has been drawn through the data.
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+3.4
+
+62
+
+Summary
+
+In the earlier part of this chapter we gave theoretical background describing how glottal
+characteristics may be manifested in the speech spectrum or waveform. As a result of this
+theoretical development, we suggested several measures to be made on the spectrum and
+waveform that might be suitable for obtaining glottal parameters. We also predicted how
+some of these measures might be related, and gave ranges of values that might be expected
+in natural speech of females. These measures were then used to analyze the steady state
+portion of vowels excised from the speech of 22 female subjects.
+The results show substantial individual differences in several of the parameters. These
+differences are in line with the ranges that were predicted in the theoretical development.
+In particular, minimum values of the tilt measure H l * - A3* and the waveform-based
+bandwidth measure B1 are very close to those predicted. The maximum value of B1 is close
+t o that derived from minimum (DC) airflow measures that have been reported (Holmberg
+et al., 1994), and the maximum value of H l * - A3* measured seems reasonable given
+our earlier discussion. The range of values obtained for the spectrum-based bandwidth
+measure HI* - A1 is the range that was predicted, and the minimum and maximum
+values are within 1 dB of those predicted. In addition, several of the acoustic measures
+are correlated as predicted from theory. The tilt measure HI* - A3* and the noise ratings
+Nw and Ns are strongly correlated. H l * - A3* is also relatively strongly correlated with
+one of the first-formant bandwidth measures, H l * - A l , and the noise ratings also tend
+to have a good to strong correlation with H l * - A l .
+Using the acoustic measures, we were able to divide the 22 subjects into two hypothetical groups. Group 1, with 11 speakers, is hypothesized t o have abrupt glottal closure.
+Based on the measure B1, one speaker in this group seems t o have complete closure during
+some part of the glottal cycle. The other speakers have larger B1 values, and thus are
+thought t o have some losses at the glottis due to glottal chinks. The ranges of values
+obtained for the two bandwidth measures, the tilt measure, and the noise ratings, suggest
+that the glottal losses, and thus the size of these glottal chinks, vary from subject t o subject. In Section 3.2.2.2 we suggested that 16 dB might be a maximum value expected for
+additional tilt due to a glottal chink, and, in fact, the additional tilt observed for speakers
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+63
+
+a t the extreme for this group is about 15 dB. The maximum B1 that would be predicted
+given this amount of additional tilt is about 225 Hz (see Table 3.1), while the maximum
+B1 measured for this group is about 210 Hz.
+Group 2 also includes 11 speakers, and due to their higher values of additional tilt, we
+assume that these speakers have both glottal chinks and nonsimultaneous closure of the
+membranous part of the folds. The generally higher B1 measures suggest greater losses
+a t the glottis, rob ably due to a fixed opening that extends t o the vocal processes, which
+would cause the nonsimultaneous closure. However, two members of this group have fairly
+narrow first-formant bandwidths and lower HI* - A1 measures, suggesting that these two
+speakers may have a glottal configuration consisting of approximated vocal processes,
+nonsimultaneous closure, and, possibly, a glottal chink.
+Our results are satisfying in that the ranges of observed values and the relationships
+between these values are in line with the predictions based on our theoretical development. However, these results and our interpretation of the data have raised additional
+questions, prompting further investigation. First, we have made hypotheses about the
+glottal configurations of our subjects, splitting them into two groups. The question arises
+as to how valid this classification is. In an attempt to answer this question, we have performed physiological measures on a subset of the subjects. These measures include glottal
+waveform parameters obtained by inverse filtering of vocal tract airflow, and observation
+of the vocal folds during phonation, via fiberscopy. This experiment and its results are
+reported in Chapter 4. Second, the hypothesized difference in vocal fold configuration
+would predict that members of Group 2 have a breathier voice quality than do members
+of Group 1. We have performed a listening test to investigate this possibility. This test is
+described in Chapter 5.
+Finally, the wide ranges of parameter values that we have observed suggest that consideration of glottal characteristics has great importance for describing female speech and,
+in addition t o formant frequencies and fundamental frequency, should be taken into account for applications such as synthesis and recognition of speech and speakers. We have
+performed a synthesis experiment using our measures of glottal characteristics t o guide
+the synthesis of the vowels /A, E / of six of our speakers. The success of this synthesis was
+
+CHAPTER 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+64
+
+judged by a number of subjects in a listening test. This experiment and the results are
+also presented in Chapter 5.
+
+Chapter 4
+
+Physiological measures
+4.1
+
+Introduction
+
+In Chapter 3 we made acoustic measurements on the speech waveforms and spectra of
+a group of 22 female speakers, and from these measurements we made hypotheses about
+
+their glottal configurations and waveforms. In this chapter we turn to more direct, physiological measures of glottal characteristics in order t o gain some insight into the acoustic
+measurements and, perhaps, validate our hypotheses. One method is based on oral airflow
+and intraoral pressure. These are measured during speech production via a Rothenberg
+mask (Rothenberg, 1973), shown earlier in Fig. 2.5. The glottal waveform is obtained by
+inverse filtering of the oral airflow measured during phonation; that is, the effects of the
+formants are removed, and glottal parameters can be extracted from this waveform and its
+derivative. Figure 4.1 shows a schematic of a glottal waveform and its derivative. Glottal
+waveform parameters that are of special interest are illustrated. In the second method,
+a fiberscope is inserted through the nasal cavity and positioned above the vocal folds so
+that the folds can be observed during phonation. The fiberscope system is schematicized
+in Fig. 2.6. As we discussed in Chapter 2, these two methods are well established and
+have been used in many studies to measure characteristics of vocal-fold vibration (see, for
+example, Karlsson, 1986, 1988; Holmberg et al., 1988, in press; Gauffin and Sundberg,
+1989; Sodersten and Lindestad, 1990; Kiritani et al., 1990).
+Our subjects for this additional analysis came from both groups of speakers, those assumed to have abrupt glottal closure and those assumed to have nonsimultaneous closure.
+Based on these groupings, we had some expectations about the results. For one, we ex-
+
+CHAPTER 4. PHYSIOLOGICAL MEASURES
+
+n
+U
+
+w
+
+3'
+0
+
+DC flow
+
+A
+
+I
+
+I
+I
+I
+
+I
+
+I, tl
+I
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+&
+
+I
+I
+
+Figure 4.1: Schematic of a glottal waveform U g ( t ) ,and its derivative d U g / d t , synthesized using
+the KLSYN88 formant synthesizer (Klatt and Klatt, 1988). The glottal parameters AC flow, DC
+flow, MFDR, and the pitch period T are indicated. Speed quotient is defined as t l l t 2 (ratio of rise
+time to fall time), and open quotient is defined as ( t l + t 2 ) / T (ratio of open time to pitch period).

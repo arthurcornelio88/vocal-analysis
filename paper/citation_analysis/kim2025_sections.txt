@@ -1,0 +1,31 @@
+Conclusion
+
+3. Investigation of the intractability of the
+model, particularly for the SVM, to
+understand which spectral features are
+most important for register classification.
+
+In this paper, we have presented two machine learning approaches to vocal register classification that show great promise,
+achieving high accuracy while maintaining
+good generalization. The SVM has shown
+itself to be the preferred analysis option at
+the present moment, but the strengths of
+CNNs provide a solid foundation for this
+task, and show promise of a more robust
+tool that could be leveraged across a greater
+variety of vocal music. Additionally, we
+briefly discussed the potential for real-world
+applications and the development of AVRA
+for analysis of male pop music, and how this
+methodology could impact vocal pedagogy
+and music production, providing tools for
+both learning and creative applications in
+the realm of vocal performance.
+
+4. Comparison with other machine learning architectures, such as recurrent
+neural network or transformer variants,
+which might better capture temporal
+dependencies in the audio signal.
+5. Continued refinement of the AVRA application for singers and vocal coaches,
+leveraging its practical advantages.
+================================================================================

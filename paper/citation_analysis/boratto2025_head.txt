@@ -1,0 +1,100 @@
+Article
+
+Machine Learning with Evolutionary Parameter Tuning for
+Singing Registers Classification
+Tales Boratto 1 , Gabriel de Oliveira Costa 2 , Alexsandro Meireles 3 , Anna Klara Sá Teles Rocha Alves 4 ,
+Camila M. Saporetti 5 , Matteo Bodini 6, * , Alexandre Cury 7 and Leonardo Goliatt 7
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+*
+
+Academic Editors: Alexander Kocian
+and Constantine Kotropoulos
+Received: 31 December 2024
+Revised: 4 February 2025
+Accepted: 18 February 2025
+Published: 21 February 2025
+
+Graduate Program in Computational Modeling, Federal University of Juiz de Fora,
+Juiz de Fora 36036-900, MG, Brazil; tales.boratto@estudante.ufjf.br
+Department of Mechatronics Engineering, Federal Institute of Southeast Minas Gerais,
+Juiz de Fora 36080-001, MG, Brazil; gabrieloliveira@grupocsc.com.br
+Department of Languages and Literature, Federal University of Espírito Santo, Vitória 29075-910, ES, Brazil;
+meirelesalex@gmail.com
+Graduate Program in Nursing, Federal University of Juiz de Fora, Juiz de Fora 36036-900, MG, Brazil;
+alves.anna@estudante.ufjf.br
+Department of Computational Modeling, Polytechnic Institute, Rio de Janeiro State University,
+Nova Friburgo 22000-900, RJ, Brazil; camila.saporetti@iprj.uerj.br
+Dipartimento di Economia, Management e Metodi Quantitativi, Università degli Studi di Milano,
+Via Conservatorio 7, 20122 Milano, Italy
+Department of Computational and Applied Mechanics, Federal University of Juiz de Fora,
+Juiz de Fora 36036-900, MG, Brazil; alexandre.cury@ufjf.br (A.C.); leonardo.goliatt@ufjf.br (L.G.)
+Correspondence: matteo.bodini@unimi.it
+
+Abstract: Behind human voice production, a complex biological mechanism generates
+and modulates sound. Recent research has explored machine-learning (ML) techniques to
+analyze singing-voice characteristics. However, the classification efficiency reported in such
+research works suggests the possibility of improvement. In addition, there is also scope for
+further improvement through the application of still under-utilized optimization techniques.
+Thus, the present article proposes a novel approach that leverages the Differential Evolution
+(DE) algorithm to optimize hyperparameters within three selected ML models, with the aim
+of classifying singing-voice registers i.e., chest, mixed, and head registers). To develop the
+present study, a dataset of 350 audio files encompassing the three aforementioned registers
+was constructed. Then, the TSFEL Python library was employed to extract 14 pieces of
+temporal information from the audio signals for subsequent classification by the employed
+ML models. The obtained findings demonstrated that the Extreme Gradient Boosting
+model, optimized with DE, achieved an average classification accuracy of 97.60%, thus
+indicating the efficacy of the proposed approach for singing-voice register classification.
+
+Citation: Boratto, T.; Costa, G.d.O.;
+Meireles, A.; Alves, A.K.S.T.R.;
+Saporetti, C.M.; Bodini, M.; Cury, A.;
+Goliatt, L. Machine Learning with
+
+Keywords: singing registers; machine learning; differential evolution; classification;
+optimization
+
+Evolutionary Parameter Tuning for
+Singing Registers Classification.
+Signals 2025, 6, 9. https://doi.org/
+10.3390/signals6010009
+Copyright: © 2025 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license
+(https://creativecommons.org/
+
+1. Introduction
+Behind the apparent simplicity of the sound of the human voice lies an intricate interplay of resonances that both mold and define the unique quality of each voice. According
+to [1], the human phonation system is made up of three parts: (I) the respiratory system,
+(II) the pair of vocal folds, and (III) a system of cavities, i.e., the vocal tract. Since the
+respiratory system performs the function of a compressor by compressing the air stored
+in the lungs, only the last two mentioned parts contribute directly to the formation of the
+
+licenses/by/4.0/).
+
+Signals 2025, 6, 9
+
+https://doi.org/10.3390/signals6010009
+
+Signals 2025, 6, 9
+
+2 of 22
+
+vocal timbre. Indeed, the pair of vocal folds are responsible for generating sound through
+vibrations that interrupt the airflow from the lungs in a sequence of air pulses.
+The vocal tract includes the oral and nasal cavities, the pharynx, and the larynx,

@@ -116,7 +116,7 @@ vocal analysis. XGBoost algorithms optimized by Differential Evolution have achi
 vocal register classification accuracy exceeding 97\% in controlled
 settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
 Linear Prediction (LPC) enable robust formant tracking even in high-pitched
-voices.\cite{alku2023} These tools, combined with neural source separation
+voices.\cite{alku2023,gowda2022} These tools, combined with neural source separation
 models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
 now enable rigorous biomechanical analysis of singing in genres that were previously
 inaccessible to computational methods.
@@ -136,7 +136,7 @@ This study fills a gap in the literature by providing the first computational
 bioacoustic analysis of Brazilian Choro singing. While recent work has applied
 machine learning to vocal register classification in contemporary pop
 music,\cite{kim2025} controlled singing experiments,\cite{boratto2025} and singing voice
-mode classification,\cite{sol2023} no
+mode classification,\cite{hinrichs2026} no
 previous study has addressed the specific acoustic challenges of historical Choro
 recordings or the theoretical implications for \emph{Fach} critique in vernacular
 genres. The novelty of this research lies in the application of a hybrid pipeline
@@ -212,8 +212,8 @@ Four mechanisms are defined:
     popular music but marginalized in traditional \emph{bel canto}.
   \item[M1 (chest/modal voice):] Dominated by thyroarytenoid muscle contraction,
     producing thick vocal fold vibration with high closed quotient. M1 generates
-    rich harmonic spectra with high spectral energy in low harmonics, typically
-    elevated harmonicity-to-noise ratio (HNR), and strong acoustic
+    rich harmonic spectra with high spectral energy in low harmonics, increased
+    harmonic richness in high frequencies, and strong acoustic
     projection.\cite{henrich2004}
   \item[M2 (head voice/falsetto):] Operates under cricothyroid muscle tension with
     reduced vibratory mass. M2 produces lower overall amplitude, energy concentrated
@@ -314,7 +314,7 @@ Choro recordings.
 \paragraph{Vocal quality features.}
 Using Praat via Parselmouth,\cite{boersma2023} we extracted: Harmonicity-to-Noise
 Ratio (HNR), Cepstral Peak Prominence Smoothed (CPPS),\cite{maryn2015} Jitter
-(ppq5), and Shimmer (apq11).\cite{teixeira2013} Formants $F_1$--$F_4$ were extracted via
+(ppq5), and Shimmer (apq11).\cite{teixeira2013,boersma2023} Formants $F_1$--$F_4$ were extracted via
 Burg Linear Predictive Coding (5 formants, maximum formant 5,500~Hz). RMS spectral
 energy was computed using librosa.
 
@@ -322,13 +322,13 @@ energy was computed using librosa.
 Four spectral features, each with established physiological correlates, were
 extracted for the Vocal Mechanism Index:
 
-\emph{Alpha Ratio}\cite{sundberg2006}: the energy ratio (dB) between the high band
+\emph{Alpha Ratio}\cite{sundberg1987,yousef2024}: the energy ratio (dB) between the high band
 (1--5~kHz) and the low band (50~Hz--1~kHz). In M1, rapid and firm glottal closure
 generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
 gentle closure concentrates energy in the fundamental, yielding a low ratio.
 
 \emph{$H_1$-$H_2$}\cite{kreiman2012,kreiman2014}: the amplitude difference (dB) between
-the first harmonic ($H_1 = f_0$) and the second harmonic ($H_2 = 2f_0$), the most direct
+the first harmonic ($H_1 = f_0$) and the second harmonic ($H_2 = 2f_0$), a well-established
 acoustic correlate of the glottal adduction pattern. Firm adduction (M1) produces
 abrupt airflow closure and strong harmonics, so $H_2$ approaches $H_1$ in amplitude (low
 $H_1$-$H_2$). Light adduction (M2) produces a dominant fundamental with weak harmonics
@@ -336,7 +336,7 @@ $H_1$-$H_2$). Light adduction (M2) produces a dominant fundamental with weak har
 may coincide with the first vocal tract resonance ($F_1$), contaminating the
 measurement.\cite{kreiman2012}
 
-\emph{Spectral Tilt}\cite{fant1995,gauffin1989}: the slope of the linear regression
+\emph{Spectral Tilt}\cite{degottex2011,drugman2019}: the slope of the linear regression
 fitted to the power spectrum (log-frequency vs.\ amplitude in dB) in the 50--5,000~Hz
 range. Spectral tilt measures the rate at which vocal energy decays in high
 frequencies. In M1, rapid glottal closure creates discontinuities in airflow that
@@ -380,10 +380,9 @@ with hyperparameters: \texttt{n\_estimators=100}, \texttt{max\_depth=5},
 \texttt{learning\_rate=0.1}. Data were split 80\%/20\% for training and testing
 (\texttt{random\_state=42}).
 
-We acknowledge that results are reported for a single random seed. Per the
-methodological recommendations of Ghasemzadeh et al.\cite{ghasemzadeh2023} and
-Gupta et al.,\cite{gupta2024} future work should evaluate performance across
-multiple seeds and report mean $\pm$ standard deviation. Additionally, as XGBoost is
+We acknowledge that results are reported for a single random seed. Future work
+should evaluate performance across multiple seeds and report mean $\pm$ standard
+deviation. Additionally, as XGBoost is
 trained on GMM outputs rather than ground-truth labels, the reported metrics reflect
 cluster separability rather than physiological classification accuracy.
 
@@ -404,7 +403,7 @@ thresholds, making it applicable across voice types and genres.
 The complete analysis pipeline is implemented in Python 3.10+ and is publicly
 available as an open-source repository.\footnote{\url{https://github.com/arthurcornelio88/vocal-analysis}} Several measures ensure reproducibility in
 accordance with current best practices for machine learning in voice
-research:\cite{ghasemzadeh2023,gupta2024}
+research:
 
 \begin{enumerate}
   \item \textbf{Deterministic computation:} All stochastic processes use fixed random
@@ -780,7 +779,7 @@ tessitura-independent by construction, as they measure relative energy distribut
 and glottal behavior patterns rather than absolute frequency values. The same
 spectral tilt indicating firm M1 closure in a bass at 120~Hz applies equally to a
 soprano at 500~Hz---the underlying physics of glottal closure is mechanism-dependent,
-not frequency-dependent.\cite{fant1995,gauffin1989}
+not frequency-dependent.\cite{degottex2011,drugman2019}
 
 \subsection{Limitations}
 \label{sec:limitations}
@@ -825,10 +824,8 @@ recording eras.
 
 \paragraph{Single random seed.}
 Results for the GMM and XGBoost models are reported for a single random seed
-(\texttt{random\_state=42}). Per the recommendations of Ghasemzadeh et
-al.\cite{ghasemzadeh2023} and Gupta et al.,\cite{gupta2024} future work
-should evaluate model stability across multiple seeds and report mean $\pm$ standard
-deviation of evaluation metrics.
+(\texttt{random\_state=42}). Future work should evaluate model stability across
+multiple seeds and report mean $\pm$ standard deviation of evaluation metrics.
 
 \paragraph{VMI fixed weights.}
 The current VMI implementation uses heuristic weights for its four spectral
@@ -884,7 +881,7 @@ heuristic---should be optimized via supervised learning using EGG-validated labe
 potentially through the evolutionary parameter tuning approach demonstrated by
 Boratto et al.\cite{boratto2025} Fourth, model stability should be evaluated across
 multiple random seeds, with mean $\pm$ standard deviation of classification metrics
-reported per current best practices.\cite{ghasemzadeh2023,gupta2024} Fifth, the
+reported. Fifth, the
 pipeline should be applied to other microphone-dependent genres---MPB, fado, vocal
 jazz, sacred music---to assess the VMI's cross-genre portability.
 

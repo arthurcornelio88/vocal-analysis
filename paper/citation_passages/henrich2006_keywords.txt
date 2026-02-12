@@ -1,0 +1,88 @@
+=== Recherche de mots-clés pour henrich2006 ===
+--- abstract ---
+Laboratoire d’Acoustique Musicale, Paris, France
+
+Abstract
+Starting from Garcia’s definition, the historical evolution of the notion of vocal registers from then until now is considered.
+Even though much research has been carried out on vocal registers since then, the notion of registers is still confused in the
+
+--- introduction ---
+Key words: Laryngeal mechanism, singing voice, vocal register
+
+Introduction
+Before the nineteenth century, knowledge about
+human phonation was limited to what could be
+--
+
+From Garcia to the 1960s
+As mentioned in the introduction, the singing
+teacher Manuel Garcia in 1847 is considering three
+main different registers, chest , falsetto-head and
+
+--- conclusion ---
+the vibratory pattern of the vocal folds and the
+influence of the subglottal resonance. He came to
+the conclusion that the mid register may not be
+considered as a distinct register (9). The physician
+Minoru Hirano, together with two voice teachers
+--
+shown in Figure 1.
+
+Conclusion: what are the vocal registers?
+In his time, Garcia was distinguishing vocal registers
+on the basis of a ‘mechanical principle’ which he
+--
+singer manages to mimic the voice quality of a given
+register while using an inappropriate laryngeal mechanism.
+Conclusion
+Since Garcia, knowledge about singing voice registers has evolved, thanks to the development of new
+experimental techniques. Yet, the controversy about
+
+--- method ---
+experiments on the human voice to the French
+Académie des Sciences (1), prior to the publication
+of his famous singing voice method Ecole de Garcia:
+Traité complet de l’art du chant (2). In this paper, he
+claims that the human voice is composed of different
+--
+Figure 4. Illustration of vocal registers transition phenomena on a glissando sung by a counter tenor (A) with a pitch jump and a noticeable
+timbre change, (B) without any noticeable break. The top panel shows the time-frequency analysis, the middle panel the EGG signal, and
+the bottom panel the EGG measured open quotient. Two methods have been used to measure open quotient: on the EGG signal, using a
+35% threshold method, and on the DEGG signal, using the DECOM method (55). The determination of the underlying laryngeal
+mechanism (M1 or M2) is based on the EGG detected laryngeal transitions.
+
+
+--- result ---
+not only an interest in the voice sound quality but
+also in the underlying vocal physiology mechanisms.
+On November 16th, 1840, he presented the results
+of his observations as a voice teacher and his
+experiments on the human voice to the French
+--
+rationale on physiological observations of the larynx
+position, he demonstrated that the falsetto and head
+registers result from the same laryngeal mechanism,
+their difference being a timbre effect.2
+Nowadays, we have experimental techniques to
+--
+
+Detection of transition phenomena
+A transition phenomenon may result from psychoacoustic properties of human perception. The ‘periodicity transition’ distinguished by Titze (18,19) is
+an example of such a transition. It refers to ‘changes
+in vocal quality that occur whenever glottal pulses
+--
+defines the pulse-chest registers boundaries on the
+basis of this periodicity transition.
+
+--- discussion ---
+contre-basse , the other possible registers, such as
+voix mixte , sharing similar mechanical principle
+with these main ones (for a detailed discussion about
+Garcia’s falsetto-head register, we refer the reader to
+(3)). The frequency ranges of these registers are
+--
+among the voice community, and it may have
+contributed to the emergence of an international
+discussion. In the late 1970s, spurred on by the
+Collegium Medicorum Theatri (CoMeT), an international organization composed of physicians, voice
+scientists, voice coaches and voice pathologists, a

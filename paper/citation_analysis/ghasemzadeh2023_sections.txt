@@ -1,0 +1,31 @@
+Jones, S., Carley, S., & Harrison, M. (2003). An introduction to power and sample size estimation.
+Emergency Medicine Journal: EMJ, 20(5), 453.
+Kapoor, S., & Narayanan, A. (2022). Leakage and the reproducibility crisis in ML-based science. ArXiv
+Preprint ArXiv:2207.07048.
+Kist, A. M., Gómez, P., Dubrovskiy, D., Schlegel, P., Kunduk, M., Echternach, M., Patel, R., Semmler,
+M., Bohr, C., Dürr, S., & others. (2021). A deep learning enhanced novel software tool for laryngeal
+dynamics analysis. Journal of Speech, Language, and Hearing Research, 64(6), 1889–1903.
+Krstajic, D., Buturovic, L. J., Leahy, D. E., & Thomas, S. (2014). Cross-validation pitfalls when selecting
+and assessing regression and classification models. Journal of Cheminformatics, 6(1), 1–15.
+Le, D., Licata, K., Persad, C., & Provost, E. M. (2016). Automatic assessment of speech intelligibility for
+individuals with aphasia. IEEE/ACM Transactions on Audio, Speech, and Language Processing,
+24(11), 2187–2199.
+Lenatti, M., Moreno-Sánchez, P. A., Polo, E. M., Mollura, M., Barbieri, R., & Paglialonga, A. (2022).
+Evaluation of machine learning algorithms and explainability techniques to detect hearing loss from
+a speech-in-noise screening test. American Journal of Audiology, 31(3S), 961–979.
+Liu, X., Faes, L., Kale, A. U., Wagner, S. K., Fu, D. J., Bruynseels, A., Mahendiran, T., Moraes, G.,
+Shamdas, M., Kern, C., & others. (2019). A comparison of deep learning performance against
+health-care professionals in detecting diseases from medical imaging: a systematic review and metaanalysis. The Lancet Digital Health, 1(6), e271–e297.
+Lowry, R. (2014). Concepts and applications of inferential statistics.
+Marcot, B. G., & Hanea, A. M. (2021). What is an optimal value of k in k-fold cross-validation in discrete
+Bayesian network analysis? Computational Statistics, 36(3), 2009–2031.
+Matikolaie, F. S., & Tadj, C. (2022). Machine learning-based cry diagnostic system for identifying septic
+newborns. Journal of Voice.
+Mehta, D. D., Van Stan, J. H., Zañartu, M., Ghassemi, M., Guttag, J. V, Espinoza, V. M., Cortés, J. P.,
+Cheyne, H. A., & Hillman, R. E. (2015). Using ambulatory voice monitoring to investigate common
+voice disorders: Research update. Frontiers in Bioengineering and Biotechnology, 3, 155.
+Menard, S. (2002). Applied logistic regression analysis (Issue 106). Sage.
+
+Mielens, J. D., Hoffman, M. R., Ciucci, M. R., McCulloch, T. M., & Jiang, J. J. (2012). Application of
+classification models to pharyngeal high-resolution manometry.
+================================================================================

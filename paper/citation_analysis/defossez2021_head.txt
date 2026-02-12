@@ -1,0 +1,100 @@
+Hybrid Spectrogram and Waveform Source Separation
+Alexandre Défossez1
+1 Facebook AI Research
+
+arXiv:2111.03600v3 [eess.AS] 30 Aug 2022
+
+License
+Authors of papers retain
+copyright and release the work
+under a Creative Commons
+Attribution 4.0 International
+License (CC BY 4.0).
+In partnership with
+
+Abstract
+Source separation models either work on the spectrogram or waveform domain. In this work,
+we show how to perform end-to-end hybrid source separation, letting the model decide which
+domain is best suited for each source, and even combining both. The proposed hybrid version
+of the Demucs architecture (Défossez et al., 2019) won the Music Demixing Challenge 2021
+organized by Sony. This architecture also comes with additional improvements, such as
+compressed residual branches, local attention or singular value regularization. Overall, a 1.4 dB
+improvement of the Signal-To-Distortion (SDR) was observed across all sources as measured
+on the MusDB HQ dataset (Rafii et al., 2019), an improvement confirmed by human subjective
+evaluation, with an overall quality rated at 2.83 out of 5 (2.36 for the non hybrid Demucs),
+and absence of contamination at 3.04 (against 2.37 for the non hybrid Demucs and 2.44 for
+the second ranking model submitted at the competition).
+
+Introduction
+Work on music source separation has recently focused on the task of separating 4 well defined
+instruments in a supervised manner: drums, bass, vocals and other accompaniments. Recent
+evaluation campaigns (Stöter et al., 2018) have focused on this setting, relying on the standard
+MusDB benchmark (Rafii et al., 2017). In 2021, Sony organized the Music Demixing Challenge
+(MDX) (Mitsufuji et al., 2021), an online competition where separation models are evaluated
+on a completely new and hidden test set composed of 27 tracks.
+The challenge featured a number of baselines to start from, which could be divided into two
+categories: spectrogram or waveform based methods. The former consists in models that
+are fed with the input spectrogram, either represented by its amplitude, such as Open-Unmix
+(Stöter et al., 2019) and its variant CrossNet Open-Unmix (Sawata et al., 2020), or as the
+concatenation of its real and imaginary part, a.k.a Complex-As-Channels (CAC) (Choi et al.,
+2020), such as LaSAFT (Choi et al., 2021). Similarly, the output can be either a mask on the
+input spectrogram, complex modulation of the input spectrogram (Kong et al., 2021), or the
+CAC representation.
+On the other hand, waveform based models such as Demucs (Défossez et al., 2019) are directly
+fed with the raw waveform, and output the raw waveform for each of the source. Most of those
+methods will perform some kind of learnt time-frequency analysis in its first layers through
+convolutions, such as Demucs and Conv-TasNet (Luo and Mesgarani, 2019), although some
+will not rely at all on convolutional layers, like Dual-Path RNN (Luo et al., 2020).
+Theoretically, there should be no difference between spectrogram and waveform models, in
+particular when considering CaC (complex as channels), which is only a linear change of base
+for the input and output space. However, this would only hold true in the limit of having
+an infinite amount of training data. With a constrained dataset, such as the 100 songs of
+MusDB, inductive bias can play an important role. In particular, spectrogram methods varies
+by more than their input and output space. For instance, with a notion of frequency, it is
+possible to apply convolutions along frequencies, while waveform methods must use layers
+that are fully connected with respect to their channels. The final test loss being far from
+
+Hybrid Spectrogram and Waveform Source Separation. Proceedings of the MDX Workshop, 2021.
+
+1
+
+zero, there will also be artifacts in the separated audio. Different representations will lead to
+different artifacts, some being more noticeable for the drums and bass (phase inconsitency for
+spectrogram methods will make the attack sounds hollow), while others are more noticeable
+for the vocals (vocals separated by Demucs suffer from crunchy static noise)
+In this work, we extend the Demucs architecture to perform hybrid waveform/spectrogram
+domain source separation. The original U-Net architecture (Ronneberger et al., 2015) is
+extended to provide two parallel branches: one in the time (temporal) and one in the frequency
+(spectral) domain. We bring other improvements to the architecture, namely compressed
+residual branches comprising dilated convolutions (Yu and Koltun, 2016), LSTM (Hochreiter
+and Schmidhuber, 1997) and attention (Vaswani et al., 2017) with a focus on local content.
+We measure the impact of those changes on the MusDB benchmark and on the MDX hidden
+test set, as well as subjective evaluations. Hybrid Demucs ranked 1st at the MDX competition
+when trained only on MusDB, with 7.32 dB of SDR, and 2nd with extra training data allowed.
+
+Related work
+There exist a number of spectrogram based music source separation architectures. Open-Unmix
+(Stöter et al., 2019) is based on fully connected layers and a bi-LSTM. It uses multi-channel
+Wiener filtering (Nugraha et al., 2016) to reduce artifacts. While the original Open-Unmix
+is trained independently on each source, a multi-target version exists (Sawata et al., 2020),
+through a shared averaged representation layer. D3Net (Takahashi and Mitsufuji, 2020) is
+another architecture, based on dilated convolutions connected with dense skip connections. It
+was before the competition the best performing spectrogram architecture, with an average SDR
+of 6.0 dB on MusDB. Unlike previous methods which are based on masking, LaSAFT (Choi
+et al., 2021) uses Complex-As-Channels (Choi et al., 2020) along with a U-Net (Ronneberger
+et al., 2015) architecture. It is also single-target, however its weights are shared across targets,
+using a weight modulation mechanism to select a specific source.
+Waveform domain source separation was first explored by Lluís et al. (2018), as well as Jansson
+et al. (2017) and Stoller et al. (2018) with Wave-U-Net. However, those methods were lagging
+in term of quality, almost 2 dB behind their spectrogram based competitors. Demucs (Défossez
+et al., 2019) was built upon Wave-U-Net, using faster strided convolutions rather than explicit
+downsampling, allowing for a much larger number of channels, but potentially introducing
+aliasing artifacts as noted by Pons et al. (2021), and extra Gated Linear Unit layers (Dauphin
+et al., 2017) and biLSTM. For the first time, waveform domain methods surpassed spectrogram
+ones when considering the overall SDR (6.3 dB on MusDB), although its performance is still
+inferior on the other and vocals sources. Conv-Tasnet (Luo and Mesgarani, 2019), a model
+based on masking over a learnt time-frequency representation using dilated convolutions, was
+also adapted to music source separation by Défossez et al. (2019), but suffered from more
+artifacts and lower SDR.
+To the best of our knowledge, no other work has studied true end-to-end hybrid source
+separation, although other teams in the MDX competition used model blending from different

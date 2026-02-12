@@ -1,0 +1,1208 @@
+Mirroring the voice from Garcia to the present day:
+some insights into singing voice registers.
+Nathalie Henrich Bernardoni
+
+To cite this version:
+Nathalie Henrich Bernardoni. Mirroring the voice from Garcia to the present day: some insights into singing voice registers.. Logopedics Phoniatrics Vocology, 2006, 31 (1), pp.3-14.
+�10.1080/14015430500344844�. �hal-00344177�
+
+HAL Id: hal-00344177
+https://hal.science/hal-00344177v1
+Submitted on 3 Dec 2008
+
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of scientific research documents, whether they are published or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+
+Logopedics Phoniatrics Vocology. 2006; 31: 3/14
+
+ORIGINAL ARTICLE
+
+Mirroring the voice from Garcia to the present day: Some insights
+into singing voice registers
+
+NATHALIE HENRICH
+Laboratoire d’Acoustique Musicale, Paris, France
+
+Abstract
+Starting from Garcia’s definition, the historical evolution of the notion of vocal registers from then until now is considered.
+Even though much research has been carried out on vocal registers since then, the notion of registers is still confused in the
+singing voice community, and defined in many different ways. While some authors consider a vocal register as a totally
+laryngeal event, others define it in terms of overall voice quality similarities. This confusion is reflected in the multiplicity of
+labellings, and it lies in the difficulty of identifying and specifying the mechanisms distinguished by these terms. The concept
+of laryngeal mechanism is then introduced, on the basis of laryngeal transition phenomena detected by means of
+electroglottography. It helps to specify at least the laryngeal nature of a given singing voice register. On this basis, the main
+physiological, acoustic, and perceptual characteristics of the most common singing voice registers are surveyed.
+
+Key words: Laryngeal mechanism, singing voice, vocal register
+
+Introduction
+Before the nineteenth century, knowledge about
+human phonation was limited to what could be
+perceived by auditory perception and proprioceptive
+sensations, or observed from outside during phonation and inside on cadavers. The singing voice
+registers are a known fact, related to perception of
+different voice qualities. In this context, the singing
+voice teacher Manuel Garcia II (1805 /1906) shows
+not only an interest in the voice sound quality but
+also in the underlying vocal physiology mechanisms.
+On November 16th, 1840, he presented the results
+of his observations as a voice teacher and his
+experiments on the human voice to the French
+Académie des Sciences (1), prior to the publication
+of his famous singing voice method Ecole de Garcia:
+Traité complet de l’art du chant (2). In this paper, he
+claims that the human voice is composed of different
+registers: poitrine (chest), fausset-tête (falsetto-head),
+and contre-basse (counter bass). He defines the
+registers as follows: ‘By the word register we mean
+a series of consecutive and homogeneous tones going
+from low to high, produced by the same mechanical
+
+principle, and whose nature differs essentially from
+another series of tones equally consecutive and
+homogeneous produced by another mechanical
+principle. All the tones belonging to the same
+register are consequently of the same nature, whatever may be the modifications of timbre or of the
+force to which one subjects them’.1 Therefore,
+Garcia pioneers the definition of vocal registers in
+relation to a given mechanical principle, independently of any timbre variation. In his definition of
+vocal registers, the concept of a mechanical principle
+prevails over the perceptual dimension. Basing his
+rationale on physiological observations of the larynx
+position, he demonstrated that the falsetto and head
+registers result from the same laryngeal mechanism,
+their difference being a timbre effect.2
+Nowadays, we have experimental techniques to
+which Garcia did not have access at that time. How
+has the knowledge about singing voice registers
+evolved since Garcia’s time? How are the vocal
+registers defined and identified? What are their
+physiological, acoustic and perceptual attributes?
+By reviewing the historical evolution of the notion
+of vocal register, this paper aims to provide a possible
+
+Correspondence: Dr. Nathalie Henrich, Institut de la Communication Parlée, 46 avenue Félix Viallet, 38031 Grenoble Cedex 01, France. E-mail:
+henrich@icp.inpg.fr
+
+ISSN 1401-5439 print/ISSN 1651-2022 online # 2006 Taylor & Francis
+DOI: 10.1080/14015430500344844
+
+4
+
+N. Henrich
+
+guide for a better understanding of this notion. A
+brief overview of the evolution of definition, numbers and labellings will be given. The different means
+of identifying a vocal register will be discussed, and
+the concept of laryngeal mechanism will be introduced, on the basis of laryngeal transition phenomena. Finally, the most common singing voice
+registers will be reviewed, and their physiological,
+acoustic and perceptual properties will be given.
+Historical evolution of the notion of vocal
+register since Garcia
+From Garcia to the present time, the notion of vocal
+registers has evolved in many ways. In particular, this
+evolution concerns the definition of a vocal register,
+the number of registers identified and their labelling.
+
+From Garcia to the 1960s
+As mentioned in the introduction, the singing
+teacher Manuel Garcia in 1847 is considering three
+main different registers, chest , falsetto-head and
+contre-basse , the other possible registers, such as
+voix mixte , sharing similar mechanical principle
+with these main ones (for a detailed discussion about
+Garcia’s falsetto-head register, we refer the reader to
+(3)). The frequency ranges of these registers are
+shown in Figure 1. Interested in understanding the
+physiology of these registers, Garcia explores his own
+larynx and those of a few of his students by using a
+laryngoscope, a clever observation tool which would
+give rise to our present endoscopic camera. It
+
+consists of a small mirror fixed to the end of a long
+handle and placed at the back of the throat (see
+Figure 2). When the throat is lighted in the proper
+way, the glottis may be observed from above. The
+laryngoscope was already available in the early
+nineteenth century */Babington used it in 1827
+(4) */so Garcia did not invent it, but he was the
+first to use it successfully, being able not only to see
+the vocal folds at rest, but also in the act of singing.
+Garcia’s observations were communicated to the
+Royal Society by Dr Sharpey on May 24th, 1855
+(4,5).
+In 1880, the physiologist and voice production
+teacher Emil Behnke and the throat surgeon Lennox
+Browne also made use of the laryngoscope to obtain
+in vivo images of the glottis. Behnke defines the vocal
+registers as follows: ‘a register consists of a series of
+tones which are produced by the same mechanism.
+[. . .] There are, broadly speaking, three registers in
+the human voice, and the mechanisms are plainly
+visible, as follows: 1) During the lowest series of
+tones the vocal ligaments vibrate in their entire
+thickness. 2) During the next series of tones the
+vocal ligaments vibrate only with their thin inner
+edges. 3) During the highest series of tones a portion
+of the vocal chink is firmly closed, and only a small
+part of the vocal ligaments vibrates.’ ((4), p. 86). In
+this definition, similarly to Garcia’s, the concept of
+laryngeal mechanisms is underlying. On the basis of
+these physiological observations, he adopts Curwen’s
+thick , thin and small labelling, and he describes three
+registers for the male voice (lower thick , upper thick
+and upper thin ) and five registers for the female voice
+
+Figure 1. Frequency range of human voice and vocal registers, as defined by different authors: (A) Garcia (1), (B) Behnke (4), (C) Hollien
+(11), (D) Miller (17).
+
+Mirroring the voice from Garcia to the present day
+
+5
+
+labelled as medium , mid , middle , or mixed register. It
+may correspond to the French voix mixte or the
+Italian voce mista . Two additional registers are
+mentioned at the extreme low and high ends of the
+frequency range: the Strohbass register, and the bell ,
+flute or whistle register.
+
+From the 1960s to the 1980s
+
+Figure 2. The laryngoscope. From (2).
+
+(lower thick, upper thick , lower thin , upper thin and
+small ). Their corresponding frequency ranges are
+shown in Figure 1. The transition between thick and
+thin registers is characterized by a break which
+occurs around F4 or F4# in both male and female
+voices, individual differences apart.
+In the early twentieth century, whereas few singing
+teachers maintain that a ‘natural’ voice has only one
+single register (6,7), the general tendency is to accept
+the existence of at least two and at maximum five
+registers. The term ‘register’ is even sometimes
+replaced by ‘mechanism’, for example by Wilcox
+(6,7) who suggests the terms ‘heavy mechanism’ and
+‘light mechanism’.
+The terms used to label the vocal registers are
+abundant and author dependent, and most of the
+time their usage is ambiguous. In 1963, a literature
+survey summary concerning the pitch range and
+labelling of voice registers (8) mentions that ‘the only
+secure common denominator for defining a register
+is by means of its range on the musical scale.’
+Reasonable agreement is found on ‘the average pitch
+of the boundaries between registers, i.e. the breaks or
+voice transitions.’ It is also mentioned that these
+average boundaries do not vary much with the type
+of voice, and that the nature of the breaks is ‘still a
+matter of controversy’.
+The two most common registers are labelled as
+chest register and head or falsetto register. The
+distinction between head and falsetto is very much
+author dependent. In his time, Garcia placed the
+falsetto register between chest and head register, and
+it may thus correspond to a middle register, as
+suggested by Vennard (7). Yet, when the head
+register is recognized as a distinct register, it is very
+often placed between chest and falsetto. Otherwise,
+either it is put aside, or it replaces the falsetto
+register, in the case of female voice for instance.
+The two main registers overlap in a frequency region
+where a third register is sometimes mentioned, and
+
+From the early 1960s to the 1980s, a good deal of
+research effort was dedicated to the understanding of
+the acoustic, mechanical, and physiological properties of these registers. Working on excised larynges,
+the physicist Janwillem Van den Berg 1963 explored
+the vibratory pattern of the vocal folds and the
+influence of the subglottal resonance. He came to
+the conclusion that the mid register may not be
+considered as a distinct register (9). The physician
+Minoru Hirano, together with two voice teachers
+William Vennard and John Ohala, investigated the
+role of intrinsic laryngeal muscles using electromyography (10). They found that the vocalis muscle is
+essential to register regulation, its activity being
+greater in heavy register. In particular, the vocalis
+muscular activity decreases during a register shift
+from heavy to light and increases from light to heavy.
+The lateral cricoarytenoid, interarytenoid and cricothyroid muscles also contribute to register regulation, but to a smaller extent.
+In 1974, the speech scientist Harry Hollien
+reconsiders the definition, numbering and terminology of registers (11). He defines a vocal register ‘as a
+series or range of consecutively phonated frequencies
+which can be produced with nearly identical vocal
+quality and that ordinarily there should be little or no
+overlap in fundamental frequency between adjacent
+registers. Furthermore, [he maintains] that a voice
+register is a totally laryngeal event and, before the
+existence of a particular register can be established,
+it must be operationally defined: 1) perceptually,
+2) acoustically, 3) physiologically and 4) aerodynamically.’ With regard to this definition based on a
+laryngeal entity, he considers three major registers,
+which have been experimentally validated, and to
+which he gives unfamiliar but also ‘uncontaminated’
+labels: pulse , modal and loft registers. The pulse
+register includes vocal fry, creak and strohbass
+registers; the modal register includes chest , head,
+low, mid and high ; the loft register is the equivalent of
+the phoneticians’ and speech pathologists’ falsetto
+register. Their corresponding frequency ranges are
+shown in Figure 1. Hollien mentions a fourth
+register, the flute, whistle or pipe , which he puts
+aside because of a lack of empirical information and
+experimental exploration.
+
+6
+
+N. Henrich
+
+Hollien’s significant paper has pointed out the
+confusion around the concept of vocal registers
+among the voice community, and it may have
+contributed to the emergence of an international
+discussion. In the late 1970s, spurred on by the
+Collegium Medicorum Theatri (CoMeT), an international organization composed of physicians, voice
+scientists, voice coaches and voice pathologists, a
+committee on vocal registers was formed in an
+attempt to clarify the notion of vocal registers and
+to find a consensual position among the international voice community. The committee agreed on
+five points, which are reported by Hollien (12):
+1. Registers exist: voice registers exist in the
+speaking and singing voice, and they ‘must be
+recognized as an entity’. Their perceived acoustic effects may be compensated for by appropriate training, if this ‘is considered desirable’.
+2. Singing/speaking registers: ‘vocal registers in
+singing and voice registers in speaking (or in the
+untrained voice) are different and separate
+entities and must be treated as such’. However,
+they ‘may overlap in function and probably
+have common physiological roots in the larynx’.
+3. To ‘remove’ registers: two postulates are stated
+by the committee. On the one hand, ‘eliminating or concealing register effects is desirable for
+the classical/western, concert/opera mode of
+singing’. On the other hand, ‘register effects
+can be fundamental to certain types of singing’.
+It is also important to keep in mind that ‘voice
+registers cannot be removed as they are physiologically given.’
+4. The source of registers: First, the committee
+has ‘accepted the notion that there probably are
+two sources for registers */the larynx and the
+vocal tract’. However, this point seems to have
+raised a great debate among the committee
+members. ‘A substantial minority of the committee argued in favor of the source (of a voice
+register) being only laryngeal and that the other
+so-called register-like phenomena actually are
+some sort of quality/timbre events.’
+This latter position is in line with Garcia’s
+definition. Unfortunately, no mention of what
+defines and identifies a register in the human
+voice is given in the report. This may explain
+the controversy about the question of the
+source of registers. As a consequence, a great
+debate was also raised by the labelling question.
+5. Labels: The committee has rejected the use of
+so called ‘old terms’, and in particular chest and
+head which are based upon singers’ sensations.
+Two main proposals are made. The first suggestion is to number them: ‘#1: for the very
+
+lowest of registers, probably used only in speaking (old terms: pulse , vocal fry, creak ), #2: that
+(low) register, which is used for most speaking
+and singing (old terms: modal, chest , normal,
+heavy), #3: a high register used primarily in
+singing (old terms: falsetto, light , head ), #4: a
+very high register usually found only in some
+women and children and not particularly relevant to singing (old terms: flute , whistle).’ An
+additional register is referred to as ‘#2A’ and
+defined as ‘that ‘‘register’’ which is described by
+many voice teachers as in the middle of the
+frequency range [. . .] (old terms: head , mid ,
+middle, upper ).’ The second suggestion is to
+favour ‘new terms, generic terms, those that are
+clear and easy to understand’, such as the pair
+of terms heavy, light , or lower , upper.
+
+From the 1980s to the present time
+Despite this great effort at clarification, the voice
+community remains divided on the question of vocal
+registers. The existence of at least two main laryngeal vibratory mechanisms has been experimentally
+validated. Among the speech community, an implicit
+agreement is found on three registers (pulse or vocal
+fry, modal or chest , and falsetto registers), in relation
+to specific laryngeal adjustments. In the singing
+voice community, the definition, numbers and
+labelling of registers are still a matter of debate,
+and they continue to vary among authors. Indeed,
+vocal registers have an acoustical and perceptual
+reality for singers, which cannot be ignored. On the
+one hand, a vocal register is defined by its laryngeal
+mechanical properties (13 /15), following in this
+sense Garcia, Benhke and Hollien. As an example,
+Sakakibara (15) proposes the following definition:
+‘the vocal register is a set or range of serial sounds
+that are similar in perception and produced by
+similar vocal fold vibratory patterns.’ On the other
+hand, a vocal register is defined by its characteristic
+voice quality, following in this sense Large ((16),
+cited in (17)). As an example, Titze mentions that
+‘the term ‘‘register’’ has been used to describe
+perceptually distinct regions of vocal quality that
+can be maintained over some ranges of pitch and
+loudness.’((18), p. 253) These two approaches of the
+notion of vocal register are sometimes implicitly
+combined. In a recent thesis on registers in singing
+(17), the singer and voice teacher Donald Miller
+points out the distinction between registration defined ‘as an exclusive feature of the voice source’ and
+the ‘integrated approach to registration, including
+adjustments of the vocal tract, as well as those of the
+source’. He chooses the latter approach, but defines
+the ‘natural registers’ as registers related mainly to
+
+Mirroring the voice from Garcia to the present day
+glottal source adjustments. These natural registers
+are designated ‘chest’ and ‘falsetto’, and the author
+refers to the ‘chest vibratory pattern’ and ‘falsetto
+vibratory pattern’ when emphasizing the voice
+source characteristics of a given register. According
+to this author, the female voice is divided into five
+registers: chest and belting registers, which both have
+the chest vibratory pattern, and middle, upper and
+flageolet registers, which all have the falsetto vibratory pattern. The male voice is divided into four
+registers: chest , full head and mezza voce registers,
+which all have the chest vibratory pattern, and
+falsetto register, which has the falsetto vibratory
+pattern. The corresponding frequency ranges are
+shown in Figure 1.
+
+Conclusion: what are the vocal registers?
+In his time, Garcia was distinguishing vocal registers
+on the basis of a ‘mechanical principle’ which he
+related to a laryngeal event. Following Garcia’s path,
+other authors, such as Benhke, Hollien or Roubeau,
+have explored the concept of laryngeal-related vocal
+registers with the help of more and more sophisticated experimental techniques: laryngoscopy, cinematography, electromyography, electroglottography
+(EGG), etc. The understanding of laryngeal vibratory mechanisms has become more refined.
+Yet, a vocal register classification based only on
+laryngeal phenomena does not take into account the
+great timbre variations which can be achieved in
+singing. This may explain that, even today, the
+notion of vocal registers in singing remains very
+often a matter of debate among the singing voice
+community. Whereas some authors define the registers exclusively on the basis of an underlying
+laryngeal mechanical principle, others prefer to
+define them on the basis of sound voice quality. In
+this context, to find a consensual position on the
+labelling of registers is inevitably problematic, but
+the core of this problem is less the terminology itself
+than the ‘failure to identify and specify the mechanisms distinguished by the terms’, as pointed out by
+Miller ((17), p. 32).
+In the next section, we will see how the problem of
+identifying the mechanisms related to singing voice
+registers has been partly solved, at least at the
+laryngeal level.
+Transition phenomena: how to identify a
+laryngeal mechanism
+The reason for defining at least two registers in
+human phonation comes from the discontinuities or
+transition phenomena, which can occur voluntarily
+or involuntarily during the production of voiced
+
+7
+
+sounds. Different kinds of transition phenomena
+are listed in the literature, in particular periodicity,
+timbre, and laryngeal transitions. They will be briefly
+presented here. We will then focus on the laryngeal
+vibratory mechanisms, the consistency of which is
+evinced by laryngeal transition phenomena.
+
+Detection of transition phenomena
+A transition phenomenon may result from psychoacoustic properties of human perception. The ‘periodicity transition’ distinguished by Titze (18,19) is
+an example of such a transition. It refers to ‘changes
+in vocal quality that occur whenever glottal pulses
+are perceived as individual events rather than a
+continuous auditory stimulus’ (19). According to
+this author, it accounts for the distinction between
+pulse (or vocal fry ) and chest registers. A given voice
+production is perceived as pulsed when its fundamental frequency F0 is lower than a 70-Hz ‘crossover’ frequency, and perceived as non-pulsed above
+this frequency. In the case of a F0/n subharmonic
+pattern, the crossover frequency is n /70 Hz.
+According to Titze, the reason for this perceptual
+fact lies in formant energy damping (related to the
+formant bandwidth) over the fundamental period:
+waveforms are perceived as pulse-like if the formant
+energy during one excitation is sufficiently damped
+out before the next excitation occurs. This author
+defines the pulse-chest registers boundaries on the
+basis of this periodicity transition.
+Transition phenomena may also result from noticeable timbre variations (17,19,20), which may or
+may not be related to a laryngeal adjustment.
+According to Titze (18,19), timbre transitions are
+characterized by an abrupt voice quality change,
+which is associated with a spectral energy change in
+the high-frequency part of the sound spectrum, i.e.,
+a modification in the spectral slope. This spectral
+change may come from a variation in the glottal flow
+derivative discontinuity and the return phase, which
+can be more or less abrupt. From the acoustic point
+of view, it may result from an interference between a
+subglottal resonance and the vocal fold driving
+pressure.
+According to Miller (17), either these transitions
+have a laryngeal source, or they result from resonance strategies, also called ‘formant tuning’. In this
+latter case, a vocal tract resonance is adjusted to
+match a given harmonic in frequency, reinforcing the
+energy in this harmonic frequency band. The tuning
+process may induce the presence of strong acoustic
+standing waves, which in return can affect the vocal
+fold vibratory movement, yet in a more subtle way
+than in the case of a laryngeal adjustment (17).
+
+8
+
+N. Henrich
+
+It is difficult to give strong evidence of these vocal
+tract adjustments, as the vocal tract resonances are
+difficult to measure reliably from the acoustic signal,
+especially when the harmonic spacing is broad. On
+the contrary, the laryngeal transition phenomena,
+which are related to a sudden adjustment of the
+glottal vibratory pattern, are more easily detectable.
+For instance, the pitch jump is the most common
+and obvious transition phenomenon which can
+occur during male and female phonation, in speech
+and singing (13,21 /23). Avoided in the classical
+singing technique, it is used as an ornament or even
+a singing style in other vocal cultures, such as the
+Tyrolean or African yodel (20,24). Evidence has
+been given that this transition phenomenon is only
+related to a biomechanical laryngeal adjustment, as it
+can occur on excised larynges without the presence
+of vocal tract loading (25). As illustrated in Figure 3,
+a vocal fold is a heterogeneous layered structure
+(26), composed of the cover (mucosa, epithelium
+and superficial layer of lamina propria), the transition (intermediate and deep layers of lamina propria,
+also called vocal ligaments), and the body (vocalis
+muscle). The abruptness of the frequency jump is
+accounted for by a sudden variation of the vibrating
+mass in action, induced by a decoupling of the
+vibrating layers due to a modification in vocal fold
+tension (13). As this modification in tension may be
+gradual, these frequency jumps are considered to be
+manifestations of bifurcations in the vocal fold
+vibratory mechanism (23).
+A noticeable frequency jump often goes with a
+jump in the open quotient (21,27), which can be
+detected on electroglottographic signals. This jump
+occurs, for instance, during the production of a
+glissando, as illustrated in Figure 4. The open
+
+Figure 3. The vocal-fold layered structure. From (26).
+
+quotient jump is one characteristic of a laryngeal
+transition. As illustrated in Figure 4, it may occur
+even in the case when the singer manages to smooth
+the transition, thus avoiding the frequency jump
+(27).
+Laryngeal transition phenomena can be characterized by a noticeable change in the vocal fold contact
+area, which can easily be detected using electroglottography by an abrupt EGG amplitude variation
+(22,28). On the basis of these transition phenomena
+detected by electroglottography, the concept of
+laryngeal mechanism has been defined (13,22,29).
+This concept, which is of great help in clarifying the
+notion of vocal registers in terms of laryngeal
+configuration and glottal vibratory properties, will
+now be summarized.
+
+The laryngeal mechanisms
+The variation in EGG amplitude which goes with a
+noticeable register break (28,30) can similarly be
+observed during a register transition without any
+noticeable break (22,29). Therefore, a register transition associated with a laryngeal adjustment can
+easily be identified by an amplitude change in the
+EGG signal, as illustrated in Figure 4. Even when
+the singer is skilled enough to smooth the transition,
+so that no break or timbre change can be noticed,
+the vocal register transition can be detected on the
+EGG signal.
+On the basis of these laryngeal-transition phenomena, the notion of laryngeal mechanism has been
+defined (13,22,29). The choice has been made to
+number them, following in this way one of the 1983
+CoMeT labelling positions (12). During the production of a glissando from the lowest to the highest
+possible pitches, three laryngeal transitions can be
+detected, as shown in Figure 5. These transitions
+delimit four frequency regions, in which the voice is
+produced by the use of a precise laryngeal vibratory
+mechanism (laryngeal mechanism M0 to M3).
+A laryngeal mechanism can be considered as a
+substitute for a vocal register which would totally be
+defined as a laryngeal entity. The corresponding
+register counterparts of the laryngeal mechanisms
+are given in Table I.
+The laryngeal mechanisms correspond to different
+vocal fold configurations which will now be described. A schematic representation of the two main
+ones, M1 and M2, is plotted in Figure 6.
+In laryngeal mechanism M0, the vocal folds are
+very short and thick, all the layers being slackened
+and pliant (11,26). Vocalis, cricothyroid, and interarytenoid muscular activities are minimal, as compared to other laryngeal mechanisms (26,31). The
+closed phase is usually very long. The lowest
+
+Mirroring the voice from Garcia to the present day
+
+9
+
+Figure 4. Illustration of vocal registers transition phenomena on a glissando sung by a counter tenor (A) with a pitch jump and a noticeable
+timbre change, (B) without any noticeable break. The top panel shows the time-frequency analysis, the middle panel the EGG signal, and
+the bottom panel the EGG measured open quotient. Two methods have been used to measure open quotient: on the EGG signal, using a
+35% threshold method, and on the DEGG signal, using the DECOM method (55). The determination of the underlying laryngeal
+mechanism (M1 or M2) is based on the EGG detected laryngeal transitions.
+
+frequencies are usually produced in this laryngeal
+mechanism.
+In laryngeal mechanism M1, the vocal folds are
+thick and they vibrate over their whole length with a
+vertical phase difference (7). Vibrating mass and
+amplitude are important. The vocal fold body is
+stiffer than the cover and transition (26). Vocalis
+muscular activity is dominant over cricothyroid
+(26,31). Both activities increase with pitch. Closed
+phase is often longer than open phase, which is
+reflected in the open or closed quotient values (27).
+This laryngeal mechanism is used by both males and
+females in the low to mid part of their frequency
+range. The corresponding average voice range profiles for males and females are shown in Figure 7.
+
+Figure 5. Illustration of the four laryngeal vibratory mechanisms
+on the production of a glissando. The top panel shows the time
+frequency analysis, and the bottom one the EGG signal.
+
+In laryngeal mechanism M2, the vibrating mass
+and amplitude are reduced (7), as compared to
+mechanism M1, and there is no vertical phase
+difference in the glottal vibratory movement. All
+the vocal fold layers are stretched, and the collagenous fibres in the vocal ligament are the stiffest of all
+the layers (26). Cricothyroid muscular activity is
+dominant over vocalis. The open phase is always
+longer than the closed phase, lasting at least 50% of
+the fundamental period (27). This laryngeal mechanism is used by both males and females in the
+mid to high part of their frequency range. The
+corresponding average voice range profiles for males
+and females are shown in Figure 7.
+The laryngeal mechanism M3 is far from being
+understood. Whistle , flute or flageolet registers may
+be produced in mechanism M3, and only few studies
+have been dedicated to these registers. In this
+mechanism, the vocal folds are thin and very tensed.
+The vibratory amplitude is much reduced as compared to mechanism M2, and there even may be no
+contact in some cases. It has been suggested that the
+vocal fold vibration may be induced by periodic
+vortex shedding interacting with the resonator (32).
+The laryngeal mechanisms are not related exclusively to speech or singing, but they are a physiological entity in human phonation (22). They are also
+common to male and female, who share similar
+laryngeal mechanism boundaries (see Figure 7). A
+characteristic of the human voice is that the frequency regions of the main mechanisms M1 and M2
+can overlap over a precise frequency range (33), as
+shown in Figure 7: E3 (165 Hz) to F#4 (370 Hz) for
+male voices, and G3 (196 Hz) to G4 (392 Hz) for
+female voices. At those pitches, a speaker or singer
+can choose to phonate using either mechanism M1
+
+10
+
+N. Henrich
+
+Table I. Counterparts of the laryngeal mechanisms found in the literature, in the case when a vocal register is defined as a laryngeal entity.
+A question mark underlines a possible uncertainty in the equivalence.
+
+Authors
+Garcia, 1847 (1)
+Behnke, 1880 (4)
+Wilcox, 1935; Vennard, 1967 (7)
+Hollien, 1974 (11)
+Miller D, 2000 (17)
+
+Laryngeal mechanism
+M0
+
+Laryngeal mechanism
+M1
+
+Laryngeal mechanism
+M2
+
+contre-basse?
+
+poitrine
+thick
+heavy mechanism
+modal
+chest vibratory pattern
+
+fausset-tête
+thin
+light mechanism
+loft
+falsetto vibratory
+pattern
+
+pulse
+
+or M2, and this choice may be voluntary or
+involuntary. In singing, it may be related to the
+singer’s desire to produce a specific voice quality.
+Indeed, voice quality is dependent on the glottal flow
+properties. Because the laryngeal mechanisms correspond to different vocal fold vibratory mechanisms, they imply large differences in the glottal flow
+pulse shape. Their use results in the production of a
+specific voice quality in relation to the laryngeal
+configuration. However, skilled singers, and in
+particular classically trained singers, manage to
+modify this typical voice quality, in particular in
+adjusting their vocal tract in the proper way. This is
+for example the case of voix mixte (mixed voice)
+register, as will be seen in the next section.
+Insights into the physiological, acoustic, and
+perceptual characteristics of singing voice
+registers
+In this section, a survey of the most common singing
+voice registers mentioned in the literature is given. In
+each case, their main physiological, acoustic, and
+perceptual characteristics are briefly described. The
+choice has been made to take the underlying
+laryngeal mechanism in which they are produced
+as a common denominator for categorizing these
+registers. The special case of the middle or voix mixte
+register is discussed at the end of the section.
+
+Laryngeal mechanism
+M3
+
+small?
+
+Registers produced in laryngeal mechanism M0: pulse,
+vocal fry or strohbass
+Pulse , vocal fry or strohbass are equivalent labels
+(11). They designate the register which occurs in
+the lowest part of the human frequency range. This
+register is produced in laryngeal mechanism M0.
+The vocal folds are very short, thick and slack. A
+recent survey of the acoustic, aerodynamic, physiological, and perceptual characteristics of this register in speech can be found in (34). From a
+physiological point of view, the thyroarytenoid
+muscles tend to shorten, subsequently thickening
+the anterior-posterior dimension of the vocal folds,
+and allowing the anterior part of the vocal ligaments to vibrate (11). The glottal vibratory pattern
+is characterized by short pulses, which can be
+periodic and single, periodic and multiple (double,
+triple), or aperiodic (single and multiple) (34 /36).
+The pulses are followed by a long closed interval
+(36,37), which implies small values of open quotient. The frequency range goes from a few Hz to
+about 80 Hz with a mean of 50 Hz, and is similar
+for males and females (34,38). This register is more
+commonly found in speech than in singing. However, few exceptions can be found in certain vocal
+cultures around the world (e.g., Russian and Papua
+New Guinea folk music, rhythm and blues singing
+style, (15)).
+
+Figure 6. Schematic representation of the vocal folds vibratory movements in laryngeal mechanism M1 and M2. From (7).
+
+Mirroring the voice from Garcia to the present day 11
+
+Figure 7. Average voice range profile (vocal intensity versus fundamental frequency) of male and female singers in mechanisms M1 and
+M2. Adapted from (33).
+
+Registers produced in laryngeal mechanism M1: modal,
+chest, male head, belting
+The low to mid frequency part of the voice can be
+divided into a single register (in this case modal or
+chest register), or into two or more different registers
+(chest , male head , belting, voix mixte , voce finta ,. . .).
+The modal, chest , male head, belting, and voce finta
+registers are produced in laryngeal mechanism M1
+(11,13,39,40). The voix mixte register will be described later and can be produced either in M1 or in
+M2 (41). The vocal folds are thick, with great
+vibrating mass and large vibratory amplitude. The
+inverse-filtered glottal-flow pulse is asymmetrical,
+the closing phase being shorter than the opening.
+The open quotient values range from 0.3 to 0.8,
+depending on vocal intensity (27).
+The distinction between chest and male head
+registers is defined by Miller (42) in terms of vocal
+tract adjustment: ‘the chest register comprises the
+lower portion of the range, extending to the highest
+pitch where the first formant matches the second
+harmonic; the head register comprises that portion
+of the range where F1 falls below H2.’ The head
+register is used in the upper range and spans a
+musical interval of a fourth or fifth (39), located in
+the vicinity of D4b to A4b for a tenor and B3b to F4
+for a baritone (42). Suitable for soft singing, the head
+voice is recognized by Vennard as an ‘intermediate
+adjustment, (. . .), easily confused with falsetto
+but continuous with full voice’ ((7), paragraph
+935). From a laryngeal muscular point of view,
+head register is characterized by higher cricothyroid
+activity and lower vocalis activity than chest (26).
+Yet, it is clearly produced in laryngeal mechanism
+M1. As pointed out by Large (39), it is ‘a different laryngeal mechanism from falsetto’, with
+complete vocal fold approximation, greater energy
+in the higher partials and lower air flow rate than
+falsetto.
+
+Belting is very often considered as a technique of
+loud singing commonly found in non-classical singing, with a voice quality similar to a yell (40,43 /45).
+However, a few authors consider it nowadays as a
+vocal register on its own (17), and thus it seems that
+it is worth mentioning here. It could be produced by
+males and females, but only female voices have been
+studied up to now. Considered as an extension of
+chest register into the upper part, its frequency range
+goes from E4 /G4 (about 330 Hz) to D5 (540 Hz)
+(40). Belting sounds are produced with high subglottal pressure, long closed phase of duration
+greater than half of the fundamental period, high
+SPL, and great harmonic richness (40,43,46). A
+tuning of the first formant with the second harmonic
+has been observed on open vowels (40,43).
+Registers produced in laryngeal mechanism M2: falsetto,
+loft, female head, upper
+The falsetto, loft, and female head are equivalent
+labels for registers which occur in the mid to high
+frequency part of the voice. The falsetto register can
+be used to designate altogether a female-like voice
+quality produced by males, in particular counter
+tenors, a soft and breathy fake voice quality produced by untrained male singers in the high range,
+and the female mid to high register, or female head
+register.
+All these registers are produced in laryngeal
+mechanism M2. The vocal folds are thin and the
+vibrating mass and vibratory amplitude are reduced.
+The inverse filtered glottal flow pulse is more
+symmetrical, close to a sinusoidal shape. The open
+quotient values are high, ranging from 0.5 to 0.95
+depending on the fundamental frequency (27).
+Their main acoustic characteristic is the predominance of the first harmonic, in relation to high values
+of the open quotient (47).
+In the female case, the mid to high frequency part
+of the voice may be divided into two or more
+
+12
+
+N. Henrich
+
+registers, for instance lower middle, upper middle, and
+upper (48). The boundary between middle and upper
+registers is located around D5 to F5 (17). According
+to Miller (17), the main differences between these
+registers lie in the resonance strategies adopted by
+the singer. When the fundamental frequency is
+getting high enough to be close to the first formant,
+there is a tendency to tune the first formant to the
+first harmonic, and to maintain this tuning for higher
+pitches (49/51). The F1-H1 tuning on open vowels
+would be the determinative feature of the upper
+register (17).
+Registers produced in laryngeal mechanism M3: bell,
+flute, whistle, flageolet
+The bell, flute , whistle, or flageolet are equivalent
+labels for a register which occurs in the highest part
+of the human frequency range (52). It is produced in
+laryngeal mechanism M3. However, the phonatory
+mechanism has not been explored much. There may
+be several types of realization (15). Only a few
+studies have paid attention to this register, which is
+not much used in speech and classical singing,
+except in the high soprano range (48). It can be
+found in non-classical singing styles, such as jazz or
+contemporary music. The fundamental frequency
+typically ranges from B5 to F6, i.e., from about 1000
+to 1400 Hz (17). The first harmonic is dominant,
+and the number of overtones is reduced (52,53).
+According to Miller, this register is used when the
+fundamental frequency is too high to remain close to
+the first formant. The corresponding sound quality
+is ‘small and thin’, but nevertheless ‘brilliant’,
+comparable to ‘a chime or a sharply-ringing distant
+bell’ (48).
+What about the registers in the middle of the frequency
+range: mid, middle, mixed voice, voix mixte?
+A special case are the registers found in the middle of
+the human frequency range, and often labelled as
+mid , middle, mixed voice, or voix mixte . The term
+head can also be found (18), and the female middle
+register can sometimes be considered to be similar to
+male full head register (17). Yet, the correspondence
+between these terms cannot be stated with certainty.
+Singers make use of these registers to smooth the
+transition between the lower and upper part of their
+frequency range, in the frequency region where the
+frequency ranges of laryngeal mechanisms M1 and
+M2 overlap. For a long time, it has been queried
+whether this register would be a mixture of two
+registers. Recently, it has been demonstrated that, at
+least from the laryngeal point of view, singers use a
+precise laryngeal mechanism, which is either M1 or
+
+M2 (41). Male singers very easily use the laryngeal
+mechanism M1 to produce sounds in voix mixte ,
+whereas female singers very easily use the laryngeal
+mechanism M2. However, examples have also been
+studied of a soprano singing in voix mixte register
+using laryngeal mechanism M1, or a counter tenor
+singing in voix mixte register using laryngeal mechanism M2 (41).
+The resonance properties of these registers still
+need to be explored, so as to understand how a
+singer manages to mimic the voice quality of a given
+register while using an inappropriate laryngeal mechanism.
+Conclusion
+Since Garcia, knowledge about singing voice registers has evolved, thanks to the development of new
+experimental techniques. Yet, the controversy about
+vocal registers, which already existed in Garcia’s
+time, is still present nowadays, and reflected in the
+multiplicity of labels for registers. It seems to have its
+roots in the definition of a register and its defining
+characteristics. If a vocal register is defined as a series
+of consecutive tones produced by the same laryngeal
+mechanism, the human voice can be characterized
+by four different voice registers, i.e., laryngeal
+registers such as Hollien’s pulse , modal, loft registers,
+and the whistle register. If a vocal register is defined
+as series of consecutive tones produced with similar
+voice quality, other registers exist in the human
+singing voice, such as head, belting , middle, upper,
+voix mixte ,. . . One major issue is then to define a
+vocal register precisely before labelling it. Another
+major issue is to be precise about the means which
+are required to identify a given vocal register. The
+identification of vocal registers can benefit from
+the detection of transition phenomena. In this way,
+the concept of laryngeal mechanism, which is based
+on the detection of laryngeal transition phenomena
+by means of electroglottography, is of great help in
+clarifying the laryngeal nature of a given voice
+production. At least, the singing voice registers can
+now be described in terms of the laryngeal mechanism by which they are produced. Further research is
+needed to understand the singers’ resonance strategies and acoustic adaptations which are required to
+produce a specific voice quality or to successfully
+manage blending of singing voice registers. Furthermore, major voice quality differences are avoided in
+the Western lyric culture, whereas they may be a
+prime goal in other vocal cultures, such as jazz, blues
+and rock. Knowledge of singing voice registers
+would gain from a better understanding of these
+non-classical phonation types.
+
+Mirroring the voice from Garcia to the present day 13
+Acknowledgements
+
+15. Sakakibara K-I. Production mechanism of voice quality in
+singing. Journal of the Phonetic Society of Japan. 2003;17(3):
+27 /39.
+16. Large JW. Towards an integrated physiologic-acoustic theory
+of vocal registers. NATS Bulletin. 1972;29:18 /40.
+17. Miller DG. Registers in singing: empirical and systematic
+studies in the theory of the singing voice. Groningen:
+University of Groningen; 2000.
+18. Titze IR. "Principles of Voice Production. Englewood Cliffs,
+New Jersey: Prentice Hall; 1994.
+19. Titze IR. A framework for the study of vocal registers. J Voice.
+1988;2(3):183 /94.
+20. Castellengo M, Roubeau B, Valette C. Study of the acoustical
+phenomena characteristic of the transition between chest
+voice and falsetto. In: Askenfelt A, Felicetti S, Jansson E,
+Sundberg J, editors. Stockholm Musical Acoustic Conference
+(SMAC); 1983. Stockholm, Sweden: Royal Swedish Academy of Music No. 46:1; 1983. p. 113 /23.
+21. Miller DG, Svec JG, Schutte HK. Measurement of characteristic leap interval between chest and falsetto registers. J
+Voice. 2002;16(1):8 /19.
+22. Roubeau B, Chevrie-Muller C, Arabia C. Control of laryngeal vibration in register change. In: Gauffin J, Hammarberg
+B, editors. Vocal Fold Physiology: Acoustic, perceptual, and
+physiological aspects of voice mechanisms. USA: Singular
+Publishing Group, San Diego; 1991. p. 279 /86.
+23. Svec JG, Schutte HK, Miller DG. On pitch jumps between
+chest and falsetto registers in voice: data from living and
+excised human larynges. J Acoust Soc Am. 1999;106(3):
+1523 /31.
+24. Castellengo M. Continuité, rupture, ornementation, ou
+les bons usages de la transition entre deux modes d’émission vocale. In: Georg, editor. Cahiers de musiques
+traditionnelles */La voix et les techniques vocales. Ateliers
+d’ethnomusicologie, Geneva, Switzerland; 1991.
+25. Van den Berg JW, Vennard W, Burger D, Shervanian CC.
+Voice production: the vibrating larynx. In: Instructional film.
+University of Groningen ed. The Netherlands; 1960.
+26. Hirano M. The role of the layer structure of the vocal fold in
+register control. Vox Humana. University of Jyvaskyla; 1982.
+p. 50 /62.
+27. Henrich N, d’Alessandro C, Castellengo M, Doval B. Glottal
+open quotient in singing: Measurements and correlation with
+laryngeal mechanisms, vocal intensity, and fundamental
+frequency. J Acoust Soc Am. 2005;117(3):1417 /30.
+28. Roubeau B, Chevrie-Muller C, Arabia-Guidet C. Electroglottographic study of the changes of voice registers. Folia
+Phoniatr. 1987;39(6):280 /9.
+29. Henrich N, Roubeau B, Castellengo M. On the use of
+electroglottography for characterisation of the laryngeal
+mechanisms. In: Stockholm Music Acoustics Conference;
+2003. Stockholm, Sweden; 2003. http://www.speech.feth.se/
+smac03/
+30. Lecluse F, Brocaar M. Quantitative measurements in the
+electroglottogram. In: 17th International Congress of Logopedics and Phoniatrics. 1977.
+31. Hirano M. Vocal mechanisms in singing: laryngological and
+phoniatric aspects. J Voice. 1988;2(1):51 /69.
+32. Herzel H, Reuter R. Whistle register and biphonation in a
+child’s voice. Folia Phoniatr Logop. 1997;49:216 /24.
+33. Roubeau B, Castellengo M, Bodin P, Ragot M. Phonétogramme par mécanisme laryngé. [Laryngeal registers as
+shown in the voice range profile]. Folia Phoniatr Logop.
+2004;56(5):321 /33.
+34. Blomgren M, Chen Y, Ng ML, Gilbert HR. Acoustic,
+aerodynamic, physiologic, and perceptual properties of modal
+/
+
+The author wants to express her appreciation to
+Evelyn Abberton for her kind help with the English
+text.
+
+/
+
+Notes
+1. English translation of ((1), p. 4) ((54) as mentioned by ((17), p.
+30)): ‘Par le mot registre, nous entendons une série de sons
+consécutifs et homogènes allant du grave à l’aigu, produits par
+le développement du même principe mécanique, et dont la
+nature diffère essentiellement d’une autre série de sons également consécutifs et homogènes, produits par un autre principe
+mécanique. Tous les sons appartenant à un même registre sont,
+par conséquent, de la même nature, quelles que soient
+d’ailleurs les modifications de timbre ou de force qu’on leur
+fasse subir.’.
+2. ‘La séparation [entre registres de fausset et de tête] n’est pas le
+résultat d’un mécanisme différent du larynx, mais un effet de
+timbre (. . .)’ ((1), p. 18) */’The division [between falsetto and
+head registers] does not result from a different mechanism of
+the larynx, but from a timbre effect (...)’.
+
+References
+1. Garcia M. Mémoire sur la voix humaine présenté à l’Académie des Sciences en 1840, 2 ed. Paris: Imprimerie d’E.
+Duverger; 1847.
+2. Garcia M. Traité complet de l’Art du Chant, 8 ed. Paris:
+Heugel et Cie; 1884.
+3. Castellengo M. Manuel Garcia Jr, a clear-sighted observer of
+human voice production. PEVOC 6: London, 2005. Submitted to Logopedics Phoniatrics Vocology.
+4. Behnke E. The mechanism of the human voice, 12 ed.
+London: J. Curwen & Sons, Warwick Lane, E.C; 1880.
+5. Garcia M. Observations on the human voice. In: Proceedings
+of the Royal Society of London; 1855. London: The Royal
+Society; p. 399 /410.
+6. Thurman L, Welch G, Theimer A, Klitzke C. Addressing
+vocal register discrepancies: an alternative, science-based
+theory of register phenomena. In: Second International
+Conference on Physiology and Acoustics of Singing; 6 /9
+October 2004. Denver, Colorado, USA; 2004. http://
+www.ncvs.org/pas/2004/pres/thurman/Thurman.pdf
+7. Vennard WL. Singing: the mechanism and the technic. New
+York: Carl Fischer; 1967.
+8. Mörner M, Fransson F, Fant G. Voice register terminology
+and standard pitch. STL-QPSR. 1963:17 /23.
+9. Van den Berg JW. Vocal ligaments versus registers. NATS
+Bulletin. 1963;20:16 /21.
+10. Hirano M, Vennard W, Ohala J. Regulation of register, pitch
+and intensity of voice. Folia Phoniatr. 1970;22:1 /20.
+11. Hollien H. On vocal registers. Journal of Phonetics. 1974;2:
+125 /43.
+12. Hollien H. Report on vocal registers. In: Askenfelt A,
+Felicetti S, Jansson E, Sundberg J, editors. Stockholm
+Musical Acoustic Conference (SMAC); 1983. Stockholm,
+Sweden: Royal Swedish Academy of Music No. 46:1; 1983. p.
+27 /35.
+13. Roubeau B. Mécanismes vibratoires laryngés et contrôle
+neuro-musculaire de la fréquence fondamentale. Université
+Paris-Orsay; 1993.
+14. Roubeau B, Castellengo M. Revision of the notion of voice
+register. In: XIXth International CoMeT Congress; 1993.
+Utrecht; 1993.
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+14
+
+N. Henrich
+
+and vocal fry registers. J Acoust Soc Am. 1998;103(5):2649 /
+58.
+35. Childers DG, Lee CK. Vocal quality factors: Analysis,
+synthesis, and perception. J Acoust Soc Am. 1991;90:2394 /
+410.
+36. Whitehead RL, Metz DE, Whitehead BH. Vibratory patterns
+of the vocal folds during pulse register phonation. J Acoust
+Soc Am. 1984;75(4):1293 /7.
+37. Hollien H, Girard GT, Coleman RF. Vocal fold vibratory
+patterns of pulse register phonation. Folia Phoniatr. 1977;29:
+200 /5.
+38. Hollien H, Michel JF. Vocal fry as a phonational register. J
+Speech Hear Res. 1968;11:600 /4.
+39. Large JW. Male high voice mechanisms in singing. Journal of
+Research in Singing. 1984;VIII(1):1 /10.
+40. Schutte HK, Miller DG. Belting and pop, nonclassical
+approaches to the female middle voice: some preliminary
+considerations. J Voice. 1993;7(2):142 /50.
+41. Castellengo M, Chuberre B, Henrich N. Is voix mixte , the
+vocal technique used to smooth the transition across the two
+main laryngeal mechanisms, an independent mechanism? In:
+ISMA; 2004. Nara, Japan; 2004.
+42. Miller DG, Schutte HK. Toward a definition of male ‘head’
+register, passaggio, and ‘cover’ in western operatic singing.
+Folia Phoniatr Logop. 1994;46(4):157 /70.
+43. Bestebreurtje ME, Schutte HK. Resonance strategies for the
+belting style: results of a single female subject study. J Voice.
+2000;14(2):194 /204.
+44. Estill J. Belting and classic voice quality: some physiological
+differences. Medical Problems of Performing Artists.
+1988:37 /43.
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+45. Miles B, Hollien H. Whither belting? J Voice. 1990;4(1):64 /
+70.
+46. Sundberg J, Gramming P, Lovetri J. Comparisons of pharynx,
+source, formant, and pressure characteristics in operatic and
+musical theatre singing. J Voice. 1993;7(4):301 /10.
+47. Sundberg J, Hogset C. Voice source differences between
+falsetto and modal registers in counter tenors, tenors and
+baritones. Logoped Phoniatr Vocol. 2001;26(1):26 /36.
+48. Miller R. English, French, German and Italian techniques of
+singing: a study in national tonal preferences and how they
+relate to functional efficiency. Metuchen, N.J.: The Scarecrow
+Press, Inc; 1977.
+49. Joliveau E, Smith J, Wolfe J. Vocal tract resonances in singing:
+the soprano voice. J Acoust Soc Am. 2004;116(4 Pt1):2434 /
+9.
+50. Sundberg J. Observations on a professional soprano singer.
+STL-QPSR. 1973;14(1):14 /24.
+51. Sundberg J. Formant technique in a professional soprano
+singer. Acustica. 1975;32:89 /96.
+52. Miller DG, Schutte HK. Physical definition of the flageolet
+register. J Voice. 1993;7(3):206 /12.
+53. Walker JS. An investigation of whistle register in the female
+voice. J Voice. 1988;2:140 /50.
+54. Paschke DVA. Complete Treatise on the Art of Singing: Part
+One (Translation of Garcia, 1847). New York: Da Capo
+Press; 1984.
+55. Henrich N, d’Alessandro C, Castellengo M, Doval B. On the
+use of the derivative of electroglottographic signals for
+characterization of nonpathological phonation. J Acoust Soc
+Am. 2004;115(3):1321 /32.
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/

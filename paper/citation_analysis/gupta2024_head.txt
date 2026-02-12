@@ -1,0 +1,100 @@
+Open access
+
+Protocol
+
+Voice disorder recognition using
+machine learning: a scoping
+review protocol
+Rijul Gupta ‍ ‍,1 Dhanshree R Gunjawate ‍ ‍,2 Duy Duong Nguyen ‍ ‍,2
+Craig Jin ‍ ‍,1 Catherine Madill ‍ ‍2
+
+To cite: Gupta R, Gunjawate DR,
+Nguyen DD, et al. Voice
+disorder recognition using
+machine learning: a scoping
+review protocol. BMJ Open
+2024;14:e076998. doi:10.1136/
+bmjopen-2023-076998
+► Prepublication history and
+additional supplemental material
+for this paper are available
+online. To view these files,
+please visit the journal online
+(http://dx.doi.org/10.1136/​
+bmjopen-2023-076998).
+
+Received 22 June 2023
+Accepted 10 January 2024
+
+© Author(s) (or their
+employer(s)) 2024. Re-­use
+permitted under CC BY-­NC. No
+commercial re-­use. See rights
+and permissions. Published by
+BMJ.
+1
+
+School of Electrical and
+Information Engineering, The
+University of Sydney Faculty of
+Engineering and Information
+Technologies, Sydney, New
+South Wales, Australia
+2
+Sydney School of Health
+Sciences, The University of
+Sydney Faculty of Medicine
+and Health, Sydney, New South
+Wales, Australia
+Correspondence to
+Dr Catherine Madill;
+​cate.​madill@​sydney.​edu.​au
+
+ABSTRACT
+Introduction Over the past decade, several machine
+learning (ML) algorithms have been investigated to assess
+their efficacy in detecting voice disorders. Literature
+indicates that ML algorithms can detect voice disorders
+with high accuracy. This suggests that ML has the
+potential to assist clinicians in the analysis and treatment
+outcome evaluation of voice disorders. However, despite
+numerous research studies, none of the algorithms have
+been sufficiently reliable to be used in clinical settings.
+Through this review, we aim to identify critical issues that
+have inhibited the use of ML algorithms in clinical settings
+by identifying standard audio tasks, acoustic features,
+processing algorithms and environmental factors that
+affect the efficacy of those algorithms.
+Methods We will search the following databases: Web
+of Science, Scopus, Compendex, CINAHL, Medline, IEEE
+Explore and Embase. Our search strategy has been
+developed with the assistance of the university library staff
+to accommodate the different syntactical requirements.
+The literature search will include the period between 2013
+and 2023, and will be confined to articles published in
+English. We will exclude editorials, ongoing studies and
+working papers. The selection, extraction and analysis of
+the search data will be conducted using the ‘Preferred
+Reporting Items for Systematic Reviews and Meta-­
+Analyses extension for scoping reviews’ system. The same
+system will also be used for the synthesis of the results.
+Ethics and dissemination This scoping review does not
+require ethics approval as the review solely consists of
+peer-­reviewed publications. The findings will be presented
+in peer-­reviewed publications related to voice pathology.
+
+INTRODUCTION
+Voice disorders are defined as deviations
+from the voice quality, pitch and loudness
+from the expected values for someone’s age,
+gender and cultural background.1–3 Voice
+disorders affect a significant portion of the
+population, with approximately 30% of
+individuals reporting having suffered from
+a voice disorder at some point in their lifetime and 20% experiencing chronic issues.4
+Voice disorders can range from minor vocal
+discomfort to severe dysphonia and from
+functional to malignant conditions.5 Voice
+
+STRENGTHS AND LIMITATIONS OF THIS STUDY
+⇒ This review focuses on the quality of the dataset, the

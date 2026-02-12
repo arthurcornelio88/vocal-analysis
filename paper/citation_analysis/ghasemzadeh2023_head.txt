@@ -1,0 +1,100 @@
+Toward Generalizable Machine Learning Models in Speech, Language, and
+Hearing Sciences: Estimating Sample Size and Reducing Overfitting
+Hamzeh Ghasemzadeh a,b,c, Robert E. Hillman a,b,d,e, Daryush D. Mehta a,b,d,e
+a
+
+Center for Laryngeal Surgery and Voice Rehabilitation, Massachusetts General Hospital, Boston, MA, USA
+Department of Surgery, Harvard Medical School, Boston, MA, USA
+c
+Department of Communicative Sciences and Disorders, Michigan State University, East Lansing, MI, USA
+d
+Speech and Hearing Bioscience and Technology, Division of Medical Sciences, Harvard Medical School,
+Boston, MA, USA
+e
+MGH Institute of Health Professions, Boston, MA, USA
+b
+
+Running Title: Power Analysis and Reducing Overfitting in Machine Learning
+Email Address of the Authors:
+Hamzeh Ghasemzadeh, email: hghasemzadeh@mgh.harvard.edu
+Robert E. Hillman, email: hillman.robert@mgh.harvard.edu
+Daryush D. Mehta, email: mehta.daryush@mgh.harvard.edu
+Corresponding Author:
+Hamzeh Ghasemzadeh
+Center for Laryngeal Surgery and Voice Rehabilitation
+Massachusetts General Hospital
+One Bowdoin Square, 11th Floor
+Boston, MA 02114
+
+ABSTRACT
+Purpose: Many studies using machine learning (ML) in speech, language, and hearing sciences rely upon crossvalidations with single data splitting. This study’s first purpose is to provide quantitative evidence that would
+incentivize researchers to instead use the more robust data splitting method of nested k-fold cross-validation. The
+second purpose is to present methods and MATLAB code to perform power analysis for ML-based analysis during
+the design of a study.
+Method: First, the significant impact of different cross-validations on ML outcomes was demonstrated using realworld clinical data. Then, Monte Carlo simulations were used to quantify the interactions among the employed crossvalidation method, the discriminative power of features, the dimensionality of the feature space, the dimensionality of
+the model, and the sample size. Four different cross-validation methods (single holdout, 10-fold, train-validation-test,
+and nested 10-fold) were compared based on the statistical power and confidence of the resulting ML models.
+Distributions of the null and alternative hypotheses were used to determine the minimum required sample size for
+obtaining a statistically significant outcome (5% significance) with 80% power. Statistical confidence of the model
+was defined as the probability of correct features being selected for inclusion in the final model.
+Results: ML models generated based on the single holdout method had very low statistical power and confidence,
+leading to overestimation of classification accuracy. Conversely, the nested 10-fold cross-validation method resulted
+in the highest statistical confidence and power, while also providing an unbiased estimate of accuracy. The required
+sample size using the single holdout method could be 50% higher than what would be needed if nested k-fold crossvalidation were used. Statistical confidence in the model based on nested k-fold cross-validation was as much as four
+times higher than the confidence obtained with the single holdout–based model. A computational model, MATLAB
+code, and lookup tables are provided to assist researchers with estimating the minimum sample size needed during
+study design.
+Conclusion: The adoption of nested k-fold cross-validation is critical for unbiased and robust ML studies in the speech,
+language, and hearing sciences.
+Key Words: Clinical study design, Generalizable machine learning model, Power analysis
+INTRODUCTION
+Statistical analysis and methods are essential parts of the scientific discovery process, and they play important
+roles during the design of an experiment, its execution, and its final analysis. For example, statistical power analysis
+drives the decision about the required sample size during experimental design (Cohen, 2013; Jones et al., 2003).
+Additionally, inferential statistics allow for the study of a sample of a population whose findings can then generalize
+to the larger population (Field et al., 2012; Lowry, 2014). Statistical machine learning (ML) is a group of statistical
+tools and techniques that has gained a lot of attention in different branches of science, with particular application to
+fields that are relevant to this journal’s audience, such as healthcare (Liu et al., 2019; Qayyum et al., 2020; Shen et
+al., 2021) and speech, language, and hearing sciences (Oleson et al., 2019). ML provides many advantages over
+conventional statistical analysis. For example, a single model can often incorporate features from different scales of
+measurement (nominal, ordinal, interval, and ratio). Also, the ability of ML to capture complex, high-dimensional,
+and non-linear interactions among different features can provide a significant advantage over conventional statistical
+methods. ML can be categorized into two main groups: supervised and unsupervised ML. In supervised ML, true
+labels of the data are known a priori (e.g., knowing which speech samples are recorded from individuals with
+Parkinson’s disease or from neurotypical individuals). Supervised ML encompasses a wide variety of methods ranging
+from simple logistic regression (Menard, 2002) to deep learning (Liu et al., 2019) and ensemble learning
+(Ghasemzadeh, 2019b; Sagi & Rokach, 2018). In unsupervised ML, unlabeled data are used to discover underlying
+structures and patterns of the data (e.g., doing the same study but not knowing which voice data came from individuals
+with Parkinson’s disease) (Theodoridis & Koutroumbas, 2009).
+Studies using supervised ML in healthcare (including speech, language, and hearing sciences) can be categorized
+into two main groups depending on their aims: tool-developing and knowledge-developing. Tool-developing studies
+primarily use ML to “create a tool” for performing a task automatically. On the other hand, knowledge-developing
+studies (also referred to as ML-based science in the literature (Kapoor & Narayanan, 2022)) primarily use ML as a
+robust statistical analysis and data mining tool to gain knowledge and/or answer research questions about certain
+phenomena. Tool-developing studies closely resemble an engineering approach, and their aims could vary from
+automated diagnosis and evaluation to segmentation of a signal of interest, to solving an inverse problem. Examples
+of using ML to automatically differentiate healthy individuals from those with disorders (for automated
+
+screening/diagnosis and assessment of treatments) include the identification of voice disorders using voice samples
+(Arjmandi et al., 2011; Arjmandi & Pooyan, 2012; Ghasemzadeh et al., 2015), Parkinson’s disease using speech
+recordings (Ghasemzadeh et al., 2022; Tsanas et al., 2012), amyolateral sclerosis using speech recordings
+(Ghasemzadeh & Searl, 2018; Vieira et al., 2022), septic infants from the audio signal produced by their cry
+(Matikolaie & Tadj, 2022), abnormal vocal folds from laryngoscopic images (Cho & Choi, 2020), intelligibility
+assessment of aphasic speech (Le et al., 2016), swallowing disorder from high-resolution manometry recordings
+(Mielens et al., 2012), screening for autism spectrum disorder (Crippa et al., 2015; Thabtah & Peebles, 2020),
+predicting the hearing outcome in patients with sudden sensorineural hearing loss (Bing et al., 2018; Uhm et al., 2021),
+and predicting language and communication skills of infants based on their speech-evoked electroencephalography
+data (Wong et al., 2021). Studies that have utilized ML for segmentation applications include automated segmentation
+of the glottis from high-speed videoendoscopy recordings (Kist et al., 2021), detection of high-speed videoendoscopy
+frames with partial occlusion of the vocal folds (Yousef et al., 2022), tongue segmentation from ultrasound images
+(Hamed Mozaffari & Lee, 2019), segmentation of videofluoroscopic recordings for swallowing studies (Donohue et
+al., 2021), speech classification for improving the performance of hearing aids (Bhat et al., 2020), and identification
+of the type of stuttering-related events from speech (Alharbi et al., 2020; Bayerl et al., 2022). Estimating parameters
+of the phonatory system from acoustic signals (Gómez et al., 2018; Ibarra et al., 2021; Zhang, 2020), measuring the
+distance between a laser-projection endoscope and the vocal folds (Ghasemzadeh et al., 2020), and compensating for
+non-linear image distortion in fiberoptic endoscopes and performing calibrated mm-measurements in laryngeal images
+(Ghasemzadeh et al., 2021) are some examples of solving an inverse problem in voice and speech science using ML.
+On the other hand, in knowledge-developing studies, the main outcome is not the trained model itself, but rather
+the knowledge that has been gained. One example from this category would be the application of ML for understanding
+differences in phonatory functions between vocally healthy individuals and patients with phonotraumatic vocal
+hyperfunction using ambulatory recordings (Ghassemi et al., 2014; Mehta et al., 2015; Van Stan et al., 2020), or

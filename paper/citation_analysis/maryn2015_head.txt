@@ -1,0 +1,100 @@
+Objective Dysphonia Measures in the Program Praat:
+Smoothed Cepstral Peak Prominence and Acoustic
+Voice Quality Index
+*,†,‡Youri Maryn and §David Weenink, *Bruges, yGhent, and zAntwerp, Belgium, and xAmsterdam, The Netherlands
+Summary: Purpose. A version of the ‘‘smoothed cepstral peak prominence’’ (ie, CPPS) has recently been implemented in the program Praat. The present study therefore estimated the correspondence between the original CPPS
+from the program SpeechTool and Praat’s version of the CPPS. Because the CPPS is the main factor in the multivariate
+Acoustic Voice Quality Index (AVQI), this study also investigated the proportional relationship between the AVQI with
+the original and the second version of the CPPS.
+Study Design. Comparative cohort study.
+Methods. Clinical recordings of sustained vowel phonation and continuous speech from 289 subjects with various
+voice disorders were analyzed with the two versions of the CPPS and the AVQI. Pearson correlation coefficients and
+coefficients of determination were calculated between both CPPS-methods and between both AVQI-methods.
+Results. Quasi-perfect correlations and coefficients of determination approaching hundred percent were found.
+Conclusions. The findings of this study demonstrate that the outcomes of the two CPPS-methods and the two AVQImethods are highly comparable, increasing the clinical feasibility of both methods as measures of dysphonia severity.
+Key Words: Smoothed cepstral peak prominence–Acoustic voice quality index–SpeechTool–Praat–Feasibility–
+Accuracy.
+
+INTRODUCTION
+Acoustic methods have a long history in clinical voice assessment. Besides measures of fundamental frequency and sound
+intensity to objectify pitch and loudness, respectively,
+numerous acoustic markers have been proposed to objectify
+dysphonia type and severity.1 Acoustic measurements are
+remarkably appealing because of their noninvasiveness, relative
+low cost, and ease of application.2 They are able to yield a numerical output, and therefore they consistently permit tracking
+of treatment outcomes and communication of this information
+to voice clinicians, patients, third-party payers, physicians, and
+other stakeholders.3,4 One specific and recently developed
+method to quantify the severity of overall dysphonia is the
+Acoustic Voice Quality Index (AVQI).
+This index has the following attributes. First, the AVQI is
+developed to measure dysphonia in both continuous speech and
+sustained vowel recordings. Sustained vowels induce a comparatively steady action at subglottal, glottal, and supraglottal levels.
+Continuous speech, on the other hand, is characterized by
+temporal and spectral variations caused by voice onsets and offsets, interruptions, voiceless phonemes, phonetic context, prosodic modulations in fundamental frequency and intensity, speech
+tempo, and so on.2,5,6 Because the vocal behavior differs
+considerably between these two voice/speech tasks, perception
+Accepted for publication June 30, 2014.
+From the *Department of Otorhinolaryngology and Head & Neck Surgery, SpeechLanguage Pathology, Sint-Jan General Hospital, Bruges, Belgium; yDepartment of
+Speech-Language Therapy and Audiology, Faculty of Education, Health and Social
+Work, University College Ghent, Ghent, Belgium; zFaculty of Medicine and Health Sciences, University of Antwerp, Antwerp, Belgium; and the xInstitute of Phonetic Sciences,
+Faculty of Humanities, University of Amsterdam, Amsterdam, The Netherlands.
+Address correspondence and reprint requests to Youri Maryn, Sint-Jan General Hospital, Speech-Language Pathology and Audiology, Ruddershove 10, 8000 Bruges,
+Belgium. E-mail: yourimaryn@vvl.be
+Journal of Voice, Vol. 29, No. 1, pp. 35-43
+0892-1997/$36.00
+! 2015 The Voice Foundation
+http://dx.doi.org/10.1016/j.jvoice.2014.06.015
+
+of type and severity of dysphonia can be hypothesized to vary
+across the kind of speech to be rated. Although two studies7,8
+found no statistically significant differences in the auditory
+perception of dysphonia severity between sustained vowels and
+continuous speech, four other studies6,9–11 revealed that
+listeners rate dysphonia, and especially breathiness, more
+severely in sustained vowels than in continuous speech. These
+findings underline that for perceptual and instrumental methods
+in the clinical dysphonia assessment it is essential to record and
+analyze sustained vowels and continuous speech. Therefore, the
+AVQI requires recordings and measures overall dysphonia
+severity of both speech/voice contexts.
+Second, the AVQI is a multivariate construct that combines
+multiple acoustic markers to yield a single number that correlates
+reasonably with overall dysphonia severity. This multiparametric
+approach was motivated by the multidimensional nature of voice
+quality and the fact that it is not related to a sole physical variable
+or a unique psychoacoustical determinant.12 This is in contrast to
+pitch and loudness that many authors regard as synonymous to
+the distinctive features fundamental frequency and sound intensity, respectively. Kreiman and Gerratt13 for example stated
+that vocal quality included all perceptual dimensions of the spectral envelope and its changes in time, and indicated a possibly major role of both time-domain and frequency-domain measures in
+the investigation of voice quality. Furthermore, bivariate correlational methods to estimate the proportional relationship between
+an auditory-perceptual rating and a single acoustic marker
+approach often lacked sufficient strength (see Maryn et al14 for
+a meta-analysis on this topic). This prompted many researchers
+to apply multivariate statistics and to combine the merits of multiple measures for increased validity of objective/instrumental
+analysis of voice quality and/or more accurate discrimination
+among different perceptual categories/levels of dysphonia
+severity.4,9,15–26 To construct a statistical model representing
+the best combination of acoustic predictors for the overall
+
+36
+degree of disordered voice, only six from the thirteen acoustic
+measures that were initially applied in the study of Maryn
+et al4 were retained after stepwise multiple linear regression analysis. The following multiple regression equation that was based
+on the unstandardized coefficients of this statistical model was
+called the AVQI ¼ 2.571 (3.295 – 0.111 smoothed cepstral
+peak prominence " 0.073 harmonics-to-noise ratio " 0.213
+shimmer local + 2.789 shimmer local dB " 0.032 slope of the
+long-term average spectrum + 0.077 tilt of the trendline through
+the long-term average spectrum). This equation thus includes
+acoustic markers from the time, frequency, and quefrency domains, and is a multidimensional representation of dysphonia
+severity.
+Third, the main contributor to the AVQI model is the
+smoothed version of the cepstral peak prominence (CPPS).
+This measure represents the distance between the first rahmonic
+peak and the point with equal quefrency on the regression line
+through the smoothed cepstrum. The reasoning behind this
+acoustic marker is that the more periodic a voice signal, the
+more it displays a well-defined harmonic configuration in the
+spectrum (ie, the more harmonic the spectrum), and, consequently, the more the cepstral peak will be prominent. Since
+its introduction in the field of voice quality measurement by

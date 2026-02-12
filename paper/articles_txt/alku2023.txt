@@ -1,0 +1,1174 @@
+Refining a Deep Learning-based Formant Tracker using Linear
+Prediction Methods
+Paavo Alku1 , Sudarsana Reddy Kadiri1 , Dhananjaya Gowda2
+
+arXiv:2308.09051v1 [eess.AS] 17 Aug 2023
+
+1
+
+Department of Information and Communications Engineering, Aalto University, Finland
+2
+Samsung Research, South Korea
+
+Abstract
+In this study, formant tracking is investigated by refining the formants tracked by an existing datadriven tracker, DeepFormants, using the formants estimated in a model-driven manner by linear
+prediction (LP) -based methods. As LP-based formant estimation methods, conventional covariance analysis (LP-COV) and the recently proposed quasi-closed phase forward-backward (QCPFB) analysis are used. In the proposed refinement approach, the contours of the three lowest formants are first predicted by the data-driven DeepFormants tracker, and the predicted formants are
+replaced frame-wise with local spectral peaks shown by the model-driven LP-based methods. The
+refinement procedure can be plugged into the DeepFormants tracker with no need for any new data
+learning. Two refined DeepFormants trackers were compared with the original DeepFormants and
+with five known traditional trackers using the popular vocal tract resonance (VTR) corpus. The results indicated that the data-driven DeepFormants trackers outperformed the conventional trackers
+and that the best performance was obtained by refining the formants predicted by DeepFormants
+using QCP-FB analysis. In addition, by tracking formants using VTR speech that was corrupted
+by additive noise, the study showed that the refined DeepFormants trackers were more resilient
+to noise than the reference trackers. In general, these results suggest that LP-based model-driven
+approaches, which have traditionally been used in formant estimation, can be combined with a
+modern data-driven tracker easily with no further training to improve the tracker’s performance.
+Keywords: Speech analysis, Vocal tract resonances, Formant tracking, Linear prediction,
+DeepFormants.
+
+1. Introduction
+Resonance frequencies of the vocal tract, formants, are among the most important parameters of speech signals. In continuous speech, formants vary over time, manifesting themselves
+as time-domain contours. Formant contours have been investigated in many studies in different
+areas of speech science, such as in acoustic phonetics [1, 2], hearing research [3, 4] and in analysis
+of pathological speech [5, 6]. In order to automatically estimate formant contours from speech
+∗
+
+Corresponding author (Sudarsana Reddy Kadiri; sudarsana.kadiri@aalto.fi)
+
+Preprint submitted to Computer Speech and Language
+
+August 21, 2023
+
+signals, formant tracking technology is needed. Formant tracking is a challenging engineering
+problem, and therefore many methods have been proposed over the past few decades to track
+formants [7, 8, 9, 10, 11]. These techniques typically consist of two parts. In the first part (the estimation stage), initial values of the formants are computed in short timeframes (e.g., 25 ms) using
+linear prediction (LP) [12] or cepstral analysis [13]. In the second part (the tracking stage), the
+formants extracted in individual frames in the estimation stage are expressed using contours that
+cover a longer speech unit (e.g., a syllable, word or sentence) [7, 8]. Moreover, in some techniques
+the estimation and tracking stages are computed simultaneously using an initial representation of
+the vocal tract system [9, 10].
+Formant trackers can be divided into two categories based on the technology that is used in the
+formant estimation stage. The first category consists of classical trackers whose formant estimation
+is based on model-driven signal processing methodology. In this tracker category, all-pole spectral
+estimation methods based on different variants of LP are mostly used to estimate formants from
+short timeframes of speech. Formant estimates are generally obtained in these methods either
+by peak-picking the power spectrum of the parametric all-pole spectral model computed by the
+underlying LP-based method [2, 14] or by solving the roots of the denominator polynomial of the
+all-pole model [15, 16]. In model-driven LP-based trackers, importantly, estimation of formants is
+computed directly from the test speech utterance using the underlying LP-based signal processing
+algorithm without training the model using formant data. As an alternative to the model-driven
+formant estimation approach, a few recent formant tracking studies have used the data-driven
+formant estimation approach. This approach corresponds to first training a deep learning (DL)
+neural network model to map selected acoustic features to formants, and then estimating formants
+from test utterances by computing the selected features from speech and by feeding them as input
+to the network. In the next two paragraphs, a brief literature review is given on some of the previous
+investigations representing the model-driven and data-driven approaches in formant estimation.
+The most popular classic model-based approaches used in formant estimation are the autocorrelation and covariance methods of LP [7, 8]. Closed phase (CP) analysis is known to improve
+formant estimation accuracy by avoiding the contribution of speech samples in the open phase
+of the glottal cycle and thereby decoupling the effect of the trachea more effectively [17]. CP
+analysis, however, works better for low-pitched male voices, which typically have a larger number
+of samples in the closed phase of the glottal cycle compared to high-pitched voices of women or
+children, which might have just a few samples in the closed phase. To reduce problems caused by
+having a small number of closed phase samples, LP can be computed over multiple neighboring
+cycles [17]. The LP-based estimation of formants has also been studied based on all-pole phase
+spectra or on combinations of all-pole phase and amplitude spectra [18, 19, 20]. Weighted linear
+prediction (WLP) is another example of an LP-based method that has been used in formant estimation [21, 22, 23, 24]. WLP is based on temporally weighting the prediction error in LP, an
+approach that has been shown to be beneficial in computing vocal tract models that are robust with
+respect to noise [21, 22] and the biasing effect of high fundamental frequency [23]. In [25], a WLPbased method called quasi-closed phase forward-backward analysis (QCP-FB) was proposed and
+the method was shown to outperform five reference methods in formant estimation. The improved
+formant estimation accuracy of QCP-FB is due to the following properties of the algorithm: (1) by
+using temporal weighting of the prediction error (the residual), QCP-FB is able to downgrade the
+2
+
+effect of the glottal source in the estimation of formants, and (2) by using forward-backward (FB)
+analysis, the number of speech samples can be increased in LP by using two prediction directions
+simultaneously.
+An example of the data-driven approach is the formant tracking study in [26], which investigated two DL models in formant estimation (multi-layer perceptron (MLP) and convolutional
+neural network (CNN)). The DL models were trained using supervised learning based on the manually annotated vocal tract resonance (VTR) speech corpus [27]. A similar formant estimation
+method based on supervised learning was studied in [28] using a bilinear network and a temporal
+attention-augmented bilinear network as DL models to predict formants. The same authors continued their formant tracking studies in [29] using dilated CNNs that were trained in a supervised
+manner with the VTR corpus. In addition, an unsupervised DL-based formant tracker that requires
+no prior formant measurements as training data was studied recently in [30]. Their method uses
+an autoencoder type of DL network whose latent features are interpreted as formants via a special
+loss function. In [31], formant tracking was studied using a CNN that maps a spectrogram into a
+latent representation without supervised training. The latent representation was then processed by
+multiple decoders, each responsible for predicting a different formant while considering the lower
+formant predictions.
+In the current study, formant tracking is studied by combining the model-driven and datadriven approaches. The combination, called the re f inement of a data-driven formant tracker,
+is based on first tracking formants from an utterance using an existing DL-based tracker. The
+tracked formants are then refined by replacing them with the formants predicted frame-wise by
+a model-driven, LP-based signal processing approach. By combining the model-driven and datadriven approaches we aim to tackle the following two known problems of formant estimation.
+(1) Data-driven methods suffer from over-fitting the formant estimation model to the training data
+and therefore estimation accuracy deteriorates for unseen test data [31]. We hypothesize that
+the decrease in formant estimation accuracy caused by over-fitting to the training data could be
+reduced by refining the predicted formants using a model (such as LP or QCP-FB) that is free from
+data learning. (2) Model-driven formant estimation methods based on different modifications of
+LP suffer from spurious peaks in all-pole spectra that occur, for example, in the covariance method
+when the all-pole model order is large relative to the number of speech samples in the covariance
+frame [32]. The problem caused by spurious peaks can be avoided in the proposed method by
+taking into account only those peaks that occur closest to the formants detected by the DL-based
+tracker (as will be described in more detail in Section 2).
+The combined use of model-driven and data-driven approaches was studied for the first time
+by the present authors in [33]. The current study extends our previous investigation in two ways.
+First, the preliminary study published in [33] reported results of formant tracking experiments
+only for vowels, diphthongs, and semivowels, whereas the experiments of the current study are
+reported also for more fine-grained phonetic categories. Second, and more importantly, our preliminary study published in [33] used a simple deep neural network (DNN) -based model to map
+speech features into formant estimates. The DNN was trained for the purposes of the preliminary
+study only, and the model has not been used in any other formant tracking experiments except
+in those that are reported in [33]. In the current study, however, we study a more general scenario in which formant contours predicted by an existing default DL-based formant tracker are
+3
+
+refined using formant information obtained from the model-driven approach. We consider this
+general refinement scenario important because its investigation addresses the following interesting
+question that has not been studied in the area of formant tracking before: Can formant tracking
+accuracy of an existing, modern data-driven tracker be improved by plugging into the system an
+efficient model-driven signal processing-based module, and by refining the formants predicted by
+the data-driven tracker using formant information estimated by the model-driven module? As
+the existing data-driven tracker, we selected the DeepFormants tracker [26] which, to the best of
+our knowledge, is the first formant tracker where DL-based formant estimation and tracking is
+used and which therefore can be regarded as the default system in the category of data-driven formant trackers. In addition, DeepFormants is the only modern data-driven tracker that is publicly
+available (https://github.com/MLSpeech/DeepFormants), which makes it an ideal tracker to
+study the proposed refinement approach.
+The goal of the current study is to investigate the accuracy of formant tracking based on refining the formant contours predicted by DeepFormants using two LP-based model-driven methods,
+conventional LP and QCP-FB. The DeepFormants trackers based on the refinement are compared
+with the original version of Deepformants [26], which uses no refinement, and with five known
+traditional baseline trackers that all use model-driven LP-based methods in formant estimation.
+The main novelty is in studying whether the accuracy of the DeepFormants tracker, which has
+been trained as reported in [26], can be improved with no further training by refining the predicted formant contours using formant information extracted from model-driven signal processing
+methods.
+The proposed method to refine the formants estimated by DeepFormants is described in Section
+2 by first giving a brief overview of the DeepFormant tracker and two LP-based methods that are
+used in the refinement of the tracker. In Section 3, the experimental setup of our formant tracking
+experiments is described. The results of the study are reported in Section 4. The main results are
+discussed, and conclusions are drawn in Section 5.
+2. Methods
+In this section, the methodological background of the proposed refinement approach is described in Section 2.1 by first summarizing the main properties of DeepFormants and then describing two LP-based methods that were selected to be used as model-driven formant estimation
+methods in refining formant contours predicted by DeepFormants. After this, the proposed refinement technique in formant tracking is described in Section 2.2.
+2.1. Background methods
+2.1.1. The DeepFormants tracker
+As the default data-driven formant tracker, the current study uses DeepFormants whose early
+version was published in [34] and the tracker was later extended in [26]. The DeepFormants
+tracker used in the current study is based on [26] and we used the implementation available
+at https://github.com/MLSpeech/DeepFormants. DeepFormants is a data-driven formant
+tracker consisting of an estimation stage and a tracking stage, both of which are implemented
+4
+
+using neural networks (NNs) that are trained with supervised learning based on manually annotated formant data. In [26], two feedforward NNs (MLP and CNN) were used in the estimation
+stage. For the tracking stage, [26] studied two recurrent NN architectures, the long short-term
+memory (LSTM) network and the convolutional recurrent network. In the current study, we use
+the DeepFormants version that uses the MLP model and the LSTM model in the estimation and
+tracking stage, respectively.
+In the estimation stage, the input to DeepFormants is a vector of 350 features computed from
+speech. The feature vector consists of cepstral features computed from LP filters of different
+orders and features of the quasi-pitch-synchronous speech spectrum. The output of the network is
+a vector corresponding to the first (F1 ), second (F2 ), and third (F3 ) formant to be predicted. The
+network has three fully connected hidden layers with 1024, 512, and 256 neurons, and the sigmoid
+function is used for activation. The network was trained in [26] based on the regression task using
+Adagrad [35] and the mean absolute error criterion between the predicted formant and its ground
+truth. All three formants are predicted simultaneously by the network. For the tracking stage, the
+DeepFormant tracker used in the current study utilizes an RNN consisting of an input layer with
+the same 350 input features as in the estimation stage. After the input layer, the network has two
+LSTM layers with 512 and 256 neurons, a time-distributed fully connected layer with 256 neurons,
+and an output layer consisting of the three formant frequencies. Similarly to the NN used in the
+estimation stage, the sigmoid function is used in activations and the model is optimized using
+Adagrad based on the mean absolute error. The DeepFormants tracker was trained in [26] using
+the training set of the VTR database described in [27]. The VTR database contains altogether
+516 utterances selected from the popular TIMIT database [36]. The training set of VTR contains
+324 utterances that were produced by 162 speakers (97 males, 65 females) each producing two
+sentences (one phonetically compact sentence and one phonetically diverse sentence).
+2.1.2. The selected LP-based formant estimation methods
+Two LP-based methods were used as model-driven formant estimation approaches to refine the
+formants tracked by DeepFormants. The first, LP based on the covariance method (LP-COV), was
+chosen to represent classic LP-based all-pole spectral modeling techniques [12] that have been
+widely used in formant estimation studies. The second one, QCP-FB, was selected because it
+showed the best performance in a comparison of six model-driven formant estimation methods in
+[25]. LP-COV is an established method in speech processing and therefore the reader is referred
+to [12] for a detailed description of it. A brief description of QCP-FB, however, is given below.
+The traditional formulation of LP, which is used, for instance, in LP-COV, is based on forward
+prediction in which the current speech sample is predicted from the past p samples. It is, however,
+also possible to use backward prediction in which the current sample is predicted from the future
+p samples. The combination of these two, forward-backward (FB) analysis, is used in QCP-FB.
+The combined error to be minimized is given by
+
+where
+
+E = E f + Eb ,
+
+2
+p
+X 
+X
+
+
+f
+ xn +
+E =
+ak xn−k 
+n
+
+k=1
+
+5
+
+(1)
+(2)
+
+
+2
+p
+X 
+X
+
+ x +
+
+and Eb =
+a
+x
+n
+k
+n+k
+
+
+(3)
+
+n
+
+k=1
+denote the forward and backward errors, respectively, xn denotes the current speech sample, and
+
+ak denotes the prediction coefficients. The prediction coefficients can be computed by minimizing
+the combined error (∂E/∂ai = 0, 1 ≤ i ≤ p), which results in the following normal equations
+p
+X
+ci,k ak = −ci,0 , 1 ≤ i ≤ p
+(4)
+k=1
+
+where ci,k =
+
+X
+
+xn−i xn−k +
+
+n
+
+X
+
+xn+i xn+k .
+
+(5)
+
+n
+
+Quasi-closed phase forward-backward (QCP-FB) analysis involves the use of FB analysis
+within the framework of WLP in order to combine the benefits of both techniques. WLP is computed using a temporal weighting function called the quasi-closed phase (QCP) function defined
+in [24]. The QCP weighting function, which is computed automatically for every speech frame by
+first estimating glottal closure instants, has small values in the vicinity of glottal closure instants.
+Therefore, by using the QCP function in WLP analysis, the strong contribution of prediction error
+at glottal closure instants can be reduced, which yields improved formant estimates as reported
+in [24]. The forward and backward errors are individually weighted using the QCP function. By
+denoting the QCP weighting function with wn , the combined error to be minimized can be written
+as
+F = F f + F b,
+(6)
+
+2
+p
+X
+
+
+wn  xn +
+ak xn−k 
+
+(7)
+
+
+2
+p
+X
+X 
+
+
+b
+wn  xn +
+ak xn+k 
+and F =
+
+(8)
+
+where
+
+F =
+f
+
+X
+n
+
+k=1
+
+n
+
+k=1
+
+are the weighted forward and backward errors, respectively. The resulting normal equations are
+given by
+p
+X
+di,k ak = −di,0 , 1 ≤ i ≤ p
+(9)
+k=1
+
+where di,k =
+
+X
+
+wn xn−i xn−k +
+
+n
+
+X
+
+wn xn+i xn+k .
+
+(10)
+
+n
+
+An appropriate choice of range for the variable n results in the autocorrelation or covariance methods for QCP-FB. In the current study, we use the covariance method in QCP-FB.
+Both LP-COV and QCP-FB are computed using a frame length of 25 ms, a frame shift of 10
+ms and an all-pole model order of p=13. Both methods are computed based on the covariance
+criterion using the rectangular window. Speech signals, sampled using 8 kHz, are pre-emphasized
+using an FIR filter (P(z) = 1 − 0.97z−1 ). The peaks in the spectrum are detected by convolving
+the spectrum with a Gaussian derivative window of width 100 Hz and picking the negative zerocrossings.
+6
+
+DeepFormants
+Speech
+utterance
+
+Predicted tracks F1,F2 & F3
+
+Refinement
+
+LP-based method
+(model-driven)
+
+Spectral peaks
+
+Refined tracks F1,F2 & F3
+
+F1,LP,F2,LP ,F3,LP,F4,LP,F5,LP & F6,LP
+
+Figure 1: Illustration of refining the formant tracks computed by DeepFormants using an LP-based method. In the
+upper path, the three lowest formants are tracked frame-wise by DeepFormants. In the lower path, local spectral
+peaks, whose maximum number is six, are extracted from the all-pole spectrum computed frame-wise by an LP-based
+method. The outputs of both paths are used in the refinement as demonstrated in Figure 2 to define the refined formant
+tracks.
+
+2.2. Refining the formants tracked by DeepFormants using LP-based methods
+The proposed refinement approach, which is shown as a flow diagram in Fig. 1, modifies the
+formants tracked by DeepFormants using a procedure consisting of the following parts. First,
+DeepFormants maps the acoustical features that are computed frame-wise as described in Section
+2.1.1 into preliminary contours of F1 , F2 , and F3 . Second, the LP-based all-pole spectral model
+(LP-COV or QCP-FB) is computed from each input frame and local peaks of the all-pole spectrum
+are determined. Note that with the all-pole model order p=13, both LP-COV and QCP-FB can
+maximally show six local peaks in their spectra. Third, each of the three preliminary formants
+predicted by DeepFormants are replaced in all frames with the local peak of the all-pole spectrum
+that is closest to the corresponding formant predicted DeepFormants. A graphical demonstration
+of the procedure to select the peaks of the all-pole spectrum is shown in Fig. 2. In the remaining
+sections, the refined DeepFormants tracker using LP-COV and QCP-FB in computing spectral
+peaks is denoted by DeepFormantsLP−COV and DeepFormantsQCP−FB , respectively. An illustration
+of formant frequencies of DeepFormants and DeepFormantsQCP−FB for an utterance produced by
+a male speaker is shown in Fig. 3. It can be seen from the figure that DeepFormantsQCP−FB is able
+to match the ground truth formant contours more closely than DeepFormants.
+3. Experiments
+3.1. Database
+Performance of the different formant trackers was evaluated using the VTR database, which is
+one of the most widely used speech databases in the areas of formant estimation and tracking [27].
+The test set of the database was used for the evaluation. This data consists of 192 utterances
+produced by 8 female and 16 male speakers, each pronouncing eight utterances. The duration of
+each utterance varies between two and five seconds. The ground truth formant frequencies have
+been derived using a semi-supervised LP-based method [37]. The first three formant frequencies
+(F1 , F2 , and F3 ) have been corrected manually using spectrograms. The ground truth values for
+formants are provided for every 10 ms interval.
+7
+
+1
+QCP-FB spectrum
+Peak of the QCP-FB spectrum
+Formant tracked by DeepFormants
+Refined formant
+Ground truth formant
+
+Normalized magnitude spectrum
+
+0.9
+0.8
+0.7
+0.6
+0.5
+0.4
+0.3
+0.2
+0.1
+0
+0
+
+500
+
+1000
+
+1500
+
+2000
+
+2500
+
+3000
+
+3500
+
+4000
+
+Frequency (Hz)
+
+Figure 2: Illustration of refining the formants estimated by DeepFormants using the all-pole spectrum computed by
+an LP-based method (QCP-FB). In this example, the QCP-FB spectrum shows five local peaks (marked by red lines).
+The three formants predicted by DeepFormants are shown by green lines. The refined formants (marked by black
+lines) are those three local peaks in the QCP-FB spectrum that are closest to the formants predicted by DeepFormants.
+
+3.2. Performance metrics
+The formant tracking performance was evaluated using two metrics, the formant detection
+rate (FDR) and the formant estimation error (FEE), which have been used previously in formant
+estimation and tracking studies [25, 38]. FDR is measured in terms of the percentage of frames
+where a formant is hypothesized within a specified deviation from the ground truth. The FDR for
+the ith formant over K analysis frames is computed as
+K
+
+1X
+I(∆Fi,n )
+Di =
+K n=1
+(
+1
+if ∆Fi,n /Fi,n < τr
+I(∆Fi,n ) =
+0
+otherwise
+
+(11)
+&
+
+∆Fi,n < τa
+
+
+(12)
+
+where I(.) denotes a binary formant detector function and ∆Fi,n = |Fi,n − F̂i,n | is the absolute
+deviation of the hypothesized formant frequency F̂i,n for ith formant at the nth frame from the
+reference ground truth Fi,n . The thresholds τr and τa denote the relative deviation and absolute
+deviation, respectively. As in [25, 39], these parameters were set as τr = 30% and τa = 300 Hz.
+FEE is measured in terms of the average absolute deviation of the hypothesized formants from the
+ground truth. The FEE for the ith formant over K analysis frames is computed as
+K
+
+1X
+∆Fi,n .
+Ei =
+K n=1
+
+(13)
+
+The better the performance of a formant tracker, the larger the value of FDR and the smaller the
+value of FEE will be. The FDR and FEE values were computed in the current study for frames
+which were in the particular phonetic category of interest (see Section 4).
+8
+
+0
+
+(a)
+
+-1
+4
+
+Freq (kHz)
+
+Amplitude
+
+1
+
+3
+2
+
+(b)
+
+1
+0
+4
+
+Freq (kHz)
+
+DeepFormants
+3
+2
+
+(c)
+
+1
+0
+4
+
+Freq (kHz)
+
+DeepFormants QCP-FB
+3
+2
+
+(d)
+
+1
+0
+0
+
+0.5
+
+1
+
+1.5
+
+2
+
+Time (sec)
+
+Figure 3: Formant frequencies of DeepFormants and DeepFormantsQCP−FB for a sentence produced by a male
+speaker: (a) the time-domain speech signal, (b) the narrowband spectrogram with reference ground truth formant contours, (c) the formant track estimates of DeepFormants, and (d) the formant track estimates of DeepFormantsQCP−FB .
+The example was computed from sentence “By that, one feels that magnetic forces are as general as electrical forces.”,
+from which a segment of 2.2 sec from the beginning is shown. Better performance of DeepFormantsQCP−FB compared
+to DeepFormants can be seen by comparing panels (c) and (d), for example, in tracking F1 (between 0.6 and 1.2 sec)
+and in tracking F3 (between 1.4 and 1.5 sec).
+
+9
+
+Table 1: Formant tracking results obtained using the evaluation dataset (vowels, diphthongs, semivowels) of
+the VTR corpus. Formants were tracked using five conventional formant trackers (PBURG, MUST, WSURF-0,
+WSURF-1, and KARMA), DeepFormants and two refined versions of DeepFormants (DeepFormantsLP−COV and
+DeepFormantsQCP−FB ). FDR denotes formant detection rate and FEE denotes formant estimation error.
+
+Method
+PBURG
+MUST
+WSURF-0
+WSURF-1
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−FB
+
+FDR (%)
+F1
+F2
+F3
+86.0 70.0 63.1
+81.1 86.3 76.9
+84.1 78.2 77.3
+86.6 82.7 80.8
+91.5 89.4 74.7
+91.7 92.3 89.7
+93.0 93.8 90.6
+93.9 94.4 92.6
+
+FEE (Hz)
+δF1 δF2 δF3
+88
+268 340
+91
+152 230
+93
+239 245
+87
+223 228
+62
+146 250
+85
+120 143
+62
+109 138
+60
+103 119
+
+3.3. Reference formant tracking methods
+The reference trackers studied in the current article include the following six formant trackers:
+(1) the PRAAT algorithm based on the BURG method in LP analysis [7] (denoted as PBURG),
+(2) the adaptive filter bank (AFB) -based formant tracking algorithm proposed in [40] (denoted
+as MUST), (3) the Wavesurfer tracker [8] based on the autocorrelation method in LP (denoted
+as WSURF-0), (4) the Wavesurfer tracker [8] based on the covariance method in LP (denoted as
+WSURF-1), (5) the Kalman filtering-based tracker proposed in [10] (denoted as KARMA), and
+(6) the default DL-based DeepFormants tracker proposed in [26] (denoted as DeepFormants). The
+first five represent classic formant trackers and they were allowed to track three formants from the
+underlying spectrum at a frame rate of 100 Hz.
+4. Results
+As the first experiment, we compared all trackers described in Section 3.3 by combining the
+vowels, diphthongs, and semivowels of the VTR corpus into a joint evaluation dataset. The obtained results are shown for the five traditional trackers, DeepFormants, and for the two refined
+DeepFormants trackers in Table 1. The data shows that the formant tracking performance obtained
+by the DL-based trackers (DeepFormants, DeepFormantsLP−COV , and DeepFormantsQCP−FB ) were
+clearly better compared to the traditional trackers. From the traditional trackers, KARMA was
+able to track F1 with performance that was comparable to that of the three DL-based trackers, but
+10
+
+KARMA’s performance for the other two formants, particularly F3 , was lower. By comparing the
+three DL-based trackers, a consistent trend can be seen in both metrics: the two refined versions
+of DeepFormant (DeepFormantsLP−COV and DeepFormantsQCP−FB ) were better than DeepFormant,
+and the refinement based on QCP-FB outperformed the refinement based on LP-COV. It can also
+be observed that DeepFormant gave an estimation error for F1 that was more than 20 Hz larger
+than that of the two refined trackers, but also more than 20 Hz larger than that of KARMA.
+As the second experiment, formant tracking performance of the four best trackers reported in
+Table 1 (KARMA, DeepFormants, DeepFormantsLP−COV , and DeepFormantsQCP−FB ) was further
+investigated by using evaluation data that consisted of several fine-grained phonetic categories.
+The corresponding results are shown in Table 2. The data in Table 2 is in line with previous
+studies [26, 29] indicating that formant tracking performance was highest for vowels, semivowels,
+and diphthongs, but performance reduced for other categories, particularly for fricatives and stops.
+By comparing the four trackers for vowels, diphthongs, semivowels, and nasals, it can be seen
+that the two refined trackers gave smaller estimation errors than KARMA and DeepFormants for
+all formants except in a few individual cases (e.g., in diphthongs, a slightly smaller FEE value in
+F3 was shown by DeepFormants compared to DeepFormantsLP−COV ). For fricatives, voice bars,
+and stops, the two refined trackers gave a smaller FEE value than KARMA consistently for all
+three formants. DeepFormants, however, was the best tracker in a few combinations of phonetic
+category and formant. In particular, the FEE value given by DeepFormants in tracking F1 of
+fricatives was smaller than the corresponding error given by the other three trackers.
+As the third experiment, noise robustness of the four best trackers reported in Table 1 (KARMA,
+DeepFormants, DeepFormantsLP−COV , and DeepFormantsQCP−FB ) was studied by corrupting the
+(clean) speech input of the VTR corpus with additive noise. The noise corruption was done using
+two types of noise (babble and white) and three signal-to-noise ratios (SNRs) (20 dB, 10 dB, and 5
+dB). The experiment was conducted in the similar manner as the first experiment (reported in Table 1) by using as evaluation data the vowels, diphthongs, and semivowels of the VTR corpus. The
+results of the corresponding tracking experiments are reported in Table 3. As the main results, the
+following observations can be made about the FEE values shown in the table. First, KARMA gave
+clearly larger estimation errors than the other three trackers for F2 and F3 in all noise-corruption
+categories (except for white noise with SNR=5 dB, for which the FEE metrics were almost the
+same for all trackers both in F2 and F3 ). Second, DeepFormants gave the largest estimation error
+in tracking F1 in all noise-corruption categories. Interestingly, however, the performance of DeepFormants in F1 tracking did not drop as as much as that of, for example, KARMA when the amount
+of noise was increased by changing SNR from 20 dB to 5 dB. The best robustness against noise
+was shown by DeepFormantsQCP−FB as can be seen, for example, by comparing the FEE value of
+F1 between the clean condition (i.e., Table 1) and the most severe noise condition (i.e., white noise
+at 5 dB in Table 3). By comparing these two tables, it can be seen that for DeepFormantsQCP−FB
+the value of FEE rose from 60 Hz to 69 Hz, whereas the corresponding rise for DeepFormants was
+from 85 Hz to 101 Hz, and for KARMA from 62 Hz to 92 Hz.
+
+11
+
+Table 2:
+Formant tracking results obtained by dividing the evaluation dataset of the VTR corpus into different phonetic categories. Formants were tracked using KARMA, DeepFormants, DeepFormantsLP−COV and
+DeepFormantsQCP−FB . FDR denotes formant detection rate and FEE denotes formant estimation error.
+
+Method
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−F B
+
+FDR (%)
+F1
+F2
+F3
+Vowels
+92.6 89.0 74.5
+92.7 93.7 91.0
+94.2 95.2 91.1
+94.8 95.7 93.7
+Diphthongs
+92.5 92.3 76.5
+93.2 93.8 90.6
+93.0 93.8 90.6
+94.7 95.6 94.0
+Semivowels
+86.9 86.9 73.6
+87.0 86.1 84.4
+88.9 88.4 85.4
+90.1 89.1 87.6
+Nasals
+82.1 80.7 75.0
+79.9 80.3 86.4
+85.9 84.9 86.9
+86.2 85.2 87.9
+Fricatives
+56.4 85.9 73.8
+67.9 87.0 83.4
+61.5 86.0 83.2
+61.5 87.3 84.0
+Voice Bars
+71.5 87.8 75.0
+79.1 86.4 84.8
+73.6 89.4 81.4
+73.9 90.9 83.8
+Stops
+65.2 86.4 72.4
+63.2 88.5 82.6
+69.5 87.9 82.7
+69.0 87.3 83.7
+12
+
+FEE (Hz)
+δF1
+δF2
+δF3
+57
+82
+56
+56
+
+150
+113
+97
+94
+
+251
+135
+134
+109
+
+63
+85
+62
+62
+
+129
+112
+109
+99
+
+240
+133
+138
+108
+
+76
+96
+73
+72
+
+155
+148
+147
+136
+
+258
+176
+179
+160
+
+90
+97
+76
+76
+
+214
+181
+167
+159
+
+241
+160
+161
+149
+
+191
+138
+161
+164
+
+160
+159
+156
+149
+
+244
+174
+171
+165
+
+92
+81
+83
+83
+
+151
+156
+138
+132
+
+256
+163
+185
+166
+
+157
+152
+139
+140
+
+159
+151
+148
+150
+
+255
+176
+182
+173
+
+Table 3: Formant tracking results obtained by degrading the evaluation dataset (vowels, diphthongs, semivowels) of
+the VTR corpus with babble and white noise at SNR levels of 20 dB, 10 dB, and 5 dB. Formants were tracked using
+KARMA, DeepFormants, DeepFormantsLP−COV , and DeepFormantsQCP−FB . FDR denotes formant detection rate and
+FEE denotes formant estimation error.
+
+Method
+
+FDR (%)
+F1
+F2
+F3
+
+Babble at 20 dB
+KARMA
+91.7 88.0 74.2
+DeepFormants
+91.3 91.7 87.1
+DeepFormantsLP−COV 92.5 92.1 89.7
+DeepFormantsQCP−FB 93.5 92.3 91.2
+Babble at 10 dB
+KARMA
+90.3 83.8 71.8
+DeepFormants
+91.1 86.6 81.7
+DeepFormantsLP−COV 90.7 86.4 83.9
+DeepFormantsQCP−FB 91.3 86.6 85.5
+Babble at 5 dB
+KARMA
+88.2 78.9 68.7
+DeepFormants
+89.8 81.4 76.1
+DeepFormantsLP−COV 88.6 80.5 78.0
+DeepFormantsQCP−FB 89.0 81.0 79.0
+
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−FB
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−FB
+KARMA
+DeepFormants
+DeepFormantsLP−COV
+DeepFormantsQCP−FB
+
+White at 20 dB
+90.4 87.6 73.6
+90.1 90.4 84.4
+92.6 91.1 85.0
+93.5 91.8 86.9
+White at 10 dB
+86.2 80.1 68.8
+89.8 80.8 71.6
+91.1 83.0 73.0
+92.1 83.4 74.2
+White at 5 dB
+80.1 72.5 64.0
+89.2 71.7 64.5
+88.0 74.4 66.2
+88.8 74.7 66.5
+13
+
+FEE (Hz)
+δF1 δF2 δF3
+
+61
+90
+62
+61
+
+153
+118
+117
+114
+
+248
+155
+139
+125
+
+65
+88
+65
+63
+
+176
+146
+150
+147
+
+246
+183
+170
+158
+
+71
+90
+68
+67
+
+201
+177
+185
+180
+
+260
+209
+201
+192
+
+64
+95
+61
+60
+
+151
+126
+126
+120
+
+241
+168
+170
+153
+
+76
+99
+63
+62
+
+191
+184
+176
+170
+
+257
+239
+242
+228
+
+92
+101
+71
+69
+
+233
+239
+230
+226
+
+279
+274
+280
+271
+
+5. Discussion and conclusions
+Formant tracking was studied in this article based on refining the formant contours predicted
+by an existing modern data-driven formant tracker, DeepFormants. In the studied approach, the
+trained NN model of the DeepFormants tracker first maps input speech frames to the preliminary
+contours of F1 , F2 , and F3 . The predicted formants are then replaced frame-wise by the local peaks
+in the all-pole spectra computed in a model-driven manner by an LP-based method from the same
+speech frames. As an LP method, one conventional method (LP-COV) and one recently developed
+algorithm (QCP-FB) were used. The proposed refinement technique was compared in formant
+tracking to the original version of DeepFormants and to five classic trackers. In the first experiment, altogether eight trackers (five classical trackers, DeepFormants, DeepFormantsLP−COV , and
+DeepFormantsQCP−FB ) were compared using evaluation data that consisted of the vowels, diphthongs, and semivowels of the VTR corpus. The results showed that the three DeepFormantsbased trackers outperformed all five classic trackers, and that DeepFormantsQCP−FB was the best
+tracker. In the second experiment, four best trackers of the first experiment were compared by dividing the evaluation data into seven phonetic categories. The results indicated that the refined
+DeepFormantsQCP−FB tracker showed a consistent performance improvement over the original
+DeepFormants tracker in all three formants for vowels, diphthongs, semivowels, and nasals. Particularly for fricatives, however, tracking of F1 showed lower performance for DeepFormantsQCP−FB
+compared to DeepFormants. Finally, in the third experiment, robustness of formant tracking with
+respect to noise was evaluated by comparing the same trackers that were included in the second
+experiment. The results of this experiment indicated that DeepFormantsQCP−FB showed the best
+resilience to noise.
+The results summarized above suggest that the proposed idea to refine the formants tracked
+by DeepFormants using the formants predicted by a model-driven, LP-based signal processing
+approach results in an improved accuracy and noise robustness in formant tracking. The observed performance degradation of DeepFormantsQCP−FB in tracking formants of fricatives is due
+to the aperiodic nature of the excitation of the speech production mechanism in these sounds. For
+speech sounds with aperiodic glottal excitations, there are namely no clear glottal closure instants,
+and therefore QCP-FB analysis is not able to improve the estimation of the vocal tract by reducing the effect of glottal closure instants. The improved noise robustness of DeepFormantsQCP−FB
+can in turn be explained by two issues. First, QCP-FB analysis estimates vocal tract resonances
+by emphasizing the contribution of speech waveform samples that occur after glottal closure
+[25]. These speech samples are more robust against noise because their amplitude level is larger
+than in other parts of the glottal cycle. Therefore, QCP-FB analysis inherently utilizes speech
+samples that are more resilient to additive noise, which leads to improved formant tracking by
+DeepFormantsQCP−FB . Second, the key concept of DeepFormantsQCP−FB , the combination of
+model-driven and data-driven approaches, in formant tracking helps in improving noise robustness
+of formant tracking. In purely data-driven trackers, such as DeepFormants, there is always the risk
+of having a mismatch between the system training and test stages. The DeepFormants tracker has
+been namely trained with clean speech, and therefore it is understandable that its performance
+might drop when the tracker is tested in conditions that have not been seen by the tracker’s NN
+models in the system training stage. In DeepFormantsQCP−FB , however, the other part of the combination, the model-driven QCP-FB technique, is free of any data learning stage, and therefore the
+14
+
+tracker will be more resilient to mismatch between the training and test conditions.
+In reporting results of formant tracking experiments (e.g., [26, 30, 31]), authors typically compare their proposed method with known reference techniques by using absolute FEE measure as
+metrics (in Hz, defined Eq. 13), which was also used in this study. In some studies (e.g., [20]),
+results are reported using the mean absolute deviation (MAD), which is the relative error (in %)
+between the tracked formant and its reference value. (Note that MAD is called the mean absolute percentage error in some studies [28, 29]). What is, however, left undiscussed by authors
+of the study area is the question whether the tracking metrics obtained can be considered good
+enough when the underlying formant tracker is in use, for example, in phonetic studies of natural
+speech. This question about the goodness of metrics is obviously difficult to answer because formant tracking can be used in tasks that are of different requirements in terms of how large errors
+formant tracking is allowed to show. As an example, in identification of vowels based on their
+tracked F1 and F2 values, a larger error may be tolerated for vowels that are at the corners of the
+vowel triangle (i.e., /u/, /i/, and /a/) compared to those that are in the middle (e.g., /œ/ and /E/). In
+order to shed light on this problematic question about the goodness of metrics, we propose that the
+assessment of the metrics shown by a formant tracker could be done by comparing the tracker’s
+metrics with the results reported in human perception studies on formants. There are namely many
+investigations that have been done since the 1950’s to study human perceptual thresholds in formant distinction (e.g., [41, 42]). The results of these studies were summarized by Kewley-Port and
+Watson in [43], and their conclusion was that humans are able to distinguish changes in F1 when
+its value is altered by 3%-10% (corresponding to MAD values between 3% and 10%). Achieving
+MAD values of this small magnitude even for one phonetic category (e.g., vowels which were
+considered in [43]) is obviously a tough requirement in automatic formant tracking. In order to
+demonstrate this for the trackers of the current study, we computed MAD values for DeepFormants
+and DeepFormantsQCP−FB in tracking F1 from vowels and diphthongs. For vowels, MAD values
+of 15.7% and 11.4% were obtained by DeepFormants and DeepFormantsQCP−FB , respectively. For
+diphthongs, the corresponding values were 15.3% and 11.6%. Hence, the performance of even
+the best trackers is still many percentage units lower compared to human performance in detection
+of noticeable changes in F1 . It is undoubtedly ambitious to set the goal in formant tracking to
+metrics values that correspond to the thresholds reported in formant distinction by humans, and
+this requirement seems not be possible to be achieved yet even by the latest data-driven trackers.
+However, we hope that the introduction of this goal motivates the development of new formant
+trackers, and we argue the goal is in line with recent progress in other areas of speech technology,
+such as text-to-speech synthesis [44] and automatic speech recognition [45], where performance
+of machine is approaching human performance.
+In conclusion, the study showed that the two groups of formant estimation techniques that
+have been used in formant trackers, the conventional model-based approach based on parametric
+all-pole modeling and the modern data-driven approach, should not be seen as alternatives to each
+other. Instead they can be used together to enhance the accuracy of data-driven trackers. Accuracy
+improvement can be implemented easily by plugging an LP-based formant estimation method
+into an existing data-driven tracker without re-training the tracker’s NNs. Future studies will be
+conducted to analyze the system performance when the test data is taken from other annotated
+databases than the VTR corpus, which was used in the training of DeepFormants.
+15
+
+Acknowledgments
+This work has been funded by the Academy of Finland (project no 330139) and Aalto University (the Ministry of Education and Culture’s Global Program Pilots for India).
+References
+[1] P. F. Assmann, The role of formant transitions in the perception of concurrent vowels, J. Acoust. Soc. Am. 97 (1)
+(1995) 575–584. doi:http://dx.doi.org/10.1121/1.412281.
+[2] J. Hillenbrand, L. A. Getty, M. J. Clark, K. Wheeler, Acoustic characteristics of American English vowels, J.
+Acoust. Soc. Am. 97 (5) (1995) 3099–3111.
+[3] J. R. Schilling, R. L. Miller, M. B. Sachs, E. D. Young, Frequency-shaped amplification changes the neural
+representation of speech with noise-induced hearing loss, Hear. Res. 117 (1-2) (1998) 57 – 70. doi:http:
+//dx.doi.org/10.1016/S0378-5955(98)00003-3.
+[4] I. C. Bruce, Physiological assessment of contrast-enhancing frequency shaping and multiband compression in
+hearing aids, Physiol. Meas. 25 (4) (2004) 945–956.
+[5] J. Rusz, R. Cmejla, T. Tykalova, H. Ruzickova, J. Klempir, V. Majerova, J. Picmausova, J. Roth, E. Ruzicka,
+Imprecise vowel articulation as a potential early marker of Parkinson’s disease: Effect of speaking task, J.
+Acoust. Soc. Am. 134 (3) (2013) 2171–2181.
+[6] R. D. Kent, G. Weismer, J. F. Kent, H. K. Vorperian, J. R. Duffy, Acoustic studies of dysarthric speech: Methods,
+progress, and potential, J. Commun. Disord. 32 (3) (1999) 141–186.
+[7] P. Boersma, Praat, a system for doing phonetics by computer, Glot International 5 (9/10) (2001) 341–345.
+[8] K. Sjölander, J. Beskow, Wavesurfer - An open source speech tool, in: Proc. Int. Conf. Spoken Language
+Processing, Beijing, China, October, 2000, pp. 464–467.
+[9] L. Deng, L. Lee, H. Attias, A. Acero, Adaptive Kalman filtering and smoothing for tracking vocal tract resonances using a continuous-valued hidden dynamic model, IEEE Trans. Audio, Speech, and Language Processing
+15 (1) (2007) 13–23. doi:10.1109/TASL.2006.876724.
+[10] D. D. Mehta, D. Rudoy, P. J. Wolfe, Kalman-based autoregressive moving average modeling and inference for
+formant and antiformant tracking, J. Acoust. Soc. Am. 132 (3) (2012) 1732–1746.
+[11] B. Story, K. Bunton, Formant measurement in children’s speech based on spectral filtering, Speech Commun.
+76 (2016) 93–111.
+[12] J. Makhoul, Linear prediction: A tutorial review, Proc. IEEE 63 (1975) 561–580.
+[13] A. V. Oppenheim, R. W. Schafer, From frequency to quefrency: A history of the cepstrum, IEEE Signal Process.
+Mag. 21 (5) (2004) 95–106.
+[14] R. Hagiwara, Dialect variation and formant frequency: The American English vowels revisited, J. Acoust. Soc.
+Am. 102 (1997) 655–658.
+[15] S. Rahman, T. Shimamura, Linear prediction using refined autocorrelation function, EURASIP J. Audio Speech
+Music Process. 45962 (2007) 1–9.
+[16] T. Wang, T. Quatieri, High-pitch formant estimation by exploiting temporal change of pitch, IEEE Trans. Audio
+Speech Lang. Process. 18 (2010) 171–186.
+[17] B. Yegnanarayana, R. Veldhuis, Extraction of vocal-tract system characteristics from speech signals, IEEE
+Trans. Speech Audio Process. 6 (4) (1998) 313–327.
+[18] B. Yegnanarayana, Formant extraction from linear prediction phase spectra, J. Acoust. Soc. Am. 63 (5) (1978)
+1638–1640.
+[19] H. A. Murthy, B. Yegnanarayana, Group delay functions and its applications in speech technology, Sadhana
+36 (5) (2011) 745–782.
+[20] K. Vijayan, K. S. R. Murty, H. Li, Allpass modeling of phase spectrum of speech signals for formant tracking,
+in: Proc. APSIPA Annual Summit and Conference, Lanzhou, China, November 18-21, 2019, pp. 1190–1196.
+[21] C.-H. Lee, On robust linear prediction of speech, IEEE Trans. Acoust. Speech Signal Process. 36 (5) (1988)
+642–650.
+
+16
+
+[22] C. Ma, Y. Kamp, L. F. Willems, Robust signal selection for linear prediction analysis of voiced speech, Speech
+Commun. 12 (1) (1993) 69 – 81. doi:10.1016/0167-6393(93)90019-H.
+[23] P. Alku, J. Pohjalainen, M. Vainio, A.-M. Laukkanen, B. H. Story, Formant frequency estimation of high-pitched
+vowels using weighted linear prediction, J. Acoust. Soc. Am. 134 (2) (2013) 1295–1313.
+[24] M. Airaksinen, T. Raitio, B. Story, P. Alku, Quasi closed phase glottal inverse filtering analysis with weighted
+linear prediction, IEEE/ACM Trans. Audio Speech Lang. Process. 22 (3) (2014) 596–607.
+[25] D. Gowda, M. Airaksinen, P. Alku, Quasi-closed phase forward-backward linear prediction analysis of speech
+for accurate formant detection and estimation, J. Acoust. Soc. Am. 142 (3) (2017) 1542–1553.
+[26] Y. Dissen, J. Goldberger, J. Keshet, Formant estimation and tracking: A deep learning approach, J. Acoust. Soc.
+Am. 145 (2) (2019) 642–653.
+[27] L. Deng, X. Cui, R. Pruvenok, J. Huang, S. Momen, A database of vocal tract resonance trajectories for research
+in speech processing, in: Proc. Int. Conf. Acoustics Speech and Signal Processing (ICASSP), Toulouse, France,
+2006, pp. I369–I372.
+[28] W. Dai, Z. Hua, J. Zhang, Y. Xie, B. Li, Gated bilinear networks for vowel formant estimation, in: Proc. Int.
+Conf. on Asian Language Processing, Kuala Lumpur, Malaysia, 2020, pp. 205–209.
+[29] W. Dai, J. Zhang, Y. Gao, W. Wei, D. Ke, B. Lin, Y. Xie, Formant tracking using dilated convolutional networks
+through dense connection with gating mechanism, in: Proc. Interspeech, Shanghai, China, 2020, pp. 150–154.
+[30] J. Lilley, T. Bunnell, Unsupervised training of a DNN-based formant tracker, in: Proc. Interspeech, Brno, Czech
+Republic, 2021, pp. 1189–1193.
+[31] Y. Shrem, F. Kreuk, J. Keshet, Formant estimation and tracking using probabilistic heat-maps, in: Proc. Interspeech, Incheon, Korea, 2022, pp. 3563–3567.
+[32] S. M. Kay, S. L. Marple, Spectrum analysis – A modern perspective, Proc. IEEE 69 (11) (1981) 1380–1419.
+[33] D. Gowda, B. Bollepalli, S. R. Kadiri, P. Alku, Formant tracking using quasi-closed phase forward-backward
+linear prediction analysis and deep neural networks, IEEE Access 9 (2021) 151631–151640.
+[34] Y. Dissen, J. Keshet, Formant estimation and tracking using deep learning, in: Proc. Interspeech, San Francisco,
+USA, September 8-12, 2016, pp. 958—-962.
+[35] J. Duchi, E. Hazan, Y. Singer, Adaptive subgradient methods for online learning and stochastic optimization, J.
+Mach. Learn. Res. 12 (2011) 2121–2159.
+[36] J. S. Garofolo, et al., TIMIT Acoustic-Phonetic Continuous Speech Corpus, Linguistic Data Consortium,
+Philadelphia, USA (1993).
+[37] L. Deng, L. Lee, H. Attias, A. Acero, A structured speech model with continuous hidden dynamics and
+prediction-residual training for tracking vocal tract resonances, in: Proc. Int. Conf. Acoustics Speech and Signal
+Processing (ICASSP), Vol. 1, Montreal, Quebec, Canada, 2004, pp. I–557–60. doi:10.1109/ICASSP.2004.
+1326046.
+[38] R. Prasad, M. Magimai-Doss, Identification of F1 and F2 in speech using modified zero frequency filtering, in:
+Proc. Interspeech 2021, 2021, pp. 56–60.
+[39] D. Gowda, S. R. Kadiri, B. Story, P. Alku, Time-varying quasi-closed-phase analysis for accurate formant tracking in speech signals, IEEE/ACM Trans. Audio Speech Lang. Process. 28 (2020) 1901–1914.
+[40] K. Mustafa, I. C. Bruce, Robust formant tracking for continuous speech with speaker variability, IEEE Trans.
+Audio Speech Lang. Process. 14 (2) (2006) 435–444.
+[41] J. Flanagan, A difference limen for vowel formant frequency, J. Acoust. Soc. Am. 27 (3) (1955) 613–617.
+[42] J.-P. Gagne, P. Zurek, Resonance-frequency discrimination, J. Acoust. Soc. Am. 83 (6) (1988) 2293–2299.
+[43] D. Kewley-Port, C. S. Watson, Formant-frequency discrimination for isolated English vowels, J. Acoust. Soc.
+Am. 95 (1) (1994) 485–496.
+[44] J. Shen, R. Pang, R. J. Weiss, M. Schuster, N. Jaitly, Z. Yang, Z. Chen, Y. Zhang, Y. Wang, R. Skerry-Ryan, R. A.
+Saurous, Y. Agiomyrgiannakis, Y. Wu, Natural TTS synthesis by conditioning Wavenet on Mel spectrogram
+predictions, in: Proc. Int. Conf. Acoustics Speech and Signal Processing (ICASSP), 2018, pp. 4779–4783.
+[45] W. Xiong, J. Droppo, X. Huang, F. Seide, M. L. Seltzer, A. Stolcke, D. Yu, G. Zweig, Toward human parity
+in conversational speech recognition, IEEE/ACM Transactions on Audio, Speech, and Language Processing
+25 (12) (2017) 2410–2423.
+
+17

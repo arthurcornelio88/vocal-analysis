@@ -1,0 +1,689 @@
+Machine Learning Approaches to Vocal Register
+Classification in Contemporary Male Pop Music
+Alexander Kim, Prof. Charlotte Botha
+Hamilton College
+
+arXiv:2505.11378v2 [cs.SD] 20 Aug 2025
+
+8/16/2024
+
+Abstract
+
+1
+
+For singers of all experience levels, one
+of the most fun and daunting challenges
+in learning, technical repertoire is navigating placement and vocal register in and
+around the passagio (passage between chest
+voice and head voice registers). Contemporary Pop and Musical Theater solos increasingly demand strong command through and
+above the first passagio, and the use of various timbre and textures to achieve a desired quality. Thus, it can be difficult to
+identify what vocal register within the vocal range a singer is using even for advanced vocalists. This paper presents two
+methods for classifying vocal registers in
+an audio signal of male pop music through
+the end-to-end analysis of textural features
+of mel-spectrogram images. Additionally,
+we will discuss the practical integration of
+these models for vocal analysis tools, and
+introduce a concurrently developed software
+called AVRA which stands for Automatic
+Vocal Register Analysis. Our proposed
+methods achieved consistent classification
+of vocal register through both Support Vector Machine (SVM) and Convolutional Neural Network (CNN) models, which shows
+promise for robust classification possibilities
+across a greater range of voice types and
+genre.
+
+In all voices, there are two muscles responsible for manipulating the vocal folds.
+The thyroarytenoid (TA) muscles shorten
+and thicken the folds while the cricothyroid (CT) muscles lighten and lengthen. TA
+dominant vocal functions result in ’chest
+voice’ which the lower speech like vocal register in all genders. On the other hand, the
+CT muscles produce that pop falsetto head
+voice sound that has become prominent in
+the 21st century, and is often used to reach
+higher notes with a softer quality.
+
+1.1
+
+Introduction
+
+Interpreting Mixed Voice
+in Pop Music
+
+In vocal pedagogy, ’mixed voice’ is used to
+denote the coordination of both TA and
+CT muscles, which imbues the sound with
+qualities from both chest voice and head
+voice. However, an experienced singer can
+change the balance of muscle function,
+so the term mixed voice covers the entire
+spectrum of chest-like to head-like timbres.
+For this reason, we divided the mixed voice
+classification into ’mix’ and ’head mix’
+where mix denotes a more TA dominant,
+solid sound and head mix reflects more of
+the lighter head voice qualities.
+The challenge in identifying vocal register is the variety of factors involved from
+person to person. In male pop music,
+1
+
+The Automatic Vocal Register Analysis (AVRA) software may help students
+and experienced singers further their understanding and practice of contemporary
+vocal technique. In AVRA, the user uploads an audio clips which is then processed
+into a sequence of mel-spectrograms. Then
+user then highlights the portion of audio
+they want analyzed and the software
+returns back the spectrogram with markers
+and labels for vocal register shifts. The
+temporal visual labeling of AVRA could
+help vocalists see exactly where they might
+be struggling, and what technique their
+target artist is using.
+
+navigating the passagio demands control
+over mixed voice which raises the difficulty
+of vocal register identification.
+More
+formally, the passagio is sequence of pitches
+that bridge or transition between chest
+and head voice. Vocal registers don’t have
+clear boundaries and can overlap in pitch
+particularly through the passagio. Besides
+pitch, other qualities like resonance, and
+placement play a role in determining the
+color and texture of the sound. This is
+how a singer can sing one note in two very
+different ways which is reflected in their
+choice of vocal register.
+
+1.2
+
+Advantages of Data
+Driven Vocal Analysis
+
+Expressing all these qualities of vocal
+audio with data was done by rendering
+samples of a single vocal register into melspectrograms. Thus, the proposed methods
+were achieved by analyzing the features
+and properties of mel-spectrograms. More
+specifically, the Fast-Fourier-Transform
+used to convert audio into spectrograms
+inherently increases the data from two
+to three dimensions.
+This enables for
+more robust automatic feature extraction
+via image classifiers, and improves data
+labeling through multi-modal identification
+of formants in audio clips and their corresponding images.
+
+2
+
+Related Work
+
+2.1
+
+Audio Classification with
+Images
+
+Audio classification (particularly with deep
+learning) is accomplished by training models on spectrogram images. Identification
+of TA/CT muscle use has shown promising
+results with SVM models (Lacera, Mello,
+2017). Since vocalizations are controlled by
+these muscles, we supposed that other qualities like vocal register could be identified
+with similar methods.
+
+3
+
+Materials and
+Methods
+
+This section describes the process and
+pipelines used for building the dataset, preprocessing images and extracting features,
+and model specifications and architectures.
+Finally, it will conclude by summarizing the
+training and evaluation process that determined which models were pushed to production.
+
+3.1
+
+Figure 1: AVRA analysis output example.
+
+Dataset
+
+Similarly to the paper referenced earlier,
+we used mel-spectrograms as the expres2
+
+sion of the labeled audio clips. The lead
+vocals from WAV audio files of pop-songs
+were manually separated using the ’stemsplitter’ tool in Logic Pro. Then, the raw
+audio was imported into Audacity and
+rendered into mel-spectrograms with a
+maximum frequency of 20000 Hz, gain of
+20 dB, range of 80 dB, standard Roseus
+color scheme, and Hann window type as the
+default settings. These parameters were
+later replicated using the Librosa library in
+Python for model inference pre-processing.
+
+(SVM) for audio classification, utilizing
+spectrograms as input.
+This approach
+was motivated by the SVM’s effectiveness
+in high-dimensional spaces by using the
+kernel trick to learn optimal separating
+hyperplanes between classes.
+
+We began by pre-processing the spectrogram images. The input is standardized
+to 154x128 pixels, applying resizing and
+padding as necessary. To further generalize
+the dataset and address potential class
+imbalance, we used two data augmentation
+techniques: horizontal flipping and brightness adjustment. Each image was flipped
+across the Y-axis, and two additional
+versions were created by adjusting the
+brightness to 0.8 and 1.2 times the original.
+Figure 2: mel-spectrogram of a 3-second voWe limited our approach to these techcal clip.
+niques to balance the benefits of a larger
+dataset against the constraints imposed by
+the super-linear scaling training time for
+Given that the dataset consists of 2010’s SVM with a non-linear kernel.
+pop music, pitches ranged from C3-C5, but
+were generally from A3-G4. Qualitative The choice of these augmentation techdefinitions for each vocal register were niques was determined by the nature of
+agreed upon at the beginning of the project spectrograms and the characteristics of
+with supplementation from various vocal vocal audio. In particular, horizontal fliptechnique texts (Peckham 2010). Then ping (instead of vertical flipping) preserves
+the raw vocals of each song were split the frequency structure while providing
+into 3 second clips and rendered into reasonable variation in the time domain.
+spectrograms. An image was captured for This mimics potential variations in vocal
+any continuously used vocal register and phrasing without distorting the fundamenthen later processed into a standard size tal frequency relationships since time is
+for the model inputs. These sub-images represented on the x-axis and frequency
+were given a one-hot encoded label for one on the y-axis. The brightness adjustments
+of the 4 vocal registers. In these labels, 0 of factors 0.8 and 1.2 simulate variations
+corresponds to Chest Voice, 1 corresponds in overall energy or volume of the vocal
+to Mix, 2 corresponds to Head Mix, and sample, which can occur due to factors like
+3 corresponds to Head Voice. A total of microphone distance, background noise,
+1008 audio clips were rendered into mel- or singer intensity, without altering key
+spectrograms which produced 7221 initial spectral relationships.
+More extensive
+images before splitting and augmentation. augmentation techniques, such as random
+
+3.2
+
+rotations or vertical flips, were avoided as
+they would introduce unnatural spectral
+relationships that could confuse the model
+rather than enhance its learning.
+
+SVM Classification
+
+Before experimenting with a CNN, we
+implemented a Support Vector Machine
+3
+
+After augmentation, the spectrograms
+were converted to grayscale, which matches
+the pre-processing technique Lacera and
+Mello used. The images were then flattened
+into one-dimensional vectors, resulting in
+a feature space of 19,712 dimensions
+(154x128). This transformation allowed us
+to represent each audio sample as a point
+in this high-dimensional space, where the
+SVM could effectively separate different
+vocal register classes. The combination
+of our targeted augmentation strategy
+and this high-dimensional representation
+provided the SVM with a rich, varied
+dataset that captured the characteristics
+of each vocal register while maintaining
+computational feasibility.
+
+between four classes representing different
+vocal registers via a one-vs-rest strategy for
+this multi-class classification problem. This
+is the default approach in scikit-learn’s
+SVM implementation.
+To evaluate our model’s performance,
+the dataset was split into training (80%)
+and test (20%) sets. We assessed the
+model using standard metrics including
+accuracy, precision, recall, and F1-score for
+each class. Additionally, we examined the
+confusion matrix to understand the model’s
+performance across different vocal registers.
+A key advantage of our SVM approach is
+its ability to provide probability estimates
+for each class, offering insights into the
+model’s confidence in its predictions. This
+feature is particularly valuable in vocal
+register classification, where boundaries
+between classes can be subtle and gradual.
+By leveraging the SVM’s strengths in
+handling high-dimensional data we trained
+a classifier capable of accurately distinguishing between different vocal registers
+based on spectrogram representations of
+audio samples.
+
+3.3
+
+CNN Architecture
+
+Figure 3: pre-processed grey-scale spectro- The main goal of this project; however, was
+gram example of a balanced mix (label 1) to employ a Convolutional Neural Network
+spectrogram.
+(CNN) for audio classification, leveraging
+its proven efficacy in image processing
+tasks. Like with the SVM, this approach
+We chose a linear kernel for our SVM was motivated by the transformation of
+for computational efficiency, which was audio signals into spectrograms, converting
+suitable given the high dimensionality of the audio classification problem into an
+our feature space. The hyper-parameters image based task. The CNN’s ability to
+were fine-tuned, with a notably small C capture hidden patterns in spectrograms,
+regularization value of 0.0000025, pro- which often correspond to audio features
+moting a larger margin and potentially such as harmonics, or formants in vowels,
+better generalization. We also employed made it particularly suitable for this applibalanced class weights to mitigate any class cation.
+imbalance issues in our dataset.
+Our CNN architecture consists of three
+The SVM was trained to distinguish convolutional layers followed by two fully
+4
+
+connected layers.
+This structure was
+chosen to balance depth for feature abstraction with computational efficiency
+and generalization.
+The convolutional
+layers, provide translation invariance –
+a crucial property in audio classification
+where important features may occur at
+different time points or frequency bands
+within the spectrogram. Following each
+convolutional layer, we applied max pooling
+to reduce spatial dimensions, introducing a
+degree of position invariance and managing
+computational complexity.
+
+audio characteristics, its ability to handle
+variable-length inputs (with appropriate
+modifications), and its potential for capturing relevant features in many audio
+classification tasks motivated this choice.
+
+4
+
+Results
+
+In this section, we will discuss the performance data from training the SVM and
+CNN models. We will discuss the effectiveness of both methods, with the CNN showing slightly superior performance.
+
+The use of ReLU activation functions
+after each convolutional layer introduces 4.1 Training Performance Tanon-linearity, allowing the model to learn,
+bles
+non-linear decision boundaries. This is
+essential for capturing the intricate rela- Table 1: SVM Performance Metrics - Traintionships between different audio features. ing Set
+The final fully connected layers combined
+the high-level features extracted by the
+Class
+Precision Recall F1-score
+convolutional layers for classification,
+Chest
+0.98
+0.98
+0.98
+effectively learning the optimal weighting
+Mix
+0.98
+0.98
+0.98
+of various audio features to discriminate
+HeadMix
+0.99
+1.00
+0.99
+between classes.
+Head
+1.00
+1.00
+1.00
+This CNN architecture enables end-toAccuracy
+0.99
+end learning, where both feature extraction
+and classification stages are learned simultaneously.
+This approach contrasts Table 2: SVM Performance Metrics - Test
+with traditional methods that often require Set
+separate feature engineering steps. Additionally, the hierarchical feature extraction
+Class
+Precision Recall F1-score
+in CNNs, combined with pooling operaChest
+0.93
+0.94
+0.93
+tions, provides some robustness to noise
+Mix
+0.93
+0.91
+0.92
+and small variations in the input, which
+HeadMix
+0.92
+0.97
+0.94
+is a valuable characteristic in real-world
+Head
+0.99
+0.97
+0.98
+audio classification tasks given imperfect
+sampling.
+Accuracy
+0.94
+By employing this CNN architecture,
+we aimed to leverage these advantages
+for effective audio classification, aiming
+to outperform traditional ML methods
+that rely on laborious feature engineering
+or struggle with high dimensional data.
+The adaptability of this architecture to
+
+4.2
+
+SVM Results
+
+The SVM model demonstrated strong
+performance in classifying vocal registers,
+as shown by the metrics in Tables 1 and
+2. On the training set, the model achieved
+5
+
+Table 3: Confusion Matrix for SVM Model Table 4:
+(Test Set)
+Epochs
+Predicted
+Actual
+Chest
+Mix
+HeadMix
+Head
+
+Chest
+
+Mix
+
+HeadMix
+
+Head
+
+1216
+82
+5
+4
+
+60
+1041
+11
+2
+
+21
+21
+537
+5
+
+1
+3
+1
+416
+
+Training Performance Across
+
+Epoch
+1
+2
+3
+4
+5
+6
+
+Training Loss
+1.394666
+0.764612
+0.548216
+0.302725
+0.116176
+0.064901
+
+near-perfect classification across all registers, with training precision, recall, and
+F1-scores ranging from 0.98 to 1.00, and a Table 5: Validation Performance Across
+Epochs
+training of 0.99.
+Epoch
+1
+2
+3
+4
+5
+6
+
+On the test set, the model maintained
+robust performance, with a slight decrease
+compared to the training set. The overall
+accuracy on the test set was 0.94, with individual class metrics ranging from 0.91 to
+0.99. The ’Head’ register was particularly
+well-classified, with precision of 0.99 and
+recall of 0.97.
+
+Val Loss
+0.781375
+0.653277
+0.445461
+0.320593
+0.185138
+0.111533
+
+Val Accuracy
+68.0%
+72.3%
+82.4%
+88.5%
+93.8%
+96.2%
+
+with relatively high loss values, ranging
+from 1.394666 to 0.632968.
+The validation accuracy after the first epoch
+was 68.0%, with a loss of 0.787375. As
+training progressed, we observed a steady
+improvement in both training loss and validation accuracy as shown in Tables 5 and 4.
+
+The confusion matrix (Table 3) provides further insight into the model’s
+performance. It reveals that misclassifications were most common between adjacent
+registers (e.g., Chest and Mix, or Mix and
+HeadMix). This suggests that the SVM
+successfully learned the features relevant
+to the labeled vocal registers and didn’t
+just memorize its training data. More
+importantly, this reflects the continuous
+nature of vocal register transitions as a
+fundamental structure of it’s understanding
+of the data.
+
+The training loss in the final epoch
+ranged from 0.064901 to 0.034674, showing
+a dramatic reduction from the initial
+epoch. This pattern of improvement in
+both training loss and validation accuracy
+suggests that the model effectively learned
+to extract relevant features from the
+mel-spectrograms while maintaining good
+4.3 CNN Results
+generalization to unseen data. Furthermore, training was halted after the sixth
+The CNN model demonstrated significant epoch due to prevent overfitting following
+learning and generalization capabilities strong results on the previous two testing
+over the course of six training epochs. sets.
+The training process showed a consistent
+decrease in loss and improvement in validation accuracy.
+5 Discussion
+So far, we demonstrated the efficacy of
+In the first epoch, the model started SVM and CNN machine learning, in classi6
+
+fying vocal registers in contemporary male
+pop music. Both models achieved high
+accuracy on their final validation sets, with
+the CNN slightly outperforming the SVM
+(96.2% vs. 94% test accuracy). However,
+the SVM has proven to be more practically
+useful in the AVRA (Automatic Vocal
+Register Analysis) software, potentially
+due to overfitting of the CNN.
+
+be of benefit to real-world applications of
+vocal register classification with the current
+dataset.
+In both cases, our data augmentation
+techniques, particularly for the SVM,
+proved effective in enhancing model robustness and addressing potential class
+imbalance. The horizontal flipping and
+brightness adjustments simulated variations in vocal phrasing and overall energy
+without distorting fundamental frequency
+relationships, contributing to the models’
+ability to generalize.
+
+The SVM’s performance, especially its
+ability to distinguish between adjacent
+registers, is noteworthy. The confusion
+matrix reveals that most misclassifications
+occur between adjacent registers (e.g.,
+Chest and Mix, or Mix and HeadMix).
+This pattern aligns with the continuous
+nature of vocal register transitions and
+the inherent challenges in definitively categorizing these transitional sounds. Often
+times singers navigate difficult passages
+by smoothly transitioning between vocal
+registers, which shows the SVM’s ability
+to distinguish between similar samples is
+commendable. The SVM’s practical utility
+stems from its accuracy in deployment
+scenarios; however, the high dimensional
+feature space and size of the training set
+hinder its efficiency. Identifying a more
+efficient yet equally effective dataset could
+benefit user experiences with the model,
+particularly in the analysis of longer audio
+samples.
+
+Overall, both models’ high performance
+validates our approach of using melspectrograms as input for vocal register
+classification. The success of this method
+suggests that mel-spectrograms effectively
+capture the timbrel and textural differences between vocal registers, allowing the
+models to learn discriminative features.
+However, with a much more training data,
+and classes to identify, the CNN may
+prove to be more effective because it has
+a shown propensity for relevant feature
+identification. Since the SVM does not
+scale as well to large datasets, this CNN
+model may adapt better to training data
+containing all voice types and a wider
+variety of contemporary music genres.
+With greater data training and quantity,
+a larger CNN has the potential to expand
+While the CNN’s learning curve is promis- its domain into distinctly different types of
+ing, showing rapid improvement across music like classical singing, and across the
+epochs, the SVM’s superior generalization full bass-soprano vocal fach system.
+have made it more suitable for adoption in
+various vocal analysis tools for male pop Although the CNN slightly outpermusic specifically. The consistent decrease forms the SVM in overall accuracy, the
+in both training and test loss for the CNN, SVM’s practical advantages have made it
+coupled with increasing accuracy, suggests the preferred choice in the concurrently
+that the model successfully learned to developed AVRA software interface. In this
+extract relevant features from the mel- application, musicians can upload their own
+spectrograms but was prone to overfitting. vocal audio, render sections of the audio
+However, the SVM’s ability to generalize into spectrograms, and then apply either
+well to unseen data while maintaining a the SVM or CNN for automatic analysis.
+more straightforward implementation may Output of labels in 10 pixel increments are
+7
+
+marked with blue numbers (corresponding 6.1 Future Considerations
+to the one-hot encoding scheme) at the
+Although the initial models are integrated
+bottom of the AVRA output as in figure 4.
+into AVRA and performing well on this domain, it’s important to note some limitations of this study. The dataset was limited to contemporary male pop music, and
+further research and data would be needed
+to generalize these findings to other genres or voice types. This would particularly
+benefited the CNN, and expand the tarFigure 4: example output of vocal audio
+get audience of the AVRA software. Addianalysis as shown on AVRA
+tionally, while both models perform well on
+our dataset, real-world application would
+require testing on a wider range of singers
+These results have significant implica- and recording conditions to solidify perfortions for both music education and music mance. With this in mind, future work
+production. In educational settings, the could explore several avenues:
+SVM-based system could be used to pro1. Further optimization of the previde feedback to singers, helping them
+processing pipeline and SVM simplifiunderstand and refine their use of different
+cation for real-time audio processing to
+vocal registers. In music production, this
+enhance immediate feedback capabilitechnology has been integrated into various
+ties.
+tools for analyzing and categorizing vocal
+performances, aiding in tasks such as EQ
+2. Expansion of the dataset to include
+tuning, or vocal effect application.
+more diverse vocal styles, genres, and
+voice types, particularly for transitioning or changing voices.
+
+6
+
+Conclusion
+
+3. Investigation of the intractability of the
+model, particularly for the SVM, to
+understand which spectral features are
+most important for register classification.
+
+In this paper, we have presented two machine learning approaches to vocal register classification that show great promise,
+achieving high accuracy while maintaining
+good generalization. The SVM has shown
+itself to be the preferred analysis option at
+the present moment, but the strengths of
+CNNs provide a solid foundation for this
+task, and show promise of a more robust
+tool that could be leveraged across a greater
+variety of vocal music. Additionally, we
+briefly discussed the potential for real-world
+applications and the development of AVRA
+for analysis of male pop music, and how this
+methodology could impact vocal pedagogy
+and music production, providing tools for
+both learning and creative applications in
+the realm of vocal performance.
+
+4. Comparison with other machine learning architectures, such as recurrent
+neural network or transformer variants,
+which might better capture temporal
+dependencies in the audio signal.
+5. Continued refinement of the AVRA application for singers and vocal coaches,
+leveraging its practical advantages.
+As we continue to refine these models and
+expand their applicability, we anticipate exciting developments at the intersection of
+machine learning and vocal music analysis.
+8
+
+Acknowledgements
+We would like to thank the Emerson Foundation Grant Program for the support and
+funding of this project.
+
+References
+[1] Lacerda, E. B., & Mello, C. A. B.
+(2017). Automatic classification of laryngeal mechanisms in signing based
+on the audio signal. Procedia Computer Science.
+[2] Peckham, A. (2010). The Contemporary Singer: Elements of Vocal Technique. Hal Leonard Corporation.
+[3] Shalev-Shwartz, S., & Ben-David, S.
+(2014). Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press.
+[4] Peng, Xiangyu., &Xu, Huoyao., & Liu,
+Jie., & Wang, Junlang., &He, Chaoming., (2023). Voice disorder classification using convolutional neural network based on deep transfer learning.
+Scientific Reports
+[5] Alzubaidi, L., Zhang, J., Humaidi,
+A. J., Al-Dujaili, A., Duan, Y.,
+Al-Shamma, O., Santamarı́a, J.,
+Fadhel, M. A., Al-Amidie, M., &
+Farhan, L. (2021). Review of deep
+learning: concepts, CNN architectures,
+challenges, applications, future directions. Journal of Big Data, 8(1), 53.
+https://doi.org/10.1186/s40537-02100444-8
+
+9

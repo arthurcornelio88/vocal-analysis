@@ -1,0 +1,49 @@
+c
+
+Machine Learning, , 1{34 ()
+Kluwer Academic Publishers, Boston. Manufactured in The Netherlands.
+
+Text Classi cation from Labeled and Unlabeled
+Documents using EM
+KAMAL NIGAMy
+knigam@cs.cmu.edu
+zy
+ANDREW KACHITES MCCALLUM
+mccallum@justresearch.com
+SEBASTIAN THRUNy
+thrun@cs.cmu.edu
+TOM MITCHELLy
+tom.mitchell@cmu.edu
+y School of Computer Science, Carnegie Mellon University, Pittsburgh, PA 15213
+z Just Research, 4616 Henry Street, Pittsburgh, PA 15213
+
+Received March 15, 1998; Revised February 20, 1999
+Editor: William W. Cohen
+
+Abstract. This paper shows that the accuracy of learned text classi ers can be improved by
+
+augmenting a small number of labeled training documents with a large pool of unlabeled documents. This is important because in many text classi cation problems obtaining training labels
+is expensive, while large quantities of unlabeled documents are readily available.
+We introduce an algorithm for learning from labeled and unlabeled documents based on the
+combination of Expectation-Maximization (EM) and a naive Bayes classi er. The algorithm rst
+trains a classi er using the available labeled documents, and probabilistically labels the unlabeled
+documents. It then trains a new classi er using the labels for all the documents, and iterates
+to convergence. This basic EM procedure works well when the data conform to the generative
+assumptions of the model. However these assumptions are often violated in practice, and poor
+performance can result. We present two extensions to the algorithm that improve classi cation
+accuracy under these conditions: (1) a weighting factor to modulate the contribution of the
+unlabeled data, and (2) the use of multiple mixture components per class. Experimental results,
+obtained using text from three di erent real-world tasks, show that the use of unlabeled data
+reduces classi cation error by up to 30%.
+
+Keywords: text classi cation, Expectation-Maximization, integrating supervised and unsupervised learning, combining labeled and unlabeled data, Bayesian learning
+
+1. Introduction
+Consider the problem of automatically classifying text documents. This problem
+is of great practical importance given the massive volume of online text available through the World Wide Web, Internet news feeds, electronic mail, corporate
+databases, medical patient records and digital libraries. Existing statistical text
+learning algorithms can be trained to approximately classify documents, given a
+sucient set of labeled training examples. These text classi cation algorithms have
+been used to automatically catalog news articles (Lewis & Gale, 1994; Joachims,
+1998) and web pages (Craven, DiPasquo, Freitag, McCallum, Mitchell, Nigam, &
+Slattery, 1998; Shavlik & Eliassi-Rad, 1998), automatically learn the reading interests of users (Pazzani, Muramatsu, & Billsus, 1996; Lang, 1995), and automati-

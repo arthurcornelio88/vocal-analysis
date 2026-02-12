@@ -1,0 +1,100 @@
+Laryngeal Vibratory Mechanisms: The Notion of Vocal
+Register Revisited
+*Bernard Roubeau, †Nathalie Henrich, and ‡Michèle Castellengo, *zParis, France and yGrenoble, France
+Summary: This study, focused on the laryngeal source level, introduces the concept of laryngeal vibratory mechanism.
+Human phonation is characterized by the use of four laryngeal mechanisms, labeled M0–M3, as evidenced by the electroglottographic (EGG) study of the transition phenomena between mechanisms with a population of men and women,
+trained and untrained singers. Macroscopic and local descriptions of the EGG signal are analyzed during the production
+of glissandos and held notes with different mechanisms. The transition from one mechanism to another of higher rank is
+characterized by a jump in frequency, a reduction of EGG amplitude, and a change in the shape of the derivative of the
+EGG (which may correspond to a reduction of the vibratory mass). These characteristics are used to identify a transition
+between two mechanisms, in complement with acoustic spectrographic analyses. The pitches of transitions between the
+two main mechanisms M1 and M2 and the range of the frequency-overlap region are described in detail. The notion of
+vocal register is revisited in the light of these concepts of laryngeal mechanism. The literature on vocal registers is reviewed, and it is shown that the confusion often cited with respect to this notion may be related to the heterogeneity of
+the approaches and methods used to describe the phenomena and to the multiplicity of descriptors. Therefore, the terminology of the registers is organized depending on their relation to the four laryngeal vibratory mechanisms.
+Key Words: Laryngeal mechanism–Electroglottography–Larynx–Singing voice–Voice range–Register.
+INTRODUCTION
+Human voice production over the whole frequency range involves different adjustments of the vocal apparatus, encompassing zones called registers.1 These registers are described by
+physiologists,2,3 physicians,4,5 phoneticians and voice scientists,6–11 voice teachers,12,13 and singers. Obviously such varied
+workers have developed widely different interests in the voice,
+and their approaches are heterogeneous. The descriptions
+which have been given of these ‘‘registers’’ can be derived
+from laryngoscopic,1 electrophysiological,3,5,14 acoustic,15 auditory,6,7 or proprioceptive observations. Acoustic and electrophysiological observations are very often combined.16–18 It is
+evident that some observations have more to do with the way
+the laryngeal source works, whereas others include the action
+of the resonating cavities or the sensations characteristic of
+the proprioceptive stimulations because of muscle contractions
+or laryngeal vibrations. In spite of the diversity of approaches,
+the terms used are similar, which brings great confusion to this
+domain, confusion that is often mentioned by the authors. There
+is need for a better understanding of the notion of vocal register.
+In this paper, we focus on the laryngeal source level. For this
+purpose, electroglottography (EGG) seems to us an appropriate
+experimental technique. This noninvasive observation technique of laryngeal activity is well known and has been used
+since its conception by Fabre in 195719 (see Childers and Krishnamurthy20 or Henrich et al21,22 for a detailed review of literature). The EGG signal is based on the monitored conductance
+between the vocal folds. There is likely to be a good correlation
+Accepted for publication October 17, 2007.
+From the *Service d’ORL et de Chirurgie Cervico-faciale, Hôpital Tenon, Paris, France;
+yDépartement Parole et Cognition, GIPSA-lab, CNRS-INPG-UJF-UnivStendhal, Grenoble, France; and the zL.A.M.-IJLRA, CNRS-University Paris 6, Ministère de la Culture,
+Paris, France.
+Address correspondence and reprint requests to Nathalie Henrich, Département Parole et
+Cognition, GIPSA-lab, 46, Avenue Félix Viallet, 38031 Grenoble Cedex 1, France. E-mail:
+nathalie.henrich@gipsa-lab.inpg.fr
+Journal of Voice, Vol. 23, No. 4, pp. 425-438
+0892-1997/$36.00
+Ó 2009 The Voice Foundation
+doi:10.1016/j.jvoice.2007.10.014
+
+between this signal and the glottal contact area in the case of
+nonpathological voice phonation. Therefore, for a normal voice
+it enables one to evaluate indirectly the amplitude of vocal fold
+contact during successive vibratory cycles, as well as the main
+phases of this contact. This exploratory technique allows a macroscopic and a microscopic study of the contact-area signal.14,21,23 The macroscopic analysis is concerned with the
+overall shape of the envelope of the EGG amplitude-time waveform and its variations in amplitude and frequency.5,24,25 The
+microscopic analysis pertains to the shape of the oscillation itself. Three databases (DBs) of simultaneous audio and EGG recordings of singers and nonsingers are used in Material and
+Methods section. In the following section, the concept of laryngeal vibratory mechanism is introduced to describe the different
+configurations that the laryngeal vibrator can take throughout
+the human voice frequency range. The borders between the
+mechanisms are defined by the rupture phenomena, or vibratory
+discontinuities, be they audible or not, which can be detected in
+a macroscopic analysis of the EGG signal. The relationship between a laryngeal mechanism and the EGG glottal-pulse shape
+is discussed in the third section. Finally, the notion of vocal registers is revisited in the light of the laryngeal mechanisms. The
+vocal-register literature is reviewed to point out the sources of
+confusion. Then, the register terminology is organized depending on the relation of the registers to the four principal laryngeal
+vibratory mechanisms.
+MATERIAL AND METHODS
+The three databases to which we refer and which were recorded
+for the purpose of previous studies are briefly presented.
+Database 1 (DB1)
+Nineteen subjects participated in this study: 10 male subjects
+(seven trained and three untrained singers) and nine female subjects (seven trained and two untrained singers). The purpose of
+this study was to analyze the shift between laryngeal mechanisms. The subjects were asked to produce ascending and
+
+426
+descending glissandos in a spontaneous way, and sustained
+vowels (/a/, /o/, and /i/) with a change of laryngeal mechanism
+at three different pitches (293 Hz—D4, 311 Hz—D#4, and
+329 Hz—E4, respectively). Audio and EGG signals were recorded simultaneously in a soundproof room (LEM microphone, Geneva, Switzerland and Frokjaer-Jensen EG 830
+electroglottograph, Copenhagen, Denmark). The fundamental
+frequency was automatically extracted by an FIES-CNET melograph (Paris, France).
+Database 2 (DB2)
+Forty-two subjects participated in this study: 21 male subjects
+(seven professional, 11 amateur, and three untrained singers)
+and 21 female subjects (five professional, 10 amateur, and six
+untrained subjects). The purpose of this study was to establish
+a voice range profile for each laryngeal mechanism. The subject’s pitch range was covered in semitones on the vowel [a].
+Sound-pressure level (SPL) was measured in dBA by a sound
+level meter (1560-P General Radio, West Concord, MA) placed
+at 1 m from the subject’s mouth. The recording took place in
+a large, quiet studio room.
+Database 3 (DB3)
+Eighteen trained singers participated in this study: 12 male
+singers (seven baritones, two tenors, and three counter-tenors)
+and six female singers (three mezzo-sopranos and three sopranos). The purpose of this study was to explore the variations of
+open quotient in western operatic singing. The database comprises several parts, in which the singers were asked to produce
+glissandos, crescendos, and sustained vowels ([a], [e], and [u])
+for different pitches covering their comfortable frequency
+range, and at three different loudness levels. When necessary,
+the singers were asked to indicate in which laryngeal mechanism they were singing. Audio and EGG signals were recorded
+simultaneously in a soundproof room (1/2 in. condenser microphone (Bruël & Kjær 4165 Naerum, Denmark) placed 50 cm
+from the singer’s mouth, preamplifier (Bruël & Kjær 2669),
+and conditioning amplifier (Bruël & Kjær NEXUS 2690);

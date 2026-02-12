@@ -1,0 +1,100 @@
+Glottal open quotient in singing: Measurements and
+correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle
+Castellengo
+
+To cite this version:
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle Castellengo. Glottal
+open quotient in singing: Measurements and correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency. Journal of the Acoustical Society of America, 2005, 117 (3), pp.1417-1430.
+�10.1121/1.1850031�. �hal-00195256�
+
+HAL Id: hal-00195256
+https://hal.science/hal-00195256v1
+Submitted on 3 Dec 2008
+
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of scientific research documents, whether they are published or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+
+Glottal open quotient in singing: Measurements and correlation
+with laryngeal mechanisms, vocal intensity, and fundamental
+frequency
+Nathalie Henricha)
+LAM (UPMC, CNRS, Ministère de la culture), 11 rue de Lourmel, 75015 Paris, France
+and LIMSI-CNRS, BP 133, F91403 Orsay, France
+
+Christophe d’Alessandro and Boris Doval
+LIMSI-CNRS, BP 133, F91403 Orsay, France
+
+Michèle Castellengo
+LAM (UPMC, CNRS, Ministère de la culture), 11 rue de Lourmel, 75015 Paris, France
+
+共Received 10 May 2004; revised 24 November 2004; accepted 29 November 2004兲
+This article presents the results of glottal open-quotient measurements in the case of singing voice
+production. It explores the relationship between open quotient and laryngeal mechanisms, vocal
+intensity, and fundamental frequency. The audio and electroglottographic signals of 18 classically
+trained male and female singers were recorded and analyzed with regard to vocal intensity,
+fundamental frequency, and open quotient. Fundamental frequency and open quotient are derived
+from the differentiated electroglottographic signal, using the DECOM 共DEgg Correlation-based
+Open quotient Measurement兲 method. As male and female phonation may differ in respect to
+vocal-fold vibratory properties, a distinction is made between two different glottal configurations,
+which are called laryngeal mechanisms: mechanism 1 共related to chest, modal, and male head
+register兲 and mechanism 2 共related to falsetto for male and head register for female兲. The results
+show that open quotient depends on the laryngeal mechanisms. It ranges from 0.3 to 0.8 in
+mechanism 1 and from 0.5 to 0.95 in mechanism 2. The open quotient is strongly related to vocal
+intensity in mechanism 1 and to fundamental frequency in mechanism 2. © 2005 Acoustical
+Society of America. 关DOI: 10.1121/1.1850031兴
+PACS numbers: 43.75.Rs 关SM兴
+
+I. INTRODUCTION
+
+Voice quality is mainly due to the characteristics of
+vocal-fold vibratory movement. Thus, a better understanding
+of these properties would help to characterize voice quality.
+In this context, the open quotient O q is a glottal source parameter of considerable interest, as it has been reported to be
+related to voice qualities such as ‘‘breathy’’ and ‘‘pressed’’
+共e.g., Alku and Vilkman, 1996; Klatt and Klatt, 1990兲. It is
+defined as the ratio of the glottal open time over the fundamental period. It is a dimensionless parameter, ranging from
+0 共no opening兲 to 1 共no or incomplete closure兲. This glottal
+source parameter is the counterpart of the closed quotient
+C q , given that O q ⫽1⫺C q . It can be measured directly by
+the use of high-speed visualization 共Childers et al., 1990;
+Timcke et al., 1958兲, photoglottographic signals 共Dejonckere, 1981; Hanson et al., 1990; Kitzing, 1982, 1983; Kitzing
+et al., 1982; Kitzing and Sonesson, 1974兲, electroglottographic 共EGG兲 signals 共Childers et al., 1990; Hanson
+et al., 1990; Lecluse, 1977; Lecluse and Brocaar, 1977;
+Miller et al., 2002; Orlikoff, 1991兲. Indirect methods have
+also been used, based on inverse filtering of volume velocity
+or acoustic signals 共Holmberg et al., 1988, 1989, 1995; Sundberg et al., 1999a兲. It has also been related to the amplitude
+difference H *
+1 ⫺H *
+2 between the first two harmonics of the
+a兲
+
+Electronic mail: henrich@lam.jussieu.fr
+
+Pages: 1417–1430
+
+acoustic signal spectrum after a formant-based correction
+共Hanson, 1995, 1997; Sundberg et al., 1999a兲.
+Most of these studies showed a variation of open quotient with vocal intensity in speech and singing. A decrease
+of open quotient with increase of vocal intensity was found
+with high-speed visualization of one male speaker 共Timcke
+et al., 1958兲, photoglottographic analysis of 20 female
+speakers 共Kitzing and Sonesson, 1974兲, electroglottographic
+analysis of ten male speakers 共Orlikoff, 1991兲, and glottal
+flow analysis of 25 male and 20 female speakers 共Holmberg
+et al., 1988兲, and six country singers 共Sundberg et al.,
+1999b兲. Only a slight trend was found by Hanson et al.
+共1990兲 on photoglottographic analysis of 12 male speakers.
+No relation was found by Lecluse and Brocaar 共1977兲 on
+electroglottographic analysis of six untrained male singers,

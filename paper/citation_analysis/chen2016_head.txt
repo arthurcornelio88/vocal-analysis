@@ -1,0 +1,100 @@
+XGBoost: A Scalable Tree Boosting System
+Tianqi Chen
+
+Carlos Guestrin
+
+University of Washington
+
+University of Washington
+
+arXiv:1603.02754v3 [cs.LG] 10 Jun 2016
+
+tqchen@cs.washington.edu
+
+ABSTRACT
+Tree boosting is a highly effective and widely used machine
+learning method. In this paper, we describe a scalable endto-end tree boosting system called XGBoost, which is used
+widely by data scientists to achieve state-of-the-art results
+on many machine learning challenges. We propose a novel
+sparsity-aware algorithm for sparse data and weighted quantile sketch for approximate tree learning. More importantly,
+we provide insights on cache access patterns, data compression and sharding to build a scalable tree boosting system.
+By combining these insights, XGBoost scales beyond billions
+of examples using far fewer resources than existing systems.
+
+Keywords
+Large-scale Machine Learning
+
+1.
+
+INTRODUCTION
+
+Machine learning and data-driven approaches are becoming very important in many areas. Smart spam classifiers
+protect our email by learning from massive amounts of spam
+data and user feedback; advertising systems learn to match
+the right ads with the right context; fraud detection systems
+protect banks from malicious attackers; anomaly event detection systems help experimental physicists to find events
+that lead to new physics. There are two important factors
+that drive these successful applications: usage of effective
+(statistical) models that capture the complex data dependencies and scalable learning systems that learn the model
+of interest from large datasets.
+Among the machine learning methods used in practice,
+gradient tree boosting [10]1 is one technique that shines
+in many applications. Tree boosting has been shown to
+give state-of-the-art results on many standard classification
+benchmarks [16]. LambdaMART [5], a variant of tree boosting for ranking, achieves state-of-the-art result for ranking
+1
+Gradient tree boosting is also known as gradient boosting
+machine (GBM) or gradient boosted regression tree (GBRT)
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+KDD ’16, August 13-17, 2016, San Francisco, CA, USA
+c 2016 Copyright held by the owner/author(s).
+ACM ISBN .
+DOI:
+
+guestrin@cs.washington.edu
+
+problems. Besides being used as a stand-alone predictor, it
+is also incorporated into real-world production pipelines for
+ad click through rate prediction [15]. Finally, it is the defacto choice of ensemble method and is used in challenges
+such as the Netflix prize [3].
+In this paper, we describe XGBoost, a scalable machine
+learning system for tree boosting. The system is available as
+an open source package2 . The impact of the system has been
+widely recognized in a number of machine learning and data
+mining challenges. Take the challenges hosted by the machine learning competition site Kaggle for example. Among
+the 29 challenge winning solutions 3 published at Kaggle’s
+blog during 2015, 17 solutions used XGBoost. Among these
+solutions, eight solely used XGBoost to train the model,
+while most others combined XGBoost with neural nets in ensembles. For comparison, the second most popular method,
+deep neural nets, was used in 11 solutions. The success
+of the system was also witnessed in KDDCup 2015, where
+XGBoost was used by every winning team in the top-10.
+Moreover, the winning teams reported that ensemble methods outperform a well-configured XGBoost by only a small
+amount [1].
+These results demonstrate that our system gives state-ofthe-art results on a wide range of problems. Examples of
+the problems in these winning solutions include: store sales
+prediction; high energy physics event classification; web text
+classification; customer behavior prediction; motion detection; ad click through rate prediction; malware classification;
+product categorization; hazard risk prediction; massive online course dropout rate prediction. While domain dependent data analysis and feature engineering play an important
+role in these solutions, the fact that XGBoost is the consensus choice of learner shows the impact and importance of
+our system and tree boosting.
+The most important factor behind the success of XGBoost
+is its scalability in all scenarios. The system runs more than
+ten times faster than existing popular solutions on a single
+machine and scales to billions of examples in distributed or
+memory-limited settings. The scalability of XGBoost is due
+to several important systems and algorithmic optimizations.
+These innovations include: a novel tree learning algorithm
+is for handling sparse data; a theoretically justified weighted
+quantile sketch procedure enables handling instance weights
+in approximate tree learning. Parallel and distributed computing makes learning faster which enables quicker model exploration. More importantly, XGBoost exploits out-of-core
+2
+3
+
+https://github.com/dmlc/xgboost

@@ -1,0 +1,50 @@
+Open access
+
+Protocol
+
+Voice disorder recognition using
+machine learning: a scoping
+review protocol
+Rijul Gupta ‍ ‍,1 Dhanshree R Gunjawate ‍ ‍,2 Duy Duong Nguyen ‍ ‍,2
+Craig Jin ‍ ‍,1 Catherine Madill ‍ ‍2
+
+To cite: Gupta R, Gunjawate DR,
+Nguyen DD, et al. Voice
+disorder recognition using
+machine learning: a scoping
+review protocol. BMJ Open
+2024;14:e076998. doi:10.1136/
+bmjopen-2023-076998
+► Prepublication history and
+additional supplemental material
+for this paper are available
+online. To view these files,
+please visit the journal online
+(http://dx.doi.org/10.1136/​
+bmjopen-2023-076998).
+
+Received 22 June 2023
+Accepted 10 January 2024
+
+© Author(s) (or their
+employer(s)) 2024. Re-­use
+permitted under CC BY-­NC. No
+commercial re-­use. See rights
+and permissions. Published by
+BMJ.
+1
+
+School of Electrical and
+Information Engineering, The
+University of Sydney Faculty of
+Engineering and Information
+Technologies, Sydney, New
+South Wales, Australia
+2
+Sydney School of Health
+Sciences, The University of
+Sydney Faculty of Medicine
+and Health, Sydney, New South
+Wales, Australia
+Correspondence to
+Dr Catherine Madill;

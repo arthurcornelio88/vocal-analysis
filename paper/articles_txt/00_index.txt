@@ -1,0 +1,206 @@
+# Index des extractions PDF -> TXT
+# Généré le: Thu Feb 12 12:40:25 CET 2026
+# Nombre de fichiers: 27
+
+=== Wlodarczak2022.txt ===
+  TagedH1Classification of Voice Quality Using Neck-Surface
+  Acceleration: Comparison With Glottal Flow and
+  Radiated SoundTagedEn
+  TagedP Marcin Wl̷odarczak, †Bogdan Ludusan, ‡Johan Sundberg, and *Mattias Heldner, *zStockholm, Sweden, and yBielefeld,
+  *
+
+=== alku2023.txt ===
+  Refining a Deep Learning-based Formant Tracker using Linear
+  Prediction Methods
+  Paavo Alku1 , Sudarsana Reddy Kadiri1 , Dhananjaya Gowda2
+
+  arXiv:2308.09051v1 [eess.AS] 17 Aug 2023
+
+=== boratto2025.txt ===
+  Article
+
+  Machine Learning with Evolutionary Parameter Tuning for
+  Singing Registers Classification
+  Tales Boratto 1 , Gabriel de Oliveira Costa 2 , Alexsandro Meireles 3 , Anna Klara Sá Teles Rocha Alves 4 ,
+
+=== bourne2012.txt ===
+  Physiological and acoustic characteristics of the female music
+  theater voice
+  Tracy Bourne
+  University of Ballarat, Arts Academy, Ballarat, Victoria 3353, Australia
+
+
+=== chen2016_xgboost.txt ===
+  XGBoost: A Scalable Tree Boosting System
+  Tianqi Chen
+
+  Carlos Guestrin
+
+
+=== cotton2007.txt ===
+  COTTON, SANDRA, D.M.A. Voice Classification and Fach: Recent, Historical and
+  Conflicting Systems of Voice Categorization. (2007)
+  Directed by Dr. Nancy Walker. 88 pp.
+
+  As developments in voice science continue to contribute to a collective body of
+
+=== defossez2021.txt ===
+  Hybrid Spectrogram and Waveform Source Separation
+  Alexandre Défossez1
+  1 Facebook AI Research
+
+  arXiv:2111.03600v3 [eess.AS] 30 Aug 2022
+
+=== degottex2011.txt ===
+  Glottal source and vocal-tract separation
+  Gilles Degottex
+
+  To cite this version:
+  Gilles Degottex. Glottal source and vocal-tract separation. Signal and Image processing. Université
+
+=== drugman2019.txt ===
+  A Comparative Study of Glottal Source Estimation
+  Techniques
+
+  arXiv:2001.00840v1 [cs.SD] 28 Dec 2019
+
+
+=== ghasemzadeh2023.txt ===
+  Toward Generalizable Machine Learning Models in Speech, Language, and
+  Hearing Sciences: Estimating Sample Size and Reducing Overfitting
+  Hamzeh Ghasemzadeh a,b,c, Robert E. Hillman a,b,d,e, Daryush D. Mehta a,b,d,e
+  a
+
+
+=== gowda2022.txt ===
+  Date of publication November 8, 2021, date of current version November 16, 2021.
+  Digital Object Identifier 10.1109/ACCESS.2021.3126280
+
+  arXiv:2201.01525v1 [eess.AS] 5 Jan 2022
+
+
+=== gupta2024.txt ===
+  Open access
+
+  Protocol
+
+  Voice disorder recognition using
+
+=== hanson1995.txt ===
+  C H A P T E R 3. ACOUSTIC MEASURES OF GLOTTAL CHARACTERISTICS
+
+  39
+
+  and from periodic glottal sources (Shadle, 1985; Stevens, 1993). The ratio of the amplitude
+
+=== henrich2004.txt ===
+  Glottal open quotient in singing: Measurements and
+  correlation with laryngeal mechanisms, vocal intensity,
+  and fundamental frequency
+  Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle
+  Castellengo
+
+=== henrich2006.txt ===
+  Mirroring the voice from Garcia to the present day:
+  some insights into singing voice registers.
+  Nathalie Henrich Bernardoni
+
+  To cite this version:
+
+=== hinrichs2026.txt ===
+  A Dataset for Automatic Vocal Mode
+  Classification
+  Reemt Hinrichs1[0000−0003−3352−7223] , Sonja Stephan1 , Alexander
+  Lange1[0009−0005−0737−371X] , and Jörn Ostermann1
+
+
+=== kim2018_crepe.txt ===
+  CREPE: A CONVOLUTIONAL REPRESENTATION FOR PITCH ESTIMATION
+  Jong Wook Kim1 , Justin Salamon1,2 , Peter Li1 , Juan Pablo Bello1
+  1
+
+  arXiv:1802.06182v1 [eess.AS] 17 Feb 2018
+
+=== kim2025.txt ===
+  Machine Learning Approaches to Vocal Register
+  Classification in Contemporary Male Pop Music
+  Alexander Kim, Prof. Charlotte Botha
+  Hamilton College
+
+
+=== kreiman2012.txt ===
+  Variability in the relationships among voice quality, harmonic
+  amplitudes, open quotient, and glottal area waveform shape in
+  sustained phonationa)
+  Jody Kreimanb)
+  Department of Head and Neck Surgery, UCLA School of Medicine, 31-24 Rehab Center, Los Angeles,
+
+=== kreiman2014.txt ===
+  Loquens 1(1)
+  January 2014, e009
+  eISSN XXXXX
+  doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+
+=== lee2013_pseudolabel.txt ===
+  Pseudo-Label : The Simple and Efficient Semi-Supervised Learning
+  Method for Deep Neural Networks
+
+  Dong-Hyun Lee
+  sayit78@gmail.com
+
+=== maryn2015.txt ===
+  Objective Dysphonia Measures in the Program Praat:
+  Smoothed Cepstral Peak Prominence and Acoustic
+  Voice Quality Index
+  *,†,‡Youri Maryn and §David Weenink, *Bruges, yGhent, and zAntwerp, Belgium, and xAmsterdam, The Netherlands
+  Summary: Purpose. A version of the ‘‘smoothed cepstral peak prominence’’ (ie, CPPS) has recently been implemented in the program Praat. The present study therefore estimated the correspondence between the original CPPS
+
+=== nigam2000.txt ===
+  c
+
+  Machine Learning, , 1{34 ()
+  Kluwer Academic Publishers, Boston. Manufactured in The Netherlands.
+
+
+=== nudelman2_2025.txt ===
+  Artificial Intelligence to Detect Voice Disorders: An
+  AI-Supported Systematic Review of Accuracy Outcomes
+  ⁎
+  *Charles J. Nudelman, †Virginia Tardini, and ‡Pasquale Bottalico, Syracuse, NY, †Bologna, Italy, and ‡Urbana, IL
+  SUMMARY: Background. The objective of the present systematic review is to identify which artificial in­
+
+=== rouard2023.txt ===
+  HYBRID TRANSFORMERS FOR MUSIC SOURCE SEPARATION
+  Simon Rouard, Francisco Massa, Alexandre Défossez
+
+  arXiv:2211.08553v1 [eess.AS] 15 Nov 2022
+
+
+=== roubeau2009.txt ===
+  Laryngeal Vibratory Mechanisms: The Notion of Vocal
+  Register Revisited
+  *Bernard Roubeau, †Nathalie Henrich, and ‡Michèle Castellengo, *zParis, France and yGrenoble, France
+  Summary: This study, focused on the laryngeal source level, introduces the concept of laryngeal vibratory mechanism.
+  Human phonation is characterized by the use of four laryngeal mechanisms, labeled M0–M3, as evidenced by the electroglottographic (EGG) study of the transition phenomena between mechanisms with a population of men and women,
+
+=== sundberg1974.txt ===
+  Articulatory interpretation of the "singing formant"
+  Johan Sundberg
+  Department of SpeechCommunication,Royal Institute of Technology(KTH). S-100 44 Stockholm 70, Sweden
+  (Received 3 December 1973; revised10 January 1974)
+
+
+=== teixeira2013.txt ===
+  Available online at www.sciencedirect.com
+
+  ScienceDirect
+  Procedia Technology 9 (2013) 1112 – 1122
+
+
+=== yousef2024.txt ===
+  Article
+
+  Sensitivity of Acoustic Voice Quality Measures in Simulated
+  Reverberation Conditions
+  Ahmed M. Yousef * and Eric J. Hunter

@@ -1,0 +1,100 @@
+Glottal source and vocal-tract separation
+Gilles Degottex
+
+To cite this version:
+Gilles Degottex. Glottal source and vocal-tract separation. Signal and Image processing. Université
+Pierre et Marie Curie - Paris VI, 2010. English. �NNT : �. �tel-00554763v2�
+
+HAL Id: tel-00554763
+https://theses.hal.science/tel-00554763v2
+Submitted on 17 Nov 2011
+
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of scientific research documents, whether they are published or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+
+Glottal source and vocal-tract separation
+Estimation of glottal parameters, voice transformation and synthesis using a glottal model
+
+Gilles Degottex
+
+Presented on November the 16th 2010, to obtain the grade of Docteur de l’Université Paris
+VI - Pierre et Marie Curie (UPMC) with specialization in signal processing from the Ecole
+Doctorale Informatique, Télécommunications et Electronique (EDITE), to the following jury:
+Chairman
+Reviewers
+
+Thierry Dutoit
+Professor - Faculté Polytechnique de Mons
+Yannis Stylianou
+Professor - University of Crete
+Christophe d’Alessandro
+CNRS Research Director - LIMSI
+Examiners
+Nathalie Henrich
+CNRS Researcher - Grenoble INP
+Olivier Rosec
+Research Engineer - Orange Labs
+Jean-Luc Zarader
+Professor - UPMC
+Olivier Boëffard
+Professor - University of Rennes
+Thesis director Xavier Rodet
+Emeritus Researcher - Ircam
+This work has been supervised by Axel Röbel and Xavier Rodet, realized at the Institut
+de Recherche et Coordination Acoustique/Musique (Ircam) and partially funded by a grant of
+the Centre National de la Recherche Scientifique (CNRS-UMR9912-STMS).
+
+Ircam - CNRS-UMR9912-STMS
+Sound Analysis/Synthesis Team
+1, place Igor Stravinsky
+75004 Paris, FRANCE
+December 7, 2010
+Final version
+
+The content of the companion CD is currently available at:
+http://recherche.ircam.fr/anasyn/degottex/index.php?n=Main.ExDegottex2010
+
+Abstract
+This study addresses the problem of inverting a voice production model to retrieve, for a given recording,
+a representation of the sound source which is generated at the glottis level, the glottal source, and
+a representation of the resonances and anti-resonances of the vocal-tract. This separation gives the
+possibility to manipulate independently the elements composing the voice. There are many applications
+of this subject like the ones presented in this study, namely voice transformation and speech synthesis,
+as well as many others such as identity conversion, expressivity synthesis, voice restoration which can
+be used in entertainment technologies, artistic sound installations, movies and music industry, toys and
+video games, telecommunication, etc.
+In this study, we assume that the perceived elements of the voice can be manipulated using the well
+known source-filter model. In the spectral domain, voice production is thus described as a multiplication
+of the spectra of its elements, the glottal source, the vocal-tract filter and the radiation. The second
+assumption used in this study concerns the deterministic component of the glottal source. Indeed, we
+assume that a glottal model can fit one period of the glottal source. Using such an analytical description,
+the amplitude and phase spectra of the deterministic source are linked through the shape parameter of the
+glottal model. Regarding the state of the art of voice transformation and speech synthesis methods, the
+naturalness and the control of the transformed and synthesized voices should be improved. Accordingly,
+we try to answer the three following questions: 1) How to estimate the parameter of a glottal model? 2)
+How to estimate the vocal-tract filter according to this glottal model? 3) How to transform and synthesize
+a voiced signal using this glottal model?
+Special attention is given to the first question. We first assume that the glottal source and the
+impulse response of the vocal-tract filter are mixed-phase and minimum-phase signals respectively. Then,
+based on these properties, various methods are proposed which minimize the mean squared phase of the
+convolutive residual of an observed spectrum and its model. A last method is described where a unique
+shape parameter is in a quasi closed-form expression of the observed spectrum. Additionally, this study
+discusses the conditions a glottal model and its parametrization have to satisfy in order to ensure that
+the parameters estimation is reliable using the proposed methods. These methods are also evaluated
+and compared to state of the art methods using synthetic and electroglottographic signals. Using one
+of the proposed methods, the estimation of the shape parameter is independent of the position and
+the amplitude of the glottal model. Moreover, it is shown that this same method outperforms all the
+compared methods.
+To answer the second and third questions addressed in this study, we propose an analysis/synthesis
+procedure which estimates the vocal-tract filter according to an observed spectrum and its estimated
+source. Preference tests have been carried out and their results are presented in this study to compare
+the proposed procedure to existing ones. In terms of pitch transposition, it is shown that the overall

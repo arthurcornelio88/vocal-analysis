@@ -1,0 +1,91 @@
+=== Recherche de mots-clés pour gupta2024 ===
+--- abstract ---
+​cate.​madill@​sydney.​edu.​au
+
+ABSTRACT
+Introduction Over the past decade, several machine
+learning (ML) algorithms have been investigated to assess
+--
+added to the online literature review tool ‘Covidence’.58
+We will remove duplicates using the Covidence automated duplicate detection system. Two authors will then
+screen the title and abstract of all the articles. The first
+author will screen all the articles and the rest of the
+screening work will be divided among the other authors.
+
+--- introduction ---
+
+ABSTRACT
+Introduction Over the past decade, several machine
+learning (ML) algorithms have been investigated to assess
+their efficacy in detecting voice disorders. Literature
+--
+in peer-­reviewed publications related to voice pathology.
+
+INTRODUCTION
+Voice disorders are defined as deviations
+from the voice quality, pitch and loudness
+
+--- conclusion ---
+
+--- method ---
+processing algorithms and environmental factors that
+affect the efficacy of those algorithms.
+Methods We will search the following databases: Web
+of Science, Scopus, Compendex, CINAHL, Medline, IEEE
+Explore and Embase. Our search strategy has been
+--
+The aim of this review is to identify the key obstacles
+that have prevented the widespread adoption of ML algorithms in voice disorder recognition in clinical practice by
+examining the methodologies, processes and outcomes
+reported in the literature.
+Review questions
+--
+previous studies?
+Additional questions are included to address the testing
+methodology, availability of experimental codes, existence of baseline model implementations and the comparison between the various input features used in existing
+ML systems. A full list of questions that are intended to
+be addressed by this review are provided in online supplemental appendix I.
+METHODS
+This review will follow all the points mentioned under
+the Preferred Reporting Items for Systematic Reviews
+
+--- result ---
+Reporting Items for Systematic Reviews and Meta-­
+Analyses extension for scoping reviews’ system. The same
+system will also be used for the synthesis of the results.
+Ethics and dissemination This scoping review does not
+require ethics approval as the review solely consists of
+--
+and Meta-­Analyses extension for scoping reviews (PRISMA-­ScR)55 guidelines for conducting the review and use
+the Joanna Briggs Institute (JBI) scoping review template
+to present the results. A version of PRISMA-­
+ScR as it
+applies to this protocol document has been added in
+--
+among the other authors. Conflicts will again be resolved
+via group discussion.
+The results of the search and inclusion process will be
+presented using a PRISMA-­ScR flow diagram.55
+Data extraction
+--
+Data analysis
+We will perform analysis using the data extracted from
+
+--- discussion ---
+author will screen all the articles and the rest of the
+screening work will be divided among the other authors.
+Screening conflicts will be resolved via group discussion
+among authors.
+The articles selected for full-­text review will similarly be
+--
+all of the articles with the remaining work to be divided
+among the other authors. Conflicts will again be resolved
+via group discussion.
+The results of the search and inclusion process will be
+presented using a PRISMA-­ScR flow diagram.55
+--
+divided among the rest of the authors for secondary screening and analysis. RG
+prepared the first two drafts of the manuscript. The final manuscript was prepared
+by iteratively refining through group discussions between RG, DRG, DDN, CJ and
+CM.
+Funding The research was funded by Doctor Liang Voice Program (Grant number:

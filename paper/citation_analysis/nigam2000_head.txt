@@ -1,0 +1,100 @@
+c
+
+Machine Learning, , 1{34 ()
+Kluwer Academic Publishers, Boston. Manufactured in The Netherlands.
+
+Text Classi cation from Labeled and Unlabeled
+Documents using EM
+KAMAL NIGAMy
+knigam@cs.cmu.edu
+zy
+ANDREW KACHITES MCCALLUM
+mccallum@justresearch.com
+SEBASTIAN THRUNy
+thrun@cs.cmu.edu
+TOM MITCHELLy
+tom.mitchell@cmu.edu
+y School of Computer Science, Carnegie Mellon University, Pittsburgh, PA 15213
+z Just Research, 4616 Henry Street, Pittsburgh, PA 15213
+
+Received March 15, 1998; Revised February 20, 1999
+Editor: William W. Cohen
+
+Abstract. This paper shows that the accuracy of learned text classi ers can be improved by
+
+augmenting a small number of labeled training documents with a large pool of unlabeled documents. This is important because in many text classi cation problems obtaining training labels
+is expensive, while large quantities of unlabeled documents are readily available.
+We introduce an algorithm for learning from labeled and unlabeled documents based on the
+combination of Expectation-Maximization (EM) and a naive Bayes classi er. The algorithm rst
+trains a classi er using the available labeled documents, and probabilistically labels the unlabeled
+documents. It then trains a new classi er using the labels for all the documents, and iterates
+to convergence. This basic EM procedure works well when the data conform to the generative
+assumptions of the model. However these assumptions are often violated in practice, and poor
+performance can result. We present two extensions to the algorithm that improve classi cation
+accuracy under these conditions: (1) a weighting factor to modulate the contribution of the
+unlabeled data, and (2) the use of multiple mixture components per class. Experimental results,
+obtained using text from three di erent real-world tasks, show that the use of unlabeled data
+reduces classi cation error by up to 30%.
+
+Keywords: text classi cation, Expectation-Maximization, integrating supervised and unsupervised learning, combining labeled and unlabeled data, Bayesian learning
+
+1. Introduction
+Consider the problem of automatically classifying text documents. This problem
+is of great practical importance given the massive volume of online text available through the World Wide Web, Internet news feeds, electronic mail, corporate
+databases, medical patient records and digital libraries. Existing statistical text
+learning algorithms can be trained to approximately classify documents, given a
+sucient set of labeled training examples. These text classi cation algorithms have
+been used to automatically catalog news articles (Lewis & Gale, 1994; Joachims,
+1998) and web pages (Craven, DiPasquo, Freitag, McCallum, Mitchell, Nigam, &
+Slattery, 1998; Shavlik & Eliassi-Rad, 1998), automatically learn the reading interests of users (Pazzani, Muramatsu, & Billsus, 1996; Lang, 1995), and automati-
+
+2
+
+NIGAM, MCCALLUM, THRUN AND MITCHELL
+
+cally sort electronic mail (Lewis & Knowles, 1997; Sahami, Dumais, Heckerman, &
+Horvitz, 1998).
+One key diculty with these current algorithms, and the issue addressed by this
+paper, is that they require a large, often prohibitive, number of labeled training
+examples to learn accurately. Labeling must often be done by a person; this is a
+painfully time-consuming process.
+Take, for example, the task of learning which UseNet newsgroup articles are of
+interest to a particular person reading UseNet news. Systems that lter or pre-sort
+articles and present only the ones the user nds interesting are highly desirable,
+and are of great commercial interest today. Work by Lang (1995) found that after a
+person read and labeled about 1000 articles, a learned classi er achieved a precision
+of about 50% when making predictions for only the top 10% of documents about
+which it was most con dent. Most users of a practical system, however, would
+not have the patience to label a thousand articles|especially to obtain only this
+level of precision. One would obviously prefer algorithms that can provide accurate
+classi cations after hand-labeling only a few dozen articles, rather than thousands.
+The need for large quantities of data to obtain high accuracy, and the diculty
+of obtaining labeled data, raises an important question: what other sources of
+information can reduce the need for labeled data?
+This paper addresses the problem of learning accurate text classi ers from limited
+numbers of labeled examples by using unlabeled documents to augment the available
+labeled documents. In many text domains, especially those involving online sources,
+collecting unlabeled documents is easy and inexpensive. The ltering task above,
+where there are thousands of unlabeled articles freely available on UseNet, is one
+such example. It is the labeling, not the collecting of documents, that is expensive.
+How is it that unlabeled data can increase classi cation accuracy? At rst consideration, one might be inclined to think that nothing is to be gained by access to
+unlabeled data. However, they do provide information about the joint probability
+distribution over words. Suppose, for example, that using only the labeled data we
+determine that documents containing the word \homework" tend to belong to the
+positive class. If we use this fact to estimate the classi cation of the many unlabeled documents, we might nd that the word \lecture" occurs frequently in the
+unlabeled examples that are now believed to belong to the positive class. This cooccurrence of the words \homework" and \lecture" over the large set of unlabeled
+training data can provide useful information to construct a more accurate classi er
+that considers both \homework" and \lecture" as indicators of positive examples.
+In this paper, we explain that such correlations are a helpful source of information
+for increasing classi cation rates, speci cally when labeled data are scarce.
+This paper uses Expectation-Maximization (EM) to learn classi ers that take advantage of both labeled and unlabeled data. EM is a class of iterative algorithms for
+maximum likelihood or maximum a posteriori estimation in problems with incomplete data (Dempster, Laird, & Rubin, 1977). In our case, the unlabeled data are
+considered incomplete because they come without class labels. The algorithm rst
+trains a classi er with only the available labeled documents, and uses the classi er
+to assign probabilistically-weighted class labels to each unlabeled document by cal-
+
+TEXT CLASSIFICATION FROM LABELED AND UNLABELED DOCUMENTS USING EM 3
+
+culating the expectation of the missing class labels. It then trains a new classi er
+using all the documents|both the originally labeled and the formerly unlabeled|
+and iterates. In its maximum likelihood formulation, EM performs hill-climbing in

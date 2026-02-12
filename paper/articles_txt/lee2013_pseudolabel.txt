@@ -1,0 +1,590 @@
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning
+Method for Deep Neural Networks
+
+Dong-Hyun Lee
+sayit78@gmail.com
+Nangman Computing, 117D Garden five Tools, Munjeong-dong Songpa-gu, Seoul, Korea
+
+Abstract
+We propose the simple and efficient method
+of semi-supervised learning for deep neural
+networks. Basically, the proposed network is
+trained in a supervised fashion with labeled
+and unlabeled data simultaneously. For unlabeled data, Pseudo-Label s, just picking up
+the class which has the maximum predicted
+probability, are used as if they were true labels. This is in effect equivalent to Entropy
+Regularization. It favors a low-density separation between classes, a commonly assumed
+prior for semi-supervised learning. With Denoising Auto-Encoder and Dropout, this simple method outperforms conventional methods for semi-supervised learning with very
+small labeled data on the MNIST handwritten digit dataset.
+
+1. Introduction
+Recently, deep neural networks have achieved great
+success in hard AI tasks (Hinton et al., 2006; Bengio
+et al., 2012). All of the successful methods for training deep neural networks have something in common :
+they rely on an unsupervised learning algorithm (Erhan et al., 2010). Most work in two main phases. In
+a first phase, unsupervised pre-training, the weights of
+all layers are initialized by this layer-wise unsupervised
+training. In a second phase, fine-tuning, the weights
+are trained globally with labels using backpropagation
+algorithm in a supervised fashion. All of these methods also work in a semi-supervised fashion. We have
+only to use extra unlabeled data for unsupervised pretraining.
+Several authors have recently proposed semisupervised learning methods of training supervised
+ICML 2013 Workshop : Challenges in Representation
+Learning (WREPL), Atlanta, Georgia, USA, 2013. Copyright 2013 by the author(s).
+
+and unsupervised tasks using same neural network
+simultaneously. In (Ranzato et al., 2008), the weights
+of each layer are trained by minimizing the combined
+loss function of an autoencoder and a classifier. In
+(Larochelle et al., 2008), Discriminative Restricted
+Boltzmann Machines model the joint distribution
+of an input vector and the target class. In (Weston
+et al., 2008), the weights of all layers are trained by
+minimizing the combined loss function of a global
+supervised task and a Semi-Supervised Embedding as
+a regularizer.
+In this article we propose the simpler way of training
+neural network in a semi-supervised fashion. Basically,
+the proposed network is trained in a supervised fashion with labeled and unlabeled data simultaneously.
+For unlabeled data, Pseudo-Label s, just picking up the
+class which has the maximum predicted probability
+every weights update, are used as if they were true labels. In principle, this method can combine almost all
+neural network models and training methods. In our
+experiments, Denoising Auto-Encoder (Vincent et al.,
+2008) and Dropout (Hinton et al., 2012) boost up the
+performance.
+This method is in effect equivalent to Entropy Regularization (Grandvalet et al., 2006). The conditional
+entropy of the class probabilities can be used for a
+measure of class overlap. By minimizing the entropy
+for unlabeled data, the overlap of class probability distribution can be reduced. It favors a low-density separation between classes, a commonly assumed prior for
+semi-supervised learning (Chapelle et al., 2005).
+Several experiments on the well-known MNIST
+dataset prove that the proposed method shows the
+state-of-the-art performance. This method (without unsupervised pre-training) earned second prize in
+ICML 2013 Workshop in Challenges in Representation
+Learning: The Black Box Learning Challenge.
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+
+2. Pseudo-Label Method for Deep
+Neural Networks
+
+2.2. Denoising Auto-Encoder
+
+2.1. Deep Neural Networks
+Pseudo-Label is the method for training deep neural
+networks in a semi-supervised fashion. In this article
+we will consider multi-layer neural networks with M
+layers of hidden units :
+ k
+
+d
+X
+hki = sk 
+Wijk hk−1
++ bki  , k = 1, ..., M + 1 (1)
+j
+
+Denoising Auto-Encoder is unsupervised learning algorithm based on the idea of making the learned representations robust to partial corruption of the input
+pattern (Vincent et al., 2008). This approach can be
+used to train autoencoders, and these DAE can be
+stacked to initialize deep neural networks.
+
+
+d
+v
+X
+hi = s 
+Wij x
+ej + bi 
+(6)
+j=1
+
+j=1
+k
+
+where s is a non-linear activation function of the kth
++1
+layer such as sigmoid, fi = hM
+are output units
+i
+used for predicting target class and xj = h0j are input
+values.
+Sigmoid Unit is one of the most popular unit for neural network. This activation value usually stands for
+binary probability.
+s(x) =
+
+1
+1 + e−x
+
+Rectified Linear Unit is receiving a great deal of attention recently (Glorot et al., 2011). This unit uses
+rectifier activation function :
+(3)
+
+This is biologically plausible more than sigmoid and
+hyperbolic tangent. Because rectifier network gives
+rise to real zeros of hidden activations and thus truly
+sparse representations, this unit can boost up the network performance.
+The whole network can be trained by minimizing supervised loss function
+C
+X
+
+!
+Wij hi + aj
+
+(7)
+
+i=1
+
+where x
+ej is corrupted version of the jth input value,
+x
+bj is the reconstruction of the jth input value. Autoencoder training consists in minimizing The reconstruction error between xj and x
+bj . For binary input
+value, common choice of the reconstruction error is
+Cross Entropy :
+
+(2)
+
+When sigmoid units are used for output instead of softmax, we assume that the probability of each label is
+independent from each other. Though the labels of
+data set in our experiments are mutually exclusive, we
+use sigmoid output unit in order to make the best use
+of saturation region of sigmoid.
+
+s(x) = max(0, x)
+
+x
+bj = s
+
+dh
+X
+
+L(x, x
+b) =
+
+dv
+X
+
+−xj log x
+bj − (1 − xj ) log(1 − x
+bj )
+
+(8)
+
+j=1
+
+We use DAE in a unsupervised pre-training phase.
+Masking noise with a probability 0.5 is used for corruption. Unlike original DAE, hidden unit is also masked
+with a probability 0.5 in our experiments. An exponentially decaying learning rate and linearly increasing momentum is also used. This scheme is inspired
+by Dropout.
+2.3. Dropout
+Dropout is a technique that can be applied to supervised learning of deep neural networks (Hinton et al.,
+2012). On the network activations of each example,
+hidden unit is randomly omitted with a probability of
+0.5. Sometimes 20% dropout of visible units is also
+helpful.
+  k
+
+d
+X
+hki = drop sk 
+Wijk hk−1
++ bki  , k = 1, ..., M
+j
+j=1
+
+L(yi , fi (x)),
+
+(4)
+
+i=1
+
+where C is the number of labels, yi ’s is the 1-of-K code
+of the label, fi is the network output for i’th label, x
+is input vector. If we use sigmoid output unit, we can
+choose Cross Entropy as a loss function:
+L(yi , fi ) = −yi log fi − (1 − yi ) log(1 − fi )
+
+(5)
+
+(9)
+where drop(x) = 0 with a probability of 0.5, otherwise drop(x) = x. Overfitting can be reduced by this
+technique to prevent complex co-adaptations on hidden representations of training data. Because in each
+weights update we train a different sub-model by omitting a half of hidden units, this training procedure is
+similar to bagging (Breiman, 1996), where many different networks are trained on different subsets of the
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+
+data. But dropout is different from bagging in that all
+of the sub-models share same weights.
+For successful SGD training with dropout, An exponentially decaying learning rate is used that starts at
+a high value. And momentum is used to speed up
+training.
+∆W (t + 1) = p(t)∆W (t) − (1 − p(t)) (t) < ∇W L >
+(10)
+W (t + 1) = W (t) + ∆W (t)
+(11)
+where,
+(
+p(t) =
+
+(t + 1) = k (t)
+
+t
+t
+T pf + 1 − T pi
+pf
+
+(12)
+t<T
+t≥T
+
+(13)
+
+with k = 0.998, pi = 0.5, pf = 0.99, T = 500, t is
+the current epoch, < ∇W L > is the gradient of loss
+function, (0) is the initial learning rate. We use these
+parameters from original dropout paper (Hinton et al.,
+2012), but don’t use weight regularization.
+2.4. Pseudo-Label
+Pseudo-Label are target classes for unlabeled data as if
+they were true labels. We just pick up the class which
+has maximum predicted probability for each unlabeled
+sample.
+(
+1 if i = argmaxi0 fi0 (x)
+(14)
+yi0 =
+0 otherwise
+We use Pseudo-Label in a fine-tuning phase with
+Dropout. The pre-trained network is trained in a supervised fashion with labeled and unlabeled data simultaneously. For unlabeled data, Pseudo-Label s recalculated every weights update are used for the same
+loss function of supervised learning task.
+Because the total number of labeled data and unlabeled data is quite different and the training balance
+between them is quite important for the network performance, the overall loss function is
+n X
+C
+X
+
+n0 X
+C
+X
+
+1
+1
+L(yim , fim )+α(t) 0
+L(yi0m , fi0m ),
+n m=1 i=1
+n m=1 i=1
+(15)
+where n is the number of mini-batch in labeled data
+for SGD, n0 for unlabeled data, fim is the output units
+of m’s sample in labeled data, yim is the label of that,
+fi0m for unlabeled data, yi0m is the pseudo-label of that
+for unlabeled data, α(t) is a coefficient balancing them.
+
+L=
+
+The proper scheduling of α(t) is very important for
+the network performance. If α(t) is too high, it disturbs training even for labeled data. Whereas if α(t)
+
+is too small, we cannot use benefit from unlabeled
+data. Furthermore, the deterministic annealing process, by which α(t) is slowly increased, is expected to
+help the optimization process to avoid poor local minima (Grandvalet et al., 2006) so that the pseudo-labels
+of unlabeled data are similar to true labels as much as
+possible.
+
+
+t < T1
+0
+t−T1
+(16)
+α(t) = T2 −T1 αf T1 ≤ t < T2
+
+
+αf
+T2 ≤ t
+with αf = 3, T1 = 100, T2 = 600 without pre-training,
+T1 = 200, T2 = 800 with DAE.
+
+3. Why could Pseudo-Label work?
+3.1. Low-Density Separation between Classes
+The goal of semi-supervised learning is to improve generalization performance using unlabeled data. The
+cluster assumption states that the decision boundary
+should lie in low-density regions to improve generalization performance (Chapelle et al., 2005).
+Recently proposed methods of training neural networks using manifold learning such as Semi-Supervised
+Embedding and Manifold Tangent Classifier utilize
+this assumption. Semi-Supervised Embedding (Weston
+et al., 2008) uses embedding-based regularizer to improve the generalization performance of deep neural
+networks. Because neighbors of a data sample have
+similar activations with the sample by embeddingbased penalty term, it’s more likely that data samples
+in a high-density region have the same label. Manifold
+Tangent Classifier (Rifai et al., 2011b) encourages the
+network output to be insensitive to variations in the
+directions of low-dimensional manifold. So the same
+purpose is achieved.
+3.2. Entropy Regularization
+Entropy Regularization (Grandvalet et al., 2006) is a
+means to benefit from unlabeled data in the framework
+of maximum a posteriori estimation. This scheme favors low density separation between classes without
+any modeling of the density by minimizing the conditional entropy of class probabilities for unlabeled data.
+n0
+
+C
+
+1 XX
+P (yim = 1|x0m ) log P (yim = 1|x0m )
+H(y|x ) = − 0
+n m=1 i=1
+(17)
+where n0 is the number of unlabeled data, C is the
+number of classes, yim is the unknown label of the mth
+unlabeled sample, x0m is the input vector of mth unla0
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+Table 1. The Conditional Entropy (17) of the network output of labeled(train) data, unlabeled data and test data
+on MNIST. dropNN is the neural network trained with
+only labeled data (corresponding to Figure 1 (a)) , +PL is
+the network trained additionally with unlabeled data and
+Pseudo-Label (corresponding to Figure 1 (b)).
+
+dropNN
++PL
+
+train
+
+unlabeled
+
+test
+
+2.63 × 10−9
+6.10 × 10−9
+
+0.0349
+0.0067
+
+0.0317
+0.0114
+
+Pseudo-Label training, in addition, the entropy of test
+data get lower along with that. This makes the classification problem easier even for test data and makes
+the density of data points lower at the decision boundary. According to cluster assumption, we can get the
+better generalization performance.
+
+beled sample. The entropy is a measure of class overlap. As class overlap decreases, the density of data
+points get lower at the decision boundary.
+The MAP estimate is defined as the maximizer of the
+posterior distribution :
+C(θ, λ) =
+
+n
+X
+
+log P (y m |xm ; θ) − λH(y|x0 ; θ)
+
+(18)
+
+m=1
+
+where n is the number of labeled data, xm is the mth
+labeled sample, λ is a coefficient balancing two terms.
+By maximizing of the conditional log-likelihood of labeled data (the first term) with minimizing the entropy of unlabeled data (the second term), we can get
+the better generalization performance using unlabeled
+data.
+
+(a) without unlabeled data (dropNN)
+
+3.3. Training with Pseudo-Label as Entropy
+Regularization
+Our method encourages the predicted class probabilities to be near 1-of-K code via training with unlabeled
+data and Pseudo-Labels, so the entropy of (17) is minimized. Thus our method is equivalent to Entropy Regularization. The first term of (18) corresponds to the
+first term of (15), The second term of (18) corresponds
+to the second term of (15), α corresponds to λ.
+Figure 1 shows t-SNE (Van der Maaten et al., 2008) 2D embedding results of the network output of MNIST
+test data (not included in unlabeled data). The neural
+network was trained with 600 labeled data and with
+or without 60000 unlabeled data and Pseudo-Labels.
+Though the train error is zero in the two cases, the network outputs of test data is more condensed near 1-ofK code by training with unlabeled data and PseudoLabels, in other words, the entropy of (17) is minimized.
+Table 2 shows the estimated entropy of (17). Though
+the entropy of labeled data is near zero in the two
+cases, the entropy of unlabeled data get lower by
+
+(b) with unlabeled data and Pseudo-Label (+PL)
+Figure 1. t-SNE 2-D embedding of the network output of
+MNIST test data.
+
+4. Experiments
+4.1. Handwritten Digit Recognition (MNIST)
+MNIST is one of the most famous dataset in deep
+learning literature. For comparison, we used the same
+semi-supervised setting with (Weston et al., 2008; Rifai et al., 2011b). We reduced the size of the labeled
+training set to 100, 600, 1000 and 3000. The training set has the same number of samples on each label.
+For validation set, we picked up 1000 labeled exam-
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+Table 2. Classification error on the MNIST test set with
+600, 1000 and 3000 labeled training samples. We compare
+our method with results from (Weston et al., 2008; Rifai
+et al., 2011b). dropNN is our network model trained without unlabeled data, +PL with unlabeled data and PseudoLabel, +PL+DAE using unsupervised pre-training with
+DAE in addition.
+
+(a) without unlabeled data (dropNN)
+
+(b) with unlabeled data and Pseudo-Label (+PL)
+
+(c) using unsupervised pre-training with DAE
+(+PL+DAE)
+Figure 2. Some filters on layer 1 of the network trained
+with or without unlabeled data on MNIST. 600 labeled
+data is used for supervised training.
+
+ples separately. We used validation set for determining some hyper-parameters. The remaining data were
+used for unlabeled data. Because we could not get the
+same split of data set, 10 experiments on random split
+were done using the identical network and parameters.
+In the case of 100 labeled data, the results heavily depended on data split so that 30 experiments were done.
+95% confidence interval is about ±1 ∼ 1.5% for 100 labeled data, about ±0.1 ∼ 0.15% for 600 labeled data,
+less than ±0.1% for 1000 and 3000 labeled data.
+We used the neural network with 1 hidden layer. Rectified Linear Unit is used for hidden unit, Sigmoid Unit
+is used for output unit. The number of hidden units is
+5000. For optimization, We used mini-batch Stochas-
+
+method
+
+100
+
+600
+
+1000
+
+3000
+
+NN
+SVM
+CNN
+TSVM
+DBN-rNCA
+EmbedNN
+CAE
+MTC
+
+25.81
+23.44
+22.98
+16.81
+16.86
+13.47
+12.03
+
+11.44
+8.85
+7.68
+6.16
+8.7
+5.97
+6.3
+5.13
+
+10.7
+7.77
+6.45
+5.38
+5.73
+4.77
+3.64
+
+6.04
+4.21
+3.35
+3.45
+3.3
+3.59
+3.22
+2.57
+
+dropNN
++PL
++PL+DAE
+
+21.89
+16.15
+10.49
+
+8.57
+5.03
+4.01
+
+6.59
+4.30
+3.46
+
+3.72
+2.80
+2.69
+
+tic Gradient Descent with Dropout.1 The initial learning rate is 1.5 and the number of mini-batch is 32 for
+labeled data, 256 for unlabeled data. These parameters were determined using validation set.
+Table 2 compares our method with results from (Weston et al., 2008; Rifai et al., 2011b). Our method outperforms the conventional methods for small labeled
+data in spite of simplicity. The training scheme is less
+complex than Manifold Tangent Classifier and doesn’t
+use computationally expensive similarity matrix between samples used in Semi-Supervised Embedding.
+
+5. Conclusion
+In this work, we have shown the simple and efficient
+way of semi-supervised learning for neural networks.
+Without complex training scheme and computationally expensive similarity matrix, the proposed method
+shows the state-of-the-art performance.
+
+References
+Bengio, Y., Courville, A., and Vincent, P. Representation learning: A review and new perspectives. arXiv
+preprint arXiv:1206.5538, 2012.
+Breiman, L. Bagging predictors. Machine learning.
+1996, 24.2: 123-140.
+Chapelle, O., and Zien, A. Semi-supervised classica1
+We didn’t use any weight regularization because the
+performance was the best without it.
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+
+tion by low density separation. AISTATS, 2005, (pp.
+5764).
+Erhan, D., Bengio, Y., Courville, A., Manzagol, P. A.,
+Vincent, P., and Bengio, S. Why does unsupervised
+pre-training help deep learning?. The Journal of
+Machine Learning Research, 2010, 11: 625-660.
+Glorot, X., Bordes, A., and Bengio, Y. Deep Sparse
+Rectifier Networks. In Proceedings of the 14th International Conference on Artificial Intelligence and
+Statistics. JMLR W&CP Volume. 2011. p. 315-323.
+Yves Grandvalet and Yoshua Bengio, Entropy Regularization, In: Semi-Supervised Learning, pages
+151–168, MIT Press, 2006.
+Hinton, G. E. and Salakhutdinov, R. R. Reducing the
+dimensionality of data with neural networks. Science, Vol. 313. no. 5786, pp. 504 - 507, 28 July 2006.
+Hinton, G. E., Srivastava, N., Krizhevsky, A.,
+Sutskever, I., and Salakhutdinov, R. R. Improving neural networks by preventing co-adaptation of
+feature detectors. arXiv preprint arXiv:1207.0580,
+2012.
+Larochelle, H., and Bengio, Y. Classification using
+discriminative restricted Boltzmann machines. In
+Proceedings of the 25th international conference on
+Machine learning. ACM, 2008. p. 536-543.
+Ranzato, M., and Szummer, M. Semi-supervised learning of compact document representations with deep
+networks. In Proceedings of the 25th international
+conference on Machine learning. ACM, 2008. p. 792799.
+Rifai, S., Vincent, P., Muller, X., Glorot, X., and Bengio, Y. Contractive auto-encoders: Explicit invariance during feature extraction. In Proceedings of the
+28th International Conference on Machine Learning
+(ICML-11). 2011. p. 833-840.
+Rifai, S., Dauphin, Y., Vincent, P., Bengio, Y., and
+Muller, X. The manifold tangent classifier. Advances
+in Neural Information Processing Systems, 2011, 24:
+2294-2302.
+Van der Maaten, L., and Hinton, G. Visualizing data
+using t-SNE. The Journal of Machine Learning Research, 2008, 9(2579-2605), 85.
+Vincent, P., Larochelle, H., Bengio, Y., and Manzagol,
+P. A. Extracting and composing robust features
+with denoising autoencoders. In Proceedings of the
+25th international conference on Machine learning.
+ACM, 2008. pp. 1096-1103.
+
+Weston, J., Ratle, F., and Collobert, R. Deep learning
+via semi-supervised embedding. In Proceedings of
+the 25th international conference on Machine learning. ACM, 2008. p. 1168-1175.

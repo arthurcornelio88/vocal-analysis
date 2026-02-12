@@ -1,0 +1,50 @@
+Date of publication November 8, 2021, date of current version November 16, 2021.
+Digital Object Identifier 10.1109/ACCESS.2021.3126280
+
+arXiv:2201.01525v1 [eess.AS] 5 Jan 2022
+
+Formant Tracking using Quasi-Closed
+Phase Forward-Backward Linear
+Prediction Analysis and Deep Neural
+Networks
+DHANANJAYA GOWDA *+ 1 , (Member, IEEE), BAJIBABU BOLLEPALLI*+ 2 , (Member, IEEE),
+SUDARSANA REDDY KADIRI*3 , (Member, IEEE), PAAVO ALKU3 , (Fellow, IEEE)
+1
+2
+3
+
+Samsung Research South Korea, E-mail: njaygowda@gmail.com.
+Amazon UK, E-mail: bajibabu7@gmail.com.
+Dept. of Signal Processing and Acoustics, Aalto University, FI-00076 Espoo, Finland ({sudarsana.kadiri;paavo.alku}@aalto.fi)
+
+Corresponding author: Sudarsana Reddy Kadiri (e-mail: sudarsana.kadiri@aalto.fi).
+
+∗ Equal contribution.+The authors were with Aalto University when this work was carried out. This study was partly funded by the
+Academy of Finland (Project No. 313390).
+
+ABSTRACT Formant tracking is investigated in this study by using trackers based on dynamic programming (DP) and deep neural nets (DNNs). Using the DP approach, six formant estimation methods were
+first compared. The six methods include linear prediction (LP) algorithms, weighted LP algorithms and
+the recently developed quasi-closed phase forward-backward (QCP-FB) method. QCP-FB gave the best
+performance in the comparison. Therefore, a novel formant tracking approach, which combines benefits
+of deep learning and signal processing based on QCP-FB, was proposed. In this approach, the formants
+predicted by a DNN-based tracker from a speech frame are refined using the peaks of the all-pole spectrum
+computed by QCP-FB from the same frame. Results show that the proposed DNN-based tracker performed
+better both in detection rate and estimation error for the lowest three formants compared to reference formant
+trackers. Compared to the popular Wavesurfer, for example, the proposed tracker gave a reduction of 29%,
+48% and 35% in the estimation error for the lowest three formants, respectively.
+INDEX TERMS Speech analysis, formant tracking, linear prediction, dynamic programming, deep neural
+net.
+
+I. INTRODUCTION
+
+of VTRs is an important and necessary computational block.
+
+Estimation and tracking of formant frequencies is an important research topic in several areas of speech science
+and technology [1]–[6]. During the past few decades, many
+techniques have been proposed for formant tracking [7]–
+[10]. These algorithms typically consist of two parts, the
+estimation stage and the tracking stage. In the former, initial
+estimates of the vocal tract resonances (VTRs) are computed
+in short frames (e.g., 25 ms) using spectral estimation methods such as linear prediction (LP). In the latter, the formants estimated from individual frames are expressed using
+contours which cover a longer unit (e.g., word or sentence)
+[7], [8]. In addition, estimation and tracking can be done

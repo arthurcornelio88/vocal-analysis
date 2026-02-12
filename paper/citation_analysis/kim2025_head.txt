@@ -1,0 +1,99 @@
+Machine Learning Approaches to Vocal Register
+Classification in Contemporary Male Pop Music
+Alexander Kim, Prof. Charlotte Botha
+Hamilton College
+
+arXiv:2505.11378v2 [cs.SD] 20 Aug 2025
+
+8/16/2024
+
+Abstract
+
+1
+
+For singers of all experience levels, one
+of the most fun and daunting challenges
+in learning, technical repertoire is navigating placement and vocal register in and
+around the passagio (passage between chest
+voice and head voice registers). Contemporary Pop and Musical Theater solos increasingly demand strong command through and
+above the first passagio, and the use of various timbre and textures to achieve a desired quality. Thus, it can be difficult to
+identify what vocal register within the vocal range a singer is using even for advanced vocalists. This paper presents two
+methods for classifying vocal registers in
+an audio signal of male pop music through
+the end-to-end analysis of textural features
+of mel-spectrogram images. Additionally,
+we will discuss the practical integration of
+these models for vocal analysis tools, and
+introduce a concurrently developed software
+called AVRA which stands for Automatic
+Vocal Register Analysis. Our proposed
+methods achieved consistent classification
+of vocal register through both Support Vector Machine (SVM) and Convolutional Neural Network (CNN) models, which shows
+promise for robust classification possibilities
+across a greater range of voice types and
+genre.
+
+In all voices, there are two muscles responsible for manipulating the vocal folds.
+The thyroarytenoid (TA) muscles shorten
+and thicken the folds while the cricothyroid (CT) muscles lighten and lengthen. TA
+dominant vocal functions result in ’chest
+voice’ which the lower speech like vocal register in all genders. On the other hand, the
+CT muscles produce that pop falsetto head
+voice sound that has become prominent in
+the 21st century, and is often used to reach
+higher notes with a softer quality.
+
+1.1
+
+Introduction
+
+Interpreting Mixed Voice
+in Pop Music
+
+In vocal pedagogy, ’mixed voice’ is used to
+denote the coordination of both TA and
+CT muscles, which imbues the sound with
+qualities from both chest voice and head
+voice. However, an experienced singer can
+change the balance of muscle function,
+so the term mixed voice covers the entire
+spectrum of chest-like to head-like timbres.
+For this reason, we divided the mixed voice
+classification into ’mix’ and ’head mix’
+where mix denotes a more TA dominant,
+solid sound and head mix reflects more of
+the lighter head voice qualities.
+The challenge in identifying vocal register is the variety of factors involved from
+person to person. In male pop music,
+1
+
+The Automatic Vocal Register Analysis (AVRA) software may help students
+and experienced singers further their understanding and practice of contemporary
+vocal technique. In AVRA, the user uploads an audio clips which is then processed
+into a sequence of mel-spectrograms. Then
+user then highlights the portion of audio
+they want analyzed and the software
+returns back the spectrogram with markers
+and labels for vocal register shifts. The
+temporal visual labeling of AVRA could
+help vocalists see exactly where they might
+be struggling, and what technique their
+target artist is using.
+
+navigating the passagio demands control
+over mixed voice which raises the difficulty
+of vocal register identification.
+More
+formally, the passagio is sequence of pitches
+that bridge or transition between chest
+and head voice. Vocal registers don’t have
+clear boundaries and can overlap in pitch
+particularly through the passagio. Besides
+pitch, other qualities like resonance, and
+placement play a role in determining the
+color and texture of the sound. This is
+how a singer can sing one note in two very
+different ways which is reflected in their
+choice of vocal register.
+
+1.2

@@ -1,0 +1,67 @@
+=== Recherche de mots-clés pour kreiman2014 ===
+--- abstract ---
+unified theory of voice production and perception. Loquens, 1(1), e009. doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+ABSTRACT: At present, two important questions about voice remain unanswered: When voice quality changes, what
+physiological alteration caused this change, and if a change to the voice production system occurs, what change in
+perceived quality can be expected? We argue that these questions can only be answered by an integrated model of
+
+--- introduction ---
+PALABRAS CLAVE: cualidad de voz; producción de voz; modelo; síntesis; acústica
+
+1. INTRODUCTION: WHAT IS A UNIFIED
+THEORY OF VOICE, AND WHY DO WE NEED
+ONE?
+
+--- conclusion ---
+data about the precursors and correlates of changes in
+voice quality.
+6. CONCLUSIONS, FUTURE WORK, AND
+IMPLICATIONS FOR CLINICAL PRACTICE
+The studies reviewed in this paper suggest that
+
+--- method ---
+results began to oscillate around a single difference
+value which was defined as the JND. (See Kreiman et
+al., 2014, for details of methods and analyses.) Results
+are summarized in Table 2. Because the amount of
+change listeners can hear is small relative to the variability of the parameters across speakers, we tentatively
+--
+quality and tone identification in White Hmong. Journal of the
+Acoustical Society of America, 133, 1087–1089.
+Granqvist, S. (2003). The visual sort and rate method for perceptual
+evaluation in listening tests. Logopedics Phoniatrics Vocology,
+28, 109–116. http://dx.doi.org/10.1080/14015430310015255
+--
+Kreiman, J., Antoñanzas-Barroso, N., & Gerratt, B. R. (2010).
+Integrated software for analysis and synthesis of voice quality.
+Behavior Research Methods, 42, 1030–1041. http://dx.doi.org/
+10.3758/BRM.42.4.1030
+Kreiman, J., Gabelman, B., & Gerratt, B. R. (2003). Perception of
+--
+of Speech Technology, 4, 63–74. http://dx.doi.org/10.1023/
+A:1009656816383
+
+--- result ---
+evidence in support of this approach is also presented. We conclude that development of such a model should be a
+priority for scientists interested in voice, to explain what physical condition(s) might underlie a given voice quality,
+or what voice quality might result from a specific physical configuration.
+KEYWORDS: voice quality; voice production; modeling; synthesis; acoustics
+
+--
+studies address the manner in which information is
+transmitted from one stage to the next, much less from
+one end of this chain to the other. As a result, two important questions about voice remain unanswered: 1)
+When voice quality changes in some way, what caused
+the change? and 2) If a change occurs in voice production, what will be the resulting perceived change in
+quality? In this paper, we motivate a model of voice that
+
+--
+source; Kreiman & Gerratt, 2005). Further, jitter, shimmer, and noise tell us little about voice production, because they have multiple neurological, biomechanical,
+aerodynamic, and acoustic causes (see Titze, 1994, for
+review). Thus, these studies have not resulted in any
+significant insight into voice production or perception,
+because questions about causation are difficult to answer
+--
+
+--- discussion ---

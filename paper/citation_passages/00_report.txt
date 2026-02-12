@@ -1,0 +1,16 @@
+=== Rapport d'extraction ===
+Date: Wed Feb 11 19:47:35 CET 2026
+Nombre de citations:       11
+
+=== Liste des citations traitées ===
+- drugman2019:      907 lignes (fichier trouvé)
+- gowda2022:     1288 lignes (fichier trouvé)
+- gupta2024:      583 lignes (fichier trouvé)
+- henrich2004:     1665 lignes (fichier trouvé)
+- henrich2006:     1209 lignes (fichier trouvé)
+- kreiman2014:      872 lignes (fichier trouvé)
+- miller2000: FICHIER NON TROUVÉ
+- nigam2000:     2260 lignes (fichier trouvé)
+- rezende2016: FICHIER NON TROUVÉ
+- rouard2023:      602 lignes (fichier trouvé)
+- sundberg1987: FICHIER NON TROUVÉ

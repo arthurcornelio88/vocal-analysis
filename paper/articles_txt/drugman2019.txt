@@ -1,0 +1,906 @@
+A Comparative Study of Glottal Source Estimation
+Techniques
+
+arXiv:2001.00840v1 [cs.SD] 28 Dec 2019
+
+Thomas Drugmana , Baris Bozkurtb , Thierry Dutoita
+a
+
+b
+
+TCTS Lab, University of Mons, 31 Boulevard Dolez, 7000 Mons, Belgium
+Department of Electrical & Electronics Engineering, Izmir Institute of Technology,
+Gulbahce Koyu 35430, Urla, Izmir, Turkey
+
+Abstract
+Source-tract decomposition (or glottal flow estimation) is one of the basic problems of speech processing. For this, several techniques have been
+proposed in the literature. However studies comparing different approaches
+are almost nonexistent. Besides, experiments have been systematically performed either on synthetic speech or on sustained vowels. In this study we
+compare three of the main representative state-of-the-art methods of glottal
+flow estimation: closed-phase inverse filtering, iterative and adaptive inverse
+filtering, and mixed-phase decomposition. These techniques are first submitted to an objective assessment test on synthetic speech signals. Their
+sensitivity to various factors affecting the estimation quality, as well as their
+robustness to noise are studied. In a second experiment, their ability to label voice quality (tensed, modal, soft) is studied on a large corpus of real
+connected speech. It is shown that changes of voice quality are reflected by
+significant modifications in glottal feature distributions. Techniques based
+on the mixed-phase decomposition and on a closed-phase inverse filtering
+process turn out to give the best results on both clean synthetic and real
+speech signals. On the other hand, iterative and adaptive inverse filtering is
+recommended in noisy environments for its high robustness.
+Keywords:
+Source-tract Separation, Glottal Flow Estimation, Inverse Filtering,
+Mixed-Phase Decomposition, Voice Quality
+
+Preprint submitted to Computer Speech and Language
+
+January 6, 2020
+
+1. Introduction
+Speech results from filtering the glottal flow by the vocal tract cavities,
+and converting the resulting velocity flow into pressure at the lips (Quatieri,
+2002). In many speech processing applications, it is important to separate the
+contributions from the glottis and the vocal tract. Achieving such a sourcefilter deconvolution could lead to a distinct characterization and modeling of
+these two components, as well as to a better understanding of the human
+phonation process. Such a decomposition is thus a preliminary condition
+for the study of glottal-based vocal effects, which can be segmental (as for
+vocal fry), or be controlled by speakers on a separate, supra-segmental layer
+(as it is the case for the voice quality modifications mentioned in Section
+5). Their dynamics is very different from that of the vocal tract contribution, and requires further investigation. Glottal source estimation is then
+a fundamental problem in speech processing, finding applications in speech
+synthesis (Cabral et al., 2008), voice pathology detection (Drugman et al.,
+2009b), speaker recognition (Plumpe et al., 1999), emotion analysis/synthesis
+(Airas and Alku, 2006), etc.
+In this paper, we limit our scope to the methods which perform an estimation of the glottal source contribution directly from the speech waveform.
+Although some devices such as electroglottographs or laryngographs, which
+measure the impedance between the vocal folds (but not the glottal flow itself), are informative about the glottal behaviour (Henrich et al., 2004), in
+most cases the use of such aparatus is inconvenient and only the speech signal
+is available for analysis. This problem is then a typical case of blind separation, since neither the vocal tract nor the glottal contribution are observable.
+This also implies that no quantitative assessment of the performance of glottal source estimation techniques is possible on natural speech, as no target
+reference signal is available.
+As one of the basic problems and challenges of speech processing research,
+glottal flow estimation has been studied by many researchers and various
+techniques are available in the literature (Walker and Murphy, 2007). However the diversity of algorithms and the fact that the reference for the actual
+glottal flow is not available often leads to the questionability about relative
+effectiveness of the methods in real life applications. In most of studies,
+tests are performed either on synthetic speech or on a few recorded sustained
+vowels. In addition, very few comparative studies exist (such as (Sturmel
+et al., 2007)). In this paper, we compare three of the main representative
+2
+
+state-of-the-art methods: closed-phase inverse filtering, iterative and adaptive inverse filtering, and mixed-phase decomposition. For testing, we first
+follow the common approach of using a large set of synthetic speech signals
+(by varying synthesis parameters independently), and then we examine how
+these techniques perform on a large real speech corpus. In the synthetic
+speech tests, the original glottal flow is available, so that objective measures
+of decomposition quality can be computed. In real speech tests the ability of
+the methods to discriminate different voice qualities (tensed, modal and soft)
+is studied on a large database (without limiting data to sustained vowels).
+The paper is structured as follows. In Section 2 the main state-of-the-art
+methods for glottal source estimation are reviewed, and the three techniques
+compared in this study are detailed. Section 3 discusses how the resulting
+glottal signal can be parametrized both in time and frequency domains. The
+three methods are evaluted in Section 4 through a wide systematic study
+on synthetic signals. Their robustness to noise, as well as the impact of
+the various factors that may affect source-tract separation, are investigated.
+Section 5 presents decomposition results on a real speech database containing
+various voice qualities, and shows that the glottal source estimated by the
+techniques considered in this work conveys relevant information about the
+phonation type. Finally Section 6 draws the conclusions of this study.
+2. Glottal Source Estimation
+Glottal flow estimation mainly refers to the estimation of the voiced excitation of the vocal tract. During the production of voiced sounds, the airflow
+arising from the trachea causes a quasi-periodic vibration of the vocal folds
+(Quatieri, 2002), organized into so-called opening/closure cycles. During the
+open phase, vocal folds are progressively displaced from their initial state due
+to the increasing subglottal pressure. When the elastic displacement limit
+is reached, they suddenly return to this position during the so-called return
+phase. Figure 1 displays the typical shape of one cycle of the glottal flow
+(Fig.1(a)) and its time derivative (Fig.1(b)) according to the LiljencrantsFant (LF) model (Fant et al., 1985). It is often prefered to gather the lip
+radiation effect (whose action is close to a differentiation operator) with the
+glottal component, and work in this way with the glottal flow derivative on
+the one hand, and with the vocal tract contribution on the other hand. It is
+seen in Figure 1 (bottom plot) that the boundary between open and return
+phases corresponds to a particular event called the Glottal Closure Instant
+3
+
+(GCI). GCIs refer to the instances of significant excitation of the vocal tract
+(Drugman and Dutoit, 2009). Being able to determine their location is of
+particular importance in so-called pitch-synchronous speech processing techniques, and in particular for a more accurate separation between vocal tract
+and glottal contributions.
+
+Figure 1: Typical waveforms, according to the Liljencrants-Fant (LF) model, of one cycle
+of: (top) the glottal flow, (bottom) the glottal flow derivative. The various phases of the
+glottal cycle, as well as the Glottal Closure Instant (GCI) are also indicated.
+
+The main techniques for estimating the glottal source directly from the
+speech waveform are now reviewed. Relying on the speech signal alone, as it
+is generally the case in real applications, allows to avoid the use of intrusive
+(e.g video camera at the vocal folds) or inconvenient (e.g. laryngograph)
+device.
+Such techniques can be separated into two classes, according to the way
+they perform the source-filter separation. The first category (Section 2.1) is
+based on inverse filtering, while the second one (Section 2.2) relies on the
+mixed-phase properties of speech.
+2.1. Methods based on Inverse Filtering
+Most glottal source estimation techniques are based on an inverse filtering
+process. These methods first estimate a parametric model of the vocal tract,
+and then obtain the glottal flow by removing the vocal tract contribution
+via inverse filtering. The methods in this category differ by the way the
+vocal tract is estimated. In Section 2.1.1 this estimation is computed during
+the glottal closed phase, while in Section 2.1.2 an iterative and/or adaptive
+procedure is used. A more extended review of the inverse filtering-based
+4
+
+process for glottal waveform analysis can be found in (Walker and Murphy,
+2007).
+2.1.1. Closed Phase Inverse Filtering
+Closed phase refers to the timespan during which the glottis is closed (see
+Figure 1). During this period, the effects of the subglottal cavities are minimized, providing a better way for estimating the vocal tract transfer function. Therefore, methods based on a Closed Phase Inverse Filtering (CPIF)
+estimate a parametric model of the spectral envelope, computed during the
+estimated closed phase duration (Wong et al., 1979). The main drawback
+of these techniques lies in the difficulty in obtaining an accurate determination of the closed phase. Several approaches have been proposed in the
+literature to solve this problem. In (Veeneman and Bement, 1985), authors
+use information from the electroglottographic signal (which is avoided in this
+study) to identify the period during which the glottis is closed. In (Plumpe
+et al., 1999), it was proposed to determine the closed phase by analyzing the
+formant frequency modulation between open and closed phases. In (Alku
+et al., 2009), the robustness of CPIF to the frame position was improved by
+imposing some dc gain constraints. Besides this problem of accurate determination of the closed phase, it may happen that this period is so short (for
+high-pitched voices) that not enough samples are available for a reliable filter
+estimation. It was therefore proposed in (Brookes and Chan, 1994) a technique of multicycle closed-phase LPC, where a small number of neighbouring
+glottal cycles are considered in order to have enough data for an accurate vocal tract estimation. Finally note that an approach allowing non-zero glottal
+wave to exist over closed glottal phases was proposed in (Deng et al., 2006).
+In this study, the CPIF-based technique that is used is based on a Discrete All Pole (DAP, (Jaroudi and Makhoul, 1991)) inverse filtering process
+estimated during the closed phase. In order to provide a better fitting of
+spectral envelopes from discrete spectra (Jaroudi and Makhoul, 1991), the
+DAP technique aims at computing the parameters of an autoregressive model
+by minimizing a discrete version of the Itakura-Saito distance (F. Itakura,
+1970), instead of the time squared error used by the traditional LPC. The use
+of the Itakura-Saito distance is justified as it is a spectral distortion measure
+arising from the human hearing perception. The closed phase period is determined using the Glottal Opening and Closure Instants (GCIs and GOIs)
+located by the algorithm detailed in (Drugman and Dutoit, 2009). This algorithm has been shown to be effective for reliably and accurately determining
+5
+
+the position of these events on a large corpus containing several speakers.
+For tests with synthetic speech, the exact closed phase period is known and
+is used for CPIF. Note that for high-pitched voices, two analysis windows
+were used as suggested in (Brookes and Chan, 1994), (Yegnanarayana and
+Veldhuis, 1998) and (Plumpe et al., 1999). In the rest of the paper, speech
+signals sampled at 16 kHz are considered, and the order for DAP analysis is
+fixed to 18 (=Fs /1000 + 2, as commonly used in the literature). Through our
+experiments, we reported that the choice of the DAP order is not critical in
+the usual range, and that working with an order comprised between 12 and
+18 leads to sensibly similar results.
+2.1.2. Iterative and/or Adaptive Inverse Filtering
+Some methods are based on iterative and/or adaptive procedures in order
+to improve the quality of the glottal flow estimation. In (Fu and Murphy,
+2006), Fu and Murphy proposed to integrate, within the AutoRegressive eXogenous (ARX) model of speech production, the LF model of the glottal
+source. The resulting ARXLF model is estimated via an adaptive and iterative optimization (Vincent et al., 2005). Both source and filter parameters are
+consequently jointly estimated. The method proposed by Moore in (Moore
+and Clements, 2004) iteratively finds the best candidate for a glottal waveform estimate within a speech frame, without requiring a precise location of
+the GCIs. Finally a popular approach was proposed by Alku in (Alku et al.,
+1992) and called Iterative Adaptive Inverse Filtering (IAIF). This method
+is based on an iterative refinement of both the vocal tract and the glottal
+components. In (Alku and Vilkman, 1994), the same authors proposed an
+improvement, in which the LPC analysis is replaced by the Discrete All Pole
+(DAP) modeling technique (Jaroudi and Makhoul, 1991), shown to be more
+accurate for high-pitched voices.
+As a representative technique of this category, the IAIF method proposed
+by Alku in (Alku et al., 1992) is considered in the rest of this paper. More
+precisely, we used the implementation of the IAIF method (Airas, 2008) from
+the toolbox available on the TKK Aparat website ([Online], 2008), with its
+default options.
+2.2. Mixed-Phase Decomposition
+The methods presented in this Section rely on the mixed-phase model
+of speech (Bozkurt and Dutoit, 2003). According to this model, speech is
+
+6
+
+composed of both minimum-phase (i.e causal) and maximum-phase (i.e anticausal) components. While the vocal tract impulse response and the glottal
+return phase of the glottal component can be considered as minimum-phase
+signals, it has been shown in (Doval et al., 2003) that the glottal open phase
+of the glottal flow is a maximum-phase signal. Besides it has been shown in
+(Gardner and Rao, 1997) that mixed-phase models are appropriate for modeling voiced speech due to the maximum-phase nature of the glottal excitation.
+They showed that the use of an anticausal all-pole filter for the glottal pulse
+is necessary to resolve magnitude and phase information correctly. The key
+idea of mixed-phase decomposition methods is then to separate minimum
+from maximum-phase components of speech, where the latter is only due to
+the glottal contribution.
+A crucial issue in mixed-phase separation is the weighting window that
+is applied to the speech signal for short-term analysis. Indeed, since the decomposition is based on phase properties, windowing may have a dramatic
+influence. It has been shown that GCI-synchronization, as well as the respect of some constraints on the window length and function, are essential
+for guaranteeing a correct decomposition (Drugman et al., 2009a), (Bozkurt
+et al., 2005). Throughout the rest of this study, we use an appropriate GCIcentered two pitch period-long Blackman window satisfying these conditions.
+In previous works, we proposed two approaches achieving such a decomposition: a technique based on the Zeros of the Z-Transform (ZZT, (Bozkurt
+et al., 2005)), and one based on the Complex Cepstrum Decomposition (CCD,
+(Drugman et al., 2009a), (Quatieri, 2002)). Both techniques are briefly presented in Sections 2.2.1 and 2.2.2 and depicted in Figure 2. Finally, the
+methods are shown to be functionnaly equivalent in Section 2.2.3.
+2.2.1. Zeros of the Z-Transform (ZZT)
+For a series of N samples (x(0), x(1), ..., x(N − 1)) taken from a discrete
+signal x(n), the ZZT representation is defined as the set of roots (zeros)
+(Z1 , Z2 , ...ZN −1 ) of the corresponding z-transform X(z):
+
+7
+
+X(z) =
+
+N
+−1
+X
+
+x(n)z −n
+
+(1)
+
+n=0
+
+= x(0)z
+
+−N +1
+
+N
+−1
+Y
+
+(z − Zm )
+
+(2)
+
+m=1
+
+= x(0)z
+
+−N +1
+
+Mo
+Y
+
+(z − Zmax,k )
+
+k=1
+
+Mi
+Y
+
+(z − Zmin,k )
+
+(3)
+
+k=1
+
+To achieve the ZZT-based decomposition of speech, speech frames are first
+weighted by a specific window (see above). When computing the ZZT of this
+signal as in Equation 3, some roots Zmax,k fall outside the unit circle. These
+are due to the maximum-phase (i.e anticausal) component of speech, and
+are consequently only related to the glottal open phase. On the opposite,
+roots located inside the unit circle Zmin,k are due to the minimum-phase
+component of speech, i.e mainly to the vocal tract impulse response. Mixedphase decomposition can then be easily achieved in the ZZT domain, using
+the unit circle as a discriminant boundary (see Figure 2, third column).
+2.2.2. Complex Cepstrum Decomposition (CCD)
+The Complex Cepstrum (CC) x̂(n) of a discrete signal x(n) is defined by
+the following equations (Oppenheim and Schafer, 1989):
+X(ω) =
+
+∞
+X
+
+x(n)e−jωn
+
+(4)
+
+n=−∞
+
+log[X(ω)] = log(|X(ω)|) + j∠X(ω)
+1
+x̂(n) =
+2π
+
+Z π
+
+log[X(ω)]ejωn dω
+
+(5)
+(6)
+
+−π
+
+where Equations 4, 5, 6 respectively correspond to a Discrete-Time Fourier
+Transform (DTFT), a complex logarithm and an inverse DTFT (IDTFT).
+Decomposition in the CC domain arises from the fact that the complex cepstrum x̂(n) of an anticausal (causal) signal is zero for all n positive (negative).
+Retaining only the negative indexes of the CC makes then it possible to estimate the glottal contribution. The separation in the complex cepstrum
+8
+
+Figure 2: Illustration of mixed-phase decomposition. Rows respectively exhibit the following signals: the glottal flow derivative (top), the vocal tract response (middle), and the
+resulting speech signal (bottom). Each column corresponds to a domain of representation
+of these signals: time domain (first column), amplitude spectrum (second column), ZZT
+representation in polar coordinates (third column), and complex cepstrum domain (fourth
+column). Interestingly, convolution in the time domain corresponds to the union operator
+in the ZZT domain and to the addition operator in the complex cepstrum domain. The
+ZZT and CC domains are suited for achieving mixed-phase decomposition since minimum
+and maximum-phase components become linearly separable. In the ZZT domain, the unit
+circle is used as a discriminant boundary, while the quefrency origin is used as a boundary
+in the complex cepstrum domain.
+
+domain using the quefrency origin as a discriminant boundary is clearly seen
+in Figure 2, fourth column.
+2.2.3. Equivalence between ZZT and CCD
+If X(z) is written as in Equation 3, it can be easily shown that the corresponding complex cepstrum can be expressed as (Oppenheim and Schafer,
+1989):
+
+|x(0)|
+for n = 0
+ P
+Mo Zmax,k n
+for n < 0
+x̂(n) =
+(7)
+n
+ Pk=1
+Mi Zmin,k n
+for n > 0
+k=1
+n
+9
+
+This equation shows the narrow link between the ZZT and the CCD
+techniques. These two methods can then be seen as two different ways of
+performing the same operation: separate the minimum and maximum-phase
+components from a given z-transform X(z). Nevertheless, although functionnaly equivalent, it has been shown (Pedersen et al., 2010), (Drugman et al.,
+2009a) that CCD performs much faster (speed is increased between 10 and
+100 times for a sampling rate of 16 kHz, depending on the pitch period). This
+may be explained by the fact that it only relies on FFT and IFFT operations
+while ZZT requires the factoring of high-order polynomials.
+As a method achieving mixed-phase separation, the CCD is considered in
+the rest of this paper for its higher computational speed. To guarantee good
+mixed-phase properties (Drugman et al., 2009a), GCI-centered two pitch
+period-long Blackman windows are used. For this, GCIs were located on
+real speech using the technique we proposed in (Drugman and Dutoit, 2009).
+CC is calculated as explained in Section 2.2.2 and FFT is computed on a
+sufficiently large number of points (typically 4096), which facilitates phase
+unwrapping.
+3. Glottal Source Parametrization
+Once the glottal signal has been estimated by any of the aforementioned
+algorithms, it is interesting to derive a parametric representation of it, using
+a small number of parameters. Various approaches, both in the time and frequency domains, have been proposed to characterize the human voice source.
+This Section gives a brief overview of the most commonly used parameters
+in the literature, since some of them are used in Sections 4 and 5.
+3.1. Time-domain features
+Several time-domain features can be expressed as a function of time intervals derived from the glottal waveform (Alku, 1992). These are used to
+characterize the shape of the waveform, by capturing for example the location of the primary or secondary opening instant (Laukkanen et al., 1996),
+of the glottal flow maximum, etc. The formulation of the source signal in
+the commonly used LF model (Fant et al., 1985) is based on time-domain
+parameters, such as the Open Quotient Oq , the Asymmetry coefficient αm ,
+or the Voice Speed Quotient Sq (Doval and d’Alessandro, 2006). However in
+most cases these instants are difficult to locate with precision from the glottal
+flow estimation. Avoiding this problem and prefered to the traditional Open
+10
+
+Quotient, the Quasi-Open Quotient (QOQ) was proposed as a parameter
+describing the relative open time of the glottis (Hacki, 1989). It is defined as
+the ratio between the quasi-open time and the quasi-closed time of the glottis, and corresponds to the timespan (normalized to the pitch period) during
+which the glottal flow is above 50% of the difference between the maximum
+and minimum flow. Note that QOQ was used in (Laukkanen et al., 1996)
+for studying the physical variations of the glottal source related to the vocal
+expression of stress and emotion. In (Airas and Alku, 2007) various variants
+of Oq have been tested in terms of the degree by which they reflect phonation
+changes. QOQ was found to be the best for this task.
+Another set of parameters is extracted from the amplitude of peaks in the
+glottal pulse or its derivative (Gobl and Chasaide, 2003). The Normalized
+Amplitude Quotient (NAQ) proposed by Alku in (Alku et al., 2002) turns
+out to be an essential glottal feature. NAQ is a parameter characterizing the
+glottal closing phase (Alku et al., 2002). It is defined as the ratio between
+the maximum of the glottal flow and the minimum of its derivative, normalized with respect to the fundamental period. Its robustness and efficiency
+to separate different types of phonation was shown in (Alku et al., 2002),
+(Airas and Alku, 2007). Note that a quasi-similar feature, called basic shape
+parameter, was proposed by Fant in (Fant, 1995), where it was qualified as
+”most effective single measure for describing voice qualities”.
+In (Plumpe et al., 1999), authors propose to use 7 LF parameters and 5
+energy coefficients (defined in 5 subsegments of the glottal cycle) respectively
+for characterizing the coarse and fine structures of the glottal flow estimation.
+Finally some approaches aim at fitting a model on the glottal flow estimate
+by computing a distance in the time domain (Plumpe et al., 1999), (Drugman
+et al., 2008).
+3.2. Frequency-domain features
+In the frequency domain, the LF model presents a low-frequency resonance called the glottal formant (Doval and d’Alessandro, 2006) (see the
+amplitude spectrum of the glottal flow derivative in Figure 2, row 1, column
+2). Some approaches characterize the glottal formant both in terms of frequency and bandwidth (Drugman et al., 2009a). By defining a spectral error
+measure, other studies try to match a model to the glottal flow estimation
+(Ling et al., 2005), (Fant, 1995), (Drugman et al., 2008). This is also the
+case for the Parabolic Spectrum Parameter (PSP) proposed in (Alku et al.,
+1997).
+11
+
+An extensively used measure is the H1−H2 parameter (Fant, 1995). This
+parameter is defined as the ratio between the amplitudes of the magnitude
+spectrum of the glottal source at the fundamental frequency and at the second
+harmonic (Klatt and Klatt, 1990), (Titze and Sundberg, 1992). It has been
+widely used as a measure characterizing voice quality (Hanson, 1995), (Fant,
+1995), (Alku et al., 2009).
+For quantifying the amount of harmonics in the glottal source, the Harmonic to Noise Ratio (HNR) and the Harmonic Richness Factor (HRF) have
+been proposed in (Murphy and Akande, 2005) and (Childers and Lee, 1991).
+More precisely, HRF quantifies the amount of harmonics in the magnitude
+spectrum of the glottal source. It is defined as the ratio between the sum
+of the amplitudes of harmonics, and the amplitude at the fundamental frequency (Childers, 1999). It was shown to be informative about the phonation
+type in (Childers and Lee, 1991) and (Alku et al., 2009).
+4. Experiments on Synthetic Speech
+The first experimental protocol we opted for is close to the one presented
+in (Sturmel et al., 2007). Decomposition is achieved on synthetic speech
+signals (sampled at 16 kHz) for various test conditions. The idea is to cover
+the diversity of configurations one can find in continuous speech by varying all
+parameters over their whole range. Synthetic speech is produced according
+to the source-filter model by passing a known sequence of Liljencrants-Fant
+(LF) glottal waveforms (Fant et al., 1985) through an auto-regressive filter
+extracted by LPC analysis (with an order of 18) from real sustained vowels
+uttered by a female speaker. As the mean pitch during these utterances
+was about 180 Hz, it can be considered that fundamental frequency should
+not exceed 100 and 240 Hz in continuous speech. For the LF parameters,
+the Open Quotient Oq and Asymmetry coefficient αm are varied through
+their common range (see Table 1). For the filter, 14 types of typical vowels
+are considered. Noisy conditions are modeled by adding a white Gaussian
+noise to the speech signal, from almost clean conditions (SN R = 80dB) to
+strongly adverse environments (SN R = 10dB). Table 1 summarizes all test
+conditions, which makes a total of slightly more than 250,000 experiments. It
+is worth mentioning that the synthetic tests presdented in this section focus
+on the study of non-pathological voices with a regular phonation. Although
+the glottal analysis of less regular voices (e.g presenting a jitter or a shimmer;
+or containing an additive noise component during the glottal production, as
+12
+
+it is the case for a breathy voice) is a challenging issue, this latter problem
+is not addressed in the present study.
+
+Pitch (Hz)
+100:5:240
+
+Source
+Filter
+Oq
+αm
+Vowel type
+0.3:0.05:0.9 0.55:0.05:0.8 14 vowels
+
+Noise
+SNR (dB)
+10:10:80
+
+Table 1: Table of synthesis parameter variation range.
+
+The three source estimation techniques described in Section 2 (CPIF,
+IAIF and CCD) are compared. In order to assess their decomposition quality,
+two objective quantitative measures are used (and the effect of noise, fundamental frequency and vocal tract variations to these measures are studied in
+detail in the next subsections):
+• Error rate on NAQ and QOQ : An error on the estimation of NAQ
+and QOQ after source-tract decomposition should be penalized. An
+example of distribution for the relative error on QOQ in clean conditions is displayed in Figure 3. Many attributes characterizing such
+a histogram can be proposed to evaluate the performance of an algorithm. The one we used in our experiments is defined as the proportion
+of frames for which the relative error is higher than a given threshold
+of ±20%. The lower the error rate on the estimation of a given glottal
+parameter, the better the glottal flow estimation method.
+
+Figure 3: Distribution of the relative error on QOQ for the three methods in clean conditions (SN R = 80dB). The error rate is defined as the percentage of frames for which the
+relative error is higher than a given threshold of 20% (indicated on the plot).
+
+• Spectral distortion : Many frequency-domain measures for quantifying the distance between two speech frames x and y arise from the
+13
+
+speech coding litterature. Ideally the subjective ear sensitivity should
+be formalised by incorporating psychoacoustic effects such as masking or isosonic curves. A simple and relevant measure is the spectral
+distortion (SD) defined as (Nordin and Eriksson, 2001):
+sZ
+π
+(20 log10 |
+
+SD(x, y) =
+−π
+
+X(ω) 2 dω
+|)
+Y (ω) 2π
+
+(8)
+
+where X(ω) and Y (ω) denote both signals spectra as a function of
+normalized angular frequency. In (K. Paliwal, 1993), authors argue
+that a difference of about 1dB (with a sampling rate of 8kHz) is hardly
+perceptible. In order to take this point into account, we used the
+following measure between the spectra of the estimated and reference
+glottal signals:
+SD(Estimated, Ref erence) ≈
+s
+
+2
+8000
+
+Z 4000
+(20 log10 |
+20
+
+SEstimated (f ) 2
+|) df
+SRef erence (f )
+
+(9)
+
+An efficient technique of glottal flow estimation is then reflected by low
+spectral distortion values.
+
+Figure 4: Evolution of the three performance measures (error rate on N AQ and QOQ,
+and spectral distortion) as a function of the Signal to Noise Ratio for the three glottal
+source estimation methods.
+
+Based on this experimental framework, we now study how the glottal
+source estimation techniques behave in noisy conditions, or with regard to
+some factors affecting the decomposition quality, such as the fundamental
+frequency or the vocal tract transfert function.
+
+14
+
+Figure 5: Evolution of the three performance measures as a function of the fundamental
+frequency for the three glottal source estimation methods.
+
+4.1. Robustness to Additive Noise
+As mentioned above, white Gaussian noise has been added to the speech
+signal, with various SNR levels. This noise is used as a (weak) substitute
+for recording or production noise but also for every little deviation to the
+theoretical framework which distinguishes real and synthetic speech. Results
+according to our three performance measures are displayed in Figure 4. As
+expected, all techniques degrade as the noise power increases. More precisely,
+CCD turns out to be particularly sensitive. This can be explained by the fact
+that a weak presence of noise may dramatically affect the phase information,
+and consequently the decomposition quality. The performance of CPIF is also
+observed to strongly degrade as the noise level increases. This is probably
+due to the fact that noise may dramatically modify the spectral envelope
+estimated during the closed phase, and the resulting estimate of the vocal
+tract contribution becomes erroneous. On the contrary, even though IAIF
+is, in average, the less efficient on clean synthetic speech, it outperforms
+other techniques in adverse conditions (below 40 dB of SNR). One possible
+explanation of its robustness is the iterative process it relies on. It can be
+indeed expected that, although the first iteration may be highly affected by
+noise (as it is the case for CPIF), the severity of the perturbation becomes
+weaker as the iterative procedure converges.
+4.2. Sensitivity to Fundamental Frequency
+Female voices are known to be especially difficult to analyze and synthesize. The main reason for this is their high fundamental frequency which
+implies to process shorter glottal cycles. As a matter of fact the vocal tract
+response has not the time to freely return to its initial state between two
+glottal sollication periods (i.e. the duration of the vocal tract response can
+be much longer than that of the glottal closed phase). Figure 5 shows the
+15
+
+evolution of our three performance measures with respect to the fundamental frequency in clean conditions. Interestingly, all methods maintain almost
+the same efficiency for high-pitched voices. Nonetheless an increase of the
+error rate on QOQ for CPIF, and an increase of the spectral distortion for
+CCD can be noticed. It can be also observed that, for clean synthetic speech,
+CCD gives the best results with an excellent determination of NAQ and a
+very low spectral distortion. Secondly, despite its high spectral errors, CPIF
+leads to an efficient parametrization of the glottal shape (with notably the
+best results for the determination of QOQ).
+4.3. Sensitivity to Vocal Tract
+In our experiments, filter coefficients were extracted by LPC analysis on
+sustained vowels. Even though the whole vocal tract spectrum may affect the
+decomposition, the first formant, which corresponds to the dominant poles,
+generally imposes the longest contribution of its time response. To give an
+idea of its impact, Figure 6 exhibits, for the 14 vowels, the evolution of the
+spectral distortion as a function of the first formant frequency F1 . A general
+trend can be noticed from this graph: it is observed for all methods that the
+performance of the glottal flow estimation degrades as F1 decreases. This will
+be explained in the next Section by an increasing overlap between source and
+filter components, as the vocal tract impulse response gets longer. It is also
+noticed that this degradation is particularly important for both CPIF and
+IAIF methods, while the quality of CCD (which does not rely on a parametric
+modeling) is only slightly altered.
+
+Figure 6: Evolution, for the 14 vowels, of the spectral distortion with the first formant
+frequency F1 .
+
+16
+
+4.4. Conclusions on Synthetic Speech
+Many factors may affect the quality of the source-tract separation. Intuitively, one can think about the time interference between minimum and
+maximum-phase contributions, respectively related to the vocal tract and to
+the glottal open phase. The stronger this interference, the more important
+the time overlap between the minimum-phase component and the maximumphase response of the next glottal cycle, and consequently the more difficult
+the decomposition. Basically, this interference is conditioned by three main
+parameters:
+• the pitch F0 , which imposes the spacing between two successive vocal
+system responses,
+• the first formant F1 , which influences the length of the minimum-phase
+contribution of speech,
+• and the glottal formant Fg , which controls the length of the maximumphase contribution of speech. Indeed, the glottal formant is the most
+important spectral feature of the glottal open phase (see the lowfrequency resonance in the amplitude spectrum of the glottal flow
+derivative in Figure 2). It is worth noting that Fg is known (Doval and
+d’Alessandro, 2006) to be a function of the time-domain characteristics of the glottal open phase (i.e of the maximum-phase component of
+speech): the open quotient Oq , and the asymmetry coefficient (αm ).
+A strong interference then appears with high pitch, and with low F1
+and Fg values. The previous experiments confirmed for all glottal source
+estimation techniques the performance degradation as a function of F0 and
+F1 . Although we did not explicitly measure the sensitivity of these techniques
+to Fg in this manuscript, it was confirmed in other informal experiments we
+performed.
+It can be also observed from Figures 4 and 5 that the overall performance
+through an objective study on synthetic signals is the highest for the complex
+cepstrum-based technique. This method leads to the lowest values of spectral
+distortion and gives relatively high rates for the determination of both NAQ
+and QOQ parameters. The CPIF technique exhibits better performance
+in the determination of QOQ in clean conditions and especially for lowpitched speech. As for the IAIF technique, it turns out that it gives the worst
+results in clean synthetic speech but outperforms other approaches in adverse
+17
+
+noisy conditions. Note that our results corroborate the conclusions drawn in
+(Sturmel et al., 2007) where the mixed-phase deconvolution (achieved in that
+study by the ZZT method) was shown to outperform other state-of-the-art
+approaches of glottal flow estimation.
+5. Experiments on Real Speech
+Reviewing the glottal flow estimation literature, one can easily notice that
+testing with natural speech is a real challenge. Even in very recent published
+works, all tests are performed only on sustained vowels. In addition, due to
+the unavailability of a reference for the real glottal flow (see Section 1), the
+procedure of evaluation is generally limited to providing plots of glottal flow
+estimates, and checking visually if they are consistent with expected glottal
+flow models. For real speech experiments, here we will first follow this stateof-the-art experimentation (of presenting plots of estimates for a real speech
+example), and then extend it considerably both by extending the content of
+the data to a large connected speech database (including non-vowels), and
+extending the method to a comparative parametric analysis approach.
+In this study, experiments on real speech are carried out on the De7 corpus, a diphone database designed for expressive speech synthesis (Schroeder
+and Grice, 2003). The database contains three voice qualities (modal, soft
+and loud) uttered by a German female speaker, with about 50 minutes of
+speech available for each voice quality (leading to a total of around 2h30).
+Recordings sampled at 16 kHz are considered. Locations of both GCIs and
+GOIs are precisely determined from these signals using the algorithm described in (Drugman and Dutoit, 2009). As mentioned in Section 2, an
+accurate position of both events is required for an efficient CPIF technique,
+while the mixed-phase decomposition (as achieved by CCD) requires, among
+others, GCI-centered windows to exhibit correct phase properties.
+Let us first consider in Figure 7 a concrete example of glottal source estimation on a given voiced segment (/aI/ as in ”ice”) for the three techniques
+and for the three voice qualities. In the IAIF estimate, some ripples are
+observed as if some part of the vocal tract filter contribution could not be
+removed. On the other hand, it can be noticed that the estimations from
+CPIF and CCD are highly similar and are very close to the shape expected
+by the glottal flow models, such as the LF model (Fant et al., 1985). It can
+be also observed that the abruptness of the glottal open phase around the
+
+18
+
+GCI is stronger for the loud voice, while the excitation for the softer voice is
+smoother.
+
+Figure 7: Example of glottal flow derivative estimation on a given segment of vowel (/aI/
+as in ”ice”) for the three techniques and for the three voice qualities: (top) loud voice,
+(middle) modal voice, (bottom) soft voice.
+
+We investigated whether the glottal source estimated by these techniques
+conveys information about voice quality. Indeed the glottis is assumed to play
+an important part for the production of such expressive speech (d’Alessandro,
+2006). As a matter of fact we found some differences between the glottal
+features in our experiments on the De7 database. In this experiment, the
+NAQ, H1-H2 and HRF parameters described in Section 3 are used. Figure
+8 illustrates the distributions of these features estimated by CPIF, IAIF
+and CCD for the three voice qualities. This Figure can be considered as a
+summary of the voice quality analysis using three state-of-the-art methods
+on a large speech database. The parameters NAQ, H1-H2 and HRF have
+been used frequently in the literature to label phonation types (Alku et al.,
+2002), (Hanson, 1995), (Childers and Lee, 1991). Hence the separability
+of the phonation types based on these parameters can be considered as a
+measure of effectiveness for a particular glottal flow estimation method.
+For the three methods, significant differences between the histograms of
+the different phonation types can be noted. This supports the claim that, by
+applying one of the given glottal flow estimation methods and by parametrizing the estimate with one or more of the given parameters, one can perform
+automatic voice quality/phonation type labeling with a much higher success
+19
+
+rate than by random labeling. It is noticed from Figure 8 that parameter
+distributions are convincingly distinct, except for the IAIF and H1-H2 combination. The sorting of the distributions with respect to vocal effort are
+consistent and in line with results of other works ((Alku et al., 2002) and
+(Alku et al., 2009)). Among other things, strong similarities between histograms obtained by CPIF and CCD can be observed. In all cases, it turns
+out that the stronger the vocal effort, the lower NAQ and H1-H2, and the
+higher HRF.
+
+Figure 8: Distributions, for various voice qualities, of three glottal features (from top to
+bottom: NAQ, H1-H2 and HRF) estimated by three glottal source estimation techniques
+(from left to right: CPIF, IAIF and CCD). The voice qualities are shown as dashed (loud
+voice), solid (modal voice) and dotted (soft voice) lines.
+
+Although some significant differences in glottal feature distributions have
+been visually observed, it is interesting to quantify the discrimination between the voice qualities enabled by these features. For this, the KullbackLeibler (KL) divergence, known to measure the separability between two
+discrete density functions A and B, can be used (Lin, 1991):
+DKL (A, B) =
+
+X
+i
+
+20
+
+A(i) log2
+
+A(i)
+B(i)
+
+(10)
+
+Since this measure is non-symmetric (and consequently is not a true distance), its symmetrised version, called Jensen-Shannon divergence, is often
+prefered. It is defined as a sum of two KL measures (Lin, 1991):
+1
+1
+(11)
+DJS (A, B) = DKL (A, M ) + DKL (B, M )
+2
+2
+where M is the average of the two distributions (M = 0.5 ∗ (A + B)).
+Figure 9 displays the values of the Jensen-Shannon distances between two
+types of voice quality, for the three considered features estimated by the three
+techniques.
+From this figure, it can be noted that NAQ is the best discriminative feature (i.e. has the highest Jensen-Shannon distance between distributions),
+while H1-H2 and HRF convey a comparable amount of information for discriminating voice quality. As expected, the loud-soft distribution distances
+are highest compared to loud-modal and modal-soft distances. In seven cases
+out of nine (three different parameters and three different phonation type
+couples), CCD leads to the most relevant separation and in two cases (loudmodal separation with NAQ, loud-modal separation with HRF) CPIF provides a better separation. Both Figures 8 and 9 show that the effectiveness
+of CCD and CPIF is similar, with slightly better results for CCD, while
+IAIF exhibits clearly lower performance (except for one case: loud-modal
+separation with HRF).
+
+Figure 9: Jensen-Shannon distances between two types of voice quality using (from left
+to right) the NAQ, H1-H2 and HRF parameters. For each feature and pair of phonation
+types, the three techniques of glottal source estimation are compared.
+
+6. Conclusion
+This study aimed at comparing the effectiveness of the main state-ofthe-art glottal flow estimation techniques. For this, detailed tests on both
+synthetic and real speech were performed. For real speech, a large corpus was
+21
+
+used for testing, without limiting analysis to sustained vowels. Due to the
+unavailability of the reference glottal flow signals for real speech examples,
+the separability of three voice qualities was considered as a measure of the
+ability of the methods to discriminate different phonation types. In synthetic
+speech tests, objective measures were used since the original glottal flow
+signals were available. Our first conclusion is that the usefulness of NAQ,
+H1-H2 and HRF for parameterizing the glottal flow is confirmed. We also
+confirmed other works in the literature (such as (Alku et al., 2002) and
+(Alku et al., 2009)) showing that these parameters can be effectively used as
+measures for discriminating different voice qualities. Our results show that
+the effectiveness of CPIF and CCD appears to be similar and rather high,
+with a slight preference towards CCD. However, it should be emphasized here
+that in our real speech tests, clean signals recorded for text-to-speech (TTS)
+synthesis were used. We can thus confirm the effectiveness of CCD for TTS
+applications (such as emotional/expressive TTS). However, for applications
+which require the analysis of noisy signals (such as telephone applications)
+further testing is needed. We observed that in the synthetic speech tests, the
+ranking dramatically changed depending on the SNR and the robustness of
+CCD was observed to be rather low. IAIF has lower performance in most tests
+(both in synthetic and real speech tests) but shows up to be comparatively
+more effective in very low SNR values.
+Acknowledgment
+Thomas Drugman is supported by the Belgian Fonds National de la
+Recherche Scientifique (FNRS). Authors also would like to thank the reviewers for their fruitful comments.
+References
+Airas, M., 2008. Tkk aparat: An environment for voice inverse filtering and
+parameterization. Logopedics Phoniatrics Vocology 33, 49–64.
+Airas, M., Alku, P., 2006. Emotions in vowel segments of continuous speech
+: Analysis of the glottal flow using the normalised amplitude quotient.
+Phonetica 63, 26–46.
+Airas, M., Alku, P., 2007. Comparison of multiple voice source parameters
+in different phonation types, in: Proc. Interspeech, pp. 1410–1413.
+22
+
+Alku, P., 1992. An automatic method to estimate the time-based parameters
+of the glottal pulseform, in: Proc. ICASSP, pp. 29–32.
+Alku, P., Backstrom, T., Vilkman, E., 2002. Normalized amplitude quotient
+for parametrization of the glottal flow. Journal of the Acoustical Society
+of America 112, 701–710.
+Alku, P., Magi, C., Yrttiaho, S., Backstrom, T., Story, B., 2009. Closed
+phase covariance analysis based on constrained linear prediction for glottal
+inverse filtering. Journal of the Acoustical Society of America 125, 3289–
+3305.
+Alku, P., Strik, H., Vilkman, E., 1997. Parabolic spectral parameter - a new
+method for quantification of the glottal flow. Speech Communication 22,
+67–79.
+Alku, P., Svec, J., Vilkman, E., Sram, F., 1992. Glottal wave analysis with
+pitch synchronous iterative adaptive inverse filtering. Speech Communication 11, 109–118.
+Alku, P., Vilkman, E., 1994. Estimation of the glottal pulseform based on
+discrete all-pole modeling, in: Third International Conference on Spoken
+Language Processing, pp. 1619–1622.
+Bozkurt, B., Doval, B., d’Alessandro, C., Dutoit, T., 2005. Zeros of ztransform representation with application to source-filter separation in
+speech. IEEE Signal Processing Letters 12.
+Bozkurt, B., Dutoit, T., 2003. Mixed-phase speech modeling and formant estimation, using differential phase spectrums, in: ISCA ITRW VOQUAL03,
+pp. 21–24.
+Brookes, D., Chan, D., 1994. Speaker characteristics from a glottal airflow
+model using glottal inverse filtering. Institue of Acoust. 15, 501–508.
+Cabral, J., Renals, S., Richmond, K., Yamagishi, J., 2008. Glottal spectral separation for parametric speech synthesis, in: Proc. Interspeech, pp.
+1829–1832.
+Childers, D., 1999. Speech Processing and Synthesis Toolboxes. Wiley and
+Sons, Inc.
+23
+
+Childers, D., Lee, C., 1991. Vocal quality factors: Analysis, synthesis, and
+perception. Journal of the Acoustical Society of America 90, 2394–2410.
+d’Alessandro, C., 2006. Voice source parameters and prosodic analysis, in:
+Method in empirical prosody research, pp. 63–87.
+Deng, H., Ward, R., Beddoes, M., Hodgson, M., 2006. A new method for
+obtaining accurate estimates of vocal-tract filters and glottal waves from
+vowel sounds. IEEE Trans. on Acoustics, Speech, and Signal Processing
+14, 445–455.
+Doval, B., d’Alessandro, C., 2006. The spectrum of glottal flow models. Acta
+acustica united with acustica 92, 1026–1046.
+Doval, B., d’Alessandro, C., Henrich, N., 2003. The voice source as a
+causal/anticausal linear filter, in: ISCA ITRW VOQUAL03, pp. 15–19.
+Drugman, T., Bozkurt, B., Dutoit, T., 2009a. Complex cepstrum-based decomposition of speech for glottal source estimation, in: Proc. Interspeech.
+Drugman, T., Dubuisson, T., d’Alessandro, N., Moinet, A., Dutoit, T., 2008.
+Voice source parameters estimation by fitting the glottal formant and the
+inverse filtering open phase, in: 16th European Signal Processing Conference.
+Drugman, T., Dubuisson, T., Dutoit, T., 2009b. On the mutual information
+between source and filter contributions for voice pathology detection, in:
+Proc. Interspeech.
+Drugman, T., Dutoit, T., 2009. Glottal closure and opening instant detection
+from speech signals, in: Proc. Interspeech.
+F. Itakura, S.S., 1970. A statistical method for estimation of speech spectral
+density and formant frequencies. Electron. Commun. Japan 53-A, 36–43.
+Fant, G., 1995. The lf-model revisited. transformations and frequency domain
+analysis. STL-QPSR 36, 119–156.
+Fant, G., Liljencrants, J., Lin, Q., 1985. A four-parameter model of glottal
+flow. STL-QPSR 26, 1–13.
+
+24
+
+Fu, Q., Murphy, P., 2006. Robust glottal source estimation based on joint
+source-filter model optimization. IEEE Trans. on Audio, Speech, and Language Processing 14, 492–501.
+Gardner, W., Rao, B., 1997. Noncausal all-pole modeling of voiced speech.
+IEEE Trans. Speech and Audio Processing 5, 1–10.
+Gobl, C., Chasaide, A., 2003. Amplitude-based source parameters for measuring voice quality, in: VOQUAL03, pp. 151–156.
+Hacki, T., 1989. Klassifizierung von glottisdysfunktionen mit hilfe der elektroglottographie. Folia Phoniatrica 41, 43–48.
+Hanson, H., 1995. Individual variations in glottal characteristics of female
+speakers, in: Proc. ICASSP, pp. 772–775.
+Henrich, N., d’Alessandro, C., Doval, B., Castellengo, M., 2004. On the
+use of the derivative of electroglottographic signals for characterization of
+non-pathological phonation. J. Acoust. Soc. Am. 115, 1321–1332.
+Jaroudi, A.E., Makhoul, J., 1991. Discrete all-pole modeling. IEEE Trans.
+on Signal Processing 39, 411–423.
+K. Paliwal, B.A., 1993. Efficient vector quantization of lpc parameters at 24
+bits/frame. IEEE Trans. Speech Audio Processing 1, 3–14.
+Klatt, D., Klatt, L., 1990. Analysis, synthesis and perception of voice quality variations among female and male talkers. Journal of the Acoustical
+Society of America 87, 820–857.
+Laukkanen, A.M., Vilkman, E., Alku, P., Oksanen, H., 1996. Physical variations related to stress and emotional state: a preliminary study. Journal
+of Phonetics 24, 313–335.
+Lin, J., 1991. Divergence measures based on the shannon entropy. IEEE
+Trans. on Information Theory 37, 145–151.
+Ling, Z., Hu, Y., Wang, R., 2005. A novel source analysis method by matching spectral characters of lf model with straight spectrum. Lecture Notes
+in Computer Science 3784, 441–448.
+
+25
+
+Moore, E., Clements, M., 2004. Algorithm for automatic glottal waveform
+estimation without the reliance on precise glottal closure information, in:
+Proc. ICASSP.
+Murphy, P., Akande, O., 2005. Quantification of glottal and voiced speech
+harmonics-to-noise ratios using cepstral-based estimation, in: Nonlinear
+Speech Processing Workshop, pp. 224–232.
+Nordin, F., Eriksson, T., 2001. A speech spectrum distortion measure with
+interframe memory, in: Proc. ICASSP, pp. 717–720.
+[Online], 2008. http://aparat.sourceforge.net/index.php/main page. TKK
+Aparat Main Page .
+Oppenheim, A., Schafer, R., 1989. Discrete-time signal processing. PrenticeHall.
+Pedersen, C., Andersen, O., Dalsgaard, P., 2010. Separation of mixed-phase
+signals by zeros of the z-transform - a reformulation of complex cepstrumbased separation by causality, in: Proc. ICASSP.
+Plumpe, M., Quatieri, T., Reynolds, D., 1999. Modeling of the glottal
+flow derivative waveform with application to speaker identification. IEEE
+Trans. on Speech and Audio Processing 7, 569–586.
+Quatieri, T., 2002. Discrete-time speech signal processing. Prentice-Hall.
+Schroeder, M., Grice, M., 2003. Expressing vocal effort in concatenative synthesis, in: 15th International Conference of Phonetic Sciences, pp. 2589–
+2592.
+Sturmel, N., d’Alessandro, C., Doval, B., 2007. A comparative evaluation
+of the zeros of z transform representation for voice source estimation, in:
+Proc. Interspeech, pp. 558–561.
+Titze, I., Sundberg, J., 1992. Vocal intensity in speakers and singers. Journal
+of the Acoustical Society of America 91, 2936–2946.
+Veeneman, D., Bement, S., 1985. Automatic glottal inverse filtering from
+speech and electroglottographic signals. IEEE Trans. on Acoustics, Speech,
+and Signal Processing 33, 369–377.
+26
+
+Vincent, D., Rosec, O., Chovanel, T., 2005. Estimation of lf glottal source
+parameters based on an arx model, in: Proc. Interspeech, pp. 333–336.
+Walker, J., Murphy, P., 2007. A review of glottal waveform analysis, in:
+Progress in Nonlinear Speech Processing, pp. 1–21.
+Wong, D., Markel, J., Gray, A., 1979. Least squares glottal inverse filtering
+from the acoustic speech waveform. IEEE Trans. on Acoustics, Speech,
+and Signal Processing 27.
+Yegnanarayana, B., Veldhuis, R., 1998. Extraction of vocal-tract system
+characteristics from speech signals. IEEE Trans. Speech Audio Processing
+6, 313–327.
+
+27

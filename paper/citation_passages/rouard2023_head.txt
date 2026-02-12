@@ -1,0 +1,50 @@
+HYBRID TRANSFORMERS FOR MUSIC SOURCE SEPARATION
+Simon Rouard, Francisco Massa, Alexandre Défossez
+
+arXiv:2211.08553v1 [eess.AS] 15 Nov 2022
+
+Meta AI
+ABSTRACT
+A natural question arising in Music Source Separation (MSS)
+is whether long range contextual information is useful, or
+whether local acoustic features are sufficient. In other fields,
+attention based Transformers [1] have shown their ability to
+integrate information over long sequences. In this work, we
+introduce Hybrid Transformer Demucs (HT Demucs), an hybrid temporal/spectral bi-U-Net based on Hybrid Demucs [2],
+where the innermost layers are replaced by a cross-domain
+Transformer Encoder, using self-attention within one domain,
+and cross-attention across domains. While it performs poorly
+when trained only on MUSDB [3], we show that it outperforms Hybrid Demucs (trained on the same data) by 0.45 dB
+of SDR when using 800 extra training songs. Using sparse attention kernels to extend its receptive field, and per source
+fine-tuning, we achieve state-of-the-art results on MUSDB
+with extra training data, with 9.20 dB of SDR.
+Index Terms— Music Source Separation, Transformers
+1. INTRODUCTION
+Since the 2015 Signal Separation Evaluation Campaign
+(SiSEC) [4], the community of MSS has mostly focused
+on the task of training supervised models to separate songs
+into 4 stems: drums, bass, vocals and other (all the other
+instruments). The reference dataset that is used to benchmark
+MSS is MUSDB18 [3, 5] which is made of 150 songs in two
+versions (HQ and non-HQ). Its training set is composed of
+87 songs, a relatively small corpus compared with other deep
+learning based tasks, where Transformer [1] based architectures have seen widespread success and adoption, such as
+vision [6, 7] or natural language tasks [8]. Source separation
+is a task where having a short context or a long context as input both make sense. Conv-Tasnet [9] uses about one second
+of context to perform the separation, using only local acoustic
+features. On the other hand, Demucs [10] can use up to 10
+seconds of context, which can help to resolve ambiguities
+in the input. In the present work, we aim at studying how
+Transformer architectures can help leverage this context, and
+what amount of data is required to train them.
+We first present in Section 3 a novel architecture, Hybrid
+Transformer Demucs (HT Demucs), which replaces the innermost layers of the original Hybrid Demucs architecture [2]
+
+with Transformer layers, applied both in the time and spectral
+representation, using self-attention within one domain, and
+cross-attention across domains. As Transformers are usually
+data hungry, we leverage an internal dataset composed of 800
+songs on top of the MUSDB dataset, described in Section 4.
+Our second contribution is to evaluate extensively this
+new architecture in Section 5, with various settings (depth,
+number of channels, context length, augmentations etc.). We

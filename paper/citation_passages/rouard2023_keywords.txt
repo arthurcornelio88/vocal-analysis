@@ -1,0 +1,64 @@
+=== Recherche de mots-clés pour rouard2023 ===
+--- abstract ---
+
+Meta AI
+ABSTRACT
+A natural question arising in Music Source Separation (MSS)
+is whether long range contextual information is useful, or
+
+--- introduction ---
+with extra training data, with 9.20 dB of SDR.
+Index Terms— Music Source Separation, Transformers
+1. INTRODUCTION
+Since the 2015 Signal Separation Evaluation Campaign
+(SiSEC) [4], the community of MSS has mostly focused
+
+--- conclusion ---
+with such a context might lead to a different result.
+
+Conclusion
+We introduced Hybrid Transformer Demucs, a Transformer
+based variant of Hybrid Demucs that replaces the innermost convolutional layers by a Cross-domain Transformer
+
+--- method ---
+samples on our github facebookresearch/demucs.
+2. RELATED WORK
+A traditional split for MSS methods is between spectrogram based and waveform based models. The former includes models like Open-Unmix [11], a biLSTM with fully
+connected that predicts a mask on the input spectrogram
+or D3Net [12] which uses dilated convolutional blocks
+--
+
+Table 1: Comparison with baselines on the test set of
+MUSDB HQ (methods with a ∗ are reported on the non HQ
+version). “Extra?” indicates the number of extra songs used
+at train time, † indicates that only mixes are used. “fine tuned”
+--
+Zhang, “xformers: A modular and hackable transformer modelling library,” https://github.com/
+facebookresearch/xformers, 2021.
+[23] Diederik P. Kingma and Jimmy Ba, “Adam: A method
+for stochastic optimization,” 2014.
+[24] Fabian-Robert Stöter, Antoine Liutkus, and Nobutaka
+
+--- result ---
+when trained only on MUSDB [3], we show that it outperforms Hybrid Demucs (trained on the same data) by 0.45 dB
+of SDR when using 800 extra training songs. Using sparse attention kernels to extend its receptive field, and per source
+fine-tuning, we achieve state-of-the-art results on MUSDB
+with extra training data, with 9.20 dB of SDR.
+Index Terms— Music Source Separation, Transformers
+--
+a time domain U-Net with a bi-LSTM between the encoder
+and decoder. Around the same time, Conv-TasNet showed
+competitive results [9, 10] using residual dilated convolution
+blocks to predict a mask over a learnt representation. Finally,
+a recent trend has been to use both temporal and spectral
+--
+
+Pi,j < 30%. This procedure selects 800 songs.
+5. EXPERIMENTS AND RESULTS
+5.1. Experimental Setup
+All our experiments are done on 8 Nvidia V100 GPUs with
+--
+
+Table 2: Impact of segment duration, transformer depth and
+
+--- discussion ---

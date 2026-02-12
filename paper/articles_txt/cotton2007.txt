@@ -1,0 +1,3182 @@
+COTTON, SANDRA, D.M.A. Voice Classification and Fach: Recent, Historical and
+Conflicting Systems of Voice Categorization. (2007)
+Directed by Dr. Nancy Walker. 88 pp.
+
+As developments in voice science continue to contribute to a collective body of
+knowledge concerning the physiological nature of voice classification, the possibility
+grows of a less-controversial means of assessing the voice type of a particular singer. A
+more thorough understanding of the importance of the physiological dimensions of the
+vocal instrument in pre-determining the potentials and limitations of any given
+instrument will doubtless lead to more accurate voice classification in the future. Yet the
+controversy of which operatic repertoire is appropriate for a given singer will continue to
+haunt teachers and singers alike as long as Fach, the system of categorization of roles,
+continues to be treated as a synonym of voice type.
+While the body of critical and analytic texts concerning voice training grows, so,
+too, does the discourse continue to develop its on-going debate as to the importance of
+various criteria involved in voice classification. There exist also numerous documents
+from previous centuries which may be explored for insight into historical conceptions of
+voice classification. Yet as this body of literature on physiology and pedagogy continues
+to grow, there remains a lack of critical writings examining the Fach system. Indeed, the
+Fach system continues to be considered primarily a listing of roles organized by
+appropriate voice type, though the fluid nature of the system alone is enough to question
+the possibility of voice type as the true and constant categorization principle. Without
+any critical studies of the system, Fach is bound to remain a controversial subject over
+which pedagogues argue in vain. This paper offers a suggestion for approaching the
+
+system from two different angles: first, from a historical perspective which will allow for
+an overview of the fluidity of the system; second, with a tessitura study of a group of
+roles considered all part of one Fach.
+
+VOICE CLASSIFICATION AND FACH: RECENT, HISTORICAL
+AND CONFLICTING SYSTEMS OF
+VOICE CATEGORIZATION
+
+by
+Sandra Cotton
+
+A Dissertation Submitted to
+the Faculty of The Graduate School at
+The University of North Carolina at Greensboro
+in Partial Fulfillment
+of the Requirements for the Degree
+Doctor of Musical Arts
+
+Greensboro
+2007
+
+Approved by
+
+_________Dr. Nancy Walker______
+Committee Chair
+
+APPROVAL PAGE
+
+This dissertation has been approved by the following committee of the Faculty of
+The Graduate School at The University of North Carolina at Greensboro.
+
+Committee Chair_____Nancy Walker_________________
+Committee Members _____Robert Wells__________________
+______James Douglass_______________
+______David Holley________________
+
+_______14 March 2007_________
+Date of Acceptance by Committee
+
+_______14 March 2007_________
+Date of Final Oral Examination
+
+ii
+
+TABLE OF CONTENTS
+Page
+LIST OF TABLES .......................................................................................................... iv
+LIST OF FIGURES ............................................................................................................v
+INTRODUCTION ............................................................................................................1
+CHAPTER
+I. CLASSIFICATION CRITERIA ..........................................................................9
+Range .........................................................................................................13
+Tessitura and Passaggi ..............................................................................17
+Timbre .......................................................................................................23
+Agility .......................................................................................................29
+Chapter Summary .....................................................................................30
+II. EARLIER CONCEPTS OF VOICE CLASSIFICATION .................................32
+The Hiller Treatise ....................................................................................34
+The Garcia Treatise ...................................................................................42
+Chapter Summary .....................................................................................52
+III. THE FACH SYSTEM ........................................................................................54
+The Kloiber Guide .....................................................................................59
+The Boldrey Guide.....................................................................................63
+Role-Shifting..............................................................................................69
+Chapter Summary / Conclusion .................................................................77
+BIBLIOGRAPHY..............................................................................................................84
+
+iii
+
+LIST OF TABLES
+Page
+Table 1. Passaggi and Vowel Formants ............................................................................20
+Table 2. Vocal Demands for Cherubino vs. Susanna .......................................................41
+Table 3. Vocal Demands for Siébel ..................................................................................50
+Table 4. Vocal Demands for Stephano .............................................................................51
+Table 5. Terms and Definitions from Kloiber 1973 .........................................................60
+Table 6. Comparison of Fach Listings .............................................................................70
+Table 7. Tessitura and Orchestration Chart ......................................................................74
+Table 8. 1973 Kloiber Listings and Tessitura ...................................................................76
+
+iv
+
+LIST OF FIGURES
+Page
+Figure 1. General Female Fach Designations....................................................................58
+
+v
+
+INTRODUCTION
+
+To teach healthy and efficient phonation may be the primary task of a voice
+teacher, yet there remain many other significant duties. Among these obligations is the
+preparation of the singer to advance to the next level of education or professional work,
+and it is common for voice teachers to be judged as much (if not more) by their students’
+professional success than the amount of technical progress the students make while in
+that studio. For the training of singers hoping to launch a career in opera, an important
+part of preparation for auditions is the selection and perfection of an “audition package.”
+The selection of the arias for this package depends not only on the vocal qualities and
+restrictions of the singer in question, but also on current casting trends and market
+expectations. To offer an aria in the package that does not fit the current conception of
+that particular voice type, whether the inappropriateness of the role be pedagogically
+justifiable or merely a matter of taste, is to run the risk of exclusion from invitations to
+audition. Indeed, one hears directors explain that upon receiving hundreds of requests for
+auditions, any aspect of the application that points to a lack of professional preparation,
+such as inappropriate repertoire, offers an easy means by which to exclude those singers
+who are not yet ready to be heard. This process of reducing the applicant pool to a
+feasible number of singers, while frustrating to those who do not make the cut, is
+necessary for companies to save time and money.
+
+1
+
+In order to choose appropriate repertoire for auditions, then, a teacher must be
+sure not to suggest arias that are outside the expectations of a theoretical casting director.
+The most effective way to avoid such a blunder (again, whether the obstacle be vocally
+justifiable or not) is to be familiar with current casting trends, which are codified under
+the always evolving Fach system.1 The problem with this system lies in the seemingly
+inextricable conflagration of Fach and voice type. The system was indeed organized
+according to voice type, yet its fluidity demands the separation of the two. Despite the
+fact that Fach listings carry the titles of particular voice types, to consider Fach and voice
+classification synonymous would be to allow for the possibility that voice classification,
+like Fach, is dependent upon market trends.
+Just as voice classification depends primarily on ease of tessitura, timbre and
+agility, so too can various roles be distinguished as appropriate for various voice types
+according to the demands inherent in the score. As tastes change, however, casting
+trends emerge which have little to do with the actual demands of the score. Our
+collective expectations of vocal timbre for the portrayal of particular characteristics
+(femininity, masculinity, promiscuity, chasteness, etc.) shift, and the casting trends for
+particular types of roles shift accordingly. Compounding the problem are technological
+advances, which now allow opera fans to view singers at close range via DVD, making
+this shift in expectations not just one of vocal timbre, but also of body type. These
+demands on casting to satisfy shifting socio-cultural expectations move roles about in the
+Fach listings regardless of the roles’ tessitura, agility, or orchestration demands. In order
+1
+
+The Fach System consists of a number of lists of roles according to voice category. Fach will be
+defined in depth in Chapter III.
+
+2
+
+to successfully train and market singers in such a fluid system, it is necessary to view
+Fach separately from actual voice classification. The singer, in other words, ought train
+to sing as efficiently and healthily as possible, and be marketed as the Fach which holds
+the most appropriate roles according to timbre and body expectations, as well as those of
+tessitura and agility, even if the title of the Fach is not the same as the singers’ exact
+voice classification.
+Voice classification must be considered separately from Fach, for it is a
+description of the capabilities and limitations of an instrument – a physiological fact akin
+to, if not as easy to determine as, a person’s height or eye color. Of course, the voice
+changes as it matures, and the manner in which an instrument is treated (hygiene and
+technique) can alter its capabilities and limitations. Yet these alterations serve to
+highlight or hinder the qualities already present in the potential of the given instrument,
+not to change the instrument into another. To alter the body or strings on a violin, for
+instance, would not make it a viola, nor vice versa. Continuing with this analogy, even
+the loss of the upper strings of the violin would not render it a viola, though it would lose
+the majority of the sounds most commonly associated with the violin. The resonating
+chamber and the relationship of the size of each part to the other would remain essentially
+the same despite such alterations. Even with a crack in the body or a piece of foam taped
+inside the chamber, the physical relationships remain that ultimately determine what type
+of a stringed instrument it is. Though the aging process and the nature of human tissue
+make the vocal instrument more complex, these same guidelines for the determination of
+
+3
+
+instrument “type” (the size of each part and the relationships of various parts to one
+another) remain generally applicable.
+The manner in which the vocal instrument is measured to determine voice type
+has changed over the past centuries and will continue to change as advances are made in
+voice science. What years ago was primarily a question of range has become, in recent
+decades, a myriad of questions including such categories as register breaks, timbre, zones
+of ease of production, and the degree of agility. Today’s voice teacher must learn to
+listen for and assess each criterion, and to understand the hierarchy of the various criteria
+for voice classification in order to determine the nature of the instrument at hand.
+Though voice classification has become more complicated and more controversial via the
+importance placed on ever more categories for consideration, voice science may soon
+take away from some of the controversy (if not the complexity). The amount of guesswork involved in assessing the potential of a young instrument, for example, could
+someday be reduced via computer imaging technology which would be able to assess the
+laryngeal physiology and resonance cavities and thereby offer the actual physiological
+capabilities and limitations of the instrument while at rest, allowing for the singer’s
+technique to play no role in consideration.
+There are numerous sources concerning voice classification, and this study will be
+restricted to the most prominent and physiologically sound books on the subject. In the
+author’s opinion, the best scientific explanation of how and why any particular voice
+sounds the way it does is found in Ingo Titze’s Principles of Voice Production (Iowa
+City, Iowa: National Center for Voice Studies, 2000). Richard Miller has published
+
+4
+
+numerous books and essays dealing with the training of specific voice types, and is
+arguably the most influential vocal pedagogue of our time because of his implementation
+of technology in the teaching of the centuries-old Italian technique. The most apposite of
+Miller’s books for this subject is Training Soprano Voices (New York: Oxford University
+Press, 2000). A pioneer of the vocal-technological era, Berton Coffin made very
+significant discoveries concerning vowel formants, register breaks. It will also be
+necessary to draw on his Sound of Singing; Principles and Applications of Vocal
+Techniques with Chromatic Vowel Chart, 2nd ed. (Lanham, MD: The Scarecrow Press,
+2002). Lastly, Coffin’s most famous student, Barbara Doscher, wrote the book that
+continues to serve as a basis for vocal pedagogy in universities all over the country: The
+Functional Unity of the Singing Voice, 2nd ed. (Metuchen, NJ: The Scarecrow Press,
+Inc., 1994). In addition to these sources, references to works by Meribeth Bunch and
+James McKinney will aid in the explanation of current notions of voice classification in
+Chapter I.
+Following exploration of the current understanding of voice physiology, Chapter
+II will consist of a close reading of two important historical documents to examine the
+possibility that voice classification and terminology may have been significantly different
+for earlier pedagogues. There appears to be no secondary sources for comparison of
+concepts of voice classification over time for the last 150 years, so this discussion will
+rely solely on primary sources.2 The two main sources will be Johann Adam Hiller’s
+2
+
+A recent book, Singing in Style; A guide to Vocal Performance Practices by Martha Elliott
+(London: Yale University Press, 2006), claims to cover voice classification in various periods and regions.
+Yet the promising subtitles in the table of contents of “Voice Types and Ranges” are a bit misleading.
+Elliott mentions which types of voices were popular, but does not delve into what that terminology might
+
+5
+
+Anweisung zum musikalisch-zierlichen Gesang (Leipzig: Johann Friedrich Junius, 1780.
+Reprint, Leipzig: Edition Peters, 1976), and Manuel Garcia’s treatise École de Garcia:
+traité complet de l’art du chant en deux parties (Paris: Manuel Garcia, 1847. Reprint,
+Geneva: Minkoff Editeur, 1985).
+The two leading sources for the Fach system are by Richard Boldrey (Guide to
+operatic roles & arias, Dallas, TX: Pst. Inc., 1994) and by Rudolf Kloiber (Handbuch
+der Oper3). The Boldrey text is in English, and is one of the leading Fach guides for
+voice teachers and singers in the United States. Kloiber’s editions, in German, are used
+primarily in Germany and Austria. Though the primary concern for this study is the state
+of training and marketing of young singers in the United States, it is necessary to closely
+examine the German Fach System because international and American opera houses
+have all been affected to some extent by this system. The discrepancies between the
+American and German Fach conceptions have less to do with any disagreements
+
+have signified. For her chapter on “The Classical Era,” for example, she writes: “The Classical period saw
+the gradual decline of the castrato voice and the increased use of female sopranos and mezzo-sopranos in
+opera and concert music. [. . .] Sopranos, on the other hand, were singing higher and higher, as Mozart
+described in a letter on March 24, 1770. He was visiting the house of a famous soprano in Parma, and he
+jotted down her after-dinner vocal feats, which soared to well above high C….” (106) Considering a role
+like Königin der Nacht, it is clear that Mozart was aware of and writing for coloratura sopranos with
+capabilities in this range. What is unclear, however, is whether or not the term “soprano” carried with it
+any expectations of range or agility, and what those expectations might have been. It seems that Elliott
+may consider this type of information to be subjective and not quantifiable, and that this is the reason she
+included terminology without an attempt at defining it. In the introduction, for example, she writes: “But
+the language we must use to talk about singing – in a voice lesson, at a rehearsal, or in a concert review – is
+subjective and imprecise at best. Even new developments in scientific technology for vocal pedagogy may
+only complicate the problem of communicating with language about something that has to do with subtle
+internal sensations.” (3) The language used in the singing community to talk about singing is imprecise if
+and when those who use it fail to thoroughly define and explain it. The precise definition of terminology,
+upon which the pedagogical community is constantly seeking to agree, is what makes possible effective
+communication about singing. It is only “subjective and imprecise at best” when no attempt at establishing
+a clear and common vocabulary is made.
+3
+Various Editions exist. For the purpose of this study, I will focus on the 8th (1973) and 11th
+(2006) editions.
+
+6
+
+concerning voice type or technical vocal appropriateness of repertoire than with
+differences of audience preferences. Although attention to the fluid nature of the system
+is given in both sources by way of introductory material to the lists of repertoire, neither
+offers temporal comparisons of lists over time. In addition to these two sources, Mark
+Ross Clark has just recently published a book concerning aria selection.4 The book
+promises to be a valuable guide to teachers and singers in coming years, however it has
+not yet had a chance to impact current practices and will therefore be referred to only
+briefly. Though these sources constitute the most significant of the published repertoire
+guides specifically geared towards opera roles and Fach lists, numerous sources continue
+to make an appearance on the internet. Indeed, new entries have appeared on Wikipedia
+since the beginning of this project, for example, concerning Fach, specific classification
+terminology, and biographical information for specific singers. While some of the
+internet sources may be quite useful, such as aria-database.com, none are as exhaustive
+as the Kloiber and Boldrey guides, nor is it probable that they have yet had much
+influence on the training of singers for the job market.
+Although there exist numerous pedagogical studies concerning the anatomy and
+physiology of singing, dealings with the Fach system have primarily remained in the
+realm of defining terminology and role types, rather than in the analysis and implications
+of such a system. Secondary studies are needed, whether they be by nature primarily
+comparative or whether they delve into pedagogical implications. As long as the lack of
+secondary literature on the Fach system remains, discussions are restricted to the realm of
+
+4
+
+Guide to the Aria Repertoire (Bloomington: Indiana University Press, 2007).
+
+7
+
+the anecdotal and arguments put forth are neither provable nor disprovable. This study
+seeks not to provide a thorough analysis of the Fach system or its pedagogical
+implications, but rather to draw attention to the need for such studies and for the
+consideration of Fach separately from voice classification and to suggest one possible
+framework for an analytical approach to the system. In order to establish a discussion of
+Fach in a more quantifiable manner, tables of comparison concerning casting, tessitura,
+and orchestration will provide the basis for exploration of the system in Chapter III. The
+roles represented in these tables were chosen because of their prominence in today’s
+conception of the canonical lyric mezzo-soprano’s repertoire. The lyric mezzo-soprano
+Fach is a particularly advantageous focus for this study because although the voice type
+may have been recognized for years by some pedagogues, it was not considered an actual
+Fach in the leading guide until recent decades.
+
+8
+
+CHAPTER I
+CLASSIFICATION CRITERIA
+
+Despite a growing body of information proving voice classification to be based on
+the size and density of vocal folds and the size and shape of the vocal tract, and thus
+largely quantifiable, classification remains a controversial subject among singers and
+pedagogues. It is possible to imagine a future, perhaps not too far off, when voice
+classification will be determined by computers able to work with imagery of the folds and
+tract. Ingo Titze developed a program, for example, with which exact changes to the
+sound and to the interaction of various parts of the vocal instrument can be viewed as
+adjustments are made to one particular component (air flow, pharyngeal shape, degree of
+adduction, etc.). This program was built around the exact anatomy of one individual, but
+one can imagine the possibility of software that will allow one to change the parameters
+to represent other vocal instruments. Perhaps there will even come a day when we can
+determine voice classification as solidly as we can determine a singer’s height and
+weight. That day, however, is not yet upon us, and when it arrives, years of distrust and
+heated debate are sure to follow. One recalls, for example, the stories of Berton Coffin
+announcing and explaining the discoveries concerning vowel formants at a NATS
+meeting. Many voice teachers were outraged at the suggestion that certain vowels are
+not possible above certain pitches, and several stood up to sing examples “proving”
+Coffin wrong.
+9
+
+Like the dilemma of discussing and training registers, the largest obstacle
+inhibiting a more universal agreement on voice classification in general is the attention
+on effect (i.e. the acoustical energy output or sound) rather than the physiology (and/or
+physiological processes) of the folds and tract. To continue with the analogy of output
+vs. process for registers: there is no arguing against the fact that attention to output can
+and does aid many singers in finding more efficient resonance, however the different
+manners in which we sense this acoustical feedback make it difficult to establish a
+productive dialogue within the pedagogical community.5 For years, there have been calls
+to make use of the ever-better equipment available for the observation of the laryngeal
+mechanism as a means to clarify and simplify the otherwise muddled discussion. Yet the
+equipment that has crept into voice studios for the integration of science and teaching
+deals primarily with output.6 In the case of voice classification, this dilemma of process
+vs. effect manifests itself in the problem of distinguishing actual from potential output. A
+5
+
+For a great example of this dilemma, see the discussion on Registers among the experts from the
+transcripts of the 1979 Symposium for the Care of the Professional Voice. (Lawrence, Van and Bernd
+Weinberg, editors. Transcripts of the Eight Symposium; Care of the Professional Voice; Part I: Physical
+Factors in Voice, Vibrato, Registers; June 1979. New York: The Voice Foundation, 1980.)
+6
+Voce Vista, perhaps the most successful of these, developed by Donald Miller, has been used
+more and more by voice teachers, and is frequently featured at NATS meetings. In his 2000 dissertation on
+vocal registers, it is evident that he understands this equipment as a tool that will allow for scientific
+discussion of the more tangible effect of registration shifts: “With the invention of the laryngoscope in the
+mid-nineteenth century came empirical knowledge that the distinction between chest and falsetto was
+located in the pattern of vibration of the vocal folds. The chest and head ‘resonances’ that singers had
+associated with the two primary registers thus lost much of their explanatory power among those who
+sought a scientific explanation for the question of registers. [. . . ] It was not until the second half of the
+twentieth century that the complex role of the vocal tract in voice production became fully appreciated.
+The availability of spectrum analysis then made it possible to follow how the resonances of the vocal tract
+were affecting the individual harmonics of the voice source.” (Donald Miller, Registers in Singing;
+Empirical and Systematic Studies in the Theory of the Singing Voice. Dissertation. Rijksuniversiteit
+Groningen. 2000, 18.) Perhaps Miller is suggesting a new paradigm in which the filtration in the vocal
+tract would be viewed as a second process – making the tract the producer of registration shifts rather than
+the larynx. This is bound to be debated in the pedagogical community for years to come. The field remains
+divided, but that may change as future generations of pedagogues become intimately acquainted with the
+work of Ingo Titze, Donald Miller, the late Berton Coffin, and others.
+
+10
+
+teacher must “hear” the output as filtered by the vocal tract and affected/manipulated by
+technique. In other words, the teacher must do more than know if the sound produced
+falls short of potential. He/she must distinguish which parts of the vocal production in
+need of improvement lie in the pharyngeal happenings and which are to be attributed to
+the source. Once efficiency and freedom is found in all parts of vocal production (i.e.
+actual output reaches potential output), voice classification tends to be less controversial.
+One would hope that all voice teachers listen as much for potential as to actual sound,
+however the degree of success that is achieved varies greatly from teacher to teacher, as
+can be observed in numerous anecdotal accounts of misclassification.
+The disagreements concerning voice classification lie in the criteria for
+determining classification, as well as the extent to which classification should affect
+training and repertoire choices. Most pedagogues will agree that range, tessitura, agility,
+and timbre are or have been significant criteria for voice classification, though the extent
+to which each plays a role can differ depending on the teacher. The number of books
+available on training particular voice types is evidence enough that not all teachers
+approach voice teaching independent of the question of classification. When training is
+dependent upon voice type, the dangers of misclassification include the likelihood that
+the discovery of the actual vocal potential will be further delayed. On the other end of
+the spectrum, pedagogues who delay classification and focus primarily on teaching a
+student simply to sing well and efficiently will fall short in preparing singers for the
+marketplace if they do not ready their students for the inevitable questions about voice
+
+11
+
+type. While this is more of a potential hindrance for advanced singers, the question of
+classification is raised at all levels of training.7
+In order to facilitate a discussion of the criteria currently used in voice
+classification, it is necessary to first establish what is meant by voice classification and
+what the common terminology for voice types implies. The premise of voice
+classification is that it is possible to divide vocal instruments into groups within which
+the voices will share vocal traits and characteristics, and that the groups will differ from
+one another according also to vocal traits and characteristics. Classification involves
+primary and secondary groupings. The primary categories for female voice classification
+are: soprano (considered highest and most common type); mezzo-soprano (considered
+lower and less common than soprano); and contralto (considered lower and less common
+than mezzo-soprano). These terms for primary categories have been in use for at least
+two centuries, and a very general agreement exists among current pedagogues as to the
+
+7
+
+The assignation of repertoire to a beginning student is always complicated by the presumptions
+of the larger vocal community placed on that repertoire. When a teacher gives a student a piece in a
+particular key, the presumptions by both students and colleagues is that the teacher is making a statement
+about that singer’s classification. Even if, in other words, a teacher is careful to hold off on classification
+with beginning students, and even if that teacher explains to the student, “this does not mean you are a
+soprano/mezzo/tenor/baritone,” any repertoire assigned may solicit presumptions of classification from
+others. Since this is ultimately a question of each individual pedagogical philosophy, the number of voice
+teachers in each camp can vary greatly from institution to institution, and there doubtlessly exist institutions
+in which little to none of such unsolicited judgment takes place. Likewise, there exist institutions in which
+these problems reign to the extent that teachers are continually questioned by their colleagues regarding
+their repertoire choices. In The Training of Soprano Voices Richard Miller warns: “Above all, it is not the
+duty of the singing teacher to attempt Fach determination in the early stages of voice instruction. After the
+singer has achieved basic technical proficiency – has established vocal freedom – her voice itself will
+determine the Fach. Some teachers attempt to apply the professional Germanic Fach system to North
+American college-age singers as though it were the prime aspect of voice pedagogy. The early discovery
+of registration events in a young female voice can be helpful in determining the eventual Fach
+categorization and in avoiding initial false technical and repertoire expectations. However, trying to
+determine the exact Fach for a singer of university age, female or male, mostly represents misdirected
+emphasis. Only when maturity and training have arrived at professional performance levels is final Fach
+determination justifiable.” (13-14)
+
+12
+
+meanings listed above.8 The secondary categories, considering sub-categories of the
+primary groupings, developed over the last century, and are the cause of much
+misunderstanding and dispute. The most common of these secondary groupings are lyric
+(mostly denoting a relatively light timbre), dramatic (a darker timbre), and coloratura
+(implying great agility). Each of the criteria (range, tessitura, registration events, timbre,
+and agility) used to determine voice classification at both the primary and secondary
+levels will be explored separately below. The secondary categories of soubrette and
+character will be explored further in Chapter III, since they deal more with casting than
+vocal attributes. Although these categories have only come to exist during the twentieth
+century, they have become a necessity in voice classification of young singers hoping to
+sing professionally and therefore a concern of voice teachers.
+
+Range
+Most pedagogues will agree that range can and often does play a role in
+establishing primary voice classification, particularly in the early stages. Whether or not
+it should play a role is the point of disagreement. With the most extreme voices as an
+exception (the high lyric coloratura soprano and/or the contralto with a truly limited top),
+the range of well-trained female singers will probably not inhibit them from singing
+repertoire belonging to a few of the neighboring voice classifications. This complicates
+the possibility of using range as a determinant, and it arises from the shift towards many
+sub-classifications of voice that developed during the twentieth century. If range was the
+8
+
+This “general” agreement exists now, however major regional differences existed even into the
+nineteenth century. As regards the term mezzo-soprano, for example, Boldrey states that “even as late as
+the nineteenth century, soprano was still being used by some composers to designate any female singer,
+including mezzo-sopranos.” (Boldrey, 6)
+
+13
+
+primary tool for classification in the nineteenth century, it was a more probable tool when
+used to distinguish between two or three concepts of the female voice, as opposed to
+today’s necessity of distinguishing between eight or twelve categories. Further
+complicating the matter is the fact that technique can certainly inhibit the ability to realize
+one’s potential range. The range in which one performs is smaller than the range in
+which one vocalizes, which in turn is smaller than one’s potential range. Precisely which
+part of the potential range is realized is determined by technique. Additionally, the part
+of the realized range in which one performs is determined by further categories for
+classification.
+In the case of the mezzo-soprano, there is some evidence that, at various points in
+history, this voice type has denoted sopranos with limited high ranges.9 In his National
+Schools of Singing, Richard Miller states that in the French school of singing, this term
+has continued to be used in such a manner.10 To some extent, the demands of the French
+operatic repertoire for the lyric mezzo-soprano might be explained by the ambiguity of
+
+9
+
+One example of this is found in William Ashbrook’s “Opera Singers” in The Oxford Illustrated
+History of Opera, 1994: “A soprano with a range short on top, [Cornélie Falcon] lost her voice irreparably
+and was obliged to retire at 26, because she forced what had been a sumptuous mezzo-soprano into
+tessitura too high for it.” (440) The context of the passage is in the French tendency to use classification
+terminology that refers to a particular singer. A “Falcon,” then, would be a soprano with a limited top
+range. Yet it is clear from this passage that mezzo-soprano is not considered a different voice type than
+soprano, for Falcon is described as a soprano who forced her mezzo-soprano into an inappropriate tessitura.
+This twentieth century description is full of the problems inherent to the time period it discusses: it seems
+that mezzo-soprano denoted a sub-category of soprano, rather than a separate primary category. A more
+detailed discussion on historical terminology follows in Chapter II.
+10
+“Timbre differentiation between the lyric soprano and the mezzo are of less concern in the
+French School than elsewhere. If the female voice is short on top, it is taken to be a mezzo.” (Richard
+Miller, National Schools of Singing; English, French, German and Italian Techniques of Singing Revisited.
+Lanham, Md: Scarecrow Press, 1997, 150.)
+
+14
+
+the terminology itself, particularly when regarding the nineteenth-century French trouser
+roles with their high tessitura, high ranges, and fioratura passages.11
+If range has become less important as a criterion for voice classification, the
+degree to which it remains significant varies from pedagogue to pedagogue. Titze
+continues to consider range the most important variable for voice classification: “The
+single most important acoustic variable for voice classification is fundamental frequency
+F0. In broad terms, F0 of any sound-producing device is inversely related to its size.”12
+In other words, the longer the vocal folds at rest, the smaller (lower) the frequency it
+produces. Depending on the musculature, there is also a maximum level to which the
+cords can be stretched while maintaining closure, which will likewise determine the
+extremes of the high range. This, of course, is a description of the entire potential and
+limitations of a particular instrument. On the other hand, James C. McKinney notes in
+his The Diagnosis and Correction of Vocal Faults, that the only practical aspect of
+classifying by range is that if a singer does not have an extensive high range, it would not
+make sense to call him/herself a tenor/soprano.13 Because of the limited technique,
+McKinney cautions against using range to determine the voice type of a beginning
+student. (In the end, these statements do not contradict one another, since Titze is
+discussing the physiological potential of the instrument, while McKinney deals with the
+sounds the student is making.)
+
+11
+12
+
+See, for example, the tessitura and orchestration chart (Table 7) in Chapter III.
+Ingo Titze, Principles of Voice Production. Iowa City, Iowa: National Center for Voice Studies,
+
+2000, 185.
+13
+
+McKinney, The Diagnosis and Correction of Vocal Faults. Nashville: Genevox Music Group,
+
+1994, 110.
+
+15
+
+Doscher, a sage pedagogue who, despite having missed out on the most recent
+technological and scientific advances, remains one of the most prominent influences on
+today’s generation of voice teachers, regarded range as “probably the least reliable and
+the most dangerous way to classify a voice.”14 Particularly in light of the great degree of
+sub-classification which often takes place at early stages, Doscher’s advice rings
+stubbornly simple and true:
+
+Other than indicating whether a voice is male or female, a relatively simple
+judgment to make about normal voices, range is a “sometime thing.” Particularly
+in young voices, it can bob up and down like a yo-yo. A mezzo-soprano range is
+common for a young soprano who has not yet found the light or head voice. [. . .]
+A conclusive range is almost always a product of vocal maturity and, as such, is
+of little use as a tool to classify voices during training.15
+
+Particularly in regard to the female voice, this recalls the less complex notion of voice
+classification that reigned at various points in history. For, again, descriptions of mezzosopranos seem at times to have indicated a type of soprano: female singers with limited
+upper ranges. Much of the repertoire now considered for mezzo-soprano was listed
+initially for soprano.16 Although today we understand soprano and mezzo-soprano to be
+two legitimately different voice types, the borders between the two remain hotly debated,
+and the assignation of mezzo repertoire, particularly arias, to a young soprano, which
+might make sense according to the common range inhibitions described by Doscher,
+provokes speculation of misclassification. If teachers were to refrain from assigning arias
+until much later in the student’s vocal development, much of the controversy would
+14
+
+Doscher, The Functional Unity of the Singing Voice, 2nd ed. Metuchen, NJ: The Scarecrow
+Press, Inc., 1994, 196.
+15
+Doscher, 196
+16
+See, in particular, the discussion on Hiller’s treatise below.
+
+16
+
+disappear. Yet this is not a viable solution, since the majority of young singers winning
+places among the top Young Apprentice Programs in the United States today are already
+quite young. In order to remain competitive and to build up their resumes and contacts,
+singers must be well-versed in operatic repertoire at an early age, and prepared to sing
+full roles at the time when they audition.
+In her Dynamics of the Singing Voice, Meribeth Bunch states that it is “a common
+misconception that singers are given various classifications such as soprano, mezzosoprano and contralto in terms of their range of pitches.”17 The singers, Bunch maintains,
+will all have similar ranges and although the quality of the high notes might be better
+with the soprano, the other voices would also be able to sing those notes. This is perhaps
+less true for untrained than well-trained voices, and therefore a bit more ideological than
+practical for the beginning singers. “Classification of voices is made chiefly according to
+where the best quality of tone is located in the voice, and where the depth and ease of
+sound are located within the range of pitches.”18 This shift from range to tessitura as
+primary criterion, which Bunch here describes, is perhaps the most significant shift in
+voice classification since the nineteenth century.
+
+Tessitura and Passaggi
+The term tessitura, which in Italian signifies a type of connection or weave, is
+used both to denote a range in which a singer enjoys a sense of effortlessness of
+production and to signify the range of pitches in which a piece or role lies for the
+17
+
+Meribeth Bunch, Dynamics of the Singing Voice, 4th ed. (Vienna: Springer Verlag, 1997) 74.
+Bunch, 74. While looking for the best quality or depth might have some inherent pitfalls, the
+notion of distinguishing a voice according to ease is common among all advocates of the use of tessitura as
+a primary determinant.
+18
+
+17
+
+majority of the time. Tessitura and range are not to be confused with one another. It is
+possible, for example, for a singer to have a rather high range but for that singer’s
+comfortable tessitura to be relatively low. Likewise, there are arias that do not have
+particularly high notes, but in which a singer must maintain a relatively high tessitura.
+Singing within an appropriate tessitura is essential for the health and longevity of any
+singer.
+When it comes to tessitura, the disagreement in the field tends to have less to do
+with its significance for voice classification than with the question of how exactly to
+determine the more comfortable zones. It is fairly safe to say that a singer has a
+particular range of frequencies within which he/she can sing for prolonged periods with
+relative ease, and that the exact range of frequencies which make up the tessitura for a
+given singer will correlate with a predictable tessitura according to the voice type. Yet it
+is also evident that at progressive stages in a singer’s training, certain zones of the voice
+will become less muscularly cumbersome and therefore less fatiguing. If the degree to
+which pitches are fatiguing or easy is dependent upon technique, how are we to
+determine the true zones of ease at relatively early stages in the vocal training? Are they
+to be determined solely by the location of the passaggi, and how are those distinguished
+with certainty? Are they based on singer feed-back? To what extent does the current
+technique of the singer affect both location of the passaggi and the feed-back they will
+offer? The stakes are high in this debate, since the longevity of a singer can be affected if
+that singer continually spends prolonged periods of time vocalizing in areas of the voice
+in which the ease of production is reduced.
+
+18
+
+The tessitura of a single song, aria, or even a full role is relatively easy to
+determine as it requires merely reference to the score: the range in which the bulk of the
+notes fall can be apparent at first glance. Because each song/aria/role has a determinable
+tessitura, it is possible to make judgments about which voice type would be appropriate
+for it. Determining the tessitura in which a given singer ought to be singing, on the other
+hand, is a more complex process and invites disagreement among pedagogues. Doscher
+defines tessitura as “a certain compass in which the voice performs with special ease of
+production and sound.”19 The concept of having a special sound in this part of the voice,
+also mentioned in the passage above by Bunch, introduces the category of timbre, which
+will be discussed below. For now, tessitura will refer primarily to the area in the voice
+“with special ease of production.”20
+This group of contiguous frequencies in which a singer is most comfortable is
+often contingent on the exact location of the passaggi, or transition points.21 These
+passaggi, in turn, are determined by the physiognomy of the given singer; in particular,
+by the acoustical relationship between the fundamental pitch produced at the folds, the
+natural acoustical tendencies of the vocal tract, and the vowel in need of articulation. To
+some extent, the passaggi influence tessitura because these frequencies are often more
+difficult to negotiate and tend therefore to cause unnecessary and unhelpful muscular
+19
+
+Doscher, 196.
+The combination of tessitura and timbre and the question of the possibility of discussing the two
+separately is a matter worthy of further exploration. Do we hear a special sound because we sense the ease
+of production, and is this question even answerable? When asked to define what beauty is in singing, some
+might respond that it is an ease or efficiency in technique. Others might describe it as a sincerity; a lack of
+artificiality or of muscular interference. Perhaps the sound described here is actually the aural
+interpretation on the part of the teacher of a technically less-involved (easier) production.
+21
+Theoretically, tessitura and passaggi are two separate criteria for voice classification. Yet while
+a discussion of passaggi is possible without mentioning tessitura, a description of tessitura without
+reference to passaggi is more difficult.
+20
+
+19
+
+activity. In other words, a comfortable tessitura for a singer is usually not in or
+encompassing the passaggi. Although mezzo-sopranos, for example, are generally not
+comfortable with a high tessitura, they are usually more comfortable above the (upper)
+passaggio than in it, and usually remarkably more comfortable below. The passaggi lie in
+predictable zones according to voice type. Although it is possible to pinpoint the slightly
+different passaggi for the different vowels, these transition points are generally thought of
+as encompassing one to two semi-tones. Because these transition points are determined
+in large part by the formants of the vowels, they vary only slightly from voice type to
+voice type. Table 1 shows the location of the passaggi according to major female
+category as well as the frequencies of the vowel formants.
+
+Table 1
+Passaggi22 and Vowel Formants23
+Voice Type / Vowel
+Soprano
+Mezzo-Soprano
+Contralto
+[i]
+[a]
+[u]
+
+Primo (Lower) Passaggio
+/ First Formant Center
+E-flat4
+F4
+G4
+B3 – F4
+A5 – D6
+C3 – D4
+
+Secondo (Upper) Passaggio /
+Second Formant Center
+F-sharp5
+E5
+D5
+D7 – G7
+D6 – G6
+B5 – D6
+
+In addition to these primary and secondary passaggi, the transition between the lower
+middle and upper middle registers of the female voice also pose technical challenges for
+female voices. Though many do not agree with the sub-division of the voice into so
+
+22
+23
+
+Frequencies for passaggi from Richard Miller Training Soprano Voices, 25.
+Formant frequencies converted from formant charts in Doscher, 138 and Bunch, 99.
+
+20
+
+many registers, it is evident that some degree of muscular manipulation and tuning
+difficulties occur a fourth below the upper passaggio. In light of the fact that technique,
+particularly in terms of vocal tract tuning, can affect the exact points of transition, it is
+possible for a singer to find a slight shift in tessitura with improved technique.24 Yet
+there are ways for a teacher to determine the true passaggi despite faulty technique
+(“raspberries,” lip-buzzes, etc.), and passaggi therefore remain one of the best ways to
+classify voices, particularly at the beginning stages.25
+Titze does not discuss tessitura as one of the classification criteria directly, but he
+acknowledges the predictably differing transition points in his discussion of Vocal
+Registers:
+
+A major unresolved issue in the study of registers is the consistency with which
+involuntary register changes occur at specific fundamental frequencies. Vocalists
+and listeners can often detect quantal changes in the voice when a scale or
+glissando is sung and no quality changes are intended. [. . .] The question is: what
+causes these register changes and why do they occur at specific fundamental
+frequencies?26
+
+Titze discusses two possible explanations for this (not mutually exclusive), and both
+would make sense in terms of voice classification. The first hypothesis is that the natural
+resonances of the trachea might be triggered by certain frequencies and that these
+transition points might be caused by the relationship of the fundamental frequency to
+24
+
+Shifts in tessitura may also be caused by maturation of laryngeal musculature.
+Doscher states, “tessitura and the careful monitoring of bridges between registers is the most
+viable way to classify young voices.” (197)
+26
+Titze, 293-4. In his discussion of muscle strength as a secondary factor for voice classification,
+Titze does mention tessitura. He states, “One criterion for voice classification may hinge on a singer’s
+ability to (1) endure prolonged muscle contractions or (2) produce strong bursts of muscle contraction.”
+(191) The former would be a singer capable of singing high tessitura, the latter a singer capable of singing
+high notes, but not necessarily of sustaining a high tessitura.
+25
+
+21
+
+these resonances. The second hypothesis deals with the amount of stress that can be
+maintained in the thyro-arytenoid muscles without “valving-off.” In other words, the
+amount of thyro-arytenoid stress that can be maintained during phonation depends on the
+frequency, and it is thus necessary to change the amount of tension in order to maintain
+phonation. This change in tension in trained singers has been observed as a gradual
+disengagement of the thyro-arytenoid muscles as one moves from the bottom to the top of
+one’s range. There are both acoustic and laryngeal shifts which take place as a singer
+ascends in pitch, and those shifts differ slightly depending on the size, shape, and
+viscosity of the folds and tract. Returning to the analogy of the predictable symmetry one
+generally finds in body types (tall person = long feet, etc.), it is probable that the
+physiological differences will be in some way predictable and thus lend themselves to
+categorization (tall people vs. short people and low voices vs. high voices). Furthermore,
+this physiological predictability will include the transition points, where the more
+noticeable acoustic and/or laryngeal shifts will take place. And just as one can
+categorically predict the place of the passaggi for a given voice category, so, too, can one
+predict the zone in which a singer will be able to sing with the most ease.
+If, then, we can understand the tessitura as a zone of ease determined by the
+physiological make-up of the particular instrument, we are still left with the question of
+how best to determine that zone. The aid of lip-buzzes and tongue trills one might
+employ to determine passaggi may also shed light on these zones, for such exercises aid
+in by-passing unnecessary muscle activity. Yet these zones, if greatly inhibited by
+compensatory measures for negotiating the passaggi, might conceivably shift or grow to
+
+22
+
+encompass a wider range of frequencies as a result of training. Tessitura, then, is both
+one of the most important considerations for voice classification, and one most dependent
+on vocal technique.
+McKinney sees tessitura as a “very valuable determinant of voice classification”
+insofar as one must look beyond range. Particularly when dealing with singers with large
+ranges, “the decision should be made,” he continues, “on the basis of which tessitura
+proves to be more tiring. Vocal longevity bears a direct relationship to vocal comfort. If
+you can sing well in two different tessituras, it is the better part of wisdom to choose the
+one which is less fatiguing vocally.”27 McKinney does not explain how to determine the
+more or less fatiguing tessituras, nor does he discuss passaggi as having anything to do
+with them. Rather, he discusses transition points separately, as a tool that may work to
+classify untrained singers who have not learned to mask those areas, as the singers with
+more training tend to do.28
+
+Timbre
+By the term timbre, the color of the sound produced, as well as the “size” of the
+voice is intended. 29 A dramatic voice is supposed to be both darker and “bigger” than a
+lyric voice, for example. The “size” of a voice is not measurable in amplitude or
+27
+
+McKinney, 112.
+McKinney, 113-114.
+29
+Though most current pedagogy books call for the use of a different term, volume continues to
+function in our every day lives as an “objective” subjective measurement. Most will agree on whether or
+not a singer is louder or quieter. Whether we use a collective subjective measurement or read amplitude,
+we know that for every octave, the voice will (all else remaining same) double in amplitude. We also know
+that the effective resonation (i.e. tuned resonating cavities) of tones will amplify the output of the acoustical
+wave. The potential output, in terms of amplitude, depends both on the type of wave created at the source
+(i.e. what the vocal folds produce) and the potential for amplitude in the resonators. Both of these are
+dependent on the anatomy and physiology of the singer. Whether or not that singer achieves the potential
+resonation, however, has to do with vocal technique.
+28
+
+23
+
+decibels, but is rather a subjective aural measurement of the ability of a voice to project
+over other instruments and in various settings. Timbre, therefore, is a criterion that is
+also expected to prescribe the types of orchestration over which a voice might be able to
+sing. A voice that has a lyric timbre, for example, would not be expected to sing over a
+full brass section for any given length of time.
+Although timbre is usually introduced as a criterion for sub-classification (lyric
+vs. dramatic), some pedagogues rely on it to distinguish between primary categories
+(soprano vs. mezzo). Even as a criterion for secondary classification, however, timbre
+can be difficult to ascertain, since manipulations of the vocal tract can mask or hinder the
+natural timbre of the voice. As McKinney notes,
+
+Timbre (quality) is relied on heavily by experienced voice teachers in arriving at a
+voice classification. This is the most intangible criterion used, however, because
+the teacher must hear the voice as it sounds now and picture in his mental ear how
+it will sound when it is fully developed. [. . . ] Many persons assume that all light,
+lyric voices are high voices; this is not so, for there are lyric basses and baritones
+and lyric contraltos and mezzos. [. . . ] Other pitfalls are the students who have
+misclassified themselves and those who have adopted a wrong tonal image. 30
+
+Indeed, the use of timbre to determine the classification of an immature singer or a singer
+with poor vocal technique is tenuous at best. If timbre is appropriate for subclassification, it is not particularly useful for classification in the earliest stages of voice
+training. Yet when range is limited with a beginning student and timbre seems to be
+more tangible, classification accordingly often takes place.31
+30
+
+McKinney, 112-113.
+Richard Miller’s distinction between the dramatic mezzo-soprano and the dramatic soprano, for
+example, hinges on a timbre with particular character traits: “The dramatic mezzo-soprano often sings as
+high as and no lower than the dramatic soprano, but her timbre displays depth and the darker colors
+31
+
+24
+
+Doscher lists the three major properties of sound as frequency, amplitude, and
+timbre. Timbre is the quality of the tone, or “that characteristic which distinguishes a
+specific sound from the sounds of other voices or instruments, even though all the sounds
+are of the same fundamental frequency and amplitude.”32 Amplification and timbre are
+separated because amplitude is used here in its strictly scientific sense of the
+measurement of the acoustical wave. “The subjective evaluation by the ear of a sound’s
+amplitude is called its loudness or intensity, although there is evidence that tone quality
+also has a bearing on intensity.”33 The timbre of the voice depends on the particular
+frequencies (part of the spectrum of partials produced at the source) which are
+emphasized through resonance. Resonance “is the relationship that exists between two
+vibrating bodies and results in an increase in amplitude and a more efficient use of the
+sound wave.”34 The two bodies in question, the folds at the source and the vocal tract,
+differ in size, shape, and density from individual to individual. Furthermore, each
+individual has the ability to alter to some extent the size and shape of the tract during
+phonation. Timbre is therefore a set of options, prescribed by nature in the physiological
+shape and size of the vocal tract.
+
+associated with tragedy, intrigue, jealousy, revenge, or outright evil intention.” But if Miller seems to
+suggest a rather subjective criterion here, he also notes the importance of the location of the passaggi for
+distinguishing between all darker female voices: “There are authorities who make no differentiation
+between the dramatic soprano and the dramatic mezzo-soprano. They regard the large mezzo-soprano
+voice as a dramatic soprano with a short top range. For them, the Zwischenfachsängerin and the dramatic
+mezzo-soprano are but subcategories of the dramatic soprano. This is too limited a viewpoint, because it
+does not take sufficiently into account divergent timbres nor the location of registration events that
+characterize categories of the female voice.” (Training Soprano Voices, 12) This interplay between the
+significance of timbre and registration events is essential for proper voice classification.
+32
+Doscher, 92.
+33
+Doscher, 88.
+34
+Doscher, 98.
+
+25
+
+Doscher also notes the relative usefulness of timbre for distinguishing between
+voice types, but cautions that voices are often misclassified when timbre is used to
+determine primary categories:
+
+Since timbre is so closely related to formant frequencies, it should give some
+indication of the size and dimensions of the vocal tract. At the same time, timbre
+is determined to a great extent by the particular method of training. [. . . ] Many a
+big-voiced soprano has sung as a mezzo into her mid-twenties, only to find that
+her voice was misclassified. [. . .] The sad thing about this kind of classification
+by timbre alone is that the rare voices, such as the spinto soprano and the dramatic
+tenor, are the ones most often misclassified. At best, their potential is never
+realized; at worst, permanent vocal damage results.35
+
+Again, when timbre is considered a tool for sub-classification, such errors are not likely,
+for the question would not be whether this singer with a darker timbre is a mezzo or a
+soprano, but rather, what type of a soprano she might be. These darker or “larger” voices
+tend to be the cause of most disagreements, both because of their rarity and because they
+complicate our notions of classification. A dramatic soprano may indeed have a range
+that more closely resembles our expectations of a mezzo range than that of a soprano.
+Furthermore, the passaggi may lie in between the expected passaggi for soprano and
+mezzo, or they may shift during and after college, since the dramatic voices are the last to
+mature.36 In other words, it may be difficult to argue the case for the classification of a
+young spinto as such.
+
+35
+
+Doscher, 196-7.
+See, for example, Richard Miller, The Structure of Singing; the Technique and the Art (New
+York: Schirmer Books, 1986), 134: “location of pivotal points of register demarcation provides indications
+of female vocal categories. Such pivotal points may vary somewhat within the individual voice, depending
+on how lyric or how dramatic the voice.”
+36
+
+26
+
+A possible explanation for the rarity of such voices (and, by extension, a solution
+for the problems of early classification) lies in the concept of hybrid voices, proposed by
+Titze. These hybrid voices are essentially voices in which the proportions of the vocal
+folds to vocal tracts are not as one would predict. The rarity of these voice types,
+likewise, would be analogous to the number of tall people with small feet, or vice versa.
+The normal expectations (tall person = big feet) would translate into vocal expectations
+as follows: for higher voices (shorter vocal folds) to have smaller vocal tracts (brighter
+timbre), and for lower voices (longer folds) to have longer tracts (darker timbre). The
+dramatic soprano, on the other hand, would have shorter vocal folds and a longer tract, a
+lyric contralto would have longer folds and a shorter tract, etc.37
+If the main problem with timbre as a classification criterion is the disagreement of
+whether or not it should play a role in primary or secondary classification, the problem is
+further complicated by the fact that timbre can be influenced by manipulations of the
+vocal tract. These manipulations cause shifts in the resonance of the formants, and it is
+therefore possible for a voice to manufacture lighter or darker sounds. There is no doubt
+that these options for coloring the voice can be great tools to the expressive singer. Yet
+there is wide disagreement about what the normal, or default, state of the tract should be
+for singing. The approaches concerning types of shapes and level of muscular activity in
+the pharynx differ greatly among teachers. For example, some teachers encourage their
+students to consistently sing with an exaggerated pharyngeal space (lifted soft palate and
+37
+
+More research will have to be done before we can say whether or not the type of tissue in the
+vocal folds may also differ between voice types. It is possible that the differences in timbre may be a
+combination of source and filter, rather than purely filter. In other words, it is possible that the musculature
+of the thyro-arytenoid is bulkier in a dramatic voice than a lyric, causing more medial contact area during
+phonation.
+
+27
+
+lowered laryngeal position, sometimes referred to as the yawn approach), while some
+teachers make it a policy never to even mention the soft palate. Some encourage an
+“inner smile” for palatal lift with the unfortunate side-effect of a raised larynx. Still other
+teachers approach pharyngeal space as primarily a vowel issue, and mention it always in
+terms of vowel color.38 The potential problem with the first type of teacher, the argument
+goes, is that this “covered” approach causes a sort of pharyngeal rigidity, locking up the
+larynx (albeit usually in a low position), thus inhibiting agility and distorting the vowels.
+On the other hand, the teacher who is philosophically opposed to mentioning any
+pharyngeal shifts may find that tuning and optimal resonance is discovered at a slower
+rate than in other studios, and the students may become quickly frustrated when they
+inevitably compare their own progress to that of their peers. The teacher who uses
+various vowels to discuss the pharyngeal space offers a solution that avoids the rigidity
+and speeds up resonance discovery while retaining the possibility of vowel integrity. A
+singer who continually explores a range of vowels throughout the majority of the range
+will have a greater spectrum of options for expression and a greater flexibility in his/her
+tonal self-image. When a singer is encouraged to sing everything with as much
+pharyngeal space as possible, he/she will come to view shades of this one color as the
+only viable options for singing.
+Timbre, then, is governed both by physiological limits and tonal idea or muscular
+choice. When reading Richard Miller’s criteria for distinguishing between the sub38
+
+The yawn-approach will encourage a darker timbre; the inner-smile with a raised larynx will
+cause a brighter timbre and less ring due since the epi-laryngeal tube will tend not to achieve the proper
+ratio necessary for such resonance; the vowel-oriented approach will vary in color according to vowel; and
+the teacher who avoids pharyngeal manipulation will tend to have students who only slowly move away
+from the tonal images with which they entered the studio.
+
+28
+
+categories of the soprano voice, it seems inevitable that this category of timbre be
+ultimately the most controversial: “Subtle difference in categories of the soprano voice
+are based on variations in physiognomy, laryngeal size, shape of the resonator tract,
+points in the musical scale where register events occur, and personal imaging.”39 Indeed,
+up until “personal imagining,” the list contained items governed by the shape and size of
+the instrument. “Personal imaging,” or “tonal ideals,” as McKinney might put it, are
+governed by the tastes of the student and the philosophies of the teacher.
+
+Agility
+Perhaps the least controversial of all criteria is that of agility. Although most
+pedagogues will agree that all voices can and should be able to execute fioratura passages
+with relative ease, it is evident that some voices are simply endowed with a greater ability
+to execute those passages. Some think of this as muscle coordination, but the speed with
+which muscles will respond (and with which nerve signals can be sent) may be
+predetermined. There was at least one attempt of which the author is aware to develop an
+imaging technique for the determination of the exact muscle fibers in the intrinsic
+laryngeal musculature. If and when such an attempt succeeds and it becomes possible to
+determine muscle type without a physical biopsy, it will be intriguing to explore the
+differences in muscle fibers between voice types. If one takes the muscular differences
+between a marathon runner and a sprinter as an analogy, it is possible to imagine that,
+likewise, the muscle fibers in the coloratura soprano will differ from that of the dramatic
+soprano in the predominance of high-twitch vs. low-twitch muscle fibers. In the
+39
+
+Miller, Training Soprano Voices, 3.
+
+29
+
+meantime, one can only speculate as to the extent to which the types of fibers determine
+the ease with which a particular singer negotiates fioratura passages. Although one hears
+speculation among some vocologists as to the differences in thyro-arytenoid muscles, it is
+likely that the cryco-thyroid and cryco-arytenoid musculature also plays a large role in
+agility.
+As a secondary criterion, agility helps determine the type of
+soprano/mezzo/contralto a singer is. Because of the great number of sopranos, agility is
+often one of two distinguishing categories for soprano voices, such as lyric coloratura
+soprano or dramatic coloratura soprano. Since the lower voices are less common, subclassification of those voices is often more theoretical than practical, and lyric mezzosopranos are therefore expected to sing the repertoire for coloratura mezzo-sopranos.40
+Secondary categories of contraltos are not generally seen outside of the Fach guides.
+
+Chapter Summary
+Although these various criteria are hotly debated among pedagogues as to the
+degree to which they determine voice classification, it is evident that each criterion is
+taken into consideration at some level. Range is useful primarily in terms of potential
+boundaries for the voice and is considered less and less viable as a criterion for
+classification. Timbre is often used to distinguish between primary voice categories
+(soprano, mezzo-soprano, contralto, etc.), however it is more properly used to determine
+the secondary categories of lyric and dramatic voices. Tessitura is probably the most
+important consideration for healthy training and the singer’s longevity, though
+40
+
+More on this in Chapter III.
+
+30
+
+improvement of vocal technique can make previously uncomfortable zones more
+comfortable. The passaggi are easier to pinpoint with certainty than the proper tessitura
+for a singer, and are equally as informative for both primary and secondary classification.
+Because of our ability to pinpoint these transition points, they have become a favorite
+tool for the justification of both primary and secondary classification. Agility is the least
+controversial of criteria, clearly denoting whether or not a singer belongs in the
+subcategory of coloratura. Though we still have some time before we are able to measure
+voice classification with certainty, it is essential to understand that voice type is a
+physiologically determined fact and not a matter of taste. Each of these criteria may, in
+the near future, be measurable through computer imaging. The implications for vocal
+pedagogy are great, for it will be clear what the actual potential of a given instrument is,
+and the controversy will shift from how to determine voice type to how to realize that
+potential.
+
+31
+
+CHAPTER II
+EARLIER CONCEPTS OF VOICE CLASSIFICATION
+
+Voice classification at present is different than when much of today’s canonical
+literature was composed. Putting current categories and notions into historical context
+achieves two important ends: first, one may better understand the present system when
+viewed together with previous notions of classification (i.e. the genesis of various
+categories, the pros and cons of the system, and to what degree categories are
+scientifically justifiable); second, one can make sense of historical role assignation and
+descriptions of historical singers if one does not attempt to place current notions of
+terminology on those roles or singers. Just as it is difficult to make statements about
+classification with which all current pedagogues will agree, it is perhaps even more
+complicated to make statements that would have been true for an entire era, or even an
+entire region at a given time. Since treatises exist by some of the more influential
+teachers of particular times and regions, however, it is possible to gain insight as to what
+these teachers considered the possible types of the female voice to have been. The
+treatises examined below were selected because of the prominence of the treaty as such
+and for regional and temporal interest in terms of today’s canonical repertoire. The first
+treatise to be examined was chosen because of the proximity to Mozart and the genesis of
+one of the prototypical trouser roles, Cherubino. The role of Cherubino serves well as a
+starting point because the bulk of the current canonical trouser roles (written for female
+
+32
+
+singers, not castrati) were composed afterwards, many of them in the mold of Cherubino.
+The other treatise to be examined closely was selected because its author was one of the
+most important nineteenth-century pedagogues and because of temporal and geographical
+proximity to the creation of a number of popular French trouser roles, such as Siébel and
+Stefano. These roles will also be examined in Chapter III in the context of the Fach
+system.
+Although speculation on physiology and voice type clearly existed in the
+eighteenth and nineteenth centuries, writings on the matter did not exist to the same
+extent that they did for instrument performance. In his chapter on baroque vocal music
+and Faustina Burdoni, George Buelow attributes this both to the many developments in
+the instruments of the time and to the particularly personal interaction between vocal
+student and vocal instructor.41 As Buelow also identifies, few voice teachers, past or
+present, have the inclination or ability to fully articulate in print their understandings of
+how to sing.42 The increase over the years in publications on vocal pedagogy can be
+attributed both to continuing scientific research and an increase in the possibilities for
+publication (full book, chapter in a book, article in a print or on-line journal, paper at a
+
+41
+
+“With the exception of various guides to vocal music . . ., most of our knowledge of Baroque
+performance comes from various sources related to instrumental music. This is the result, at least in part,
+of the prodigious output of practical guides and treatises attempting to keep abreast of rapidly advancing
+developments in instrumental construction and performing techniques as well as an outgrowth of the
+surging demand for instrumental music in the eighteenth century. Singing, the very foundation of music
+since the beginnings of Western civilization, did not require new techniques to be explained nor had the
+vocal mechanism changed. Consequently, there was little need for instruction manuals for singers.
+Furthermore, the study of singing then, as in previous centuries and down to our own time, required the
+most personal relationship between student and teacher and a pedagogical method of demonstration and
+limitation.” George J. Buelow, “A Lesson in Operatic Performance Practice,” in A Musical Offering;
+Essays in Honor of Martin Bernstein, Edward H. Clinkscale and Claire Brook, editors (New York:
+Pendragon Press, 1977), 80.
+42
+Buelow 1977, 80-81.
+
+33
+
+conference, etc.). The seeming lack of publications that dealt with voice classification in
+the eighteenth century certainly has much to do with this, but it may also point to a
+conception of voice classification that was remarkably less important in the training of
+singers than we believe it to be today. In addition to the possibility that classification
+played little to no role in the training of singers, it is also intriguing to consider the
+possibility that the basic three types upon which pedagogues today seem to agree
+(soprano, mezzo-soprano, contralto) were not the concepts with which earlier pedagogues
+worked. Specifically concerning the classification of the mezzo-soprano, this category
+seems to have been non-existent for many before the late eighteenth century.43
+
+The Hiller Treatise
+In 1780, six years before the premiere of Le nozze di Figaro, a significant treatise
+was published in Leipzig concerning the state of vocal technique in Germany: Anweisung
+zum musikalisch-zierlichen Gesange. The author, Johann Adam Hiller (1728-1804),
+composer, conductor and musician, was particularly concerned about the lack of
+possibilities for secular vocal training in Germany.44 By the time this treatise was
+
+43
+
+The term simply does not appear in numerous writings. One example is found in a significant
+dictionary of music for England up to the Classical period, An Early Music Dictionary; Musical Terms
+from British Sources, 1500-1740 by Graham Strahle (New York: Cambridge University Press, 1995), in
+which there is no entry for mezzo-soprano and alto was still a voice above the cantus firmus.
+44
+“Immer noch haben die Italiäner, wenn nicht in andern Theilen der Musik, doch gewiß im
+Gesange den Vorzug vor uns, und dürfen ihn auch wohl noch lange behalten. Die Ursache ist: Sie haben
+das, was den Deutschen fehlt, Ermunterung und Gelegenheit zu studiren [sic].”The Italians still have, if not
+in other types of music, an advantage over us in singing, and they may just hold on to that for quite some
+time. The reason is: they have that which the Germans are missing – encouragement and opportunity to
+study. All Hiller excerpts are from a reprint of the original 1780 treatise. Johann Adam Hiller, Anweisung
+zum musikalisch-zierlichen Gesange (Direction for musically delicate Singing, Leipzig: Edition Peters,
+1976) IV. All translations, unless otherwise noted, are the author’s. Outside the singing world, Hiller is
+perhaps better known for his 1754 essay Abhandlung über die Nachahmung der Natur in der Musik
+(Treatise on the Imitation of Nature in Music).
+
+34
+
+published, Hiller was known both for his writings on music and as conductor of the most
+prominent concert house in Leipzig: the Gewandhaus. He played flute and sang bass in
+the large concert organization, the Grosse Concert-Gesellschaft, in Leipzig for years
+before becoming director of that organization in 1763.45 Soon after landing the
+directorship, Hiller founded a singing school in Leipzig and made steps towards the
+establishment of a German opera. The singing school quickly grew, and notably took on
+both boys and girls.46 He founded a new society (Musikübende Gesellschaft) to replace
+the Grosse Concert-Gesellschaft, and in this new society, the newly trained generation of
+musicians worked together to continue to develop Leipzig’s musical culture. His
+influence on the musical scene in Leipzig, in other words, was exerted both on the
+education of young musicians and, afterwards, on their performing careers.
+Although he did not address questions of classification directly in this treatise,
+Hiller described a prominent singer of the time for each of three female voice types,
+thereby offering the reader some insight into the concepts of female voice classification.
+The singers he commented on were discussed in the 1774 treatise by Giovanni Battista
+Mancini and are therefore not of the generation of singers performing in the 1780s and
+1790s.47 The important information for this discussion, however, is in Hiller’s
+
+45
+
+Anna Abert Amalie and Thomas Bauman, “Hiller, Johann Adam,” Grove Music Online, ed.
+Laura Macy, http://www.grovemusic.com (Accessed April 10, 2006).
+46
+Abert and Bauman.
+47
+In her dissertation, Seventeenth and Eighteenth Century Vocal Style and Technique, Sally
+Sanford describes the German school of the eighteenth century as based on the Italian school. Hiller’s brief
+treatise is essentially a call to create a more Italianate approach to singing, and begs the question of how
+close or different the two approaches were in practice. While Hiller deals primarily with the Mancini
+treatise, Sanford views Pierfrancesco Tosi’s Opinioni de Cantori Antiche e Moderni as “the single most
+influential vocal treatise of the eighteenth century.” (Sanford Dissertation. Stanford University, 1979, 2) In
+addition to Tosi, Mancini and Hiller, Sanford makes frequent reference to Quantz, who was the first,
+according to an entry in New Grove, to use the term mezzo-soprano in print. [Owen Jander, “Mezzo-
+
+35
+
+description of these voices, not the date at which he heard them. The first female singer
+Hiller described in any detail is Vittoria Tesi Tramontini (1700-1775):48
+
+Die Tesi war von der Natur mit einer männlich starken Contraltstimme begabt.
+Im Jahre 1719 sang sie zu Dreßden mehrentheils solche Arien, als man für
+Bassisten zu setzen pflegt. Jetzo aber, im Jahre 1725, wo sie zu Neapel in der
+Oper sang, hatte sie, über das Prächtige und Ernsthafte, auch eine angenehme
+Schmeichelen im Singen angenommen. Der Umfang ihrer Stimme war
+außerordentlich weitläufig. Hoch oder tief zu singen machte ihr bendes keine
+Mühe. Viele Passagien waren eben nicht ihr Werk. Durch die Action aber die
+Zuschauer einzunehmen, schien sie gebohren zu seyn, absonderlich in
+Mannsrollen, als welche sie, zu ihrem Vortheile, fast am natürlichsten ausführte.49
+
+Since Tesi had no difficulties singing high or low, it seems that the classification of
+contralto was, at least in this case, not determined solely by range, a significant point to
+consider. For if range was not the primary factor in classification, it seems (based on this
+description) that either timbre or the perception of strength/power might have been. The
+singer seems to have avoided fioratura, which means she probably did not have a
+particularly agile (coloratura voice). The strong and manly descriptive terms hint at
+either a voice that we would today consider a contralto (a very capable one with no
+difficulties accessing the upper register) or perhaps a dramatic voice (contralto, mezzo or
+soprano). It is clear that her acting abilities were strong, and that she excelled at trouser
+Soprano; Terminology, early usage, voice types,” Grove Music Online, ed. Laura Macy,
+http://www.grovemusic.com (Accessed April 10, 2006).]
+48
+Gerhard Croll does not describe her voice in the same manner, though he does call her a
+contralto. Gerhard Croll, “Tesi, Vittoria,” Grove Music Online, ed. Laura Macy,
+http://www.grovemusic.com (Accessed April 10, 2006).
+49
+Tesi was, by nature, gifted with a strong, manly contralto voice. In the year 1719, she sang
+often such arias in Dresden as one normally sets for Basses. However, in the year 1725, when she sang in
+Neapal in the opera, she had, in addition to brilliance and seriousness, also taken on a type of pleasant
+coerciveness in her singing. Her voice spanned an extraordinarily large range. It was no bother to sing
+high or low. She was not particularly great at lots of fioratura passages. But to attract the audience
+through action seems to be what she was born for, especially playing trouser roles, which she, to her
+credit, executed almost the most naturally. (Hiller 1780/1976, XXII-XXIII)
+
+36
+
+roles. In many ways, this description is intriguing because it seems to take the sexual
+ambiguity inherent in a trouser role and extend it to other repertoire (arias normally for
+basses), indeed also to the quality of the voice itself (manly). For this study, it will
+suffice to note that one of the very successful portrayers of trouser roles was uninhibited
+by range, avoided fioratura, was a great actress, and had a “manly, strong, contralto
+voice.”
+The next singer Hiller described, Faustina Bordoni (1697-1781), is known to
+vocal pedagogues as one of the first singers to have been called a mezzo-soprano in
+print.50 She was one of the most famous female singers of her time. In his description of
+her voice, the adjectives Hiller employed suggest that there may indeed have been some
+timbre expectations attached to voice classification (“not too bright, but penetrating”).51
+While Tesi was said to have been uninhibited by range, Faustina was apparently not able
+to sing above the staff (G5), a significant piece of information in its suggestion that range
+might, in the case of the mezzo-soprano, have played a role in classification. Faustina
+
+50
+
+Owen Jander, “Mezzo-Soprano; Terminology, early usage, voice types,” Grove Music Online,
+ed. Laura Macy, http://www.grovemusic.com (Accessed April 10, 2006).
+51
+“Die Faustina hatte eine zwar nicht allzuhelle, doch aber durchdringende Mezzosopranstimme,
+deren Umfang sich, im Jahre 1727, da sie in London sang, vom ungestreichenen b nicht viel über das
+zwengestrichene g erstreckte, nach der Zeit aber sich noch mit ein Paar Tönen in der Tiefe vermehrt hat. . .
+. Die Passagien mochten laufend oder springend gesetzt seyn, oder aus vielen geschwinden Noten auf
+einem Tone nacheinander bestehen, so wußte sie solche, in der möglichsten Geschwindigkeit, so geschickt
+heraus zu stoßen, als sie immer auf einem Instrumente vorgetragen werden können.” Faustina had a
+penetrating, but not too bright, mezzo-soprano voice, which spanned, in the year 1727 when she sang in
+London, from b not much above g’’, although she later developed a couple more lower tones. . . Fioratura
+passages could be runs or leaps, or made of lots of quick notes after one another on one tone, she knew
+how, in the quickest possible execution, to put those tones out in such a gifted manner that one could ever
+achieve on an instrument. (Hiller1780/1976, XXIII)
+
+37
+
+excelled at fioratura passages, and would today have probably been considered to
+possess a coloratura voice.52
+The only other female voice Hiller described in detail is that of Francesca
+Cuzzoni (1696-1778), a “pleasant and bright soprano” voice with the range we would
+today expect of the lyric soprano (C4 to C6).53 The only additional information Hiller
+offered concerning this voice was that she had good intonation and a lovely trill.
+Unfortunately, there is not enough in this treatise to draw any firm conclusions as to the
+extent to which range determined voice classification. Since the mezzo-soprano
+description does not have as much a lower as a more limited range than that of the
+soprano, it is indeed possible that mezzo-soprano referred to a soprano with a limited
+range, rather than a voice lower than soprano. The fact that only three female voices are
+described, each with a different term for classification, points to Hiller having understood
+these three as the main voice types. Yet there remains a chance that Hiller discussed
+these three with this terminology only in response to Mancini’s treatise.
+Hiller likewise discussed register in terms of the Mancini document. He wrote
+that Mancini was not correct about the borders of the female voice:
+
+Der größte Theil ihrer Stimme ist entweder Brust- oder Kompfstimme; mit der
+erstern läßt sich mehr in der Tiefe, und mit der andern mehr in der Höhe
+ausrichten. Daher ist es nichts ungewöhnliches Fraeunzimmerstimmen zu finden,
+die bis ins dreygestrichene f oder g reichen. Daß dieß aber ein so
+52
+
+There is no explanation regarding the limited range, and therefore no way of knowing what type
+of coloratura voice it was. Even the coloratura contralto is expected to sing at least a fourth higher than
+Faustina reportedly did.
+53
+“Die Cuzzoni hatte eine sehr angenehme und helle Sopranstimme, eine reine Intonation und
+schönen Trille. Der Umfang ihrer Stimme erstreckte sich vom eingestrichenen c bis ins dreygestrickene c.”
+Cuzzoni had a really pleasant and bright/light soprano voice, a pure intonation and lovely trills. The range
+of her voice stretched from c’ at least to c’’’. (Hiller 1780/1976, XXIV)
+
+38
+
+beneidenswürdiger Vorzug sey, der die Nacheiferung aller andern verdiene,
+mochte ich nicht gesagt haben, zumal wenn diese Sängerinnen aus Unwissenheit
+oder Nachläßigkeit versäumt haben, ihre tiefen Töne durch die Bruststimme zu
+verstärken und zu vermehren.54
+
+It is evident in this passage that Hiller knew of voices that expanded well above
+Cuzzoni’s range, but it seems he thought the bottom of the range of such singers was
+simply not properly trained if it was weak or nonexistent. Indeed, Hiller seems to have
+attributed larger ranges more to diligence than to physiological determinants.55 Range
+may have played a part in the classification of soprano as opposed to contralto, though
+Hiller’s description of the contralto’s range does not offer any clues about the border of
+the higher range. Instead, we have the description of Tesi’s voice as manly and strong,
+while Cuzzoni’s is pleasant and bright/light, adjectives denoting timbre that fit in with
+our current notions of classification.
+If Hiller does not offer a clear answer as to whether or not he considered mezzosoprano a sub-category of soprano, one of his predecessors did. An earlier but significant
+eighteenth-century German writing on the subject is in the Anleitung zur Singkunst by
+
+54
+The bulk of their voice is either chest or head voice; the former reaches more in to the depths,
+and the other more in the upper tones. Therefore it is not uncommon to find ladies who can reach f’’’ or
+g’’’. I do not want to say that this is an advantage worthy of inspiring jealousy in others, however,
+especially if these singers do not strengthen and expand the lower tones through the chest voice, whether
+because they do not know any better or out of laziness. (Hiller 1780/1976, 7).
+55
+“. . . Man kann den Umfang der Stimme erweitern: aber nicht auf einmal, und in einem Tage,
+sondern nach und nach. Man singe anfänglich nur immer in dem kleinen Umfange der Stimme, in
+welchem man die Töne mit Leichtigkeit, hell und rein heraus bringen kann, und wenn es auch nur 8 oder 10
+Töne seyn sollten; man setze von Woche zu Woche, oder lieber von Monat zu Monat einen Ton in der
+Höhe und Tiefe hinzu, und sey versichert, daß man in einem halben Jahre einen Umfang von 18 bis 20
+Tönen in seiner Gewalt haben werde . . .” . . .One can expand the range of the voice: but not all at once and
+in one day, but rather gradually. One sings only in the small range of the voice at the beginning, in which
+one can produce the tones with ease, brightly and purely, even if it is only 8 or 10 tones; each week, or,
+preferably, each month, one adds a tone on the top and the bottom, and be assured that in a half year the
+range will be 18 to 20 tones strong . . . (Hiller 1780/1976, 8)
+
+39
+
+Johann Friedrich Agricola, published in 1757.56 Just as Hiller was responding to a
+significant Italian treatise, so, too, was Agricola responding to a treatise by the Italian
+castrato Pier Francesco Tosi.57 Agricola viewed the female voice as being either soprano
+or alto, and considered the mezzo-soprano to be a sub-category of soprano: “. . . let us
+examine the various voice types by range. The principal types are soprano, alto, tenor,
+bass; and the most common middle classifications: low soprano and low tenor
+(baritone).”58 Agricola cites evidence given by scientists as to the physiological
+differences (mainly judging by the size of the trachea) of the different voice types. If, as
+Lucie Manén asserts, the bel canto approach to singing had as a premise that voice types
+were merely particular timbres and that all singers can be trained to sing all of the voice
+types (either female or male, of course), then Agricola departs most definitely from that
+school in his insistence that range determines voice type and that, furthermore, range is a
+physiological fact, not a technical or stylistic effect. 59
+To piece together some of this information in terms of today’s canonical
+repertoire, one can examine the role of Cherubino. Cherubino is listed as a soprano in the
+original score, yet it is often sung today by mezzos. The role of Cherubino does not
+contain any particular difficulties for a trained female singer.60 The arias together span
+only an octave and a half (C4 – G5) and there is no fioratura work. The orchestration is
+56
+
+All excerpts here are taken from Julianne C. Baird’s translation, Introduction to the Art of
+Singing (Cambridge: Cambridge University Press, 1995).
+57
+Baird/Agricola 1995, 40
+58
+Baird/Agricola 1995, 71
+59
+Lucie Manén, Bel Canto; The Teaching of the Classical Italian Song-Schools, its Decline and
+Restoration (New York: Oxford University Press, 1987), 69-70.
+60
+The tessitura of the arias, particularly Non so piú, is somewhat high for lower female voice
+types. However, the role of Cherubino is small enough that this would not necessarily make it inaccessible
+for contraltos or dramatic mezzo-sopranos.
+
+40
+
+light (mainly strings) and the form of the arias calls for little to no ornamentation. The
+tessitura of all female roles in Mozart tends to be in the upper passaggio, and Cherubino
+is no different in that respect.61 Table 2 below illustrates the range and tessitura of the
+two Cherubino arias, an example of the recitative which precedes Non so più, in which
+both Susanna and Cherubino sing, and Susanna’s first aria.
+
+Table 2
+Vocal Demands for Cherubino vs. Susanna62
+Character / Scene
+Cherubino / Recitative, 64-67
+Susanna / Recitative, 64-67
+Cherubino / Aria Non so più, 68-74
+Cherubino / Aria Voi, che sapete, 140-144
+Susanna / Aria Venite, inginocchiatevi, 148-154
+
+RANGE
+G4 – F5
+E4 – E5
+E(-flat) 4 – G5
+C4 – F5
+D4 - G5
+
+TESSITURA
+B4 – D5
+A4 – C5
+B(-flat) 4
+A4-D5
+B4 - D5
+
+One can see at a glance that the music for Susanna and Cherubino in this recitative is
+essentially in the same range, though Cherubino’s music is slightly higher. (Susanna
+does sing higher at other points in the opera, but her music is essentially more demanding
+in every sense – she sings higher, lower, more often, and she has some fioratura
+passages. The tessitura in Susanna’s first aria, for example, is similar to that of Voi, che
+sapete, and that the range differs only by one step.) In terms of what type of voice might
+61
+
+Boldrey sees Mozart roles as belonging still to the time in which singers were expected to be
+able to sing pretty much anything, and views the growth of the “modern orchestra” as the cause for a need
+to distinguish between the heavier and lighter voice types. (Boldrey, 6-7) Though today we deem certain
+Mozart roles appropriate only for particular voice types (Susanna as a soubrette or lyric soprano, the
+Countess as a heavier soprano, etc.), it is easy to view that as a question of taste in timbre relationships
+when viewed in the context of historical casting traditions.
+62
+From the Shirmer piano reduction, Mozart, Wolfgang Amadeus. Le nozze di Figaro (The
+Marriage of Figaro); An Opera in Four Acts; Libretto by Lorenzo da Ponte (Milwaukee, WI: G. Schirmer,
+Inc., 1951).
+
+41
+
+have sung Cherubino based on the Hiller descriptions of the contralto, mezzo-soprano,
+and soprano in this treatise, only the mezzo-soprano is doubtful because of the repeated
+G5-s in the arias. Hiller’s description of the contralto is of a singer/actress that would
+have been perfect for this part. There is nothing in the description of the soprano that
+would make the role of Cherubino inappropriate, although the few low notes in Voi, che
+sapete are at the bottom of the noted range. Those notes, however, are more jokes than
+melody, dipping down to demonstrate Cherubino’s fiery soul and depth of desire, and
+often sung with a purposefully dramatic shift in timbre. It seems, then, that a role that has
+come to define the lyric mezzo-soprano voice type would have been least appropriate for
+the singer defined in this treatise as a mezzo-soprano.
+
+The Garcia Treatise
+Aside from Cherubino and the Strauss roles, the bulk of the trouser roles
+(composed for female singers) that make up today’s lyric mezzo-soprano’s repertoire are
+from nineteenth-century France. These roles are often rather high for a mezzo-soprano
+and tend to demand some fioratura work. Many of these roles were premiered by
+sopranos, and at various points in the last century they have belonged to various soprano
+Fächer.63 Luckily, one of the most prominent nineteenth-century French voice teachers
+and researchers, Manuel Garcia, left a detailed account of his understanding of the voice,
+including voice classification and registers. His comments on the female voice in general
+will be examined below, followed by an exploration of how this information sheds light
+
+63
+
+See Table 6 in Chapter III.
+
+42
+
+on appropriate voices for two of the more popular French trouser roles from this time:
+Siébel from Gounod’s Faust and Stefano from his Roméo et Juliette.
+Le Traité complet de l’art du chant is an important document for several reasons:
+first, it records the thoughts of one of the most important and influential teachers of the
+mid and late nineteenth century (Manuel Garcia); second, it retains much from a
+prominent singer and teacher from the previous generation (his father); third, it shows in
+great detail the author’s understanding of voice classification. 64 The author of this
+treatise, Manuel Garcia (1805-1906), grew up around singers and vocal instruction. His
+father, the senior Manuel Garcia (1775-1832), was a renowned tenor, and a favorite of
+Rossini.65 For this study, it is also significant to note that the elder Garcia was the voice
+teacher for his daughter Viardot-Garcia (1821-1910), one of the most important middlevoiced female singers of the nineteenth century. 66 Although (the younger) Manuel
+Garcia’s singing career was brief in comparison to his sister’s and father’s careers, his
+contribution to future generations is great because of this treatise, his research on the
+voice, and, particularly, the invention of the laryngoscope. 67 Garcia married the bel
+canto tradition of systematic development of a linking of all vowels in all registers with
+
+64
+
+The Complete Treatise on the Art of Singing - All references here are taken from a reprint of the
+1847 edition, published by Minkoff, 1985, with an introduction by L.J. Rondeleux.
+65
+“Le père Garcia (Manuel del Popolo Vicente) (1775-1832) était l’un des plus grands ténors de
+sa génération. Il était le ténor préféré de Rossini qui écrivit en particulier pour lui le rôle du Comte
+Almaviva dans son Barbiere di Siviglia.” Garcia’s father . . . was one of the greatest tenors of his
+generation. He was the preferred tenor of Rossini, who wrote for him the role of Count Almaviva in his
+Barber of Seville. (Rondeleux in the introduction to the 1985 Minkoff reproduction of the 1847 treaty)
+66
+Apropos of this paper, Viardot-Garcia is listed as a French mezzo-soprano in the article in the
+opera version of Grove Music Online (April Fitzlyon, “Pauline Viardot,” Accessed April 28), but simply as
+a singer (i.e., without classification) in the article from the main Grove Music Online (Beatrix Borchard,
+“Pauline Viardot,” Accessed April 28).
+67
+April Fitzlyon, “Garcia, Manuel,” Grove Music Online, ed. Laura Macy,
+http://www.grovemusic.com (Accessed April 10, 2006).
+
+43
+
+the latest scientific information available.68 In fact, much of our (current American)
+conception of the bel canto training comes from the still popular book of vocalises and
+notes by one of Garcia’s most famous students, Matilda Marchesi.69
+Because the passaggi are currently understood to be dependent upon voice type,
+the discussion of registers and transition points found in Garcia’s treatise can help
+illuminate his understanding of voice classification. Garcia understood a register to be a
+group of “consecutive and homogenous” pitches that all have the same nature or sound,
+and that differ in these attributes to those of the other registers because a different
+mechanical production is necessary for each register.70 One of the foremost purposes of
+voice study, for Garcia and for various schools of voice instruction, is the development of
+these registers in such a way as to mask their separateness. For the female voice, Garcia
+
+68
+
+“Ce livre est un témoignage extrêment précieux de ce que Garcia pére reçut et transmit de la
+tradition italienne, c’est-à-dire fondamentalement des écoles de castrat où s’inventérent, aux XVII et XVIII
+siécles, une pédagogie, une manière de travailler la voix et un certain art du chant qui sont à la source de
+toute la tradition occidentale…” The book is an extremely precise expression of what Garcia, the father,
+transmitted from his Italian tradition, that is to say the fundamentals of the school of the castrati or the
+manifestation of it in the seventeenth and eighteenth centuries, a pedagogy, a way of working with the voice
+and a certain type of singing which is at the root of all of the western traditions . . . (Rondeleux,
+introduction to treatise) The bel canto approach was notable in its systematic approach to unifying the
+sounds both of various vowels in a particular register and of the sonority of the registers with one another.
+Garcia used science (both acoustic evidence and physiological discoveries) to speak specifically to the
+reasoning behind this approach and to point out any discrepancies he thought might be in need of
+addressing. As is the case in his treatise, vocal treatises tended to be mostly notation of exercises, and
+Garcia was one of the first to use a mostly scientific articulation of what the goals of these exercises were
+and why that was the case.
+69
+Marchesi taught many professional singers of the next generation, but her lasting fame certainly
+lies in this collection. Many current teachers begin each lesson “with Marchesi.” Jenny Lind also studied
+with Garcia. Though Swedish, Lind was an important figure in the history of the American opera singer
+and also in her great influence on generations of performers and composers to come.
+70
+“Par le mot registre, nous entendons un série de sons consécutifs et homogènes allant du grave à
+l’aigu, produits par le développement du même principe mécanique, et don’t la nature diffère
+essentiellement d’une autre série de sons également consécutifs et homogènes, produits par un autre
+prinicipe mécanique.” By the term register, we mean a series of consecutive and homogenous sounds
+going from low to high that are produced via the same mechanical principal, and which essentially differ
+from another series of consecutive and homogenous sounds that are produced by a different mechanical
+principal. (Garcia 1847/1985, 6)
+
+44
+
+wrote that the lowest register is the chest voice (Voix de poitrine) and that it is essentially
+the fundamental part of the female voice as it is for the male and child voices. According
+to Garcia, the “ordinary” female voice would have a chest register which does not exceed
+G3 – G4 , surrounding the primo passaggio. Exceptional voices may extend both higher
+and lower than this (E-flat3 – C5 ).71 Tellingly, Garcia wrote that some contraltos cannot
+sing above this register and that the second passaggio is the upper limit of their voices.
+Today, there is no category for a female voice that has the upper passaggio as its limit
+and likewise no belief that the chest register alone would be sufficient or tasteful for the
+entire range of any female voice in classical training. The “mixed” voice is now
+generally accepted (if the terminology remains hotly disputed) as necessary for all female
+voice types between the passaggi, and utilization of this type of production might have
+enabled those “contraltos” to find their upper registers. Most significant in his discussion
+of the registers of the female voice is that although he allowed for the possibility for the
+borders of the register to sometimes be a half tone higher or lower, he did not state that
+these depended on the voice type.72
+Although Garcia later separated the types of female voices, the section on timbre,
+which follows that of register, consists of a description of the various qualities of the
+sound of each register, without assertion that the color in each register differs for diverse
+voice types. There are two main causes for vocal timbre, he states:
+
+71
+
+Garcia 1847/1985, 7
+In his later chapter on classification, there is some difference in the lower register shift, but not
+in the higher one.
+72
+
+45
+
+1º les conditions fixes qui caractérisent chaque individu, telles que la forme, le
+volume, la consistance, l’état de santé ou de maladie de l’appareil vocal de
+chacun; 2º les conditions mobiles, telles que la direction que prend le son dans le
+tuyau vocal pendant son émission, soit par le nez, soit par la bouche; la
+conformation et le degré de capacité de ce même tuyau, le degré de tension de ses
+parois, l’action des constricteurs. . .73
+
+A modern reading of this might consider the first cause to be the physiology of the
+instrument itself and the second to be what we understand as vocal technique. (Volume
+here would have more to do with tissue type and viscosity than loudness.) Perhaps the
+most intriguing part of Garcia’s discussion of timbre is the limiting of terminology of
+color to clair or sombre. The clear tones are described as quite brilliant, while the murky
+ones are round. They were both said to be effective in the chest register, and Garcia
+intuited that certain tones are more successful with a shift in color (essentially what we
+would call vowel modification today).74 In some singers, Garcia wrote, the use of the
+sombre color in the head register brought a drastic change in timbre: “Le timbre sombre
+a sur quelques voix de tête un effet des plus remarquables; il rend ce registre pur et
+limpide comme les sons d’un harmonica.”75 This sounds like a description of a loss of
+overtones due to improper tract tuning. Again, it is puzzling that Garcia would limit the
+73
+
+First, the set conditions which characterize every individual, those of manner, those of volume,
+those of the consistence, of the health or sickness of the vocal apparatus of the individual; second, the
+mobile conditions, which depend on the direction the sound takes through the pharynx, be it through the
+nose, through the mouth; the conformation and the degree of the capacity of the same flute, the degree of
+tension in its pharyngeal walls, the action of its constrictors. . . (Garcia 1847/1985, 8) This is one of the
+passages that astounds a modern reader in its instinctual knowledge – we know now for sure that the degree
+of rigidity of the pharyngeal wall is one of the biggest choices a singer has for vocal timbre, and that it can
+give the impression of an incorrect voice type. Garcia even recognized that the constrictor muscles could
+be activated to falsify a different voice type. For the modern reader, manner must have been agility, and
+volume was probably about timbre.
+74
+In the falsetto register, he wrote, both colors are less effective than in the chest register (falsetto
+was a weaker register, in his view).
+75
+The covered timbre in the upper head voice produces a very remarkable effect; it reminds one
+of the pure and limpid register like that of the sounds of a harmonica. (Garcia 1847/1985, 9)
+
+46
+
+terminology for timbre discussion to two terms. Garcia’s description is also complicated
+by the fact that he made no distinction here between the voice types. If by “some voices”
+he meant some male voices, then we understand it to be a type of cover; a backward
+and/or rounding vowel modification of the vowels to help negotiate the passaggio. This
+move towards a back or round vowel in the male passaggio can indeed help tuning. If,
+however, he includes women in this, this type of vowel modification might interfere with
+vowel tuning and cause the singer to sound out of tune. If the singers happened to have
+truly dark voices (i.e. anatomically-determined), perhaps Garcia did not yet have a
+category that allowed him to recognize those voices as having inherently darker timbres
+and he thus misinterpreted the type of sound produced in the upper register as further
+darkened. For the purposes of this study, it is important to recognize that Garcia seems
+not to have differentiated between voice types based on timbre.
+Garcia’s chapter on the classification of voices, “Classification des voix
+cultivées,” begins with the female voice:
+
+La voix de la femme, plus belle et plus souple que celle de l’homme, est,
+par excellence, l’interprète de la mélodie.
+L’étendue, la force, le caractère des voix de femees, varient suivant la
+conformation des individus; on les a rangées d’après ces considérations en trois
+classes:
+Les contralti, qui occupent le bas de l’étendue;
+Les mezzi-soprani, qui en occupent le milieu, une tierce audessus des
+premiers;
+Les soprani, qui sont placés au sommet, une tierce au-dessus des mezzisoprani.76
+76
+
+The female voice, more beautiful and more supple than that of the man, is the archetypal
+interpreter of the melody. The ability to stretch/sweep, the strength, the character of the female voice
+varies among the individual; one may consider the ranges of these in three categories: the contraltos, who
+occupy the bass of the range; the mezzo-sopranos, who occupy the middle, a third above the [contralti]; the
+sopranos, who are placed at the summit, a third above the mezzo-sopranos. Garcia 1847/1985, 20
+
+47
+
+It is evident here that, unlike current classification with its emphasis on timbre, tessitura,
+and passaggi above range, it was indeed the range which was of primary consideration
+for Garcia. These voices today would, indeed, sing in different ranges, and the
+description of each being a third apart from its neighboring voice type makes perfect
+sense. Yet this is, according to today’s pedagogues, primarily a question of comfortable
+tessitura and not actual range. There is no evidence that Garcia used criteria other than
+range for voice classification.
+Of the individual female voice types, Garcia wrote the following: the contralto
+voice is manly and energetic in the chest voice, the register in which it is most
+distinctive.77 This register was unrecognized or neglected for the most part, he wrote,
+especially in France. The contralto voice was not well-understood, and Garcia seems to
+have comprehended that to expect this voice type to behave like a different one would
+have been ineffective, if not damaging.78 Regarding tessitura, Garcia did state that the
+upper register is fatiguing for the contralto if she is asked to sustain it for a prolonged
+period of time.79
+
+77
+
+Garcia 1847/1985, 20
+“Les sons indiqués en caractères plus fins dans cet exemple se produisent avec peine et sont
+dangereux à essayer; peu de personnes ont l’organe assez docile pour les former, et le jugement assesz sûr
+pour ne les placer qu’à propos. Il serait imprudent de prétendre les obtenir malgré la nature. . .” The tones
+indicated at the end of this example are produced with effort and are dangerous to carry out; few people
+have a docile enough organ for such formation, and enough judgment to place it where appropriate. It
+would be imprudent to aspire to obtain it contrary to nature… (Garcia 1847/1985, 20)
+79
+“Ce dernier registre est très fatigant pour les contralti; on n’en doit aborder les sons qu’en les
+effleurant dans les traits. Tous les chants qui s’y fixeraient d’une manière soutenue deviendraient
+inexécutables.” The last register is quite tiring for the contralti; one must address/penetrate the sounds that
+are more on the periphery of these traits. All of the songs that focus on this one manner will become
+inexcutible. (Garcia 1847/1985, 21)
+78
+
+48
+
+The mezzo-soprano is a voice that can sing fairly evenly throughout the three
+registers (here from A3 to A5 ), and that is all Garcia has to say about the voice.80 This is
+perhaps the most remarkable part of his section on voice classification, for most current
+definitions of the mezzo-soprano voice pivot on it also having a relatively darker timbre
+than that of the soprano. Yet the differences between the soprano and the mezzosoprano, according to Garcia, are not that of color, but rather, in addition to this slight
+difference in range, that the soprano is weak in the lower register and powerful in the top,
+while the mezzo-soprano can sing evenly throughout the registers.81 Garcia’s distinctions
+sound today like the distinction between a lyric mezzo-soprano and a lyric coloratura
+soprano. Indeed, a dramatic soprano, for example, would not fit in the description of
+soprano because the bottom register would not be weak. Likewise, the dramatic soprano
+who is fatigued by sustaining high tessitura might fit his definition of contralto. The bulk
+of our understanding in terms of the classification and sub-classification of the female
+voice, in other words, does not line up with Garcia’s. This fact will serve to be important
+when/if justification for role assignation to certain Fächer is backed up by historical
+practices.
+The role of Siébel is similar in many ways to the role of Cherubino. Both arias
+are quite simple in tune and form, though the Siébel arias differ from one another in
+range and tessitura (see Table 3). Siébel’s first aria has a range and tessitura like
+
+80
+
+Garcia 1847/1985, 21
+“Les voix de soprano brillent principalement par la facilité, la spontanéité du dernier registre.
+Ces voix sont brillantes, déliées, éclatantes; leur puissance est dans les sons élevés; elles sont faibles dans le
+bas.” The voice of the soprano shines above all in its facility, the spontaneity of the highest register. These
+voices are bright, delicate, shimmery; their ability is within the upper register; they are weak in the bass.
+(Garcia 1847/1985, 21)
+81
+
+49
+
+Cherubino’s, but the second aria is lower in range and tessitura than anything Cherubino
+sings.
+
+Table 3
+Vocal Demands For Siébel82
+Character / Scene
+Siébel / Aria Faites-lui mes aveux, 104-106
+Siébel / Recitative leaving flowers, 110-111
+Siébel / Romance Si le bonheur, 190-91
+
+RANGE
+D4 – G5
+D4 – B-flat5
+C-sharp4 - E5
+
+TESSITURA
+A4 - D5
+N/A
+G4 - B4
+
+Indeed, this second aria would be comfortable for any mezzo-soprano or contralto. The
+recitative Siébel sings after the first aria, on the other hand, is quite high, and expands the
+range in which the character sings in the opera to almost two octaves. Based on the
+information explored in Garcia’s treatise, the role of Siébel would be appropriate only for
+a soprano. Although both arias do not require the singer to exit Garcia’s boundaries for
+the mezzo-soprano, there is more than one B-flat4 in the recitative following the flower
+aria. Though the music in Siébel’s arias is orchestrated with a thicker texture than that of
+Cherubino, the orchestration remains relatively light and the part is feasible for a lyric
+voice type.
+The character of Stephano in Gounod’s Roméo et Juliette is another beloved and
+typical example of a nineteenth-century French trouser role. Though many directors
+include Stephano in additional staging, the character really only makes an appearance in
+the middle of the opera for a charming aria and that makes up almost the entirety of the
+82
+
+From the Schirmer piano reduction, Gounod, Charles. Faust; Opera in Four Acts (Milwaukee,
+WI: G. Schirmer, Inc., n.d.).
+
+50
+
+role. The ensemble singing for which Stephano is noted has him doubling the first
+soprano line. The aria, however, is both higher in range and tessitura than the first
+soprano part of the ensemble:
+
+Table 4
+Vocal Demands For Stephano83
+Character / Scene
+Stephano / Recitative and Aria Que fais-tu,
+blanche tourterelle, 135-140
+Stephano/ Act III Finale, 141-180
+
+RANGE
+F4 – C6
+
+TESSITURA
+F4 - F5
+
+D-flat4 – A-flat5
+
+(F4 - C5)
+
+The form of the aria is simple, and aside from a little vocal flourish at the end, it does not
+demand much agility. The range and tessitura of the role would be particularly
+appropriate for Garcia’s description of the soprano voice, with a high C and no demands
+in the lower register. Indeed, the tessitura and range of the role make it ideal for the
+current notion of a soprano, though the brevity of the role makes it possible for other
+voice types to sing it without much risk to their longevity. Garcia’s description of the
+mezzo-soprano voice would make it a highly unlikely candidate for this role, since the
+top of the range exceeds the mezzo boundaries. The contralto, with the main strength in
+the lowest registers, would be highly improbable according to Garcia’s description. The
+soprano voice, then would be the only voice likely to perform the role of Stephano - one
+of the staples of today’s lyric mezzo-soprano repertoire.
+
+83
+
+From the Schirmer piano reduction, Gounod, Charles Romeo and Juliet; Opera in Five Acts
+(Milwaukee, WI: G. Schirmer, Inc., n.d.).
+
+51
+
+Chapter Summary
+Voice classification today is different than it was at various points in history.
+While the female voice is currently widely recognized to be properly thought of in three
+main primary categories (soprano, mezzo-soprano, and contralto), it is a mistake to
+assume that a singer who was described any number of years ago as having a certain
+voice type would have had the attributes we associate with that type today. Range seems
+to have been the primary criterion for categorization for Garcia, for example, with timbre
+ascribed more as a set of options for singing than a characteristic for distinction. With
+Hiller, on the other hand, it seems that timbre may have been one of the most important
+characteristics for distinguishing between contralto and soprano. Furthermore, Hiller’s
+description of the mezzo-soprano seems to support the notion that the term might have
+meant “soprano with a limited high range.” Any discussion of historical role assignation
+must take this into account – particularly when such historical information is used to
+justify current casting or repertoire assignation. In other words, to say that a role was
+written for a mezzo-soprano is meaningless if the role was composed two centuries ago
+and there is no understanding of how the term was used then as opposed to its current
+usage.
+Together, an understanding of voice classification and a bit of historical context
+can begin to explain shifts in role assignation in opera. It is not necessary to explore the
+historical context of each role separately, but rather to have enough information to begin
+to see the categories and terminology as always shifting. Historical context can further
+illuminate those aspects in current practice which are scientifically justifiable and those
+
+52
+
+which exist as a matter of taste or tradition. The great amount of sub-division in current
+voice classification, for example, has perhaps less to do with advances in voice science
+and pedagogy than it has to do with the extreme diversity one finds in the vocal demands
+of opera beginning in the mid-nineteenth century. By the twentieth century, when opera
+houses were programming Händel, Wagner, Mozart, Strauss and Verdi all in the same
+season, it became evident that the three categories of the female voice were insufficient
+for both the categorization of particular roles and the singers who excelled in them. Thus
+the need for additional sub-categorization of roles in opera spurred both the development
+of the Fach system and interest in the vocal characteristics which determine such
+secondary characterization.
+
+53
+
+CHAPTER III
+THE FACH SYSTEM
+
+Any discussion of the Fach system must begin with a thorough definition of
+terms. Indeed, the system itself is essentially a group of expressions (dramatic soprano,
+lyric tenor, etc.) with specific definitions (range, timbre, appropriate roles, etc.). The
+disparities between systems tend to revolve around disagreements concerning the
+terminology or the exact definitions attached to those terms. The comparison of such
+definitions and of role assignation in this chapter will provide an illustration of Fach as a
+group of concepts which change over time or differ from region to region. The lyric
+mezzo-soprano Fach will serve as a focal point for this comparative study for two
+reasons: the diverse demands of the current repertoire and, linked to this, the fact that
+many of the roles which constitute the Fach today were earlier considered more
+appropriate for other voice types.84 Specific roles to be examined were selected primarily
+because of their popularity as audition/competition repertoire or their prominence in the
+opera world. Some of the roles listed, particularly those from the Händel operas, are
+more commonly performed in Europe than in the United States. Yet today’s most
+popular opera singers perform both here and abroad, and these roles thus also appear on
+the biographies of the most popular American lyric mezzo-sopranos, such as Susan
+
+84
+
+No attempt was made to offer an exhaustive list of the canonical lyric mezzo-soprano repertoire.
+For more exhaustive lists, the author refers the reader directly to the Kloiber and Boldrey guides.
+
+54
+
+Graham, Jennifer Larmore and Susanne Mentzer.85 Although many of the trouser roles
+that were originally performed by castrati are today performed by counter-tenors, the
+casting of mezzo-sopranos in these roles continues at many houses and the most popular
+of such roles are therefore considered in the comparison tables.
+The first term in need of exploration is the term Fach (Fächer, pl.). The German
+word Fach has as its two most common meanings drawer and (academic) subject. Fach
+terminology is specific to a particular field; a Fachschaft is a professional association; the
+adjective fachlich means specialist or technical. Even with only these few examples, one
+can sense a general connotation of something (whether it be as concrete as a desk drawer
+or as tentative as a field of knowledge) that is contained within boundaries. Fach, in
+other words, denotes category and implies restrictions or boundaries. In the world of
+opera, Fach describes a certain voice category and the roles sung by that type. The Fach
+system was codified during the great boom of unions in Germany in the early twentieth
+century as a way to protect singers. Since the repertoire singers were asked to perform
+began to include ever more diversity in terms of the demands of orchestration, tessitura
+and range, so, too, did the amount of repertoire that was inappropriate for a given singer
+continue to increase. In order to create a method by which singers would not be asked to
+sing roles which might be harmful to their longevity, lists were created of groups of roles
+with similar vocal demands. Each group/list comprised a certain Fach, and singers began
+to sign contracts which denoted their Fach. The opera house could then ask them to sing
+anything on the list under that particular category, but were required to list separately on
+85
+
+Larmore has been billed under various voice types, but the bulk of the repertoire she performs is
+listed in the Fach guides as lyric mezzo-soprano repertoire.
+
+55
+
+the contract any roles which fell outside of that Fach. In this manner, singers were not
+surprised by role assignation after the contract had already been signed.86
+The remaining terms in need of clarification are those which are more specific
+and which may differ depending on the system in question. It is necessary, therefore, to
+list the definitions separately according to the source. The three sources explored below
+offer a glimpse into historical shifts (two editions of the same guide, thirty years apart)
+and regional differences (German vs. American).87 Just as there is no universal
+agreement on voice classification, there also exists no such agreement on the Fach
+system. The guides used here were selected because of their prominence as the leading
+guides in their respective regions.
+To a large extent, the general definitions from source to source are in agreement.
+Whereas the conception of four main categories of voice (soprano, contralto, tenor, bass)
+may have reigned at various points in history, the six-category model (soprano, mezzosoprano, contralto, tenor, baritone, bass) has been more popular among pedagogues of
+late and scientific advances have justified such divisions. This latter model allows for a
+high, medium, and low category for male and female singers. Interestingly, the Grove
+Music Online entry for Fach cites a combination of these two conceptions, allowing for
+
+86
+
+The lists were affected to a large extent by the roles which particular singers were comfortable
+performing. In other words, lists reflected both casting practices and individual instrument capabilities. To
+what extent the same pedagogical concerns which drive voice classification also play a role, in any given
+moment, in the Fach listings is questionable. It is difficult to argue that a certain role is inappropriate for a
+particular Fach when one of the most famous portrayers of that role was best described under the Fach in
+question (i.e. “well, Singer X sang that role…”).
+87
+The specific Kloiber editions were selected because their span of the most recent three decades
+highlights shifts in casting practices which have occurred during the careers of the latest generations of
+opera singers.
+
+56
+
+the category of baritone but offering no middle-voiced category for female.88 This more
+than highlights the discrepancies between conceptions of the middle-voiced female, it
+offers evidence that there still exist those who do not consider mezzo-soprano to be a
+primary category of the female voice. It may be that the larger performing range of the
+female singer makes misconceptions of the limitations of the voice more likely.
+Whatever the reason for this entry, the wide-spread agreement found among today’s
+leading pedagogues justifies the consideration of a three-category female voice model.
+From lowest to highest, then, the main female categories are contralto, mezzo-soprano,
+and soprano. Within each category, there may be the sub-division of lyric to dramatic
+(denoting lighter to darker timbre), or the sub-title coloratura (denoting great agility).
+Figure 1 shows the various levels of Fach designation, following the low-to-high and
+dark-to-bright criteria shown:
+
+88
+
+“The main categories (soprano, contralto, tenor, baritone, bass) each have their own
+subdivisions, so that the more dramatic type of soprano, for example, may be said to lie within any one of
+three Fächer: the jugendliche dramatische Sopran, the Zwischenfachsängerin (or ‘in-between type’) and
+the hochdramatische Sopran (the ‘high’ or ‘serious’ dramatic soprano, as opposed to the first type, the
+‘youthful’ and therefore lighter type).” J.B. Steane, “Fach,” Grove Music Online, ed. Laura Macy,
+http://www.grovemusic.com (Accessed November 30, 2006).
+
+57
+
+Figure 1
+General Female Fach Designations
+Lower …………………………………………………………… Higher
+Darker …………………………………………………………………………………… Brighter
+Female
+
+Contralto
+
+(Dramtaic)
+
+(Lyric)
+
+MezzoSoprano
+
+(Coloratura)
+
+Dramatic
+
+Lyric
+
+Soprano
+
+(Coloratura)
+
+Dramatic
+
+Lyric
+(Full – Light)
+
+Coloratura
+
+Because the soprano voice is more common and more roles exist for it, there tend to be
+further divisions in practice of that voice type. The parenthetical categories above are
+less common, but are in use in systems of greater divisions. The general agreement, as
+one can see, coincides with a general agreement in terms of voice classification. Indeed,
+the categories for Fach and voice classification generally carry the same descriptive
+terminology when vocal attributes are described, though the Fach definitions will not
+revolve around such technicalities as location of transition points. Again, although the
+terminology for voice classification and Fach is often identical, Fach is primarily
+concerned with role assignation while voice classification seeks to describe the
+physiological nature of a particular instrument. The most controversial points in the Fach
+
+58
+
+system center around the roles belonging to each Fach, and, often, the roles deemed
+inappropriate for a particular Fach.89
+Because it has only recently been published, Mark Ross Clark’s Guide to the Aria
+Repertoire was not included in the following tables and commentary, though it will likely
+become a primary resource for American teachers and singers in the future. The book is
+particularly intriguing, however, in its structure, for it is not built on the concept of three
+primary female voice types. Rather, the primary female categories are limited to two:
+soprano and mezzo-soprano. Contralto is listed as a sub-category, or, in Clark’s terms, a
+Fach of the mezzo-soprano “voice.” In other words, Clark seems to favor the four-voice
+model rather than the six-voice model, with the significant modification of the lower
+female voice as a mezzo-soprano rather than a contralto.
+
+The Kloiber Guide
+The most important guide for Fach is Rudolf Kloiber’s Handbuch der Oper. 90
+This has been the primary guide in Germany and Europe for decades, and it continues to
+be edited and re-released to reflect changes in casting and repertoire. The organization of
+the guide is such that the bulk of the book consists of plot and historical descriptions of
+various operas. A list of voice types follows with descriptions of the vocal characteristics
+expected of each type. Following this list are two separate sections of role listings; the
+
+89
+
+In fact, The Concise Oxford Dictionary of Opera makes no mention whatsoever of voice type in
+its entry for Fach: “The term used, strictly in Germany and more loosely internationally, to describe the
+range of roles that a singer may be expected to perform.” John Warrack and Ewan West. Oxford
+Unvierstiy Press, 1996. Oxford Reference Online. Oxford University Press. Duke University. 30
+November 2006 <http://www.oxfordreference.com>
+90
+The Fach guide by Rudolf Kloiber (found in the dtv Handbuch der Oper) has been used for
+decades since its first publication in 1951 by Germans and, to a lesser extent, by other European houses.
+
+59
+
+first arranged by voice category and the second by opera. The initial criterion by which
+Kloiber divided roles, as he explains in the section introducing voice types, hinges on
+whether or not the character is serious or comic. For the serious categories, his
+definitions include descriptions of vocal range, agility, timbre, volume, and ability to
+penetrate:
+
+Table 5
+Terms and Definitions from Kloiber 1973 (pp 758-760 – translations mine)
+SERIOUS FÄCHER
+Lyric (high) soprano
+Young dramatic
+soprano
+Dramatic coloratura
+soprano
+Dramatic soprano
+Highly dramatic
+soprano
+Dramatic mezzosoprano
+
+Dramatic contralto
+
+Low contralto
+
+Range of C4 - C6
+Soft (weich) voice with a beautiful melting quality; noble lines
+Range of C4 – C6
+Lyric soprano voice with a greater volume which can also create
+dramatic high-points
+Range of C4 - F6
+Agile voice with great heights; dramatic ability to penetrate
+Range of B3 - C6
+A metallic voice with great volume; great ability to penetrate
+Range of G3 - C6
+Large, heavy, and expansive voice with well-developed middle
+and low registers
+Range of G3 – B-flat5 or C6
+Agile, metallic “zwischenfach” voice of a dark color, which
+often develops later into the highly dramatic Fach; good high
+notes
+Range of G3 – B5
+Agile, metallic voice with well developed high and low ranges;
+dramatic ability to penetrate
+Range of F3 – A5
+Full, dense voice with great depths
+
+The comic roles include some of these criteria in their descriptions, but they also mention
+acting abilities and appearance:
+
+60
+
+(Table 5 continued)
+
+COMIC FÄCHER
+Lyric coloratura
+soprano
+Soubrette
+Character soprano
+Spielalt (lyric mezzosoprano)
+
+Range of C4 - F6
+Very agile, soft voice with a great high range
+Range of C4 - C6
+Delicate, supple voice; a dainty appearance; skillful actress
+Range of B3 - C6
+Zwischenfach voice; nice ability to portray characters
+Range of G3 - B-flat5
+Flexible voice capable of characterization; skillful actress
+
+The female voice categories for Kloiber, then, are essentially subdivisions of soprano,
+mezzo-soprano and contralto. When reading German terms, one moves from most
+specific descriptive terminology to the most general as one reads from left to right. In
+other words, the word to the left is considered a sub-category of the word to the right. A
+dramatic coloratura soprano, for example, would be a soprano with great agility and a
+timbre which, in Kloiber’s words, has a great ability to penetrate. With the exception of
+low contralto, all non-soprano voices in this system are expected to be agile even though
+the Fächer do not include the sub-classification of coloratura in the titles. Again, the
+reasons for this are most likely that the lower voice types are less common than the
+higher types and are therefore divided into fewer categories in practice.
+In the 1973 edition of the guide, there is a listing for dramatic mezzo-soprano,
+but lyric mezzo-soprano is listed in parenthesis after Spielalt (a character contralto
+designation). Notice also that there is no lyric mezzo-soprano or lyric contralto category
+for the serious roles. Furthermore, Kloiber’s listing for dramatic mezzo-soprano states
+that this voice is essentially an “in between” designation which often develops into a
+
+61
+
+dramatic voice with maturity. (In other words, there really is no mezzo-soprano in the
+end.) The term Zwischenfach arises here and elsewhere, and is always in need of
+clarification. The literal translation, between Fach, would make the term applicable to
+any voice that seemed to share characteristics of neighboring categories. Kloiber,
+however, used the term to specifically denote a type of dramatic voice, or the range
+between a lyric and a “Helden” –Fach.91 In America, we often use this term to denote a
+singer who might be either a soprano or a mezzo-soprano. Boldrey’s listing of the term
+Zwischenfach, for example, acknowledges the literal meaning of a voice type that “cannot
+be classified precisely in one Fach or another,” yet notes that “it is commonly understood
+to refer to that shadowland between soprano and mezzo-soprano.”92
+Kloiber’s initial list of Fächer does not change between the 1973 and 2004
+editions, however the assignation of roles to specific voice types and vice versa which
+follows does change to update the guide to reflect more recent casting habits and the new
+categories of coloratura mezzo-soprano, lyric mezzo-soprano (as a separate category
+from Spielalt), and lyric contralto.93 This means that these (by Kloiber) only recently
+recognized categories are comprised of roles previously appropriated to other Fächer. As
+illustrated in the section on role-shifting below, one Fach may indeed include roles
+
+91
+
+Kloiber explained in his prose and with the aid of a small diagram that the Zwischenfach
+category is simply the dramatic category. Yet in his listing of Fächer, he included the categories of young
+dramatic soprano, dramatic soprano, and highly dramatic soprano. To some extent, his listings of exact
+Fächer complicates the notion he so simply set forth in the preceding prose. It is likely the editors decided
+to leave some sections of the guide and update others, causing some confusion with the seeming
+contradiction. For this study, however, the contradictions offer also clarification as evidence of a system
+always in flux.
+92
+Boldrey, 25.
+93
+Kloiber, 2003/4, 903-905.
+
+62
+
+previously deemed the territory of such seemingly disparate Fächer as coloratura soprano
+and contralto.
+
+The Boldrey Guide
+The main American source in recent years for Fach descriptions and role
+assignation has been the Guide to Operatic Roles & Arias by Richard Boldrey. Boldrey
+offers significantly more subdivisions of voice types than Kloiber, but he cautions that
+singers need not consider themselves as belonging only to one category:
+
+Like books, voices and roles do not always fit comfortably into just one category.
+Consequently, some pedagogues and singers dispute the value of voice categories.
+They argue that voice categories keep them from “crossing the line” and singing
+whatever their voices are capable of singing. But voice categories are not meant
+to constrain singers (most singers easily fit into two or even three neighboring
+categories). On the contrary, they are meant to guide a voice toward appropriate
+repertoire, to help guard it from going off in several directions at once.94
+
+Perhaps the great degree of sub-division found in the Boldrey guide is a response to the
+immense amount of repertoire available and sensitivity to all of the criteria involved in
+voice classification and their myriad combinations.95 Even though this guide states as a
+premise that singers may sing repertoire from more than one category, singers tend to shy
+
+94
+
+Boldrey, 6.
+Indeed, Boldrey lists more criteria for consideration in both voice classification and role
+determination than mentioned thus far. For classification, for example, he considers registration and
+passaggi to be independent categories, separate from tessitura, and for flexibility to be an independent
+category from agility. His description of flexibility is intriguing, for it essentially describes the ability to
+employ various colors and dynamics and to vary them with ease. In other words, what one might otherwise
+consider artistry or craft (fully independent of classification) is, for Boldrey, a criterion for classification.
+As for Boldrey’s description of categorization of roles, he seems to have considered a great deal of criteria
+beyond basic tessitura and orchestration. (See especially Boldrey, 9-11)
+95
+
+63
+
+away from considering themselves to belong to more than one category for fear that the
+casting directors might assume they are confused about their voices.
+Boldrey’s book consists of thirty pages of introductory material (in which the
+categories and criteria used to arrive at them are explained) and a series of intricate
+listings organized in various ways to aid in searches (listings of roles organized by Fach,
+alphabetical listings of roles, lists of roles and their Fächer organized alphabetically by
+opera, etc.). The initial thirty pages are particularly important because they offer a
+rationale for the lists which follow and for the usefulness of such lists in and of
+themselves (i.e. for the very existence of the Fach system). Boldrey presents this
+introductory material for voice categories in both lists and prose. The lists include the
+following criteria after each category: normal range, registers, timbre, weight/volume,
+vocal challenges, [and] acting challenges.96 (Because his lists are so extensive, the reader
+is referred to the guide itself for details on each listing.) The female categories listed by
+Boldrey are: soubrette, light lyric coloratura soprano, light lyric soprano, full lyric
+coloratura soprano, full lyric soprano, light dramatic coloratura soprano, light dramatic
+(spinto) soprano, full dramatic coloratura soprano, full dramatic soprano, high dramatic
+soprano, light lyric mezzo-soprano, full lyric mezzo-soprano, dramatic mezzo-soprano,
+lyric contralto, and dramatic contralto.97 One can see at first glance that there are many
+subdivisions of categories which are not represented in the Kloiber guide. Indeed, there
+are four types of lyric soprano and five types of dramatic soprano. With his warning in
+mind of not considering a singer necessarily confined to one particular category, these
+96
+97
+
+Boldrey, 17-18.
+Ibid.
+
+64
+
+subdivisions make sense. For the demands of roles considered appropriate for dramatic
+or lyric soprano differ significantly within each group, and this type of sub-division seeks
+to group roles together more precisely depending on the demands of orchestration and
+tessitura. Such thoughtful and well-researched grouping of roles could indeed aid a
+singer in finding the most suitable repertoire for her voice and in avoiding inappropriate
+roles. Whether or not casting trends concerning body-type, acting abilities,
+timbre/character expectations, etc. make such subdivisions purely ideological optimism is
+a question worthy of consideration. For while tessitura and orchestration demands of a
+role do not change, the casting trends do, and Boldrey’s intricate lists will probably not
+have much, if any, influence on global marketing shifts. Fach, in theory, offers a list of
+appropriate repertoire for a given singer and therefore a list of roles in which one might
+succeed and enjoy the most potential longevity and health. Yet the shifting of roles from
+Fach to Fach over time raises the question of just how pedagogically justifiable these
+lists can be. Coming at the list not from casting trends but from pedagogical concerns, as
+Boldrey has done, is the only way to fulfill the theoretical premise of Fach as protecting
+the longevity of the singer. Yet when casting is at odds with such listings, the question
+becomes whether such a guide should also inform readers of the expectations of the
+contemporary casting directors. Boldrey lists numerous Fächer for most roles and notes
+his suggestion for the most appropriate. This allows him to acknowledge actual casting
+trends yet also state his pedagogically-motivated assertion as to the most appropriate
+Fach.
+
+65
+
+Boldrey’s prose descriptions of categories, in contrast to these lists, trace larger
+conceptions of Fach and the history of the terminology. In his definition of pants roles,
+for example, Boldrey writes:
+
+Pants or breeches or trouser roles . . . are associated with lighter voice types,
+because most pants roles are younger characters. So most pants roles are sung by
+light lyric sopranos or light lyric mezzo-sopranos, though they can be found
+among all the female voice categories – except the dramatic soprano.98
+
+It is true that recent casting has not considered the dramatic soprano voice type
+appropriate for pants roles, however those roles which are more heavily orchestrated,
+such as der Komponist (Ariadne auf Naxos) or Octavian (Der Rosenkavalier) have often
+been sung by dramatic sopranos. Indeed, even today one hears stories of German houses
+casting women with the “appropriate” body type and acting skills in trouser roles
+regardless their exact voice types. (The Fach system is one in which even a cautious
+general statement such as that above can be shown too ambitious when taken in a larger
+temporal context.)
+Of particular significance for this study is the distinction Boldrey draws between
+the light lyric mezzo-soprano and the full lyric mezzo-soprano. One rarely sees a singer
+billed with such distinct terminology, yet the distinctions are worth consideration.
+Although the difference between light and full is essentially one of timbre, the division of
+the lyric mezzo-soprano Fach allows in practice for a division of roles beyond that of
+timbre (character type, agility demands, tessitura, etc.). It is striking that with so many
+divisions of the soprano voices, including four distinct types of coloratura sopranos,
+98
+
+Boldrey, 21.
+
+66
+
+Boldrey did not suggest the category of coloratura mezzo-soprano. If the lyric mezzosoprano has accumulated the bulk of the trouser roles and coloratura mezzo roles, there
+remain some lyric mezzo-sopranos who either lack the agility for such roles or do not
+have the body types or acting/movement skills to portray the trouser roles. Without the
+possibility of a separation of the lyric mezzo-soprano Fach into two categories, the lyric
+mezzo who is not appropriate for trouser or Rossini roles finds herself gravitating
+towards a small number of French roles such as Carmen or Dalila, all the while knowing
+that these roles are often considered more appropriate for dramatic mezzo-sopranos.99
+Boldrey explains the difference of the light and full categories by addressing both vocal
+qualities and role suitability: “The light lyric mezzo-soprano, like her soprano
+counterparts, usually has a slender, bright voice, one that is able to move quickly and
+flexibly through coloratura passages. It is a voice of youth and exuberance.”100 The full
+lyric mezzo-soprano “may or not have a flexible voice, but she does have fullness and
+warmth.”101 For the light lyric mezzo-soprano, Boldrey states, there are some female
+roles (Mercédés, Marcellina, Rosina), yet “some of the most delightful pants roles in
+opera are written for the light lyric mezzo-soprano,” such as Siébel, Urbain, Hänsel, and
+Cherubino.102 The full lyric-mezzo, on the other hand, “is the choice of many early and
+
+99
+
+Once the singer has progressed beyond the young artist stage, of course, these boundaries cease
+
+to exist.
+100
+
+Boldrey, 25.
+Ibid.
+102
+For Hänsel, and to a large extent Cherubino, this statement makes some sense, even if one
+cannot prove that the singers who premiered the roles would today be considered light lyric mezzosopranos. For Siébel, and especially for Urbain, there is nothing about the role that suggests the
+appropriateness of any type of mezzo-soprano voice. Rather, the roles were clearly written for a soprano
+voice. (See, for example the tessitura of the roles in Table 7, below.)
+101
+
+67
+
+middle nineteenth-century French composers for their young romantic heroines,” such as
+Charlotte (Werther), and Dulicnée (Don Quichotte).103
+Boldrey’s prose description of the dramatic mezzo-soprano does not include any
+vocal characteristics, but rather revolves solely around character type:
+
+The dramatic mezzo-soprano is the female “heavy” in most operas. She is the
+mother, the witch, the whore, the dowager, sometimes even the queen. She is a
+favorite voice of Verdi and Wagner, as well as of the composers of Eastern
+Europe and Russia. She also appears in most twentieth-century operas written in
+America or Europe.104
+
+It is interesting to note that here Kloiber and Boldrey seem to have differed in the voices
+for which they considered acting skills and/or character type significant enough to list.
+For Kloiber, the dramatic mezzo is a serious type and was therefore described solely by
+vocal characteristics.105 Boldrey had already covered vocal characteristics in the lists and
+one may easily read the prose description with vocal attributes as a given. Yet Boldrey
+did discuss the voice for the other prose definitions and chose to focus on character type
+in this description.
+For Boldrey, role categorization is concerned with more criteria than general
+tessitura and orchestration demands. Boldrey identifies numerous relevant factors worth
+consideration, most notably when the highest notes in the role occur in the opera, and
+
+103
+
+Ibid. Boldrey does indicate Sesto (La clemenza di Tito) as a pants role for the full lyric mezzosoprano. This is intriguing because the role does not differ greatly in tessitura or orchestration demands
+from those roles listed appropriate for light lyric mezzo-soprano. Indeed, since the full lyric is not
+necessarily expected to have an agile voice, it would seem that any of the more florid trouser roles would
+gravitate towards the lighter Fach.
+104
+Boldrey, 26.
+105
+Perhaps this is a reflection of the traditionally different acting and movement expectations in
+serious opera as opposed to comic opera.
+
+68
+
+how the tessitura for ensemble numbers and solo singing differs.106 These criteria are
+important for consideration, however one might argue that casting trends have trumped at
+least the latter consideration. For directors have “solved” some of the tessitura
+inconsistencies in order to have the voice type of contemporary favor. Despina (Cosí fan
+Tutte) is an example Boldrey offers as a light voice type whose main necessity be acting
+skills. She sings the lowest female part in the ensembles, and is indeed sometimes cast
+with a mezzo-soprano. Yet the role is often sung by a soprano, and the tessitura for the
+arias fully justifies such casting. The confusion arises when one seeks to understand why
+Despina is given the lowest female line in the ensembles.107 To solve the problem of the
+ensemble voicing, many directors switch the female voices so that Dorabella is on the
+lowest and Despina on the highest part. (This solution also helps many a Fiordiligi, since
+trends have been to cast that role with a heavier-voiced soprano who often is thankful for
+a break in tessitura and exposed agility demands.) A smaller-scale example of the same
+type of “problem-solving” would be the common switch of Mercédés and Frasquita in the
+card trio (Carmen) so that the highest note is given to the higher voice type.
+
+Role-Shifting
+One of the most important aspects of the Fach system for a pedagogue to keep in
+mind is that it is always representing casting preferences of one particular moment in
+time. The pedagogical reasons for considering a role to belong to one particular Fach
+(and thus be appropriate for the corresponding voice type) may be overwhelming, but
+106
+
+Boldrey, 9.
+A possible explanation for this seeming discrepancy is that most of the Mozart female arias
+have a similar tessitura.
+107
+
+69
+
+those pedagogical considerations can and do often bend to market trends. Though shifts
+can be traced in most Fächer, one of the most interesting current Fächer to consider in
+terms of the shifting of roles between categories is that of the lyric mezzo-soprano, since,
+as mentioned above, the category was relatively nonexistent only a few decades ago.
+Table 6 shows Fach listings from the 1973 and 2003/4 Kloiber and 1997 Boldrey guides
+for some of the more popular roles currently sung by singers billed as (lyric) mezzosopranos. Because trends affect not only casting but also whether or not operas are
+considered popular enough for listing in the guide at all, some of the roles are not listed in
+every guide.
+
+Table 6
+Comparison of Fach Listings
+
+Annius (Tito)
+
+Kloiber – 1973
+dram contralto
+mezzo-soprano
+
+Ariodante
+
+Cesare
+
+Helden-baritone
+
+Cenerentola
+
+lyric color sop
+
+Charlotte
+
+lyric mezzo
+countertenor
+(castrato)
+lyric mezzo
+countertenor
+(alto castrato)
+color mezzo
+lyric mezzo
+
+Cherubino
+
+lyric sop
+
+Dalila
+
+dram mezzo
+dram contralto
+
+108
+
+Kloiber - 2003/4
+lyric mezzo
+
+lyric mezzo
+lyric sop
+dram mezzo
+dram contralto
+
+Boldrey108
+full lyric sop
+full lyric mezzo
+light dram color sop
+countertenor
+countertenor
+dram baritone
+dram bass
+light lyric mezzo
+contralto
+full lyric sop
+full lyric mezzo
+light lyric mezzo
+dram mezzo
+contralto
+
+Underlined categories are Boldrey’s suggestions for the most suited categories for each role
+
+70
+
+Dorabella
+
+dram contralto
+mezzo
+
+lyric mezzo
+
+Hänsel
+
+Spielalt109
+
+Idamante
+
+lyric tenor
+
+lyric mezzo
+Spielalt
+lyric mezzo
+lyric tenor
+
+Komponist
+
+character sop
+young dram sop
+
+dram mezzo
+young dram sop
+
+Octavian
+
+dram mezzo
+
+dram mezzo
+lyric mezzo
+
+Orlando
+
+lyric mezzo
+lyric contralto
+countertenor
+(alto castrato)
+color mezzo
+countertenor
+(alto castrato)
+
+Rinaldo
+
+Rosina
+
+lyric color sop
+
+color mezzo
+
+Serse
+
+sop
+lyric tenor
+
+Sextus (Tito)
+
+dram sop
+
+lyric sop
+lyric mezzo
+(castrato)
+soprano
+mezzo
+(sop castrato)
+dram mezzo
+lyric mezzo
+
+Ruggiero
+(Alcina)
+
+full lyric sop
+light dram sop
+full lyric mezzo
+dram mezzo
+light lyric mezzo
+full lyric mezzo
+light lyric color sop
+light lyric mezzo
+countertenor
+light lyric tenor
+full lyric tenor
+full lyric sop
+spinto sop
+dram mezzo
+full lyric sop
+spinto sop
+full lyric mezzo
+dram mezzo
+contralto
+countertenor
+
+full lyric mezzo
+dram mezzo
+contralto
+countertenor
+light lyric color sop
+light lyric mezzo
+contralto
+full lyric mezzo
+contralto
+countertenor
+full lyric mezzo
+countertenor
+full lyric color sop
+light lyric mezzo
+full lyric mezzo
+countertenor
+
+109
+
+Spielalt in the 1973 version was listed as: Spielalt (Lyrischer Mezzosopran) – in the 2003/04
+version, it was a category listed among the contralto categories, separately from lyric mezzo-soprano.
+
+71
+
+Siébel
+
+lyric sop
+lyric tenor
+
+Urbain
+Zerlina
+
+color mezzo
+color-soubrette
+
+sop
+lyric mezzo
+
+light lyric sop
+light lyric mezzo
+light lyric sop
+light lyric mezzo
+soubrette
+light lyric color sop
+light lyric mezzo
+
+It is most interesting to read through the column for the 1973 Kloiber listings separately
+to get a perspective on the truly disparate Fächer to which many of these roles were only
+recently thought to belong. For the repertoire has at some time or another been
+considered appropriate for every idea of the female voice, from light coloratura soprano
+to dramatic soprano and mezzo-soprano to contralto. There was clearly also a trend to
+have trouser roles sung by men (not by counter-tenors as we find now particularly with
+roles composed for castrati, but by tenors or baritones). Indeed, some of these roles were
+so commonly performed in transposition to accommodate the tenors or baritones that it is
+now difficult to acquire scores with the original keys.
+To understand either why these roles were considered part of other Fächer or why
+they have come to be considered appropriate for the lyric mezzo-soprano, a brief
+overview of the vocal demands and extra-vocal traits of the roles will be necessary. The
+determination of tessitura for a large role is tricky, particularly if that role encompasses a
+great range, such as the Rossini heroines or the Strauss trouser roles. There are often
+arias or sections of arias which employ a different tessitura over a significant length of
+time for dramatic purposes. Likewise, many of the Mozart roles have different zones of
+
+72
+
+tessitura for the recitative than the arias. An attempt was made to mention the more
+significant discrepancies and extremes in the far right column of Table 7.
+To what extent orchestration can be compared when the size of the orchestra and
+the overall orchestral idiom differs so greatly between composers is debatable. The
+comments regarding orchestration, then, must be read as relative to other roles in the
+opera and, at most, to other roles by that particular composer. The Strauss roles, for
+example, even when lightly orchestrated, may in fact demand more penetrability of the
+singer than a fully orchestrated Händel or Mozart role, particularly if the performance of
+the latter is done with period instruments. Nonetheless, the relative orchestration
+demands help to identify reasons why the casting of particular roles may have evolved in
+a certain manner, because, with the exception perhaps of roles by composers known for
+particularly heavy orchestration (Wagner, Verdi, etc.), we have come to expect
+significant variety of timbre among the cast members for a given opera. The relative
+orchestration of the role to other roles in that opera would justify the preference of one
+particular voice type over another, even if the larger pedagogical justifications for such
+preference remain vague, at best. Another significant consideration for orchestration
+which is not represented here is the extent to which the vocal line is doubled in the
+orchestra and the degree to which the orchestra plays in and above the vocal line. This in
+mind, Table 7 shows the general tessitura and orchestration demands for the roles
+represented in Table 6:
+
+73
+
+Table 7
+Tessitura and Orchestration Chart
+Role
+
+Average Average Orchestration
+Tessitura
+Annius (Tito) G4 – D5
+strings; winds
+
+Ariodante
+Cesare
+Cenerentola
+
+F/G4 - E5 full strings; occasionally
+winds
+D4 - B4
+full strings
+(C4 - C5) at times full; wind mostly as
+punctuation
+
+Charlotte
+
+F4 - E5
+
+Cherubino
+Dalila
+
+G4 – E5
+D4 – C5
+
+Dorabella
+
+G4 – D5
+
+Hänsel
+
+G4 – D5
+
+Idamante
+Komponist
+
+G4 – F5
+F4 – F5
+
+Octavian
+
+G4 – F5
+
+Orlando
+
+B3 - B4
+
+Rinaldo
+(1731
+version)
+Rosina
+
+D4 - B4
+
+E4 – E5
+
+at times full; mostly light
+relative to other characters
+light strings and winds
+greatly varies from none to
+full/heavy
+light to full, depending on
+dramatic context
+
+Exceptions / Extremes
+lower tessitura in group
+numbers except finale; higher
+tessitura in No 17;
+lower tessitura in recitatives
+and ensembles
+tessitura difficult to determine
+because most numbers require
+singing in at least two octaves;
+performance tradition includes
+ornamentation above C6
+some sustained high notes over
+heavy orchestration in Act III
+
+often sings above staff in solo
+and ensemble numbers; higher
+tessitura in large ensemble
+numbers; lower in duets with
+Fiordiligi
+slightly lower tessitura in duets
+with Gretel
+
+light to heavy depending on
+dramatic context
+relatively heavy/full at times
+heavy (with brass) in all
+often sustained passages in
+parts of the range
+higher and lower tessituras
+light to full, often heavy
+often sustained passages in
+higher or lower tessituras
+light to full strings; at times almost never sings above C5
+full with winds
+strings and winds
+lower tessitura in arias
+
+relatively light; heavier
+orchestration mostly for
+punctuation
+
+tessitura is often slightly
+lower; performance tradition
+includes ornamentation above
+C6
+
+74
+
+Ruggiero
+(Alcina)
+Serse
+Sextus (Tito)
+
+G4 - D5
+
+light to full strings
+
+F4 - F5
+G4 – F5
+
+Siébel
+
+A4 - E5
+
+light to full strings
+relatively full orchestration
+– winds, brass, strings,
+percussion
+light
+
+Urbain
+
+G4 – F5
+
+light to full for dramatic
+effect
+
+Zerlina
+
+F4 – F5
+
+light to full winds and
+strings
+
+first aria demands agility and
+often higher tessitura
+
+second aria notably lower in
+tessitura but usually omitted
+agility including numerous
+high Cs both sustained and
+staccato; often highest part in
+ensemble; in stretta/cavatina,
+tessitura depends on
+version/score with optional
+highs and lows
+slightly lower tessitura in
+recitatives and ensembles
+
+If performance ranges and comfortable tessituras for each primary female voice category
+are, as Garcia maintained, roughly one third apart, this list contains all three main
+groupings: roles with tessituras up to B4; up to D5; and up to F5 . As illustrated in Table
+6, many of these roles have earlier been considered appropriate for either low or high
+(rather than middle) female voices. Table 6, then, offers historical reasons for
+questioning the classification of many of these roles as mezzo-soprano roles. Table 7, on
+the other hand, offers pedagogical reasons for investigating the appropriateness of Fach
+listings. In terms of very general tessitura demands, the roles of Cesare, Orlando and
+Rinaldo would be most appropriate for a low female voice (contralto), while the roles of
+Idamante, Komponist, Octavian, Serse, and Sextus would be most appropriate for a high
+female voice (soprano). The orchestration demands for the Komponist and Octavian
+require a more dramatic voice type, while the other roles could be feasibly sung by any
+
+75
+
+timbre category depending on changing tastes. Annius, Dorabella, and Ruggiero all fall
+into the mid-range of the tessitura groupings above, and would therefore be most
+appropriate for mid-voiced females (mezzo-sopranos).
+While the Händel operas were apparently not performed often enough for
+conclusion in the 1973 Kloiber guide, it is possible to consider many of the other role
+listings from that guide with this tessitura information in mind. Table 8 shows selected
+1973 listings and the tessitura-determined voice types:
+
+Table 8
+1973 Kloiber Listings and Tessitura
+Kloiber – 1973
+Annius (Tito)
+Cesare
+Cherubino
+Dalila
+Dorabella
+Hänsel
+Idamante
+Komponist
+Octavian
+Rosina
+Serse
+Sextus (Tito)
+Siébel
+Zerlina
+
+dram contralto
+mezzo-soprano
+Helden-baritone
+lyric sop
+dram mezzo
+dram contralto
+dram contralto
+mezzo
+Spielalt
+lyric tenor
+character sop
+young dram sop
+dram mezzo
+lyric color sop
+sop
+lyric tenor
+dram sop
+lyric sop
+lyric tenor
+color-soubrette
+
+Appropriate Voice Type
+According to Tessitura
+mezzo-soprano
+contralto
+mezzo or soprano
+contralto or mezzo
+mezzo-soprano
+mezzo-soprano
+soprano
+soprano
+soprano
+mezzo or soprano
+soprano
+soprano
+mezzo or soprano
+soprano
+
+76
+
+Some of the 1973 Kloiber listings that seem puzzling in the context of current casting
+practices make sense when viewed with tessitura in mind. Why, then, did such shifts
+occur in the first place? The answer that seems most likely is that a shift is occurring
+away from vocal demands towards character type as the primary grouping criterion. Yet
+this is not the same character-type criterion as one found in Mozart’s day, when a singer
+would specialize in either comic or serious roles. Rather, the common thread for the bulk
+of the roles explored above is that they are trouser roles. Current trends are to cast a
+slender, tall, perhaps lanky singer for such roles. Though expectations for Cherubino,
+Siébel, and Hänsel also include great physical agility and ability to move convincingly
+like a boy on stage, such expectations are different for more noble roles, such as Annius,
+Idamante, or Serse. While outward appearance for trouser roles may be consistent across
+various types of roles, then, the acting demands do vary. One might therefore say that
+there exists a great variety of vocal and acting demands in the current lyric mezzosoprano Fach, and that the constant may be in general physical expectations. One thus
+could further describe this Fach as requiring a tall, slender singer capable of fulfilling a
+significant range of vocal and acting demands.
+
+Chapter Summary / Conclusion
+Voice classification and Fach are two separate and independent systems of voice
+categorization, and the conflagration of the two can adversely affect the future career of a
+singer. Unfortunately, such conflagration is almost inevitable when the titles of
+categories for both systems are identical. The Fach system was indeed conceived as a list
+of appropriate repertoire according to voice type, yet over the years each system has
+77
+
+developed independently and the assumption that Fach still offers roles according to
+voice classification can lead the singer/teacher to the wrong repertoire. The Fach system
+must constantly be re-examined in order to understand the organizing criteria that drive
+shifts of repertoire. As shown above, the titles of Fächer continue to be voice categories,
+even when the organizing criteria cease to be vocal traits.
+Perhaps speeding the process of shifts in repertoire is the ever-increasing access to
+single performances of a given opera. Today’s notions of a Fach tend to include both
+particular roles and particular singers. Via elaborate photography for marketing, DVDs
+of live performances, and pirated videos available on sites like YouTube.com, audiences
+have heretofore unprecedented access to a particular singer and/or role portrayal. The
+implications of such access include a more definitely and restrictively determined
+collective expectation of a particular role or voice type. In the case of the lyric mezzosoprano, in other words, it is possible to look both at current roles of the Fach and at the
+leading singers of those roles. Among the most popular performers of the majority of the
+roles explored in the tables above are Anne Sophie von Otter and Susan Graham. Both
+von Otter and Graham are known to be wonderful actresses capable of portraying male or
+female roles, tragedies or comedies; both are quite tall; both are agile physically and
+vocally; and both have performed a myriad of roles that differ significantly from one
+another in tessitura, range, and orchestration demands. Their height, physical agility, and
+
+78
+
+acting skills have likely led the collective expectation of the lyric mezzo-soprano to
+include such extra-vocal expectations.110
+If these extra-vocal expectations are indeed influencing Fach listings, singers and
+teachers must keep this in mind while selecting repertoire. The number one priority for
+singers and teachers alike must remain the health and longevity of the singer. This
+requires that roles are not assigned or learned solely because of their prominence in the
+Fach deemed appropriate for the singer or in the repertoire of a leading singer of that
+Fach, but rather that a separate critical study is done of the actual vocal demands of each
+role. Furthermore, one must be open to consider a Fach or roles in a Fach that do not
+necessarily seem to correspond to actual voice classification, while understanding that at
+the early stages of the career, one is expected to offer arias that all belong to one Fach.
+This would mean that a singer in the early stages of his/her career might find it in his/her
+best interest to market him/herself in a Fach that does not necessarily coincide with the
+exact voice classification.111 The assigned Fach for a particular role may indeed have
+very little to do with vocal demands. Voice classification and Fach must therefore be
+considered separately in order to maintain vocal health while negotiating the marketing of
+a singer. This is particularly crucial to keep in mind when dealing with a Fach that
+
+110
+
+Of course, there are also currently popular mezzo-sopranos who find a smaller niche than von
+Otter. American mezzo-soprano Kristine Jepsen’s repertoire, for example, consists almost exclusively of
+trouser roles, and her fans praise her acting abilities above all. Another American mezzo, Vivica Genaux,
+has focused on baroque opera, which includes trouser roles, and on showcasing her agility as Rossini
+heroines. For Genaux, the press has focused on her vocal abilities above her acting.
+111
+As seen in the tables above, many trouser roles considered part of the lyric mezzo-soprano
+repertoire are most suitable for the lyric soprano. A young lyric soprano with height, physical agility and
+strong acting abilities might, for example, consider marketing herself as a lyric mezzo-soprano in the
+beginning. Taking this route, of course, the singer runs the risk of further problems of leaving that Fach –
+i.e. casting directors may not want to consider a singer for a lyric soprano role when the resume consists of
+lyric mezzo-soprano repertoire. An early decision, such as this, may have far-reaching consequences.
+
+79
+
+encompasses roles with such different vocal demands as Orlando, Octavian, Rosina and
+Urbain.
+To a large extent, the restrictions inherent in the Fach system are loosened as
+soon as a singer has established him/herself in the field. Yet the importance of paying
+heed to directors’ expectations in the earliest stages of one’s career must not be
+overlooked. Such expectations are significant enough that a lack of adherence to them
+can keep a singer from getting an audition or from consideration for casting. The mixing
+of repertoire from various Fächer, whether the roles be suitable for the singer or not, is
+perceived by many as a deficiency in training and preparation. Choosing repertoire for
+the earlier stages, then, is a delicate balance between vocal concerns (i.e. attention to the
+strengths and weaknesses of a specific singer and the vocal demands of each role) and
+adherence to the probable expectations of the casting directors who will hear the singer.
+This greatly limits the appropriate repertoire for the beginning stages of the career, and
+emphasizes the importance of finding those “fabulous five” arias with which to send a
+singer on the market.112
+The promise of advances in vocal science for a more accurate and less
+controversial means of voice classification is great, yet if the separation of Fach and
+actual classification is not recognized as such, the danger remains for the assignation of
+inappropriate repertoire. Boldrey and Clark have each offered possible solutions for this
+dilemma. Boldrey continues to treat Fach as voice classification, with vocal attributes as
+112
+
+The good news is that while at least three or four arias in this package must be predictable in
+their popularity for whichever Fach the singer is marketing him/herself, there is license to the young singer
+to include at least one comparatively obscure aria. For the lesser performed operas, there are
+correspondingly less rigid Fach expectations.
+
+80
+
+the main defining features of each category, but he is careful to emphasize that singers
+will actually fall into more than one category. Most importantly, he offers multiple
+listings of Fächer for roles, drawing attention to the Fach he deems most appropriate for
+vocal reasons. Unfortunately, Boldrey does not list the reasons for considering the other
+listings less appropriate, since those reasons would highlight the discrepancies between
+vocal descriptors of the Fach and the vocal demands of the role. Clark, on the other
+hand, separates “voice” from Fach, clearly showing that they are not to be considered
+synonymous. One cannot blame Clark for avoiding the listing the secondary levels of
+classification under voice type (this would surely muddle the Fach listings and cause
+unnecessary confusion), but the limitation of voice categories to soprano and mezzosoprano goes against scientific evidence for the consideration of three main groupings of
+the female voice.
+Perhaps the single most important thing for a pedagogue to recognize about the
+Fach system is that it is in flux, bending to shifting socio-cultural tastes and
+expectations.113 The limitations this system places on a teacher in the selection of
+audition repertoire for his/her students is certainly frustrating, but the students must not
+have their chances at casting compromised by the will of the teacher (however noble it
+be) to assign repertoire without regard to the system. The way to fix the rigidity of the
+system is to call for a consideration of Fach and voice classification as two independent
+113
+
+When a shift takes place, for example, in the expectation of a heroic male voice from the high
+light voice to a lower, darker voice, the dilemma faced is that the music (i.e. the vocal demands) of any
+given hero role do not change. In other words, the collective expectation of the voice for the hero shifts,
+but the vocal demands of the heroic role in a given opera remain the same. In a situation like this, society
+begins to expect a shift from a lyric tenor to a dramatic tenor. If the tessitura was appropriate for the lyric
+tenor, this shift will likely mean that dramatic tenors are going to have to sing for sustained periods in a
+tessitura that is uncomfortably high.
+
+81
+
+means of categorization. If voice classification comes to be understood as a
+physiological fact or instrument type, and Fach is recognized as a grouping of roles that
+share either vocal or character traits, it should eventually be possible for singers to
+perform in more than one Fach. In other words, it would be possible to say, “she is a
+lyric soprano (one voice type) who specializes in soubrette and French trouser roles (two
+Fächer).” A change in the terminology of the Fach system to more accurately represent
+the grouping criteria would greatly aid in solving the dilemma, yet that seems unlikely to
+occur in the foreseeable future. The education of singers and teachers as to the fluid
+nature of the Fach system vs. the physiologically-determined nature of voice
+classification, on the other hand, is a viable and achievable way out of the problem. In
+order for this to take place, the Fach system must be critically examined and discussed.
+Yet while advances in voice science continue to provide evidence for the physiological
+differences between voice types, Fach remains ingrained in a more obscure state due to a
+lack of literature looking critically at the system. The tables above charting recent
+casting shifts are only one model for such critical and analytic investigations.
+Voice teachers and coaches alike continue to articulate their frustration with
+repertoire assignation and the Fach system, particularly when the arias and roles they
+most want to assign a student are not currently considered appropriate for that singer’s
+Fach. This dilemma continually presents itself: does one assign a student the aria that
+he/she will sing best and run the risk of disturbing the casting director’s sense of Fach?
+Often this frustration leads to questions concerning the responsibilities of the directors.
+Yet part of what makes the relationship between the voice teacher and singer so special is
+
+82
+
+its very unique and intense level of trust. The voice teacher has to be awarded a
+tremendous amount of trust in order for successful training to take place. The singer
+trusts that the teacher is not only good enough at what he/she does to lead the singer in
+the right direction, but also that the primary concern on the part of the teacher is the
+health and longevity of the singer. The casting director may indeed care about the
+singer’s future, but one cannot expect a director’s primary concern to be the health and
+longevity of every singer he/she hears. Nor ought we expect casting directors to have
+enough training in anatomy and physiology to be able to engage with the questions of
+role assignation in the same manner as vocal pedagogues. In the end, the responsibility is
+with the voice teacher. The teacher must take this additional care when selecting
+repertoire for his/her student, and the teacher must educate the singer about the
+differences between voice classification and Fach. Though Fach and voice type seem
+synonymous to many today, we, as vocal pedagogues, can and must create a critical
+discussion that will result in the more accurate education of the singers and teachers of
+future generations.
+
+83
+
+BIBLIOGRAPHY
+
+Agricola, Johann Friedrich. Introduction to the Art of Singing, translated by Julianne C.
+Baird. Cabridge: Cambridge University Press, 1995.
+Amalie, Anna Abert and Thomas Bauman, “Hiller, Johann Adam,” Grove Music Online,
+ed. Laura Macy, http://www.grovemusic.com (Accessed April 10, 2006).
+András Batta, editor-in-chief, Sigrid Neef, editor, ed. Opera; composers, works,
+performers. Cologne, Germany: Könemann Verlagsgesellschaft mbH, 2000.
+Bagnoli, Giorgio, ed. The La Scala Encyclopedia of the Opera; A Complete Reference
+Guide 1597 to the Present with over 500 Illustrations. New York: Simon &
+Schuster, 1993.
+Boldrey, Richard. Guide to Operatic Roles & Arias. Dallas, TX: Pst. Inc., 1994.
+Borchard, Beatrix. “Pauline Viardot,” Grove Music Online, ed. Laura Macy.
+http://www.grovemusic.com (Accessed April 28, 2006).
+Buelow, George J. “A Lesson in Operatic Performance by Madame Faustina Bordoni.” In
+A Musical Offering; Essays in Honor of Martin Bernstein, edited by Edward H.
+Clinkscale and Claire Brook. New York: Pendragon Press, 1977.
+Bunch, Meribeth. Dynamics of the Singing Voice, 4th ed. Vienna: Springer Verlag, 1997.
+Clark, Mark Ross. Guide to the Aria Repertoire. Bloomington, IN: Indiana University
+Press, 2007.
+Coffin, Berton. Coffin’s Sound of Singing; Principles and Applications of Vocal
+Techniques with Chromatic Vowel Chart, 2nd ed. Lanham, MD: The Scarecrow
+Press, 2002.
+Croll, Gerhard. “Tesi, Vittoria,” Grove Music Online, ed. Laura Macy.
+http://www.grovemusic.com (Accessed April 10, 2006).
+Davis, Peter G. The American Opera Singer; The Lives and Adventures of America’s
+Great Singers in Opera and Concert, from 1825 to the Present. New York:
+Doubleday, 1997.
+
+84
+
+Dean, Winton and Carlo Vitale. “Francesca Cuzzoni,” Grove Music Online, ed. Laura
+Macy. http://www.grovemusic.com (Accessed April 23, 2006).
+Doscher, Barbara M. The Functional Unity of the Singing Voice, 2nd ed. Metuchen, NJ:
+The Scarecrow Press, Inc., 1994.
+Elliott, Martha. Singing in Style; A guide to Vocal Performance Practices. London: Yale
+University Press, 2006.
+Fitzlyon, April. “Garcia, Manuel,” Grove Music Online, ed. Laura Macy.
+http://www.grovemusic.com (Accessed April 10, 2006).
+________. “Pauline Viardot,” Grove Music Online (Opera), ed. Laura Macy.
+http://www.grovemusic.com (Accessed April 28, 2006).
+Garcia, Manuel. École de Garcia: traité complet de l’art du chant en deux parties. Paris:
+Manuel Garcia, 1847. Reprint, Geneva: Minkoff Editeur, 1985.
+Gounod, Charles. Faust; Opera in Four Acts. Milwaukee, WI: G. Schirmer, Inc., n.d.
+________. Faust; Grand Opera in Five Acts with French and English Text. New York:
+Mapelson Music Publications, n.d.
+_________. Romeo and Juliet; Opera in Five Acts. Milwaukee, WI: G. Schirmer, Inc.,
+n.d.
+Händel, Georg Friederich. Ariodante; Opera in Tre Atti. Hallische Händel-Ausgabe;
+Kritische Gesamtausgabe; Herausgegeben von der Georg-Friederich-HändelGesellschaft; Serie II: Opern; Band 32. Kassel: Bärenreiter, 1960.
+________. Giulio Cesare; Opera in Tre Atti. Hallische Händel-Ausgabe; Kritische
+Gesamtausgabe; Herausgegeben von der Georg-Friederich-Händel-Gesellschaft;
+Serie II: Opern; Band 14. Kassel: Bärenreiter, 1962.
+________. Orlando; Opera Seria in Tre Ati. Hallische Händel-Ausgabe; Kritische
+Gesamtausgabe; Herausgegeben von der Georg-Friederich-Händel-Gesellschaft;
+Serie II: Opern; Band 28. Kassel: Bärenreiter, 1969.
+________. Rinaldo; Opera Seria in Tre Atti. Hallische Händel-Ausgabe; Kritische
+Gesamtausgabe; Herausgegeben von der Georg-Friederich-Händel-Gesellschaft;
+Serie II: Opern; Band 4.2. Kassel: Bärenreiter, 1996.
+
+85
+
+________. Serse; Opera in Tre Atti. Hallische Händel-Ausgabe; Kritische
+Gesamtausgabe; Herausgegeben von der Georg-Friederich-Händel-Gesellschaft;
+Serie II: Opern; Band 39. Kassel: Bärenreiter, 2003.
+Hiller, Johann Adam. Anweisung zum musikalisch-zierlichen Gesange. Leipzig: Johann
+Friedrich Junius, 1780. Reprint, Leipzig: Edition Peters, 1976.
+Humperdinck, Engelbert. Hänsel und Gretel; Märchenspiel. Mainz: Ernst Eulenberg Ltd,
+1982.
+Jander, Owen. “Mezzo-Soprano; Terminology, Early Usage, Voice Types,” Grove Music
+Online, ed. Laura Macy, http://www.grovemusic.com (Accessed April 10, 2006).
+Kloiber, Rudolf. dtv Handbuch der Oper; Band 2 Puccini-Zimmermann. Kassel:
+Bärenreiter Verlag, 8th edition, 1973.
+________. 11th edition, 2006.
+Lawrence, Van and Bernd Weinberg, editors. Transcripts of the Eight Symposium; Care
+of the Professional Voice; Part I: Physical Factors in Voice, Vibrato, Registers;
+June 1979. New York: The Voice Foundation, 1980.
+Mancini, Giovanni Battista. Practical Reflections on Figured Singing. Eduard Foreman,
+trans. Champaign, Illinois: Pro Musica Press, 1967.
+Manén, Lucie. Bel Canto; The Teaching of the Classical Italian Song-Schools, its
+Decline and Restoration. New York: Oxford University Press, 1987.
+Massenet, Jules. Werther; An Opera in 4 Acts. Kalmus Orchestra Library. New York:
+Edwin F. Kalmus & Co., Inc., n.d.
+McKinney, James C. The Diagnosis and Correction of Vocal Faults. Nashville: Genevox
+Music Group, 1994.
+Meyerbeer, Giacamo. Les Huguenots. Early Romantic Opera; Bellini, Rossini,
+Meyerbeer, Donizetti & Grand Opera in Paris. Edited with introductions by Philip
+Gossett & Charles Rosen. New York: Garland Publishing, Inc., 1980.
+Michels, Ulrich, ed. Dtv-altas zur Musik. Munich, Germany: Deutscher Taschenbuch
+Verlag GmbH & Co. KG, 1977.
+Miller, Donald. Registers in Singing; Empirical and Systematic Studies in the Theory of
+the Singing Voice. Dissertation. Rijksuniversiteit Groningen. 2000.
+
+86
+
+Miller, Richard. Training Soprano Voices. New York: Oxford University Press, 2000.
+________. National Schools of Singing; English, French, German and Italian Techniques
+of Singing Revisited. Lanham, Md: Scarecrow Press, 1997.
+________. On the Art of Singing. New York: Oxford University Press, 1996.
+________. The Structure of Singing; The Technique and the Art. New York: Schirmer
+Books, 1986.
+Mozart, Wolfgang Amadeus. Cosí fan tutte. Die Sieben großen Opern; ed. Internationale
+Stiftung Mozarteum Salzburg. Kassel: Bärenreiter Verlag Karl Vötterle GmbH &
+Co., 2005.
+________. Don Giovanni. Neue Ausgabe sämtlicher Werke; Serie II: Bühnenwerke;
+Werkgruppe 5: Opern und Singspiele; Band 17: Il Dissoluto Punito Ossia il Don
+Giovanni. Kassel: Bärenreiter Verlag, 1968.
+________. Idomeneo. Die Sieben großen Opern; ed. Internationale Stiftung Mozarteum
+Salzburg. Kassel: Bärenreiter Verlag Karl Vötterle GmbH & Co., 2005.
+________. La Clemenza di Tito. Die Sieben großen Opern; ed. Internationale Stiftung
+Mozarteum Salzburg. Kassel: Bärenreiter Verlag Karl Vötterle GmbH & Co.,
+2005.
+________. Le nozze di Figaro (The Marriage of Figaro); An Opera in Four Acts;
+Libretto by Lorenzo da Ponte. Milwaukee, WI: G. Schirmer, Inc., 1951.
+________. Le nozze di Figaro. Die Sieben großen Opern; ed. Internationale Stiftung
+Mozarteum Salzburg. Kassel: Bärenreiter Verlag Karl Vötterle GmbH & Co.,
+2005.
+Parker, Roger, ed. 1994. The Oxford Illustrated History of Opera. New York: Oxford
+University Press.
+Raeburn, Christopher. “Dorothea Bussani,” Grove Music Online, ed. Laura Macy.
+http://www.grovemusic.com (Accessed April 10, 2006).
+Rossini, Gioachino. La Cenerentola; Ossia la Bontá in Trofino; Dramm Giocoso in Due
+Atti. Erdizione Critica delle Opere di Gioachino Rossini; Sezzione Prima: Opere
+Teatrali; vol. 20. Milano: Fondazione Rossini Pesaro, 1998.
+
+87
+
+________. Il Barbiere di Siviglia; Melodramma buffo in due atti di Cesare Sterbini dalla
+commedia omonima di Perre-Augustin Caron de Beaumarchais; Edizione critica
+a cura di Alberto Zedda. Milano: G. Ricordi & C. s.p.a., 1969.
+Saint-Saëns, Charles Camille. Samson et Dalila; in Full Score. New York: Dover
+publications, Inc., 1988.
+Sanford, Sally Annis. Seventeenth and Eighteenth Century Vocal Style and Technique.
+Dissertation. Stanford University, 1979.
+Steane, J.B. “Fach,” Grove Music Online, ed. Laura Macy. http://www.grovemusic.com
+(Accessed November 30, 2006).
+Stowell, Colin Lawson and Robin. The Historical Performance of Music; an
+Introduction. Cambridge Handbooks to the Historical Performance of Music.
+Cambridge, UK: Cambridge University Press, 1999.
+Strahle, Graham. An Early Music Dictionary; Musical Terms from British Sources, 15001740. New York: Cambridge University Press, 1995.
+Strohm, Reinhard. Die italiänische Oper im 18. Jahrhundert. Wilhelmshaven:
+Heinrichshofen’s Verlag, 1979.
+Titze, Ingo R. Principles of Voice Production. Iowa City, Iowa: National Center for
+Voice Studies, 2000.
+Warrack, John and Ewan West. “Fach,” Oxford Reference Online. Oxford University
+Press, 1996. Duke University. 30 November 2006
+<http://www.oxfordreference.com>
+
+88

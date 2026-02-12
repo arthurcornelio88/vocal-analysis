@@ -1,0 +1,100 @@
+A Comparative Study of Glottal Source Estimation
+Techniques
+
+arXiv:2001.00840v1 [cs.SD] 28 Dec 2019
+
+Thomas Drugmana , Baris Bozkurtb , Thierry Dutoita
+a
+
+b
+
+TCTS Lab, University of Mons, 31 Boulevard Dolez, 7000 Mons, Belgium
+Department of Electrical & Electronics Engineering, Izmir Institute of Technology,
+Gulbahce Koyu 35430, Urla, Izmir, Turkey
+
+Abstract
+Source-tract decomposition (or glottal flow estimation) is one of the basic problems of speech processing. For this, several techniques have been
+proposed in the literature. However studies comparing different approaches
+are almost nonexistent. Besides, experiments have been systematically performed either on synthetic speech or on sustained vowels. In this study we
+compare three of the main representative state-of-the-art methods of glottal
+flow estimation: closed-phase inverse filtering, iterative and adaptive inverse
+filtering, and mixed-phase decomposition. These techniques are first submitted to an objective assessment test on synthetic speech signals. Their
+sensitivity to various factors affecting the estimation quality, as well as their
+robustness to noise are studied. In a second experiment, their ability to label voice quality (tensed, modal, soft) is studied on a large corpus of real
+connected speech. It is shown that changes of voice quality are reflected by
+significant modifications in glottal feature distributions. Techniques based
+on the mixed-phase decomposition and on a closed-phase inverse filtering
+process turn out to give the best results on both clean synthetic and real
+speech signals. On the other hand, iterative and adaptive inverse filtering is
+recommended in noisy environments for its high robustness.
+Keywords:
+Source-tract Separation, Glottal Flow Estimation, Inverse Filtering,
+Mixed-Phase Decomposition, Voice Quality
+
+Preprint submitted to Computer Speech and Language
+
+January 6, 2020
+
+1. Introduction
+Speech results from filtering the glottal flow by the vocal tract cavities,
+and converting the resulting velocity flow into pressure at the lips (Quatieri,
+2002). In many speech processing applications, it is important to separate the
+contributions from the glottis and the vocal tract. Achieving such a sourcefilter deconvolution could lead to a distinct characterization and modeling of
+these two components, as well as to a better understanding of the human
+phonation process. Such a decomposition is thus a preliminary condition
+for the study of glottal-based vocal effects, which can be segmental (as for
+vocal fry), or be controlled by speakers on a separate, supra-segmental layer
+(as it is the case for the voice quality modifications mentioned in Section
+5). Their dynamics is very different from that of the vocal tract contribution, and requires further investigation. Glottal source estimation is then
+a fundamental problem in speech processing, finding applications in speech
+synthesis (Cabral et al., 2008), voice pathology detection (Drugman et al.,
+2009b), speaker recognition (Plumpe et al., 1999), emotion analysis/synthesis
+(Airas and Alku, 2006), etc.
+In this paper, we limit our scope to the methods which perform an estimation of the glottal source contribution directly from the speech waveform.
+Although some devices such as electroglottographs or laryngographs, which
+measure the impedance between the vocal folds (but not the glottal flow itself), are informative about the glottal behaviour (Henrich et al., 2004), in
+most cases the use of such aparatus is inconvenient and only the speech signal
+is available for analysis. This problem is then a typical case of blind separation, since neither the vocal tract nor the glottal contribution are observable.
+This also implies that no quantitative assessment of the performance of glottal source estimation techniques is possible on natural speech, as no target
+reference signal is available.
+As one of the basic problems and challenges of speech processing research,
+glottal flow estimation has been studied by many researchers and various
+techniques are available in the literature (Walker and Murphy, 2007). However the diversity of algorithms and the fact that the reference for the actual
+glottal flow is not available often leads to the questionability about relative
+effectiveness of the methods in real life applications. In most of studies,
+tests are performed either on synthetic speech or on a few recorded sustained
+vowels. In addition, very few comparative studies exist (such as (Sturmel
+et al., 2007)). In this paper, we compare three of the main representative
+2
+
+state-of-the-art methods: closed-phase inverse filtering, iterative and adaptive inverse filtering, and mixed-phase decomposition. For testing, we first
+follow the common approach of using a large set of synthetic speech signals
+(by varying synthesis parameters independently), and then we examine how
+these techniques perform on a large real speech corpus. In the synthetic
+speech tests, the original glottal flow is available, so that objective measures
+of decomposition quality can be computed. In real speech tests the ability of
+the methods to discriminate different voice qualities (tensed, modal and soft)
+is studied on a large database (without limiting data to sustained vowels).
+The paper is structured as follows. In Section 2 the main state-of-the-art
+methods for glottal source estimation are reviewed, and the three techniques
+compared in this study are detailed. Section 3 discusses how the resulting
+glottal signal can be parametrized both in time and frequency domains. The
+three methods are evaluted in Section 4 through a wide systematic study
+on synthetic signals. Their robustness to noise, as well as the impact of
+the various factors that may affect source-tract separation, are investigated.
+Section 5 presents decomposition results on a real speech database containing
+various voice qualities, and shows that the glottal source estimated by the
+techniques considered in this work conveys relevant information about the
+phonation type. Finally Section 6 draws the conclusions of this study.
+2. Glottal Source Estimation
+Glottal flow estimation mainly refers to the estimation of the voiced excitation of the vocal tract. During the production of voiced sounds, the airflow
+arising from the trachea causes a quasi-periodic vibration of the vocal folds
+(Quatieri, 2002), organized into so-called opening/closure cycles. During the
+open phase, vocal folds are progressively displaced from their initial state due
+to the increasing subglottal pressure. When the elastic displacement limit
+is reached, they suddenly return to this position during the so-called return
+phase. Figure 1 displays the typical shape of one cycle of the glottal flow
+(Fig.1(a)) and its time derivative (Fig.1(b)) according to the LiljencrantsFant (LF) model (Fant et al., 1985). It is often prefered to gather the lip
+radiation effect (whose action is close to a differentiation operator) with the
+glottal component, and work in this way with the glottal flow derivative on
+the one hand, and with the vocal tract contribution on the other hand. It is

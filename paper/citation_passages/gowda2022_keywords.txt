@@ -1,0 +1,73 @@
+=== Recherche de mots-clés pour gowda2022 ===
+--- abstract ---
+Academy of Finland (Project No. 313390).
+
+ABSTRACT Formant tracking is investigated in this study by using trackers based on dynamic programming (DP) and deep neural nets (DNNs). Using the DP approach, six formant estimation methods were
+first compared. The six methods include linear prediction (LP) algorithms, weighted LP algorithms and
+the recently developed quasi-closed phase forward-backward (QCP-FB) method. QCP-FB gave the best
+
+--- introduction ---
+net.
+
+I. INTRODUCTION
+
+of VTRs is an important and necessary computational block.
+
+--- conclusion ---
+in the study are described in section III. The results of the
+formant tracking experiments are reported in section IV.
+Finally, conclusions are drawn in section V.
+II. QUASI-CLOSED PHASE FORWARD-BACKWARD
+ANALYSIS
+--
+it can be clearly seen that DNN-QCP-FBCOV is better than
+KARMA in tracking all the formants.
+V. CONCLUSIONS
+
+Formant tracking was studied in this paper based on the
+
+--- method ---
+Academy of Finland (Project No. 313390).
+
+ABSTRACT Formant tracking is investigated in this study by using trackers based on dynamic programming (DP) and deep neural nets (DNNs). Using the DP approach, six formant estimation methods were
+first compared. The six methods include linear prediction (LP) algorithms, weighted LP algorithms and
+the recently developed quasi-closed phase forward-backward (QCP-FB) method. QCP-FB gave the best
+performance in the comparison. Therefore, a novel formant tracking approach, which combines benefits
+of deep learning and signal processing based on QCP-FB, was proposed. In this approach, the formants
+--
+estimation stage and the tracking stage. In the former, initial
+estimates of the vocal tract resonances (VTRs) are computed
+in short frames (e.g., 25 ms) using spectral estimation methods such as linear prediction (LP). In the latter, the formants estimated from individual frames are expressed using
+contours which cover a longer unit (e.g., word or sentence)
+[7], [8]. In addition, estimation and tracking can be done
+--
+been proposed (e.g. [12], [13]). In formant estimation and
+tracking, the most popular variants are the autocorrelation
+and covariance methods [7], [8]. The closed phase (CP)
+analysis is known to improve VTR estimates by avoiding
+the contribution of the speech samples in the open phase of
+--
+
+--- result ---
+of deep learning and signal processing based on QCP-FB, was proposed. In this approach, the formants
+predicted by a DNN-based tracker from a speech frame are refined using the peaks of the all-pole spectrum
+computed by QCP-FB from the same frame. Results show that the proposed DNN-based tracker performed
+better both in detection rate and estimation error for the lowest three formants compared to reference formant
+trackers. Compared to the popular Wavesurfer, for example, the proposed tracker gave a reduction of 29%,
+--
+recently in [21], is first described in section II. The other
+formant estimation methods and the formant trackers used
+in the study are described in section III. The results of the
+formant tracking experiments are reported in section IV.
+Finally, conclusions are drawn in section V.
+--
+denotes the current speech sample, and ak denotes the prediction coefficients. The prediction coefficients can be computed
+by minimizing the combined error (∂E/∂ai = 0, 1 ≤ i ≤
+p) which results in the following normal equations
+p
+X
+--
+involves the use of FB analysis within the framework of
+QCP in order to combine the benefits of both techniques.
+
+--- discussion ---

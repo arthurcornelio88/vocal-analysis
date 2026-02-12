@@ -1,0 +1,100 @@
+Physiological and acoustic characteristics of the female music
+theater voice
+Tracy Bourne
+University of Ballarat, Arts Academy, Ballarat, Victoria 3353, Australia
+
+Maëva Garniera)
+School of Physics, University of New South Wales, Sydney, New South Wales 2052, Australia
+
+(Received 7 January 2011; revised 8 December 2011; accepted 8 December 2011)
+Three Music Theater vocal qualities (“chesty belt,” “twangy belt,” and “legit”) were investigated in
+female singers at their overlap range, between F#4-D5 (370-600 Hz). Six experienced Music
+Theater singers performed each quality on two different vowels ([e], [O]). Audio and electroglottographic (EGG) signals were recorded as well as the vocal tract impedance. In chesty belt and
+twangy belt, singers systematically tuned the frequency of their first vocal tract resonance (R1) to
+the second harmonic (2f0) up to C5. R1 remained lower in frequency for the legit quality. No tuning
+of the second vocal tract resonance (R2) was observed in any of these qualities although R2
+frequency was significantly higher in both belt qualities than in legit. Closed quotient, degree of
+symmetry of the EGG waveform, sound pressure level (SPL) and the energy of the spectrum above
+1 kHz were significantly greater in chesty belt than in legit but not significantly different between
+chesty belt and twangy belt qualities. A fourth quality (“mix”) was explored in three singers. Different production strategies were observed for each singer, with values of spectral, glottal and vocal
+tract descriptors found in between those measured for legit and chesty belt qualities.
+C
+V 2012 Acoustical Society of America. [DOI: 10.1121/1.3675010]
+Pages: 1586–1594
+
+I. INTRODUCTION
+
+Female professional Music Theater singers are expected
+to master the vocal qualities: belt, legit, and mix. These
+terms are commonly used by expert teachers (Bourne and
+Kenny, 2008; Bourne et al., 2010) and within the Music Theater profession, although they are not yet well defined from a
+physiological and acoustic point of view. This study aims to
+provide objective measurements to characterize and compare
+the laryngeal behavior, the vocal tract adjustment and spectral features of these Music Theater qualities.
+Most research on the acoustics of the singing voice has
+focused on classical and operatic singing. However, there have
+been some recent studies of nonclassical styles (country, pop,
+Broadway, Music Theater, R&B, jazz, rock, and blues),
+increasingly referred to as contemporary commercial music
+(CCM) vocal styles (Lovetri, 2008). CCM singing styles can be
+distinguished from classical singing by the regular use of
+amplification, a greater emphasis on lyrics and textual comprehension by the audience, and frequent employment of the voice
+quality described as “belt” (Lovetri, 2002; AATS, 2008).
+Perceptually, belt has been described as a projected
+sound with “brightness,” “ring,” and “forward,” speech-like
+vowels (Stanley, 1929; Osborne, 1979; Estill, 1980; Edwin,
+2004; AATS, 2008; LeBorgne et al., 2010) in contrast to the
+“covered” sound and “back” vowels of the classical voice.
+
+a)
+
+Author to whom correspondence should be addressed. Also at: Department
+of Speech and Cognition, GIPSA-lab (UMR 5216 CNRS/Grenoble INP/
+UJF/U. Stendhal), 961 rue de la houille blanche, BP 46, 38402 Grenoble
+Cedex, France. Electronic mail: maeva.garnier@gipsa-lab.grenoble-inp.fr
+
+1586
+
+J. Acoust. Soc. Am. 131 (2), February 2012
+
+However, the genre of CCM is broad, and the term belt
+actually relates to a range of different sounds (Lovetri, 2002;
+Popeil, 2007). In fact, there is considerable disagreement
+among CCM experts about the distinctive features of belt,
+some arguing that belt is not always loud (Edwin, 2002;
+Popeil, 2007; LeBorgne et al., 2010), that belt has no vibrato
+(Estill, 1980; Miles and Hollien, 1990), or that the degree of
+vibrato may be a stylistic choice (Bourne and Kenny, 2008;
+LeBorgne et al., 2010), that belt is intrinsically a nasal quality (Miles and Hollien, 1990) or not (Bourne and Kenny,
+2008; LeBorgne et al., 2010).
+Acoustically, the belt quality has shown increased
+energy in the high frequencies of the spectrum (Bestebreurtje
+and Schutte, 2000; McCoy, 2007) and higher first formant
+frequencies (F1) compared to classical singing (Sundberg
+et al., 1993). Proximity between F1 and the second voice
+harmonic (2f0) has been reported on [a] and [O] vowels in a
+female Music Theater singer (Schutte and Miller, 1993),
+suggesting that belters may tune the first vocal tract resonance (R1)1 to the second voice harmonic (2f0). Such tuning
+has been observed over the same range in Bulgarian singing
+(Henrich et al., 2007), a musical style that shares some similarities in timbre with the female belt sound.
+Physiologically, the belt quality has been characterized
+by higher values of the laryngeal closed quotient and higher
+levels of subglottal pressure than for classical singing (Estill,
+1980; Sundberg et al., 1993; Bjorkner et al., 2006; Barlow
+and Lovetri, 2010), supporting the argument by some singing
+teachers that female belt is produced by raising the transition
+pitch from ‘chest register” to “head register” by up to an
+octave (Schutte and Miller, 1993; Bestebreurtje and Schutte,
+
+0001-4966/2012/131(2)/1586/9/$30.00
+
+C
+V
+
+2012 Acoustical Society of America
+
+Author's complimentary copy
+
+PACS number(s): 43.75.Rs [SSN]
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012

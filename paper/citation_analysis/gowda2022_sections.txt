@@ -1,0 +1,31 @@
+V. CONCLUSIONS
+
+Formant tracking was studied in this paper based on the
+widely used two-stage approach consisting of the estimation
+stage and the tracking stage. In the former, six different
+all-pole modeling methods were first compared with a DPbased tracker. In addition, five known formant trackers were
+used as references. Two most potential all-pole modeling
+methods (LP-FBCOV and QCP-FBCOV) were then used
+with a modern DNN-based tracker by proposing a novel
+formant tracking technique which combines benefits of datadriven and model-driven approaches: the formants predicted
+with the data-driven DNN were refined using the frequencies
+of the peaks in the all-pole spectra computed by the modeldriven LP-FBCOV and QCP-FBCOV methods.
+The DNN-based formant trackers using the LP-FBCOV
+and QCP-FBCOV refinement were further compared to two
+conventional formant trackers (Wavesurfer and KARMA)
+and to one recently published DNN-based tracker (Deep
+Formants). With the QCP-FBCOV refinement, the DNNbased tracker outperformed the conventional reference formant trackers in all metrics. Compared to Deep Formants,
+the proposed DNN-tracker gave better performance in all
+other metrics except for FDR and FEE in F3 where Deep
+Formants was just slightly better. In addition to these encouraging objective results, it is worth emphasising that the
+proposed QCP-FBCOV refinement technique can be used in
+principle to improve the performance of any existing DNN6
+
+based formant tracker which has been trained to map a speech
+signal frame into formants, that is, there is no need to re-train
+the DNN-based tracker used. However, it should be noted that
+the performance of the proposed method might depend on
+the accuracy of the estimated glottal closure instants, which
+are needed to generate the QCP weighting function [19].
+Therefore, the robustness of the proposed method in various
+================================================================================

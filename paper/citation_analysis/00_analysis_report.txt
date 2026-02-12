@@ -1,0 +1,911 @@
+=== Rapport d'analyse des citations ===
+Date: Wed Feb 11 19:50:12 CET 2026
+Nombre de citations: 33
+
+=== alku2023 ===
+Ligne 119:
+vocal register classification accuracy exceeding 97\% in controlled
+settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC) enable robust formant tracking even in high-pitched
+voices.\cite{alku2023,gowda2022} These tools, combined with neural source separation
+models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
+now enable rigorous biomechanical analysis of singing in genres that were previously
+inaccessible to computational methods.
+
+Premières lignes (100 lignes):
+Refining a Deep Learning-based Formant Tracker using Linear
+Prediction Methods
+Paavo Alku1 , Sudarsana Reddy Kadiri1 , Dhananjaya Gowda2
+
+arXiv:2308.09051v1 [eess.AS] 17 Aug 2023
+
+1
+
+Department of Information and Communications Engineering, Aalto University, Finland
+2
+...
+
+=== behlau1988 ===
+Ligne 690:
+\emph{Brasileirinho}, where syllabic rates exceed 5 syllables per second, the
+formant structure maintains its speech-like configuration. This suggests a vocal
+technique specifically optimized for textual intelligibility---a competency that
+Behlau and Ziemer\cite{behlau1988} identify as essential for Brazilian popular
+singing but that has no equivalent criterion in the \emph{Fach} system.
+
+The stable $F_3$ and $F_4$ ranges (2,798~Hz and 3,802~Hz) indicate some degree of
+
+⚠ Fichier texte non trouvé
+
+=== boersma2023 ===
+Ligne 315:
+Choro recordings.
+
+\paragraph{Vocal quality features.}
+Using Praat via Parselmouth,\cite{boersma2023} we extracted: Harmonicity-to-Noise
+Ratio (HNR), Cepstral Peak Prominence Smoothed (CPPS),\cite{maryn2015} Jitter
+(ppq5), and Shimmer (apq11).\cite{teixeira2013} Formants $F_1$--$F_4$ were extracted via
+Burg Linear Predictive Coding (5 formants, maximum formant 5,500~Hz). RMS spectral
+
+⚠ Fichier texte non trouvé
+
+=== boratto2025 ===
+Ligne 117:
+Recent advances in machine learning have opened new possibilities for objective
+vocal analysis. XGBoost algorithms optimized by Differential Evolution have achieved
+vocal register classification accuracy exceeding 97\% in controlled
+settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC) enable robust formant tracking even in high-pitched
+voices.\cite{alku2023,gowda2022} These tools, combined with neural source separation
+models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
+
+Ligne 138:
+This study fills a gap in the literature by providing the first computational
+bioacoustic analysis of Brazilian Choro singing. While recent work has applied
+machine learning to vocal register classification in contemporary pop
+music,\cite{kim2025} controlled singing experiments,\cite{boratto2025} and singing voice
+mode classification,\cite{sol2023} no
+previous study has addressed the specific acoustic challenges of historical Choro
+recordings or the theoretical implications for \emph{Fach} critique in vernacular
+
+Ligne 885:
+classification.\cite{henrich2004} Third, the VMI weights---currently
+heuristic---should be optimized via supervised learning using EGG-validated labels,
+potentially through the evolutionary parameter tuning approach demonstrated by
+Boratto et al.\cite{boratto2025} Fourth, model stability should be evaluated across
+multiple random seeds, with mean $\pm$ standard deviation of classification metrics
+reported per current best practices.\cite{ghasemzadeh2023,gupta2024} Fifth, the
+pipeline should be applied to other microphone-dependent genres---MPB, fado, vocal
+
+Premières lignes (100 lignes):
+Article
+
+Machine Learning with Evolutionary Parameter Tuning for
+Singing Registers Classification
+Tales Boratto 1 , Gabriel de Oliveira Costa 2 , Alexsandro Meireles 3 , Anna Klara Sá Teles Rocha Alves 4 ,
+Camila M. Saporetti 5 , Matteo Bodini 6, * , Alexandre Cury 7 and Leonardo Goliatt 7
+1
+
+2
+
+...
+
+=== bourne2012 ===
+Ligne 168:
+spectra, where energy naturally decays in high frequencies. The ``brightness'' and
+``projection'' that define operatic \emph{Fach} categories are neither sought nor
+valued. Classifying a Choro voice by its natural acoustic ``weight'' ignores the
+electroacoustic reality inherent to the genre.\cite{bourne2012}
+
+Beyond the acoustic projection fallacy, the \emph{Fach} system imposes rigid
+tessitura limits and fixed \emph{passaggio} zones. In practice, popular music
+
+Ligne 175:
+singers operate in a flexible ``mixing zone,'' using vocal tract adjustments to
+produce chest voice ``belting'' or to bring head voice qualities to lower registers,
+subverting the fixed transitions assumed by \emph{Fach}
+classification.\cite{bourne2012} This flexibility is particularly pronounced in
+Choro, where singers must navigate rapid ornamental passages that cross register
+boundaries within a single phrase.
+
+
+Premières lignes (100 lignes):
+Physiological and acoustic characteristics of the female music
+theater voice
+Tracy Bourne
+University of Ballarat, Arts Academy, Ballarat, Victoria 3353, Australia
+
+Maëva Garniera)
+School of Physics, University of New South Wales, Sydney, New South Wales 2052, Australia
+
+(Received 7 January 2011; revised 8 December 2011; accepted 8 December 2011)
+Three Music Theater vocal qualities (“chesty belt,” “twangy belt,” and “legit”) were investigated in
+...
+
+=== bozeman2013 ===
+Ligne 243:
+vocal tract adjustments at the \emph{passaggio}---for instance, opening the jaw
+wider to raise $F_1$ and maintain it above $f_0$ (\emph{vowel tuning} or \emph{formant
+tuning})---to achieve seamless transitions between mechanisms without perceptible
+breaks.\cite{bozeman2013,sundberg1987} This biomechanical flexibility is precisely
+what the \emph{Fach} system's rigid categories fail to accommodate.
+
+%% ============================================================
+
+Ligne 777:
+with parameter adjustments: \texttt{fmin}/\texttt{fmax} for tessitura range (e.g.,
+50--400~Hz for operatic bass, 200--1200~Hz for soprano), HTDemucs for accompanied
+vs.\ \emph{a cappella} recordings, and the VMI threshold boundaries for
+tessitura-specific \emph{passaggio} zones.\cite{bozeman2013,sundberg1987}
+The spectral weights used in VMI (Alpha Ratio, $H_1$-$H_2$, Spectral Tilt) are
+tessitura-independent by construction, as they measure relative energy distribution
+and glottal behavior patterns rather than absolute frequency values. The same
+
+⚠ Fichier texte non trouvé
+
+=== chen2016 ===
+Ligne 376:
+initialized with \texttt{random\_state=42}.
+
+\paragraph{Method 3: XGBoost with pseudo-labels.}
+A supervised classifier\cite{chen2016} trained on GMM-generated pseudo-labels, an
+established technique in semi-supervised learning.\cite{lee2013,nigam2000} The model
+used nine features ($f_0$, HNR, RMS energy, pitch velocity, pitch acceleration, $F_1$--$F_4$)
+with hyperparameters: \texttt{n\_estimators=100}, \texttt{max\_depth=5},
+
+Premières lignes (100 lignes):
+XGBoost: A Scalable Tree Boosting System
+Tianqi Chen
+
+Carlos Guestrin
+
+University of Washington
+
+University of Washington
+
+arXiv:1603.02754v3 [cs.LG] 10 Jun 2016
+...
+
+=== cotton2007 ===
+Ligne 89:
+
+Despite these advances, the classification of singing voices in Western pedagogy
+remains dominated by the German \emph{Fach} system, a taxonomic framework developed
+in the 19th century for European opera.\cite{cotton2007,miller2000} The \emph{Fach}
+system categorizes voices based on tessitura, timbre, and the acoustic demands of
+operatic repertoire. While effective within its original context, this classification
+framework presents fundamental problems when applied to non-operatic genres,
+
+Ligne 189:
+rapid ornamentations---mordents, turns, glissandi, and portamenti---that define the
+genre's aesthetic identity.
+
+Cotton's doctoral research\cite{cotton2007} examined the historical fluidity and
+conflicting criteria of the \emph{Fach} system, demonstrating that even within its
+native operatic context, voice classification criteria remain contested among
+pedagogues and lack standardized application. When extended to genres with fundamentally different acoustic goals, these
+
+Premières lignes (100 lignes):
+COTTON, SANDRA, D.M.A. Voice Classification and Fach: Recent, Historical and
+Conflicting Systems of Voice Categorization. (2007)
+Directed by Dr. Nancy Walker. 88 pp.
+
+As developments in voice science continue to contribute to a collective body of
+knowledge concerning the physiological nature of voice classification, the possibility
+grows of a less-controversial means of assessing the voice type of a particular singer. A
+more thorough understanding of the importance of the physiological dimensions of the
+vocal instrument in pre-determining the potentials and limitations of any given
+instrument will doubtless lead to more accurate voice classification in the future. Yet the
+...
+
+=== defossez2021 ===
+Ligne 120:
+settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC) enable robust formant tracking even in high-pitched
+voices.\cite{alku2023,gowda2022} These tools, combined with neural source separation
+models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
+now enable rigorous biomechanical analysis of singing in genres that were previously
+inaccessible to computational methods.
+
+
+Premières lignes (100 lignes):
+Hybrid Spectrogram and Waveform Source Separation
+Alexandre Défossez1
+1 Facebook AI Research
+
+arXiv:2111.03600v3 [eess.AS] 30 Aug 2022
+
+License
+Authors of papers retain
+copyright and release the work
+under a Creative Commons
+...
+
+=== degottex2011 ===
+Ligne 339:
+may coincide with the first vocal tract resonance ($F_1$), contaminating the
+measurement.\cite{kreiman2012}
+
+\emph{Spectral Tilt}\cite{degottex2011,drugman2019}: the slope of the linear regression
+fitted to the power spectrum (log-frequency vs.\ amplitude in dB) in the 50--5,000~Hz
+range. Spectral tilt measures the rate at which vocal energy decays in high
+frequencies. In M1, rapid glottal closure creates discontinuities in airflow that
+
+Ligne 783:
+and glottal behavior patterns rather than absolute frequency values. The same
+spectral tilt indicating firm M1 closure in a bass at 120~Hz applies equally to a
+soprano at 500~Hz---the underlying physics of glottal closure is mechanism-dependent,
+not frequency-dependent.\cite{degottex2011,drugman2019}
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+Premières lignes (100 lignes):
+Glottal source and vocal-tract separation
+Gilles Degottex
+
+To cite this version:
+Gilles Degottex. Glottal source and vocal-tract separation. Signal and Image processing. Université
+Pierre et Marie Curie - Paris VI, 2010. English. �NNT : �. �tel-00554763v2�
+
+HAL Id: tel-00554763
+https://theses.hal.science/tel-00554763v2
+Submitted on 17 Nov 2011
+...
+
+=== drugman2019 ===
+Ligne 339:
+may coincide with the first vocal tract resonance ($F_1$), contaminating the
+measurement.\cite{kreiman2012}
+
+\emph{Spectral Tilt}\cite{degottex2011,drugman2019}: the slope of the linear regression
+fitted to the power spectrum (log-frequency vs.\ amplitude in dB) in the 50--5,000~Hz
+range. Spectral tilt measures the rate at which vocal energy decays in high
+frequencies. In M1, rapid glottal closure creates discontinuities in airflow that
+
+Ligne 783:
+and glottal behavior patterns rather than absolute frequency values. The same
+spectral tilt indicating firm M1 closure in a bass at 120~Hz applies equally to a
+soprano at 500~Hz---the underlying physics of glottal closure is mechanism-dependent,
+not frequency-dependent.\cite{degottex2011,drugman2019}
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+Premières lignes (100 lignes):
+A Comparative Study of Glottal Source Estimation
+Techniques
+
+arXiv:2001.00840v1 [cs.SD] 28 Dec 2019
+
+Thomas Drugmana , Baris Bozkurtb , Thierry Dutoita
+a
+
+b
+
+...
+
+=== ghasemzadeh2023 ===
+Ligne 384:
+(\texttt{random\_state=42}).
+
+We acknowledge that results are reported for a single random seed. Per the
+methodological recommendations of Ghasemzadeh et al.\cite{ghasemzadeh2023} and
+Gupta et al.,\cite{gupta2024} future work should evaluate performance across
+multiple seeds and report mean $\pm$ standard deviation. Additionally, as XGBoost is
+trained on GMM outputs rather than ground-truth labels, the reported metrics reflect
+
+Ligne 407:
+The complete analysis pipeline is implemented in Python 3.10+ and is publicly
+available as an open-source repository.\footnote{\url{https://github.com/arthurcornelio88/vocal-analysis}} Several measures ensure reproducibility in
+accordance with current best practices for machine learning in voice
+research:\cite{ghasemzadeh2023,gupta2024}
+
+\begin{enumerate}
+  \item \textbf{Deterministic computation:} All stochastic processes use fixed random
+
+Ligne 829:
+\paragraph{Single random seed.}
+Results for the GMM and XGBoost models are reported for a single random seed
+(\texttt{random\_state=42}). Per the recommendations of Ghasemzadeh et
+al.\cite{ghasemzadeh2023} and Gupta et al.,\cite{gupta2024} future work
+should evaluate model stability across multiple seeds and report mean $\pm$ standard
+deviation of evaluation metrics.
+
+
+Ligne 887:
+potentially through the evolutionary parameter tuning approach demonstrated by
+Boratto et al.\cite{boratto2025} Fourth, model stability should be evaluated across
+multiple random seeds, with mean $\pm$ standard deviation of classification metrics
+reported per current best practices.\cite{ghasemzadeh2023,gupta2024} Fifth, the
+pipeline should be applied to other microphone-dependent genres---MPB, fado, vocal
+jazz, sacred music---to assess the VMI's cross-genre portability.
+
+
+Premières lignes (100 lignes):
+Toward Generalizable Machine Learning Models in Speech, Language, and
+Hearing Sciences: Estimating Sample Size and Reducing Overfitting
+Hamzeh Ghasemzadeh a,b,c, Robert E. Hillman a,b,d,e, Daryush D. Mehta a,b,d,e
+a
+
+Center for Laryngeal Surgery and Voice Rehabilitation, Massachusetts General Hospital, Boston, MA, USA
+Department of Surgery, Harvard Medical School, Boston, MA, USA
+c
+Department of Communicative Sciences and Disorders, Michigan State University, East Lansing, MI, USA
+d
+...
+
+=== gowda2022 ===
+Ligne 119:
+vocal register classification accuracy exceeding 97\% in controlled
+settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC) enable robust formant tracking even in high-pitched
+voices.\cite{alku2023,gowda2022} These tools, combined with neural source separation
+models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
+now enable rigorous biomechanical analysis of singing in genres that were previously
+inaccessible to computational methods.
+
+Premières lignes (100 lignes):
+Date of publication November 8, 2021, date of current version November 16, 2021.
+Digital Object Identifier 10.1109/ACCESS.2021.3126280
+
+arXiv:2201.01525v1 [eess.AS] 5 Jan 2022
+
+Formant Tracking using Quasi-Closed
+Phase Forward-Backward Linear
+Prediction Analysis and Deep Neural
+Networks
+DHANANJAYA GOWDA *+ 1 , (Member, IEEE), BAJIBABU BOLLEPALLI*+ 2 , (Member, IEEE),
+...
+
+=== gupta2024 ===
+Ligne 385:
+
+We acknowledge that results are reported for a single random seed. Per the
+methodological recommendations of Ghasemzadeh et al.\cite{ghasemzadeh2023} and
+Gupta et al.,\cite{gupta2024} future work should evaluate performance across
+multiple seeds and report mean $\pm$ standard deviation. Additionally, as XGBoost is
+trained on GMM outputs rather than ground-truth labels, the reported metrics reflect
+cluster separability rather than physiological classification accuracy.
+
+Ligne 407:
+The complete analysis pipeline is implemented in Python 3.10+ and is publicly
+available as an open-source repository.\footnote{\url{https://github.com/arthurcornelio88/vocal-analysis}} Several measures ensure reproducibility in
+accordance with current best practices for machine learning in voice
+research:\cite{ghasemzadeh2023,gupta2024}
+
+\begin{enumerate}
+  \item \textbf{Deterministic computation:} All stochastic processes use fixed random
+
+Ligne 829:
+\paragraph{Single random seed.}
+Results for the GMM and XGBoost models are reported for a single random seed
+(\texttt{random\_state=42}). Per the recommendations of Ghasemzadeh et
+al.\cite{ghasemzadeh2023} and Gupta et al.,\cite{gupta2024} future work
+should evaluate model stability across multiple seeds and report mean $\pm$ standard
+deviation of evaluation metrics.
+
+
+Ligne 887:
+potentially through the evolutionary parameter tuning approach demonstrated by
+Boratto et al.\cite{boratto2025} Fourth, model stability should be evaluated across
+multiple random seeds, with mean $\pm$ standard deviation of classification metrics
+reported per current best practices.\cite{ghasemzadeh2023,gupta2024} Fifth, the
+pipeline should be applied to other microphone-dependent genres---MPB, fado, vocal
+jazz, sacred music---to assess the VMI's cross-genre portability.
+
+
+Premières lignes (100 lignes):
+Open access
+
+Protocol
+
+Voice disorder recognition using
+machine learning: a scoping
+review protocol
+Rijul Gupta ‍ ‍,1 Dhanshree R Gunjawate ‍ ‍,2 Duy Duong Nguyen ‍ ‍,2
+Craig Jin ‍ ‍,1 Catherine Madill ‍ ‍2
+
+...
+
+=== henrich2004 ===
+Ligne 217:
+    producing thick vocal fold vibration with high closed quotient. M1 generates
+    rich harmonic spectra with high spectral energy in low harmonics, increased
+    harmonic richness in high frequencies, and strong acoustic
+    projection.\cite{henrich2004}
+  \item[M2 (head voice/falsetto):] Operates under cricothyroid muscle tension with
+    reduced vibratory mass. M2 produces lower overall amplitude, energy concentrated
+    in high harmonics, and characteristic phase transitions at register
+
+Ligne 229:
+Critically, the M1/M2 overlap zone---spanning approximately one octave in vocal
+extension---is where it is physiologically possible to phonate in either mechanism.
+The choice within this zone is determined not solely by fundamental frequency ($f_0$)
+but by desired intensity and timbre.\cite{roubeau2009,henrich2004} Henrich et
+al.\cite{henrich2004} demonstrated through EGG measurements that the glottal open
+quotient (OQ) provides the most reliable differentiation between mechanisms: M1
+exhibits lower OQ (longer closed phase, more complete glottal contact), while M2
+
+Ligne 230:
+extension---is where it is physiologically possible to phonate in either mechanism.
+The choice within this zone is determined not solely by fundamental frequency ($f_0$)
+but by desired intensity and timbre.\cite{roubeau2009,henrich2004} Henrich et
+al.\cite{henrich2004} demonstrated through EGG measurements that the glottal open
+quotient (OQ) provides the most reliable differentiation between mechanisms: M1
+exhibits lower OQ (longer closed phase, more complete glottal contact), while M2
+shows higher OQ (shorter closed phase, reduced contact area). These physiological
+
+Ligne 882:
+types, and recording conditions, enabling statistical generalization beyond a single
+artist. Second, VMI should be validated against electroglottographic (EGG)
+measurements, which provide direct physiological ground truth for laryngeal mechanism
+classification.\cite{henrich2004} Third, the VMI weights---currently
+heuristic---should be optimized via supervised learning using EGG-validated labels,
+potentially through the evolutionary parameter tuning approach demonstrated by
+Boratto et al.\cite{boratto2025} Fourth, model stability should be evaluated across
+
+Premières lignes (100 lignes):
+Glottal open quotient in singing: Measurements and
+correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle
+Castellengo
+
+To cite this version:
+Nathalie Henrich Bernardoni, Christophe d’Alessandro, Boris Doval, Michèle Castellengo. Glottal
+open quotient in singing: Measurements and correlation with laryngeal mechanisms, vocal intensity,
+and fundamental frequency. Journal of the Acoustical Society of America, 2005, 117 (3), pp.1417-1430.
+...
+
+=== henrich2006 ===
+Ligne 82:
+over the past three decades. What was once an auxiliary discipline dependent on
+subjective auditory evaluation has become a rigorous interdisciplinary science at the
+intersection of laryngeal physiology, acoustics, ethnomusicology, and signal
+engineering.\cite{roubeau2009,henrich2006} Modern technologies---including
+electroglottography (EGG), high-speed laryngoscopy, and deep learning
+algorithms---now enable the quantification of biomechanical phenomena that were
+previously described only through perceptual metaphors.
+
+Premières lignes (100 lignes):
+Mirroring the voice from Garcia to the present day:
+some insights into singing voice registers.
+Nathalie Henrich Bernardoni
+
+To cite this version:
+Nathalie Henrich Bernardoni. Mirroring the voice from Garcia to the present day: some insights into singing voice registers.. Logopedics Phoniatrics Vocology, 2006, 31 (1), pp.3-14.
+�10.1080/14015430500344844�. �hal-00344177�
+
+HAL Id: hal-00344177
+https://hal.science/hal-00344177v1
+...
+
+=== kim2018 ===
+Ligne 307:
+temporal resolution (hop length = 220 samples at 44.1~kHz):
+
+\paragraph{Fundamental frequency ($f_0$).}
+We used CREPE,\cite{kim2018} a convolutional neural network trained on annotated
+pitch data, configured with the \texttt{full} model for maximum precision, frequency
+range 50--800~Hz, and \texttt{weighted\_argmax} decoding. CREPE was selected over
+autocorrelation-based methods (e.g., Praat) due to its robustness to intense
+
+Premières lignes (100 lignes):
+CREPE: A CONVOLUTIONAL REPRESENTATION FOR PITCH ESTIMATION
+Jong Wook Kim1 , Justin Salamon1,2 , Peter Li1 , Juan Pablo Bello1
+1
+
+arXiv:1802.06182v1 [eess.AS] 17 Feb 2018
+
+2
+
+Music and Audio Research Laboratory, New York University
+Center for Urban Science and Progress, New York University
+...
+
+=== kim2025 ===
+Ligne 138:
+This study fills a gap in the literature by providing the first computational
+bioacoustic analysis of Brazilian Choro singing. While recent work has applied
+machine learning to vocal register classification in contemporary pop
+music,\cite{kim2025} controlled singing experiments,\cite{boratto2025} and singing voice
+mode classification,\cite{sol2023} no
+previous study has addressed the specific acoustic challenges of historical Choro
+recordings or the theoretical implications for \emph{Fach} critique in vernacular
+
+Premières lignes (100 lignes):
+Machine Learning Approaches to Vocal Register
+Classification in Contemporary Male Pop Music
+Alexander Kim, Prof. Charlotte Botha
+Hamilton College
+
+arXiv:2505.11378v2 [cs.SD] 20 Aug 2025
+
+8/16/2024
+
+Abstract
+...
+
+=== kreiman2012 ===
+Ligne 330:
+generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
+gentle closure concentrates energy in the fundamental, yielding a low ratio.
+
+\emph{$H_1$-$H_2$}\cite{kreiman2012,kreiman2014}: the amplitude difference (dB) between
+the first harmonic ($H_1 = f_0$) and the second harmonic ($H_2 = 2f_0$), the most direct
+acoustic correlate of the glottal adduction pattern. Firm adduction (M1) produces
+abrupt airflow closure and strong harmonics, so $H_2$ approaches $H_1$ in amplitude (low
+
+Ligne 337:
+$H_1$-$H_2$). Light adduction (M2) produces a dominant fundamental with weak harmonics
+(high $H_1$-$H_2$). A known limitation is that in the upper register, $H_1$
+may coincide with the first vocal tract resonance ($F_1$), contaminating the
+measurement.\cite{kreiman2012}
+
+\emph{Spectral Tilt}\cite{degottex2011,drugman2019}: the slope of the linear regression
+fitted to the power spectrum (log-frequency vs.\ amplitude in dB) in the 50--5,000~Hz
+
+Ligne 841:
+\paragraph{$H_1$-$H_2$ at high $f_0$.}
+In the upper register, the first harmonic ($H_1$) may coincide with the
+first vocal tract resonance ($F_1$), contaminating the $H_1$-$H_2$
+measurement.\cite{kreiman2012} Spectral Tilt is included as a complementary feature
+to mitigate this limitation, as it captures the global spectral energy distribution
+without depending on individual harmonic detection.
+
+
+⚠ Fichier texte non trouvé
+
+=== kreiman2014 ===
+Ligne 330:
+generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
+gentle closure concentrates energy in the fundamental, yielding a low ratio.
+
+\emph{$H_1$-$H_2$}\cite{kreiman2012,kreiman2014}: the amplitude difference (dB) between
+the first harmonic ($H_1 = f_0$) and the second harmonic ($H_2 = 2f_0$), the most direct
+acoustic correlate of the glottal adduction pattern. Firm adduction (M1) produces
+abrupt airflow closure and strong harmonics, so $H_2$ approaches $H_1$ in amplitude (low
+
+Premières lignes (100 lignes):
+Loquens 1(1)
+January 2014, e009
+eISSN XXXXX
+doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+Toward a unified theory of voice production and perception
+Jody Kreiman1, Bruce R. Gerratt1, Marc Garellek2, Robin Samlan3 and Zhaoyan Zhang1
+1
+
+Bureau of Glottal Affairs, Department of Head and Neck Surgery, UCLA School of Medicine, Los Angeles, CA USA
+...
+
+=== lee2013 ===
+Ligne 377:
+
+\paragraph{Method 3: XGBoost with pseudo-labels.}
+A supervised classifier\cite{chen2016} trained on GMM-generated pseudo-labels, an
+established technique in semi-supervised learning.\cite{lee2013,nigam2000} The model
+used nine features ($f_0$, HNR, RMS energy, pitch velocity, pitch acceleration, $F_1$--$F_4$)
+with hyperparameters: \texttt{n\_estimators=100}, \texttt{max\_depth=5},
+\texttt{learning\_rate=0.1}. Data were split 80\%/20\% for training and testing
+
+Ligne 805:
+high separability of GMM clusters in the nine-dimensional feature space, not
+validated physiological accuracy. XGBoost cannot, on average, be more accurate than
+its pseudo-labels, and inherits any systematic errors from the GMM (confirmation
+bias).\cite{lee2013}
+
+\paragraph{Gaussian assumption.}
+The GMM assumes that M1 and M2 clusters follow Gaussian distributions in the
+
+Premières lignes (100 lignes):
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning
+Method for Deep Neural Networks
+
+Dong-Hyun Lee
+sayit78@gmail.com
+Nangman Computing, 117D Garden five Tools, Munjeong-dong Songpa-gu, Seoul, Korea
+
+Abstract
+We propose the simple and efficient method
+of semi-supervised learning for deep neural
+...
+
+=== maryn2015 ===
+Ligne 316:
+
+\paragraph{Vocal quality features.}
+Using Praat via Parselmouth,\cite{boersma2023} we extracted: Harmonicity-to-Noise
+Ratio (HNR), Cepstral Peak Prominence Smoothed (CPPS),\cite{maryn2015} Jitter
+(ppq5), and Shimmer (apq11).\cite{teixeira2013} Formants $F_1$--$F_4$ were extracted via
+Burg Linear Predictive Coding (5 formants, maximum formant 5,500~Hz). RMS spectral
+energy was computed using librosa.
+
+Ligne 348:
+the global spectral pattern without depending on individual harmonic detection,
+making it more robust than $H_1$-$H_2$ in the upper register.
+
+\emph{CPPS per frame}\cite{maryn2015}: smoothed cepstral peak prominence computed per
+frame, measuring vibration periodicity. High CPPS indicates clean, periodic phonation
+(present in both dense M1 and reinforced M2), while low CPPS indicates noise or
+aperiodicity.
+
+Premières lignes (100 lignes):
+Objective Dysphonia Measures in the Program Praat:
+Smoothed Cepstral Peak Prominence and Acoustic
+Voice Quality Index
+*,†,‡Youri Maryn and §David Weenink, *Bruges, yGhent, and zAntwerp, Belgium, and xAmsterdam, The Netherlands
+Summary: Purpose. A version of the ‘‘smoothed cepstral peak prominence’’ (ie, CPPS) has recently been implemented in the program Praat. The present study therefore estimated the correspondence between the original CPPS
+from the program SpeechTool and Praat’s version of the CPPS. Because the CPPS is the main factor in the multivariate
+Acoustic Voice Quality Index (AVQI), this study also investigated the proportional relationship between the AVQI with
+the original and the second version of the CPPS.
+Study Design. Comparative cohort study.
+Methods. Clinical recordings of sustained vowel phonation and continuous speech from 289 subjects with various
+...
+
+=== miller2000 ===
+Ligne 89:
+
+Despite these advances, the classification of singing voices in Western pedagogy
+remains dominated by the German \emph{Fach} system, a taxonomic framework developed
+in the 19th century for European opera.\cite{cotton2007,miller2000} The \emph{Fach}
+system categorizes voices based on tessitura, timbre, and the acoustic demands of
+operatic repertoire. While effective within its original context, this classification
+framework presents fundamental problems when applied to non-operatic genres,
+
+⚠ Fichier texte non trouvé
+
+=== nigam2000 ===
+Ligne 377:
+
+\paragraph{Method 3: XGBoost with pseudo-labels.}
+A supervised classifier\cite{chen2016} trained on GMM-generated pseudo-labels, an
+established technique in semi-supervised learning.\cite{lee2013,nigam2000} The model
+used nine features ($f_0$, HNR, RMS energy, pitch velocity, pitch acceleration, $F_1$--$F_4$)
+with hyperparameters: \texttt{n\_estimators=100}, \texttt{max\_depth=5},
+\texttt{learning\_rate=0.1}. Data were split 80\%/20\% for training and testing
+
+Premières lignes (100 lignes):
+c
+
+Machine Learning, , 1{34 ()
+Kluwer Academic Publishers, Boston. Manufactured in The Netherlands.
+
+Text Classi cation from Labeled and Unlabeled
+Documents using EM
+KAMAL NIGAMy
+knigam@cs.cmu.edu
+zy
+...
+
+=== rezende2016 ===
+Ligne 102:
+portamenti), precise diction at high speed, rhythmic agility, and what Tatit
+terms \emph{figurativiza\c{c}\~{a}o}---the speech-like quality of Brazilian
+popular singing that privileges natural articulation over resonant
+projection.\cite{tatit2002,rezende2016}
+
+The central problem addressed in this study is the inadequacy of the \emph{Fach}
+system for describing the vocal biomechanics of Choro singers. When applied to this
+
+Ligne 111:
+irrelevant and pedagogically counterproductive in a microphone-dependent genre. The
+essential vocal competencies of Choro---vocal attack precision, articulatory
+diction at high speed, ornamental agility, register management, resonance
+adjustments, and controlled vibrato\cite{rezende2016}---cannot be captured by a system designed to categorize
+operatic voices by their capacity to fill a concert hall without amplification.
+
+Recent advances in machine learning have opened new possibilities for objective
+
+Ligne 182:
+Forcing Choro singers into \emph{Fach} categories leads to reductive
+``pigeonholing'' that ignores individual ``comfort tessitura''---the range within
+which a singer achieves optimal articulatory agility and textual
+intelligibility.\cite{rezende2016} The concept of comfort tessitura is central to
+Choro vocal technique: rather than striving to extend the range in pursuit of a
+\emph{Fach}-appropriate tessitura, the Choro singer works within the region where
+articulatory precision is maximized and where the vocal mechanism can support the
+
+⚠ Fichier texte non trouvé
+
+=== rouard2023 ===
+Ligne 120:
+settings.\cite{boratto2025} Hybrid methods combining Deep Neural Networks and
+Linear Prediction (LPC) enable robust formant tracking even in high-pitched
+voices.\cite{alku2023,gowda2022} These tools, combined with neural source separation
+models capable of isolating vocal lines from complex arrangements,\cite{defossez2021,rouard2023}
+now enable rigorous biomechanical analysis of singing in genres that were previously
+inaccessible to computational methods.
+
+
+Ligne 282:
+\label{sec:separation}
+
+In complex Choro arrangements, pitch detection algorithms may capture instrumental
+frequencies instead of the voice. We applied HTDemucs\cite{rouard2023}---a hybrid
+source separation model combining temporal and spectral processing with Transformer
+layers---to isolate the vocal line prior to feature extraction. HTDemucs achieves
+$\approx 9$~dB Signal-to-Distortion Ratio (SDR) on source separation benchmarks,
+
+Premières lignes (100 lignes):
+HYBRID TRANSFORMERS FOR MUSIC SOURCE SEPARATION
+Simon Rouard, Francisco Massa, Alexandre Défossez
+
+arXiv:2211.08553v1 [eess.AS] 15 Nov 2022
+
+Meta AI
+ABSTRACT
+A natural question arising in Music Source Separation (MSS)
+is whether long range contextual information is useful, or
+whether local acoustic features are sufficient. In other fields,
+...
+
+=== roubeau2009 ===
+Ligne 82:
+over the past three decades. What was once an auxiliary discipline dependent on
+subjective auditory evaluation has become a rigorous interdisciplinary science at the
+intersection of laryngeal physiology, acoustics, ethnomusicology, and signal
+engineering.\cite{roubeau2009,henrich2006} Modern technologies---including
+electroglottography (EGG), high-speed laryngoscopy, and deep learning
+algorithms---now enable the quantification of biomechanical phenomena that were
+previously described only through perceptual metaphors.
+
+Ligne 202:
+
+The scientific response to this classification gap lies in the theory of laryngeal
+vibration mechanisms, established by Roubeau, Henrich, and
+Castellengo.\cite{roubeau2009} This framework replaces the ambiguous concept of
+``vocal registers'' with a physiological-quantitative taxonomy based on directly
+measurable glottic parameters: vibratory mass, closed quotient, and neuromuscular
+activation patterns.
+
+Ligne 221:
+  \item[M2 (head voice/falsetto):] Operates under cricothyroid muscle tension with
+    reduced vibratory mass. M2 produces lower overall amplitude, energy concentrated
+    in high harmonics, and characteristic phase transitions at register
+    boundaries.\cite{roubeau2009}
+  \item[M3 (whistle):] At the extreme high end of tessitura, similar to M0 in
+    expressivity value within popular genres.
+\end{description}
+
+Ligne 229:
+Critically, the M1/M2 overlap zone---spanning approximately one octave in vocal
+extension---is where it is physiologically possible to phonate in either mechanism.
+The choice within this zone is determined not solely by fundamental frequency ($f_0$)
+but by desired intensity and timbre.\cite{roubeau2009,henrich2004} Henrich et
+al.\cite{henrich2004} demonstrated through EGG measurements that the glottal open
+quotient (OQ) provides the most reliable differentiation between mechanisms: M1
+exhibits lower OQ (longer closed phase, more complete glottal contact), while M2
+
+Ligne 528:
+The M1 distribution is centered at 265--365~Hz (approximately C\#4--F\#4), while M2
+occupies 425--580~Hz (approximately A4--D5). The $f_0$ histogram reveals a clear
+bimodal distribution with a natural separation at approximately 400~Hz. This value
+falls within the M1/M2 overlap zone documented by Roubeau et al.,\cite{roubeau2009}
+who reported mean M1$\to$M2 transition frequencies of approximately 312~Hz (E$\flat$4)
+for female voices, with the overlap zone spanning roughly one octave---confirming
+that 400~Hz lies in the upper portion of the \emph{passaggio} region rather than
+
+Premières lignes (100 lignes):
+Laryngeal Vibratory Mechanisms: The Notion of Vocal
+Register Revisited
+*Bernard Roubeau, †Nathalie Henrich, and ‡Michèle Castellengo, *zParis, France and yGrenoble, France
+Summary: This study, focused on the laryngeal source level, introduces the concept of laryngeal vibratory mechanism.
+Human phonation is characterized by the use of four laryngeal mechanisms, labeled M0–M3, as evidenced by the electroglottographic (EGG) study of the transition phenomena between mechanisms with a population of men and women,
+trained and untrained singers. Macroscopic and local descriptions of the EGG signal are analyzed during the production
+of glissandos and held notes with different mechanisms. The transition from one mechanism to another of higher rank is
+characterized by a jump in frequency, a reduction of EGG amplitude, and a change in the shape of the derivative of the
+EGG (which may correspond to a reduction of the vibratory mass). These characteristics are used to identify a transition
+between two mechanisms, in complement with acoustic spectrographic analyses. The pitches of transitions between the
+...
+
+=== sol2023 ===
+Ligne 139:
+bioacoustic analysis of Brazilian Choro singing. While recent work has applied
+machine learning to vocal register classification in contemporary pop
+music,\cite{kim2025} controlled singing experiments,\cite{boratto2025} and singing voice
+mode classification,\cite{sol2023} no
+previous study has addressed the specific acoustic challenges of historical Choro
+recordings or the theoretical implications for \emph{Fach} critique in vernacular
+genres. The novelty of this research lies in the application of a hybrid pipeline
+
+⚠ Fichier texte non trouvé
+
+=== sundberg1974 ===
+Ligne 158:
+The \emph{Fach} system's central premise is vocal audibility over a non-amplified
+orchestra. This capacity depends on the ``singer's formant cluster''---a peak of
+acoustic energy between 2.5 and 3.5~kHz generated by the convergence of the third,
+fourth, and fifth vocal tract formants ($F_3$, $F_4$, $F_5$).\cite{sundberg1974} This
+resonance strategy allows operatic singers to project above an orchestral
+accompaniment without electronic amplification.
+
+
+Premières lignes (100 lignes):
+Articulatory interpretation of the "singing formant"
+Johan Sundberg
+Department of SpeechCommunication,Royal Institute of Technology(KTH). S-100 44 Stockholm 70, Sweden
+(Received 3 December 1973; revised10 January 1974)
+
+The "singingformant" is a high spectrumenvelopepeak near 2.8 kHz
+characteristicof vowel soundsproducedin male Westernopera and concert
+singing.An acousticalmodel of the vocal tract is capableof generatingsuch a
+peak provided that three conditionsare met: (i) The cross-sectional
+area in the
+...
+
+=== sundberg1987 ===
+Ligne 243:
+vocal tract adjustments at the \emph{passaggio}---for instance, opening the jaw
+wider to raise $F_1$ and maintain it above $f_0$ (\emph{vowel tuning} or \emph{formant
+tuning})---to achieve seamless transitions between mechanisms without perceptible
+breaks.\cite{bozeman2013,sundberg1987} This biomechanical flexibility is precisely
+what the \emph{Fach} system's rigid categories fail to accommodate.
+
+%% ============================================================
+
+Ligne 777:
+with parameter adjustments: \texttt{fmin}/\texttt{fmax} for tessitura range (e.g.,
+50--400~Hz for operatic bass, 200--1200~Hz for soprano), HTDemucs for accompanied
+vs.\ \emph{a cappella} recordings, and the VMI threshold boundaries for
+tessitura-specific \emph{passaggio} zones.\cite{bozeman2013,sundberg1987}
+The spectral weights used in VMI (Alpha Ratio, $H_1$-$H_2$, Spectral Tilt) are
+tessitura-independent by construction, as they measure relative energy distribution
+and glottal behavior patterns rather than absolute frequency values. The same
+
+⚠ Fichier texte non trouvé
+
+=== sundberg2006 ===
+Ligne 325:
+Four spectral features, each with established physiological correlates, were
+extracted for the Vocal Mechanism Index:
+
+\emph{Alpha Ratio}\cite{sundberg2006}: the energy ratio (dB) between the high band
+(1--5~kHz) and the low band (50~Hz--1~kHz). In M1, rapid and firm glottal closure
+generates strong upper harmonics, producing a high Alpha Ratio. In M2/falsetto,
+gentle closure concentrates energy in the fundamental, yielding a low ratio.
+
+⚠ Fichier texte non trouvé
+
+=== tatit2002 ===
+Ligne 102:
+portamenti), precise diction at high speed, rhythmic agility, and what Tatit
+terms \emph{figurativiza\c{c}\~{a}o}---the speech-like quality of Brazilian
+popular singing that privileges natural articulation over resonant
+projection.\cite{tatit2002,rezende2016}
+
+The central problem addressed in this study is the inadequacy of the \emph{Fach}
+system for describing the vocal biomechanics of Choro singers. When applied to this
+
+Ligne 683:
+articulation rather than the ``vowel darkening'' typical of classical singing, where
+$F_1$ is systematically lowered to achieve a more ``covered'' timbre. This finding is
+consistent with Tatit's concept of \emph{figurativiza\c{c}\~{a}o}---the
+primacy of speech-like intonation in Brazilian popular song.\cite{tatit2002}
+
+The preservation of speech-like formant patterns at high articulatory speeds is
+particularly noteworthy. Even in the rapid ornamental passages of
+
+Ligne 723:
+Second, formant analysis reveals speech-like articulation patterns ($F_1 \approx$
+660~Hz, $F_2 \approx$ 1,629~Hz) consistent with open vowel configurations in
+Brazilian Portuguese. This finding supports Tatit's concept of
+\emph{figurativiza\c{c}\~{a}o}\cite{tatit2002}: the singer prioritizes natural language
+articulation, avoiding the vowel ``darkening'' typical of operatic singing, where $F_1$
+is lowered to achieve a more ``covered'' timbre. The stable $F_3$ and $F_4$ values
+(2,798~Hz and 3,802~Hz) suggest some singer's formant presence, contributing to
+
+⚠ Fichier texte non trouvé
+
+=== teixeira2013 ===
+Ligne 317:
+\paragraph{Vocal quality features.}
+Using Praat via Parselmouth,\cite{boersma2023} we extracted: Harmonicity-to-Noise
+Ratio (HNR), Cepstral Peak Prominence Smoothed (CPPS),\cite{maryn2015} Jitter
+(ppq5), and Shimmer (apq11).\cite{teixeira2013} Formants $F_1$--$F_4$ were extracted via
+Burg Linear Predictive Coding (5 formants, maximum formant 5,500~Hz). RMS spectral
+energy was computed using librosa.
+
+
+⚠ Fichier texte non trouvé

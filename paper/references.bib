@@ -79,15 +79,18 @@
 
 % === Spectral Features ===
 
-@article{sundberg2006,
-  author  = {Sundberg, J. and Nordenberg, M.},
-  title   = {Effects of vocal loudness variation on spectrum balance as reflected by the alpha measure of long-term-average spectra of speech},
-  journal = {J Acoust Soc Am},
-  year    = {2006},
-  volume  = {120},
-  number  = {1},
-  pages   = {453--457},
-  doi     = {10.1121/1.2208451}
+% sundberg2006 REMOVED (Round 5): paywalled. Alpha Ratio now cited via sundberg1987 (book) + yousef2024 (open access).
+
+@article{yousef2024,
+  author  = {Yousef, A. M. and Hunter, E. J.},
+  title   = {Sensitivity of Acoustic Voice Quality Measures in Simulated Reverberation Conditions},
+  journal = {Bioengineering},
+  year    = {2024},
+  volume  = {11},
+  number  = {12},
+  pages   = {1253},
+  doi     = {10.3390/bioengineering11121253},
+  note    = {Open access (CC BY 4.0)}
 }
 
 @article{kreiman2012,
@@ -112,24 +115,20 @@
   doi     = {10.3989/loquens.2014.009}
 }
 
-@article{fant1995,
-  author  = {Fant, G.},
-  title   = {The {LF}-model revisited: transformations and frequency domain analysis},
-  journal = {STL-QPSR},
-  year    = {1995},
-  volume  = {2-3},
-  pages   = {119--156}
+@phdthesis{degottex2011,
+  author = {Degottex, G.},
+  title  = {Glottal source and vocal-tract separation: Estimation of glottal parameters, voice transformation and synthesis using a glottal model},
+  school = {Universit\'{e} Pierre et Marie Curie - Paris VI},
+  year   = {2011},
+  note   = {PhD thesis. Available: \url{https://theses.hal.science/tel-00554763}}
 }
 
-@article{gauffin1989,
-  author  = {Gauffin, J. and Sundberg, J.},
-  title   = {Spectral correlates of glottal voice source waveform characteristics},
-  journal = {J Speech Hear Res},
-  year    = {1989},
-  volume  = {32},
-  number  = {3},
-  pages   = {556--565},
-  doi     = {10.1044/jshr.3203.556}
+@article{drugman2019,
+  author  = {Drugman, T. and Bozkurt, B. and Dutoit, T.},
+  title   = {A Comparative Study of Glottal Source Estimation Techniques},
+  journal = {arXiv preprint},
+  year    = {2019},
+  note    = {arXiv:2001.00840v1}
 }
 
 % === Vocal Quality and Physiology ===
@@ -201,6 +200,17 @@
   doi     = {10.1016/j.csl.2023.101515}
 }
 
+@article{gowda2022,
+  author  = {Gowda, D. and Bollepalli, B. and Kadiri, S. R. and Alku, P.},
+  title   = {Formant Tracking using Quasi-Closed Phase Forward-Backward Linear Prediction Analysis and Deep Neural Networks},
+  journal = {IEEE Access},
+  year    = {2022},
+  volume  = {10},
+  pages   = {1--13},
+  doi     = {10.1109/ACCESS.2021.3126280},
+  note    = {arXiv:2201.01525v1}
+}
+
 % === Machine Learning and Register Classification ===
 
 @article{kim2025,
@@ -222,12 +232,14 @@
   doi     = {10.3390/signals6010009}
 }
 
-@article{sol2023,
-  author  = {Sol, J. and Aaen, M. and Sadolin, C. and ten Bosch, L.},
-  title   = {Towards automated vocal mode classification in healthy singing voice -- an {XGBoost} decision tree-based machine learning classifier},
-  journal = {J Voice},
-  year    = {2023},
-  doi     = {10.1016/j.jvoice.2023.09.006}
+% sol2023 REMOVED (Round 5): paywalled. Replaced by hinrichs2026 (open access, cites Sol as ref [17]).
+
+@article{hinrichs2026,
+  author  = {Hinrichs, R. and Stephan, S. and Lange, A. and Ostermann, J.},
+  title   = {A Dataset for Automatic Vocal Mode Classification},
+  journal = {arXiv preprint},
+  year    = {2026},
+  note    = {arXiv:2601.18339v1. Open access (CC BY-NC-SA 4.0)}
 }
 
 @inproceedings{chen2016,
@@ -302,25 +314,7 @@
 }
 
 % === JoV ML Guidance References ===
-
-@article{ghasemzadeh2023,
-  author  = {Ghasemzadeh, H. and Hillman, R. E. and Mehta, D. D.},
-  title   = {Toward generalizable machine learning models in speech, language, and hearing sciences: estimating sample size and reducing overfitting},
-  journal = {J Speech Lang Hear Res},
-  year    = {2023},
-  volume  = {66},
-  number  = {11},
-  pages   = {4291--4310},
-  doi     = {10.1044/2023_JSLHR-23-00273}
-}
-
-@article{gupta2024,
-  author  = {Gupta, R. and Gunjawate, D. R. and Nguyen, D. D. and Jin, C. and Madill, C.},
-  title   = {Voice disorder recognition using machine learning: a scoping review protocol},
-  journal = {BMJ Open},
-  year    = {2024},
-  volume  = {14},
-  number  = {1},
-  pages   = {e076998},
-  doi     = {10.1136/bmjopen-2023-076998}
-}
+% ghasemzadeh2023 and gupta2024 REMOVED (Round 4):
+% Neither paper recommends multi-seed evaluation as attributed in the article.
+% Ghasemzadeh recommends nested k-fold CV; Gupta is a scoping review protocol.
+% Citations removed from article.tex (lines 383, 407, 828, 887).

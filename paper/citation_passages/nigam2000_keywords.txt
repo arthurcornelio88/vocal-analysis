@@ -1,0 +1,93 @@
+=== Recherche de mots-clés pour nigam2000 ===
+--- abstract ---
+Editor: William W. Cohen
+
+Abstract. This paper shows that the accuracy of learned text classi ers can be improved by
+
+augmenting a small number of labeled training documents with a large pool of unlabeled documents. This is important because in many text classi cation problems obtaining training labels
+
+--- introduction ---
+Keywords: text classi cation, Expectation-Maximization, integrating supervised and unsupervised learning, combining labeled and unlabeled data, Bayesian learning
+
+1. Introduction
+Consider the problem of automatically classifying text documents. This problem
+is of great practical importance given the massive volume of online text available through the World Wide Web, Internet news feeds, electronic mail, corporate
+--
+to modulate the degree to which EM weights the unlabeled data; in the second we
+augment the model to relax one of the assumptions about the generative model.
+5.3.1. Weighting the unlabeled data. As described in the introduction, a common
+scenario is that few labeled documents are on hand, but many orders of magnitude
+more unlabeled documents are readily available. In this case, the great majority of
+
+--- conclusion ---
+approach could apply unlabeled data to more complex classi ers.
+
+8. Summary and Conclusions
+This paper has presented a family of algorithms that address the question of when
+and how unlabeled data may be used to supplement scarce labeled data, especially when learning to classify text documents. This is an important question in
+
+--- method ---
+Learning a naive Bayes text classi er consists of estimating the parameters of the
+generative model by using a set of labeled training data, D = fd1 ; : : : ; djDjg. This
+subsection derives a method for calculating these estimates from the training data.
+The estimate of  is written ^. Naive Bayes uses the maximum a posteriori
+estimate, thus nding arg max P(jD). This is the value of  that is most probable
+--
+5.2. Discussion
+
+In summary, EM nds a ^ that locally maximizes the likelihood of its parameters given all the data|both the labeled and the unlabeled. It provides a method
+whereby unlabeled data can augment limited labeled data and contribute to parameter estimation. An interesting empirical question is whether these higher likelihood
+
+--
+assumptions do not hold|as certainly is the case in real-world textual data|the
+bene ts of unlabeled data are less clear.
+Our experimental results in Section 6 show that this method can indeed dramatically improve the accuracy of a document classi er, especially when there are only
+a few labeled documents. But on some data sets, when there are a lot of labeled
+and a lot of unlabeled documents, this is not the case. In several experiments,
+--
+more unlabeled documents still overwhelm parameter estimation and thus badly
+skew the estimates.
+
+--- result ---
+to convergence. This basic EM procedure works well when the data conform to the generative
+assumptions of the model. However these assumptions are often violated in practice, and poor
+performance can result. We present two extensions to the algorithm that improve classi cation
+accuracy under these conditions: (1) a weighting factor to modulate the contribution of the
+unlabeled data, and (2) the use of multiple mixture components per class. Experimental results,
+obtained using text from three di erent real-world tasks, show that the use of unlabeled data
+reduces classi cation error by up to 30%.
+--
+class of each component, the parameter estimation can be done with unlabeled data
+alone.
+It is important to notice that this result depends on the critical assumption that
+the data indeed have been generated using the same parametric model as used in
+classi cation, something that almost certainly is untrue in real-world domains such
+--
+unlabeled data can be useful in practice in spite of the violated assumptions. In the
+following sections we address this by describing in detail a parametric generative
+model for text classi cation and by presenting empirical results using this model
+on real-world data.
+
+--
+
+--- discussion ---
+If the task is to classify a test document di into a single class, then the class with
+the highest posterior probability, arg maxj P(yi = cj jdi ; ^), is selected.
+4.4. Discussion
+
+Note that all four assumptions about the generation of text documents (mixture
+--
+which EM is hill-climbing.
+Table 1 gives an outline of the basic EM algorithm from this section.
+5.2. Discussion
+
+In summary, EM nds a ^ that locally maximizes the likelihood of its parameters given all the data|both the labeled and the unlabeled. It provides a method
+--
+The 20 Newsgroups data set (Joachims, 1997; McCallum et al., 1998; Mitchell,
+1997), collected by Ken Lang, consists of 20017 articles divided almost evenly among
+20 di erent UseNet discussion groups. The task is to classify an article into the
+one newsgroup (of twenty) to which it was posted. Many of the categories fall
+into confusable clusters; for example, ve of them are comp.* discussion groups,
+and three of them discuss religion. When words from a stoplist of common short
+words are removed, there are 62258 unique words that occur more than once; other
+--

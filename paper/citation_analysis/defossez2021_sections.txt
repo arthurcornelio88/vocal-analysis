@@ -1,0 +1,31 @@
+Conclusion
+We introduced a number of architectural changes to the Demucs architecture that greatly
+improved the quality of source separation for music. On the MusDB HQ benchark, the gain is
+around 1.4 dB. Those changes include compressed residual branches with local attention and
+chunked biLSTM, and most importantly, a novel hybrid spectrogram/temporal domain U-Net
+structure, with parallel temporal and spectrogram branches, that merge into a common core.
+Those changes allowed to achieve the first rank at the 2021 Sony Music DemiXing challenge,
+and translated into strong improvements of the overall quality and absence of bleeding between
+sources as measured by human evaluations. For all its gain, one limitation of our approach is
+the increased complexity of the U-Net encoder/decoder, requiring careful alignmement of the
+temporal and spectral signals through well shaped convolutions.
+
+Hybrid Spectrogram and Waveform Source Separation. Proceedings of the MDX Workshop, 2021.
+
+11
+
+References
+Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint
+arXiv:1607.06450, 2016.
+Woosung Choi, Minseok Kim, Jaehwa Chung, Daewon Lee, and Soonyoung Jung. Investigating u-nets
+with various intermediate blocks for spectrogram-based singing voice separation. In ISMIR, editor,
+21th International Society for Music Information Retrieval Conference, 2020.
+Woosung Choi, Minseok Kim, Jaehwa Chung, and Soonyoung Jung. Lasaft: Latent source attentive
+frequency transformation for conditioned source separation. In IEEE International Conference on
+Acoustics, Speech and Signal Processing (ICASSP), 2021.
+Yann N. Dauphin, Angela Fan, Michael Auli, and David Grangier. Language modeling with gated
+convolutional networks. In Proceedings of the International Conference on Machine Learning, 2017.
+Alexandre Défossez, Nicolas Usunier, Léon Bottou, and Francis Bach. Music source separation in the
+waveform domain. arXiv preprint arXiv:1911.13254, 2019.
+Nathan Halko, Per-Gunnar Martinsson, and Joel A Tropp. Finding structure with randomness:
+================================================================================

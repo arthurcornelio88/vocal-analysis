@@ -1,0 +1,842 @@
+Physiological and acoustic characteristics of the female music
+theater voice
+Tracy Bourne
+University of Ballarat, Arts Academy, Ballarat, Victoria 3353, Australia
+
+Maëva Garniera)
+School of Physics, University of New South Wales, Sydney, New South Wales 2052, Australia
+
+(Received 7 January 2011; revised 8 December 2011; accepted 8 December 2011)
+Three Music Theater vocal qualities (“chesty belt,” “twangy belt,” and “legit”) were investigated in
+female singers at their overlap range, between F#4-D5 (370-600 Hz). Six experienced Music
+Theater singers performed each quality on two different vowels ([e], [O]). Audio and electroglottographic (EGG) signals were recorded as well as the vocal tract impedance. In chesty belt and
+twangy belt, singers systematically tuned the frequency of their first vocal tract resonance (R1) to
+the second harmonic (2f0) up to C5. R1 remained lower in frequency for the legit quality. No tuning
+of the second vocal tract resonance (R2) was observed in any of these qualities although R2
+frequency was significantly higher in both belt qualities than in legit. Closed quotient, degree of
+symmetry of the EGG waveform, sound pressure level (SPL) and the energy of the spectrum above
+1 kHz were significantly greater in chesty belt than in legit but not significantly different between
+chesty belt and twangy belt qualities. A fourth quality (“mix”) was explored in three singers. Different production strategies were observed for each singer, with values of spectral, glottal and vocal
+tract descriptors found in between those measured for legit and chesty belt qualities.
+C
+V 2012 Acoustical Society of America. [DOI: 10.1121/1.3675010]
+Pages: 1586–1594
+
+I. INTRODUCTION
+
+Female professional Music Theater singers are expected
+to master the vocal qualities: belt, legit, and mix. These
+terms are commonly used by expert teachers (Bourne and
+Kenny, 2008; Bourne et al., 2010) and within the Music Theater profession, although they are not yet well defined from a
+physiological and acoustic point of view. This study aims to
+provide objective measurements to characterize and compare
+the laryngeal behavior, the vocal tract adjustment and spectral features of these Music Theater qualities.
+Most research on the acoustics of the singing voice has
+focused on classical and operatic singing. However, there have
+been some recent studies of nonclassical styles (country, pop,
+Broadway, Music Theater, R&B, jazz, rock, and blues),
+increasingly referred to as contemporary commercial music
+(CCM) vocal styles (Lovetri, 2008). CCM singing styles can be
+distinguished from classical singing by the regular use of
+amplification, a greater emphasis on lyrics and textual comprehension by the audience, and frequent employment of the voice
+quality described as “belt” (Lovetri, 2002; AATS, 2008).
+Perceptually, belt has been described as a projected
+sound with “brightness,” “ring,” and “forward,” speech-like
+vowels (Stanley, 1929; Osborne, 1979; Estill, 1980; Edwin,
+2004; AATS, 2008; LeBorgne et al., 2010) in contrast to the
+“covered” sound and “back” vowels of the classical voice.
+
+a)
+
+Author to whom correspondence should be addressed. Also at: Department
+of Speech and Cognition, GIPSA-lab (UMR 5216 CNRS/Grenoble INP/
+UJF/U. Stendhal), 961 rue de la houille blanche, BP 46, 38402 Grenoble
+Cedex, France. Electronic mail: maeva.garnier@gipsa-lab.grenoble-inp.fr
+
+1586
+
+J. Acoust. Soc. Am. 131 (2), February 2012
+
+However, the genre of CCM is broad, and the term belt
+actually relates to a range of different sounds (Lovetri, 2002;
+Popeil, 2007). In fact, there is considerable disagreement
+among CCM experts about the distinctive features of belt,
+some arguing that belt is not always loud (Edwin, 2002;
+Popeil, 2007; LeBorgne et al., 2010), that belt has no vibrato
+(Estill, 1980; Miles and Hollien, 1990), or that the degree of
+vibrato may be a stylistic choice (Bourne and Kenny, 2008;
+LeBorgne et al., 2010), that belt is intrinsically a nasal quality (Miles and Hollien, 1990) or not (Bourne and Kenny,
+2008; LeBorgne et al., 2010).
+Acoustically, the belt quality has shown increased
+energy in the high frequencies of the spectrum (Bestebreurtje
+and Schutte, 2000; McCoy, 2007) and higher first formant
+frequencies (F1) compared to classical singing (Sundberg
+et al., 1993). Proximity between F1 and the second voice
+harmonic (2f0) has been reported on [a] and [O] vowels in a
+female Music Theater singer (Schutte and Miller, 1993),
+suggesting that belters may tune the first vocal tract resonance (R1)1 to the second voice harmonic (2f0). Such tuning
+has been observed over the same range in Bulgarian singing
+(Henrich et al., 2007), a musical style that shares some similarities in timbre with the female belt sound.
+Physiologically, the belt quality has been characterized
+by higher values of the laryngeal closed quotient and higher
+levels of subglottal pressure than for classical singing (Estill,
+1980; Sundberg et al., 1993; Bjorkner et al., 2006; Barlow
+and Lovetri, 2010), supporting the argument by some singing
+teachers that female belt is produced by raising the transition
+pitch from ‘chest register” to “head register” by up to an
+octave (Schutte and Miller, 1993; Bestebreurtje and Schutte,
+
+0001-4966/2012/131(2)/1586/9/$30.00
+
+C
+V
+
+2012 Acoustical Society of America
+
+Author's complimentary copy
+
+PACS number(s): 43.75.Rs [SSN]
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+quality of the other laryngeal mechanism. Sundberg et al.
+(1993) found in a single female subject that mix demonstrated
+features of both classical and belt singing: voice energy was
+enhanced in high frequencies and first and second formants
+were measured at higher frequencies, similar to belt production.
+On the other hand, subglottal pressure and SPL were measured
+at moderate values closer to operatic singing.
+This review of current knowledge on the female Music
+Theater voice raises the following questions about the characteristics of these vocal qualities:
+(1) How do belt and legit qualities differ in terms of laryngeal behavior? Are there significant variations of glottal
+behavior over the frequency range of each quality?
+(2) Are there any differences in vocal tract resonance tuning
+and source-filter interaction between belt and legit?
+(3) Are there fundamentally different kinds of belt? In particular, is belt intrinsically twangy or does twangy belt
+differ significantly from chesty belt?
+(4) What are the glottal behaviors and vocal tract adjustments underlying mix quality?
+To answer these questions, six experienced Music Theater singers were recorded. Audio and electroglottographic
+signals were recorded on sustained pitches, together with the
+frequencies of the first two vocal tract resonances, for two
+types of belt (chesty and twangy), legit, and mix qualities,
+on two vowels: [e] and [O].
+II. MATERIAL AND METHOD
+A. Subjects
+
+The subjects for this study were six female Australian
+Music Theater singers; four of them professional (Subjects
+S1, S2, S3, S4) and two of them advanced tertiary level students specializing in Music Theater singing (subjects S5 and
+S6). Their details are summarized in Table I.
+B. Task
+
+Singers were asked to sustain a single note for 4 s with
+no change in pitch, loudness or vowel articulation and with
+limited vibrato.
+This study aims to compare different qualities at similar
+levels of comfort versus effort across singers. Four increasing pitches were explored over the overlap range of belt or
+legit qualities. This overlap range varied between singers
+depending on their vocal classification and their belt range.
+It was determined from the highest reported belt note of each
+singer being C5 for four singers, D5 for singer S1, and B4
+for singer S6 (see Table I).
+Five measurements were made of each pitch, for two
+mid vowels pronounced as monophthongs in Australian English: [O] (as in poor) and [e] (as in head). This procedure was
+repeated for each quality: chesty belt, twangy belt, and legit,
+beginning with the quality that was most comfortable for the
+singer. No technical instructions were given to singers on
+how to produce these qualities. An additional quality, mix,
+was investigated in singers S1, S5, and S6. These three
+T. Bourne and M. Garnier: The female music theatre voice
+
+1587
+
+Author's complimentary copy
+
+2000; Miller, 2000). This hypothesis could be translated
+physiologically as the extension of the laryngeal mechanism
+M12 over the overlap range of M1 and M2, where classical
+sopranos choose to sing in M2 instead of M1.
+Singing experts have suggested that belt articulation
+requires a higher and more forward tongue than for classical
+singing (Miles and Hollien, 1990; Burdick, 2005; Bourne
+and Kenny, 2008). The belt vocal tract shape has been compared to a megaphone (Titze and Worley, 2009) because of
+the more constricted pharynx, higher larynx position, and
+more opened mouth observed in this vocal production (Lawrence, 1979; Estill, 1980, 1988; Yanagisawa et al., 1983;
+Sundberg et al., 1993; Lovetri et al., 1999; Edwin, 2004;
+Balog, 2005). The configuration of a narrow vocal tract and
+wide mouth opening is consistent with the higher F1 values
+reported in belt compared to classical singing (Sundberg
+et al., 1993). However, one study suggests that some singers
+can also produce belt with a relatively low larynx and wide
+pharynx (Lovetri et al., 1999).
+Perceptually, there appear to be different kinds of belt,
+described by singing teachers and experts of CCM styles as
+“traditional belt,” “heavy/weighted/chesty belt,” “speechlike belt,” or “twangy belt” (Popeil, 2007; Bourne and
+Kenny, 2008). However, scientific studies of the acoustic
+and physiological features of belt have not made that distinction between belt qualities, neither has any study compared
+and characterized objective differences. In particular, it
+remains an open question whether belt is an intrinsically
+twangy quality or whether twangy belt is actually a subcategory of belt. While twang has not been specifically studied
+in Music Theater singing, it has been explored in country
+singers (Cleveland et al., 2001), stage actors (Nawka et al.,
+1997), in a single female non classical singer (Sundberg and
+Thalen, 2010), and in relationship to voice efficiency (Titze,
+2001; Titze et al., 2003). Twang has been associated with
+higher values of the closed quotient (Titze et al., 2003; Sundberg and Thalen, 2010) higher subglottal pressures (Sundberg and Thalen, 2010), constriction of the aryepiglottic area
+(Yanagisawa et al., 1983; Story et al., 2001; Titze, 2001;
+Titze et al., 2003), widening of lips (Story et al., 2001),
+higher frequencies of F1 and F2 (Story et al., 2001; Sundberg and Thalen, 2010), nasalization of some vowels (Story
+et al., 2001), and spectral enhancement around 3 kHz (Yanagisawa et al., 1983; Nawka et al., 1997).
+Very few studies have been conducted on Music Theater
+voice qualities other than belt. In particular, no objective
+measurements have been made of the legit quality. We only
+know from the descriptions of expert teachers that legit is
+grounded in the classical tradition, sung largely in “head”
+register for female singers with “back” vowels and reported
+over a greater pitch range than belt (Edwin, 2003; Balog,
+2005; AATS, 2008; Bourne and Kenny, 2008).
+Likewise, no studies have characterized the laryngeal
+behavior of the CCM mix voice. Several studies of the classical
+“voix mixte” (Castellengo et al., 2004; Lamesch et al., 2007)
+have suggested that it can be produced either in M1 or in M2
+laryngeal mechanism but never in an intermediary mechanism.
+Instead singers slightly modify their vocal effort and vocal tract
+adjustment so that the resulting sound is similar to the usual
+
+TABLE I. Details of 6 singers.
+Subject
+
+Experience
+
+Training
+
+Overlap range of belt and legit qualities
+
+S1
+
+Classical soloist
+
+A4-D5
+
+S2
+
+Ensemble and solo MT
+
+S3
+
+Ensemble MT
+
+S4
+S5
+S6
+
+Soloist MT
+MT tertiary student
+MT tertiary student
+
+10 years (classical and short course in CCM)
+M.Mus (voc)
+11 years (classical and CCM)
+B.Arts (MT)
+7 years (mostly CCM)
+B.Arts (MT)
+30 years (classical and CM)
+6 years (CCM)
+5 years (classical and CCM)
+
+singers understood this term and were able to demonstrate a
+noticeably different sound from the other three qualities.
+Audio samples of musical phrases are provided as supplementary material online to illustrate the four qualities investigated in this study.3 These examples were produced by the
+singer S1 with the highest or sustained pitch at C5. These files
+are given as perceptual examples, as they were recorded after
+the experiment with different material and conditions.
+All singers were given 10 min to warm up and were
+instructed to take regular breaks during the 1 h recording session. Subjects were also provided with water throughout the
+session to keep their voices hydrated.
+
+G4-C5
+G4-C5
+G4-C5
+G4-C5
+F#4-B4
+
+During the final remaining 3 s of phonation, the first two
+vocal tract resonances were measured using a technique
+described by Epps et al. (1997) and Joliveau et al. (2004).
+During phonation, the vocal tract was excited at the lips via
+the flexible tube (internal diameter of 6 mm), using a synthesized broadband signal consisting of a sum of sine waves over
+the range of 200–3000 Hz spaced at 11 Hz ( ¼ 44.1 kHz/212).
+The nearby microphone recorded the vocal tract response to
+the excitation. Frequencies of the vocal tract resonances were
+detected manually from the maxima of the measured pressure
+ratios
+c ¼ pk =pr
+
+(1)
+
+C. Recordings and analysis
+
+1588
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+where pk is the pressure spectrum measured with an open
+mouth, and pr is the radiated spectrum measured at the lips
+with the mouth closed (performed during an earlier calibration procedure).
+The electroglottographic signal was simultaneously
+recorded with a two-channel electroglottograph (Glottal
+Enterprises EG2) using medical gel to improve electric contact between the skin and the electrodes. Electrodes were
+placed on both sides of the thyroid cartilage while the singer
+was singing in her comfortable middle range. The best placement of the electrodes was found by monitoring the EGG
+waveform with an oscilloscope. Medical tape was used on
+each electrode, instead of the usual Velcro neck strap, to prevent the electrodes from moving down throughout the
+experiment. No automatic gain control was used.
+Using MATLAB software, four parameters were extracted
+from the 4 s of EGG signal, using an 80 ms sliding window
+with no overlap:
+(1) The mean fundamental frequency (f0), with a standard
+autocorrelation method.
+(2) The mean amplitude of the EGG signal, the average of
+which is highly affected by inter-individual differences
+in neck constitution (width, amount of fat, and muscles)
+and tissues conductivity. As a result, only intra-speaker
+variations of that parameter are meaningful and can be
+interpreted (mostly as variations in the amount of glottal
+contact, but also partly as vertical displacements of the
+larynx). To conduct statistical analysis, we normalized
+the amplitude of the EGG signal by its mean value as
+observed in the legit quality for each singer.
+T. Bourne and M. Garnier: The female music theatre voice
+
+Author's complimentary copy
+
+One 1/4-in. pressure microphone (Brüel and Kjær
+4944-A) was attached to the front of a stand, alongside a
+small, flexible tube that was connected to a loudspeaker via
+an impedance matching horn. This acoustic source was
+used to excite the vocal tract with a synthesized broadband
+signal while the microphone recorded the response of the
+vocal tract to that excitation. The stand was adjusted for
+height so that the microphone and the tube rested gently
+upon the singer’s lower lip during phonation. Signals from
+both microphones were amplified (Brüel and Kjær Nexus
+2690), and digitized at 16 bits and a rate of 44.1 kHz using
+a Firewire audio interface (MOTU 828).
+Spectral parameters and SPL were measured from the
+first clean second of phonation (no broadband excitation
+noise), and vocal tract resonances were measured during the
+second to fourth seconds of phonation. The electroglottographic signal was measured from the full 4 s of phonation.
+The mean SPL and the average spectrum (with NFFT
+¼ 4096 points) were measured from the first second of
+phonation. The SPL was measured accurately, using the internal calibration signal of 1 V-RMS at 1 kHz delivered by
+the conditioning amplifier (Brüel and Kjær Nexus 2690), and
+knowing its V/Pa transduction coefficient. The a coefficient,
+defined as the ratio (in dB) of energy above and below 1 kHz
+(Frøkjaer-Jensen and Prytz, 1976; Sundberg and Nordenberg, 2006) was calculated from the long term average spectrum (LTAS) using MATLAB. So was the power ratio, defined
+as the energy difference in dB between the greatest harmonic
+level in the 0-2 kHz range and the greatest harmonic level in
+the 2-4 kHz range (Omori et al., 1996),
+
+Because of a very bad skin conductivity, the EGG signal
+of S4 was too poor in quality to make accurate recordings of
+her glottal behavior. Consequently, glottal observations are
+reported for only five singers.
+A two-way analysis of variance (ANOVA) with
+repeated measurements was conducted using SPSSV (Factor
+1: quality, three levels: legit, chesty belt, twangy belt.4 Factor 2: vowel, two levels: [e], [O]). The main effect of the factor quality was tested first. Specific contrasts between chesty
+belt and legit qualities, and between chesty belt and twangy
+belt qualities, were also examined—applying Bonferroni
+adjustments—to determine whether voice parameters were
+significantly different between these qualities. Second, the
+statistical interaction between quality and vowel factors was
+tested to determine whether the difference in voice parameters among legit, chesty belt, and twangy belt qualities
+R
+
+depended on the vowel. The results of these statistical analyses are reported at the bottom of Figs. 2 and 3. The conventional notation was adopted for indicating statistical
+significance: *P < 0.05, **P < 0.01, ***, P < 0.001, and ns
+(not significant) P > 0.05.
+III. RESULTS
+A. Comparison of legit and chesty belt qualities
+1. Vocal tract resonances
+
+R1 frequencies of legit productions varied relatively little over the investigated pitch range nor did they increase
+with pitch. They were never tuned to one voice harmonic
+(see Fig. 1).
+In chesty belt, all the singers except S3 increased the frequency of R1 with pitch and closely adjusted it to the second
+voice harmonic (2f0) up to C5 in both [O] and [e] vowels (see
+Fig. 1). On average, R1 frequencies were 187 6 48 Hz5 higher
+in chesty belt than in legit over the pitch range considered (F#4D5). However, such a significant difference in R1 was observed
+at all pitches for only two singers (S3 and S4). The other singers
+showed a significant difference in R1 from G#4 only.
+Legit and chesty belt qualities did not differ by the presence or the absence of R2 tuning: in both qualities, R2
+
+FIG. 1. (Color online) Comparison of resonance strategies in legit, chesty belt, twangy belt and mix qualities, for the two vowels studied ([e] and [O]), as a
+function of f0. Each vertical bar indicates for each pitch the mean value and the standard deviation of the two first resonances frequencies (R1 and R2) measured over the 6 singers (for legit and belt qualities) and over 3 singers (for mix). As singers did not all produce the same pitches (see Table I), mean values and
+standard deviations were calculated over a varying number of productions (from minimum 3 to maximum 18 productions). The dotted diagonal lines indicate
+the relationship R ¼ n f0. They visually emphasise how R1 is tuned to 2f0 in chesty belt and twangy belt.
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+T. Bourne and M. Garnier: The female music theatre voice
+
+1589
+
+Author's complimentary copy
+
+(3) The mean glottal open quotient (OQ), computed from
+the closing (positive) and opening (negative) peaks
+detected in the derivative of the EGG signal [DEGG, see
+(Henrich et al., 2004)].
+(4) The mean contact speed quotient (Qcs), defined as the
+ratio in amplitude of closing and opening peaks of the
+DEGG signal and describing the degree of asymmetry of
+the EGG waveform.
+
+2. Glottal behavior
+
+Glottal observations are reported for five singers only,
+as the EGG signal of S4 was too poor in quality.
+In these five singers, OQ values were significantly lower
+in chesty belt than in legit (by 0.21 6 0.04), without any
+difference between the vowels [e] and [O] (see Fig. 2).
+The Qcs tended to be higher (i.e., the EGG waveform
+tended to be more asymmetrical) in chesty belt than legit (by
+0.75 6 0.67), but this effect was not found to be statistically
+significant (see Fig. 2).
+No significant difference was observed in the amplitude
+of the EGG signal between legit and chesty belt productions,
+irrespective of the vowel (see Fig. 2).
+3. Voice spectrum
+
+For the six singers in this study, SPL was significantly
+higher in chesty belt than in legit (by 10.7 dB 6 4.3 dB) as
+were values of the a coefficient (by 4.4 6 1.0 dB). These differences between legit and chesty belt qualities were similar
+for both vowels (see Fig. 3).
+Values of power ratio also tended to be lower (i.e.
+energy in the 24 kHz region tended to be more enhanced)
+
+in chesty belt than in legit (by 6.4 6 6.4 dB), but this difference was not found to be statistically significant (see
+Fig. 3).
+B. Comparison of chesty belt and twangy belt
+qualities
+
+As in chesty belt, R1 frequency in twangy belt was
+tuned to the second harmonic up to C5. This was observed in
+all singers for the vowel [e] and in four singers only (S1, S2,
+S5, and S6) for the vowel [O]. No significant difference was
+observed in the average R1 frequency of chesty belt and
+twangy belt productions (see Fig. 1).
+Again as in chesty belt, no tuning of R2 frequency with
+ascending pitch was observed in twangy belt (see Fig. 1).
+Nevertheless, twangy belt differed from chesty belt by
+66 6 37 Hz higher R2 frequencies on average.
+No significant difference was observed between chesty
+belt and twangy belt qualities in the values of glottal parameters nor in the values of SPL and spectrum descriptors (see
+Figs. 2 and 3).
+C. Mix quality in three singers
+
+We recorded mix quality for three of the six singers: S1,
+S5, and S6.
+1. Vocal tract resonances
+
+The vocal tract behavior of singer S5 in mix was similar
+to chesty belt: She tuned R1 frequencies to the second voice
+harmonic (2f0) but only up to A4. Her R2 frequencies were
+
+FIG. 2. (Color online) Comparison, on average over the pitch range explored, of the glottal behavior in legit, chesty belt and twangy belt, for the two vowels
+[e] (dark) and [O] (light). Each bar represents the mean value and the standard deviation of each glottal parameter over the 5 singers S1, S2, S3, S5, and S6. At
+the bottom of each graph statistical results summarize whether the factor quality has a significant effect on glottal parameters, how the three qualities contrast
+from each other, and whether the influence of quality depends on the vowel.
+1590
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+T. Bourne and M. Garnier: The female music theatre voice
+
+Author's complimentary copy
+
+frequencies were not found to be consistently tuned to one
+voice harmonic over the pitch range investigated (see
+Fig. 1). Only one singer (S4) was observed to tune the frequency of R2 to the third voice harmonic (3f0) on [O] vowels
+and in chesty belt. On the other hand, both qualities differed
+by their mean R2 frequency that was on average
+205 6 106 Hz higher in chesty belt than in legit (see Fig. 1).
+
+FIG. 3. (Color online) Comparison, on average over the pitch range explored, of SPL (at lips) and voice spectrum in legit, chesty belt and twangy belt, for the
+two vowels [e] (dark) and [O] (light). Each bar represents the mean value and the standard deviation of each acoustic parameter over the six singers. At the bottom of each graph, statistical results summarize whether the factor quality has a significant effect on acoustic features, how the three qualities contrast from
+each other, and whether the influence of quality depends on the vowel.
+
+3. Voice spectrum
+
+Comparable patterns of voice production were again
+noted for S5 and S6 in mix with SPL values measured right
+in between those of chesty belt and legit qualities. For S1,
+SPL values were measured in a range closer to legit, consistent with her glottal behavior.
+Values of the a coefficient were measured in between
+those of chesty belt and legit, except for singer S6’s vowels
+[o], which were closer to the values of chesty belt.
+
+IV. DISCUSSION AND CONCLUSION
+
+2. Glottal behavior
+
+A. Acoustic and physiological differences between
+belt and legit qualities
+
+At the laryngeal level, two production strategies were
+also observed across the three singers.
+For S1, her glottal behavior in mix was comparable to
+that of legit: OQ values were slightly lower in mix than in
+legit (by 0.07) but much higher than average values in chesty
+belt (see Fig. 4). Values of Qcs were much lower than values
+observed in chesty belt in a similar range to values observed
+in legit (see Fig. 4).
+The glottal behavior of singers S5 and S6 in mix was
+more complex. For these two singers, OQ values in mix
+showed a discontinuous variation over pitch. Below A4A#4, OQ values were observed in a low range close to that
+of chesty belt (0.5). Above A4-A#4, they were observed in
+a significantly higher range, close or similar to that of legit
+(0.63) (see Fig. 4).
+
+In this study, belt productions are characterized by
+higher R1 frequencies. This is consistent with higher F1 values reported in previous studies (Sundberg et al., 1993) as
+well as with the raised larynx, more constricted pharynx and
+more open mouth described by previous studies (Lawrence,
+1979; Estill, 1980; Yanagisawa et al., 1983; Estill, 1988;
+Miles and Hollien, 1990; Sundberg et al., 1993; Lovetri
+et al., 1999; Edwin, 2004; Balog, 2005; Titze and Worley,
+2009).
+In addition, our results show that R2 frequencies are significantly higher in belt than legit. Again, this is consistent
+with the more forward position of the tongue taught by belting teachers (Miles and Hollien, 1990; Burdick, 2005;
+Bourne and Kenny, 2008) and with the more backward articulation of classical singing that is considered to influence the
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+T. Bourne and M. Garnier: The female music theatre voice
+
+1591
+
+Author's complimentary copy
+
+in a similar range for both mix and chesty belt and were significantly higher than legit (see Fig. 4).
+Conversely, the vocal tract behavior of singers S1 and
+S6 in mix was either closer to legit or intermediary to legit
+and chesty belt production. These singers did not demonstrate any tuning of R1 and R2 to voice harmonics in mix or
+in legit (see Fig. 4). Their R1 mix frequencies lay between
+chesty belt and legit (for S6) or closer to legit (for S1), while
+their R2 frequencies were close to those observed in legit for
+[O]. There were no significant differences in R2 frequencies
+between legit, mix and chesty belt qualities on [e] vowels
+(see Fig. 4).
+
+Music Theater legit quality (Edwin, 2003; Balog, 2005;
+AATS, 2008; Bourne and Kenny, 2008).
+Our results did not show any tuning of R1 in legit, even
+over B4–D5 where classical sopranos usually start tuning R1
+to the first harmonic (f0) (Joliveau et al., 2004; Garnier et al.,
+2010). On the other hand, our results showed systematic
+adjustment of the R1 frequency to the second harmonic (2f0)
+in belt, up to C5, for both [e] and [O]. This is consistent with
+the proximity between F1 and 2f0 reported in a previous
+study (Schutte and Miller, 1993). No significant tuning of R2
+was observed in legit or in belt, enabling singers to maintain
+phonetic distinction between vowel categories although the
+systematic R1:2f0 tuning may cause a loss of the distinction
+in vowel height.
+1592
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+B. Subcategories of belt
+
+No significant difference was observed between twangy
+belt and chesty belt qualities except that R2 frequencies were
+significantly higher in twangy belt than chesty belt for all
+singers. A consistent tendency was also observed across
+singers toward slightly lower SPL, higher OQ values, and
+more symmetrical EGG waveform in twangy belt, although
+this was not statistically significant. In previous studies,
+twang was related to higher F1 and F2 frequencies (Story
+et al., 2001; Sundberg and Thalen, 2010), lower OQ values
+T. Bourne and M. Garnier: The female music theatre voice
+
+Author's complimentary copy
+
+FIG. 4. Summary of the different individual strategies observed for the production of the mix quality by the three singers S1, S5, and S6. Error bars
+represent the mean value and standard deviation of voice descriptors in mix.
+Shaded areas represent the standard deviation of voice descriptors in legit
+(light grey) and in chesty belt (dark grey). On the top charts representing the
+variation of R1 frequencies with ascending pitch, the dashed diagonal lines
+indicate the relationship R1 ¼ 2f0. For the sake of simplicity, parameters values are averaged over the pitch range(s) where they were similar. Several
+values are displayed only where the parameter varied significantly between
+two pitch ranges (e.g., OQ values below and above A4-A#4 for S5 and S6)
+or between the two vowels considered (e.g., the a coefficient, R2 and the
+SPL for S1).
+
+The R1:2f0 resonance tuning in belt certainly helped
+production of the high sound pressure levels measured in all
+singers for this quality: around 120 dB at lips, 11 dB louder
+than in legit where no resonance tuning was observed.
+This difference in voice intensity between belt and legit
+may explain the differences observed in glottal contact and
+in the voice spectrum. Indeed, the lower values of OQ measured in belt are consistent with greater vocal effort, as well
+as greater values of Qcs (i.e., more asymmetrical EGG waveform) and weaker values of the a coefficient (i.e., enhanced
+energy above 1 kHz) (Huang et al., 1995; Henrich, 2001;
+Henrich et al., 2005).
+However, these differences may also be interpreted in
+terms of laryngeal mechanisms. Indeed, OQ values in belt
+were observed in a completely distinct range (0.43 6 0.06)
+to values in legit (0.68 6 0.08), supporting the idea that they
+correspond to two fundamentally different laryngeal behaviors. Furthermore, these two ranges correspond to typical
+OQ values in laryngeal mechanisms M1 and M2 (Henrich
+et al., 2005). This interpretation in terms of laryngeal mechanisms would be consistent with weaker values of Qcs measured in legit. Indeed, the EGG waveform has been reported
+to be more symmetrical in M2 than M1 (Henrich, 2006;
+Roubeau et al., 2009). On the other hand, Roubeau et al.
+(2009) described the amplitude of the EGG signal decreasing
+significantly (by about 40%) during the transition from M1
+to M2 in female singers. In our data, belt and legit qualities
+did not differ in amplitude of glottal contact.
+It is not clear whether the two distinct laryngeal behaviors
+that we recorded correspond to the laryngeal mechanisms M1
+and M2 or whether the observed differences in glottal behavior relate to varying degrees of source-filter interaction and
+vocal effort. In any case, there is a strong relationship between
+the presence of R1:2f0 tuning and the measured glottal parameters: Indeed, S3 in chesty belt demonstrated R1:2f0 tuning up
+to A4 and a discontinuous change in OQ values at that pitch.
+The other singers present low OQ values up to their maximum
+belted note, around C5 (1000 Hz), which corresponds to the
+maximum range of R1 frequencies in speech. This is also the
+pitch at which S1 cannot maintain R1:2f0 tuning any further.
+This raises the question of whether the end of the R1:2f0 tuning conditions the upper limit of the belt range, and whether
+the rare singers who can belt up to F5 have developed an
+articulatory strategy that enables them to continue increasing
+R1 higher than 1 kHz, just like some coloratura sopranos can
+extend the tuning of R1:f0 tuning above C6, up to F#6
+(Garnier et al., 2010).
+
+C. First conclusions about mix
+
+For all three singers, glottal and vocal tract measurements
+in mix quality were indeed observed at values in between those
+measured for legit and chesty belt qualities. However, each
+singer adopted different strategies to achieve this outcome.
+For S1, the mix quality appears to be a more “pressed”
+variation of legit. OQ values in mix were slightly lower than
+for legit but remained in a similar high range, so mix and legit
+qualities appear to be underlined by the same glottal behavior.
+This singer did not demonstrate any R1:2f0 tuning in mix; nor
+was this tuning evident in legit. R2 frequencies, sound pressure level, and voice energy above 1 kHz were intermediary
+between legit and belt values but closer to legit.
+For S5 and S6, the glottal behavior in mix was adapted
+with pitch, comparable to belt in the lower range and comparable to legit in the upper range. Indeed, OQ values of mix
+productions below A4 were similar to those of belt at this
+range. From B4, OQ values rise significantly, becoming
+closer to legit in value. This suggests that S5 and S6 changed
+their glottal behavior from A4 to B4.
+Despite these similarities in glottal behavior, S5 and S6 differed in their resonance strategies to produce the mix quality.
+S5 demonstrated a tuning of R1 to the second voice harmonic (2f0) as she did in belt but only up to A4. This also corresponds to the pitch at which this singer changes glottal
+behavior. Furthermore, R2 frequencies were intermediary
+between legit and belt values but closer to belt. For S6, on the
+other hand, vocal tract adjustments in mix are closer to legit:
+No resonance tuning is observed and R2 frequencies were
+intermediary between legit and belt values but closer to legit.
+Distinct differences in the vocal production of belt and
+legit were demonstrated by the six singers in this study, suggesting that technical and pedagogical approaches may need
+to differ for these styles. There were no significant differenJ. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+ces between twangy belt and chesty belt except in the higher
+values of R2 frequencies for twangy belt.
+The three singers who were able to demonstrate mix
+quality used different glottal and vocal tract strategies to produce a sound that was “in between” belt and legit. Because
+we have only measured a small sample of singers, these
+results can only be regarded as indicative. Further study on
+the CCM mix voice may give more information on typical
+glottal and vocal tract configurations for this style.
+ACKNOWLEDGMENTS
+
+We thank our volunteer subjects. T.B. was supported by
+an Early Career Researcher Grant from the University of
+Ballarat. M.G. was supported by Australian Research Council Grant No. DP 0771208.
+1
+
+We use the term “formants” to refer to the usual estimation of vocal tract
+resonances from the radiated voice spectrum. We use the term
+“resonances” to refer to direct measures of the vocal tract impedance
+(Epps et al., 1997).
+2
+Laryngeal mechanisms M1 and M2 are most commonly used in speech
+and singing and underlie “chest/modal” and “head/falsetto” laryngeal
+registers respectively (Roubeau et al., 1997). In mechanism M1, the thyroarytenoid muscle is part of the vibrating mass of the vocal folds. Vocal
+folds are thick. Variations of f0 are mainly determined by the stiffness of
+the folds, controlled by the contraction of the thyroarytenoid muscle. By
+contrast, the vocal folds are thinner in laryngeal mechanism M2 due to the
+assumed decoupling of the thyro-arytenoid muscle from the vibrating
+mass (Van den Berg, 1960; Hirano, 1982, Roubeau, 1993; Lacau St Guily
+and Roubeau, 1994). Variations of f0 are mainly determined by the stretching of the folds, controlled by the contraction of the crico-thyroid muscle.
+There is an overlap pitch range in which singers can choose to produce
+the sound in either M1 or M2, depending on the desired vocal quality
+(Roubeau et al., 2009).
+3
+See supplementary material at http://dx.doi.org/10.1121/1.3675010 for
+sound files.
+4
+The mix quality was not included in statistical analysis because it was produced by only three singers.
+5
+This standard deviation is calculated from the mean difference observed
+between chesty belt and legit qualities in each subject (thus over 6 values).
+AATS (2008). “American Academy of Teachers of Singing: In Support of
+Contemporary Commercial Music (nonclassical) Voice Pedagogy,”
+www.americanacademyofteachersofsinging.org/articles/CCMVoicePedagogy. pdf (Last viewed December 31, 2010).
+Balog, J. E. (2005). “A guide to evaluating music theater singing for the
+classical teacher,” J. Singing 61, 401–406.
+Barlow, C., and Lovetri, J. (2010). “Closed quotient and spectral measures
+of female adolescent singers in different singing styles,” J. Voice 24,
+314–318.
+Bestebreurtje, M., and Schutte, H. K. (2000). “Resonance strategies for the
+belting style: Results of a single female subject study.” J. Voice 14,
+194–204.
+Bjorkner, E., Sundberg, J., Cleveland, T., and Stone, E. (2006). “Voice
+source differences between registers in female musical theater singers,” J.
+Voice 20, 187–197.
+Bourne, T., Garnier, M., and Kenny, D. (2010). “Music theater voice: Production, physiology and pedagogy,” in Perspectives on Teaching Singing:
+Australian Vocal Pedagogues Sing Their Stories, edited by S. Harrison
+(Australian Academic Press, Brisbane), pp. 170–182.
+Bourne, T., and Kenny, D. (2008). “Perceptual descriptions of legit and belt
+voice qualities in music theater,” in Proceedings of the ANATS Conference
+(Perth, Australia).
+Burdick, B. (2005). “Vocal techniques for music theater: The high school
+and undergraduate singer,” J. Singing 61, 261–268.
+Castellengo, M., Chuberre, B., and Henrich, N. (2004). “Is ‘voix mixte’, the
+vocal technique used to smooth the transition across the two main laryngeal mechanisms, or an independent mechanism?” in Proceedings of
+ISMA (Nara, Japan).
+T. Bourne and M. Garnier: The female music theatre voice
+
+1593
+
+Author's complimentary copy
+
+(Titze et al., 2003; Sundberg and Thalen, 2010), and
+enhanced energy around 3 kHz (Yanagisawa et al., 1983;
+Nawka et al., 1997). In this study, the frequency of R1, the
+open quotient and the power ratio did not distinguish twangy
+belt productions from chesty belt ones.
+These different results suggest that chesty belt and twangy
+belt are not fundamentally different modes of production.
+Although chesty belt might correspond to a slightly louder and
+more “pressed” phonation than twangy belt, both qualities
+appear to be underlined by the same glottal behavior. Furthermore, both kinds of belt are comparable in terms of sourcefilter interaction as they both show a similar tuning of R1 to the
+second harmonic. Both qualities only differ significantly in
+vocal tract adjustment: The higher R2 frequencies measured in
+twangy belt are likely to correspond to a more forward position
+of the tongue. Further research involving articulatory measurements would be needed to test this hypothesis.
+To conclude, singers may be able to slightly vary their
+voice quality when belting, by adding more or less twang, by
+varying vocal intensity, or by adopting a more or less
+“forward” articulation, but the small differences in vocal
+production between twangy and chesty belt qualities do not
+support the existence of subcategories of belt.
+
+1594
+
+J. Acoust. Soc. Am., Vol. 131, No. 2, February 2012
+
+Lovetri, J. (2008). “Contemporary commercial music,” J. Voice 22,
+260–262.
+Lovetri, J., Lesh, S., and Woo, P. (1999). “Preliminary study on the ability
+of trained singers to control the intrinsic and extrinsic laryngeal musculature,” J. Voice 13, 219–226.
+McCoy, S. (2007). “A classical pedagogue explores belting,” J. Singing 64,
+545–549.
+Miles, B., and Hollien, H. (1990). “Whither Belting?” J. Voice 4, 64–70.
+Miller, D. G. (2000). “Registers in singing: Empirical and systematic studies
+in the theory of the singing voice,” Ph.D. thesis, University of Groningen,
+Netherlands, pp. 1–240.
+Nawka, T., Anders, L. C., Cebulla, M., and Zurakowski, D. (1997). “The
+speaker’s formant in male voices,” J. Voice 11, 422–428.
+Omori, K., Kacker, A., Carrol, L. M., Riley, W. D., and Blaugrund, S. M.
+(1996). “Singing power ratio: Quantitative evaluation of singing voice
+quality,” J. Voice 10, 228–235.
+Osborne, C. (1979). “The Broadway voice. I. Just singin’ in the pain,” High
+Fidelity 29, 53–65.
+Popeil, L. (2007). “The multiplicity of belting,” J. Singing 64, 77–80.
+Roubeau, B. (1993). “Mécanismes vibratoires laryngés et contrôle neuromusculaire de la fréquence fondamentale (Laryngeal vibratory
+mechanisms and neuromuscular control of fundamental frequency),”
+Ph.D. thesis, Université Paris-Orsay, France.
+Roubeau, B., et al. (1997). “Electromyographic activity of strap and
+cricothyroid muscles in pitch change,” Acta Otolaryngol. 117(3),
+459– 464.
+Roubeau, B., Henrich, N., & Castellengo, M. (2009). “Laryngeal
+vibratory mechanisms: The notion of vocal register revisted,” J. Voice 23,
+425–438.
+Schutte, H. K., and Miller, D. G. (1993). “Belting and pop, nonclassical
+approaches to the female middle voice: Some preliminary conclusions,” J.
+Voice 7, 142–150.
+Stanley, D. (1929). The Science of Voice (Carl Fischer, New York), pp.
+1–290.
+Story, B., Titze, I., and Hoffman, E. (2001). “The relationship of vocal tract
+shape to three voice qualities,” J. Acoust. Soc. Am. 109, 1651–1667.
+Sundberg, J., Gramming, P., and Lovetri, J. (1993). “Comparisons of pharynx, source, formant, and pressure characteristics in operatic and musical
+theater singing,” J. Voice 7, 301–310.
+Sundberg, J., and Nordenberg, M. (2006). “Effects of vocal loudness variation on spectrum balance as reflected by the alpha measure of long-termaverage spectra of speech,” J. Acoust. Soc. Am. 120, 453–457.
+Sundberg, J., and Thalen, M. (2010). “What is ‘twang’,” J. Voice 24,
+654–660.
+Titze, I. (2001). “Acoustic interpretation of resonant voice,” J. Voice 15,
+519–528.
+Titze, I., Bergan, C., Hunter, E., and Story, B. (2003). “Source and filter
+adjustments affecting the perception of the vocal qualities twang and
+yawn,” Logoped. Phoniatr. Vocol. 28, 147–155.
+Titze, I., and Worley, A. (2009). “Modeling source-filter interaction in belting
+and high-pitched operatic male singing,” J. Acoust. Soc. Am. 126, 1530–1540.
+Van den Berg, J. W. (1960). “Vocal ligaments versus registers,” Curr. Probl.
+Phoniatr. Logoped. 1, 19–34.
+Yanagisawa, E., Estill, J., Kmucha, S., and Leder, S. (1983). “The contribution of aryepiglottic constriction to “ringing” voice quality—A videolaryngoscopic study with acoustic analysis,” J. Voice 3, 342–350.
+
+T. Bourne and M. Garnier: The female music theatre voice
+
+Author's complimentary copy
+
+Cleveland, T., Sundberg, J., and Stone, E. (2001). “LTAS characteristics of
+country singers during speaking and singing,” J. Voice 15, 54–60.
+Edwin, R. (2002). “Belting: bel canto or brutto canto,” J. Singing 58, 67–68.
+Edwin, R. (2003). “A broader Broadway,” J. Singing 59, 431–432.
+Edwin, R. (2004). “Belt yourself,” J. Singing 60, 285–288.
+Epps, J., Smith, J., and Wolfe, J. (1997). “A novel instrument to measure
+acoustic resonances of the vocal tract during speech,” Meas. Sci. Technol.
+8, 1112–1121.
+Estill, J. (1980). ”Observations about the quality called belting,“ in The
+Ninth Symposium, Care of the Professional Voice, edited by B. Weinberg,
+and V. Lawrence (Voice Foundation, The Juilliard School, New York
+City), pp. 82–88.
+Estill, J. (1988). ‘Belting and classic voice quality: some physiological differences,’ Med. Probl, Performing Artists 3, 37–43.
+Frøkjaer-Jensen, B., and Prytz, S. (1976). “Registration of voice quality,”
+Brüel and Kjaer Tech. Rev. 3, 3–17.
+Garnier, M., Henrich, N., Smith, J., and Wolfe, J. (2010). “Vocal tract adjustments in the high soprano range,” J. Acoust. Soc. Am. 127, 3771–3780.
+Henrich, N. (2001). “Etude de la source glottique en voix parlée et chantée,”
+[The glottal source in speech and singing], Ph.D thesis, the University of
+Paris 6, France, pp. 42–53.
+Henrich, N. (2006). “Mirroring the voice from Garcia to the present day:
+Some insights into singing voice registers,” Logoped. Phoniatr. Vocol. 31,
+3–14.
+Henrich, N., d’Alessandro, C., Doval, B., and Castellengo, M. (2004).
+“On the use of the derivative of electroglottographic signals for characterization of nonpathological phonation,” J. Acoust. Soc. Am. 115,
+1321–1332.
+Henrich, N., d’Alessandro, C., Doval, B., and Castellengo, M. (2005).
+“Glottal open quotient in singing: Measurements and correlation with
+laryngeal mechanisms, vocal intensity, and fundamental frequency,” J.
+Acoust. Soc. Am. 117, 1417–1430.
+Henrich, N., Kiek, M., Smith, J., and Wolfe, J. (2007). “Resonance strategies used in Bulgarian women’s singing style: A pilot study,” Logoped.
+Phoniatr. Vocol. 32, 171–177.
+Hirano M. (1982). “The role of the layer structure of the vocal fold in register control,” in Vox Humana, edited by P. Hurme (University of Jyvaskyla, Jyvaskyla, Finland), pp. 50–62.
+Huang, D. Z., Minifie, F., Kasuya, H., and Lin, S. X. (1995). “Measures of
+vocal function during changes in vocal effort level,” J. Voice 9, 429–438.
+Joliveau, E., Smith, J., and Wolfe, J. (2004). “Vocal tract resonances in singing: The soprano voice,” J. Acoust. Soc. Am. 116, 2434–2439.
+Lacau st Guily, J., and Roubeau, B. (1994). Voies nerveuses et physiologie
+de la phonation (Nerve pathways and physiology of phonation), Encyclopédie médico-chirurgicale, oto-rhino-laryngologie (Editions Techniques,
+Paris, France), pp. 620–632.
+Lamesch, S., Expert, R., Castellengo, M., Henrich, N., and Chuberre, B.
+(2007). “Investigating ‘voix mixte’: A scientific challenge towards a
+renewed vocal pedagogy,” in Proceedings of CIM (Tallinn, Estonia),
+edited by K. Maimets-Volk, Parncutt, R., Marin M., and Ross, J.
+Lawrence, V. (1979). “Laryngological observations on belting,” J. Res.
+Singing 2, 26–28.
+LeBorgne, W. D., Lee, L., Stemple, J. C., and Bush, H. (2010). “Perceptual
+findings on the broadway belt voice,“ J. Voice 24, 678–689.
+Lovetri, J. (2002). “Contemporary commercial music: More than one way to
+use the vocal tract,” J. Singing 58, 249–252.

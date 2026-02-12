@@ -1,0 +1,31 @@
+5. Conclusion
+In this work, we have shown the simple and efficient
+way of semi-supervised learning for neural networks.
+Without complex training scheme and computationally expensive similarity matrix, the proposed method
+shows the state-of-the-art performance.
+
+References
+Bengio, Y., Courville, A., and Vincent, P. Representation learning: A review and new perspectives. arXiv
+preprint arXiv:1206.5538, 2012.
+Breiman, L. Bagging predictors. Machine learning.
+1996, 24.2: 123-140.
+Chapelle, O., and Zien, A. Semi-supervised classica1
+We didn’t use any weight regularization because the
+performance was the best without it.
+
+Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks
+
+tion by low density separation. AISTATS, 2005, (pp.
+5764).
+Erhan, D., Bengio, Y., Courville, A., Manzagol, P. A.,
+Vincent, P., and Bengio, S. Why does unsupervised
+pre-training help deep learning?. The Journal of
+Machine Learning Research, 2010, 11: 625-660.
+Glorot, X., Bordes, A., and Bengio, Y. Deep Sparse
+Rectifier Networks. In Proceedings of the 14th International Conference on Artificial Intelligence and
+Statistics. JMLR W&CP Volume. 2011. p. 315-323.
+Yves Grandvalet and Yoshua Bengio, Entropy Regularization, In: Semi-Supervised Learning, pages
+151–168, MIT Press, 2006.
+Hinton, G. E. and Salakhutdinov, R. R. Reducing the
+dimensionality of data with neural networks. Science, Vol. 313. no. 5786, pp. 504 - 507, 28 July 2006.
+================================================================================

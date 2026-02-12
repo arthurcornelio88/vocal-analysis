@@ -1,0 +1,31 @@
+8. Summary and Conclusions
+This paper has presented a family of algorithms that address the question of when
+and how unlabeled data may be used to supplement scarce labeled data, especially when learning to classify text documents. This is an important question in
+text learning, because of the high cost of hand-labeling data and because of the
+availability of large volumes of unlabeled data. We have presented an algorithm
+that takes advantage of it and experimental results that show signi cant improvements by using unlabeled documents for training classi ers in three real-world text
+classi cation tasks.
+When our assumptions of data generation are correct, basic EM can e ectively
+incorporate information from unlabeled data. However, the full complexity of realworld text data cannot be completely captured by known statistical models. It
+is interesting then, to consider the performance of a classi er based on generative
+models that make incorrect assumptions about the data. In such cases, when the
+data is inconsistent with the assumptions of the model, our method for adjusting
+the relative contribution of the unlabeled data (EM-) prevents the unlabeled data
+from degrading classi cation accuracy.
+In another augmentation to the basic EM scheme, we study the e ect of multiple
+mixture components per class. This is an e ort to relax the assumptions of the
+model, and make the generative model better match the data. Experimental results show improvements in classi cation, and suggest the exploration of even more
+complex mixture models that would correspond even better to textual data distributions. These results also recommend a study of improvements to the current
+
+30
+
+NIGAM, MCCALLUM, THRUN AND MITCHELL
+
+cross-validation methods for selecting both the unlabeled data weight  and the
+number of mixture components per class.
+We believe that our algorithm and others using unlabeled data require a closer
+match between the data and the generative model than those using labeled data
+alone. If the intended target concept and model di er from the actual distribution
+of the data too strongly, then the use of unlabeled data will hurt instead of help
+performance. In future work we intend to make a closer theoretical and empirical study of the tradeo s between the use of unlabeled data and inherent model
+================================================================================

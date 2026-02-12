@@ -1,0 +1,100 @@
+Loquens 1(1)
+January 2014, e009
+eISSN XXXXX
+doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+Toward a unified theory of voice production and perception
+Jody Kreiman1, Bruce R. Gerratt1, Marc Garellek2, Robin Samlan3 and Zhaoyan Zhang1
+1
+
+Bureau of Glottal Affairs, Department of Head and Neck Surgery, UCLA School of Medicine, Los Angeles, CA USA
+2
+Department of Linguistics, UC San Diego, San Diego, CA USA
+3
+Department of Speech, Language, & Hearing Sciences, University of Arizona, Tucson, AZ USA
+e-mail: jkreiman@ucla.edu, bgerratt@ucla.edu, mgarellek@ucsd.edu, rsamlan@email.arizona.edu, zyzhang@ucla.edu
+
+Citation / Cómo citar este artículo: Kreiman, J., Gerratt, B. R., Garellek, M., Samlan, R., and Zhang, Z. (2014). Toward a
+unified theory of voice production and perception. Loquens, 1(1), e009. doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+ABSTRACT: At present, two important questions about voice remain unanswered: When voice quality changes, what
+physiological alteration caused this change, and if a change to the voice production system occurs, what change in
+perceived quality can be expected? We argue that these questions can only be answered by an integrated model of
+voice linking production and perception, and we describe steps towards the development of such a model. Preliminary
+evidence in support of this approach is also presented. We conclude that development of such a model should be a
+priority for scientists interested in voice, to explain what physical condition(s) might underlie a given voice quality,
+or what voice quality might result from a specific physical configuration.
+KEYWORDS: voice quality; voice production; modeling; synthesis; acoustics
+
+RESUMEN: Hacia una teoría unificada de la producción y la percepción de la voz.- En la actualidad quedan por
+contestar dos cuestiones importantes relacionadas con la voz, a saber: (1) cuando la cualidad de la voz cambia, ¿qué
+alteración en el mecanismo vocal es la responsable?; y (2) si se produce un cambio en el sistema de producción de la
+voz, ¿qué cambio puede esperarse en la cualidad de voz percibida auditivamente? Sostenemos que la única respuesta
+posible a estas preguntas reside en un modelo de voz integrado que una producción y percepción, y describimos pasos
+hacia el desarrollo de tal modelo. Presentamos evidencias preliminares para respaldar esta propuesta. Concluimos que
+el desarrollo de semejante modelo debería ser una prioridad para los científicos interesados en la voz con el fin de explicar
+qué condición o condiciones físicas podrían subyacer a una cualidad de voz determinada, o qué cualidad de voz podría
+derivar de una configuración física específica.
+PALABRAS CLAVE: cualidad de voz; producción de voz; modelo; síntesis; acústica
+
+1. INTRODUCTION: WHAT IS A UNIFIED
+THEORY OF VOICE, AND WHY DO WE NEED
+ONE?
+In general, speakers phonate in order to convey information (linguistic or paralinguistic; intentionally or
+unintentionally) to a listener. The stages of transmitting
+information in this way can be described by the wellknown “speech chain” (Figure 1; Denes & Pinson,
+1993). We presently know a good deal about the individual steps along the chain, including motor planning, la-
+
+ryngeal innervation, tissue properties, the biomechanics
+of laryngeal vibrations, aeroacoustics, acoustics and
+resonance, and voice perception. However, very few
+studies address the manner in which information is
+transmitted from one stage to the next, much less from
+one end of this chain to the other. As a result, two important questions about voice remain unanswered: 1)
+When voice quality changes in some way, what caused
+the change? and 2) If a change occurs in voice production, what will be the resulting perceived change in
+quality? In this paper, we motivate a model of voice that
+
+Copyright: © 2014 CSIC This is an open-access article distributed under the terms of the Creative Commons Attribution-Non Commercial
+(by-nc) Spain 3.0 License.
+
+2 • J. Kreiman, B. R. Gerratt, M. Garellek, R. Samlan and Z. Zhang
+
+is designed to answer these questions, and describe our
+preliminary steps towards generating this model.
+In our view, these two questions define the primary
+goals of the study of voice. Because voice production,
+acoustics, and perception are all parts of the same communicative process, understanding the communicative
+function of any of these aspects of voice—laryngeal/
+physiologic, acoustic, or perceptual—requires knowledge of how each stage interacts with the others in the
+transmission of vocal information. Details of voice
+production, acoustics and quality may be misinterpreted
+without considering the other domains. For example,
+dozens of different measures of acoustic jitter, shimmer,
+and harmonics-to-noise ratios (HNRs) have been proposed (see Buder, 2000, for review), presumably because
+the authors assumed that jitter and shimmer were important vocal characteristics. Hundreds of research papers
+have examined the correlations between ratings of voice
+quality and these acoustic measures (see e.g. Maryn,
+Roy, De Bodt, Van Cauwenberge, & Corthals, 2009,
+for review), and many more examined correlations between measured perturbation and voice physiology or
+vocal diagnosis (see e.g. Roy et al., 2013, for review).
+However, acoustic perturbation measures are not individually informative about voice quality, because listeners cannot hear even large differences in jitter or shimmer (although they are sensitive to changes in the overall
+level of harmonic vs. inharmonic energy in the voice
+source; Kreiman & Gerratt, 2005). Further, jitter, shimmer, and noise tell us little about voice production, because they have multiple neurological, biomechanical,
+aerodynamic, and acoustic causes (see Titze, 1994, for
+review). Thus, these studies have not resulted in any
+significant insight into voice production or perception,
+because questions about causation are difficult to answer
+without a model explicitly linking production to perception. In another example, clinicians applying stroboscopy
+or high-speed video imaging often interpret asymmetric
+vocal fold motion as evidence of vocal pathology.
+However, although asymmetries sometimes co-occur
+with abnormal voice qualities, asymmetrical vibration
+can also occur without any negative effect on the sound
+of the voice. High-speed video and audio recordings
+demonstrating such an asymmetry in a normal speaker
+are presented in the supplemental material [S1] accompanying this paper (see also Zhang, Kreiman, Gerratt,
+& Garellek, 2013). Again, no theoretical model exists
+to predict which asymmetries have perceptual consequences, and which do not.
+Thus, apart from its basic science interest, a theory
+describing the links between voice production and perception would also have substantial clinical importance,

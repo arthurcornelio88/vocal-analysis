@@ -1,0 +1,100 @@
+Refining a Deep Learning-based Formant Tracker using Linear
+Prediction Methods
+Paavo Alku1 , Sudarsana Reddy Kadiri1 , Dhananjaya Gowda2
+
+arXiv:2308.09051v1 [eess.AS] 17 Aug 2023
+
+1
+
+Department of Information and Communications Engineering, Aalto University, Finland
+2
+Samsung Research, South Korea
+
+Abstract
+In this study, formant tracking is investigated by refining the formants tracked by an existing datadriven tracker, DeepFormants, using the formants estimated in a model-driven manner by linear
+prediction (LP) -based methods. As LP-based formant estimation methods, conventional covariance analysis (LP-COV) and the recently proposed quasi-closed phase forward-backward (QCPFB) analysis are used. In the proposed refinement approach, the contours of the three lowest formants are first predicted by the data-driven DeepFormants tracker, and the predicted formants are
+replaced frame-wise with local spectral peaks shown by the model-driven LP-based methods. The
+refinement procedure can be plugged into the DeepFormants tracker with no need for any new data
+learning. Two refined DeepFormants trackers were compared with the original DeepFormants and
+with five known traditional trackers using the popular vocal tract resonance (VTR) corpus. The results indicated that the data-driven DeepFormants trackers outperformed the conventional trackers
+and that the best performance was obtained by refining the formants predicted by DeepFormants
+using QCP-FB analysis. In addition, by tracking formants using VTR speech that was corrupted
+by additive noise, the study showed that the refined DeepFormants trackers were more resilient
+to noise than the reference trackers. In general, these results suggest that LP-based model-driven
+approaches, which have traditionally been used in formant estimation, can be combined with a
+modern data-driven tracker easily with no further training to improve the tracker’s performance.
+Keywords: Speech analysis, Vocal tract resonances, Formant tracking, Linear prediction,
+DeepFormants.
+
+1. Introduction
+Resonance frequencies of the vocal tract, formants, are among the most important parameters of speech signals. In continuous speech, formants vary over time, manifesting themselves
+as time-domain contours. Formant contours have been investigated in many studies in different
+areas of speech science, such as in acoustic phonetics [1, 2], hearing research [3, 4] and in analysis
+of pathological speech [5, 6]. In order to automatically estimate formant contours from speech
+∗
+
+Corresponding author (Sudarsana Reddy Kadiri; sudarsana.kadiri@aalto.fi)
+
+Preprint submitted to Computer Speech and Language
+
+August 21, 2023
+
+signals, formant tracking technology is needed. Formant tracking is a challenging engineering
+problem, and therefore many methods have been proposed over the past few decades to track
+formants [7, 8, 9, 10, 11]. These techniques typically consist of two parts. In the first part (the estimation stage), initial values of the formants are computed in short timeframes (e.g., 25 ms) using
+linear prediction (LP) [12] or cepstral analysis [13]. In the second part (the tracking stage), the
+formants extracted in individual frames in the estimation stage are expressed using contours that
+cover a longer speech unit (e.g., a syllable, word or sentence) [7, 8]. Moreover, in some techniques
+the estimation and tracking stages are computed simultaneously using an initial representation of
+the vocal tract system [9, 10].
+Formant trackers can be divided into two categories based on the technology that is used in the
+formant estimation stage. The first category consists of classical trackers whose formant estimation
+is based on model-driven signal processing methodology. In this tracker category, all-pole spectral
+estimation methods based on different variants of LP are mostly used to estimate formants from
+short timeframes of speech. Formant estimates are generally obtained in these methods either
+by peak-picking the power spectrum of the parametric all-pole spectral model computed by the
+underlying LP-based method [2, 14] or by solving the roots of the denominator polynomial of the
+all-pole model [15, 16]. In model-driven LP-based trackers, importantly, estimation of formants is
+computed directly from the test speech utterance using the underlying LP-based signal processing
+algorithm without training the model using formant data. As an alternative to the model-driven
+formant estimation approach, a few recent formant tracking studies have used the data-driven
+formant estimation approach. This approach corresponds to first training a deep learning (DL)
+neural network model to map selected acoustic features to formants, and then estimating formants
+from test utterances by computing the selected features from speech and by feeding them as input
+to the network. In the next two paragraphs, a brief literature review is given on some of the previous
+investigations representing the model-driven and data-driven approaches in formant estimation.
+The most popular classic model-based approaches used in formant estimation are the autocorrelation and covariance methods of LP [7, 8]. Closed phase (CP) analysis is known to improve
+formant estimation accuracy by avoiding the contribution of speech samples in the open phase
+of the glottal cycle and thereby decoupling the effect of the trachea more effectively [17]. CP
+analysis, however, works better for low-pitched male voices, which typically have a larger number
+of samples in the closed phase of the glottal cycle compared to high-pitched voices of women or
+children, which might have just a few samples in the closed phase. To reduce problems caused by
+having a small number of closed phase samples, LP can be computed over multiple neighboring
+cycles [17]. The LP-based estimation of formants has also been studied based on all-pole phase
+spectra or on combinations of all-pole phase and amplitude spectra [18, 19, 20]. Weighted linear
+prediction (WLP) is another example of an LP-based method that has been used in formant estimation [21, 22, 23, 24]. WLP is based on temporally weighting the prediction error in LP, an
+approach that has been shown to be beneficial in computing vocal tract models that are robust with
+respect to noise [21, 22] and the biasing effect of high fundamental frequency [23]. In [25], a WLPbased method called quasi-closed phase forward-backward analysis (QCP-FB) was proposed and
+the method was shown to outperform five reference methods in formant estimation. The improved
+formant estimation accuracy of QCP-FB is due to the following properties of the algorithm: (1) by
+using temporal weighting of the prediction error (the residual), QCP-FB is able to downgrade the
+2
+
+effect of the glottal source in the estimation of formants, and (2) by using forward-backward (FB)
+analysis, the number of speech samples can be increased in LP by using two prediction directions
+simultaneously.
+An example of the data-driven approach is the formant tracking study in [26], which investigated two DL models in formant estimation (multi-layer perceptron (MLP) and convolutional
+neural network (CNN)). The DL models were trained using supervised learning based on the manually annotated vocal tract resonance (VTR) speech corpus [27]. A similar formant estimation
+method based on supervised learning was studied in [28] using a bilinear network and a temporal
+attention-augmented bilinear network as DL models to predict formants. The same authors continued their formant tracking studies in [29] using dilated CNNs that were trained in a supervised
+manner with the VTR corpus. In addition, an unsupervised DL-based formant tracker that requires
+no prior formant measurements as training data was studied recently in [30]. Their method uses
+an autoencoder type of DL network whose latent features are interpreted as formants via a special
+loss function. In [31], formant tracking was studied using a CNN that maps a spectrogram into a
+latent representation without supervised training. The latent representation was then processed by
+multiple decoders, each responsible for predicting a different formant while considering the lower
+formant predictions.
+In the current study, formant tracking is studied by combining the model-driven and datadriven approaches. The combination, called the re f inement of a data-driven formant tracker,
+is based on first tracking formants from an utterance using an existing DL-based tracker. The
+tracked formants are then refined by replacing them with the formants predicted frame-wise by
+a model-driven, LP-based signal processing approach. By combining the model-driven and datadriven approaches we aim to tackle the following two known problems of formant estimation.

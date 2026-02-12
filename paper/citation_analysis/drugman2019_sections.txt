@@ -1,0 +1,31 @@
+signals were available. Our first conclusion is that the usefulness of NAQ,
+H1-H2 and HRF for parameterizing the glottal flow is confirmed. We also
+confirmed other works in the literature (such as (Alku et al., 2002) and
+(Alku et al., 2009)) showing that these parameters can be effectively used as
+measures for discriminating different voice qualities. Our results show that
+the effectiveness of CPIF and CCD appears to be similar and rather high,
+with a slight preference towards CCD. However, it should be emphasized here
+that in our real speech tests, clean signals recorded for text-to-speech (TTS)
+synthesis were used. We can thus confirm the effectiveness of CCD for TTS
+applications (such as emotional/expressive TTS). However, for applications
+which require the analysis of noisy signals (such as telephone applications)
+further testing is needed. We observed that in the synthetic speech tests, the
+ranking dramatically changed depending on the SNR and the robustness of
+CCD was observed to be rather low. IAIF has lower performance in most tests
+(both in synthetic and real speech tests) but shows up to be comparatively
+more effective in very low SNR values.
+Acknowledgment
+Thomas Drugman is supported by the Belgian Fonds National de la
+Recherche Scientifique (FNRS). Authors also would like to thank the reviewers for their fruitful comments.
+References
+Airas, M., 2008. Tkk aparat: An environment for voice inverse filtering and
+parameterization. Logopedics Phoniatrics Vocology 33, 49–64.
+Airas, M., Alku, P., 2006. Emotions in vowel segments of continuous speech
+: Analysis of the glottal flow using the normalised amplitude quotient.
+Phonetica 63, 26–46.
+Airas, M., Alku, P., 2007. Comparison of multiple voice source parameters
+in different phonation types, in: Proc. Interspeech, pp. 1410–1413.
+22
+
+Alku, P., 1992. An automatic method to estimate the time-based parameters
+================================================================================

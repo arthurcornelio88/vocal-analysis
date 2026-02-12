@@ -1,0 +1,31 @@
+CONCLUSION
+
+In this paper, we described the lessons we learnt when
+building XGBoost, a scalable tree boosting system that is
+widely used by data scientists and provides state-of-the-art
+results on many problems. We proposed a novel sparsity
+aware algorithm for handling sparse data and a theoretically
+justified weighted quantile sketch for approximate learning.
+Our experience shows that cache access patterns, data compression and sharding are essential elements for building a
+scalable end-to-end system for tree boosting. These lessons
+can be applied to other machine learning systems as well.
+By combining these insights, XGBoost is able to solve realworld scale problems using a minimal amount of resources.
+
+Acknowledgments
+We would like to thank Tyler B. Johnson, Marco Tulio Ribeiro,
+Sameer Singh, Arvind Krishnamurthy for their valuable feedback.
+We also sincerely thank Tong He, Bing Xu, Michael Benesty, Yuan
+Tang, Hongliang Liu, Qiang Kou, Nan Zhu and all other contributors in the XGBoost community. This work was supported
+in part by ONR (PECASE) N000141010672, NSF IIS 1258741
+and the TerraSwarm Research Center sponsored by MARCO and
+DARPA.
+
+8.
+
+REFERENCES
+
+[1] R. Bekkerman. The present and the future of the kdd cup
+competition: an outsider’s perspective.
+[2] R. Bekkerman, M. Bilenko, and J. Langford. Scaling Up
+Machine Learning: Parallel and Distributed Approaches.
+================================================================================

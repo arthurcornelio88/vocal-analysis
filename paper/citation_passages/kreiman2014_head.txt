@@ -1,0 +1,50 @@
+Loquens 1(1)
+January 2014, e009
+eISSN XXXXX
+doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+Toward a unified theory of voice production and perception
+Jody Kreiman1, Bruce R. Gerratt1, Marc Garellek2, Robin Samlan3 and Zhaoyan Zhang1
+1
+
+Bureau of Glottal Affairs, Department of Head and Neck Surgery, UCLA School of Medicine, Los Angeles, CA USA
+2
+Department of Linguistics, UC San Diego, San Diego, CA USA
+3
+Department of Speech, Language, & Hearing Sciences, University of Arizona, Tucson, AZ USA
+e-mail: jkreiman@ucla.edu, bgerratt@ucla.edu, mgarellek@ucsd.edu, rsamlan@email.arizona.edu, zyzhang@ucla.edu
+
+Citation / Cómo citar este artículo: Kreiman, J., Gerratt, B. R., Garellek, M., Samlan, R., and Zhang, Z. (2014). Toward a
+unified theory of voice production and perception. Loquens, 1(1), e009. doi: http://dx.doi.org/10.3989/loquens.2014.009
+
+ABSTRACT: At present, two important questions about voice remain unanswered: When voice quality changes, what
+physiological alteration caused this change, and if a change to the voice production system occurs, what change in
+perceived quality can be expected? We argue that these questions can only be answered by an integrated model of
+voice linking production and perception, and we describe steps towards the development of such a model. Preliminary
+evidence in support of this approach is also presented. We conclude that development of such a model should be a
+priority for scientists interested in voice, to explain what physical condition(s) might underlie a given voice quality,
+or what voice quality might result from a specific physical configuration.
+KEYWORDS: voice quality; voice production; modeling; synthesis; acoustics
+
+RESUMEN: Hacia una teoría unificada de la producción y la percepción de la voz.- En la actualidad quedan por
+contestar dos cuestiones importantes relacionadas con la voz, a saber: (1) cuando la cualidad de la voz cambia, ¿qué
+alteración en el mecanismo vocal es la responsable?; y (2) si se produce un cambio en el sistema de producción de la
+voz, ¿qué cambio puede esperarse en la cualidad de voz percibida auditivamente? Sostenemos que la única respuesta
+posible a estas preguntas reside en un modelo de voz integrado que una producción y percepción, y describimos pasos
+hacia el desarrollo de tal modelo. Presentamos evidencias preliminares para respaldar esta propuesta. Concluimos que
+el desarrollo de semejante modelo debería ser una prioridad para los científicos interesados en la voz con el fin de explicar
+qué condición o condiciones físicas podrían subyacer a una cualidad de voz determinada, o qué cualidad de voz podría
+derivar de una configuración física específica.
+PALABRAS CLAVE: cualidad de voz; producción de voz; modelo; síntesis; acústica
+
+1. INTRODUCTION: WHAT IS A UNIFIED
+THEORY OF VOICE, AND WHY DO WE NEED
+ONE?
+In general, speakers phonate in order to convey information (linguistic or paralinguistic; intentionally or
+unintentionally) to a listener. The stages of transmitting
+information in this way can be described by the wellknown “speech chain” (Figure 1; Denes & Pinson,
+1993). We presently know a good deal about the individual steps along the chain, including motor planning, la-
+
+ryngeal innervation, tissue properties, the biomechanics
+of laryngeal vibrations, aeroacoustics, acoustics and
+resonance, and voice perception. However, very few

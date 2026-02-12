@@ -1,0 +1,31 @@
+A. D. Pierce. Acoustics: An Introduction to Its Physical Principles and Applications.
+McGraw-Hill, 1981.
+
+[Por76]
+
+M. Portnoff. Implementation of the digital phase vocoder using the fast fourier transform.
+IEEE Transactions on Acoustics, Speech and Signal Processing, 24(3):243–248, 1976.
+
+[PQR99]
+
+M.D. Plumpe, T.F. Quatieri, and D.A. Reynolds. Modeling of the glottal flow derivative
+waveform with application to speaker identification. IEEE Transactions on Speech and
+Audio Processing, 7(5):569–586, 1999.
+
+[PRS08]
+
+Y. Pantazis, O. Rosec, and Y. Stylianou. On the properties of a time-varying quasi-harmonic
+model of speech. In Proc. Interspeech, pages 1044–1047, 2008.
+
+BIBLIOGRAPHY
+
+177
+
+[Pul05]
+
+H. Pulakka. Analysis of human voice production using inverse filtering, high-speed imaging,
+and electroglottography. Master’s thesis, Helsinki University of Technology, Finland, 2005.
+
+[RHC09]
+
+================================================================================
