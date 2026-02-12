@@ -784,15 +784,15 @@ The environment variable `USE_VMI=true` (default) enables VMI analysis when spec
 
 20. **Miller, R. (2000).** *Training Soprano Voices.* New York: Oxford University Press.
 
-21. **Raitio, T., et al. (2024).** Formant Tracking by Combining Deep Neural Network and Linear Prediction. *IEEE/ACM Transactions on Audio, Speech, and Language Processing*, 32.
+21. **Alku, P., Kadiri, S. R., & Gowda, D. (2023).** Refining a deep learning-based formant tracker using linear prediction methods. *Computer Speech & Language*, 81.
 
 ### Machine Learning and Register Classification
 
-22. **Almeida, J., et al. (2025).** Machine Learning Approaches to Vocal Register Classification in Contemporary Male Pop Music. arXiv:2505.11378v1.
+22. **Kim, A., & Botha, C. (2025).** Machine learning approaches to vocal register classification in contemporary male pop music. *arXiv preprint arXiv:2505.11378*.
 
-23. **Almeida, J., et al. (2025).** Machine Learning with Evolutionary Parameter Tuning for Singing Registers Classification. *Signals*, 6(1), 9.
+23. **Boratto, T., et al. (2025).** Machine Learning with Evolutionary Parameter Tuning for Singing Registers Classification. *Signals*, 6(1), 9.
 
-24. **Schulze, T., et al. (2023).** Towards Automated Vocal Mode Classification in Healthy Singing Voice -- An XGBoost Decision Tree-Based Machine Learning Classifier. *ResearchGate*.
+24. **Hinrichs, R., et al. (2026).** A Dataset for Automatic Vocal Mode Classification. *arXiv preprint arXiv:2601.18339*.
 
 25. **Chen, T., & Guestrin, C. (2016).** XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
 
@@ -804,11 +804,11 @@ The environment variable `USE_VMI=true` (default) enables VMI analysis when spec
 
 28. **Defossez, A., Usunier, N., Bottou, L., & Bach, F. (2021).** Hybrid Spectrogram and Waveform Source Separation. *Proceedings of the ISMIR 2021 Conference*.
 
-29. **Moreira, L., et al. (2024).** Music Source Separation in Noisy Brazilian Choro Recordings. *Proceedings of the Conference on Music Technology (Colibri/TRB24)*.
+29. **Rouard, S., Massa, F., & Défossez, A. (2023).** Hybrid Transformers for Music Source Separation. *IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*.
 
 ### Context: Choro and Fach Classification
 
-30. **Ferraz, D. S. R. (2010).** *A Voz e o Choro: aspectos tecnicos vocais e o repertorio de Choro cantado.* Dissertacao (Mestrado em Musica) — UNIRIO, Rio de Janeiro.
+30. **Rezende, D. (2016).** *A Voz e o Choro: aspectos técnicos vocais e o repertório de Choro cantado como ferramenta de estudo no canto popular.* Olinda: Livro Rápido.
 
 31. **Cotton, S. (2007).** *Voice Classification and Fach: usage and inconsistencies.* Thesis (Doctor of Musical Arts) — University of North Carolina, Greensboro.
 
