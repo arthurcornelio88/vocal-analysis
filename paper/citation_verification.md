@@ -556,7 +556,7 @@ Sundberg J. *The Science of the Singing Voice*. Northern Illinois University Pre
 
 ---
 
-## 18. kim2018
+## 19. kim2018
 
 **Full reference:**
 Kim JW, Salamon J, Li P, Bello JP. CREPE: a convolutional representation for pitch estimation. In: Proc IEEE Int Conf Acoust Speech Signal Process (ICASSP). 2018:161-165. doi:10.1109/ICASSP.2018.8461329
@@ -565,14 +565,15 @@ Kim JW, Salamon J, Li P, Bello JP. CREPE: a convolutional representation for pit
 - **Abstract:** "We propose a data-driven pitch tracking algorithm, CREPE, which is based on a deep convolutional neural network that operates directly on the time-domain waveform. We show that the proposed model produces state-of-the-art results, performing equally or better than pYIN."
 - **Architecture:** "CREPE consists of a deep convolutional neural network which operates directly on the time-domain audio signal to produce a pitch estimate. [...] There are six convolutional layers that result in a 2048-dimensional latent representation, which is then connected densely to the output layer with sigmoid activations corresponding to a 360-dimensional output vector."
 - **Noise robustness:** "CREPE performs better in all cases where the SNR is below 10 dB while the performance varies depending on the spectral properties of the noise when the noise level is higher, which indicates that our approach can be reliable under a reasonable amount of additive noise. CREPE is also more stable, exhibiting consistently lower variance in performance compared to the baseline algorithms."
+- **Training Data:** "To guarantee a perfectly objective evaluation, we must use datasets of synthesized audio in which we have perfect control over the f0 of the resulting signal."
 
 **Occurrence in article (1):**
 
-### Occurrence 1 (line 305) — Methods §3.3
-> "We used CREPE, a convolutional neural network trained on annotated pitch data..."
+### Occurrence 1 (line 308) — Methods §3.3
+> "We used CREPE, a convolutional neural network trained on synthesized audio with perfect pitch labels..."
 
-**Claim supported:** CREPE is a CNN for pitch estimation.
-**Assessment:** **VERIFIED.** This is the original CREPE paper. The abstract confirms it is "a deep convolutional neural network that operates directly on the time-domain waveform." Noise robustness claim is also supported: "reliable under a reasonable amount of additive noise." Correct citation.
+**Claim supported:** CREPE is a CNN for pitch estimation trained on synthesized audio.
+**Assessment:** **VERIFIED.** This is the original CREPE paper. The abstract confirms it is "a deep convolutional neural network that operates directly on the time-domain waveform." The use of synthesized training data is confirmed ("datasets of synthesized audio in which we have perfect control over the f0"). Correct citation.
 
 ---
 

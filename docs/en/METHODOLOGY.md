@@ -217,16 +217,19 @@ cpps = parselmouth.praat.call(power_cepstrogram, "Get CPPS", ...)
 **Note on breathiness in M1:** It is possible to produce breathy sounds in M1 (e.g., intentional breathy phonation, *voix soufflee*). Our model treats low HNR and CPPS as **probabilistic indicators**, not deterministic, of M2. The model is approximate and improvable — the low CPPS -> M2 correlation is a statistical tendency, not an absolute rule.
 
 ### 4.3 Jitter (ppq5) and Shimmer (apq11)
-
 **Jitter (Period Perturbation Quotient):**
 Measures instability of glottal vibration frequency across 5 consecutive periods.
 
 **Shimmer (Amplitude Perturbation Quotient):**
 Measures amplitude variation across 11 consecutive periods.
 
-**Interpretation:**
-- Low values (jitter < 1%, shimmer < 3%) -> Stable phonation
-- High values -> Vibrato, pathology, or register transition
+**Current Relevance & Limitations:**
+While historically important, Jitter and Shimmer are **less reliable** for continuous singing analysis, especially in historical recordings, for two reasons:
+1. **Confounds with Vibrato:** Vibrato is essentially a periodic frequency modulation (jitter) and amplitude modulation (shimmer). Algorithms often confuse artistic vibrato with pathological instability.
+2. **Noise Sensitivity:** Background noise (low SNR) degrades the precise period-to-period detection required for these metrics.
+
+**Methodological Decision:**
+We include them for compatibility with traditional literature (Teixeira et al., 2013), but interpret them with caution. **CPPS is our primary metric** for periodicity and voice quality, as it is robust to continuous speech, vibrato, and noise (Maryn & Weenink, 2015).
 
 **Extraction:**
 ```python
@@ -234,6 +237,9 @@ point_process = parselmouth.praat.call(sound, "To PointProcess (periodic, cc)", 
 jitter_ppq5 = parselmouth.praat.call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
 shimmer_apq11 = parselmouth.praat.call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
 ```
+
+**Global vs. Frame-level Note:**
+These metrics are calculated as **global scalars** (one single value per song), unlike HNR or f0 which are time-series. In the dataset, they are repeated for every frame but do not carry temporal information. Therefore, **they are not used** in the frame-by-frame XGBoost classification or VMI, serving only as descriptive statistics for the entire recording.
 
 ### 4.4 Spectral Energy (RMS)
 

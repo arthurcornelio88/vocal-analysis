@@ -304,8 +304,8 @@ The pipeline combines two complementary extraction methods, all operating at 5~m
 temporal resolution (hop length = 220 samples at 44.1~kHz):
 
 \paragraph{Fundamental frequency ($f_0$).}
-We used CREPE,\cite{kim2018} a convolutional neural network trained on annotated
-pitch data, configured with the \texttt{full} model for maximum precision, frequency
+We used CREPE,\cite{kim2018} a convolutional neural network trained on synthesized
+audio with perfect pitch labels, configured with the \texttt{full} model for maximum precision, frequency
 range 50--800~Hz, and \texttt{weighted\_argmax} decoding. CREPE was selected over
 autocorrelation-based methods (e.g., Praat) due to its robustness to intense
 vibrato, background noise, and rapid ornamentations characteristic of historical
