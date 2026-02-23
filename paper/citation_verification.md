@@ -991,7 +991,7 @@ The following additional entries were removed in Round 2:
 
 | 20 | ghasemzadeh2023 | Article attributes "multi-seed evaluation" recommendation to this paper | **HIGH** | **RESOLVED — REMOVED** (Round 4) — Paper recommends nested k-fold CV, NOT multi-seed. All citations and bib entry removed. |
 | 21 | gupta2024 | Article attributes "multi-seed evaluation" recommendation to this paper | **HIGH** | **RESOLVED — REMOVED** (Round 4) — Scoping review protocol, no multi-seed recommendation. All citations and bib entry removed. |
-| 22 | kreiman2014 | Article calls H₁-H₂ "the most direct acoustic correlate of glottal adduction" | MEDIUM | **RESOLVED — SOFTENED** (Round 4) — Changed to "a well-established acoustic correlate" in article.tex. |
+| 22 | kreiman2014 | Article calls H₁-H₂ "the most direct acoustic correlate of glottal adduction" | MEDIUM | **RESOLVED — FURTHER NUANCED** (Round 7) — Changed to "a well-established acoustic correlate of glottal adduction: glottal parameters account for approximately 74% of its variance across voices, though the relationship is complex and speaker-dependent" — integrates kreiman2012's quantitative finding (74% variance, speaker-dependent). |
 | 23 | hanson1997 | File `articles_txt/hanson1997.txt` actually contains kreiman2012, not hanson1997 | LOW | **NOTED** (Round 4) — Hanson (1997) is paywalled; claims based on known literature. File identity issue documented. |
 | 24 | sol2023 | Paywalled, author cannot verify | MEDIUM | **RESOLVED — REMOVED** (Round 5) — Replaced by hinrichs2026 (open access, arXiv:2601.18339, cites Sol as ref [17]) |
 | 25 | sundberg2006 | Paywalled, author cannot verify | MEDIUM | **RESOLVED — REMOVED** (Round 5) — Replaced by sundberg1987 (book) + yousef2024 (open access, MDPI CC BY 4.0) |
